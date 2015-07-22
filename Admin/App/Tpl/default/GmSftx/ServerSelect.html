@@ -1,0 +1,51 @@
+<script language="javascript">
+var gameServerList=eval(<!--{$gameServerList}-->);
+var selectedOperatorId='<!--{$selectedOperatorId}-->';
+var selectedServerId='<!--{$selectedServerId}-->';
+function chageServer(operatorId){
+	var gameServer=$("#gameServer");
+	gameServer.empty();
+	gameServer.append("<option value=''><!--{'SERVER_SELECT'|lang}--></option>");
+	$.each(gameServerList,function(i,n){
+		if(n.operator_id==operatorId)gameServer.append("<option value='"+n.Id+"'>"+n.server_name+"</option>");
+	});
+}
+
+/**
+ *检测是否能提交
+ */
+function checksub(){
+	if(!$("#server_id").val()){
+		alert("<!--{'PLEASE_SELECT_SERVER'|lang}-->");
+		return false;
+	}else{
+		return true;
+	}
+}
+
+function chageServerId(serverId){
+	$("#server_id").val(serverId);
+	$("#server_name").html($("#gameServer").find("option:selected").text());
+	location.href=url+"?c=<!--{$__CONTROL__}-->&a=<!--{$__ACTION__}-->&server_id="+serverId;
+}
+
+$(function(){
+	if(selectedOperatorId)$("#operator").val(selectedOperatorId).change();
+	if(selectedServerId)$("#gameServer").val(selectedServerId);
+})
+</script>
+<fieldset>
+	<legend><!--{'SERVER_SELECT'|lang}--></legend>
+    <select id="operator" onChange="chageServer($(this).val())">
+    	<option value=""><!--{'PLEASE_SELECT_OPERATOR'|lang}--></option>
+        <!--{html_options options=$operatorList}-->
+    </select>
+    <select id="gameServer" onChange="chageServerId($(this).val())">
+    	<option value=""><!--{'PLEASE_SELECT_SERVER'|lang}-->...</option>
+    </select>
+    <span><!--{'CURRENT_SERVER_SELECT'|lang}-->:<span id="server_name" style="color:#F00"><!--{if $selectedServername}--><!--{$selectedServername}--><!--{else}--><!--{'WITHOUT_SERVER_SELECT'|lang}--><!--{/if}--></span></span>
+</fieldset>
+
+<!--{if $errorConn}-->
+<div style="color:#000; border:1px dashed #333; padding:3px; margin:3px; color:#000; font-weight:bold; text-align:center; background:#FFECEC;"><!--{'CONNECT'|lang}-->[<font color="#FF0000"><!--{$selectedServername}--></font>]<!--{'SERVER_FAIL'|lang}--></div>
+<!--{/if}-->

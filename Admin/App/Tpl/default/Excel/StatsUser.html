@@ -1,0 +1,61 @@
+<style type="text/css">
+<!--
+fieldset{font-family:"微软雅黑",Verdana, Geneva, sans-serif; font-size:12px;}
+table{margin:2px;border-collapse: collapse; border:0px;font-family:"微软雅黑",Verdana, Geneva, sans-serif; font-size:12px;}
+td{border:1px solid #93C9FF; padding:1px; margin:2px;}
+ul{
+	margin:0px;
+	padding:0px;
+	list-style:none;
+}
+-->
+</style>
+<!--{foreach from=$dataList item=list key=key}-->
+<fieldset>
+  <legend><!--{if $users.$key}--><!--{$users.$key}--><!--{else}--><!--{$key}--><!--{/if}--></legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col">统计日期</th>
+        <th colspan="5" scope="col">工单量</th>
+        <th colspan="3" scope="col">回复量</th>
+        <th colspan="6" scope="col">质检</th>
+      </tr>
+      <tr>
+        <th>日期</th>
+        <th>总量</th>
+        <th>未评价</th>
+        <th>好评</th>
+        <th>中评</th>
+        <th>差评</th>
+        <th>总量</th>
+        <th>超时</th>
+        <th>未超时</th>
+        <th>质检</th>
+        <th>被质检</th>
+        <th>加分(数量)</th>
+        <th>减分(数量)</th>
+        <th>加分</th>
+        <th>减分</th>
+      </tr>
+      <!--{foreach from=$list item=childList key=childKey}-->
+      <tr>
+        <th><!--{$childKey}--></th>
+        <td><!--{$childList.total|intval}--></td>
+        <td><!--{$childList.ev_0|intval}--></td>
+        <td><!--{$childList.ev_1|intval}--></td>
+        <td><!--{$childList.ev_2|intval}--></td>
+        <td><!--{$childList.ev_3|intval}--></td>
+        <td><!--{$childList.total_reply|intval}--></td>
+        <td><!--{$childList.timeout_0|intval}--></td>
+        <td><!--{$childList.timeout_1|intval}--></td>
+        <td><!--{$childList.quality_num|intval}--></td>
+        <td><!--{$childList.reply_num|intval}--></td>
+        <td><!--{$childList.bonus_num|intval}--></td>
+        <td><!--{$childList.deduction_num|intval}--></td>
+        <td><!--{$childList.bonus|intval}--></td>
+        <td><!--{$childList.deduction|intval}--></td>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+  </fieldset>
+<!--{/foreach}-->

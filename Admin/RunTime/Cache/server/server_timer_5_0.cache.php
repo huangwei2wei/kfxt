@@ -1,0 +1,55 @@
+<?php
+return array (
+  960 => 
+  array (
+    'Id' => '960',
+    'room_id' => '0',
+    'game_type_id' => '5',
+    'operator_id' => '9',
+    'ordinal' => '0',
+    'marking' => '192.168.21.21:8080',
+    'time_zone' => '0',
+    'timezone' => 'PRC',
+    'server_name' => '李福测试',
+    'server_url' => 'http://192.168.21.21:8080/xunxia-gm/',
+    'timer' => '1',
+    'ext' => 'a:2:{s:7:"db_user";s:5:"zlsky";s:6:"db_pwd";s:3:"ysr";}',
+    'data_url' => NULL,
+    'isCenter' => NULL,
+  ),
+  988 => 
+  array (
+    'Id' => '988',
+    'room_id' => '0',
+    'game_type_id' => '5',
+    'operator_id' => '9',
+    'ordinal' => '0',
+    'marking' => 'http://s30.app24599.qqopenapp.com/xxgm',
+    'time_zone' => '0',
+    'timezone' => 'PRC',
+    'server_name' => 's0中心服',
+    'server_url' => 'http://s30.app24599.qqopenapp.com/xxgm',
+    'timer' => '1',
+    'ext' => 'a:2:{s:7:"db_user";s:5:"zlsky";s:6:"db_pwd";s:6:"123456";}',
+    'data_url' => NULL,
+    'isCenter' => NULL,
+  ),
+  1096 => 
+  array (
+    'Id' => '1096',
+    'room_id' => '0',
+    'game_type_id' => '5',
+    'operator_id' => '9',
+    'ordinal' => '0',
+    'marking' => '0',
+    'time_zone' => '0',
+    'timezone' => 'PRC',
+    'server_name' => '0',
+    'server_url' => 'http://192.168.22.44:8080/xunxia-admin/',
+    'timer' => '1',
+    'ext' => NULL,
+    'data_url' => NULL,
+    'isCenter' => NULL,
+  ),
+)
+?>

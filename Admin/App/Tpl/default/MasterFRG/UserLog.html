@@ -1,0 +1,129 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+.multipage a{
+	margin:2px;
+}
+.multipage span{
+	padding:1px;
+	margin:2px;
+}
+.multipage .on{
+	color:#000;
+	text-decoration:underline;
+}
+</style>
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+var smallOptions=eval(<!--{$selectSmallOptions}-->);
+function changeSmallOptions(bigId){
+	var smallSelect=$("#TypeId");
+	smallSelect.empty();
+	smallSelect.append('<option value="0"><!--{'091E369AC93019DB80A1C1A5BAB03FCF'|lang}--></option>');
+	$.each(smallOptions[bigId],function(i,n){
+		smallSelect.append('<option value="'+n.Id+'">'+n.Name+'</option>');
+	})
+}
+
+var rootId='<!--{$selectedArr.RootId}-->';
+var typeId='<!--{$selectedArr.TypeId}-->';
+
+$(function(){
+	if(rootId)$("#RootId").val(rootId).change();
+	if(typeId)$("#TypeId").val(typeId);
+})
+function checkSearch(){
+	if($('#SearchContent').val() != ""){
+		if($('#UserId').val() == "" && $('#UserName').val() == "" && $('#VUserName').val() == ""){
+			alert("<!--{'CB30836BF2D744C7205A12A797A1C559'|lang}-->，<!--{'C8B0B12364A23DA8308EBF6FDCAD5CDC'|lang}-->！");
+			return false;
+		}
+	}
+	return true;
+}
+
+</script>
+<fieldset>
+	<legend><!--{'41192B3D62C7F96C759CAA83B33467E4'|lang}--></legend>
+    <table width="98%" border="0" cellpadding="3">
+      <thead>
+      <form action=""  method="get" onsubmit="return checksub();">	
+          <tr>
+            <td colspan="11">
+                <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+                <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+                <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+                <!--{'E92734841F742CB2B523B350F4E4F805'|lang}-->：<select name="Table"><!--{html_options options=$selectTableList selected=$selectedArr.Table}--></select>
+                <!--{'88EE969B4C6F2A7EAC4808844C3D8800'|lang}-->：<input type="checkbox" value="1" name="LockTbl" <!--{if $selectedArr.LockTbl}-->checked="checked"<!--{/if}--> />
+                <!--{'12918823E5D499370B67691981B095EA'|lang}-->：<select onChange="changeSmallOptions($(this).val())" id="RootId" name="RootId"><option value="0"><!--{'D36CDBFFA644692B5CE7F24C556685C0'|lang}--></option><!--{html_options options=$selectBigOptions}--></select>		
+                		<select id="TypeId" name="TypeId"></select>
+                <!--{'19FCB9EB2594059036DFEDE5F4EC53E8'|lang}-->：<input type="text" class="text" name="StartTime" value="<!--{$selectedArr.StartTime}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+                	 <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}--> 
+                     <input type="text" class="text" name="EndTime" value="<!--{$selectedArr.EndTime}-->" onFocus="WdatePicker({startDate:'%y-%M-01 23:59:59',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="11">
+                <!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->ID：<input type="text" class="text" value="<!--{$_GET.UserId}-->" name="UserId" id="UserId">
+                <!--{'819767ADA1805B0F0117F10967B94D4D'|lang}-->：<input type="text" class="text" value="<!--{$_GET.UserName|htmlspecialchars}-->" name="UserName" id="UserName">
+                <!--{'10A6F1219A3A36CE2D7A9ED0F2D096A0'|lang}-->：<input type="text" class="text" value="<!--{$_GET.VUserName|htmlspecialchars}-->" name="VUserName" id="VUserName">
+                <input type="checkbox" value="1" name="NewLog" <!--{if $_GET.NewLog}-->checked="checked"<!--{/if}--> />NewLog
+                <!--{'CFB5F18C43753AD5329348D626BD3739'|lang}-->：<input type="text" class="text" value="<!--{$_GET.SearchContent|htmlspecialchars}-->" name="SearchContent" id="SearchContent">
+                <input type="submit" name="submit" class="btn-blue" value="<!--{'DC5D07A1867B1C0B57153AFE054D0332'|lang}-->"  onclick="return checkSearch();" >
+                <div>
+                	<!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->ID：<font color="#FF0000" style="padding-right:5px;"><!--{$gameUserClass->UserId}--></font>  
+                	<!--{'819767ADA1805B0F0117F10967B94D4D'|lang}-->：<font color="#FF0000" style="padding-right:5px;"><!--{$gameUserClass->UserName}--></font>  
+                	<!--{'577C73C20A347C709FBEAA11306916C0'|lang}-->：<font color="#FF0000" style="padding-right:5px;"><!--{$gameUserClass->VUserName}--></font>  
+                    <!--{'7402599BC6350C095FB3CA545D950480'|lang}-->：<font color="#FF0000" style="padding-right:5px;"><!--{$gameUserClass->Gold}--></font>  
+                    <!--{'ADA85D38BE709CFBC769C7B36D494A3A'|lang}-->：<font color="#FF0000" style="padding-right:5px;"><!--{$gameUserClass->LiQuan}--></font>  
+                    <!--{'7D93B1E0C253EDE095459FE71C520F5A'|lang}-->：<font color="#FF0000" style="padding-right:5px;"><!--{$gameUserClass->CompanyLevel}--></font>  
+                    G<!--{'C7A023E86EAD7544061EE23EA1C42476'|lang}-->：<font color="#FF0000" style="padding-right:5px;"><!--{$gameUserClass->Assets|intval}--></font>  
+                </div>
+            </td>
+          </tr>
+      </form>
+      </thead>
+      <tbody>
+          <tr>
+            <th>ID</th>
+            <th><!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->Id</th>
+            <th><!--{'7E951D56D99D790EC4383BFB7B187DDD'|lang}--></th>
+            <th>IP</th>
+            <th><!--{'7402599BC6350C095FB3CA545D950480'|lang}--></th>
+            <th><!--{'ADA85D38BE709CFBC769C7B36D494A3A'|lang}--></th>
+            <th><!--{'C6C6A1063CD56A5AAAEF6C594003A32C'|lang}--></th>
+            <th>G<!--{'C7A023E86EAD7544061EE23EA1C42476'|lang}--></th>
+            <th><!--{'CCC3CF422C4E82CAD6A26DDF7D4E19C9'|lang}--></th>
+            <th><!--{'7D93B1E0C253EDE095459FE71C520F5A'|lang}--></th>
+            <th><!--{'2D711B09BD0DB0AD240CC83B30DD8014'|lang}--></th>
+          </tr>
+          <!--{foreach from=$dataList item=vo}-->
+          <tr>
+            <td><!--{$vo.Id}--></td>
+            <td><!--{$vo.UserId}--></td>
+            <td><!--{$vo.ActionTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+            <td><!--{$vo.IP|long2ip}--></td>
+            <td><!--{$vo.Gold}--></td> 
+            <td><!--{$vo.LiQuan}--></td>
+            <td><!--{$vo.Field1}--></td>
+            <td><!--{$vo.Assets|intval}--></td>
+            <td><!--{$vo.PersonalPoints}--></td>
+            <td><!--{$vo.CompanyLevel}--></td>
+            <td><!--{$vo.Log}--></td>
+          </tr>
+          <!--{foreachelse}-->
+          <tr>
+            <th colspan="11"><!--{$noData}--></th>
+          </tr>
+          <!--{/foreach}--> 
+          <tr>
+            <th colspan="11" align="right"><!--{$MultiPage}--></th>
+          </tr>
+      </tbody>
+    </table>
+</fieldset>
+<!--{/if}-->

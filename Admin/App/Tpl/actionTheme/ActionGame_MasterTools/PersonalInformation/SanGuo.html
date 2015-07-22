@@ -1,0 +1,170 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+	$(function(){
+		$('#pageSize').val('<!--{$_GET.pageSize}-->');
+	});
+</script>
+<fieldset>
+  <legend>搜索</legend>
+  
+<form action=""  method="post">
+	<input type="hidden" name="server_id" value="<!--{$server_id}-->"/>  
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+            玩家ID:<input class="text" type="text" name="playerId" value="<!--{$id}-->">
+            <input class="btn-blue" type="submit" value="查询">
+      </tr>
+
+    </table>
+</form>
+
+
+</fieldset>
+
+<fieldset>
+  <legend>玩家信息[<a href='<!--{$editurl}-->'>修改玩家信息</a>]</legend>
+<table width="50%" border="0" cellpadding="3">
+  	<!--{if $data}-->
+    <tr>
+      <th scope="col" width='150'>用戶id</th>
+      <td><!--{$data.user_id}--></td>
+    </tr>
+    <tr>
+      <th scope="col">寶石數量</th>
+      <td><!--{$data.gem}--></td>
+    </tr>
+    <tr>
+      <th scope="col">沙漏數量</th>
+      <td><!--{$data.gem1}--></td>
+    </tr>
+    <tr>
+      <th scope="col">金幣數量</th>
+      <td><!--{$data.gold}--></td>
+    </tr>
+    <tr>
+      <th scope="col">木頭數量</th>
+      <td><!--{$data.wood}--></td>
+    </tr>
+    <tr>
+      <th scope="col">礦石數量</th>
+      <td><!--{$data.ore}--></td>
+    </tr>
+    
+    <tr>
+      <th scope="col">翡翠數量</th>
+      <td><!--{$data.metal1}--></td>
+    </tr>
+    <tr>
+      <th scope="col">琉璃數量</th>
+      <td><!--{$data.metal2}--></td>
+    </tr>
+    <tr>
+      <th scope="col">藍田玉數量</th>
+      <td><!--{$data.metal3}--></td>
+    </tr>
+    <tr>
+      <th scope="col">瑪瑙數量</th>
+      <td><!--{$data.metal4}--></td>
+    </tr>
+    <tr>
+      <th scope="col">孔雀石數量</th>
+      <td><!--{$data.metal5}--></td>
+    </tr>
+    <tr>
+      <th scope="col">用戶名</th>
+      <td><!--{$data.username}--></td>
+    </tr>
+    <tr>
+      <th scope="col">性別</th>
+      <td><!--{$data.sex}--></td>
+    </tr>
+    <tr>
+      <th scope="col">頭像</th>
+      <td><img src='<!--{$data.avatar}-->'></td>
+    </tr>
+    <tr>
+      <th scope="col">所屬國家</th>
+      <td><!--{$data.country}--></td>
+    </tr>
+    <tr>
+      <th scope="col">玩家等級</th>
+      <td><!--{$data.level}--></td>
+    </tr>
+    <tr>
+      <th scope="col">玩家經驗</th>
+      <td><!--{$data.exp}--></td>
+    </tr>
+    <tr>
+      <th scope="col">當前能量</th>
+      <td><!--{$data.energy}--></td>
+    </tr>
+    <tr>
+      <th scope="col">上次能量增加時間</th>
+      <td><!--{$data.energy_add_time}--></td>
+    </tr>
+    <tr>
+      <th scope="col">最大能量</th>
+      <td><!--{$data.max_energy}--></td>
+    </tr>
+    <tr>
+      <th scope="col">當前人口</th>
+      <td><!--{$data.people}--></td>
+    </tr>
+    <tr>
+      <th scope="col">最大人口</th>
+      <td><!--{$data.max_people}--></td>
+    </tr>
+    <tr>
+      <th scope="col">紅心數量</th>
+      <td><!--{$data.red_heart}--></td>
+    </tr>
+    <tr>
+      <th scope="col">黑心數量</th>
+      <td><!--{$data.black_heart}--></td>
+    </tr>
+    <tr>
+      <th scope="col">占領用戶數</th>
+      <td><!--{$data.occupy_num}--></td>
+    </tr>
+    <tr>
+      <th scope="col">連續登錄次數</th>
+      <td><!--{$data.continuous_login_num}--></td>
+    </tr>
+    <tr>
+      <th scope="col">最近登錄日期</th>
+      <td><!--{$data.login_date}--></td>
+    </tr>
+    <tr>
+      <th scope="col">vip等級</th>
+      <td><!--{$data.vip_level}--></td>
+    </tr>
+    <tr>
+      <th scope="col">是否年vip</th>
+      <td><!--{$data.is_special_vip}--></td>
+    </tr>
+    <tr>
+      <th scope="col">三方平臺id</th>
+      <td><!--{$data.openid}--></td>
+    </tr>
+    <tr>
+      <th scope="col">是否封號 0:已封非0:沒有</th>
+      <td><!--{$data.status}--></td>
+    </tr>
+    
+    
+  	<!--{else}-->
+      <tr>
+        <th align="center" colspan="2">暂无数据</td>
+      </tr>
+  	<!--{/if}-->
+</table>
+
+</fieldset>
+<!--{/if}-->

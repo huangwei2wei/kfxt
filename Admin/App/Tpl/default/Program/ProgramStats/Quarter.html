@@ -1,0 +1,123 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+	<legend>统计搜索</legend>
+    <form action="" method="post">
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap" scope="row">选择年份</th>
+        <td><input type="text" class="text" name="year" value="<!--{$selected.year}-->" onFocus="WdatePicker({startDate:'<!--{$selected.year}-->',dateFmt:'yyyy',alwaysUseStartDate:true})"/>
+        	季度：
+            <select name="quarter">
+            	<!--{html_options options=$quarterList}-->
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">用户选择</th>
+        <td>
+        	<!--{foreach from=$projects item=project}-->
+            	<fieldset>
+                	<legend><!--{$project.name}--> [负责人：<b><!--{$project.word_principal_user_id}--></b>]</legend>
+                    <!--{foreach from=$project.users item=user}-->
+                    	<input type="radio" name="user_id"  <!--{if $selected.user_id==$user.Id}-->checked="checked"<!--{/if}--> value="<!--{$user.Id}-->" /><!--{$user.nick_name}-->
+                    <!--{/foreach}-->
+                </fieldset>
+            <!--{/foreach}-->
+        </td>
+      </tr>
+      <tr>
+        <th height="27" colspan="2" nowrap="nowrap" scope="row"><input type="submit" value="提交" class="btn-blue" /></th>
+      </tr>
+    </table>
+	</form>
+</fieldset>
+<!--{if $display}-->
+
+<fieldset>
+	<legend>季度评分</legend>
+    <form action="<!--{$url.ProgramStats_QuarterAssignMarks}-->" method="post">
+    <input type="hidden" name="user_id" value="<!--{$_POST.user_id}-->" />
+    <input type="hidden" name="year" value="<!--{$_POST.year}-->" />
+    <input type="hidden" name="quarter" value="<!--{$_POST.quarter}-->" />
+	<table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <!--{if $isStats!=true}-->
+      <tr>
+        <th nowrap="nowrap" scope="row">第[<font color="#FF0000"><!--{$_POST.quarter}--></font>]季度 考核得分</th>
+        <td>
+        	月考核平均分<b>80%</b>：<input type="text" class="text" readonly="readonly" name="month_scorce" value="<!--{$userStatsData.cur_stats|intval}-->" /> + 
+        	编程规范得分<b>20%</b>：<input type="text" class="text" name="code_scorce" value="0" /> 
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" nowrap="nowrap" scope="row"><input type="submit" value="提交得分" class="btn-blue" /></th>
+      </tr>
+      <!--{else}-->
+      <tr>
+        <th colspan="2" nowrap="nowrap" scope="row"><font color="#FF0000">当前季度已经评过分了</font></th>
+      </tr>
+      <!--{/if}-->
+    </table>
+    </form>
+</fieldset>
+
+
+<fieldset>
+  <legend>季度历史评分记录</legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col">季度</th>
+        <th scope="col">月平均分数</th>
+        <th scope="col">编程规范</th>
+        <th scope="col">总评价</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$history item=list}-->
+      <form action="<!--{$url.Program_EditQuarterMarks}-->" method="post">
+      <input type="hidden" name="Id" value="<!--{$list.Id}-->" />
+      <tr>
+        <td><!--{$list.time}--></td>
+        <td><input type="text" name="month_scorce" class="text" value="<!--{$list.month_scorce}-->" /></td>
+        <td><input type="text" name="code_scorce" class="text" value="<!--{$list.code_scorce}-->" /></td>
+        <td><!--{$list.total_scorce}--></td>
+        <td><input type="submit" value="修改分数" class="btn-blue" /></td>
+      </tr>
+      </form>
+      <!--{/foreach}-->
+      <tr>
+        <th colspan="5"><!--{$noData}--></th>
+      </tr>
+    </table>
+</fieldset>
+
+
+
+<fieldset>
+  <legend>月评分历史记录</legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col">评分月份</th>
+        <th scope="col">工作效率得分</th>
+        <th scope="col">工作质量得分</th>
+        <th scope="col">创新意识得分</th>
+        <th scope="col">主动性得分</th>
+        <th scope="col">总得分</th>
+      </tr>
+      <!--{foreach from=$userStatsData.list item=list}-->
+      <tr>
+        <td><!--{$list.time}--></td>
+        <td><!--{$list.qulaity_scorce}--></td>
+        <td><!--{$list.efficiency_scorce}--></td>
+        <td><!--{$list.active_scorce}--></td>
+        <td><!--{$list.innovation_scorce}--></td>
+        <td><!--{$list.total_scorce}--></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="6"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+
+</fieldset>
+<!--{/if}-->

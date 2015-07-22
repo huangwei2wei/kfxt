@@ -1,0 +1,47 @@
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+KE.show({id:'content',imageUploadJson : '<!--{$url.UploadImg_Bulletin}-->',afterCreate:function(id){KE.util.focus(id)}});
+</script>
+<fieldset>
+<legend>增加问题记录</legend>
+<form action="" method="post">
+	<input type="hidden" id="game_type_id_slt" value="<!--{$selected.game_type_id|default:'0'}-->" />
+    <input type="hidden" id="operator_id_slt" value="<!--{$selected.operator_id|default:'0'}-->"/>
+    <input type="hidden" id="server_id_slt" value="<!--{$selected.server_id|default:'0'}-->"/>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th nowrap scope="row">游戏类型</th>
+        <td>
+            <select name="game_type_id">
+                <!--{html_options options=$game_type_id selected=$data.game_type_id}-->
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap scope="row">标题</th>
+        <td>
+			<div><input size="100" class="text" type="text" name="title" value="<!--{$data.title}-->"></div>
+            <div style=" color:#666">标题采用格式：20110405活动-至尊黑衣人3、时装PK全服等奖励发放</div>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap scope="row" valign="top">进度说明:</th>
+        <td>
+        	<div>
+                <a href="javascript:void(0)" onclick="KE.create('content')">加载编辑器</a>
+                <a href="javascript:void(0)" onclick="KE.remove('content')">卸载编辑器</a><br />
+            </div>
+            <div><textarea cols="100" rows="20" name="content" id="content"><!--{$data.content}--></textarea></div>
+            <div style=" color:#666">请按上面模版进行填写</div>
+        </td>
+      </tr>
+
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" value="提交" class="btn-blue" /></th>
+      </tr>
+    </table>
+    
+    
+</form>
+</fieldset>

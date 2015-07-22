@@ -1,0 +1,96 @@
+<script>
+var selectedGameTypeId='{$selectedGameTypeId}';
+var selectedQType='{$selectedQType}';
+var questionTypes=eval('<php>echo json_encode($questionTypes)</php>');
+$(function(){
+	$('#menu_1').addClass('d');
+//	$('#game_type').val('');
+	$('#question_type').val('');
+	Validation('myform');
+	if(selectedGameTypeId){
+		$("#game_type").val(selectedGameTypeId).change();
+		if(selectedQType)$("#question_type").val(selectedQType);
+	}
+});	
+
+//var sendTimes=0;
+
+//<<当键keyup之后在userResponseTime毫秒内不进行第二次keyup，就进行FAQ搜索.
+var userResponseTime = 240;	//用户第二次按键间隔最少时间将不产生搜索
+var scriptMaxResponseTime = 10;	//匿名函数上限执行时间，超出此时间将导致没法执行搜索
+var lastKeyUpDate=new Date();
+function showDoFaq(event){
+	setTimeout(function(){if(new Date()-lastKeyUpDate>userResponseTime)loadLikeFaq();lastKeyUpDate=new Date();},userResponseTime+scriptMaxResponseTime);
+}
+//>>
+
+function checkGameType(){
+	if($('#game_type').val()==''){
+		alert('请先选择游戏');
+		$('#game_type').focus();
+	}
+}
+
+<if condition="$checkGameId != null">
+loadQuestionTypes({$checkGameId});
+alert('aa');
+</if>
+</script>
+<div class="right_tit">我要提问</div>
+<div class="right_con">
+	<!--{/*水平目录*/}-->
+    <include file="../Question/horizontalMenu"/>
+    <div class="poesrzil">
+        <form name="myform" id="myform" enctype="multipart/form-data" action="{:U('Question/save')}" method="post">
+            <dl>
+                <dt>游戏产品：</dt>
+                <dd><select name="game_type" id="game_type"
+                    onchange="loadQuestionTypes(this.value);" class="required" msg="游戏产品">
+                    <option <if condition="$checkGameId == null">selected="selected"</if> value="">　　请选择游戏　　</option>
+                    <volist name="game_type" id="game" >
+                    <option value="{$game.Id}" <if condition="$checkGameId == $game['Id']">selected="selected"</if> >　　{$game.name}　　</option>
+                    </volist>
+                </select></dd>
+            </dl>
+            <dl>
+                <dt>提问类型：</dt>
+                <dd>
+                <select name="question_type" id="question_type" onchange="chooseQuestionType(this.value);" class="required" msg="问题类型"  onfocus="checkGameType();">
+                    <option selected="selected" value="">　　请选择问题类型　　</option>
+                </select>
+                </dd>
+            </dl>
+            <span id="dt_layer"></span>
+            <dl>
+                <dt>问题标题：</dt>
+                <dd>
+                    <input type="text" class="input_01 required" style="width:400px;" name="title" id="title" onkeyup="showDoFaq(event)" msg="问题标题"/>
+                    <span class="intcon" style=" margin-left:40px;;width:500px;display:none;" id="likefaq">
+                        <P><span><a href="{:U('Faq/ls')}">>>更多</a></span>
+                        <b>您是否碰到以下问题了？ </b></P>
+                        <P id="likefaq_ls">
+                        </P>
+                    </span>	
+                </dd>
+            </dl>
+            <dl>
+                <dt>详细描述：</dt>
+                <dd><textarea name="content" id="textarea" cols="45" rows="5"></textarea></dd>
+            </dl>
+            <dl>
+                <dt>上传截图：</dt>
+                <dd id="upfile_list"><input type="file" style="width: 212px; height:22px;" name="file_upload[]" />　<a href="javascript:addUpFile()" style="font-size:12px">增加</a><br/></dd>
+            </dl>
+            <dl>
+                <dt></dt>
+                <dd>
+                    <a href="javascript:void(0);" onClick="$('#myform').submit()"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/button_44.gif" /></a>
+                    <a href="javascript:void(0);"onclick="javascript:document.myform.reset(); return false;"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/button_45.gif" /></a>
+                </dd>
+            </dl>
+        </form>
+    </div>
+    <div style="clear: both"></div>
+</div>
+<div class="right_bo"></div>
+<div style="clear: both"></div>

@@ -1,0 +1,212 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript">
+//KE.init({id:'title',imageUploadJson : '<!--{$url.UploadImg_Bulletin}-->',afterCreate:function(id){KE.util.focus(id)}});
+function fontStyle(color,b,em){
+	var font1='<font color="'+color+'">';
+	var font2='</font>';
+	var b1='<b>';
+	var b2='</b>';
+	var em1='<em>';
+	var em2='</em>';
+	if(!color){
+		font1 = font2 = '';
+	}
+	if(!b){
+		b1 = b2 = '';
+	}
+	if(!em){
+		em1 = em2 = '';
+	}
+	var obj = $('#title');
+	obj.val(obj.val()+font1+b1+em1+'请输入文字'+em2+b2+font2);
+	view()
+}
+function linkAdd(){
+	var obj = $('#title');
+	obj.val(obj.val()+'<a href="event:请输入地址">请输入内容</a>');
+	view()
+}
+function view(){
+	$('#view').html($('#title').val());
+}
+
+</script>
+<fieldset>
+<legend>添加活动</legend>
+<form action="" method="post" id="form">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<input type="hidden" name="id" value="<!--{$selected.id|default:"0"}-->" />
+    <!--{*<a href="javascript:void(0)" onclick="KE.create('title')">加载编辑器</a>*}-->
+	<!--{*<a href="javascript:void(0)" onclick="KE.remove('title')">卸载编辑器</a>*}-->
+    <table width="98%" border="0" cellpadding="3">
+    	<tr>
+        <th scope="row">区ID</th>
+        <td><input type="text" class="text" name="WorldID" value="<!--{$data.WorldID}-->"/>
+        </td>
+      </tr>
+       <tr>
+        <th scope="row">序号</th>
+        <td><input type="text" class="text" name="TableID" value="<!--{$data.TableID}-->"/>
+        </td>
+      </tr>
+       <tr>
+        <th scope="row">标签类型</th>
+        <td>
+
+			<select name='TableType'>
+			    <option value="0" <!--{if $data.ClassCheck=="0"}-->selected="selected"<!--{/if}-->>无</option>
+			</select>
+        </td>
+      </tr>
+       <tr>
+        <th scope="row">标签图标</th>
+        <td>
+		    <input type="text" class="text" name="TableIcon" value="<!--{$data.TableIcon}-->"/>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">标签名</th>
+        <td><input type="text" class="text" name="TableName" value="<!--{$data.TableName}-->"/>
+        </td>
+      </tr>
+
+	  <tr>
+        <th scope="row">标题特效</th>
+        <td><input type="text" class="text" name="TableEffect" value="<!--{$data.TableEffect}-->"/>
+        </td>
+      </tr>
+	  <tr>
+        <th scope="row">开服后检测的开始时间</th>
+        <td><input type="text" class="text" name="WorldTimeBegin" value="<!--{$data.WorldTimeBegin}-->"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">服务器启动后的截止时间</th>
+        <td><input type="text" class="text" name="WorldTimeEnd" value="<!--{$data.WorldTimeEnd}--><!--{$data.WorldTImeEnd}-->"/>
+        </td>
+      </tr>
+      
+      
+      <tr>
+        <th scope="row">起效时间段</th>
+        <td><input type="text" class="text" style="width:300px;" name="TableTime" <!--{if $_GET.TableID!=""}-->value="<!--{$data.TableTime}-->"<!--{else}-->value="[*][*][*][17:00-22:00]"<!--{/if}-->/>支持多个，用 ; 分隔。
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">时间格式</th>
+        <td>
+        [*][*][*][17:00-22:00]					表示每天17点到22点<br>
+		[2012][*][10-10][00:00-23:59]			表示2012年每月10日<br>
+		[2012][9][w4,w5,w6][00:00-23:59]		表示2012年9月的周五、周六、周日
+
+        
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">最小等级</th>
+        <td><input type="text" class="text" name="MinLevel" value="<!--{$data.MinLevel}-->"/>
+        </td>
+      </tr>
+      
+   	<tr>
+        <th scope="row">最大等级</th>
+        <td><input type="text" class="text" name="MaxLevel" value="<!--{$data.MaxLevel}-->"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">条件值</th>
+        <td><input type="text" class="text" name="ConditionValue" value="<!--{$data.ConditionValue}-->"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">需要特权类型</th>
+        <td>
+      <!--   特权类型<select name='NeedPrivilege_privilege'>
+        		<option value="0">不检测</option>
+			    <option value="1">VIP</option>
+			    <option value="2">空间</option>
+			    <option value="3">朋友网</option>
+				<option value="4">Q+</option>
+				<option value="5">3366</option>
+				<option value="6">QQGame</option>
+        	</select><br/>
+   VIP类型<select name='NeedPrivilege_VIP'>
+        		<option value="0">QQ会员</option>
+			    <option value="1">黄钻</option>
+			    <option value="2">蓝钻</option>
+        	</select><br/>
+   	活动条件<select name='NeedPrivilege_condition'>
+        		<option value="0">无条件</option>
+			    <option value="1">创建角色</option>
+			    <option value="2">在线时长</option>
+			    <option value="3">充值累计</option>
+				<option value="4">邀请好友累计</option>
+				<option value="5">登录次数</option>
+				<option value="6">充值立即奖励</option>
+				<option value="7">好友邀请成功次数</option>
+			    <option value="8">分享次数</option>
+			    <option value="9">是否达成唯一事件</option>
+			    <option value="10">消费元宝</option>
+        	</select><br/>
+     		特权等级相等<input class="checkbox" type="checkbox" name="NeedPrivilege_E" value="E">
+     		是否年费会员<input class="checkbox" type="checkbox" name="NeedPrivilege_Y" value="Y">--> 
+        	<input type="text" class="text" name="NeedPrivilege" value="<!--{$data.NeedPrivilege}-->"/>格式：特权类型_VIP类型_特权等级_EY 
+        	
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">条件类型</th>
+        <td>
+        <select name='TableTextType'>
+			    <option value="0" <!--{if $data.TableTextType=="0"}-->selected="selected"<!--{/if}-->>标准配置</option>
+			    <option value="1" <!--{if $data.TableTextType=="1"}-->selected="selected"<!--{/if}-->>文本</option>
+		</select>
+			
+        </td>
+      </tr>
+
+      <tr>
+        <th scope="row">活动描述</th>
+        <td>
+        	<div>
+				颜色<select id="color_select">
+                	<option value="">默认</option>
+                	<option value="FF0000">红色</option>
+                    <option value="0000FF">蓝色</option>
+                    <option value="00FF00">绿色</option>
+                    <option value="FFFF00">黄色</option>
+                    <option value="FF00FF">紫色</option>
+                </select>
+                加粗<input id="b_select" type="checkbox" value="b" />
+                下划线<input id="em_select" type="checkbox" value="em" />
+                <input class="btn-blue" type="button" value="添加" onclick="fontStyle($('#color_select').val(),$('#b_select').attr('checked'),$('#em_select').attr('checked'));" />
+                <input class="btn-blue" type="button" value="添加超链接" onclick="linkAdd();" />
+       		</div>
+        	<textarea name="TableText" id="title" style="width:600px; height:200px;" onkeyup="view();"><!--{$data.TableText}--></textarea><div id="titleTip"></div>
+            <div>
+            	<input class="btn-blue" type="button" value="预览" onclick="view();" />
+                <div id="view"></div>
+            </div>
+        </td>
+      </tr>
+
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

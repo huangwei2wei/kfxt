@@ -1,0 +1,32 @@
+<style type="text/css">
+<!--
+table{margin:2px;border-collapse: collapse; border:0px; font-family:"微软雅黑",Verdana, Geneva, sans-serif; font-size:12px;}
+td{border:1px solid #93C9FF; padding:1px; margin:2px;}
+-->
+</style>
+<table width="50%" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <th scope="col">FAQ分类</th>
+    <th scope="col">点击率</th>
+  </tr>
+  <tr>
+    <td>total</td>
+    <td><b><!--{$dataList.total.total}--></b></td>
+  </tr>
+  <!--{foreach from=$kindList key=kind_id item=kind_name}-->
+  <tr>
+    <td><!--{$kind_name}--></td>
+    <td>
+        <ul>
+        <!--{foreach from=$dataList key=key item=list}-->
+            <!--{if $selected.stats_type=='day'}-->
+                <!--{if $list.$kind_id}--><li><!--{$key|date:"Y-m-d"}--> : <b><!--{$list.$kind_id}--></b></li><!--{/if}-->
+            <!--{else}-->
+                <!--{if $list.$kind_id}--><li><!--{$key}--> : <b><!--{$list.$kind_id}--></b></li><!--{/if}-->
+            <!--{/if}-->
+        <!--{/foreach}-->
+        </ul>
+    </td>
+  </tr>
+  <!--{/foreach}-->
+</table>

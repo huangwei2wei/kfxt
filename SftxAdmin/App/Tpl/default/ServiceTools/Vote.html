@@ -1,0 +1,50 @@
+<fieldset>
+	<legend>搜索</legend>
+</fieldset>
+<a href="<!--{$url.ServiceTools_VoteConf}-->">投票配置</a>
+<a href="<!--{$url.ServiceTools_AddVote}-->">新建投票</a>
+<fieldset>
+  <legend>投票列表</legend>
+  	<form action="<!--{$url.ServiceTools_DelVote}-->" onsubmit="return confirm('确定要删除吗?')" method="post">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">名称</th>
+        <th scope="col">添加人</th>
+        <th scope="col">说明</th>
+        <th scope="col">投票立即公开结果</th>
+        <th scope="col">开始时间</th>
+        <th scope="col">结束时间</th>
+        <th scope="col">我的当前状态</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><input type="checkbox" name="ids[]" value="<!--{$list.Id}-->" /><!--{$list.Id}--></td>
+        <td><!--{$list.title}--></td>
+        <td><!--{$list.word_user_id}--></td>
+        <td title="<!--{$list.description}-->"><!--{$list.description|truncateutf8:30}--></td>
+        <td><!--{$list.word_is_open}--></td>
+        <td><!--{$list.start_time}--></td>
+        <td><!--{$list.end_time}--></td>
+        <td><!--{$list.word_my_status}--></td>
+        <td>
+        	<a href="<!--{$list.url_show}-->">察看详情</a>
+            
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="9"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td><input type="checkbox" id="allcheck" onclick="checkboxSelectAll($(this),'ids[]')" /></td>
+        <td colspan="8"><input type="submit" class="btn-blue" value="删除" /></td>
+      </tr>
+      <tr>
+        <td align="right" colspan="9"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+    </form>
+</fieldset>

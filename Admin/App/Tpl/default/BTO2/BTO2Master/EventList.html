@@ -1,0 +1,116 @@
+﻿<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+    
+    
+<fieldset>
+	<legend><!--{'2C0273DE010885CEB96FE750A2B9D8E7'|lang}--></legend>
+    
+    <form action="" method="get">
+    <input value='BTO2' type="hidden" name='zp'/>
+    <input value='BTO2Master' type="hidden" name='c'/>
+    <input value='EventList' type="hidden" name='a'/>
+    <input value='<!--{$server_id}-->' type="hidden" name='server_id'/>
+    <table width="100%">
+      <tr>
+        <td>
+        	<!--{'E92734841F742CB2B523B350F4E4F805'|lang}-->
+            <select name="TableIndex" >
+            	<!--{html_options options=$TableIndex selected=$QueryString.TableIndex }-->
+            </select>
+        </td>
+        <td>
+           <!--{'F974C8465FB8F678CF37A1BE67F94E6E'|lang}-->
+            <select name="EventType">
+                <!--{html_options options=$EventTypes selected=$QueryString.EventType }-->
+            </select>
+        </td>
+        <td>
+        	<!--{'EB575A9BD2403615B148CD41A0F6B35A'|lang}-->
+          <select name="ReadStat">
+            <!--{html_options options=$ReadStat selected=$QueryString.ReadStat }-->
+          </select>
+         </td>
+        <td>
+        	<!--{'247048DBE3149877C604EF1FC0DC6146'|lang}-->
+          <select name="Deleted">
+            <!--{html_options options=$Deleted selected=$QueryString.Deleted }-->
+          </select>
+         </td>
+      </tr>
+      <tr>
+        <td>
+        	<!--{'USER_ID'|lang}--> 
+          <input type="text" class="text" name="UserId" value="<!--{$QueryString.UserId}-->" />
+         </td>
+        <td>
+        	<!--{'592C59589144DDC68D05D528DA17DCDC'|lang}-->
+          <input class="text"  type="text" name="StartTime" value="<!--{$QueryString.StartTime}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" /></td>
+        <td>
+        	<!--{'F782779E8B5D709462C8E71E0D9019F2'|lang}-->
+          <input class="text"  type="text" name="EndTime" value="<!--{$QueryString.EndTime}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" /></td>
+        <td><input type="submit" value="<!--{'BEE912D79EEFB7335988C4997AA9138D'|lang}-->"  /></td>
+    
+      </tr>
+    </table>
+    </form>
+    
+    <table  width="100%" >
+      <tr  class="thead1">
+        <td>Id</td>
+        <td><!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->Id</td>
+        <td ><!--{'32C65D8D7431E76029678EC7BB73A5AB'|lang}--></td>
+        <td width="500" ><!--{'2D711B09BD0DB0AD240CC83B30DD8014'|lang}--></td>
+        <td ><!--{'F974C8465FB8F678CF37A1BE67F94E6E'|lang}--></td>
+        <td ><!--{'13F7745F1C4F6C0FE0335BA69D87F53E'|lang}--></td>
+        <td><!--{'EB575A9BD2403615B148CD41A0F6B35A'|lang}--></td>
+        <td ><!--{'247048DBE3149877C604EF1FC0DC6146'|lang}--></td>
+        
+      </tr>
+
+     <!--{foreach from=$DataList key=key item=list }-->
+     <tr>
+           <td><!--{$list.Id}--></td>
+           <td><!--{$list.UserId}--></td>
+           <td valign="top"><font style="color:#03C"><!--{$list.Title}--></font></td>
+           <td><!--{$list.Content}--></td>
+           <td><!--{$EventTypes[$list.EventType]}--></td>
+           <td><!--{$list.EventDate|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+           <td>
+           		<!--{if $list.ReadStat == 1}-->
+                	<!--{'C9744F45E76D885AE1C74D4F4A934B2E'|lang}-->
+                <!--{else}-->
+                	<!--{'0A60AC8F02CCD2CF723F927284877851'|lang}-->
+           		<!--{/if}-->
+           </td>
+           <td>
+           		<!--{if $list.Deleted}-->
+                	<!--{'0A60AC8F02CCD2CF723F927284877851'|lang}-->
+                <!--{else}-->
+                	<!--{'C9744F45E76D885AE1C74D4F4A934B2E'|lang}-->
+           		<!--{/if}-->
+           </td>
+            
+      </tr>
+      <!--{/foreach}-->
+    </table>
+    
+    
+
+    
+ 
+    
+    
+    
+    
+    
+    <br/><!--{$pageBox}-->    
+</fieldset>
+    
+
+<!--{/if}-->
+
+

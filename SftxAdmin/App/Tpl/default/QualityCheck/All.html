@@ -1,0 +1,91 @@
+<fieldset>
+	<legend>搜索条件</legend>
+  <form action="" method="get">
+	<input type="hidden" value="QualityCheck" name="c" />
+    <input type="hidden" value="MyTask" name="a" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td colspan="2" scope="row"><input type="button" class="btn-blue" id="display_user" value="显示/隐藏所有用户" /></td>
+      </tr>
+      <!--{foreach from=$orgList item=list}-->
+      <tr class="display_service">
+        <th scope="row"><!--{$list.name}--></th>
+        <td>
+            <!--{if $list.user}-->
+            <!--{html_checkboxes options=$list.user name="service_ids" selected=$selectedServiceIds}-->
+            <!--{else}-->
+            <font color="#666666">暂无客服</font>
+            <!--{/if}-->
+        </td>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <th scope="row">游戏类型</th>
+        <td>
+        	<!--{html_radios options=$gameTypeList name="game_type_id" selected=$selectedGameTypeId}-->
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">运营商</th>
+        <td><!--{html_radios options=$operatorList name="operator_id" selected=$selectedOperatorId}--></td>
+      </tr>
+      <tr>
+        <th scope="row">分类选择</th>
+        <td>
+            <!--{html_radios options=$workOrderStatusArr name="order_status" selected=$selectedOrderStatus}-->
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">等级选择</th>
+        <td><!--{html_radios options=$vipLevel name="vip_level" selected=$selectedVipLevel}--></td>
+      </tr>
+      <tr>
+      	<th scope="row">搜索选项</th>
+        <td>
+            标题 <input type="text" class="text" name="title" id="title" value="<!--{$selectedTitle}-->" />
+            玩家呢称 <input type="text" class="text" name="user_nickname" id="user_nickname" value="<!--{$selectedUserNickname}-->" />
+         	账号名搜索 <input type="text" class="text" name="user_account" id="user_account" value="<!--{$selectedUserAccount}-->" />
+       	<input type="submit" class="btn-blue" value="提交"  /></td>
+      </tr>
+    </table>
+    </form>
+</fieldset>
+
+<fieldset>
+	<legend>所有被质检的工单</legend>
+	<table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th>Id</th>
+        <th>[工单状态]标题</th>
+        <th>游戏 / 运营商 / 服务器 / VIP等级<br />玩家信息</th>
+        <th>工单来源<br />问题类型</th>
+        <th>提问 / 回复数</th>
+        <th>处理人</th>
+        <th>质检人</th>
+        <th>操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td class="order_title" url="<!--{$list.url_dialog}-->" dialogId="detail_<!--{$list.Id}-->" title="<!--{$list.title}-->">
+        	 <!--{$list.title|truncateutf8:20}--><br />
+             [<!--{$list.word_status}-->] (<!--{$list.create_time}-->)
+        </td>
+        <td>
+            <!--{$list.word_game_type}--> / <!--{$list.word_operator_id}--> /	<!--{$list.word_game_server_id}--> / <font color="#666666">VIP:</font> <b><!--{$list.vip_level}--></b><br />
+            <font color="#666666">账号：</font><!--{$list.user_account}-->，<font color="#666666">呢称：</font></font><a href="javascript:void(0)" onclick="searchForm($(this))"><!--{$list.user_nickname}--></a>，<font color="#666666">充值量：</font><!--{$list.money}-->
+        </td>
+        <td><!--{$list.word_source}--><br /><!--{$list.word_question_type}--></td>
+        <td><!--{$list.question_num}--> / <!--{$list.answer_num}--></td>
+        <td><a href="javascript:void(0)" onclick="addSearchUser(<!--{$list.owner_user_id}-->)"><!--{$list.word_owner_user_id}--></a></td>
+        <td><a href="javascript:void(0)" onclick="addSearchUser(<!--{$list.quality_id}-->)"><!--{$list.word_quality_id}--></a></td>
+        <td>
+            <a href="<!--{$list.url_detail}-->">工单详情</a>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr><th colspan="10"><!--{$noData}--></th></tr>
+      <!--{/foreach}-->
+      <tr><td align="right" colspan="10"><!--{$pageBox}--></td></tr>
+    </table>
+</fieldset>

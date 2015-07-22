@@ -1,0 +1,83 @@
+<script language="javascript">
+function userRead(curButton){
+	var id=curButton.attr("cur_id");
+	$.getJSON(
+		url,
+		{c:'ServiceTools',a:'NoticeShow',doaction:'read',Id:id},
+		function(){
+			curButton.remove();
+		}
+	);
+}
+</script>
+<fieldset>
+	<legend>搜索</legend>
+    <form action="" id="search" method="get">
+    	<input type="hidden" name="c" value="ServiceTools" />
+        <input type="hidden" name="a" value="NoticeShow" />
+        <input type="hidden" name="doaction" value="<!--{$_GET.doaction}-->" />
+        <table width="100%" border="0" cellspacing="0" cellpadding="3">
+          <tr>
+            <th scope="row">类型</th>
+            <td> <!--{html_radios options=$kind selected=$selectedKind name="kind" onclick="$('#search').submit()"}--></td>
+          </tr>
+          <tr>
+            <th scope="row">标题，内容搜索</th>
+            <td>
+            <input type="text" class="text" size="50" name="content" value="<!--{$selectedContent}-->" />
+            <input type="submit" value="提交" class="btn-blue" />
+            </td>
+          </tr>
+        </table>
+    </form>
+</fieldset>
+<fieldset>
+	<legend>
+    公告列表 
+    [<a href="<!--{$url.ServiceTools_ByList}-->">按列表显示</a>]
+    [<a href="<!--{$url.ServiceTools_Add}-->">添加新公告</a>]
+    </legend>
+    <!--{foreach from=$dataList item=list}-->
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col"><font size="+2"><!--{$list.date}--></font></th>
+      </tr>
+      <!--{foreach from=$list.list item=childList}-->
+      <tr>
+        <td style="background:#666"><font size="+1" color="#FFFFFF"><b><!--{$childList.word_kind}--></b></font></td>
+      </tr>
+      <tr>
+        <td>
+        	<font size="+1"><b><!--{$childList.title}--></b></font> [<font color="#FF6600"><!--{$childList.create_time}--> , <!--{$childList.word_user_id}--></font>]  
+            [<a href="<!--{$childList.url_edit}-->">编辑</a>]
+            <!--{if $childList.user_no_read}-->
+            <input type="button" class="btn-blue" value="我已阅读" cur_id='<!--{$childList.Id}-->' onclick="userRead($(this))" />
+            <!--{/if}-->
+            
+            <br />
+            <div style="margin-left:10px; margin-top:5px;"><!--{$childList.content}--></div>	
+            <div style="margin:5px; padding:2px; background:#D6E8F1">
+            	<label>未阅读用户：</label>
+                <!--{$childList.word_not_read}-->
+            </div>	
+            <div style="padding-bottom:15px; padding-left:5px;">
+            	<a onclick="return confirm('确定删除？');" href="<!--{$childList.url_del}-->">删除 </a>	
+            </div>
+            
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th scope="col"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+    </table><br /><br />
+    <!--{foreachelse}-->
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col"><!--{$noData}--></th>
+      </tr>
+    </table>
+    <!--{/foreach}-->
+    <div align="right"><!--{$pageBox}--></div>
+</fieldset>

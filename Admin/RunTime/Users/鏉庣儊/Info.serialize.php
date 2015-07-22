@@ -1,0 +1,2 @@
+<?php 
+return 'C:15:"Object_UserInfo":461:{a:19:{s:2:"Id";i:357;s:9:"user_name";s:6:"李烁";s:13:"department_id";s:1:"1";s:10:"service_id";N;s:5:"roles";a:1:{i:0;s:11:"op_bto_join";}s:9:"nick_name";s:6:"lishuo";s:12:"date_created";i:1328595725;s:12:"date_updated";i:1328595725;s:6:"roomId";i:0;s:12:"operator_ids";a:0:{}s:8:"orderNum";a:0:{}s:5:"orgId";i:0;s:9:"full_name";N;s:9:"reply_num";a:0:{}s:9:"vip_level";a:0:{}s:18:"incompleteOrderNum";i:0;s:6:"status";i:0;s:3:"act";a:0:{}s:7:"program";a:0:{}}}'; 

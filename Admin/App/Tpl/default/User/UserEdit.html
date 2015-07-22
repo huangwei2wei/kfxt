@@ -1,0 +1,48 @@
+<fieldset>
+	<legend>编辑用户</legend>
+    <form action="<!--{$url.User_Edit}-->" method="post">
+    <input type="hidden" value="<!--{$dataList.Id}-->" name="Id" />
+    <table width="99%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">用户名</th>
+        <td><!--{$dataList.user_name}--></td>
+      </tr>
+      <tr>
+        <th scope="row">所属部门</th>
+        <td>
+        <select name="department_id" id="department_id" >
+          <!--{html_options options=$departmentList selected=$dataList.department_id}-->
+        </select>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">拥有的角色</th>
+        <td><!--{html_checkboxes options=$rolesList name=roles selected=$dataList.roles separator="&nbsp;"}--></td>
+      </tr>
+      <tr>
+        <th scope="row">客服编号</th>
+        <td><input type="text" class="text" value="<!--{$dataList.service_id}-->" name="service_id" /></td>
+      </tr>
+      <tr>
+        <th scope="row">姓名</th>
+        <td><input type="text" class="text" name="nick_name" value="<!--{$dataList.nick_name}-->" /></td>
+      </tr>
+      <tr>
+        <th scope="row">处理的VIP等级</th>
+        <td><!--{html_checkboxes options=$vipLevel name="order_vip_level" selected=$selectedVipLevel}--></td>
+      </tr>
+      <tr>
+        <th scope="row">职位</th>
+        <td><select name="position_id"><!--{html_options options=$positionList selected=$dataList.position_id}--></select></td>
+      </tr>
+      <tr>
+        <th scope="row">个人权限</th>
+        <td><textarea name="act" cols="50" rows="8"><!--{$dataList.act}--></textarea>
+          请输入权限的KEY值以&quot;,&quot;号隔开</td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+        </tr>
+    </table>
+    </form>
+</fieldset>

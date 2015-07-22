@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>操作成功 - 优玩网 - 客服中心</title>
+<include file="../common/libs"/>
+<script src="__PUBLIC/common/js/libs/jquery.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+<!--
+	var miss = true;
+	$(function(){
+		$('ul li').hover(
+			function(event){
+				miss = false;
+				var id = $(this).attr('id').replace('b', '');
+				var os = $(this).offset();
+				var w = $(this).width();
+				var h = $(this).height();
+				$('div[class="fc"]:visible').slideUp(200);
+				$('#a'+id).css({top: os.top + h + 5, left: os.left + w + 5}).slideDown(100);
+			},
+			function(event){
+				miss = true;
+				setTimeout(function(){if(miss){$('div[class="fc"]').slideUp(40);}}, 40);
+			}
+		);
+	});
+-->
+</script>
+</head>
+
+<body>
+<div id="bg">
+<div id="bgtainer">
+	<div id="bgtai">
+		<include file="../common/head"/>
+		
+        <div>
+        
+        <div class="vipcon">
+		<h2>什么是VIP通行证？</h2>
+		<p style="border-bottom:1px #d7d6d1 dotted">当您的通行证在优玩平台旗下游戏消费满1万元即可激活您的VIP通行证，享受游戏内的特权以外，还可享受专属的提问通道，让您随时享受优质的VIP服务。</p>
+		
+		<h2>如何成为VIP？</h2>
+		<p style="text-align:center"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/title_17.gif" /></p>
+	</div>
+	
+	<div class="conlvtit">VIP绿色通道</div>
+	<div class="vipcon">
+		<p style=" line-height:23px;text-indent:2em">金牌VIP享有专属的 [客服通道] ，金牌VIP手机服务和VIP客服热线，让您任何时间、任何地点咨询任何游戏内的相关问题。同时，7*24小时的客服贴心服务，让金牌VIP玩家得到最高效，最优质的服务。</p>
+		<div class="vipfuwu">
+			<p>无论您在什么时候、什么地点，遇到任何关于游戏内的问题，都能随时联系官方vip客服为您跟进处理，问题解决后，我们将第一时间反馈给您。</p>
+			<p style="padding-left:75px">您致电客服热线反馈的各类游戏问题，我们将由专人优先为您核查处理，同时也将在处理完毕后及时根据您需求的方式给您答复和跟踪，使您能及时、有效的收到反馈信息，让您感受到快捷、贴心的服务。</p>
+		</div>
+		<div class="vipsj">
+			<div class="fc" id="a01">为了让金牌VIP玩家更方便咨询游戏信息，为了让金牌VIP玩家的账号更安全，《新商业大亨Online》特意推出手机绑定账号服务。</div>
+			<div style="position:absolute; margin:125px 0 0 74px;"><ul><li id="b01"><a style="cursor:pointer"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/bur_21.gif" /></a></li></ul></div>
+			<p style="line-height:23px; text-indent:2em;padding:65px 0 0 20px; width: 767px;">为了让金牌VIP玩家更方便咨询游戏信息，为了让金牌VIP玩家的账号更安全，《新商业大亨Online》特意推出手机绑定账号服务，提高
+您的VIP账号安全度。</p>
+<p style="line-height:23px;padding:95px 0 0 85px; width: 702px;">短信通知　　　　　　　账号异常通知　　　　　　　锁定账号　　　　　　　 解锁账号　　　　　　　 修改密码</p>
+
+		</div>
+	</div>
+        
+        
+        </div>
+     </div>
+	<include file="../common/footer"/>	
+</div>
+</body>
+
+</html>

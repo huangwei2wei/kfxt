@@ -1,0 +1,200 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<style type="text/css">
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:99%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+</style>
+
+<!--{include file="HaiDao/HaiDaoMaster/UserModifyHref.html"}-->
+<!--{if $display}-->
+<script language="javascript">
+var read='<!--{$read}-->';
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"<!--{'C566CA59602C7C5C0D3FE5E18ADE447D'|lang}-->ID<!--{'D7D11654A707D7E7B661C90295E58B20'|lang}-->",oncorrect:"<!--{'124D617A6875038C81E03DEC5E2501F4'|lang}-->ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'BA2DD64CC4F6DDF27CB1526EFB449E2D'|lang}-->"});
+	$("#cause").formValidator({onshow:"<!--{'A73F63486CB97A8D6C136D7DC82F11D2'|lang}-->",oncorrect:"<!--{'FD75CEECBD2676048590A1695702F29A'|lang}-->"}).inputValidator({min:1,empty:{leftempty:true,rightempty:true,emptyerror:"<!--{'A73F63486CB97A8D6C136D7DC82F11D2'|lang}-->"},onerror:"<!--{'E85E13CC2A5C76D4E44E62F70E1F1BED'|lang}-->"});  	   
+		   
+	$(":radio").click(function(){
+		var value=$(this).val();
+		$(".search_option").attr("disabled","disabled");
+		$("#"+value).removeAttr("disabled");
+	});
+	if(read){
+		$("input").attr("disabled","disabled");
+		$("select").attr("disabled","disabled");
+		$("textarea").attr("readonly","readonly");
+		changeEmployee('<!--{$postData.staffid}-->');
+		$("#DowerState_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:"+$("#DowerState option[value='<!--{$postData.staff.DowerState}-->']").text());
+		$("#DowerLevel_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:"+$("#DowerLevel option[value='<!--{$postData.staff.DowerLevel}-->']").text());
+		$("#SkillMaster1_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:"+$("#SkillMaster1 option[value='<!--{$postData.staff.SkillMaster1}-->']").text());
+		$("#SkillMaster2_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:"+$("#SkillMaster2 option[value='<!--{$postData.staff.SkillMaster2}-->']").text());
+		$("#SkillMaster4_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:"+$("#SkillMaster4 option[value='<!--{$postData.staff.SkillMaster4}-->']").text());
+		$("#SkillMaster8_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:"+$("#SkillMaster8 option[value='<!--{$postData.staff.SkillMaster8}-->']").text());
+		$("#SkillMaster16_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:"+$("#SkillMaster16 option[value='<!--{$postData.staff.SkillMaster16}-->']").text());
+	}
+});
+
+<!--{if $detailTrue}-->
+var el=eval(<!--{$el}-->);
+
+
+
+
+
+function selectEmployee(){
+	showItem=$("#showItem");
+	showItem.empty();
+	$.each(el,function(i,n){
+		showItem.append('<a href="javascript:void(0)" onclick="changeEmployee('+n.Id+')">'+n.Name+'</a>');
+	});
+	showItem.slideDown("fast");
+}
+
+function changeEmployee(employeeId){
+	$("#showItem").slideUp("fast");
+	if(!employeeId)return false;
+	$("#staffid").val(el[employeeId].Id);
+	$("#employee_id").html(el[employeeId].Id);
+	$("#employee_name").html(el[employeeId].Name);
+	$("#staff_name").val(el[employeeId].Name);
+	if(el[employeeId].NickName){
+		$("#employee_nickname").html(el[employeeId].NickName);
+	}else{
+		$("#employee_nickname").html("<!--{'2BAD5711A6C28613E4609FFAE400EBBF'|lang}-->");
+	}
+	$("#Power").html(el[employeeId].Power);
+	$("#SkillDegree").html(el[employeeId].SkillDegree);
+	$("#Fealty").html(el[employeeId].Fealty);
+	$("#Dower").html(el[employeeId].Dower);
+	$("#SkillMaster1").val(el[employeeId].SkillMaster1);
+	$("#SkillMaster2").val(el[employeeId].SkillMaster2);
+	$("#SkillMaster4").val(el[employeeId].SkillMaster4);
+	$("#SkillMaster8").val(el[employeeId].SkillMaster8);
+	$("#SkillMaster16").val(el[employeeId].SkillMaster16);
+	$("#DowerState").val(el[employeeId].DowerState);
+	$("#DowerLevel").val(el[employeeId].DowerLevel);
+}
+
+<!--{/if}-->
+
+
+
+
+</script>
+
+<fieldset>
+	<legend><!--{'DDDFEC7958593FE95EDE7BE3A972BA63'|lang}-->(<!--{'B6D8D85297CB90865DD58007F1A94CF5'|lang}-->，<!--{'AEDDAE071CE7A1EC8033E74B85B2A074'|lang}-->) [<font color="#FF0000"><!--{'541018CC8BD963A5718F321903B9D907'|lang}--></font>]</legend>
+    <div id="showItem"></div>
+	<form action="" method="post" id="form">
+	<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+	<input type="hidden" value="" id="staffid" name="staffid" />
+    <input type="hidden" value="" id="staff_name" name="staff_name" />
+	<input type="hidden" value="<!--{$uo->UserId}-->" name="userid" />
+    <table width="100%" border="0" cellpadding="3">
+      <!--{if $errMsg}--><caption><font color="#FF0000"><!--{$errMsg}--></font></caption><!--{/if}-->
+      <thead>
+          <tr>
+            <th colspan="6">
+                <input type="radio" id="ids" name="userflag" value="txtids" /><label for="ids"><!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->Id <font color="#FF0000"><!--{$uo->UserId}--></font></label>
+                <input type="text" class="search_option" id="txtids" name="txtids" size="22" value="" disabled>        
+                
+                <input type="radio" id="names" name="userflag" value="txtnames" /><label for="names"><!--{'819767ADA1805B0F0117F10967B94D4D'|lang}--> <font color="#FF0000"><!--{$uo->UserName}--></font></label>
+                <input type="text" class="search_option" id="txtnames" name="txtnames" size="22" value="" disabled>        
+                
+                <input type="radio" id="vnames" name="userflag" value="txtvnames" /><label for="vnames"><!--{'10A6F1219A3A36CE2D7A9ED0F2D096A0'|lang}--> <font color="#FF0000"><!--{$uo->VUserName}--></font></label>
+                <input type="text" class="search_option" id="txtvnames" name="txtvnames" size="22" value="" disabled>        
+                
+                <input type="submit" class="btn-blue" name="search_user" value="<!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}-->" />
+            </th>
+          </tr>
+      </thead>
+      
+      <!--{if $detailTrue}-->
+      <tbody>
+          <tr>
+          	<th><!--{'C5AE2E7BD2CB8F79F3DD66FA7212B58B'|lang}-->：</th>
+            <td colspan="5"><textarea name="cause" id="cause" cols="50" rows="8"><!--{$auditData.cause|htmlspecialchars}--></textarea><div id="causeTip"></div></td>
+          </tr>
+          <tr>
+            <td colspan="6">
+            	<input type="button" class="btn-blue" value="<!--{'37C140E9B56A51BCD4051E39C403167A'|lang}-->" onClick="selectEmployee()" /> 
+                <!--{'50DF90E75D22F8F350E7C055DB0B5974'|lang}-->： <font color="#FF0000" id="employee_name"></font>
+                <!--{'2ED39222055F8AD5D2371AE5AC8A4784'|lang}-->Id： <font color="#FF0000" id="employee_id"></font>
+                <!--{'4A1A2CF5E7A95EFEF61F4C7A8140F9D8'|lang}-->： <font color="#FF0000" id="employee_nickname"></font>
+            </td>
+          </tr>
+          <tr>
+            <th><!--{'041EC2AB7C5A7466247E0A98148A05F2'|lang}--> <font color="#FF0000" id="Power"></font></th>
+            <td><input type="text" class="text"  name="staff[Power]" value="<!--{$postData.staff.Power}-->" /></td>
+            <th><!--{'F6E8251F6CC8A712D63A51111CA607D5'|lang}--> <font color="#FF0000" id="SkillDegree"></font></th>
+            <td><input type="text" class="text" name="staff[SkillDegree]" value="<!--{$postData.staff.SkillDegree}-->" /></td>
+            <th><!--{'4AE03CEBB6F32F17AEC83D20A87E8AE5'|lang}--> <font color="#FF0000" id="Fealty"></font></th>
+            <td><input type="text" class="text" name="staff[Fealty]" value="<!--{$postData.staff.Fealty}-->" /></td>
+          </tr>
+          <tr>
+            <th><!--{'A977C1AB5D054579101439D1EBF1BD52'|lang}--> </th>
+            <td><input type="text" class="text" name="staff[Exec]" value="<!--{$postData.staff.Exec}-->" /></td>
+            <th><!--{'C13B23D62A925D1028CFD68263401B63'|lang}--></th>
+            <td><input type="text" class="text" name="staff[Admin]" value="<!--{$postData.staff.Admin}-->" /></td>
+            <th><!--{'3F3C27F52A35F46A7A45CB7A014EA24B'|lang}--></th>
+            <td><input type="text" class="text" name="staff[Hope]" value="<!--{$postData.staff.Hope}-->" /></td>
+          </tr>
+          <tr>
+            <th><!--{'85E69378F73847CDC97AC4426069169F'|lang}--></th>
+            <td><input type="text" class="text" name="staff[ExecUpLimit]" value="<!--{$postData.staff.ExecUpLimit}-->" /></td>
+            <th><!--{'81376518096E30430D593720BB90E0D5'|lang}--></th>
+            <td><input type="text" class="text" name="staff[AdminUpLimit]" value="<!--{$postData.staff.AdminUpLimit}-->" /></td>
+            <th><!--{'3F206203C7C159B61814EDFE95B418F3'|lang}--></th>
+            <td><input type="text" class="text" name="staff[HopeUpLimit]" value="<!--{$postData.staff.HopeUpLimit}-->" /></td>
+          </tr>
+          <tr>
+            <th><!--{'11C011AC2B67E109AE18CCBEA3313101'|lang}--> </th>
+            <td>
+            	<select id="DowerState" name="staff[DowerState]"><!--{html_options options=$selectSysDowerState}--></select>
+                <font id="DowerState_text" color="#0000FF"></font>
+            </td>
+            <th><!--{'190E9CC2C941148C8BA32F2003FB886B'|lang}--></th>
+            <td>
+            	<select id="DowerLevel" name="staff[DowerLevel]"><!--{html_options options=$selectSysDowerLevel}--></select>
+                <font id="DowerLevel_text" color="#0000FF"></font>
+            </td>
+            <th><!--{'D43AE9E4A81052993E917DB541DE368F'|lang}--> <font color="#FF0000" id="Dower"></font></th>
+            <td><input type="text" class="text" name="staff[Dower]" value="<!--{$postData.staff.Dower}-->" /></td>
+          </tr>
+          <tr>
+            <th><!--{'E59330D4F77F4494A18D7F3B150CB26C'|lang}--></th>
+            <td><input type="text" class="text" name="staff[prizegiving]" value="<!--{$postData.staff.prizegiving}-->" /></td>
+            <th>&nbsp;</th>
+            <td>&nbsp;</td>
+            <th>&nbsp;</th>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th><!--{'F69DFC0085A86D6AB222B3EBF96DEE6A'|lang}--></th>
+            <td colspan="5">
+            <!--{foreach from=$sysIndustries key=key item=list}-->
+            <!--{$list}-->：<select id="SkillMaster<!--{$key}-->" name="staff[SkillMaster<!--{$key}-->]"><!--{html_options options=$selectSysSkillLevel}--></select>&nbsp;&nbsp;
+            				<font color="#0000FF" id="SkillMaster<!--{$key}-->_text"></font>
+            <!--{/foreach}-->
+            </td>
+          </tr>
+          <tr>
+            <th colspan="6"><input type="submit" class="btn-blue" name="user_edit" value="<!--{'D371CA4DE9F25FDE279099F7EA4ED87C'|lang}-->" /></th>
+          </tr>
+      </tbody>
+      <!--{/if}-->
+      </table>
+	</form>
+</fieldset>
+<!--{/if}-->

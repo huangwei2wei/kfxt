@@ -1,0 +1,12 @@
+<fieldset>
+<legend>其他功能列表</legend>
+
+
+<!--{foreach from=$dataList item=list name=foo}-->
+	<div style="margin:10px;">
+    	<span style="font-size:16px; color:#16456F; font-weight:700"><!--{$smarty.foreach.foo.index+1}-->、</span>
+        <a style="font-size:16px; color:#16456F; font-weight:bolder" href="<!--{$list.1}-->"><!--{$list.0}--></a>
+    </div>
+<!--{/foreach}-->
+
+</fieldset>

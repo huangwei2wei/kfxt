@@ -1,0 +1,49 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+  <legend>公告查询 [<a href="<!--{$URL_noticeAdd}-->">添加</a>]</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+      	<th scope="col">区ID</th>
+        <th scope="col">系统广播的序号</th>
+        <th scope="col">广播间隔时间</th>
+        <th scope="col">广播消息的内容</th>
+        <th scope="col">广播发布的位置</th>
+        <th scope="col">发布时间</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <form action="<!--{$list.URL_edit}-->" method="post" id='form_<!--{$list.OrderID}-->'>
+      <tr>
+      	<input type="hidden" value='<!--{$list.WorldID}-->' name='WorldID'></input>
+      	<input type="hidden" value='<!--{$list.OrderID}-->' name='OrderID'></input>
+      	<input type="hidden" value='<!--{$list.Timeout}-->' name='Timeout'></input>
+      	<input type="hidden" value='<!--{$list.Msg}-->' name='Msg'></input>
+      	<input type="hidden" value='<!--{$list.Place}-->' name='Place'></input>
+      	<input type="hidden" value='<!--{$list.DataTime}-->' name='DataTime'></input>
+		<td><!--{$list.WorldID}--></td>
+        <td><!--{$list.OrderID}--></td>
+        <td><!--{$list.Timeout}--></td>
+        <td align="center"><!--{$list.Msg}--></td>
+        <td align="center"><!--{$list.Place}--></td>
+        <td><!--{$list.DataTime}--></td>
+      
+        <td>
+        	[<a onclick="return confirm('确定删除？');" href="<!--{$list.URL_del}-->">删除</a>]
+        	[<a href='javascript:document.getElementById("form_<!--{$list.OrderID}-->").submit();'>编辑</a>]
+        </td>
+      
+      </tr>
+      
+      </form>
+      <!--{/foreach}-->
+      <tr>
+            <th colspan="7" align="right"><!--{$pageBox}--></th>
+      </tr>
+    </table>
+
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,139 @@
+<!--{if !$display}-->
+<!--{if $tplServerSelect}-->
+    <!--{include file=$tplServerSelect}-->
+    <!--{/if}-->
+<!--{/if}-->
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+
+<script language="javascript" >
+
+function selectAll(curEvent){
+	var curCheck=curEvent.attr("checked");
+	$("#form :checkbox").attr("checked",curCheck);
+}
+
+function serverSyn(curBtn){
+	$("#form").attr('action',curBtn.attr("url"));
+	$("#form").submit();
+}
+
+function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+}
+function onSubmit(){
+	var serverList=$(":checkbox[name='server_ids[]']");
+	$.each(serverList,function(i,n){
+		if(n.checked==true){
+			var curLi=$("#server_"+n.value);
+			var ValueSys=$("#sysnValue");
+			$("#form").ajaxSubmit({
+				dataType:'json',
+				data:{server:n.value,sysnValue:ValueSys.val()},
+				success:function(dataResult){
+					var fontColor=(dataResult.status==1)?'#00cc00':'#ff0000';
+					curLi.after("<font color='"+fontColor+"'>"+dataResult.msg+"</font>");
+				}
+			});
+		}
+	});
+	
+}
+</script>
+<!--{if $doaction}-->
+
+ <form action="<!--{$ajax}-->" method='post' id='form'>
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+</form>
+<fieldset>
+  <legend>[-- 礼包 --]</legend>
+	<input type="hidden" value="<!--{$sysnValue}-->" id="sysnValue" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <!--{foreach from=$Column item=c}-->
+          <th><!--{$c}--></th>
+       	<!--{/foreach}-->
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+        <!--{foreach from=$Column item=c}-->
+		  <td>
+		  <!--{$list.$c}-->
+		  </td>
+       	<!--{/foreach}-->
+       		
+        </tr>
+        <!--{/foreach}-->
+      <tr> <td><input type="button" name="submit" class="btn-blue" onClick="onSubmit()" value="同步操作" /></td></tr>
+    </table>
+</fieldset>
+
+<!--{else if}-->
+ <!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+
+<fieldset>
+  <legend>[礼包同步：<!--{$dataListcount}-->条数据]<a href='<!--{$update}-->'>[更新礼包]</a><font color="red">[同步前要同步缓存保持最新数据]</font></legend>
+  <form id="form" action=""  method="post" onsubmit="return checksub();">
+	  <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+	  <table width="100%">
+		<tr>
+        <!--{foreach from=$Column item=c}-->
+          <th><!--{$c}--></th>
+       	<!--{/foreach}-->
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+        <!--{foreach from=$Column item=c}-->	
+          
+		  <td>
+		  <!--{if $c=="礼包ID"}--><input type="checkbox" name="Id[<!--{$list.$c}-->]" value="<!--{$list.$c}-->" /><!--{/if}--><!--{$list.$c}-->
+		  </td>
+       	<!--{/foreach}-->
+       		
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="15" align="center">
+                <!--{if $_GET.submit}-->
+                查无数据
+                <!--{else}-->
+                <font color="#FF0000">请使用"查询"按钮</font>
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/foreach}-->
+          <tr>
+            <th colspan="<!--{$len}-->" align="right"><!--{$pageBox}--></th>
+          </tr>
+	  <tr>
+        <td colspan="6">
+        	<input type="checkbox" id="allcheck" onClick="selectAll($(this))" /><!--{'66EEACD93A7C1BDA93906FE908AD11A0'|lang}--> 
+			<input type="hidden" name="Page" value="<!--{$_GET.page}-->">
+			<input type="hidden" name="WorldID" value="<!--{$_GET.WorldID}-->">
+        	<input type="submit" class="btn-blue" url="<!--{$url.OperatorTools_Libao_serverSync}-->&page=<!--{$_GET.page}-->" onClick="serverSyn($(this))" value="同步礼包" />
+        	<input type="submit" class="btn-blue" url="<!--{$syncDel}-->" onClick="serverSyn($(this))" value="同步删除" />
+        </td>
+      </tr>
+      </table>
+</form>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->
+<!--{/if}-->

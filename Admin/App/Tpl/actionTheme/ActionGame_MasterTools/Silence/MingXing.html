@@ -1,0 +1,57 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+	
+	
+</script>
+<fieldset>
+	<legend>
+   		禁言记录 
+        [<a href="<!--{$URL_silenceLocalLog}-->">本地日志数据</a>]
+    	[<a href="<!--{$URL_silenceInGame}-->">游戏内生效数据</a>]
+        [<a href="<!--{$URL_silenceAdd}-->">增加禁言</a>]
+    </legend>
+	
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">玩家ID</th>
+    <th scope="col">账号</th>
+    <th scope="col">昵称</th>
+    <th scope="col">操作描述</th>
+    <th scope="col">操作人</th>
+    <th scope="col">操作时间</th>
+    <th scope="col">操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.game_user_id}--></td>
+    <td><!--{$list.game_user_account|default:'<font color="#999999">无记录</font>'}--></td>
+    <td><!--{$list.game_user_nickname|default:'<font color="#999999">无记录</font>'}--></td>
+    <td>
+    	<!--{if $list.sub_type==0}-->
+    		禁言至 <!--{$list.endTime|default:'<font color="#999999">无记录</font>'}-->
+        <!--{elseif $list.sub_type==1}-->
+        	解除禁言
+        <!--{else}-->
+            <!--{$list.sub_type}-->
+        <!--{/if}-->
+    </td>
+    <td><!--{$list.user_id|default:'<font color="#999999">无记录</font>'}--></td>
+    <td><!--{$list.create_time|default:'<font color="#999999">无记录</font>'}--></td>
+    <td>
+    	<!--{if $list.sub_type != 1}-->
+        [<a onclick="return confirm('确定解除？')" href="<!--{$list.URL_del}-->">解除</a>]
+        <!--{/if}-->
+    </td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+
+    <div style="float:right"><!--{$pageBox}--></div>
+</fieldset>
+<!--{/if}-->

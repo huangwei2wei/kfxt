@@ -1,0 +1,115 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+function chageSearch(curVal){
+		var searchSpan=$("#search");
+		searchSpan.empty();
+		switch(curVal){
+			case '2': 
+			case '1':
+				searchSpan.append('<input type="text" class="text" name="dataMin" value="<!--{$selected.dataMin}-->">');
+				break;
+			case '3':case '4':case '5':case '6':
+			{
+				searchSpan.append('<input type="text" class="text" name="dataMin" value="<!--{$selected.dataMin}-->"> 至 <input type="text" class="text" name="dataMax" id="end" value="<!--{$selected.dataMax}-->" >');
+				break;
+			}
+			default :{
+				searchSpan.append('<input type="text" class="text" name="dataMin" onFocus="WdatePicker({startDate:\'\',dateFmt:\'yyyy-MM-dd HH:mm:ss\',alwaysUseStartDate:true})" value="<!--{$selected.dataMin}-->"> 至 <input type="text" class="text" name="dataMax" onFocus="WdatePicker({startDate:\'\',dateFmt:\'yyyy-MM-dd HH:mm:ss\',alwaysUseStartDate:true})" value="<!--{$selected.dataMax}-->" >');
+			}
+		}
+}
+
+function jumpUrl(url){
+	form=$("#form");
+	form.attr("action",url);
+	form.submit();
+}
+
+function userOperate(obj){
+	var url = obj.attr('url');
+	var form = $('#userOptForm');
+	form.attr('action',url);
+	form.submit();
+}
+
+$(function(){
+	$("#search_select").val('<!--{$selected.type}-->').change()
+})
+
+</script>
+<fieldset>
+  <legend>用户查询</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td colspan="8">
+        <form action=""  method="get" onsubmit="return checksub();">
+        	<input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+            <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+            <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+            <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+            <select name="type" id="search_select" onchange="chageSearch($(this).val())">
+            	<!--{html_options options=$searchType selected=$selected.type}-->
+            </select>
+            <span id="search">
+            </span>
+            <input type="submit" class="btn-blue" name="submit" value="查找">
+        </form>    
+        </td>
+        </tr>
+      <tr>
+        <th>用户Id</th>
+        <th>玩家名称<br />
+        玩家等级</th>
+        <th>玩家等级</th>
+        <th>银币<br />
+        最大银币数</th>
+        <th>系统赠送金币<br />
+        用户充值金币</th>
+        <th>粮食数量<br />
+        最大粮食数量</th>
+        <th>兵力数量<br />
+          最大兵力数量</th>
+        <th>军功 / 威望 / 征收次数 /军令</th>
+      </tr>
+      <form action="" id="userOptForm" method="post">
+      <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+      <!--{foreach from=$dataList item=vo}-->
+      <tr>
+        <td><input type="checkbox" name="ids[]" value="<!--{$vo->playerId}-->" /><!--{$vo->playerId}--></td>
+        <td align="center"><!--{$vo->playerName}--></td>
+        <td align="center"><!--{$vo->playerLevel}--></td>
+        <td align="center"><!--{$vo->copper}--> <br /> <!--{$vo->copperMax}--></td>
+        <td align="center"><!--{$vo->sysGold}--> <br /> <!--{$vo->userGold}--></td>
+        <td align="center"><!--{$vo->food}--> <br /> <!--{$vo->foodMax}--></td>
+        <td align="center"><!--{$vo->forces}--> <br /> <!--{$vo->forcesMax}--></td>
+        <td align="center"><!--{$vo->exploit}--> / <!--{$vo->prestige}--> / <!--{$vo->imposeNum}--> / <!--{$vo->token}--></td>
+        </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="8"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}--> 
+      <tr>
+      	<td><input type="checkbox" onclick="$(':checkbox[name=\'idList[]\']').attr('checked',$(this).attr('checked'))" />全选</td>
+        <td colspan="7">
+        	<!--input type="button" class="btn-blue" value="发送奖励" onclick="jumpUrl('<!--{$url.MasterFRG_RewardBefore}-->')" /-->
+            <!--input type="button" class="btn-blue" value="踢人" onclick="jumpUrl('<!--{$url.MasterFRG_KickUser}-->')" /-->
+            <input type="button" class="btn-blue" value="发邮件" url="<!--{$URL_Opt.sendMsg}-->" onclick="userOperate($(this));" />
+            <input type="button" class="btn-blue" value="禁言" url="<!--{$URL_Opt.talkUserAdd}-->" onclick="userOperate($(this));" />
+            <input type="button" class="btn-blue" value="封号" url="<!--{$URL_Opt.resUserAdd}-->" onclick="userOperate($(this));" />    
+            <!--input type="button" class="btn-blue" value="增加教官" onclick="jumpUrl('<!--{$url.MasterFRG_Drillmaster_Add}-->')" /-->
+        </td>
+      </tr>
+      </form>
+      <tr>
+        <th colspan="8" align="right"><!--{$pageBox}--></th>
+      </tr>
+    </table>
+</fieldset>
+<!--{/if}-->

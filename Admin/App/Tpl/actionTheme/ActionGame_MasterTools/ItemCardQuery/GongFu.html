@@ -1,0 +1,86 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+	<legend><!--{'CA76A5BD1AD2E25DBBBA07A8D1A7249B'|lang}--></legend>
+    <form action="" method="post">
+    	<div>
+        	<!--{'8F8ED0E3AB533211CE82DD1E4B1C22BB'|lang}-->:
+        	<input class="text" style="width:300px;" type="text" name="secretKey" value="<!--{$_POST.secretKey}-->" />
+            <input class="btn-blue" type="submit" value="<!--{'BEE912D79EEFB7335988C4997AA9138D'|lang}-->" />
+        </div>
+    </form>
+    
+  <div>
+<table width="500" border="0" cellpadding="3">
+  <tr>
+    <th scope="row" width="100"><!--{'24D67862F87F439DB7CA957AECB77CCE'|lang}--></th>
+    <th scope="row"><!--{'FE7509E0ED085B86F07E3E9975CC5B3D'|lang}--></th>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'8F8ED0E3AB533211CE82DD1E4B1C22BB'|lang}--></th>
+    <td><!--{$cardInfo.secretKey}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'3F95E30F0E1CAD798B85D5E70737EE91'|lang}--></th>
+    <td><!--{$cardInfo.name}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'E526D1B11E0EF8592D80FE241456FF1F'|lang}--></th>
+    <td><!--{if $cardInfo.repeat}--><font color="#FF0000"><!--{'0A60AC8F02CCD2CF723F927284877851'|lang}--></font><!--{else}--><font color="#999999"><!--{'C9744F45E76D885AE1C74D4F4A934B2E'|lang}--></font><!--{/if}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'9BC7F8EABA93AD47294F7DD971A66182'|lang}-->ID</th>
+    <td><!--{$cardInfo.classId}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'E99DFDF4B3B6FD82AED2D0C1D5619D58'|lang}--></th>
+    <td><!--{$cardInfo.counts}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'C566CA59602C7C5C0D3FE5E18ADE447D'|lang}--></th>
+    <td><!--{$cardInfo.serverId}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'81463B2FCFA4E5B7A894CCA4F2846AB1'|lang}--></th>
+    <td><!--{$cardInfo.playerId|default:'<font color="#999999"><!--{'D81BB206A889656035B929CD8BB1EF10'|lang}--></font>'}--></td>
+  </tr>
+
+  <tr>
+    <th scope="row"><!--{'9FC68E1B932FF380C0231660C7B1B60A'|lang}--></th>
+    <td><!--{$cardInfo.bindType}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'FFC7ED1CD5288FF735A3C4A059125354'|lang}--></th>
+    <td><!--{$cardInfo.addTime}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'22D47E8BDC6715E39225FCDE1AFD3813'|lang}--></th>
+    <td><!--{$cardInfo.exchangeTime}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'609C2380B214A2BFC444A140CC8AB316'|lang}--></th>
+    <td><!--{$cardInfo.assetValue}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'82104FD1E0D8B9790B9F57BC702CBF1D'|lang}--></th>
+    <td><!--{$cardInfo.goldValue}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'77E0CA7A67BFA6FC3143B21A711255A0'|lang}--></th>
+    <td><!--{$cardInfo.goldTickeValue}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'DE24BFB740EF7421E00B7346EA704E3E'|lang}--></th>
+    <td><!--{$cardInfo.itemInfo}--></td>
+  </tr>
+</table>
+
+  
+  
+  </div>  
+    
+</fieldset>
+<!--{/if}-->

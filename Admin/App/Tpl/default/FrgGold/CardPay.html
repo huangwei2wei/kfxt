@@ -1,0 +1,70 @@
+<script language="javascript">
+var serverList=eval(<!--{$serverList}-->);
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#use_name").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'752F8926DB21639D9F8ECDC7BF1D7159'|lang}-->"},onerror:"<!--{'91841ACDB1A5E16DBBAADA2FDC1D7B0E'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+	$("#card").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'752F8926DB21639D9F8ECDC7BF1D7159'|lang}-->"},onerror:"<!--{'56F81280F7FD6B53A9319FC493E8AACE'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+	//$("#server_id").formValidator({onshow:"<!--{'E3CF0A04C6E79FD7E595B263B33B4801'|lang}-->",onfocus:"<!--{'E3CF0A04C6E79FD7E595B263B33B4801'|lang}-->",oncorrect:"<!--{'50E2150D45556D8C9E13699D3AB93DF9'|lang}-->"}).inputValidator({min:1,onerror: "<!--{'E3CF0A04C6E79FD7E595B263B33B4801'|lang}-->"});
+})
+function selectSerer(operatorId){
+	var serverSelect=$("#server_id");
+	serverSelect.empty();
+	$.each(serverList,function(i,n){
+		if(n.operator_id==operatorId && n.Id!=100 && n.Id!=200)serverSelect.append("<option value="+n.Id+">"+n.server_name+"</option>");
+	});
+}
+
+function showUserName(userName){
+	var serverId=$("#server_id").val();
+	if(serverId){
+		$.getJSON(
+			url,
+			{c:'FrgGold',a:'CardPay','user_name':userName,'server_id':serverId},
+			function(data){
+				if(data.status==1){
+					$("#displayUser").html("<!--{'225DB3AF633FB6C43B52F26811E79D4F'|lang}-->：<font color='#0000FF'>"+data.data+"</font>");
+				}else{
+					$("#displayUser").html("<font color='#ff0000'><!--{'84025AA3030FCB02F8A6244E1C4317D7'|lang}-->!</font>");
+				}
+				
+			}
+		);
+	}
+}
+</script>
+<fieldset>
+	<legend><!--{'B5A77CB8312C6F1CAD380B0158432989'|lang}--></legend>
+    <form action="" id="form" method="post" onSubmit="return confirm('<!--{'74CDAC0611E9C6091902AE8377B5EEA2'|lang}-->?')">
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="row"><!--{'833517FFC6CBBAC5B2375782A2541867'|lang}--></th>
+        <td>
+        	<select onchange="selectSerer($(this).val())">
+            	<option value=""><!--{'708C9D6D2AD108AB2C560530810DEAE9'|lang}--></option>
+            	<!--{html_options options=$operatorList}-->
+            </select>
+            
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'89740BA8CAA99EA9B1EDC3A97A029194'|lang}--></th>
+        <td>
+        	<select name="server_id" id="server_id">
+				<option value=""><!--{'09CA502079E062CD7C8425CC483905ED'|lang}--></option>
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'59FEB80BF35A56D13774A34FCDECCFA0'|lang}--></th>
+        <td><input type="text" class="text" name="use_name" id="use_name" onblur="showUserName($(this).val())" size="40" /> <span id="displayUser"></span> <div id="use_nameTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'B1FFC40619E554C1807AEB3D153CB48B'|lang}--></th>
+        <td><input type="text" class="text" name="card" id="card" size="60" /><div id="cardTip"></div></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /></th>
+      </tr>
+    </table>
+    </form>
+</fieldset>

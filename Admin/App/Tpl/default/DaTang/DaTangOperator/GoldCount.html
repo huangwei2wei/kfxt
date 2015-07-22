@@ -1,0 +1,48 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+	<legend>在线统计</legend>
+<form action="" method="post" id="form">
+	时间范围：
+    <input class="text" value="" type="text" name="startTime" onFocus="WdatePicker({startDate:'<!--{$selectedStartTime}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"  value="<!--{$selectedStartTime}-->" />
+    -
+    <input class="text" value="" type="text" name="endTime" onFocus="WdatePicker({startDate:'<!--{$selectedEndTime}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" value="<!--{$selectedEndTime}-->" />
+
+	<input type="submit" value="统计" class="btn-blue" />
+</form>
+</fieldset>
+<fieldset>
+	<legend>在线统计</legend>
+    <form action="" method="post">
+        <table width="30%" border="0" cellpadding="3">
+          <tr>
+            <th scope="row" width="100">开始时间</th>
+            <td><!--{$GoldCount.fromDate}--></td>
+          </tr>
+          <tr>
+            <th scope="row" width="100">结束时间</th>
+            <td><!--{$GoldCount.toDate}--></td>
+          </tr>
+          
+          <tr>
+            <th scope="row" width="100">赠送元宝数</th>
+            <td><!--{$GoldCount.Total_Zs_Num}--></td>
+          </tr>
+          <tr>
+            <th scope="row" width="100">发放元宝数</th>
+            <td><!--{$GoldCount.TotalGold}--></td>
+          </tr>
+          <tr>
+            <th scope="row" width="100">剩余元宝数</th>
+            <td><!--{$GoldCount.TotalRemain}--></td>
+          </tr>
+        </table>
+	</form>
+	
+</fieldset>
+<!--{/if}-->

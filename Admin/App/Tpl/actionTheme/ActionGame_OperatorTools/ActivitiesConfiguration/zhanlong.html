@@ -1,0 +1,74 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+</script>
+<fieldset>
+  <legend>活动<a href="<!--{$Add_Url}-->">[添加]</a></legend>
+      <table width="100%">
+        <tr>
+           	<th>区ID</th>
+       		<th>标签ID</th>
+       		<th>标签类型</th>
+       		<th>标签图标</th>
+       		<th>标签名</th>
+       		<th>标题特效</th>
+       		<th>开服后检测的开始时间</th>
+       		<th>开服后检测的截止时间</th>
+       		<th>起效时间段</th>
+       		<th>最小等级</th>
+       		<th>最大等级</th>
+       		<th>需要特权类型</th>
+       		<th>条件值</th>
+       		<th>标签文本类型</th>
+       		<th>描述</th>
+       		<th>操作</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>	
+          <td align="center"><!--{$list.WorldID}--></td>
+          <td align="center"><!--{$list.TableID}--></td>
+          <td align="center"><!--{$list.TableType}--></td>
+          <td align="center"><!--{$list.TableIcon}--></td>
+          <td align="center"><!--{$list.TableName}--></td>
+          <td align="center"><!--{$list.TableEffect}--></td>
+          <td align="center"><!--{$list.WorldTimeBegin}--></td>
+          <td align="center"><!--{$list.WorldTImeEnd}--><!--{$list.WorldTimeEnd}--></td>
+          <td align="center"><!--{$list.TableTime}--></td>
+          <td align="center"><!--{$list.MinLevel}--></td>
+          <td align="center"><!--{$list.MaxLevel}--></td>
+          <td align="center"><!--{$list.NeedPrivilege}--></td>
+          <td align="center"><!--{$list.ConditionValue}--></td>
+          <td align="center"><!--{$list.TableTextType}--></td>
+          <td align="center"><!--{$list.TableText}--></td>
+       		<td align="center">
+				<a href="<!--{$Del_Url}-->&WorldID=<!--{$list.WorldID}-->&TableID=<!--{$list.TableID}-->">[删除]</a>
+				<a href="<!--{$Add_Url}-->&WorldID=<!--{$list.WorldID}-->&TableID=<!--{$list.TableID}-->">[编辑]</a>
+			</td>
+        </tr>
+        <!--{foreachelse}-->
+		<!--{/foreach}-->
+          <tr>
+            <th colspan="16" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

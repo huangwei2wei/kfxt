@@ -1,0 +1,126 @@
+<style type="text/css">
+.addline{
+	padding:3px;
+}
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:100%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+ul{
+	margin:0px;
+	padding:0px;
+}
+ul li{
+	margin:1px;
+	list-style-type: none;
+	display:inline;
+}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/default/frg.js"></script>
+<script language="javascript">
+<!--{if $data.SendMsg}-->
+var isSendMsg=<!--{$data.SendMsg}-->;
+<!--{/if}-->
+
+<!--{if $objData}-->
+var objData=eval(<!--{$objData}-->);
+<!--{/if}-->
+
+<!--{if $toolData}-->
+var toolData=eval(<!--{$toolData}-->);
+<!--{/if}-->
+
+<!--{if $effData}-->
+var effData=eval(<!--{$effData}-->);
+<!--{/if}-->
+
+var condInputNum=<!--{$num.cond}-->;
+var effectInputNum=<!--{$num.effect}-->;
+var toolInputNum=<!--{$num.tool}-->;
+
+</script>
+
+<fieldset>
+<legend>编辑道具发放</legend>
+<form action="<!--{$url.OperationFRG_EditLibao}-->" method="post" id="form" >
+同时修改以下服务器：
+<ul id="gameServer">
+    <!--{foreach from=$servers key=key item=list}-->
+    <li>
+    	<input type="checkbox" name="server_ids[<!--{$list.Id}-->]" checked="checked" value="<!--{$key}-->" />
+        <input type="hidden" name="main_id[<!--{$list.Id}-->]" value="<!--{$list.main_id}-->" />
+        <input type="hidden" name="Id[<!--{$list.Id}-->]" value="<!--{$list.Id}-->" />
+        <!--{$list.server_name}-->
+    </li>
+    <!--{/foreach}-->
+</ul>
+<div id="showItem"></div>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">礼包名称</th>
+    <td><input type="text" class="text" name="CardName" value="<!--{$data.CardName}-->" size="60" /></td>
+  </tr>
+  <tr>
+    <th scope="row">礼包图片</th>
+    <td><input type="text" class="text" name="CardImage" size="60" value="<!--{$data.CardImage}-->" /></td>
+  </tr>
+  <tr>
+    <th scope="row">描述</th>
+    <td><textarea name="CardDescribe" cols="60" rows="8"><!--{$data.CardDescribe}--></textarea></td>
+  </tr>
+  <tr>
+    <th scope="row">是否生效</th>
+    <td>
+        <input type="radio" name="Active" value="1"  <!--{if $data.Active==1}-->checked="checked"<!--{/if}--> />是
+        <input type="radio" name="Active" value="0" <!--{if $data.Active==0}-->checked="checked"<!--{/if}--> />否
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">同类卡不允许重激活</th>
+    <td>
+        <input type="radio" name="DisRepeat" value="1"  <!--{if $data.DisRepeat==1}-->checked="checked"<!--{/if}--> />是
+        <input type="radio" name="DisRepeat" value="0" <!--{if $data.DisRepeat==0}-->checked="checked"<!--{/if}--> />否
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">领取条件</th>
+    <td><input type="button" class="btn-blue" onclick="addGetCond($(this))" value="添加领取条件" />
+      <!--{foreach from=$chageCond item=list}-->
+      <!--{$list.html}-->
+      <!--{/foreach}-->
+      </td>
+  </tr>
+  <tr>
+    <th scope="row">奖励作用效果</th>
+    <td><input type="button" class="btn-blue" onclick="addEffect($(this))" value="添加作用效果" />
+    	<!--{foreach from=$chageEffect item=list}-->
+        <!--{$list.html}-->
+        <!--{/foreach}-->
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">奖励道具</th>
+    <td><input type="button" class="btn-blue" onclick="addTool($(this))" value="添加奖励道具" />
+      <!--{foreach from=$chageTool item=list}-->
+      <!--{$list.html}-->
+      <!--{/foreach}-->
+      </td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">
+      <!--input type="button" class="btn-blue" id="submit" onClick="sendLibao()" value="提交" /-->
+      <input type="submit" class="btn-blue" value="提交" />  
+    </th>
+  </tr>
+</table>
+</form>
+</fieldset>

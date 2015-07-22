@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$vo.question} 客服公告</title>
+<include file="../common/libs"/>
+</head>
+
+<body>
+<include file="../common/head"/>
+<div id="contai">
+	<include file="../common/menu"/>
+	<div class="neileft">
+		<div class="neipic">
+		<p><a href="{:U('Notice/index')}">客服公告</a></p>
+		<p><a href="{:U('Notice/intro')}">客服介绍</a></p>
+		<p><a href="{:U('Notice/channel')}">服务渠道</a></p>
+		</div>
+		<div class="left_02">
+			<div class="left_tit">联系客服</div>
+			<div class="left_con" style="height:127px">
+				<p><b>电话：</b>400-888-987<br />
+<b>传真：</b>020-338026565<br />
+<b>投诉邮箱：</b><a href="#">点击进入</a></p>
+			<p class="d">欢迎对我们的客服质量进行监督</p>
+			</div>
+		</div>
+		<div class="left_02">
+			<div class="left_tit">健康游戏忠告</div>
+			<div class="left_con" style="height:113px">
+				<p>抵制不良游戏  　  拒绝盗版游戏 <br />
+注意自我保护   　 谨防受骗上当 <br />
+适度游戏益脑  　  沉迷游戏伤身 <br />
+合理安排时间  　  享受健康生活</p>
+			</div>
+		</div>
+
+	</div>
+	<div class="neiright">
+		<div class="listtit"><span><b>当前位置：</b><a href="/index.php">客服中心</a> > <a href="{:U('Notice/index')}">客服公告</a></span>客服公告</div>
+		<div class="list">
+			<div class="content">
+			<h1>{$vo.question}</h1>
+			<h2>来源：<span>优玩网</span>    作者：<span>优玩网</span>    </h2>
+			<p>{$vo.answer}</p>
+</div>
+		</div>
+		<div class="neibottom"></div>
+	</div>
+	<include file="../common/footer"/>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<fieldset>
+<legend>统计搜索</legend>
+<form action="<!--{$url.Stats_Operator}-->" method="post">
+<table width="98%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">日期</th>
+    <td>
+        统计：<input type="text" class="text" name="start_date" value="<!--{$selectedTime.start_date}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/> 至
+        	 <input type="text" class="text" name="end_date" value="<!--{$selectedTime.end_date}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+    </td>
+  </tr>
+  <tr>
+    <th width="15%" scope="row">游戏类型</th>
+    <td id="gameTypeList"><!--{html_radios name="game_type_id" selected=$selectedGameTypeId onclick="displayOperator($(this).val())" options=$gameTypeList separator="&nbsp;"}--></td>
+  </tr>
+  <tr>
+    <th width="20%" scope="row">运营商</th>
+    <td id="operatorList">
+    	<!--{html_checkboxes name="operator_id" options=$selectedOperatorList selected=$selectedOperatorIds}-->
+    </td>
+    
+  </tr>
+  <tr>
+    <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="统计" /></th>
+  </tr>
+</table>
+</form>
+</fieldset>
+
+<!--{if $displayTrue}-->
+<fieldset>
+<legend>详细统计</legend>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">统计日期</th>
+    <th colspan="5" scope="col">工单量</th>
+    <th colspan="5" scope="col">回复量</th>
+    <th colspan="5" scope="col">质检状态</th>
+    <th colspan="8" scope="col">质检类型</th>
+    <th rowspan="2" scope="col">加分</th>
+    <th rowspan="2" scope="col">扣分</th>
+  </tr>
+  <tr>
+    <th>&nbsp;</th>
+    <th>总量</th>
+    <th>未评价</th>
+    <th>好评</th>
+    <th>中评</th>
+    <th>差评</th>
+    <th>总量</th>
+    <th>超时</th>
+    <th>未超时</th>
+    <th>质检</th>
+    <th>未质检</th>
+    <th>未申诉</th>
+    <th>已申诉</th>
+    <th>申诉成功</th>
+    <th>申诉失败</th>
+    <th>同意质检</th>
+    <th>对</th>
+    <th>推荐</th>
+    <th>错字</th>
+    <th>内容不完整</th>
+    <th>内容不清晰</th>
+    <th>内容错误</th>
+    <th>建议优化</th>
+    <th>其它</th>
+  </tr>
+  <!--{foreach from=$total key=key item=list}--> 
+  <tr>
+  	<td><!--{$key}--></td>
+    <td><!--{$list.total|intval}--></td>
+    <td><!--{$list.ev.0|intval}--></td>
+    <td><!--{$list.ev.1|intval}--></td>
+    <td><!--{$list.ev.2|intval}--></td>
+    <td><!--{$list.ev.3|intval}--></td>
+    <td><!--{$list.reply_total|intval}--></td>
+    <td><!--{$list.timeout_num|intval}--></td>
+    <td><!--{$list.no_timeout_num|intval}--></td>
+    <td><!--{$list.quality_num|intval}--></td>
+    <td><!--{$list.no_quality_num|intval}--></td>
+    <td><!--{$list.status_num.1|intval}--></td>
+    <td><!--{$list.status_num.2|intval}--></td>
+    <td><!--{$list.status_num.3|intval}--></td>
+    <td><!--{$list.status_num.4|intval}--></td>
+    <td><!--{$list.status_num.5|intval}--></td>
+    <td><!--{$list.option_num.1|intval}--></td>
+    <td><!--{$list.option_num.2|intval}--></td>
+    <td><!--{$list.option_num.3|intval}--></td>
+    <td><!--{$list.option_num.4|intval}--></td>
+    <td><!--{$list.option_num.5|intval}--></td>
+    <td><!--{$list.option_num.6|intval}--></td>
+    <td><!--{$list.option_num.7|intval}--></td>
+    <td><!--{$list.option_num.8|intval}--></td>
+    <td><!--{$list.bonus|intval}--></td>
+    <td><!--{$list.deduction|intval}--></td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+
+</fieldset>
+<!--{/if}-->

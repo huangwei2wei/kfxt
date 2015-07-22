@@ -1,0 +1,23 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+<legend>屏蔽字</legend>
+<form action="" method="post">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th width="80" scope="row">屏蔽字</th>
+        <td>
+            <textarea name="FilteredWords" style="width:99%; height:350px; "><!--{$dataList}--></textarea>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">&nbsp;</th>
+        <td><input class="btn-blue" type="submit" value="保存"></td>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

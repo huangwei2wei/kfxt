@@ -1,0 +1,65 @@
+<fieldset>
+<legend><!--{'1CB8144956C31D7FAB410BF12BF44E82'|lang}--></legend>
+    <form action="" method="get">
+        <input type="hidden" value="MyTask" name="c" />
+        <input type="hidden" value="MyReplyQulity" name="a" />
+        <table width="100%" border="0" cellpadding="3">
+          <tr>
+            <th scope="row"><!--{'226B0912184333C81BABF2F1894EC0C1'|lang}--></th>
+            <td><!--{html_radios options=$qualityOptions selected=$selectedOption name="option"}--></td>
+          </tr>
+          <tr>
+            <th scope="row"><!--{'37769E25FFFD760203C860702167CD26'|lang}--></th>
+            <td><!--{html_radios options=$qualityStatus selected=$selectedStatus name="status"}--></td>
+          </tr>
+          <tr>
+            <th scope="row"><!--{'8C4563C00984036FF53B5FEA96F76181'|lang}--></th>
+            <td><!--{html_radios options=$scores name="scores" selected=$selectedSource}--></td>
+          </tr>
+          <tr>
+            <th scope="row"><!--{'01B30452A3F736124C8FAD90DFF5064D'|lang}--></th>
+            <td><!--{html_radios options=$timeout name="is_timeout" selected=$selectedTimeout}--></td>
+          </tr>
+          <tr>
+            <th scope="row" colspan="2"><input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /></th>
+          </tr>
+        </table>
+    </form>
+</fieldset>
+<fieldset>
+  <legend><!--{'17DF32FC791EF3A280BAC924AADD100F'|lang}--></legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col"><!--{'FAB08D356001E2C8A759D4FFDB6FE7BB'|lang}--></th>
+        <th scope="col"><!--{'BA74D11A8593C587CB2C5F4B08D3E861'|lang}--></th>
+        <th scope="col"><!--{'22D82C13FC1F4CE25638B4E94F173071'|lang}--></th>
+        <th scope="col"><!--{'FE6027A87747323DDFA3C031AE2B0E73'|lang}--></th>
+        <th scope="col"><!--{'6BF1F392C0A404D1F7558E6DCDD6C2E6'|lang}--></th>
+        <th scope="col"><!--{'B34422E637C90181D3FCA4485A97C712'|lang}--></th>
+        <th scope="col"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td><!--{$list.content|truncateutf8:30}--></td>
+        <td><!--{$list.create_time}--></td>
+        <td><!--{$list.word_quality_user_id}--></td>
+        <td><!--{$list.word_option_id}--></td>
+        <td><!--{$list.word_status}--></td>
+        <td><!--{$list.scores}--></td>
+        <td>
+        	<!--<a href="javascript:void(0)" url="<!--{$list.url_dialog}-->" id="<!--{$list.Id}-->" onclick="openDialog($(this))"><!--{'25F99BD9B8B0BD9CD24762BB6B14E3A2'|lang}--></a>-->
+            <a href="<!--{$list.url_detail}-->"><!--{'EDA81C17F0E5F64C0CB65720052F0E99'|lang}--></a>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="8"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="8" align="right"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+</fieldset>

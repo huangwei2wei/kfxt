@@ -1,0 +1,49 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+
+	function LookForDetail(iEventId){
+			$.ajax( {
+				type : "post",
+				url : "<!--{$ajax}-->",
+				data :"iEventId="+iEventId,
+				success : function(dataResult) {
+					$("#rMsg").html(dataResult);
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					
+				}
+			});
+	}
+</script>
+
+
+<fieldset>
+  <legend>条件</legend>
+  <form action=""  method="Post">
+ 指定需要复制的源角色ID所在服务器ID:<input class="text" type="text" name="WorldID">&nbsp;&nbsp;&nbsp;
+   指定需要复制的源角色ID:<input class="text" type="text" name="SourceID">&nbsp;&nbsp;&nbsp;
+   指定复制到体验服上的目标角色ID:<input class="text" type="text" name="TargetID">
+    <input class="btn-blue" type="submit" name="sbm" value="查询">
+</form>
+</fieldset>
+</fieldset>
+<!--{/if}-->

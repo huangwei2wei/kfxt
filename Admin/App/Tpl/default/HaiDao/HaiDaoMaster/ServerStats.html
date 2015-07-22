@@ -1,0 +1,34 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+<legend><!--{'DC77F8A9FE92D3310E0595B28EA437DC'|lang}--></legend>
+	<table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th colspan="7" scope="col"><!--{$onlineUserNum}--></th>
+      </tr>
+      <tr>
+        <th scope="col"><!--{'D316330B742EA7B420665A3DF7EC374D'|lang}--></th>
+        <th scope="col"><!--{'BF43439FC7777B3B07B1A872DCD5F91D'|lang}--></th>
+        <th scope="col"><!--{'DB46D50D2B757C1FAE3DF24A2921472C'|lang}--></th>
+        <th scope="col"><!--{'443A93F96B78C1CD21E01C7D7B522E8C'|lang}--></th>
+        <th scope="col"><!--{'D865CD29E0FA9CF494F0CE3188C9F352'|lang}--></th>
+        <th scope="col"><!--{'DA8ECE14F90D4772F089640AB0C4583D'|lang}--></th>
+        <th scope="col"><!--{'9FC2DF4C098C78C61164DA65C38957DC'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.data_0}--></td>
+        <td><!--{$list.data_1}--></td>
+        <td><!--{$list.data_2}--></td>
+        <td><!--{$list.data_3}--></td>
+        <td><!--{$list.data_4}--></td>
+        <td><!--{$list.data_5}--></td>
+        <td><!--{$list.data_6}--></td>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,64 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+
+<fieldset>
+  <legend>搜索</legend>
+  <form id="search" action="" method="get">
+    <input type="hidden" name="c" value="ShareToCs" />
+    <input type="hidden" name="a" value="OperatorInfoMini" />
+    <input type="hidden" name="zp" value="LianYun" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th width="100" scope="col">游戏</th>
+        <td ><!--{html_radios options=$game_type_id name="game_type_id" selected=$selected.game_type_id onclick="$('#search').submit()"}--></td>
+      </tr>
+    </table>
+   </form>
+</fieldset>
+
+<fieldset>
+	<legend>合作方详细信息</legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+  <tr>    
+    <th scope="col">合作方</th>
+    <th scope="col">标识</th>
+    <th scope="col">负责人</th>
+    <th scope="col">联系方式</th>
+    <th scope="col">客服</th>
+    <th scope="col">服务器</th>
+    <th scope="col">合作Q群</th>
+    <th scope="col">官网</th>
+    <th scope="col">论坛</th>
+    <th scope="col">资料站</th>
+	<th scope="col">游戏</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>    
+    <td valign="top"><!--{$list.operator_id}--></td>
+    <td valign="top"><!--{$list.marking}--></td>
+    <td valign="top"><!--{$list.principal}--></td>
+    <td valign="top"><!--{$list.coupling}--></td>
+    <td valign="top"><!--{$list.cs_supply}--></td>
+    <td valign="top"><!--{$list.server_supply}--></td>
+    <td valign="top"><!--{$list.qq_group}--></td>
+    <td valign="top" align="center">
+    	<!--{if $list.website_url !=''}--><a target="_blank" title="<!--{$list.website_url}-->" href="<!--{$list.website_url}-->">[进入]</a><!--{else}-->&nbsp;<!--{/if}-->
+    </td>
+    <td valign="top" align="center">
+    	<!--{if $list.forum_url !=''}--><a target="_blank" title="<!--{$list.forum_url}-->" href="<!--{$list.forum_url}-->">[进入]</a><!--{else}-->&nbsp;<!--{/if}-->
+    </td>
+    <td valign="top" align="center">
+    	<!--{if $list.datum_url !=''}--><a target="_blank" title="<!--{$list.datum_url}-->" href="<!--{$list.datum_url}-->">[进入]</a><!--{else}-->&nbsp;<!--{/if}-->
+    </td>
+    <td valign="top"><!--{$list.game_type_id}--></td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="10" align="center"><!--{$noData}--></th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <th colspan="10" align="right"><!--{$pageBox}--></th>
+  </tr>
+</table>
+
+</fieldset>

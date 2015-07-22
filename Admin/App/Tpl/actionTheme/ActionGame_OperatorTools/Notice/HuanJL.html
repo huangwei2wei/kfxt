@@ -1,0 +1,44 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+
+<fieldset>
+  <legend>公告查询 [<a href="<!--{$URL_noticeAdd}-->">添加</a>]</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">标题(滚动内容)</th>
+        <th scope="col">开始时间</th>
+        <th scope="col">结束时间</th>
+        <th scope="col">相隔(秒)</th>
+        <th scope="col">类型</th>
+        <th scope="col">是否屏蔽</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      
+      <tr>
+        <td><!--{$list.ID}--></td>
+        <td><!--{$list.Message}--></td>
+        <td><!--{$list.startTime}--></td>
+        <td><!--{$list.endTime}--></td>
+        <td><!--{$list.IntervalTime}--></td>
+        <td> 
+	        <!--{if $list.type == 1}-->小提示 <!--{elseif $list.type == 2}-->系统<!--{/if}--></a>
+        </td>
+        <td> 
+	        <!--{if $list.Forbid == 1}-->屏蔽<!--{elseif $list.Forbid == 0}-->不屏蔽<!--{/if}--></a>
+        </td>
+        <td>
+        	[<a onclick="return confirm('确定删除？');" href="<!--{$list.URL_del}-->">删除</a>]
+        	[<a href='<!--{$list.URL_edit}-->'>编辑</a>]
+        </td>
+      
+      </tr>
+      <!--{/foreach}-->
+    </table>
+<div style="text-align:right"><!--{$pageBox}--></div>
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,19 @@
+<fieldset>
+	<legend>内容显示</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td style="background:#666"><font size="+1" color="#FFFFFF"><b><!--{$data.word_kind}--></b></font></td>
+      </tr>
+      <tr>
+        <td>
+        	<font size="+1"><b><!--{$data.title}--></b></font> [<font color="#FF6600"><!--{$data.create_time}--> , <!--{$data.word_user_id}--></font>]  <br />
+            <div style="margin-left:10px; margin-top:5px;"><!--{$data.content}--></div>	
+            <div style="margin:5px; padding:2px; background:#D6E8F1">
+            	<label>未阅读用户：</label>
+                <!--{$data.word_not_read}-->
+            </div>
+        </td>
+      </tr>
+    </table>
+
+</fieldset>

@@ -1,0 +1,46 @@
+<style>
+	a.<!--{$_GET.moudle_name|default:'Default'}-->
+	{
+		color:#F00;
+	}
+</style>
+<fieldset>
+	<legend>用户权限叠加</legend>
+    
+    <!--{foreach from=$moudlesUrl key=moudel_name item=list}-->
+    	<a class="<!--{$moudel_name}-->" href="<!--{$list.url}-->"><!--{$list.name}--></a>
+        <!--{if $list.actCount>0}-->
+        	(<font color="#FF0000"><!--{$list.actCount}--></font>)
+        <!--{/if}-->
+        ,
+    <!--{/foreach}-->
+    <form action="" method="post">
+    <input type="hidden" name="user_id" value="<!--{$_GET.user_id}-->" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+		<!--{$checkBox}-->
+        <tr><th><input type="submit" value="提交" class="btn-blue" /></th></tr>
+	</table>
+    </form>
+</fieldset>
+<script type="text/javascript">
+	$("a[name='user_act']").click(function(){
+		var actVal = $(this).attr('val_data');
+		var this_a = $(this);
+		var show = this_a.next();
+		if( show.attr('id') == 'show' ){
+			show.remove();
+		}
+		$.ajax({
+ 			type: "GET",
+ 			//async : false,    // 设置同步  
+			dataType: 'html',
+ 			url: "?c=User&a=User&doaction=ajaxActForUser",
+ 			data: {act_val:actVal},
+ 			success: function(data){
+ 				
+ 				this_a.after(data);
+ 			}
+ 		});
+	});
+</script>
+

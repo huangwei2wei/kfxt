@@ -1,0 +1,76 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+</script>
+<fieldset>
+  <legend>封号列表
+  [<a href="<!--{$URL_silenceInGame}-->">本地日志数据</a>]
+    	[<a href="<!--{$URL_silenceLocalLog}-->">游戏内生效数据</a>]
+  <a href="<!--{$Add_Url}-->">[添加]</a></legend>
+  <!--{if $gameData}-->
+      <table width="100%">
+        <tr>
+		<th>帐号</th>
+		<th>玩家ID</th>
+		<th>玩家昵称</th>
+		<th>结束时间</th>
+       	<th>操作</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+			<td align="center"><!--{$list.account}--></td>
+			<td align="center"><!--{$list.playerID}--></td>
+			<td align="center"><!--{$list.nickname}--></td>
+			<td align="center"><!--{$list.EndTime}--></td>
+       		<td align="center"><a href="<!--{$Del_Url}-->&User=<!--{$list.playerID}-->">[解除]</a></td>
+        </tr>
+        <!--{/foreach}-->
+
+          <tr>
+            <th colspan="6" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+      
+       <!--{else}-->
+      <table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">玩家ID</th>
+    <th scope="col">账号</th>
+    <th scope="col">昵称</th>
+    <th scope="col">操作描述</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.game_user_id}--></td>
+    <td><!--{$list.game_user_account|default:'<font color="#999999">无记录</font>'}--></td>
+    <td><!--{$list.game_user_nickname|default:'<font color="#999999">无记录</font>'}--></td>
+    <td>
+    	<!--{$list.info.AddString}-->
+    </td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+
+    <div style="float:right"><!--{$pageBox}--></div>
+    <!--{/if}-->
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

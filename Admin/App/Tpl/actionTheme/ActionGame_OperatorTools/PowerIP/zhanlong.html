@@ -1,0 +1,59 @@
+
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+	function delMsg(url){
+		var bo = confirm("确认删除");
+		if(bo){
+			window.location.href=url;
+			}
+	}
+</script>
+<fieldset>
+  <legend>白名单IP</legend>
+  <fieldset>
+  <legend>添加</legend>
+  <form action="" method="post" id="form">
+	<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+	<input type="hidden" name="op" value="add"/>
+  IP：<input type="text" class="text" name="Add_IP" />
+  &nbsp;
+  描述：<input type="text" class="text" name="desc" />
+  &nbsp;
+  <input type="submit" class="btn-blue" value="添加" />
+  </form>
+  </fieldset>
+      <table width="100%">
+        <tr>
+
+		<th>IP</th>
+		<th>描述</th>
+       	<th>操作</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+			<td align="center"><!--{$list.allow_ip}--></td>
+			<td align="center"><!--{$list.desc_text}--></td>
+       		<td align="center"><a href="javascript:delMsg('<!--{$Del_Url}-->&IP=<!--{$list.allow_ip}-->&op=del')">[删除]</a></td>
+        </tr>
+        <!--{/foreach}-->
+
+          <tr>
+            <th colspan="3" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>

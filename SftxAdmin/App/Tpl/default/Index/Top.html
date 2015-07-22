@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>管理页面</title>
+<meta http-equiv=Content-Type content=text/html;charset=utf8 />
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/jquery.js"></script>
+<script language="JavaScript">
+function logout(){
+	if (confirm("您确定要退出控制面板吗？")){
+		parent.location.href="<!--{$url.Index_LoginOut}-->";
+	}
+	return false;
+}
+
+function onLine(){
+	$.getJSON("<!--{$url.Index_SetOnline}-->",
+		  function(data){
+			  $("#mail_total").html(data.data.mail_total);
+			  $("#mail_not_red").html(data.data.mail_not_read);
+			  $("#incomplete_order_num").html(data.data.incomplete_order_num);
+		  }
+	);
+}
+$(function(){onLine();})
+
+//每30秒刷新一次
+//setInterval('onLine()', 1000*30);
+</script>
+<style type="text/css">
+body,td,th {font-family: "微软雅黑", Consolas, Verdana, Geneva, sans-serif;font-size: 12px;}
+body { margin:0px; padding:0px;}
+a {font-size: 12px;color: #09F;}
+a:link {text-decoration: none;color: #06F;}
+a:visited {text-decoration: none;color: #06F;}
+a:hover {text-decoration: underline;color: #000000;}
+a:active {text-decoration: none;color: #06F;}
+table{margin:2px;border-collapse: collapse; border:0px;}
+ul li{display:inline;}
+</style>
+</head>          
+<body style="border-bottom:5px solid #06508b;height:47px;background:url('<!--{$__IMG__}-->/default/top_bg.gif'); padding-top:10px;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="2%" rowspan="2"><img style="padding-left:20px;" src="<!--{$__IMG__}-->/default/top_logo.gif" /></td>
+        <td width="98%" align="right" valign="bottom">
+        	<ul style="padding:0px; margin:0px; padding-right:10px;">
+            	<li><font color="#FF0000">请大家暂时先用 <a target="_blank" href="http://download.mozilla.org/?product=firefox-3.6.10&os=win&lang=zh-CN">FireFox[火狐]</a> 或者是 <a href="http://www.google.com/chrome/eula.html?hl=zh_cn&brand=CHMA&utm_campaign=zh_cn&utm_source=zh_cn-ha-apac-zh_cn-bk&utm_medium=ha&installdataindex=homepagepromo" target="_blank">google[chrome]</a> 浏览器,暂时对 <b style="color:#09F">IE</b> 浏览器的支持不是很好！</font></li>
+                <li><!--{$userClass._nickName}-->[<!--{$userClass._userName}-->] 您好，欢迎您登录!</li>
+                <li><a target="main" href="<!--{$url.Index_Right}-->" style="color:#09F">个人资料</a></li>
+                <li><a href="javascript:void(0)" onClick="logout();" style="color:#09F">安全退出</a></li>
+            </ul>
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="bottom">
+        	<ul style="padding:0px; margin:0px; padding-right:10px;">
+            	<li>待处理工单 (<a id="incomplete_order_num" target="main" href="<!--{$url.MyTask_Index}-->" style="color:#FF0000"></a>)</li>
+                <li>未读消息 (<a id="mail_not_red" target="main" href="<!--{$url.NoReadUser_MailIndex}-->" style="color:#FF0000"></a>)</li>
+                <li>所有消息 (<a id="mail_total" target="main" href="<!--{$url.User_MailIndex}-->" style="color:#FF0000"></a>)</li>
+            </ul>
+        </td>
+      </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<style type="text/css">
+ul{
+	margin:0px;
+	padding:0px;
+}
+ul li{
+	margin:3px;
+	list-style-type: none;
+	display:inline;
+}
+</style>
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='Id[]']").attr("checked",curCheck);
+	 });
+	$("#search :radio").click(function(){$("#search").submit();});
+})
+function formSubmit(curBtn){
+	if(confirm('确定要执行吗?')){
+		url=curBtn.attr("url");
+		$("#form").attr("action",url);
+		$("#form").submit();
+	}
+}
+</script>
+<fieldset>
+	<legend>搜索</legend>
+  <form action="" id="search" method="get">
+   	  <input type="hidden" value="<!--{$__CONTROL__}-->" name="c" />
+      <input type="hidden" value="<!--{$__ACTION__}-->" name="a" />
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th scope="row">类型</th>
+          <td><!--{html_radios options=$auditType selected=$selectedType name="type"}--></td>
+        </tr>
+        <tr>
+          <th scope="row">状态</th>
+          <td><!--{html_radios options=$sendType selected=$selectedSend name="send"}--></td>
+        </tr>
+        <tr>
+          <th scope="row">搜索</th>
+          <td>申请人
+            <select onchange="$('#search').submit()" name="apply_user_id"><option value="">请选择</option><!--{html_options options=$users selected=$selectedApplyUserId}--></select>
+            ，审核人 || 拒绝人
+              <select onchange="$('#search').submit()" name="audit_user_id">
+              <option value="">请选择</option>
+              <!--{html_options options=$users selected=$selectedAuditUserId}-->
+          </select>
+          <input type="submit" class="btn-blue" value="提交" /></td>
+        </tr>
+      </table>
+    </form>
+</fieldset>
+<fieldset>
+	<legend>列表</legend>
+    <form action="" method="post" id="form">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">申请类型</th>
+        <th scope="col">申请人</th>
+        <th scope="col">服务器</th>
+        <th scope="col">审核人 || 拒绝人</th>
+        <th scope="col">申请时间</th>
+        <th scope="col">状态</th>
+        <th scope="col">审核 || 拒绝时间</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><input type="checkbox" name="Id[]" value="<!--{$list.Id}-->" /><!--{$list.Id}--></td>
+        <td><!--{$list.word_type}--></td>
+        <td><!--{$list.word_apply_user_id}--></td>
+        <td><!--{$list.word_server_id}--></td>
+        <td><!--{$list.word_audit_user_id}--></td>
+        <td><!--{$list.create_time}--></td>
+        <td><!--{$list.word_is_send}--></td>
+        <td><!--{$list.send_time}--></td>
+        <td><a href="<!--{$list.url_view}-->">察看详情</a></td>
+      </tr>
+      <tr>
+      	<td colspan="9" bgcolor="#FFFFFF">申请理由：<br>
+			<!--{$list.cause|nl2br}-->
+            
+            <!--{if $list.is_send==1}-->
+            <!--如果审核将显示审核的内容-->
+            <hr size="1" />
+            审核发送状态：<br />
+				<!--{$list.send_result}-->
+            <!--{/if}-->
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <td colspan="9"><!--{$noData}--></td>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+     	<td><input type="checkbox" id="allcheck" />全选</td>
+        <td colspan="8">
+        	<input type="button" class="btn-blue" onclick="formSubmit($(this))" url="<!--{$url.OperationFRG_AuditDel}-->" value="删除未审核" />
+        	<input type="button" class="btn-blue" onclick="formSubmit($(this))" url="<!--{$url.OperationFRG_AuditAccept}-->" value="批量审核" />
+            <input type="button" class="btn-blue" onclick="formSubmit($(this))" url="<!--{$url.OperationFRG_AuditReject}-->" value="批量拒绝" />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="9" align="right"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+    </form>
+</fieldset>

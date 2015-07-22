@@ -1,0 +1,48 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"服务器ID不存在",oncorrect:"请重新输入服务器ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"服务器数值不正确"});
+	$("#cause").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"操作原因不能为空"});
+	$("#MsgTitle").formValidator({onshow:"请输入消息标题",oncorrect:"消息标题正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入消息标题"},onerror:"消息标题不能为空"});
+	$("#MsgContent").formValidator({onshow:"请输入消息内容",oncorrect:"消息内容正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入消息内容"},onerror:"消息内容不能为空"});
+	$("#UserIds").formValidator({onshow:"请输入用户ID,用','号隔开",oncorrect:"输入正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入用户ID"},onerror:"用户ID不能为空"});
+})
+</script>
+<form id="form" action="" method="post">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">操作原因</th>
+    <td>
+        <textarea name="cause" id="cause" cols="60" rows="5" ></textarea>
+        <div id="causeTip"></div>
+    </td>
+  </tr>
+  <tr>
+    <th nowrap="nowrap" scope="row">消息标题</th>
+    <td><input name="title" id="MsgTitle" type="text" class="text" style="width:380px;"/><div id="MsgTitleTip"></div></td>
+  </tr>
+  <tr>
+    <th nowrap="nowrap" scope="row">消息内容</th>
+    <td><textarea name="content" id="MsgContent" cols="60" rows="10"></textarea><div id="MsgContentTip"></div></td>
+  </tr>
+  <!--{if !$_GET.lock}-->
+  <tr>
+    <th nowrap="nowrap" scope="row">发送给以下用户(用户之间用&quot;,&quot;号隔开)</th>
+    <td><textarea name="userIds" id="UserIds" cols="60" rows="10"><!--{$users}--></textarea>
+    <input type="radio" value="1" name="userType" checked />UID	
+    <input type="radio" value="2" name="userType" />昵称
+    <div id="UserIdsTip"></div></td>
+  </tr>
+  <!--{/if}-->
+  <tr>
+    <th colspan="2" scope="row"><input type="submit" class="btn-blue" name="submit" value="立即发送" /></th>
+  </tr>
+</table>
+</form>
+<!--{/if}-->

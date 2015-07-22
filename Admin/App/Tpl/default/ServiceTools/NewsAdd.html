@@ -1,0 +1,89 @@
+<style type="text/css">
+label{
+	width:200px;
+	display:inline-block;
+}
+</style>
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript" type="text/javascript">
+KE.init({id:'content',imageUploadJson : '<!--{$url.UploadImg_Bulletin}-->',afterCreate:function(id){KE.util.focus(id)}});
+
+$(function(){
+	$(".all_select").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(this).parent().find(":checkbox").attr("checked",curCheck);
+	 });
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox").attr("checked",curCheck);
+	 });
+});
+function addFile(){
+	if($('#uploadFiles').find("input").length < 5){
+		$('#uploadFiles').append($('#hindUploadFilesContent').html());
+	}else{
+		alert("到达上限");
+	}
+}
+function preDelFile(filePath){
+	$('#delFiles').append('<input type="hidden" name="delFiles[]" value="'+filePath+'">');
+}
+function checkSubmit(){
+	if($('select[name=type]').val()>0){
+		if($.trim($('input[name=title]').val())==''){
+			alert('请填写标题');
+			$('input[name=title]').focus();
+			return false;
+		}
+		if($.trim($('textarea[name=content]').val())=='' ){
+			alert('请填写内容');
+			$('textarea[name=content]').focus();
+			return false;
+		}
+	}else{
+		alert('请选择类型');
+		$('select[name=type]').focus();
+		return false;
+	}
+	return true;
+}
+</script>
+<fieldset>
+  <legend>添加公告</legend>
+  <form action="" method="post" enctype="multipart/form-data">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap" scope="row">分类选择</th>
+        <td><select name="type">
+          <option value="0">-请选择-</option>
+          <!--{html_options options=$types selected=$data.type|default:0}-->
+        </select></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">标题</th>
+        <td><input name="title" type="text" class="text" style="width:600px;" size="60" value="<!--{$data.title|default:''}-->" /></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">内容</th>
+        <td>
+       	  <a href="javascript:void(0)" onclick="KE.create('content')">加载编辑器</a>
+        <a href="javascript:void(0)" onclick="KE.remove('content')">卸载编辑器</a><br />
+        	<textarea cols="100" rows="15" name="content" id="content"><!--{$data.content|default:''}--></textarea>
+        </td>
+      </tr>
+      <tr>
+      	<th scope="row" valign="top"><a href="javascript:void(0)" style="font-weight:lighter" onClick="addFile();">添加附件</a></th>
+        <td id="uploadFiles">
+        	<!--{foreach from=$data.files item=file}-->
+            	<div style="margin:3px;">[<a href="javascript:void(0)" onClick="preDelFile('<!--{$file.path}-->');$(this).parent().remove();">删除</a>] <input type="text" class="text" style="width:300px;" readonly value="<!--{$file.name}-->"></div>
+            <!--{/foreach}-->
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" onClick="return checkSubmit();" /></th>
+      </tr>
+    </table>
+    <div id="delFiles"></div>
+  </form>
+    <div id="hindUploadFilesContent" style="display:none"><div style="margin:3px;">[<a href="javascript:void(0)" onClick="$(this).parent().remove();">删除</a>] <input type="file" name="files[]" value=""></div></div>
+</fieldset>

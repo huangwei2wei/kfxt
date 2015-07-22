@@ -1,0 +1,149 @@
+<!--{if !$display}-->
+<!--{if $tplServerSelect}-->
+    <!--{include file=$tplServerSelect}-->
+    <!--{/if}-->
+<!--{/if}-->
+<!--{if $display}-->
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+
+function selectAll(curEvent){
+	var curCheck=curEvent.attr("checked");
+    $("#form :checkbox").attr("checked",curCheck);
+}
+
+function serverSync(curBtn){
+	$("#form").attr('action',curBtn.attr("url"));
+	$("#form").submit();
+}
+function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+function onSubmit(){
+	var serverList=$(":checkbox[name='server_ids[]']");
+	$.each(serverList,function(i,n){
+		if(n.checked==true){
+			var curLi=$("#server_"+n.value);
+			var ValueSys=$("#sysnValue");
+			$("#form").ajaxSubmit({
+				dataType:'json',
+				data:{server:n.value,sysnValue:ValueSys.val()},
+				success:function(dataResult){
+					var fontColor=(dataResult.status==1)?'#00cc00':'#ff0000';
+					curLi.after("<font color='"+fontColor+"'>"+dataResult.msg+"</font>");
+				}
+			});
+		}
+	});
+	
+}
+</script>
+
+
+<!--{if $doaction}-->
+
+<form action="<!--{$ajax}-->" method='post' id='form'>
+	<!--{if $tplServerSelect}-->
+    <!--{include file=$tplServerSelect}-->
+    <!--{/if}-->
+    <input type="hidden" value="<!--{$sysnValue}-->" id="sysnValue" />
+</form>
+<fieldset>
+  <legend> [公告列表]</legend>
+	<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+	<table width="100%" border="0" cellpadding="3">
+      <tr>
+      	<th scope="col">区ID</th>
+        <th scope="col">系统广播的序号</th>
+        <th scope="col">广播间隔时间</th>
+        <th scope="col">广播消息的内容</th>
+        <th scope="col">广播发布的位置</th>
+        <th scope="col">发布时间</th>
+      </tr>
+     
+      <!--{foreach from=$dataList item=list}-->
+	  <tr>
+      	<input type="hidden" value='<!--{$list.WorldID}-->' name='data[<!--{$list.OrderID}-->][WorldID]'></input>
+      	<input type="hidden" value='<!--{$list.OrderID}-->' name='data[<!--{$list.OrderID}-->][OrderID]'></input>
+      	<input type="hidden" value='<!--{$list.Timeout}-->' name='data[<!--{$list.OrderID}-->][Timeout]'></input>
+      	<input type="hidden" value='<!--{$list.Msg}-->' name='data[<!--{$list.OrderID}-->][Msg]'></input>
+      	<input type="hidden" value='<!--{$list.Place}-->' name='data[<!--{$list.OrderID}-->][Place]'></input>
+      	<input type="hidden" value='<!--{$list.DataTime}-->' name='data[<!--{$list.OrderID}-->][DataTime]'></input>
+		<td><!--{$list.WorldID}--></td>
+        <td><!--{$list.OrderID}--></td>
+        <td><!--{$list.Timeout}--></td>
+        <td align="center"><!--{$list.Msg}--></td>
+        <td align="center"><!--{$list.Place}--></td>
+        <td><!--{$list.DataTime}--></td> 
+      </tr>
+       <!--{/foreach}-->
+	   <tr>
+	       <td colspan="6">
+           <input type="button" name="submit" class="btn-blue" onClick="onSubmit()" value="同步操作" />
+	       </td>
+	   </tr>
+      
+      <tr>
+            <th colspan="7" align="right"><!--{$pageBox}--></th>
+      </tr>
+    </table>
+</fieldset>
+
+<!--{else if}-->
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<fieldset>
+  <legend> [公告列表]</legend>
+    <form id="form" action="" method="post" onsubmit="return checksub();">
+	<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+	<table width="100%" border="0" cellpadding="3">
+      <tr>
+	    <th scope="col">选择</th>
+      	<th scope="col">区ID</th>
+        <th scope="col">系统广播的序号</th>
+        <th scope="col">广播间隔时间</th>
+        <th scope="col">广播消息的内容</th>
+        <th scope="col">广播发布的位置</th>
+        <th scope="col">发布时间</th>
+        
+      </tr>
+     
+      <!--{foreach from=$dataList item=list}-->
+	  <tr>
+		<td>
+        	<input type="checkbox" name="data[<!--{$list.OrderID}-->]" value="<!--{$list.OrderID}-->" />
+        </td>
+		<td><!--{$list.WorldID}--></td>
+        <td><!--{$list.OrderID}--></td>
+        <td><!--{$list.Timeout}--></td>
+        <td align="center"><!--{$list.Msg}--></td>
+        <td align="center"><!--{$list.Place}--></td>
+        <td><!--{$list.DataTime}--></td> 
+      </tr>
+       <!--{/foreach}-->
+	   <tr>
+	       <td colspan="7">
+		   <input type="hidden" name="Page" value="<!--{$_GET.page}-->">
+			<input type="hidden" name="WorldID" value="<!--{$_GET.WorldID}-->">
+	       <input type="checkbox" id="allcheck" onClick="selectAll($(this))" /><!--{'66EEACD93A7C1BDA93906FE908AD11A0'|lang}--> 
+           <input type="submit" class="btn-blue" url="<!--{$url.OperatorTools_Notice_serverSync}-->&page=<!--{$_GET.page}-->" onClick="serverSync($(this))" value="同步到其他服" />
+           <input type="submit" class="btn-blue" url="<!--{$syncDel}-->" onClick="serverSync($(this))" value="同步删除" />
+	       </td>
+	   </tr>
+      
+      <tr>
+            <th colspan="7" align="right"><!--{$pageBox}--></th>
+      </tr>
+    </table>
+   </form>
+</fieldset>
+<!--{/if}-->
+<!--{/if}-->

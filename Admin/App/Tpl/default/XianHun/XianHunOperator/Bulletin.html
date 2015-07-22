@@ -1,0 +1,75 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+
+
+
+<fieldset>
+  <legend>公告</legend>
+  
+  
+  
+<form action="<!--{$URL_AnnouncementDel}-->" method="post" id="form1">
+  
+      <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td colspan="9">[<a href="<!--{$URL_AnnouncementAdd}-->">增加系统公告</a>][<a href="<!--{$URL_AnnouncementAllAdd}-->">多服增加系统公告</a>]</td>
+      </tr>
+      <tr>
+        <th scope="col">选择</th>
+        <th scope="col">类型</th>
+        <th scope="col">Id</th>
+        <th scope="col">标题</th>
+        <th scope="col">内容</th>
+        <th scope="col">url</th>
+        <th scope="col">显示时间</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td align="center">
+            <input type="checkbox" name="ids[]" value="<!--{$list.id}-->">
+        </td>
+        <td align="center"><!--{$list.typeName}--></td>
+        <td align="center"><!--{$list.id}--></td>
+        <td align="center"><!--{$list.title}--></td>
+        <td align="center"><!--{$list.content}--></td>
+        
+        <td align="center"><a target="_blank" href="<!--{$list.link}-->" title="<!--{$list.link}-->"><!--{$list.link|truncate:50:"...":true}--></a></td>
+		<td align="center"><!--{$list.time}--></td>
+        <td align="center">
+            <a href="<!--{$list.URL_Edit}-->">[编辑]</a>
+            <a onClick="return confirm('确定删除“<!--{$list.title}-->”？');" href="<!--{$list.URL_Del}-->"> [删除]</a>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+        <!--{if $ConnectErrorInfo}-->
+          <tr>
+            <td colspan="9"><!--{$ConnectErrorInfo}--></td>
+          </tr>
+        <!--{else}-->
+          <tr>
+            <td colspan="9" align="center">暂无数据</td>
+          </tr>
+        <!--{/if}-->
+      <!--{/foreach}-->
+  <tr>
+    <td colspan="9">
+        全选
+        <input type="checkbox" onClick="$('input[name=ids[]]').attr('checked',$(this).attr('checked'))">
+        <input class="btn-blue" type="button" value="删除" onClick="if(confirm('确定删除?'))$('#form1').submit();">
+    </td>
+  </tr>
+    </table>
+</form>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <td align="right"><!--{$pageBox}--></td>
+  </tr>
+</table>
+
+
+</fieldset>
+<!--{/if}-->

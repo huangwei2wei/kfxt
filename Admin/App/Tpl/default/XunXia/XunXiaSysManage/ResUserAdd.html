@@ -1,0 +1,45 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"服务器ID不存在",oncorrect:"请重新输入服务器ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"服务器数值不正确"});
+	$("#cause").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"操作原因不能为空"});
+	$("#UserId").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"用户信息不能为空,请确认"});
+})
+</script>
+<fieldset>
+<legend>添加封号</legend>
+<form action="" method="post" id="form" >
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="98%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">操作原因</th>
+        <td>
+        	<textarea name="cause" id="cause" cols="60" rows="5" ></textarea>
+            <div id="causeTip"></div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">用逗号(&quot;,&quot;)隔开</th>
+        <td><textarea name="userIds" id="UserId" cols="60" rows="8"><!--{$users}--></textarea>
+        	<input type="radio" name="userType" value="1" checked="checked" />UID
+            <input type="radio" name="userType" value="2" />昵称
+        <div id="UserIdTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row">封号结束时间</th>
+        <td><input type="text" class="text" name="endTime" value="<!--{$smarty.now|strtotime:'+1 hour'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|strtotime:'+1 hour'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" name="submit" value="提交" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,62 @@
+<script language="javascript">
+	function heighter(){
+		
+		var h = $('#returnData').css('height');
+		h = parseInt(h.replace('px',''));
+		$('#returnData').css('height',h+100+'px');
+	}
+</script>
+<fieldset>
+    <legend>http请求测试</legend>
+    <form method="post" action="">
+        <table width="98%" border="0" cellpadding="3">
+          <tr>
+            <th scope="row">发送地址</th>
+            <td>
+                <textarea name="sendUrl" style="width:700px; height:45px;"><!--{$_POST.sendUrl}--></textarea>
+                <input type="submit" class="btn-blue" value="发送">&nbsp; time:<!--{$current_time}-->
+                <font color="#FF0000"><!--{$error|default:''}--></font>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">GET数据<br><br>换行或者"&amp;"隔开<br>例如:c=Index&amp;a=Login</th>
+            <td>
+            	填写:
+                <textarea name="getData" style="width:400px; height:150px;" ><!--{$_POST.getData|trim}--></textarea>
+                参数分析:
+                <textarea readonly style="width:400px; height:150px; background:#9FF" ><!--{$getData}--></textarea>
+                <input type="checkbox" name="splite" value="1" <!--{if $_POST.splite}-->checked<!--{/if}-->>用&amp;隔开参数
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">POST数据<br><br>换行或者"&amp;"隔开<br>例如:c=Index&amp;a=Login</th>
+            <td>
+            	填写:
+            	<textarea name="postData" style="width:400px; height:150px;" ><!--{$_POST.postData|trim}--></textarea>
+                参数分析:
+                <textarea readonly style="width:400px; height:150px; background:#9FF" ><!--{$postData}--></textarea>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">拼接URL</th>
+            <td>
+            	<textarea style="width:900px; height:45px;"><!--{$urlJoin}--></textarea>
+                拼接POST<input type="checkbox" value="1" name="postDataAddToUrl" <!--{if $_POST.postDataAddToUrl}-->checked<!--{/if}-->>
+            	<!--{if $urlJoin}-->
+                	<a target="_blank" href="<!--{$urlJoin}-->">打开新页</a>
+                <!--{/if}-->
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">返回结果</th>
+            <td>
+            	<div>
+                	<!--{html_radios options=$outputTypes name="outputType" selected=$_POST.outputType|intval}-->
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a onclick="heighter();" href="javascript:void(0);">加高</a>
+                </div>
+            	<div><textarea id="returnData" style="width:900px; height:150px;" readonly ><!--{$data}--></textarea></div>
+            </td>
+          </tr>
+        </table>
+    </form>
+</fieldset>

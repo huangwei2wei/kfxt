@@ -1,0 +1,89 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+	$(function(){
+		$('#pageSize').val('<!--{$_GET.pageSize}-->');
+	});
+</script>
+<fieldset>
+  <legend>搜索</legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+	<input type="hidden" name="server_id" value="<!--{$server_id}-->"/>  
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+            玩家ID:<input class="text" type="text" name="playerId" value="<!--{$get.playerId}-->">
+      </tr>
+      <tr>
+        <td>
+            年：<input class="text" type="text" name="year" value="<!--{$get.year}-->" style='width:50px'>
+            月：<input class="text" type="text" name="month" value="<!--{$get.month}-->" style='width:50px'>
+            日：<input class="text" type="text" name="day" value="<!--{$get.day}-->" style='width:50px'>
+            <input class="btn-blue" type="submit" value="查询">
+        </td>
+      </tr>
+    </table>
+</form>
+
+
+</fieldset>
+
+<fieldset>
+  <legend>充值列表 [本页充值总额：<font color="#FF0000"><!--{$pageMoneyTotal}--></font>]</legend>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">用戶id</th>
+    <th scope="col">平臺id</th>
+    <th scope="col">道具直扣物品類型</th>
+    <th scope="col">充值金额(单位:分)</th>
+    <th scope="col">遊戲幣消耗量</th>
+    <th scope="col">抵用卷消耗量</th>
+    <th scope="col">數量</th>
+    <th scope="col">操作目標id(配合recharge_type查找目標)</th>
+    <th scope="col">操作目標數量</th>
+    <th scope="col">操作時間</th>
+    <th scope="col">平臺標記 1朋友pengyou 2-空間qzone</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.user_id}--></td>
+        <td><!--{$list.sns_id}--></td>
+        <td><!--{$list.recharge_type}--></td>
+        <td><!--{$list.currency_amount}--></td>
+        <td><!--{$list.payamt_coins}--></td>
+        <td><!--{$list.pubacct_payamt_coins}--></td>
+        <td><!--{$list.amount}--></td>
+        <td><!--{$list.obj_id}--></td>
+        <td><!--{$list.obj_num}--></td>
+        <td><!--{$list.log_date}--></td>
+        <td><!--{$list.income}--></td>
+        
+      </tr>
+  <!--{foreachelse}-->
+  	<!--{if $ConnectErrorInfo}-->
+      <tr>
+        <td align="center" colspan="11"><!--{$ConnectErrorInfo}--></td>
+      </tr>
+  	<!--{else}-->
+      <tr>
+        <td align="center" colspan="11">暂无数据</td>
+      </tr>
+  	<!--{/if}-->
+  <!--{/foreach}-->
+  <tr>
+    <th align="right" scope="col" colspan="11"><!--{$pageBox}--></th>
+  </tr>
+</table>
+
+</fieldset>
+<!--{/if}-->

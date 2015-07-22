@@ -1,0 +1,75 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+  <legend>搜索</legend>
+  <form action="" id="search" method="get">
+  <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+  <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+  <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="row">游戏类型</th>
+        <td><!--{html_radios onclick="$('#search').submit()" name="game_type_id" options=$gameTypes selected=$selected.game_type_id}--></td>
+      </tr>
+      <tr>
+        <th scope="row">类型</th>
+        <td><!--{html_radios onclick="$('#search').submit()" name="type" options=$type selected=$selected.type}--></td>
+      </tr>
+      <tr>
+        <th scope="row">进展状态</th>
+        <td><!--{html_radios onclick="$('#search').submit()" name="progress" options=$progress selected=$selected.progress}--></td>
+      </tr>
+      <tr>
+        <th scope="row">时间范围</th>
+        <td>
+        <input type="text" class="text" name="start_time" value="<!--{$selected.start_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.start_time}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/> 
+        至
+        <input type="text" class="text" name="end_time" value="<!--{$selected.end_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.end_time}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">标题搜索</th>
+        <td><input type="text" name="title" class="text" size="60" value="<!--{$selected.title}-->" /></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" value="提交" class="btn-blue" /></th>
+      </tr>
+    </table>
+	</form>
+</fieldset>
+<fieldset>
+	<legend>列表</legend>
+    <ul style="margin:0px; padding:0px;">
+    	<!--{foreach from=$dataList item=list}-->
+    	<li style="padding:0px; margin:10px 0px 10px 0px; list-style:none;">
+        	<table width="100%" border="0" cellspacing="0" cellpadding="3">
+              <tr>
+                <th colspan="2" scope="col"><font size="+2" face="'微软雅黑'"><b><!--{$list.word_game_type_id}--></b></font></th>
+              </tr>
+              <tr>
+                <td>
+                	<b style="font-size:14px;"><!--{$list.title}--></b> 
+                	<a href="<!--{$list.url_edit}-->">编辑</a>
+                    <a onclick="return confirm('确定要删除吗?')" href="<!--{$list.url_del}-->">删除</a>    
+                    状态：<font color="#FF0000"><!--{$list.word_progress}--></font>
+                    </td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr style="background:#666; font-family:'微软雅黑'; color:#FFF">
+                <td scope="col" style="color:#FFF">
+                    <font size="+1"><b><!--{$list.word_type}--></b></font> [<!--{$list.time}-->,<!--{$list.word_user_id}-->] 
+                           
+                </td>
+                <td style="color:#FFF" scope="col" align="right"></td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                 	<!--{$list.content}-->
+                </td>
+              </tr>
+            </table>
+</li>
+        <!--{/foreach}-->
+    </ul>
+    <div align="right"><!--{$pageBox}--></div>
+</fieldset>

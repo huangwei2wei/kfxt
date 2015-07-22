@@ -1,0 +1,23 @@
+<fieldset>
+	<legend>权限编辑</legend>
+    <form action="" method="post">
+    <input type="hidden" name="role_value" value="<!--{$_GET.role_value}-->" />
+      <table width="100%" border="0" cellspacing="0" cellpadding="3">
+          <tr>
+            <th scope="col">操作</th>
+            <th scope="col">模块值</th>
+            <th scope="col">模块名</th>
+          </tr>
+          <!--{foreach from=$dataList item=list}-->
+          <tr>
+            <td align="center"><input type="checkbox" name="value[]" <!--{if $list.selected}-->checked<!--{/if}--> value="<!--{$list.value}-->" /></td>
+            <td align="center"><!--{if $list.selected}--><a href="<!--{$list.url_edit_act}-->"><!--{$list.value}--></a><!--{else}--><!--{$list.value}--><!--{/if}--></td>
+            <td align="center"><!--{$list.name}--></td>
+          </tr>
+          <!--{/foreach}-->
+          <tr>
+            <th colspan="3"><input type="submit" value="提交" class="btn-blue" /></th>
+          </tr>
+      </table>
+    </form>
+</fieldset>

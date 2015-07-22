@@ -1,0 +1,36 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+  <legend>活动</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">名称</th>
+        <th scope="col">开始时间</th>
+        <th scope="col">结束时间</th>
+        <th scope="col">活动介绍</th>
+        <th scope="col">是否可用</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.id}--></td>
+        <td><!--{$list.name}--></td>
+        <td><!--{$list.beginTime}--></td>
+        <td><!--{$list.endTime}--></td>
+        <td><!--{$list.intro}--></td>
+        <td><!--{$list.activation}--></td>
+        <td>
+        	<!-- [<a onclick="return confirm('确定删除？');" href="<!--{$list.URL_del}-->">删除</a>] -->
+        	[<a href='<!--{$list.URL_edit}-->'>编辑</a>]
+        </td>
+      
+      </tr>
+      <!--{/foreach}-->
+    </table>
+<div style="text-align:right"><!--{$pageBox}--></div>
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,149 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<style type="text/css">
+.addline{
+	padding:3px;
+}
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:100%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/default/frg.js"></script>
+<script language="javascript">
+
+<!--{if $objData}-->
+var objData=eval(<!--{$objData}-->);
+<!--{/if}-->
+
+<!--{if $toolData}-->
+var toolData=eval(<!--{$toolData}-->);
+<!--{/if}-->
+
+<!--{if $effData}-->
+var effData=eval(<!--{$effData}-->);
+<!--{/if}-->
+
+
+var condInputNum=1;
+var effectInputNum=1;
+var toolInputNum=1;
+
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"<!--{'C566CA59602C7C5C0D3FE5E18ADE447D'|lang}-->ID<!--{'D7D11654A707D7E7B661C90295E58B20'|lang}-->",oncorrect:"<!--{'124D617A6875038C81E03DEC5E2501F4'|lang}-->ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'BA2DD64CC4F6DDF27CB1526EFB449E2D'|lang}-->"});
+	$("#PName").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'DC3F37680FA6EC485190EB966A027551'|lang}-->"},onerror:"<!--{'DC3F37680FA6EC485190EB966A027551'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+	$("#PDescribe").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'9B8AC4560A46D8A2F3A5046F34A3C30B'|lang}-->"},onerror:"<!--{'9B8AC4560A46D8A2F3A5046F34A3C30B'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+	$("#MsgTitle").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'1DF7810C9F146426FCC2D187BB87D738'|lang}-->"},onerror:"<!--{'1DF7810C9F146426FCC2D187BB87D738'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+	$("#MsgContent").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'1DF7810C9F146426FCC2D187BB87D738'|lang}-->"},onerror:"<!--{'1DF7810C9F146426FCC2D187BB87D738'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+	$("#Cash").formValidator({onshow:"<!--{'DE66A286057D4E3F1EE2D9BCCBD48CE5'|lang}-->",oncorrect:"<!--{'4E1F4650D7FBEC72C615440948C993D9'|lang}-->"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'13DC97190FA9E9DFBB4387307EB8074A'|lang}-->"});
+	$("#Times").formValidator({onshow:"<!--{'DE66A286057D4E3F1EE2D9BCCBD48CE5'|lang}-->",oncorrect:"<!--{'E6B00B4D34B21AC73B7326DBA3F40419'|lang}-->"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"<!--{'13DC97190FA9E9DFBB4387307EB8074A'|lang}-->"});
+	$("#TotalCash").formValidator({onshow:"<!--{'DE66A286057D4E3F1EE2D9BCCBD48CE5'|lang}-->",oncorrect:"<!--{'E93B32CEA1BEBA80D1A6136D4EA18C8A'|lang}-->"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"<!--{'13DC97190FA9E9DFBB4387307EB8074A'|lang}-->"});
+})
+
+</script>
+<fieldset>
+<legend><!--{'A342EE2CFF2B0879ABDBD335323AEBB2'|lang}--> [<font color="#0000FF"><!--{'ED4EBD5BB7CFCAD8BEDE3C87F8C6AA65'|lang}--></font>]</legend>
+
+<div id="showItem"></div>
+
+<form action="" id="form" method="post" >
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row"><!--{'C7375AD4A1177F7E286D520D7DF3B1C9'|lang}--></th>
+    <td><input type="text" class="text" name="PName" id="PName" size="60" /><div id="PNameTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'F195F63A87BBDE9372609887D36CECC5'|lang}--></th>
+    <td><textarea name="PDescribe" cols="50" id="PDescribe" rows="8"></textarea><div id="PDescribeTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'A53DB51463C2D8EC4AE21144C4579A15'|lang}--></th>
+    <td><input type="text" class="text" name="MsgTitle" id="MsgTitle" size="60" value="" /><div id="MsgTitleTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'B87B77561E776367E6756E11EA652217'|lang}--></th>
+    <td><textarea name="MsgContent" id="MsgContent" rows="6" cols="50"></textarea><div id="MsgContentTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'6E66A1D85E3661EB2B14E315B09337C4'|lang}--></th>
+    <td><input name="Cash" type="text" id="Cash" class="text" size="60" /><div id="CashTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'0D912B76098A55C0CB3BFB62D54E19EE'|lang}--></th>
+    <td><input name="Times" type="text" id="Times" class="text" value="0" size="60" /><div id="TimesTip"></div>
+    	<input type="radio" value="0" checked="checked" name="TimesDetail" ><!--{'C200ADCDE094208482D1007E4BF6BE0C'|lang}-->
+        <input type="radio" value="1" name="TimesDetail" ><!--{'02752BE751F7367B2CE2CB02197EF718'|lang}--> 
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'29B6DD14238ABDFC00836BEAD6DEE3FA'|lang}--></th>
+    <td>
+    	<input type="radio" name="EachLimit" value="1" onClick="$('#each').show()" /><!--{'0A60AC8F02CCD2CF723F927284877851'|lang}-->
+        <input type="radio" name="EachLimit" value="0" onClick="$('#each').hide()" checked /><!--{'C9744F45E76D885AE1C74D4F4A934B2E'|lang}-->
+    </td>
+  </tr>
+  <tr id="each" style="display:none">
+    <th scope="row"><!--{'086BF2DFF8AFA5C0549E55B07FDEEFAA'|lang}--></th>
+    <td><input type="text" class="text" name="PEach" size="60" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'096EFBA460CCD679E7002EEA643DD266'|lang}--></th>
+    <td><input name="TotalCash" type="text" class="text" id="TotalCash" value="0" size="60" /><div id="TotalCashTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'ADF8C2E2A80BE27A856F110244AC09C1'|lang}--></th>
+    <td>
+    	<input type="radio" name="TimeLimit" onClick="$('#time').show()" value="1" /><!--{'0A60AC8F02CCD2CF723F927284877851'|lang}-->
+        <input type="radio" name="TimeLimit" onClick="$('#time').hide()" checked value="0" /><!--{'C9744F45E76D885AE1C74D4F4A934B2E'|lang}-->
+    </td>
+  </tr>
+  <tr id="time" style="display:none">
+    <th scope="row"><!--{'6A050C2A04BB69E4B24FCBF029CF33BD'|lang}--></th>
+    <td>
+    	<input type="text" class="text" name="SendTime" value="<!--{$systemTime|strtotime:'+1 hours'}-->" onFocus="WdatePicker({startDate:'<!--{$systemTime|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/> 
+        <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}-->
+        <input type="text" class="text" name="EndTime" value="<!--{$systemTime|strtotime:'+1 day'}-->" onFocus="WdatePicker({startDate:'<!--{$systemTime|strtotime:'+1 day'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        <!--{'4C82AEABE39C801738069F81294C24B0'|lang}-->：<font color="#FF0000"><!--{$systemTime|date_format:"%Y-%m-%d %H:%M:%S"}--></font>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'664B9B5DAEA434BBF3C63574392CF287'|lang}--></th>
+    <td>
+    	<input type="button" class="btn-blue" onclick="addGetCond($(this))" value="<!--{'53547608D8563C352DD64D33CA4E4C98'|lang}-->" />
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'46C52C767383B0A4246F5149E7E585FE'|lang}--></th>
+    <td>
+    	<input type="button" class="btn-blue" onclick="addEffect($(this))" value="<!--{'9617335C840B393D4E12F66620C06240'|lang}-->" />
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'62C341F9C880236471E35B60EE816B3B'|lang}--></th>
+    <td>
+        <input type="button" class="btn-blue" onclick="addTool($(this))" value="<!--{'BF9E805569213C27D1CE1C611B8B964E'|lang}-->" />
+    </td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">
+      <input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" />
+      </th>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

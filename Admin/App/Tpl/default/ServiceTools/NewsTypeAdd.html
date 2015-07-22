@@ -1,0 +1,19 @@
+<fieldset>
+	<legend>交接类型操作</legend>
+    <form action="" method="post">
+        <table width="500" border="0" cellpadding="3">
+          <tr>
+            <th scope="row">Id</th>
+            <td><!--{$data.Id|default:0}--></td>
+          </tr>
+          <tr>
+            <th scope="row">名字</th>
+            <td><input class="text" type="text" name="name" value="<!--{$data.name|default:''}-->"></td>
+          </tr>
+          <tr>
+            <th scope="row">&nbsp;</th>
+            <td><input type="submit" class="btn-blue" value="保存"></td>
+          </tr>
+        </table>
+    </form>
+</fieldset>

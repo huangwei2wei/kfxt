@@ -1,0 +1,64 @@
+<div id="container">
+<div id="header">
+	<div class="contai">
+	<div class="top_logo"><a href="#"></a></div>
+		<div class="top">
+			
+			<ul id="links">
+ <li class="nav_t"><a style="cursor:pointer;width:144px;height:21px;display:block;background:url('images/tpl201103/images/button_03.gif')"></a><div style="display: none;" class="cybox">
+    <div class="cyboxtop">
+    <div class="cyboycon">
+	<a target="_blank" href="http://r.uwan.com"><span><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/lingk_frg.gif"></span>富人国<img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/hot.gif"></a>
+ 	<a target="_blank" href="http://bto.uwan.com"><span><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/lingk_bto.gif"></span>商业大亨 </a>
+	<a target="_blank" href="http://h.uwan.com"><span><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/lingk_xh.gif"></span>幻世仙征 <img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/new.gif"></a>
+    <a target="_blank" href="http://g.uwan.com"><span><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/lingk_gf.gif"></span>功夫 <img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/new.gif"></a>
+	<a target="_blank" href="http://xx.uwan.com"><span><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/lingk_xx.gif"></span>寻侠 <img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/new.gif"></a>
+    <a target="_blank" href="http://s.uwan.com"><span><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/lingk_s.gif"></span>双龙诀 <img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/new.gif"></a>
+    <a target="_blank" href="http://bto2.uwan.com"><span><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/lingk_bto2.gif"></span>商业大亨2 <img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/new.gif"></a>
+    <a target="_blank" href="http://hd.uwan.com"><span><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/lingk_hd.gif"></span>海岛大亨 <img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/new.gif"></a>
+	</div>
+    </div>
+</div></li>
+ </ul>
+ <div class="liong">	
+    <!--{/*判断登录状态*/}-->
+    <if condition= "$username"  > 
+        <a href="https://www.uwan.com/UserCenter/EditAccount.php">{$username}</a><a href="http://www.uwan.com/UserCenter/Logout.php" style="border-right:0; padding-left:8px;margin-left:8px;">退出</a>
+    <else/>
+        <b><a href="https://login.uwan.com/UserCenter/Login.php?back=http://service.uwan.com/">登录</a></b><a href="http://www.uwan.com/UserCenter/GetAccount.php">注册</a><a style="border:0" href="#">加入收藏</a>
+    </if>
+    
+ <script type="text/javascript">
+var links = document.getElementById("links");
+var int = links.getElementsByTagName("LI");
+for(var i=0;i<int.length;i++){
+	mouseEvent(int[i])
+}
+function mouseEvent(obj){
+	obj.onmouseover = function(){
+		if(obj.childNodes[1])obj.childNodes[1].style.display = "block";
+		else return;
+	}
+	obj.onmouseout = function(){
+		if(obj.childNodes[1])obj.childNodes[1].style.display = "none";
+		else return;
+	}
+}
+</script>
+			</div>
+			<div style="float:right;padding-top:8px;"><iframe src=" http://open.qzone.qq.com/like?url=http%3A%2F%2Fuser.qzone.qq.com%2F692942699&type=button_num&width=400&height=30" allowtransparency="true" scrolling="no" border="0" frameborder="0" style="width:100px;height:30px;border:none;overflow:hidden;"></iframe></div>
+		</div>
+		<div class="nav">
+			<ul>
+				<li class="shou"><a href="http://www.uwan.com/">首页</a></li>
+				<li><a href="http://www.uwan.com/mm/index.php">动网美眉</a></li>
+				<li><a href="http://www.uwan.com/NewsCenter/index.php">新闻中心</a></li>
+				<li><a href="http://www.uwan.com/UserCenter/index.php">用户中心</a></li>
+				<li><a href="https://pay.uwan.com/InpourCenter/index.php">充值中心</a></li>
+				<li><a class="d" href="/index.php">客服中心</a></li>
+				<li style="background:0"><a target="_blank" href="http://www.uwan.com/bbs.php">游戏论坛</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+</div>

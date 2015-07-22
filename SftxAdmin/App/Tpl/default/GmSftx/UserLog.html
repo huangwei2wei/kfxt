@@ -1,0 +1,84 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+function chageSearch(curVal){
+		var searchSpan=$("#search");
+		searchSpan.empty();
+		switch(curVal){
+			case '1':{//id
+			}
+			case '2':{//呢称
+				searchSpan.append(' <input type="text" class="text" value="<!--{$selectedArr.dataMin}-->" name="dataMin" />');
+				break;
+			}
+			case '3':{
+				searchSpan.append('<input type="text" class="text" name="dataMin" onFocus="WdatePicker({startDate:\'<!--{$selectedArr.dataMin}-->\',dateFmt:\'yyyy-MM-dd HH:mm:ss\',alwaysUseStartDate:true})" value="<!--{$selectedArr.dataMin}-->" /> 至 <input type="text" class="text" name="dataMax" onFocus="WdatePicker({startDate:\'<!--{$selectedArr.dataMax}-->\',dateFmt:\'yyyy-MM-dd HH:mm:ss\',alwaysUseStartDate:true})" value="<!--{$selectedArr.dataMax}-->" />');
+				break;
+			}
+		}
+}
+$(function(){
+	$("#searchType").change();
+})
+</script>
+<fieldset>
+	<legend>类型选择</legend>
+    <a href="<!--{$url.GmSftx_UserLog_Copper}-->">银币操作记录</a>
+    <a href="<!--{$url.GmSftx_UserLog_Gold}-->">金币操作记录</a>
+    <a href="<!--{$url.GmSftx_UserLog_Food}-->">粮食操作记录</a>
+</fieldset>
+
+<fieldset>
+	<legend>用户查询</legend>
+    <table width="98%" border="0" cellpadding="3">
+      <thead>
+      <tr>
+        <td colspan="7">
+        <form action="<!--{$url.GmSftx_UserLog}-->" method="get">
+            <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+            <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+            <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+            搜索类型：<select id="searchType" name="type" onchange="chageSearch($(this).val())"><!--{html_options options=$optionList selected=$selectedArr.type}--></select>
+            <span id="search"></span>
+            <input type="submit" class="btn-blue" value="查找">
+        </form>
+        </td>
+      </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th>ID</th>
+            <th>用户Id</th>
+            <th>操作时间</th>
+            <th>消费前金币</th>
+            <th>消费后金币</th>
+            <th>操作类型</th>
+            <th>操作子类型</th>
+          </tr>
+          <!--{foreach from=$dataList item=vo}-->
+          <tr>
+            <td><!--{$vo.id}--></td>
+            <td><!--{$vo.userId}--></td>
+            <td><!--{$vo.logTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+            <td><!--{$vo.oldValue}--></td>
+            <td><!--{$vo.newValue}--></td>
+            <td><!--{$vo.type}--></td> 
+            <td><!--{$vo.subType}--></td>
+          </tr>
+          <!--{foreachelse}-->
+          <tr>
+            <th colspan="7"><!--{$noData}--></th>
+          </tr>
+          <!--{/foreach}--> 
+          <tr>
+            <th colspan="7" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </tbody>
+    </table>
+</fieldset>
+<!--{/if}-->

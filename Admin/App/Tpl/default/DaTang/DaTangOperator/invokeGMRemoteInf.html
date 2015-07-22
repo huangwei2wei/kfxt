@@ -1,0 +1,87 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+	<legend>游戏接口调用</legend>
+    <form action="" method="post" id='dj_from'>
+        <table width="100%" border="0" cellpadding="3">
+          <tr>
+            <th scope="row">接口名称</th>
+            <td><input type="text" style="width: 300px" class="text" name="invokeName" value="" /></td>
+          </tr>
+          <tr>
+            <th scope="row">&nbsp;</th>
+            <td><input type="button" value="提交" name="sbm" class="btn-blue" /></td>
+          </tr>
+        </table>
+	</form>
+</fieldset>
+
+<script type="text/javascript">
+	$("input[name='check_dj']").click(function(){
+		 var ischecked = $(this).attr('checked');
+		 $("input[name='check_dj']").each(function(i){
+			$(this).attr("checked",false);
+		 });
+		 if(ischecked){
+			var val = $(this).attr("value");
+			$("#"+val).attr('value','');
+			$(this).attr("checked",true);
+		 	$("#goods_show").show();
+		 }else{
+			 $("#goods_show").hide();
+		 }
+		 $("input[name='boogs']").each(function(i){
+			$(this).attr("checked",false);
+			var val = $(this).attr('value');
+			$("#"+value).attr('value','');
+		 });
+	});
+	
+	
+	$("input[name='good_num']").blur(function(){
+		var str = '';
+		$("input[name='boogs']:checked").each(function(){
+			var val = $(this).attr('value');
+			var num = $('#'+val).attr('value');
+			num = num==''?1:num;
+			str += $(this).attr("val-data")+'|'+num+ ',';
+		});
+		str = str.substr(0 ,str.length-1);
+		var val = $("input[name='check_dj']:checked:first").attr('value');
+		$("#"+val).attr('value',str);
+	});
+	
+	
+	$("input[name='sbm']").click(function(){
+		$(":checkbox[name='server_ids[]']:checked").each(function(){
+			var server_id = $(this).attr('value');
+			var server =  $(this);
+			$("#dj_from").ajaxSubmit({
+				dataType:'json',
+				data:{server_id:server_id,do:'edit'},
+				//async : false,    // 设置同步 
+				success:function(o){ 
+					var fontColor=(o.code==1)?'#00cc00':'#ff0000';
+					server.parent().after("<font color='"+fontColor+"'>"+o.msg+"</font>");
+				}
+			});
+		});
+	});
+	
+	
+	function makeInput(obj){
+		var id = obj.attr('checkboxId');
+		if(obj.attr('checked')){
+			//var str = '<input type="text" value="" class="text" style="width:35px;height:10px;border: 1px solid red;" goodId="'+id+'" goodname="'+obj.val()+'" name="goods['+id+'_'+obj.val()+']" onblur="goodsCollectAdd($(this).attr(\'goodId\'),$(this).attr(\'goodName\'),$(this).val())" >';
+			//$('#input_'+id).html(str);
+			$('#input_'+id).children().focus();
+		}else{
+		//	$('#input_'+id).html('');
+		}
+	}
+</script>

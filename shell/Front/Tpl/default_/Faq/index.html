@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>优玩网 - 常见问题</title>
+<include file="../common/libs"/>
+<script>
+$(function(){
+	$('#menu_faq').addClass('d');
+});
+</script>
+</head>
+<body>
+<include file="../common/head"/>
+<div id="contai">
+	<include file="../common/menu"/>
+	<div class="neicon">
+		<div class="contit"><b>当前位置：</b><a href="/index.php" style="color:#999999">客服中心</a> > <a href="#" style="color:#999999">常见问题 </a></div>
+		<div class="conde">
+			<h2>请选择游戏 </h2>
+            <foreach name="faqList" item="vo">
+			<div class="gamelogo"><a href="{:U("Faq/ls/game_type_id/$vo[Id]")}"><img src="{$vo.img}" /></a></div>
+            </foreach>
+            <div style="clear:both;margin-left:100px;padding-top:15px">
+            	<p style="float:left; padding-right:170px"><a href="http://service.uwan.com/index.php?s=/Faq/ls/game_type_id/1" style="color:#666" target="_blank">常见问题</a>　|　<a href="http://bto.uwan.com/" target="_blank" style="color:#666">官方网站</a></p>
+                <p><a href="http://service.uwan.com/index.php?s=/Faq/ls/game_type_id/2" style="color:#666" target="_blank">常见问题</a>　|　<a href="http://r.uwan.com/" target="_blank" style="color:#666">官方网站</a></p>
+            </div>            
+		</div>
+		<img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/title_11.gif" />
+	</div>
+	<include file="../common/footer"/>
+		</div>
+</body>
+
+</html>

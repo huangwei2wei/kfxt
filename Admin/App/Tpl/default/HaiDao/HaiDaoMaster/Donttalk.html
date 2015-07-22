@@ -1,0 +1,97 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='UserId[]']").attr("checked",curCheck);
+	 });
+});
+function del(){
+	if(confirm('<!--{'187D1FE0248DC951304185D455EC5437'|lang}-->?')){
+		$('form').submit();
+	}
+}
+function viewDetail(obj){
+	var info = obj.parent().parent().next();
+	if(info.html() == ''){
+		info.html('<td colspan="9" style="background:#CCCCCC;padding:15px;padding-top:5px;" ><div style="padding-bottom:5px;"><a href="javascript:void(0);" onclick="hindParent($(this))"><!--{'B15D91274E9FC68608C609999E0413FA'|lang}--></a></div><div><!--{'F013EA9DCBA3F5CA1278AA850931FEC8'|lang}-->...</div></td>');
+		$.ajax({
+			dataType:'text',	
+			type: 'GET',
+			url: obj.attr('url'),
+			success:function(content){				
+				info.html('<td colspan="9" style="background:#CCCCCC;padding:15px;padding-top:5px;" ><div style="padding-bottom:5px;"><a href="javascript:void(0);" onclick="hindParent($(this))"><!--{'B15D91274E9FC68608C609999E0413FA'|lang}--></a></div><div>'+content+'</div></td>');
+			}
+		});
+	}
+	info.show();
+}
+
+function hindParent(obj){
+	obj.parent().parent().parent().hide();
+}
+
+</script>
+<fieldset>
+	<legend><!--{'147341DE2B997C3C71A0F28E983E6314'|lang}--></legend>
+    <form action="" method="post">
+		<!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->ID：<input type="text" class="text" name="txtids" id="txtids" value="<!--{$_POST.txtids}-->" />
+        <!--{'819767ADA1805B0F0117F10967B94D4D'|lang}-->：<input type="text" class="text" name="txtnames" id="txtnames" value="<!--{$_POST.txtnames}-->" />
+        <input type="submit" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" class="btn-blue" />
+    </form>
+</fieldset>
+<fieldset>
+<legend><!--{'24425AE1D4F14CC8866CEE31D8969670'|lang}--></legend>
+<form action="<!--{$url.MasterFRG_DelDonttalk}-->" method="post" onsubmit="return checksub();">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <td colspan="9">
+    	<a href="<!--{$url.Master_AddDonttalk}-->"><!--{'82C15B89BE813ADD2F089486FF16056A'|lang}--></a>
+        <a href="<!--{$url.Master_ClearOuttalk}-->"><!--{'E29F38542D794E364762BC41F12B9412'|lang}--></a>
+    </td>
+    </tr>
+  <tr>
+    <th scope="col"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+    <th scope="col"><!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->ID</th>
+    <th scope="col"><!--{'819767ADA1805B0F0117F10967B94D4D'|lang}--></th>
+    <th scope="col"><!--{'577C73C20A347C709FBEAA11306916C0'|lang}--></th>
+    <th scope="col"><!--{'7402599BC6350C095FB3CA545D950480'|lang}--></th>
+    <th scope="col"><!--{'87D5EB8F8845C7472BACF9FD969D560C'|lang}--></th>
+    <th scope="col"><!--{'BA9AB78E0983149C7B6E82D2E0B2B3AA'|lang}--></th>
+    <th scope="col"><!--{'270EFFC7A60674109DBF7ADEC7416886'|lang}--></th>
+    <th scope="col"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>    
+  </tr>
+  <!--{foreach from=$dataList key=key item=list}-->
+  <tr>
+    <td scope="col"><input type="checkbox" value="<!--{$key}-->" name="UserId[]" /></td>
+    <td scope="col"><!--{$key}--></td>
+    <td scope="col"><!--{$list.UserName}--></td>
+    <td scope="col"><!--{$list.VUserName}--></td>
+    <td scope="col"><!--{$list.Gold}--></td>
+    <td scope="col"><!--{$list.RegTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td scope="col"><!--{$list.StartTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td scope="col"><!--{$list.EndTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td scope="col"><a url="<!--{$list.detail_url}-->" href="javascript:void(0);" onclick="viewDetail($(this));"><!--{'B074F7DFA7A99952D82C81D54D4B6018'|lang}--></a></td>
+  </tr>
+  <tr style="display:none;"></tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="9" scope="col">
+  		<!--{$noData}--> 	
+    </th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <td colspan="9" scope="col">
+  		<!--{'6F92B63DB2645063CF534B90300C13A1'|lang}--><input type="checkbox" id="allcheck" /><input type="button" class="btn-blue" onClick="del()" value="解禁" />  	
+    </td>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

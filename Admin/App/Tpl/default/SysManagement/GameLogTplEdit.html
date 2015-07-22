@@ -1,0 +1,84 @@
+
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+
+
+<fieldset>
+  <legend><!--{$legend}--></legend>
+<form action="" method="post">
+    <table width="700" border="0" cellpadding="3">
+     <!--{if $dataList.Id >0}-->
+     <tr>
+        <th scope="row" width="200">Id</th>
+        
+        <td>
+        	<!--{$dataList.Id}-->
+        </td>
+        
+      </tr>
+      <!--{/if}-->
+      <tr>
+        <th scope="row" width="200">所属游戏</th>
+        <td> <!--{html_options name="game_type" id="game_type" onchange="gamechange(this.value);" options=$game_type selected=$dataList.game_type}--></td>
+      </tr>
+      <tr>
+        <th scope="row">类型</th>
+        <td>
+        	<select name="rootid" id="rootid"></select>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">分类Id</th>
+        <td>
+        	<input type="text" name="typeid" class="text" value="<!--{$dataList.typeid}-->" />
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">分类名</th>
+        <td>
+        	<input type="text" name="typename" class="text" value="<!--{$dataList.typename}-->" />
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">变量数</th>
+        <td>
+        	<input type="text" name="var_count" class="text" value="<!--{$dataList.var_count}-->" />
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">模板</th>
+        <td>
+        	<textarea name="tpl" style="width:99%; height:100px;" ><!--{$dataList.tpl}--></textarea>
+            <br>
+            举例：完成每日任务{x1}（{x2}），获得经验{x3}，银两{x4}
+        </td>
+      </tr>
+      <tr>
+        <th scope="row" colspan="2"><input class="btn-blue" type="submit" value="保存"></th>
+      </tr>
+    </table>
+
+</form>
+
+
+</fieldset>
+
+<script language="javascript" >
+	var GameLogRoot = <!--{$GameLogRoot}-->;
+	function gamechange(game_id){
+		$('#rootid').html('');
+		if(game_id>0){
+			$.each(GameLogRoot[game_id],
+				function(Id,name){ 
+					$('<option/>').attr('value',Id).text(name).appendTo('#rootid');
+				}
+			);	
+		}
+	}
+	
+$(document).ready(function(){
+	//gamechange($('#game_type').val());
+});
+gamechange($('#game_type').val());
+$('#rootid').val('<!--{$dataList.rootid}-->');
+</script>

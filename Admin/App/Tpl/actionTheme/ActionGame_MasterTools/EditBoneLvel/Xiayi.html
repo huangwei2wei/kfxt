@@ -1,0 +1,51 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+
+<fieldset>
+	<legend>修改根骨等级</legend>
+	<script language="javascript">
+    $(function(){
+        $.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+        $("#user").formValidator({onshow:"请输入玩家信息",oncorrect:"输入正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入玩家信息"},onerror:"内容不能为空"});
+        $("#bone_id").formValidator({onshow:"骨头ID",oncorrect:"输入正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"骨头ID"},onerror:"内容不能为空"});
+        $("#bone_level").formValidator({onshow:"根骨等级",oncorrect:"输入正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"根骨等级"},onerror:"内容不能为空"});
+    })
+    </script>
+    <form id="form" action="" method="post">
+    <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">类型：</font></th>
+        <td>
+            <div>
+                <label><input type="radio" name="userType" value="1" checked="checked"/>玩家ID</label>
+                <label><input type="radio" name="userType" value="2" />玩家账号</label>
+                <label><input type="radio" name="userType" value="3" />玩家昵称</label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">玩家信息</th>
+        <td><input type="text" class="text" name="user" id="user"/><div id="userTip"></div></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">第几个根骨</th>
+        <td><input type="text" class="text" name="bone_id" id="bone_id"/><div id="bone_idTip"></div></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">根骨等级</th>
+        <td><input type="text" class="text" name="bone_level" id="bone_level"/><div id="bone_levelTip"></div></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" name="sbm" value="提交" /></th>
+      </tr>
+    </table>
+    </form>
+    </fieldset>
+<!--{/if}-->
+
+
+

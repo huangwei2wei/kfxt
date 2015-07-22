@@ -1,0 +1,134 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+</script>
+
+<fieldset>
+  <legend>摊位信息</legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+   角色ID:<input class="text" type="text" name="AccountID" value="<!--{$_GET.AccountID}-->">
+    角色名:<input class="text" type="text" name="AccountName" value="<!--{$_GET.AccountName}-->">
+    <input class="btn-blue" type="submit" name="sbm" value="查询">
+</form>
+
+<form action="" id="playerIdsForm" method="post">
+
+ <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>摊位编号</th>
+          <th>摊位名称</th>
+          <th>铜钱收益</th>
+          <th>元宝或银贯收益</th>
+          <th>经验收益</th>
+          <th>出售铜钱的数量</th>
+          <th>出售铜钱的价格</th>
+          <th>出售元宝或银贯的数量</th>
+          <th>出售元宝或银贯的价格</th>
+        </tr>
+        <tr>
+       	  <td align="center"><!--{$data.ID}--></td>
+          <td align="center"><!--{$data.Name}--></td>
+          <td align="center"><!--{$data.InMoneyGame}--></td>
+          <td align="center"><!--{$data.InMoneyCash}--></td>
+          <td align="center"><!--{$data.InExp}--></td>
+          <td align="center"><!--{$data.MoneyGamePrice}--></td>
+          <td align="center"><!--{$data.SellMoneyGame}--></td>
+          <td align="center"><!--{$data.MoneyCashPrice}--></td>
+          <td align="center"><!--{$data.SellMoneyCash}--></td>
+         
+        </tr>
+  </table>
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>ID</th>
+          <th>名</th>
+          <th>数量</th>
+          <th>强化等级</th>
+          <th>属性</th>
+          <th>铜钱价格</th>
+          <th>元宝或银贯价格</th>
+        </tr>
+        
+		<!--{foreach from=$data.ItemList item=list}-->
+        <tr>
+       	  <td align="center"><!--{$list.ItemID}--></td>
+          <td align="center"><!--{$list.ItemName}--></td>
+          <td align="center"><!--{$list.ItemNum}--></td>
+           <td align="center"><!--{$list.ImproveLevel}--></td>
+          <td align="center"><!--{$list.AttachAttribute}--></td>
+          <td align="center"><!--{$list.PriceGame}--></td>
+          <td align="center"><!--{$list.PriceCash}--></td>
+         
+        </tr>
+        
+		<!--{/foreach}-->
+      </table>
+      
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>交易时间</th>
+          <th>买家ID</th>
+          <th>卖家ID</th>
+          <th>买家名称</th>
+          <th>卖家名称</th>
+          <th>获得经验</th>
+          <th>日志类型</th>
+          
+          <th>MoneyGame</th>
+          <th>MoneyCash</th>
+          <th>道具ID</th>
+          <th>道具名</th>
+          <th>道具数量</th>
+          <th>强化等级</th>
+          <th>附加属性</th>
+        </tr>
+        
+		<!--{foreach from=$data.LogList item=list}-->
+        <tr>
+       	  <td align="center"><!--{$list.BuyTime}--></td>
+          <td align="center"><!--{$list.BuyerID}--></td>
+          <td align="center"><!--{$list.SellerID}--></td>
+           <td align="center"><!--{$list.BuyerName}--></td>
+          <td align="center"><!--{$list.SellerName}--></td>
+          <td align="center"><!--{$list.GainExp}--></td>
+          <td align="center"><!--{$list.LogType}--></td>
+          
+          <td align="center"><!--{$list.MoneyGame}--></td>
+           <td align="center"><!--{$list.MoneyCash}--></td>
+          <td align="center"><!--{$list.ItemID}--></td>
+          <td align="center"><!--{$list.ItemName}--></td>
+          <td align="center"><!--{$list.ItemNum}--></td>
+           <td align="center"><!--{$list.ImproveLevel}--></td>
+          <td align="center"><!--{$list.AttachAttribute}--></td>
+         
+        </tr>
+        
+		<!--{/foreach}-->
+      </table>
+</form>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

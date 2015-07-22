@@ -1,0 +1,200 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+var equip_info_json=<!--{$equip_info_json}-->;
+var userTypeArr=[['玩家ID'],['玩家账号'],['玩家昵称']];
+var beforeHtml = '';
+function acedit(t){
+	$('#user_detail_'+t+' input').each(function (){
+		$(this).attr('disabled',false);
+	});
+}
+function reback(t){
+	$('#user_detail_'+t).html(beforeHtml);
+	beforeHtml='';
+	$('#user_detail_'+t).hide();
+	$('#fieldset_equip_list').show();
+}
+function showdetail(index,k,t){
+	$('#fieldset_equip_list').hide();
+	
+	beforeHtml = $('#user_detail_'+t).html();//保存原始格式
+	
+	var strAdd = '<tr><td>'+userTypeArr[<!--{$GET.userType}-->-1]+':</td><td><input type="text" name="update_user" value="<!--{$GET.user}-->" readonly="readonly"><input type="hidden" name="update_userType" value="'+<!--{$GET.userType}-->+'"><input type="hidden" name="update_cmd" value="'+t+'"></td></tr>';
+	    strAdd += '<tr><td>装备ID:</td><td><input type="text" name="update_equip_id" value="'+k+'" readonly="readonly"></td></tr>';
+	$('#user_detail_'+t+' table').prepend(strAdd);
+	
+	var strAdd2 = '<tr><td><input type="button" value="修改" onclick="acedit('+t+');"><input type="submit" value="保存" name="sbm" disabled><input type="button" value="返回" onclick="reback('+t+');"></td><td></td></tr>';
+	$('#user_detail_'+t+' table').append(strAdd2);
+	
+	
+	if(t==0){
+		$('#user_detail_'+t+' input[name$="level"]').attr('value',equip_info_json[index].item_obj.star);
+	} else if(t==2){
+		$('#user_detail_'+t+' input[name$="hit"]').attr('value',equip_info_json[index].item_obj.append_t.hit);
+		$('#user_detail_'+t+' input[name$="hp"]').attr('value',equip_info_json[index].item_obj.append_t.hp);
+		$('#user_detail_'+t+' input[name$="mp"]').attr('value',equip_info_json[index].item_obj.append_t.mp);
+		$('#user_detail_'+t+' input[name$="crit"]').attr('value',equip_info_json[index].item_obj.append_t.crit);
+	} else if(t==3){
+		$('#user_detail_'+t+' input[name$="level"]').attr('value',equip_info_json[index].item_obj.enchant_star);
+	}
+	
+	$('#user_detail_'+t).show();
+	$('#ac_ac').show();
+}
+</script>
+<fieldset>
+  <legend>用户查询</legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->"/>
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    玩家信息:<input class="text" type="text" name="user" value="<!--{$GET.user}-->" -->
+    <input type="radio" name="userType" value="1" <!--{if $GET.userType eq 1}-->checked="checked"<!--{/if}-->>玩家ID
+    <input type="radio" name="userType" value="2" <!--{if $GET.userType eq 2}-->checked="checked"<!--{/if}-->>玩家账号
+    <input type="radio" name="userType" value="3" <!--{if $GET.userType eq 3}-->checked="checked"<!--{/if}-->>玩家昵称
+    <input class="btn-blue" type="submit" name="sbm" value="查询">
+</form>
+
+<fieldset id="fieldset_equip_list">
+      <table width="100%" border="0" cellpadding="3" id="userlist">
+        <tr>
+          <th>装备ID</th>
+          <th>格子</th>
+          <th>数量</th>
+          <th>命中</th>
+          <th>气血值</th>
+          <th>内力值</th>
+          <th>暴击</th>
+          <th>星级</th>
+          <th>强化信息</th>
+          <th>兵魂信息</th>
+          <th>兵魂数量</th>
+          <th>附魔等级</th>
+          <th>当前耐久</th>
+          <th>附魔信息</th>
+          <th>绑定</th>
+          <th>操作</th>
+        </tr>
+        
+		<!--{foreach from=$equip_info item=list key=k}-->
+        <tr id="<!--{$list.id}-->">
+       	  <td align="center"><!--{$list.id|default:'0'}--></td>
+       	  <td align="center"><!--{$list.slot|default:'0'}--></td>
+          <td align="center"><!--{$list.number|default:'<font color="#999999">无</font>'}--></td>
+          <td align="center"><!--{$list.item_obj.append_t.hit}--></td>
+          <td align="center"><!--{$list.item_obj.append_t.hp}--></td>
+          <td align="center"><!--{$list.item_obj.append_t.mp}--></td>
+          <td align="center"><!--{$list.item_obj.append_t.crit}--></td>
+          <td align="center"><!--{$list.item_obj.star|default:'0'}--></td>
+          <td align="center"><!--{$list.item_obj.instensify_t|default:'0'}--></td>
+          <td align="center">
+          		<!--{foreach from=$list.item_obj.soul_t item=list2 key=k2}-->
+          			<!--{if $list2.type neq 0}-->
+          			<!--{$k2+1}-->、等级:<!--{$list2.lvl}-->,经验:<!--{$list2.cur_exp}-->,类型:<!--{$list2.type}--><br>
+          			<!--{/if}-->
+          		<!--{/foreach}-->
+          </td>
+          <td align="center"><!--{$list.item_obj.soul_num|default:'0'}--></td>
+          <td align="center"><!--{$list.item_obj.enchant_star}--></td>
+          <td align="center"><!--{$list.item_obj.cur_endure}--></td>
+          <td align="center">
+          	<!--{if $list.item_obj.enchant_t}-->
+          	附加外功伤害:<!--{$list.item_obj.enchant_t.aap}-->,忽略外功防御:<!--{$list.item_obj.enchant_t.iar}-->
+          	<!--{/if}-->
+          </td>
+          <td align="center"><!--{if $list.item_obj.bind eq 0}-->否<!--{else}-->是<!--{/if}--></td>
+          <td align="center">
+          		<a href="javascript:void(0)" onclick="showdetail('<!--{$k}-->','<!--{$list.id}-->',0)">强化装备</a><br>
+          		<a href="javascript:void(0)" onclick="showdetail('<!--{$k}-->','<!--{$list.id}-->',1)">兵魂激活</a><br>
+          		<a href="javascript:void(0)" onclick="showdetail('<!--{$k}-->','<!--{$list.id}-->',2)">修改精炼</a><br>
+          		<a href="javascript:void(0)" onclick="showdetail('<!--{$k}-->','<!--{$list.id}-->',3)">装备附魔</a><br>
+          </td>
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="16" align="center">
+                <!--{if $_GET.submit}-->
+                查无数据
+                <!--{else}-->
+                <font color="#FF0000">请使用"查询"按钮</font>
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/foreach}-->
+         
+          <tr>
+            <th colspan="16" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+</fieldset>
+
+
+<fieldset id="user_detail_0" style="display:none">
+<form action="" method="POST">
+<legend>强化装备</legend>
+<table width="100%" border="0" cellpadding="2">
+<tr><td>装备等级:</td><td>
+<input type="hidden" value="装备等级" name="str_level_0">
+<input type="text" value="" name="ac_0_level" disabled></td></tr>
+</tr>
+</table>
+</form>
+</fieldset>
+
+<fieldset id="user_detail_1" style="display:none">
+<form action="" method="POST">
+<legend>兵魂激活</legend>
+<table width="100%" border="0" cellpadding="2">
+<tr><td>兵魂格子编号:</td><td>
+<input type="hidden" value="兵魂格子编号" name="str_soul_slot_1">
+<input type="text" value="" name="ac_1_soul_slot" disabled></td></tr>
+<tr><td>兵魂类型:</td><td>
+<input type="hidden" value="兵魂类型" name="str_soul_type_1">
+<input type="text" value="" name="ac_1_soul_type" disabled></td></tr>
+</table>
+</form>
+</fieldset>
+
+<fieldset id="user_detail_2" style="display:none">
+<form action="" method="POST">
+<legend>精炼属性值</legend>
+<table width="100%" border="0" cellpadding="2">
+<tr><td>命中值:</td><td>
+<input type="hidden" value="命中值" name="str_hit_2">
+<input type="text" value="" name="ac_2_hit" disabled></td></tr>
+<tr><td>生命值:</td><td>
+<input type="hidden" value="生命值" name="str_hp_2">
+<input type="text" value="" name="ac_2_hp" disabled></td></tr>
+<tr><td>内力值:</td><td>
+<input type="hidden" value="内力值" name="str_mp_2">
+<input type="text" value="" name="ac_2_mp" disabled></td></tr>
+<tr><td>暴击值:</td><td>
+<input type="hidden" value="暴击值" name="str_crit_2">
+<input type="text" value="" name="ac_2_crit" disabled></td></tr>
+</table>
+</form>
+</fieldset>
+
+<fieldset id="user_detail_3" style="display:none">
+<form action="" method="POST">
+<legend>装备附魔</legend>
+<table width="100%" border="0" cellpadding="2">
+<tr><td>附魔等级:</td><td>
+<input type="hidden" value="附魔等级" name="str_level_3">
+<input type="text" value="" name="ac_3_level" disabled></td></tr>
+</table>
+</form>
+</fieldset>
+
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

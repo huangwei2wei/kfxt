@@ -1,0 +1,85 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#cause").formValidator({onshow:"请输入申请理由",oncorrect:"申请理由正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入申请理由"},onerror:"申请理由不能为空"});
+	
+})
+</script>
+<fieldset>
+  <legend>搜索</legend>
+  
+<form action=""  method="post">
+	
+    
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+      <td>
+      	账号类型：
+            <select name="userType">
+            	<!--{html_options options=$userType selected=$_POST.userType}-->
+            </select>
+	            账号:<input class="text" type="text" name="user" value="<!--{$_POST.user}-->">
+	    查询类型：<select name="backpackSearchType">
+            	<!--{html_options options=$backpackSearchType selected=$_POST.backpackSearchType}-->
+            </select>
+	            
+	         <input class="btn-blue" type="submit" value="查询">
+        </td>
+      </tr>
+      
+    </table>
+</form>
+</fieldset>
+<fieldset>
+  <legend>
+	背包查询 
+  </legend>
+<form action="<!--{$URL_itemsDel}-->" method="post" id ='form'>
+	<input type="hidden" name="userType" value="<!--{$_POST.userType}-->">
+    <input type="hidden" name="user" value="<!--{$_POST.user}-->">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+      	<th scope="col">物品名称</th>
+      	<th scope="col">物品ID</th>
+        <th scope="col">格子ID</th>
+        <th scope="col">现有数量</th>
+        <th scope="col">增加的数量</th>
+      </tr>
+        <!--{foreach from=$dataList item=sub key=key}-->
+    
+              <tr>
+                <td><!--{$sub.goodsName}--></td>
+                <td><!--{$sub.goodsId}--></td>
+                <td><!--{$sub.gid}--></td>
+                <td><!--{$sub.num}--></td>
+                <td>
+                	- <input type="text" class="text" value="" id="item_<!--{$key}-->_<!--{$k}-->" name="itemNum[<!--{$sub.gid}-->_<!--{$sub.goodsId}-->]">                	
+                    <input type="hidden" class="text" value="<!--{$sub.goodsName}-->"  name="goodsName[<!--{$sub.gid}-->_<!--{$sub.goodsId}-->]">
+                </td>
+              </tr>
+        <!--{/foreach}-->
+    
+    </table>
+    
+    <div style="margin:10px;">扣除原因:</div>
+    <div style="margin:10px;"><textarea name="cause" id="cause" style="width:500px; height:80px;"></textarea><div id="causeTip"></div></div>
+    
+    <div style="margin:10px;"><input type="submit" class="btn-blue" onclick="return submitCheck();" value="申请扣除" /></div>
+</form>
+</fieldset>
+
+
+<!--{/if}-->

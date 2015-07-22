@@ -1,0 +1,39 @@
+
+
+
+<fieldset>
+<legend>
+    列表
+    [<a href="<!--{$url.GameOperator_CreateCacheGameOperator}-->">创建缓存]</a>
+    [<a href="<!--{$url.GameOperator_VipAdd}-->">批量简单添加</a>]
+    [<a href="<!--{$url.GameOperator_AddGameOperator}-->">添加</a>]
+</legend>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th>Id</th>
+    <th>游戏类型</th>
+    <th>运营商</th>
+    <th>URL模板</th>
+    <th>VIP超时限定(普通,1-6级)<br>VIP充值量设定(普通,1-6级)</th>
+    <th>操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.Id}--></td>
+    <td><!--{$list.word_game_type_id}--></td>
+    <td><!--{$list.word_operator_id}--></td>
+    <td><!--{$list.url|default:'<font color="#666666">无</font>'}--></td>
+    <td><!--{$list.vip_setup.vip_timeout}--><br><!--{$list.vip_setup.vip_pay}--></td>
+    <td>
+    	[<a href="<!--{$list.url_setup}-->" >设置</a>]
+        [<a href="<!--{$list.url_edit}-->">详细编辑</a>]
+       	[<a href="<!--{$list.url_del}-->" >删除</a>]
+    </td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr>
+  	<th colspan="6"><!--{$noData}--></th>
+  </tr>
+  <!--{/foreach}--> 
+</table>
+</fieldset>

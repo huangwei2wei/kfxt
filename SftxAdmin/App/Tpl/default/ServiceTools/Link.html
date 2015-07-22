@@ -1,0 +1,117 @@
+<script language="javascript">
+function add(url){
+	$("#fieldset").fadeOut("fast");
+	$("#show_string").html("添加活动链接");
+	$("#form").attr("action","<!--{$url.ServiceTools_AddLink}-->");
+	$("#Id").val("");
+	$("#title").val("");
+	$("#href").val("http://");
+	$("#fieldset").fadeIn("fast");
+	
+}
+
+function edit(curHref){
+	$("#fieldset").fadeOut("fast");
+	$("#show_string").html("编辑活动链接");
+	$("#form").attr("action","<!--{$url.ServiceTools_EditLink}-->");
+	$("#Id").val(curHref.attr("auto_id"));
+	$("#game_type_id").val(curHref.attr("game_type_id"));
+	$("#operator_id").val(curHref.attr("operator_id"));
+	$("#title").val(curHref.attr("title"));
+	$("#href").val(curHref.attr("url"));
+	$("#fieldset").fadeIn("fast");
+}
+$(function(){
+	$("#search :radio").click(function(){
+		$("#search").submit();
+	})
+})
+</script>
+<fieldset>
+	<legend>搜索</legend>
+  <form action="" id="search" method="get">
+   	  <input type="hidden" value="Link" name="a" />
+      <input type="hidden" value="ServiceTools" name="c" />
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th scope="row">游戏类型</th>
+          <td><!--{html_radios name="game_type_id" options=$selectGameTypeList selected=$selectedGameTypeId}--></td>
+        </tr>
+        <tr>
+          <th scope="row">运营商</th>
+          <td><!--{html_radios name="operator_id" options=$selectOperatorList selected=$selectedOperatorId}--></td>
+        </tr>
+        <tr>
+          <th colspan="2" scope="row">
+          	<input type="submit" class="btn-blue" value="提交" />
+          </th>
+        </tr>
+      </table>
+    </form>
+</fieldset>
+<a href="javascript:add()">添加活动链接</a>
+<fieldset id="fieldset" style="display:none">
+	<legend id="show_string"></legend>
+  	<form id="form" method="post" action="">
+    <input type="hidden" value="" name="Id" id="Id" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">游戏类型</th>
+        <td><select id="game_type_id" name="game_type_id"><!--{html_options options=$gameTypeList}--></select></td>
+      </tr>
+      <tr>
+        <th scope="row">运营商</th>
+        <td><select id="operator_id" name="operator_id"><!--{html_options options=$operatorList}--></select></td>
+      </tr>
+      <tr>
+        <th scope="row">标题</th>
+        <td><input name="title" type="text" class="text" id="title" size="60" /></td>
+      </tr>
+      <tr>
+        <th scope="row">链接</th>
+        <td><input name="href" type="text" class="text" id="href" size="60" /></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row">
+        	<input type="submit" class="btn-blue" value="提交" />
+            <input type="button" class="btn-blue" onclick="$('#fieldset').fadeOut('fast')" value="关闭" />
+        </th>
+      </tr>
+    </table>
+	</form>
+</fieldset>
+<fieldset>
+	<legend>列表</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">游戏类型</th>
+        <th scope="col">运营商</th>
+        <th scope="col">标题</th>
+        <th scope="col">最后编辑时间</th>
+        <th scope="col">添加人</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td><!--{$list.word_game_type_id}--></td>
+        <td><!--{$list.word_operator_id}--></td>
+        <td title="<!--{$list.href}-->"><a target="_blank" href="<!--{$list.href}-->" ><!--{$list.title}--></a></td>
+        <td><!--{$list.edit_time}--></td>
+        <td><!--{$list.word_user_id}--></td>
+        <td>
+        	<a href="javascript:void(0)" onClick="edit($(this))" auto_id="<!--{$list.Id}-->" game_type_id="<!--{$list.game_type_id}-->" operator_id="<!--{$list.operator_id}-->" url="<!--{$list.href}-->" title="<!--{$list.title}-->">编辑</a>
+            <a onClick="return confirm('确定要删除吗?')" href="<!--{$list.url_del}-->">删除</a>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="7"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td align="right" colspan="7"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+</fieldset>

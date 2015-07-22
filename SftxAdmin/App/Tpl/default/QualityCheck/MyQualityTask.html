@@ -1,0 +1,64 @@
+<fieldset>
+	<legend>任务选择</legend>
+        <form action="<!--{$url.QualityCheck_MyQualityTask}-->" method="get">
+        <input type="hidden" value="<!--{$__CONTROL__}-->" name="c" />
+        <input type="hidden" value="<!--{$__ACTION__}-->" name="a" />
+        <table width="100%" border="0" cellpadding="3">
+          <tr>
+            <th scope="row"> 质检类型：</th>
+            <td><!--{html_radios options=$qualityOptions selected=$selectedQualityOption name="quality_option"}--></td>
+          </tr>
+          <tr>
+            <th scope="row">申诉状态</th>
+            <td><!--{html_radios options=$statusOptions selected=$selectedStatusOption name="status_option"}--></td>
+          </tr>
+          <tr>
+            <th scope="row" colspan="2"><input type="submit" class="btn-blue" value="提交" /></th>
+          </tr>
+        </table>
+        </form>
+</fieldset>
+
+<fieldset>
+  <legend>我质检过的回复</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">质检选项</th>
+        <th scope="col">质检内容</th>
+        <th scope="col">质检时间</th>
+        <th scope="col">申诉内容</th>
+        <th scope="col">申诉时间</th>
+        <th scope="col">处理回复</th>
+        <th scope="col">处理时间</th>
+        <th scope="col">申诉状态</th>
+        <th scope="col">分数</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td><!--{$list.word_option_id}--></td>
+        <td><!--{$list.quality_content|truncateutf8:50}--></td>
+        <td><!--{$list.quality_time}--></td>
+        <td><!--{$list.complain_content|truncateutf8:50}--></td>
+        <td><!--{$list.complain_time}--></td>
+        <td><!--{$list.reply_content}--></td>
+        <td><!--{$list.reply_time}--></td>
+        <td><!--{$list.word_status}--></td>
+        <td><!--{$list.scores}--></td>
+        <td>
+            <a href="<!--{$list.url_detail}-->">察看详细</a>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="11"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <th colspan="11" align="right"><!--{$pageBox}--></th>
+      </tr>
+    </table>
+
+</fieldset>

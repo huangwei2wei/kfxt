@@ -1,0 +1,34 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+
+<fieldset>
+	<legend>IP锁定管理  [<font color="#0000FF">此操作无须审核</font>]</legend>
+<form action="" method="post" id="form" >
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="98%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">操作原因</th>
+        <td><textarea name="cause" id="cause" cols="60" rows="5"></textarea><div id="causeTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row">
+        	请填写IP<br/>
+            用逗号(&quot;,&quot;)隔开<br/>
+            IP段封锁可用*表示，如:192.168.*.*
+        </th>
+        <td>
+        	<textarea name="ips" id="ips" cols="60" rows="8"><!--{$dataList.forbidIps}--></textarea>
+        	<div id="UserIdTip"></div>
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" id="submit" value="修改设置"  /></th>
+      </tr>
+    </table>
+</form>
+</fieldset><!--{/if}-->

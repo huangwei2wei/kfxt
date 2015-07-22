@@ -1,0 +1,24 @@
+﻿<div class="quesleft">
+
+		<div class="quesleftren">
+			<p><b>欢迎您！</b><br/><span><b>{$username}</b></span></p>
+		</div>
+		
+		<div class="quesleftme">
+				<p><a href="{:U('Question/index')}"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/bur_13.gif" />提交问题</a></p>
+				<ul>
+                    <li><a href="{:U('Question/index')}">综合提交</a></li>
+                    
+				</ul>
+				<p><a href="{:U('Question/ls')}"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/bur_14.gif" />结果查询</a></p>
+				<ul>
+					<li><a href="{:U('Question/ls/status/0')}">待处理问题　（{$waitCount}个）</a></li>
+					<li><a href="{:U('Question/ls/status/3')}">已处理问题　（{$haveCount}个）</a></li>
+				</ul>
+				<p><a href="#"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/bur_15.gif" />结果评价</a></p>
+				<ul>
+					<li><a href="{:U('Question/ls/ev/0')}">待评价　（{$evCount}个）</a></li>
+
+				</ul>
+			</div>
+	</div>

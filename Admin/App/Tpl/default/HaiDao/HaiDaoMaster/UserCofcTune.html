@@ -1,0 +1,102 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<!--{include file="HaiDao/HaiDaoMaster/UserModifyHref.html"}-->
+<!--{if $display}-->
+<script language="javascript">
+var read='<!--{$read}-->';
+
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"服务器ID不存在",oncorrect:"请重新输入服务器ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"服务器数值不正确"});
+	$("#cause").formValidator({onshow:"请输入申请理由",oncorrect:"申请理由正确"}).inputValidator({min:1,empty:{leftempty:true,rightempty:true,emptyerror:"请输入申请理由"},onerror:"申请理由不能为空"});   
+		   
+	$(":radio").click(function(){
+		var value=$(this).val();
+		$(".search_option").attr("disabled","disabled");
+		$("#"+value).removeAttr("disabled");
+	});
+	if(read){
+		$("input").attr("disabled","disabled");
+		$("select").attr("disabled","disabled");
+		$("textarea").attr("readonly","readonly");
+	}
+});
+
+</script>
+
+<fieldset>
+	<legend>商会数值修改(如未作特别说明，均填写相应增减值) [<font color="#FF0000">此操作须要审核</font>]</legend>
+	<form action="" method="post" id="form" >
+	<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+	<input type="hidden" value="<!--{$co->Id}-->" name="cofcid" />
+    <input type="hidden" value="<!--{$uo->UserId}-->" name="userid" />
+    <table width="100%" border="0" cellpadding="3">
+      <!--{if $errMsg}--><caption><font color="#FF0000"><!--{$errMsg}--></font></caption><!--{/if}-->
+      <thead>
+          <tr>
+            <th colspan="6">
+                <input type="radio" id="ids" name="userflag" value="txtids" /><label for="ids">用户Id <font color="#FF0000"><!--{$uo->UserId}--></font></label>
+                <input type="text" class="search_option" id="txtids" name="txtids" size="22" value="" disabled>        
+                
+                <input type="radio" id="names" name="userflag" value="txtnames" /><label for="names">用户名 <font color="#FF0000"><!--{$uo->UserName}--></font></label>
+                <input type="text" class="search_option" id="txtnames" name="txtnames" size="22" value="" disabled>        
+                
+                <input type="radio" id="vnames" name="userflag" value="txtvnames" /><label for="vnames">角色名称 <font color="#FF0000"><!--{$uo->VUserName}--></font></label>
+                <input type="text" class="search_option" id="txtvnames" name="txtvnames" size="22" value="" disabled>        
+                
+                <input type="submit" class="btn-blue" name="search_user" value="搜索" />
+            </th>
+          </tr>
+      </thead>
+      
+      <!--{if $detailTrue}-->
+      <tbody>
+          <tr>
+            <th>申请理由</th>
+            <td colspan="5"><textarea name="cause" id="cause" cols="50" rows="8"><!--{$auditData.cause|htmlspecialchars}--></textarea><div id="causeTip"></div></td>
+          </tr>
+          <tr>
+            <th>联盟名称</th>
+            <td><font color="#FF0000"><!--{$co->Name}--></font></td>
+            <th>会长名称</th>
+            <td><font color="#FF0000"><!--{$co->VUserName}--></font></td>
+            <th>&nbsp;</th>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th>联盟级别  <font color="#FF0000"><!--{$co->Level}--></font></th>
+            <td><input class="user_info" name="cofc[Level]" type="text" value="<!--{$postData.cofc.Level}-->" />
+            级 </td>
+            <th>联盟砖头<font color="#FF0000"><!--{$co->Stone}--></font></th>
+            <td><input class="user_info" name="cofc[Stone]" type="text" value="<!--{$postData.cofc.Stone}-->" />
+            块</td>
+            <th>联盟基金  <font color="#FF0000"><!--{$co->Assets}--></font></th>
+            <td><input class="user_info" name="cofc[Assets]" type="text" value="<!--{$postData.cofc.Assets}-->" />
+              G</td>
+          </tr>
+          <tr>
+            <th>联盟发展值 <font color="#FF0000"><!--{$co->Points}--></font></th>
+            <td><input type="text" class="text" name="cofc[Points]" value="<!--{$postData.cofc.Points}-->" /> 点</td>
+            <th>联盟船坞等级 <font color="#FF0000"><!--{$co->StructureLevel[5]}--></th>
+            <td><input type="text" class="text" name="StructureLevel[5]" value="<!--{$postData.cofc.Points}-->" /></td>
+            <th>联盟祭坛等级 <font color="#FF0000"><!--{$co->StructureLevel[6]}--></th>
+            <td><input type="text" class="text" name="StructureLevel[6]" value="<!--{$postData.cofc.Points}-->" /></td>
+          </tr>
+          <tr>
+            <th>联盟密码</th>
+            <td><input type="text" class="text" name="cofc[PassWord]" value="<!--{$postData.cofc.PassWord}-->" /> (为空不重设密码)</td>
+            <th>&nbsp;</th>
+            <td>&nbsp;</td>
+            <th>&nbsp;</th>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th colspan="6"><input type="submit" class="btn-blue" name="user_edit" value="更改数据" /></th>
+          </tr>
+      </tbody>
+      <!--{/if}-->
+      </table>
+	</form>
+</fieldset>
+<!--{/if}-->

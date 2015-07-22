@@ -1,0 +1,65 @@
+<fieldset>
+<legend>搜索类型</legend>
+    <form action="" method="get">
+        <input type="hidden" value="MyTask" name="c" />
+        <input type="hidden" value="MyReplyQulity" name="a" />
+        <table width="100%" border="0" cellpadding="3">
+          <tr>
+            <th scope="row">类型</th>
+            <td><!--{html_radios options=$qualityOptions selected=$selectedOption name="option"}--></td>
+          </tr>
+          <tr>
+            <th scope="row">申诉状态</th>
+            <td><!--{html_radios options=$qualityStatus selected=$selectedStatus name="status"}--></td>
+          </tr>
+          <tr>
+            <th scope="row">扣分选择</th>
+            <td><!--{html_radios options=$scores name="scores" selected=$selectedSource}--></td>
+          </tr>
+          <tr>
+            <th scope="row">超时选择</th>
+            <td><!--{html_radios options=$timeout name="is_timeout" selected=$selectedTimeout}--></td>
+          </tr>
+          <tr>
+            <th scope="row" colspan="2"><input type="submit" class="btn-blue" value="提交" /></th>
+          </tr>
+        </table>
+    </form>
+</fieldset>
+<fieldset>
+  <legend>我被质检过的回复</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">回复内容</th>
+        <th scope="col">回复时间</th>
+        <th scope="col">质检人</th>
+        <th scope="col">评价类型</th>
+        <th scope="col">当前状态</th>
+        <th scope="col">分数</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td><!--{$list.content|truncateutf8:30}--></td>
+        <td><!--{$list.create_time}--></td>
+        <td><!--{$list.word_quality_user_id}--></td>
+        <td><!--{$list.word_option_id}--></td>
+        <td><!--{$list.word_status}--></td>
+        <td><!--{$list.scores}--></td>
+        <td>
+        	<!--<a href="javascript:void(0)" url="<!--{$list.url_dialog}-->" id="<!--{$list.Id}-->" onclick="openDialog($(this))">提问回复详情</a>-->
+            <a href="<!--{$list.url_detail}-->">察看详细</a>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="8"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="8" align="right"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+</fieldset>

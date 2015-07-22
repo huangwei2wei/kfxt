@@ -1,0 +1,38 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<!--{if $display}-->
+<fieldset>
+	<legend>在线修改玩家培养属性</legend>
+    <form action="" method="post">
+
+        <table width="500" border="0" cellpadding="3">
+          <tr>
+            <th scope="row">玩家id</th>
+            <td><input type="text" class="text" name="userId" value="" /></td>
+          </tr>
+          <tr>
+            <th scope="row">武将id</th>
+            <td><input type="text" class="text" name="apartnerId" value="" /></td>
+          </tr>
+          <tr>
+            <th scope="row">培养攻击值</th>
+            <td><input type="text" class="text" name="growAttack" value="" /></td>
+          </tr>
+          <tr>
+            <th scope="row">培养防御值</th>
+            <td><input type="text" class="text" name="growDefend" value="" /></td>
+          </tr>
+          <tr>
+            <th scope="row">培养速度值</th>
+            <td><input type="text" class="text" name="growSpeed" value="" /></td>
+          </tr>
+          <tr>
+            <th scope="row">&nbsp;</th>
+            <td><input type="submit" onClick="statAll()" value="提交" class="btn-blue" /></td>
+          </tr>
+        </table>
+    </form>
+    
+</fieldset>
+<!--{/if}-->

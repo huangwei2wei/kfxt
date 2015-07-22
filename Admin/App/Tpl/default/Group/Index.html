@@ -1,0 +1,64 @@
+<style type="text/css">
+ul{
+	margin:0px;
+	padding:0px;
+	list-style:none;
+}
+li{
+	width:200px;
+	display:inline-block;
+}
+</style>
+<fieldset>
+	<legend><!--{'INDEX_LEGEND'|lang}--></legend>
+[<a href="<!--{$url.Group_Add}-->"><!--{'URL_GROUP_ADD'|lang}--></a>]
+[<a href="<!--{$cacheurl}-->">生成缓存</a>]
+[<a href="<!--{$cacheuser}-->">生成用户缓存</a>]
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col"><!--{'th_1'|lang}--></th>
+    <th scope="col"><!--{'th_2'|lang}--></th>
+    <th scope="col"><!--{'th_3'|lang}--></th>
+    <th scope="col"><!--{'th_4'|lang}--></th>
+    <th scope="col"><!--{'th_5'|lang}--></th>
+    <th scope="col"><!--{'th_6'|lang}--></th>
+    <th scope="col"><!--{'th_7'|lang}--></th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <th rowspan="2" nowrap="nowrap"><!--{$list._roomName}--></th>
+    <td><!--{$list.in_room}--></td>
+    <td><!--{$list.userClassNum}--></td>
+    <td><!--{$list._orderNum.incomplete|intval}--></td>
+    <td><!--{$list.word_entrance}--></td>
+    <td><!--{$list.word_exit}--></td>
+    <td>
+    	<a href="<!--{$list.url_monitor}-->"><!--{'INDEX_URL_MONITOR'|lang}--></a>
+        <a href="<!--{$list.url_edit_server}-->"><!--{'INDEX_URL_EDIT_SERVER'|lang}--></a>
+    	<a href="<!--{$list.url_edit}-->"><!--{'EDIT'|lang:'Common'}--></a>
+        <a href="<!--{$list.url_rest}-->"><!--{'INDEX_URL_REST'|lang}--></a>
+        <a onclick="return confirm('<!--{'INDEX_URL_INITALIZE_CONFIRM'|lang}-->')" href="<!--{$list.url_Initialize}-->"><!--{'INDEX_URL_INITALIZE'|lang}--></a>
+    </td>
+  </tr>
+  <tr>
+  	<td colspan="6">
+    	<!--{'SERVER_LIST'|lang:'Common'}-->：<input type="button" class="btn-blue" value="<!--{'INDEX_SWITCH'|lang}-->" onclick="$(this).siblings('ul').toggle();" /><br />
+        <ul style="display:none">
+    	<!--{foreach from=$list.server_list item=serverList}-->
+        <li><!--{$serverList.full_name}--></li>
+        <!--{foreachelse}-->
+        <li><font color="#666666"><!--{'NOT_SERVER_LIST'|lang:'Common'}--></font></li>
+        <!--{/foreach}-->
+        </ul>
+    </td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="8"><!--{$noData}--></th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <td align="right" colspan="8"></td>
+  </tr>
+</table>
+</fieldset>

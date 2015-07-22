@@ -1,0 +1,43 @@
+<fieldset>
+	<legend>增加控制器</legend>
+    <form action="<!--{$url.Control_AddCtl}-->" method="post" >
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th>控制器名</th>
+        <td><input type="text" class="text" name="control_name" /></td>
+      </tr>
+      <tr>
+        <th>是否所有用户</th>
+        <td>
+            <input type="radio" name="all_role" value="1" />所有
+            <input type="radio" name="all_role" checked value="0" />受角色控制
+        <input type="submit" class="btn-blue" value="提交" /></td>
+      </tr>
+      </table>
+    </form>
+</fieldset>
+
+<fieldset>
+	<legend>列表</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th>Id</th>
+        <th>控制器名</th>
+        <th>角色控制</th>
+        <th>操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td><!--{$list.value}--></td>
+        <td><!--{$list.word_allow}--></td>
+        <td>
+            <a href="<!--{$list.url_edit}-->">编辑</a>
+            <a href="<!--{$list.url_del}-->">删除</a>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr><th colspan="4"><!--{$noData}--></th></tr>
+      <!--{/foreach}-->
+    </table>
+</fieldset>

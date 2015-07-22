@@ -1,0 +1,66 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='Ids[]']").attr("checked",curCheck);
+	 });
+});
+function del(){
+	if(confirm('<!--{'187D1FE0248DC951304185D455EC5437'|lang}-->?')){
+		$('form').submit();
+	}
+}
+function serverSyn(curBtn){
+	$("#form").attr('action',curBtn.attr("url"));
+	$("#form").submit();
+}
+</script>
+<fieldset>
+<legend><!--{'E79DF958A2C3EBD1D4AAC5D858BABC96'|lang}--></legend>
+<form id="form" action="<!--{$url.MasterFRG_DelReward}-->" method="post" onsubmit="return checksub();">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <td colspan="6">
+    	<a href="<!--{$url.MasterFRG_AddReward}-->"><!--{'2824BFF5F99B1195734CEF453FCBE2A0'|lang}--></a>
+    </td>
+    </tr>
+  <tr>
+    <th scope="col"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+    <th scope="col">ID</th>
+    <th scope="col"><!--{'3BDD08ADAB6EA90B9164B20A0E4151AC'|lang}--></th>
+    <th scope="col"><!--{'63B34D090839B9666723B00B758AFD3B'|lang}--></th>
+    <th scope="col"><!--{'FFC7ED1CD5288FF735A3C4A059125354'|lang}--></th>
+    <th scope="col"><!--{'C1A1513B9747E951EC0C179E676985C3'|lang}--></th>
+    </tr>
+  <!--{foreach from=$dataList key=key item=list}-->
+  <tr>
+    <td scope="col"><input type="checkbox" value="<!--{$list.Id}-->" name="Ids[]" /></td>
+    <td scope="col"><!--{$list.Id}--></td>
+    <td scope="col"><a href="<!--{$list.url_edit}-->"><!--{$list.Title}--></a></td>
+    <td scope="col"><!--{$list.SendTime|date_format:"%Y-%m-%d %H:%M:%S"}--> <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}--> <!--{$list.EndTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td scope="col"><!--{$list.AddTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td scope="col"><!--{$list.GetNum}--></td>
+    </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="6" scope="col">
+  		<!--{$noData}--> 	
+    </th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <td colspan="6" scope="col">
+  		<!--{'6F92B63DB2645063CF534B90300C13A1'|lang}--><input type="checkbox" id="allcheck" /><input type="button" class="btn-blue" onClick="del()" value="<!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}-->" />  	
+    	<input type="button" value="<!--{'2B169B728C2ABF6191775B3657B61040'|lang}-->" onclick="serverSyn($(this))" url="<!--{$url.OperationFRG_RewardServerSyn}-->" class="btn-blue">
+    </td>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

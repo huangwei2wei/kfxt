@@ -1,0 +1,121 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<style type="text/css">
+	.bold_font{ font-weight:bolder; margin-left:10px;}
+	
+	.range_text {
+		background: none repeat scroll 0 0 #FFFFFF;
+		border-color: #666666 #CCCCCC #CCCCCC #666666;
+		border-style: solid;
+		border-width: 1px;
+		width:30px;
+	}
+</style>
+<fieldset>
+  <legend>用户查询</legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+	<input type="hidden" name="c" value="XianHunUser">
+    <input type="hidden" name="a" value="UserQueryDb">
+	<input type="hidden" name="zp" value="XianHun">
+
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <td>
+        <font class="bold_font" >角色ID</font>:<input class="text" type="text" name="playId" value="<!--{$selected.playId}-->">
+        <font class="bold_font" >角色名</font>:<input class="text" type="text" name="nickname" value="<!--{$selected.nickname}-->">
+        <font class="bold_font" >账号</font>:<input class="text" type="text" name="username" value="<!--{$selected.username}-->">
+        <font class="bold_font" >注册IP</font>:<input class="text" type="text" name="regIp" value="<!--{$selected.regIp}-->">
+    </td>
+  </tr>
+  <tr>
+    <td>
+        <font class="bold_font" >金币</font>:
+        <input class="range_text" type="text" name="cashFrom" value="<!--{$selected.cashFrom}-->">
+        -
+        <input class="range_text" type="text" name="cashTo" value="<!--{$selected.cashTo}-->">
+        
+		<font class="bold_font" >游戏币</font>:
+        <input class="range_text" type="text" name="coinFrom" value="<!--{$selected.coinFrom}-->">
+        -
+        <input class="range_text" type="text" name="coinTo" value="<!--{$selected.coinTo}-->">
+
+        <font class="bold_font" >等级</font>:
+        <input class="range_text" type="text" name="levelFrom" value="<!--{$selected.levelFrom}-->">
+        -
+        <input class="range_text" type="text" name="levelTo" value="<!--{$selected.levelTo}-->">
+		
+        <font class="bold_font" >被封号</font>:
+        <input type="checkbox" name="isBanChat" <!--{if $selected.isBanChat}-->checked<!--{/if}--> value="1">        
+        <font class="bold_font" >被禁言</font>:
+        <input type="checkbox" name="isBanId" <!--{if $selected.isBanId}-->checked<!--{/if}--> value="1"> 
+    </td>
+  </tr>
+  <tr>
+    <td>
+        <font class="bold_font" >最后登录时间</font>:
+        <input class="text" type="text" name="loginTimeFrom" value="<!--{$selected.loginTimeFrom}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" >
+        -
+        <input class="text" type="text" name="loginTimeTo" value="<!--{$selected.loginTimeTo}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+        <font class="bold_font" >注册时间</font>:
+        <input class="text" type="text" name="regTimeFrom" value="<!--{$selected.regTimeFrom}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" >
+        -
+        <input class="text" type="text" name="regTimeTo" value="<!--{$selected.regTimeTo}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+
+        <input class="btn-blue" type="submit" value="查询">    
+    </td>
+  </tr>
+</table>
+</form>
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>玩家Id</th>
+          <th>账号<br>角色名</th>
+          <th>所在工会</th>
+          <th>金币<br>游戏币</th>
+          <th>登录时间<br>离线时间</th>
+          <th>注册时间<br>注册IP</th>
+          
+          <th>等级<br>经验值</th>
+          <th>职业</th>
+          <th>操作</th>
+        </tr>        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+       	  <td align="center"><!--{$list.id}--></td>
+          <td align="center"><!--{$list.username}--><br><!--{$list.nickname}--></td>
+          <td align="center"><!--{$list.assName}--></td>
+          <td align="center"><!--{$list.cash}--><br><!--{$list.coin}--></td>   
+          <td align="center"><!--{$list.loginTime}--><br><!--{$list.offlineTime}--></td>
+          <td align="center"><!--{$list.regTime}--><br><!--{$list.regIp}--></td>
+              
+          <td align="center"><!--{$list.level}--><br><!--{$list.exp}--></td>
+          <td align="center">
+         	 <!--{if $list.vocationId==1}-->战士<!--{elseif $list.vocationId==2}-->法师<!--{elseif $list.vocationId==3}-->道士<!--{else}--><!--{$list.vocationId}--><!--{/if}-->
+          </td>
+          <td align="center">[<a href="<!--{$list.URL_Bug|default:'javascript:void(0)'}-->">提BUG</a>]</td>
+        </tr>
+        <!--{foreachelse}-->
+            <!--{if $ConnectErrorInfo}-->
+              <tr>
+                <th colspan="11" align="center"><font color="#FF0000"><!--{$ConnectErrorInfo}--></font></th>
+              </tr>
+            <!--{else}-->
+            <tr>
+              <th colspan="11"><!--{$noData}--></th>
+            </tr>
+            <!--{/if}-->
+        <!--{/foreach}-->
+        <tr>
+          <th colspan="11" align="right"><!--{$pageBox}--></th>
+        </tr>
+      </table>
+
+</fieldset>
+<!--{/if}-->

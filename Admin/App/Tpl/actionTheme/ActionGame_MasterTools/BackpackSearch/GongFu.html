@@ -1,0 +1,120 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+
+function submitCheck(){
+	if($.trim($('[name=cause]').val())==''){
+		alert('<!--{'C8F49B1087994B7E87BAEA022526F8B6'|lang}-->');
+		return false;
+	}
+	var itemsList = $('input[name^=itemNum]');
+	var len = itemsList.length;	
+	var value = 0;
+	for(var i=0;i<len;i++){
+		value = parseInt(itemsList[i].value);
+		if(itemsList[i].type=='text' && (!value || value<=0) ){
+			$('#'+itemsList[i].id+'_type').remove();
+			$('#'+itemsList[i].id+'_position').remove();
+			$('#'+itemsList[i].id+'_id').remove();
+			$('#'+itemsList[i].id+'_name').remove();
+			$('#'+itemsList[i].id).remove();
+		}
+	}
+	return true;
+}
+
+</script>
+<fieldset>
+  <legend><!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}--></legend>
+  
+<form action=""  method="get">
+	
+    
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+            <!--{'069A4B89AE4E24F7718E5DF99E80B75D'|lang}-->ID:<input class="text" type="text" name="playerId" value="<!--{$_GET.playerId}-->">
+            <!--{'F6685D1959CB7D93BE372469C5BB1E65'|lang}-->:<input class="text" type="text" name="playerAccount" value="<!--{$_GET.playerAccount}-->">
+            <!--{'AB581AA0560E5EE2B91A1B2003B15FAA'|lang}-->:<input class="text" type="text" name="playerNickname" value="<!--{$_GET.playerNickname}-->">
+            <input class="btn-blue" type="submit" value="<!--{'BEE912D79EEFB7335988C4997AA9138D'|lang}-->">
+        </td>
+      </tr>
+      
+    </table>
+</form>
+
+
+</fieldset>
+<fieldset>
+  <legend>
+	<!--{'45DA8BACED85CCE47550E2A994A1283A'|lang}-->
+    <!--{if $playerSelect.0 ==1}--><!--{'069A4B89AE4E24F7718E5DF99E80B75D'|lang}-->ID:<!--{elseif $playerSelect.0 ==2}--><!--{'F6685D1959CB7D93BE372469C5BB1E65'|lang}-->:<!--{elseif $playerSelect.0 ==3}--><!--{'AB581AA0560E5EE2B91A1B2003B15FAA'|lang}-->:<!--{/if}-->
+    <font color="#FF0000"><!--{$playerSelect.1|default:''}--></font>
+  </legend>
+<form action="<!--{$URL_itemsDel}-->" method="post">
+	<input type="hidden" name="playerType" value="<!--{$playerSelect.0}-->">
+    <input type="hidden" name="player" value="<!--{$playerSelect.1}-->">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+      	<th scope="col"><!--{'226B0912184333C81BABF2F1894EC0C1'|lang}--></th>
+        <th scope="col"><!--{'D4D2A66820D30E07B44C850EB3F116C0'|lang}-->ID</th>
+        <th scope="col"><!--{'DE24BFB740EF7421E00B7346EA704E3E'|lang}-->ID</th>
+        <th scope="col"><!--{'3734E669AD2F128908A2C4B706CD92B4'|lang}--></th>
+        <th scope="col"><!--{'9F61DD301B40FF4598F9EA486E27F842'|lang}--></th>
+        <th scope="col"><!--{'BEC0D4D4F414FFFB02A5AB921EEB2566'|lang}--></th>
+      </tr>
+        <!--{foreach from=$dataList item=sub key=key}-->
+              <tr>
+                <th colspan="6" scope="col"><font color="#FF0000"><!--{$itemTypes.$key}--></font></th>
+              </tr>
+    
+            <!--{foreach from=$sub item=list key = k}-->
+    
+              <tr>
+                <td>
+                	<!--{if $list.0 == 0}-->
+                    	<!--{'7C1DDFA3D20823EF48602E602D90199C'|lang}-->
+                    <!--{elseif $list.0 == 1}-->
+                    	<!--{'C270FC6FC944A6686D996AB313A4FE7F'|lang}-->
+                    <!--{elseif $list.0 == 2}-->
+                        <!--{'642817A2D49CCF8DC1EC3DED20B19F36'|lang}-->
+                    <!--{else}-->
+                        <!--{$list.0}-->
+                    <!--{/if}-->                
+                </td>
+                <td><!--{$list.1}--></td>
+                <td><!--{$list.3}--></td>
+                <td><!--{$list.4}--></td>
+                <td><!--{$list.2}--></td>
+                <td>
+                	
+                	- <input type="text" class="text" value="" id="item_<!--{$key}-->_<!--{$k}-->" name="itemNum[<!--{$key}-->_<!--{$k}-->]">
+                    <input type="hidden" class="text" value="<!--{$list.0}-->" id="item_<!--{$key}-->_<!--{$k}-->_type" name="itemType[<!--{$key}-->_<!--{$k}-->]">
+                    <input type="hidden" class="text" value="<!--{$list.1}-->" id="item_<!--{$key}-->_<!--{$k}-->_position" name="itemPosition[<!--{$key}-->_<!--{$k}-->]">
+                    <input type="hidden" class="text" value="<!--{$list.3}-->" id="item_<!--{$key}-->_<!--{$k}-->_id" name="itemId[<!--{$key}-->_<!--{$k}-->]">
+                    <input type="hidden" class="text" value="<!--{$list.4}-->" id="item_<!--{$key}-->_<!--{$k}-->_name" name="itemName[<!--{$key}-->_<!--{$k}-->]">
+                </td>
+              </tr>
+            <!--{/foreach}-->
+        <!--{/foreach}-->
+    
+    </table>
+    
+    <div style="margin:10px;"><!--{'A71E6AB952E50B1E604837A1D6C0273F'|lang}-->:</div>
+    <div style="margin:10px;"><textarea name="cause" style="width:500px; height:80px;"></textarea></div>
+    <div style="margin:10px;"><input type="submit" class="btn-blue" onclick="return submitCheck();" value="<!--{'A19ED7514FA921632B24841A7293C652'|lang}-->" /></div>
+</form>
+</fieldset>
+
+
+<!--{/if}-->

@@ -1,0 +1,79 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<style type="text/css">
+.addline{
+	padding:3px;
+}
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:100%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/default/frg.js"></script>
+<script language="javascript">
+
+<!--{if $toolData}-->
+var toolData=eval(<!--{$toolData}-->);
+<!--{/if}-->
+
+<!--{if $outfitData}-->
+var outfitData=eval(<!--{$outfitData}-->);
+<!--{/if}-->
+
+var toolInputNum=1;
+var outfitDataNum=1;
+
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"服务器ID不存在",oncorrect:"请重新输入服务器ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"服务器数值不正确"});
+	$("#cardType").formValidator({onshow:"请输入申请理由",oncorrect:"申请理由正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入申请理由"},onerror:"申请理由不能为空"});
+	$("#cause").formValidator({onshow:"请输入申请理由",oncorrect:"申请理由正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入申请理由"},onerror:"申请理由不能为空"});
+
+})
+</script>
+<fieldset>
+<legend>添加道具发放  [<font color="#FF0000">此操作须要审核</font>]</legend>
+
+<div id="showItem"></div>
+
+<form action="" method="post" id="form" >
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">申请理由</th>
+    <td><textarea name="cause" cols="50" id="cause" rows="8"></textarea><div id="causeTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">类型名 </th>
+    <td><input name="cardType"id="cardType" type="text" class="text"/><div id="cardTypeTip"></div></td>
+  </tr>
+ 
+  <tr>
+    <th scope="row">奖励道具</th>
+    <td><input type="button" class="btn-blue" onclick="addTool($(this))" value="添加奖励道具" /></td>
+  </tr>
+  <tr>
+    <th scope="row">装备列表</th>
+    <td><input type="button" class="btn-blue" onclick="addOutfitData($(this))" value="添加装备道具" /></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">
+      <input type="submit" class="btn-blue" name="submit" value="提交" />
+      </th>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

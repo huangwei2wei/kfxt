@@ -1,0 +1,98 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+p{
+	margin:2px;
+	padding:0px;
+}
+</style>
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+function jumpUrl(url){
+	form=$("#form");
+	form.attr("action",url);
+	form.submit();
+}
+</script>
+<fieldset>
+	<legend>导入玩家数据</legend>
+    <form action="<!--{$url.OperationFRG_ImportPlayerData}-->" method="post" enctype="multipart/form-data">
+    	<p><font color="#FF0000">说明</font>：上传文档支持 <i>Excel</i> 的 <i>xls</i> 或者 <i>xlsx</i> 文档，文档第一行必须是列标题，第一列为服务器ID(数字)，第二列为玩家ID。</p>
+ 		<p>如果要上传所有运营商的数据，运营商选择全部，并且上传文档的第三列必须是运营商标识。</p>
+        <p>demo: <font color="#FF0000">OPERATOR</font>列为 <i>所有运营商</i> 情况下需要</p>
+        <table width="300" border="0" cellpadding="3">
+          <tr>
+            <th scope="col">SERVER</th>
+            <th scope="col">ACCOUNT</th>
+            <th scope="col"><font color="#FF0000">OPERATOR</font></th>
+          </tr>
+          <tr>
+            <td >1</td>
+            <td >52</td>
+            <td >9</td>
+          </tr>
+          <tr>
+            <td >11</td>
+            <td >3795</td>
+            <td >9</td>
+          </tr>
+          <tr>
+            <td >...</td>
+            <td >...</td>
+            <td >...</td>
+          </tr>
+        </table>
+  <select name="operator_id"><!--{html_options options=$operatorList}--></select>
+        <input type="file" name="upload" /><font color="#ff0000">文件大小在8MB以内</font>
+        <input type="submit" class="btn-blue" value="提交" />
+    </form>
+</fieldset>
+
+<fieldset>
+	<legend>搜索</legend>
+</fieldset>
+
+<fieldset>
+	<legend>数据列表</legend>
+    <form action="" id="form" method="post">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">运营商</th>
+        <th scope="col">服务器</th>
+        <th scope="col">玩家ID</th>
+        <th scope="col">创建时间</th>
+        <th scope="col">上传人</th>
+        <th scope="col">上传文件名</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td>
+        	<input type="checkbox" value="<!--{$list.Id}-->" name="ids[<!--{$list.Id}-->]" />
+            <input type="hidden" name="player_id[<!--{$list.Id}-->]" value="<!--{$list.player_id}-->" />
+            <input type="hidden" name="server_id[<!--{$list.Id}-->]" value="<!--{$list.server_id}-->" />
+        	<!--{$list.Id}-->
+        </td>
+        <td><!--{$list.word_operator_id}--></td>
+        <td><!--{$list.word_server_id}--></td>
+        <td><!--{$list.player_id}--></td>
+        <td><!--{$list.create_time}--></td>
+        <td><!--{$list.word_user_id}--></td>
+        <td><!--{$list.file_name}--></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="7"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="7">
+        <input type="checkbox" onclick="$('#form :checkbox').attr('checked',$(this).attr('checked'))" /> 全选
+        <input type="button" class="btn-blue" value="发送奖励" onclick="jumpUrl('<!--{$url.OperationFRG_RewardBefore}-->')" />
+        </td>
+      </tr>
+      <tr>
+        <th colspan="7" align="right"><!--{$pageBox}--></th>
+      </tr>
+    </table>
+    </form>
+</fieldset>

@@ -1,0 +1,91 @@
+<!--{if $showErrorLogFiles && $errorLogFiles}-->
+<script>
+	function errorLogDel(fileName,ek){
+		$.ajax({
+			dataType:'json',	
+			type: 'GET',
+			data:{fileName:fileName},
+			url: '<!--{$url.ErrorLogDel}-->',
+			success:function(json){
+				if(0 == json.status){
+					alert(json.info);
+				}
+				else if(1 == json.status){
+					$('#errorFile'+ek).remove();
+				}
+			}
+		});
+	}
+	
+
+</script>
+<fieldset><legend>ErrorLogFiles [<a
+	onclick="return confirm('确定删除全部？');" href="<!--{$url.ErrorLogDelAll}-->">删除全部</a>]</legend>
+<!--{foreach from=$errorLogFiles key=ek item=logFile}-->
+<div id="errorFile<!--{$ek}-->"> [<a href="javascript:void(0);"
+	onclick="errorLogDel('<!--{$logFile}-->','<!--{$ek}-->');">删除</a>] <a
+	target="_blank" href="<!--{$url.ErrorLogShow}-->&fileName=<!--{$logFile}-->"
+id=""><!--{$logFile}--></a> <br>
+</div>
+<!--{/foreach}--></fieldset>
+<!--{/if}-->
+
+<fieldset><legend><!--{'PERCONALPROFILE'|lang}--></legend>
+<table width="100%" border="0" cellpadding="3">
+	<tr>
+		<td height="22" colspan="4" scope="row"><!--{'LANGSELECT'|lang}-->:
+		<!--{foreach from=$lang key=key item=list}--> <input type="button"
+			class="<!--{if $key==$curLangId}-->btn-red<!--{else}-->btn-blue<!--{/if}-->"
+		onclick="location.href='<!--{$list.url_lang}-->'" value="<!--{$list.lang}-->"
+		/> <!--{/foreach}--></td>
+	</tr>
+	<tr>
+		<th width="114" scope="row"><!--{'MYNAME'|lang}--></th>
+		<td width="548"><!--{$userClass._nickName}--> <!--{if $userClass._serviceId}-->
+		(<!--{$userClass._serviceId}-->) <!--{/if}--> 、<!--{$userClass.word_department}-->
+		</td>
+		<th width="135"><!--{'ROLE'|lang}--></th>
+		<td width="529"><!--{$userClass.word_roles}--></td>
+	</tr>
+	<tr>
+		<th width="114" scope="row">当前状态</th>
+		<td><!--{$displaycontent}--></td>
+		<th>buglist处理区</th>
+		<td><a href='/admin.php?c=Verify&a=Index'>进入buglist处理区</a></td>
+	</tr>
+	<tr>
+		<td height="69" colspan="2" valign="top"><b><!--{'PUBLICNOTICE'|lang}--></b>
+		<ol>
+			<!--{foreach from=$userClass.bulletin_list item=list}-->
+			<li><!--{$list.word_is_read}--> (<!--{$list.create_time|date_format:"%Y-%m-%d %H:%M:%S"}-->)
+			<!--{$list.title}--></li>
+			<!--{foreachelse}-->
+			<li><!--{'NODATA'|lang}--></li>
+			<!--{/foreach}-->
+		</ol>
+		</td>
+		<td colspan="2" valign="top"><b><!--{'HANDOVER'|lang}--></b>
+		<ol>
+			<!--{foreach from=$userClass.work_list item=list}-->
+			<li><!--{$list.word_is_read}--> (<!--{$list.create_time|date_format:"%Y-%m-%d %H:%M:%S"}-->)
+			<!--{$list.title}--></li>
+			<!--{foreachelse}-->
+			<li><!--{'NODATA'|lang}--></li>
+			<!--{/foreach}-->
+		</ol>
+		</td>
+	</tr>
+	<!--
+      <tr>
+        <td colspan="4" >
+        	<b>当前在线用户：</b>
+            <ul style="margin:3px; padding:3px; list-style:none;">
+            <!--{foreach from=$onLineUsers key=key item=list}-->
+	<li style="display: inline"><!--{$list}--> [<font color="#00cc00"><!--{'ONLINE'|lang}--></font>]</li>
+	<!--{/foreach}-->
+	</ul>
+	</td>
+	</tr>
+	-->
+</table>
+</fieldset>

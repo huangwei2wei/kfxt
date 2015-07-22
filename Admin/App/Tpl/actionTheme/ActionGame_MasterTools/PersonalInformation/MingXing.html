@@ -1,0 +1,168 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+  <legend>搜索</legend>
+  
+<form action=""  method="get">
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+            昵称:<input class="text" type="text" name="nickName" value="<!--{$_GET.nickName}-->">
+            
+            openId:<input style="width:300px;" class="text" type="text" name="openId" value="<!--{$_GET.openId}-->">
+            <input class="btn-blue" type="submit" name="sbm" value="查询">
+            </td>
+      </tr>
+
+    </table>
+</form>
+
+
+</fieldset>
+
+<fieldset>
+  <legend>玩家信息</legend>
+<table width="50%" border="0" cellpadding="3">
+  	<!--{if $data}-->
+      <tr>
+        <th align="center" >openId</td>
+        <td><!--{$data.openId}--></td>
+      </tr>	
+      <tr>
+        <th align="center" >玩家昵称</td>
+        <td><!--{$data.nickName|urldecode}--></td>
+      </tr>
+      <tr>
+        <th align="center" >当前血量</td>
+        <td><!--{$data.blood}--></td>
+      </tr>		
+
+      <tr>
+        <th align="center" >玩家性别</td>
+        <td>
+        	<!--{switch var=$data.userSex}-->
+        		<!--{case value=0}-->女<!--{/case}-->
+                <!--{case value=1}-->男<!--{/case}-->
+                <!--{default}--><!--{$data.userSex}-->
+            <!--{/switch}-->
+		</td>
+      </tr>	
+      
+      <tr>
+        <th align="center" >玩家当前等级</td>
+        <td><!--{$data.level}--></td>
+      </tr>	
+	
+      <tr>
+        <th align="center" >玩家职业</td>
+        <td>
+        	<!--{switch var=$data.professional}-->
+        		<!--{case value=1}-->舞者<!--{/case}-->
+                <!--{case value=2}-->演员<!--{/case}-->
+                <!--{case value=3}-->歌手<!--{/case}-->
+                <!--{default}--><!--{$data.professional}-->
+            <!--{/switch}-->
+        </td>
+      </tr>	
+      <tr>
+        <th align="center" >所在家族id</td>
+        <td><!--{$data.clanId}--></td>
+      </tr>	
+      <tr>
+        <th align="center" >所在家族名称</td>
+        <td><!--{$data.clanName}--></td>
+      </tr>	
+      <tr>
+        <th align="center" >玩家在游戏中的id</td>
+        <td><!--{$data.userId}--></td>
+      </tr>	
+      <tr>
+        <th align="center" >VIP等级</td>
+        <td><!--{$data.vip}--></td>
+      </tr>	
+      <tr>
+        <th align="center" >拥有的银币数量</td>
+        <td><!--{$data.silverCoin}--></td>
+      </tr>	
+      <tr>
+        <th align="center" >拥有的金币数量</td>
+        <td><!--{$data.goldCoin}--></td>
+      </tr>	
+      <tr>
+        <th align="center" >玩家血量上限</td>
+        <td><!--{$data.bloodLimitUp}--></td>
+      </tr>
+      
+      <tr>
+        <th align="center" >玩家当前经验值</td>
+        <td><!--{$data.experience}--></td>
+      </tr>
+      <tr>
+        <th align="center" >玩家当前等级的经验上限</td>
+        <td><!--{$data.expLimitUp}--></td>
+      </tr>
+      <tr>
+        <th align="center" >玩家当前的技能id</td>
+        <td><!--{$data.currentSkills}--></td>
+      </tr>
+      <tr>
+        <th align="center" >玩家威望</td>
+        <td><!--{$data.practice}--></td>
+      </tr>
+      <tr>
+        <th align="center" >玩家所处的城市id</td>
+        <td><!--{$data.cityId}--></td>
+      </tr>
+      <tr>
+        <th align="center" >玩家过图的最大城市id</td>
+        <td><!--{$data.cityRegion}--></td>
+      </tr>
+      <tr>
+        <th align="center" >玩家拥有的礼券</td>
+        <td><!--{$data.vouchers}--></td>
+      </tr>
+      <tr>
+        <th align="center" >玩家疲劳值</td>
+        <td><!--{$data.fatigue}--></td>
+      </tr>
+      
+      <tr>
+        <th align="center" >暴击属性</td>
+        <td><!--{$data.crit}--></td>
+      </tr>
+      
+      <tr>
+        <th align="center" >命中属性</td>
+        <td><!--{$data.hit}--></td>
+      </tr>
+      <tr>
+        <th align="center" >闪避属性</td>
+        <td><!--{$data.dodge}--></td>
+      </tr>
+      <tr>
+        <th align="center" >攻击属性</td>
+        <td><!--{$data.attack}--></td>
+      </tr>
+      <tr>
+        <th align="center" >防御属性</td>
+        <td><!--{$data.defense}--></td>
+      </tr>
+  	<!--{else}-->
+      <tr>
+        <th align="center" colspan="2">暂无数据</td>
+      </tr>
+  	<!--{/if}-->
+</table>
+
+</fieldset>
+<!--{/if}-->

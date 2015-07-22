@@ -1,0 +1,39 @@
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript">
+KE.init({id:'content',imageUploadJson : '<!--{$url.UploadImg_Bulletin}-->',afterCreate:function(id){KE.util.focus(id)}});
+</script>
+<fieldset>
+<legend>新增工作交接</legend>
+<form action="" method="post">
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th nowrap scope="row">游戏类型</th>
+        <td><select name="game_type_id"><!--{html_options options=$gameTypes}--></select></td>
+      </tr>
+      <tr>
+        <th nowrap scope="row">类型</th>
+        <td><select name="type"><!--{html_options options=$type}--></select></td>
+      </tr>
+      <tr>
+        <th nowrap scope="row">进展</th>
+        <td><select name="progress"><!--{html_options options=$progress}--></select></td>
+      </tr>
+      <tr>
+        <th nowrap scope="row">标题</th>
+        <td><input type="text" name="title" class="text" size="60" /></td>
+      </tr>
+      <tr>
+        <th nowrap scope="row">内容</th>
+        <td>
+        <a href="javascript:void(0)" onclick="KE.create('content')">加载编辑器</a>
+        <a href="javascript:void(0)" onclick="KE.remove('content')">卸载编辑器</a><br />
+        <textarea cols="100" rows="15" name="content" id="content"></textarea>
+        
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input class="btn-blue" type="submit" value="提交" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>

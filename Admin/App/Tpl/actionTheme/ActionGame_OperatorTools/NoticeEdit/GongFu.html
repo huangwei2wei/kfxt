@@ -1,0 +1,101 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript">
+//KE.init({id:'title',imageUploadJson : '<!--{$url.UploadImg_Bulletin}-->',afterCreate:function(id){KE.util.focus(id)}});
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#title").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'752F8926DB21639D9F8ECDC7BF1D7159'|lang}-->"},onerror:"<!--{'1C556BF4A724BF1B83C6FC64D44DE0B2'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'752F8926DB21639D9F8ECDC7BF1D7159'|lang}-->"},onerror:"<!--{'81B8114F80F252C34993100C3BD6F046'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+	$("#interval").formValidator({onshow:"<!--{'62DF1C363CC3B9F23706E4504BC0EC25'|lang}-->",oncorrect:"<!--{'315F61935B8933FF105D5FA610D202C3'|lang}-->"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'49D109F09975997457A4623EEE9A558F'|lang}-->"});
+})
+function fontStyle(color,b,em){
+	var font1='<font color="'+color+'">';
+	var font2='</font>';
+	var b1='<b>';
+	var b2='</b>';
+	var em1='<em>';
+	var em2='</em>';
+	if(!color){
+		font1 = font2 = '';
+	}
+	if(!b){
+		b1 = b2 = '';
+	}
+	if(!em){
+		em1 = em2 = '';
+	}
+	var obj = $('#title');
+	obj.val(obj.val()+font1+b1+em1+'<!--{'4F6A3C19F9DCAC1C9A46E623609E7638'|lang}-->'+em2+b2+font2);
+	view()
+}
+function linkAdd(){
+	var obj = $('#title');
+	obj.val(obj.val()+'<a href="event:<!--{'6107B3C4FD8587589210CB9FE2FCDAD9'|lang}-->"><!--{'A11CC7A65B27F3993D58438D275F3447'|lang}--></a>');
+	view()
+}
+function view(){
+	$('#view').html($('#title').val());
+}
+</script>
+<fieldset>
+<legend><!--{'1419599C7DEB81FDB49ACEFCF93FF0A6'|lang}--></legend>
+<form action="" method="post" id="form">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<input type="hidden" name="id" value="<!--{$selected.id|default:"0"}-->" />
+    <!--{*<a href="javascript:void(0)" onclick="KE.create('title')"><!--{'FC04B2EDCC5D8EB765739EFF3F733A69'|lang}--></a>*}-->
+	<!--{*<a href="javascript:void(0)" onclick="KE.remove('title')"><!--{'916A4D1CD3E92D5F10566BB3F6D0F3D4'|lang}--></a>*}-->
+    <table width="98%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row"><!--{'22F454634D216B2787C24A90EFD297AA'|lang}--></th>
+        <td>
+        	<div>
+				<!--{'6B36C6F7EC834692EC6C8E3816349FDD'|lang}--><select id="color_select">
+                	<option value=""><!--{'18C63459A2C069022C7790430F761214'|lang}--></option>
+                	<option value="FF0000"><!--{'52636511861A0E08CBE6A0EB1C27D816'|lang}--></option>
+                    <option value="0000FF"><!--{'9C9AABAB3F7627FF4BB224B2738B26EA'|lang}--></option>
+                    <option value="00FF00"><!--{'B2C712C788D3A143206EEE22FE24D9F1'|lang}--></option>
+                    <option value="FFFF00"><!--{'DDB86DD31CE7580FE0C51651B28BA77D'|lang}--></option>
+                    <option value="FF00FF"><!--{'E1E14BD3B8FA4E5F5F4D84AC34E9976F'|lang}--></option>
+                </select>
+                <!--{'3B8A43ACEE5A0B69F9323D4A75EC7CEB'|lang}--><input id="b_select" type="checkbox" value="b" />
+                <!--{'F6F8EA0815881FE9A4AA9352A7FE2299'|lang}--><input id="em_select" type="checkbox" value="em" />
+                <input class="btn-blue" type="button" value="<!--{'B58C7549C0246C55B9CAC96383200338'|lang}-->" onclick="fontStyle($('#color_select').val(),$('#b_select').attr('checked'),$('#em_select').attr('checked'));" />
+                <input class="btn-blue" type="button" value="<!--{'C2942C06B212AD838665B9A93265A751'|lang}-->" onclick="linkAdd();" />
+       		</div>
+        	<textarea name="title" id="title" style="width:600px; height:200px;" onkeyup="view();"><!--{$selected.title|htmlspecialchars}--></textarea><div id="titleTip"></div>
+            <div>
+            	<input class="btn-blue" type="button" value="<!--{'645DBC5504E722A30896486085A06B32'|lang}-->" onclick="view();" />
+                <div id="view"></div>
+            </div>
+         </td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'592C59589144DDC68D05D528DA17DCDC'|lang}--></th>
+        <td><input type="text" class="text" name="beginTime" value="<!--{$selected.beginTime}-->" onFocus="WdatePicker({startDate:'<!--{$dataList.Start_time|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'F782779E8B5D709462C8E71E0D9019F2'|lang}--></th>
+        <td><input type="text" class="text" name="endTime" value="<!--{$selected.endTime}-->" onFocus="WdatePicker({startDate:'<!--{$dataList.End_time|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'E1317F673E37DABE7AFF7C31134898F6'|lang}--></th>
+        <td><input type="text" class="text" name="initialDelay" value="<!--{$selected.initialDelay}-->" id="interval" /> <!--{'0C1FEC657F7865DED377B43250A015FC'|lang}--><div id="intervalTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row">URL</th>
+        <td><input type="text" class="text" name="url" style="width:400px;" value="<!--{$selected.url}-->" /></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" name='subbutton' value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

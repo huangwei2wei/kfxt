@@ -1,0 +1,81 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+	$(function(){
+		$('#pageSize').val('<!--{$_GET.pageSize}-->');
+	});
+</script>
+<fieldset>
+  <legend>搜索</legend>
+  
+<form action=""  method="get">
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+	<input type="hidden" name="server_id" value="<!--{$server_id}-->"/>  
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+            玩家ID:<input class="text" type="text" name="playerId" value="<!--{$post.playerId}-->">
+      </tr>
+      <tr>
+        <td>
+            年：<input class="text" type="text" name="year" value="<!--{$post.year}-->" style='width:50px'>
+            月：<input class="text" type="text" name="month" value="<!--{$post.month}-->" style='width:50px'>
+            日：<input class="text" type="text" name="day" value="<!--{$post.day}-->" style='width:50px'>
+            <input class="btn-blue" type="submit" value="查询">
+        </td>
+      </tr>
+    </table>
+</form>
+
+
+</fieldset>
+
+<fieldset>
+  <legend>用戶資產使用日誌</legend>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">用戶id</th>
+    <th scope="col">对象类型</th>
+    <th scope="col">操作类型</th>
+    <th scope="col">數量</th>
+    <th scope="col">操作目標id</th>
+    <th scope="col">備註</th>
+    <th scope="col">創建時間</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.user_id}--></td>
+        <td><!--{$list.obj_type}--></td>
+        <td><!--{$list.op_type}--></td>
+        <td><!--{$list.count_num}--></td>
+        <td><!--{$list.log_type}--></td>
+        <td><!--{$list.memo}--></td>
+        <td><!--{$list.create_date}--></td>
+        
+      </tr>
+  <!--{foreachelse}-->
+  	<!--{if $ConnectErrorInfo}-->
+      <tr>
+        <td align="center" colspan="7"><!--{$ConnectErrorInfo}--></td>
+      </tr>
+  	<!--{else}-->
+      <tr>
+        <td align="center" colspan="7">暂无数据</td>
+      </tr>
+  	<!--{/if}-->
+  <!--{/foreach}-->
+  <tr>
+    <th align="right" scope="col" colspan="9"><!--{$pageBox}--></th>
+  </tr>
+</table>
+
+</fieldset>
+<!--{/if}-->

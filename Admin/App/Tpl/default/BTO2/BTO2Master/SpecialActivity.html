@@ -1,0 +1,71 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='Ids[]']").attr("checked",curCheck);
+	 });
+});
+function serverSyn(curBtn){
+	$("#form").attr('action',curBtn.attr("url"));
+	$("#form").submit();
+}
+</script>
+<fieldset>
+<legend><!--{'43316541FD6FC935019D0EF81CE098C3'|lang}--></legend>
+<form action="<!--{$url.MasterFRG_SpecialActivity_del}-->" id="form" method="post" onsubmit="return checksub();">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <td colspan="7">
+    	<a href="<!--{$url.MasterFRG_SpecialActivity_Add}-->"><!--{'471855DDACC691B45EE0645C2183465C'|lang}--></a>
+    </td>
+    </tr>
+  <tr>
+    <th scope="col"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+    <th scope="col"><!--{'902A3DD676DF1D56EA8D5DAB69C15A2B'|lang}--></th>
+    <th scope="col"><!--{'13955E03D40587B0147A40BD84574BE0'|lang}--></th>
+    <th scope="col"><!--{'0C56E353EFE9F054EBA32D9BCCA68E20'|lang}--></th>
+    <th scope="col"><!--{'AE57B19F893F64784C70BD2AEA0D9899'|lang}--></th>
+    <th scope="col"><!--{'780AFEAC650E4A425184286CC004C214'|lang}--></th>
+    
+    <th scope="col"><!--{'3FEA7CA76CDECE641436D7AB0D02AB1B'|lang}--></th>
+    <th scope="col"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+    </tr>
+  <!--{foreach from=$dataList key=key item=list}-->
+  <tr>
+    <td scope="col"><input type="checkbox" value="<!--{$list.Id}-->" name="Ids[]" /></td>
+    <td scope="col"><!--{$list.Title}--></td>
+    <td scope="col"><a href="<!--{$list.url_edit}-->"><!--{$list.word_type}--></a></td>
+    <td scope="col"><!--{$list.StartTime|date_format:"%Y-%m-%d %H:%M:%S"}--> <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}--> <!--{$list.EndTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td scope="col"><!--{$list.word_is_show}--></td>
+    <td scope="col"><a href="<!--{$list.url_onoff}-->"><!--{$list.word_is_open}--></a></td>
+    
+    <td scope="col"><!--{$list.word_status}--></td>
+    <td scope="col">
+    	<a href="<!--{$list.url_edit}-->"><!--{'95B351C86267F3AEDF89520959BCE689'|lang}--></a>
+        <a href="<!--{$list.url_rest}-->"><!--{'4B9C3271DC2F299DC3AEFFB369187513'|lang}--></a>
+    </td>
+    </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="8" scope="col">
+  		<!--{$noData}--> 	
+    </th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <td colspan="8" scope="col">
+  		<!--{'6F92B63DB2645063CF534B90300C13A1'|lang}--><input type="checkbox" id="allcheck" />
+        <input type="submit" class="btn-blue" onClick="return confirm('<!--{'187D1FE0248DC951304185D455EC5437'|lang}-->?')" value="<!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}-->" />  	
+        <input type="button" class="btn-blue" url="<!--{$url.MasterFRG_SpecialActivity_serverSyn}-->" onClick="serverSyn($(this))" value="<!--{'2B169B728C2ABF6191775B3657B61040'|lang}-->" />
+    </td>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

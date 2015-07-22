@@ -1,0 +1,102 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<!--{include file="MasterFRG/UserModifyHref.html"}-->
+<!--{if $display}-->
+<script language="javascript">
+var read='<!--{$read}-->';
+
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"<!--{'C566CA59602C7C5C0D3FE5E18ADE447D'|lang}-->ID<!--{'D7D11654A707D7E7B661C90295E58B20'|lang}-->",oncorrect:"<!--{'124D617A6875038C81E03DEC5E2501F4'|lang}-->ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'BA2DD64CC4F6DDF27CB1526EFB449E2D'|lang}-->"});
+	$("#cause").formValidator({onshow:"<!--{'A73F63486CB97A8D6C136D7DC82F11D2'|lang}-->",oncorrect:"<!--{'FD75CEECBD2676048590A1695702F29A'|lang}-->"}).inputValidator({min:1,empty:{leftempty:true,rightempty:true,emptyerror:"<!--{'A73F63486CB97A8D6C136D7DC82F11D2'|lang}-->"},onerror:"<!--{'E85E13CC2A5C76D4E44E62F70E1F1BED'|lang}-->"});   
+		   
+	$(":radio").click(function(){
+		var value=$(this).val();
+		$(".search_option").attr("disabled","disabled");
+		$("#"+value).removeAttr("disabled");
+	});
+	if(read){
+		$("input").attr("disabled","disabled");
+		$("select").attr("disabled","disabled");
+		$("textarea").attr("readonly","readonly");
+	}
+});
+
+</script>
+
+<fieldset>
+	<legend><!--{'B00801545A60AE7B56FFC228EB643ADF'|lang}-->(<!--{'B6D8D85297CB90865DD58007F1A94CF5'|lang}-->，<!--{'AEDDAE071CE7A1EC8033E74B85B2A074'|lang}-->) [<font color="#FF0000"><!--{'541018CC8BD963A5718F321903B9D907'|lang}--></font>]</legend>
+	<form action="" method="post" id="form" >
+	<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+	<input type="hidden" value="<!--{$co->Id}-->" name="cofcid" />
+    <input type="hidden" value="<!--{$uo->UserId}-->" name="userid" />
+    <table width="100%" border="0" cellpadding="3">
+      <!--{if $errMsg}--><caption><font color="#FF0000"><!--{$errMsg}--></font></caption><!--{/if}-->
+      <thead>
+          <tr>
+            <th colspan="6">
+                <input type="radio" id="ids" name="userflag" value="txtids" /><label for="ids"><!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->Id <font color="#FF0000"><!--{$uo->UserId}--></font></label>
+                <input type="text" class="search_option" id="txtids" name="txtids" size="22" value="" disabled>        
+                
+                <input type="radio" id="names" name="userflag" value="txtnames" /><label for="names"><!--{'819767ADA1805B0F0117F10967B94D4D'|lang}--> <font color="#FF0000"><!--{$uo->UserName}--></font></label>
+                <input type="text" class="search_option" id="txtnames" name="txtnames" size="22" value="" disabled>        
+                
+                <input type="radio" id="vnames" name="userflag" value="txtvnames" /><label for="vnames"><!--{'10A6F1219A3A36CE2D7A9ED0F2D096A0'|lang}--> <font color="#FF0000"><!--{$uo->VUserName}--></font></label>
+                <input type="text" class="search_option" id="txtvnames" name="txtvnames" size="22" value="" disabled>        
+                
+                <input type="submit" class="btn-blue" name="search_user" value="<!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}-->" />
+            </th>
+          </tr>
+      </thead>
+      
+      <!--{if $detailTrue}-->
+      <tbody>
+          <tr>
+            <th><!--{'C5AE2E7BD2CB8F79F3DD66FA7212B58B'|lang}--></th>
+            <td colspan="5"><textarea name="cause" id="cause" cols="50" rows="8"><!--{$auditData.cause|htmlspecialchars}--></textarea><div id="causeTip"></div></td>
+          </tr>
+          <tr>
+            <th><!--{'2672EBED3559E60CB0D2FAB30BE65B14'|lang}--></th>
+            <td><font color="#FF0000"><!--{$co->Name}--></font></td>
+            <th><!--{'896F22DCE64FB9F78ECB8FCB7A01F9CC'|lang}--></th>
+            <td><font color="#FF0000"><!--{$co->VUserName}--></font></td>
+            <th>&nbsp;</th>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th><!--{'A523C6694C6EB6248F84C6CFFE74096F'|lang}-->  <font color="#FF0000"><!--{$co->Level}--></font></th>
+            <td><input class="user_info" name="cofc[Level]" type="text" value="<!--{$postData.cofc.Level}-->" />
+              <!--{'8AB800B2B5FA52F0F0BDD54D3513A7C9'|lang}--> </td>
+            <th><!--{'92DE33B5DDD056E9EDFD52151BEECBBD'|lang}--><font color="#FF0000"><!--{$co->Stone}--></font></th>
+            <td><input class="user_info" name="cofc[Stone]" type="text" value="<!--{$postData.cofc.Stone}-->" />
+              <!--{'7084EB1B158C90D066FD8D4DDD4CB2A9'|lang}--></td>
+            <th><!--{'C67F56D617EEA440129A909A6ED5063D'|lang}-->  <font color="#FF0000"><!--{$co->Assets}--></font></th>
+            <td><input class="user_info" name="cofc[Assets]" type="text" value="<!--{$postData.cofc.Assets}-->" />
+              G</td>
+          </tr>
+          <tr>
+            <th><!--{'E7E8A693A65901C624EDB455BF96B9F8'|lang}--> <font color="#FF0000"><!--{$co->Points}--></font></th>
+            <td><input type="text" class="text" name="cofc[Points]" value="<!--{$postData.cofc.Points}-->" /> <!--{'BE604F8B7EC5E80288B091EE12BBAB7F'|lang}--></td>
+            <th>&nbsp;</th>
+            <td>&nbsp;</td>
+            <th>&nbsp;</th>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th><!--{'BEFC15E201EFD227DF91066027A3D43D'|lang}--></th>
+            <td><input type="text" class="text" name="cofc[PassWord]" value="<!--{$postData.cofc.PassWord}-->" /> (<!--{'5FD9A75170CC59C705E3081350EA40BC'|lang}-->)</td>
+            <th>&nbsp;</th>
+            <td>&nbsp;</td>
+            <th>&nbsp;</th>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th colspan="6"><input type="submit" class="btn-blue" name="user_edit" value="<!--{'D371CA4DE9F25FDE279099F7EA4ED87C'|lang}-->" /></th>
+          </tr>
+      </tbody>
+      <!--{/if}-->
+      </table>
+	</form>
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,69 @@
+<script language="javascript" src="<!--{$__JS__}-->/Libs/jquery.form.js"></script>
+<script language="javascript">
+function onSubmit(form){
+	form.ajaxSubmit({
+		dataType:'json',
+		success:function(data){
+			alert(data.msg);
+		}}
+	);
+}
+</script>
+<fieldset>
+	<legend>菜单列表</legend>
+<a href="<!--{$url.Menu_AddMain}-->">AddMainMenu</a>
+<a href="<!--{$url.Menu_AddChild}-->">AddChildMenu</a>
+<a href="<!--{$url.Menu_CreateCache}-->">CreateCache</a>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">主菜单/子菜单</th>
+    <th scope="col">中文名称 / 英文名称</th>
+    <th scope="col">是否显示</th>
+    <th scope="col">排序 / 上级动作</th>
+    <th scope="col">操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  
+  <tr>
+  	<form onsubmit="onSubmit($(this));return false;" action="<!--{$url.Menu_UpdateChild}-->" method="post">
+    <th><!--{$list.value}--></th>
+    <th><input type="text" class="text" name="name" value="<!--{$list.name}-->" /> / <input type="text" class="text" name="name_2" value="<!--{$list.name_2}-->" /></th>
+    <th><input type="checkbox" name="status" <!--{if $list.status}-->checked="checked"<!--{/if}--> value="1" /></th>
+    <th>
+        <input type="hidden" name="Id" value="<!--{$list.Id}-->" />
+        <input type="text" class="text" name="sort" value="<!--{$list.sort}-->" />
+        <input type="text" class="text" name="super_action" value="<!--{$list.super_action}-->" />
+        <input type="submit" class="btn-blue" value="更新"  />
+    </th>
+    </form>
+    <th>
+      <a href="<!--{$list.url_edit}-->">编辑</a>
+      <a href="<!--{$list.url_del}-->">删除</a>
+    </th>
+  </tr>
+  	  
+      <!--{foreach from=$list.actions item=childList}-->
+      <tr>
+      	<form onsubmit="onSubmit($(this));return false;" action="<!--{$url.Menu_UpdateChild}-->" method="post">
+      	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→<!--{$childList.value}--></td>
+        <td align="center"><input type="text" class="text" name="name" value="<!--{$childList.name}-->" /> / <input type="text" class="text" name="name_2" value="<!--{$childList.name_2}-->" /></td>
+        <td align="center"><input type="checkbox" name="status" <!--{if $childList.status}-->checked="checked"<!--{/if}--> value="1" /></td>
+        <td align="center">
+            <input type="hidden" name="Id" value="<!--{$childList.Id}-->" />
+            <input type="text" class="text" name="sort" value="<!--{$childList.sort}-->" />
+            <input type="text" class="text" name="super_action" value="<!--{$childList.super_action}-->" />
+            <input type="submit" class="btn-blue" value="更新"  />
+        </td>
+        <td align="center">
+            <a href="<!--{$childList.url_edit}-->">编辑</a>
+            <a href="<!--{$childList.url_del}-->">删除</a>
+        </td>
+        </form>
+      </tr>
+      <!--{/foreach}-->
+  
+  <!--{foreachelse}-->
+  <tr><th colspan="5"><!--{$noData}--></th></tr>
+  <!--{/foreach}-->
+</table>
+</fieldset>

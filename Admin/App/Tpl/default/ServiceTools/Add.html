@@ -1,0 +1,64 @@
+<style type="text/css">
+label{
+	width:200px;
+	display:inline-block;
+}
+</style>
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript" type="text/javascript">
+KE.init({id:'content',imageUploadJson : '<!--{$url.UploadImg_Bulletin}-->',afterCreate:function(id){KE.util.focus(id)}});
+
+$(function(){
+	$(".all_select").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(this).parent().find(":checkbox").attr("checked",curCheck);
+	 });
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox").attr("checked",curCheck);
+	 });
+});
+</script>
+<fieldset>
+  <legend>添加公告</legend>
+  <form action="" method="post">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap" scope="row">分类选择</th>
+        <td><select name="kind"><!--{html_options options=$selectKind}--></select></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">标题</th>
+        <td><input name="title" type="text" class="text" size="60" /></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">内容</th>
+        <td>
+       	  <a href="javascript:void(0)" onclick="KE.create('content')">加载编辑器</a>
+        <a href="javascript:void(0)" onclick="KE.remove('content')">卸载编辑器</a><br />
+        	<textarea cols="100" rows="15" name="content" id="content"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">选择阅读用户</th>
+        <td>
+       	  <input type="checkbox" id="allcheck" /><font size="+1"><b>选择所有用户</b></font>
+        	<!--{foreach from=$org item=list}-->
+            <fieldset>
+            	<legend><!--{$list.name}--></legend>
+                <!--{if $list.users}-->
+                	<input type="checkbox" class="all_select"  /><font><b>选择该组所有用户</b></font>
+                	<!--{html_checkboxes name="users" options=$list.users}-->
+                <!--{else}-->
+                	<!--{$noData}-->
+                <!--{/if}-->
+            </fieldset>
+            <!--{/foreach}-->
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+    </form>
+</fieldset>

@@ -1,0 +1,150 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<style type="text/css">
+	.bold_font{ font-weight:bolder; margin-left:10px;}
+	
+	.range_text {
+		background: none repeat scroll 0 0 #FFFFFF;
+		border-color: #666666 #CCCCCC #CCCCCC #666666;
+		border-style: solid;
+		border-width: 1px;
+		width:30px;
+	}
+	
+	.AutoNewline
+	{
+	  word-wrap:break-word; overflow:hidden;
+	  line-height:150%;
+	}
+</style>
+
+
+<fieldset>
+  <legend>用户查询</legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <td>
+        <font class="bold_font" >邮件类型</font>:
+        <select name="type" >
+        	<!--{html_options options=$type selected=$selected.type}-->
+        </select>
+        <font class="bold_font" >是否阅读</font>:
+        <select name="readed" >
+        	<!--{html_options options=$readed selected=$selected.readed}-->
+        </select>
+        <font class="bold_font" >是否领取</font>:
+        <select name="received" >
+        	<!--{html_options options=$received selected=$selected.received}-->
+        </select>
+        <font class="bold_font" >是否退回</font>:
+        <select name="returned" >
+        	<!--{html_options options=$returned selected=$selected.returned}-->
+        </select>
+        <font class="bold_font" >是否删除</font>:
+        <select name="deleted" >
+        	<!--{html_options options=$deleted selected=$selected.deleted}-->
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <td>
+        <font class="bold_font" >角色ID</font>:<input name="receiverId" type="text" class="text" value="<!--{$selected.receiverId}-->">
+        <font class="bold_font" >角色名</font>:<input name="receiverName" type="text" class="text" value="<!--{$selected.receiverName}-->">
+        <input class="btn-blue" type="submit" value="查询">
+    </td>
+  </tr>
+
+</table>
+</form>
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th nowrap="nowrap">[角色ID]<br>[角色名]</th>
+          <th>邮件标题</th>
+          <th>邮件内容</th>
+          <th>附件</th>
+          <th>附件价格</th> 
+          <th nowrap="nowrap">[已阅读]<br>[时间]</th>        
+          <th nowrap="nowrap">[已领取]<br>[时间]</th>
+          <th nowrap="nowrap">[已退回]<br>[时间]</th>          
+          <th nowrap="nowrap">[已删除]<br>[时间]</th>     
+          <th nowrap="nowrap">[发送者]<br>[时间]</th>
+        </tr>        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+          <td align="center"><!--{$list.receiverId}--><br><!--{$list.receiverName}--></td>
+          <td><div class="AutoNewline" style="width:150px;"><!--{$list.title}--></div></td>
+          <td ><div class="AutoNewline" style="width:300px;"><!--{$list.content}--></div></td>
+          <td><!--list.attachments--></td>
+          <td align="center"><!--{$list.price}--></td>
+          <td align="center">
+            <!--{if $list.readed|ord}-->
+            	是
+            <!--{else}-->
+            	否
+            <!--{/if}-->
+            <br>
+            <!--{$list.readTime}-->
+          </td>
+          <td align="center">
+          	<!--{if $list.received|ord}-->
+            	是
+            <!--{else}-->
+            	否
+            <!--{/if}-->
+            <br>
+            <!--{$list.receiveTime}-->
+          </td>
+          <td align="center"> 
+            <!--{if $list.returned|ord}-->
+            	是
+            <!--{else}-->
+            	否
+            <!--{/if}-->
+            <br>
+            <!--{$list.returnTime}-->
+          </td>
+          <td align="center">
+            <!--{if $list.deleted|ord}-->
+            	是
+            <!--{else}-->
+            	否
+            <!--{/if}-->
+            <br>
+            <!--{$list.deleteTime}-->
+          </td>
+          <td align="center">
+              <!--{if $list.senderId ==0}--><font color="#009900">系统消息</font><!--{else}--><!--{$list.senderName}--><!--{/if}-->
+              <br>
+              <!--{$list.sendTime}-->
+          </td>
+        </tr>
+        <!--{foreachelse}-->
+            <!--{if $ConnectErrorInfo}-->
+              <tr>
+                <th colspan="11" align="center"><font color="#FF0000"><!--{$ConnectErrorInfo}--></font></th>
+              </tr>
+            <!--{else}-->
+            <tr>
+              <th colspan="11"><!--{$noData}--></th>
+            </tr>
+            <!--{/if}-->
+        <!--{/foreach}-->
+        <tr>
+          <th colspan="11" align="right"><!--{$pageBox}--></th>
+        </tr>
+      </table>
+
+</fieldset>
+<!--{/if}-->

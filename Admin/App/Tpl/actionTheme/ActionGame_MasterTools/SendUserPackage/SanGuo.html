@@ -1,0 +1,57 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+	$(function(){
+		$('#pageSize').val('<!--{$_GET.pageSize}-->');
+	});
+</script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#cause").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"原因不能为空,请确认"});
+	$("#user_id").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"玩家ID用","号隔开"},onerror:"玩家Id不能为空,请确认"});
+})
+</script>
+<fieldset>
+  <legend>搜索</legend>
+  
+<form action=""  method="post" id="form">
+	<input type="hidden" name="server_id" value="<!--{$server_id}-->"/>  
+    <table width="100%" border="0" cellpadding="3">
+    	<tr>
+      	<th>原因:</th>
+        <td>
+           <textarea rows="5" cols="50" name='cause' id='cause'></textarea>
+           <div id="titleTip" ></div>
+        </td>
+      </tr>
+      <tr>
+      	<th>玩家ID:</th>
+        <td>
+           <textarea rows="5" cols="50" name='user_id' id='user_id'></textarea>
+           <div id="contentTip">玩家ID用","号隔开</div>
+        </td>
+      </tr>
+      <!--{foreach from=$Property item=list key=k}-->
+      <tr>
+      	<th><!--{$list}--></th>
+        <td>
+           <input class="text" type="text" name="Property[<!--{$k}-->]">
+         </td>   
+      </tr>
+      <!--{/foreach}-->
+	<tr>
+		<th colspan="2"><input class="btn-blue" type="submit" value="提交"></th>
+	</tr>
+    </table>
+</form>
+
+
+</fieldset>
+
+<!--{/if}-->

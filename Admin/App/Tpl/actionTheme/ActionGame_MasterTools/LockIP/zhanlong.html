@@ -1,0 +1,55 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+</script>
+<fieldset>
+  <legend>封号<a href="<!--{$Add_Url}-->">[添加]</a></legend>
+   <form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    IP:<input class="text" type="text" name="IP" value="<!--{$_GET.IP}-->">
+    <input class="btn-blue" type="submit" name="sbm" value="查询">
+</form>
+      <table width="100%">
+        <tr>
+
+		<th>IP</th>
+		<th>结束时间</th>
+       	<th>操作</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+			<td align="center"><!--{$list.IP}--></td>
+			<td align="center"><!--{$list.EndTime}--></td>
+       		<td align="center"><a href="<!--{$Del_Url}-->&IP=<!--{$list.IP}-->">[编辑]</a></td>
+        </tr>
+        <!--{/foreach}-->
+
+          <tr>
+            <th colspan="3" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

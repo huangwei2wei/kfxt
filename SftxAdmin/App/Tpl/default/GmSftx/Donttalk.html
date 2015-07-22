@@ -1,0 +1,86 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+function del(){
+	if(confirm('确定要删除吗?')){
+		$('form').submit();
+	}
+}
+function showChild(val){
+	if(val==3){
+		$("#child_select").show();
+	}else{
+		$("#child_select").hide();
+	}
+}
+$(function(){
+	$("#search_type").change();
+})
+</script>
+
+<fieldset>
+	<legend>搜索</legend>
+    <form action="" method="get">
+    	<input type="hidden" name="c" value="GmSftx" />
+        <input type="hidden" name="a" value="Donttalk" />
+        <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+        <select id="search_type" onchange="showChild($(this).val())" name="type"><!--{html_options options=$optionList.optionList selelcted=$selectedArr.type}--></select>
+        <select id="child_select" name="dataMin" style="display:none" ><!--{html_options options=$optionList.statusList selelcted=$selectedArr.dataMin}--></select>
+        <input type="submit" class="btn-blue" value="提交" />
+    </form>
+</fieldset>
+
+<fieldset>
+<legend>禁言列表</legend>
+<form action="<!--{$url.GmSftx_Donttalk_Del}-->" method="post" onsubmit="return checksub();">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <td colspan="7">
+    	<a href="<!--{$url.GmSftx_Donttalk_Add}-->">增加禁言用户</a>
+    </td>
+    </tr>
+  <tr>
+    <th scope="col">操作</th>
+    <th scope="col">用户ID</th>
+    <th scope="col">状态</th>
+    <th scope="col">注册时间</th>
+    <th scope="col">禁言开始时间</th>
+    <th scope="col">禁言结束时间</th>
+    <th scope="col">操作</th>
+  </tr>
+  <!--{foreach from=$dataList key=key item=list}-->
+  <tr>
+    <td scope="col"><input type="checkbox" value="<!--{$list.id}-->" name="idList[]" /></td>
+    <td scope="col"><!--{$list.uid}--></td>
+    <td scope="col"><!--{$list.status}--></td>
+    <td scope="col"><!--{$list.createAt}--></td>
+    <td scope="col"><!--{$list.begin}--></td>
+    <td scope="col"><!--{$list.end}--></td>
+    <td scope="col"><a href="<!--{$list.url_release}-->">强制解禁</a></td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="7" scope="col">
+  		<!--{$noData}--> 	
+    </th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <td colspan="7" scope="col">
+  		选择所有<input type="checkbox" onclick="$(':checkbox[name=\'idList[]\']').attr('checked',$(this).attr('checked'))" />
+        <input type="button" class="btn-blue" onClick="del()" value="删除" />  
+    </td>
+  </tr>
+  <tr>
+    <td colspan="7" align="right" scope="col">
+  		<!--{$pageBox}-->
+    </td>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

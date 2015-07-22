@@ -1,0 +1,202 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+function jumpUrl(url){
+	form=$("#form");
+	form.attr("action",url);
+	form.submit();
+}
+</script>
+<fieldset>
+	<legend><!--{'16DB81845117113C22D60CDA5CFD15E3'|lang}--></legend>
+  <form action=""  method="get" onsubmit="return checksub();">
+        <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+        <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+        <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+        
+        <select name="Query[Items]">
+            <!--{html_options options=$data.Items selected=$data.Query.Items}-->
+        </select>
+    <input type="text" class="text" name="Query[start]" value="<!--{$data.Query.start|htmlspecialchars}-->" />
+        
+        <select name="Query[TypeItems]">
+            <!--{html_options options=$data.TypeItem selected=$data.Query.TypeItems}-->
+        </select>
+    <input type="text" class="text" name="Query[end]" value="<!--{$data.Query.end|htmlspecialchars}-->" />
+        
+        <select id="PageSize" name="PageSize"><!--{html_options options=$pageSize selected=$data.PageSize}--></select>
+        <!--{'247048DBE3149877C604EF1FC0DC6146'|lang}--> <select name="Query[IFDel]"><!--{html_options options=$selectDel selected=$data.Query.IFDel}--></select>
+        <input type="submit" class="btn-blue" name="submit" id="submit" value="<!--{'DC5D07A1867B1C0B57153AFE054D0332'|lang}-->">
+    </form>   
+    	<!--{if $data.Query.TypeItems==1}--><!--<!--{'D04E78E99CB56DA4FC3190072DE53041'|lang}-->-->
+            <table width="100%" cellpadding="3">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col"><!--{'35CF1D90747189728D369BFBF674AA43'|lang}--></th>
+                <th scope="col"><!--{'7AD9B68ABE36DD2BEED3454B71306D8F'|lang}--></th>
+                <th scope="col"><!--{'A01A9963238DF560A9B974F45C7E253A'|lang}--></th>
+                <th scope="col"><!--{'787B5677E325BEEC788727CD1A327F1F'|lang}--></th>
+                <th scope="col"><!--{'041EC2AB7C5A7466247E0A98148A05F2'|lang}--></th>
+                <th scope="col"><!--{'4AE03CEBB6F32F17AEC83D20A87E8AE5'|lang}--></th>
+                <th scope="col"><!--{'2095C2C2E7101A3B29F7BEC63658089C'|lang}--></th>
+                <th scope="col"><!--{'1A6AA24E762CF41ECBB3EE58D17D5024'|lang}--></th>
+                <th scope="col"><!--{'08B55FEA3C93AC86C02F7668ED2CE8CF'|lang}--></th>
+                <th scope="col"><!--{'F2A06D24FB3BBD7EDD40375937EAA441'|lang}--></th>
+                <th scope="col"><!--{'11C011AC2B67E109AE18CCBEA3313101'|lang}--></th>
+                <th scope="col"><!--{'190E9CC2C941148C8BA32F2003FB886B'|lang}--></th>
+                <th scope="col"><!--{'B652DE80D6A54F83CE3CB04AADDC0C7E'|lang}--></th>
+                <th scope="col"><!--{'0D49343CB6B08A7DAA1DE1AB8FE558C6'|lang}--></th>
+                <th scope="col"><!--{'D8CE9148B7D2C67CD0D118E933DABC2D'|lang}--></th>
+                <th scope="col"><!--{'247048DBE3149877C604EF1FC0DC6146'|lang}--></th>
+              </tr>
+              <!--{foreach from=$dataList item=list}-->
+              <tr>
+                <td><!--{$list.Id}--></td>
+                <td><!--{$list.Name}--></td>
+                <td><!--{$list.NickName}--></td>
+                <td><!--{$list.Age}--></td>
+                <td><!--{$list.Sex}--></td>
+                <td><!--{$list.Power}--></td>
+                <td><!--{$list.Fealty}--></td>
+                <td><!--{$list.Salary}--></td>
+                <td><!--{$list.Exec}--></td>
+                <td><!--{$list.Admin}--></td>
+                <td><!--{$list.Hope}--></td>
+                <td><!--{$list.DowerState}--></td>
+                <td><!--{$list.DowerLevel}--></td>
+                <td><!--{$list.Position}--></td>
+                <td><!--{$list.ShopName}--></td>
+                <td><!--{$list.SkillDegree}--></td>
+                <td><!--{$list.Deleted}--></td>
+              </tr>
+              <!--{foreachelse}-->
+              <tr>
+                <th colspan="17"><!--{$noData}--></th>
+              </tr>
+              <!--{/foreach}-->
+              <tr>
+                <td align="right" colspan="17"><!--{$pageBox}--></td>
+              </tr>
+            </table>
+        <!--{elseif $data.Query.TypeItems==2}--><!--<!--{'A4D703F4EF0FF46986D7EF07E0675A67'|lang}-->-->
+            <table width="100%" cellpadding="3">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col"><!--{'0D49343CB6B08A7DAA1DE1AB8FE558C6'|lang}--></th>
+                <th scope="col"><!--{'6ADAFE274922DF64E5CF3FD59FA61135'|lang}--></th>
+                <th scope="col"><!--{'62261415D4279674DE81E92590B616D4'|lang}--></th>
+                <th scope="col"><!--{'67B5AA5C561BC61443D3345B36648D19'|lang}--></th>
+                <th scope="col"><!--{'1DBB0D24A835BAFD2B293877FE29D175'|lang}--></th>
+                <th scope="col"><!--{'29EE6884DF7411E3715B9B1EC52EEAEE'|lang}--></th>
+                <th scope="col"><!--{'FB08E448190295161E134FC4336AF082'|lang}--></th>
+                <th scope="col"><!--{'ECA37CB0726C51702F70C486C1C38CF3'|lang}--></th>
+                <th scope="col"><!--{'E8571B6720187A3894093A7EE7727E83'|lang}--></th>
+                <th scope="col"><!--{'4D64D0EFE6419547CA5DB57897684AED'|lang}--></th>
+                <th scope="col"><!--{'80EC5505CF56EF2057DFA403B3E67CE2'|lang}--></th>
+                <th scope="col"><!--{'1C9C8421A2F722615A3ED86735B4860C'|lang}--></th>
+                <th scope="col"><!--{'AB0D9D187EB52173DB1F998C264E36D1'|lang}--></th>
+                <th scope="col"><!--{'BEB3934C38F6B487C62BBA8B9D7512F1'|lang}--></th>
+                <th scope="col"><!--{'CD48A7730A2C0AFF7015210EAFFE72AE'|lang}--></th>
+                <th scope="col"><!--{'5E4FA6BD1612BD047980963A282F2A5F'|lang}--></th>
+                <th scope="col"><!--{'62EB2F822E49E763D26052722D106F70'|lang}--></th>
+                <th scope="col"><!--{'32FD3A24CB6C4DC70E0278B6850D5286'|lang}--></th>
+                <th scope="col"><!--{'1BF538385DE3459DAA08B176E011F61D'|lang}--></th>
+              </tr>
+              <!--{foreach from=$dataList item=list}-->
+              <tr>
+                <td><!--{$list.Id}--></td>
+                <td><!--{$list.ShopName}--></td>
+                <td><!--{$list.IndustryId}--></td>
+                <td><!--{$list.Level}--></td>
+                <td><!--{$list.ShopTypeLevel}--></td>
+                <td><!--{$list.ShopTypeId}--></td>
+                <td><!--{$list.ShopIncomeBase}--></td>
+                <td><!--{$list.BaseIncome}--></td>
+                <td><!--{$list.ForCountIncome|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+                <td><!--{$list.EmployeeNums}--></td>
+                <td><!--{$list.OnBusiness}--></td>
+                <td><!--{$list.SaleGoods}--></td>
+                <td><!--{$list.FacGoodLevel}--></td>
+                <td><!--{$list.AddEmployeeFashion}--></td>
+                <td><!--{$list.AddEmployeePowerValue}--></td>
+                <td><!--{$list.AddEmployeeSkillValue}--></td>
+                <td><!--{$list.AddShopMasterValue}--></td>
+                <td><!--{$list.AddFloat}--></td>
+                <td><!--{$list.AddEmployeePosition}--></td>
+                <td><!--{$list.AddShopStrucPost}--></td>
+              </tr>
+              <!--{foreachelse}-->
+              <tr>
+                <th colspan="20"><!--{$noData}--></th>
+              </tr>
+              <!--{/foreach}-->
+              <tr>
+                <td align="right" colspan="20"><!--{$pageBox}--></td>
+              </tr>
+            </table>
+        <!--{elseif $data.Query.TypeItems==3}--><!--<!--{'D33AD542C7B95FD6ED283E1CEC5434D1'|lang}-->-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="3">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col"><!--{'A2AE9B43784D4B1B695F3DCC970E7ADC'|lang}-->UserId</th>
+                <th scope="col"><!--{'DE24BFB740EF7421E00B7346EA704E3E'|lang}-->Id</th>
+                <th scope="col"><!--{'6C27ED2D5DE58296E0210C29370DBDEF'|lang}--></th>
+                <th scope="col"><!--{'040FBF2279A3317FC5D5E950616848D1'|lang}--></th>
+                <th scope="col"><!--{'0BF60B32F9DB93B87E08763B1C815469'|lang}--></th>
+                <th scope="col"><!--{'DA4ABD3ED8644E8D60C8BD8A07A92FE3'|lang}--></th>
+                <th scope="col"><!--{'4DF53F1F072377AF644704DC5435733A'|lang}--></th>
+                <th scope="col"><!--{'9BB54689ED66FC65B44AED3EE1BC5C8A'|lang}--></th>
+                <th scope="col"><!--{'059C1E81D5CCBBD284CAAA7A90C30451'|lang}--></th>
+                <th scope="col"><!--{'6E5112FFA8516D7DBE67118BD63CC391'|lang}--></th>
+                <th scope="col"><!--{'DEF808F935079E1D4357192BD04C9708'|lang}--></th>
+                <th scope="col"><!--{'D423E73E6C6DEF3F5AC5A47C90C1A32B'|lang}--></th>
+                <th scope="col"><!--{'815224153577C7C8AB900C683CA22A40'|lang}--></th>
+                <th scope="col"><!--{'C4595B535CEA734E50E8DF5CDC99F0B3'|lang}--></th>
+                <th scope="col"><!--{'513FB7E171468BC7E7818A70ECE6E2A6'|lang}--></th>
+                <th scope="col"><!--{'81B42AC62549CEC51D634F88A6444B7C'|lang}--></th>
+                <th scope="col"><!--{'560B57FB3A7F3D37CBA6B8508CD05CDD'|lang}--></th>
+                <th scope="col"><!--{'04654BFF7441047BC952EBC476663960'|lang}--></th>
+                <th scope="col"><!--{'4D815E107FABFE57D958B2DBCB5AC7BC'|lang}--></th>
+                <th scope="col"><!--{'247048DBE3149877C604EF1FC0DC6146'|lang}--></th>
+              </tr>
+              <!--{foreach from=$dataList item=list}-->
+              <tr>
+                <td><!--{$list.Id}--></td>
+                <td><!--{$list.ToUserId}--></td>
+                <td><!--{$list.toolsid}--></td>
+                <td><!--{$list.toolsname}--></td>
+                <td><!--{$list.toolename}--></td>
+                <td><!--{$list.buycount}--></td>
+                <td><!--{$list.BuySinglePrice}--></td>
+                <td><!--{$list.BuyTotalPrice}--></td>
+                <td><!--{$list.expireday}--></td>
+                <td><!--{$list.gettime}--></td>
+                <td><!--{$list.usefrequency}--></td>
+                <td><!--{$list.usertimes}--></td>
+                <td><!--{$list.moneytype}--></td>
+                <td><!--{$list.IsAuto}--></td>
+                <td><!--{$list.paytype}--></td>
+                <td><!--{$list.TrafficType}--></td>
+                <td><!--{$list.TrafficLevel}--></td>
+                <td><!--{$list.LoadedNum}--></td>
+                <td><!--{$list.gettype}--></td>
+                <td><!--{$list.UseMode}--></td>
+                <td><!--{$list.Deleted}--></td>
+              </tr>
+              <!--{foreachelse}-->
+              <tr>
+                <th colspan="21"><!--{$noData}--></th>
+              </tr>
+              <!--{/foreach}-->
+              <tr>
+                <td align="right" colspan="21"><!--{$pageBox}--></td>
+              </tr>
+            </table>
+    	<!--{/if}-->
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,14 @@
+<div class="right2">
+    <ul>
+    	<!--{/*
+        
+        <li><div class="right2_img"><a href="#"><img src="images/1.jpg" /></a></div>
+        <p><b><a href="#">商业大亨2</a></b><br />游戏类型：模拟经营<br /><a href="#" class="ask">我要提问</a></p></li>
+        
+        */}-->
+        <volist name="games" id="list">
+            <li><div class="right2_img"><a href="{$list.ask_url}"><img src="{$list.img}" /></a></div>
+            <p><b><a href="{$list.ask_url}">{$list.name}</a></b><br />游戏类型：{$list.kind_name}<br /><a href="{$list.ask_url}" class="ask">常见问题</a></p></li>
+         </volist>
+    </ul>
+</div>

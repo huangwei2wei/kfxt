@@ -1,0 +1,24 @@
+<style type="text/css">
+<!--
+body,td,th {
+	font-family: "微软雅黑",Verdana, Geneva, sans-serif;
+	font-size: 12px;
+}
+td{
+	padding:2px;
+	margin:2px;
+}
+-->
+</style>
+<body>
+<table width="20%" border="1" cellspacing="3" cellpadding="3">
+  <tr>
+    <th scope="col">CardNum </th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.CardNum}--></td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+</body>

@@ -1,0 +1,115 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+
+<script language="javascript" >
+function selectAll(check){
+	var curCheck=check.attr("checked");
+	$(":checkbox[name='EIds[]']").attr("checked",curCheck);
+} 
+function submitCheck(){
+	if($('#cause').val()==''){
+		alert('<!--{'REASON_CAN_NOT_BE_EMPTY'|lang}-->');
+		$('#cause').focus();
+		return false;
+	}
+	if(!checkIsSelected()){
+		alert('<!--{'PLEASE_SELECT_THE_STAFF_NEEDED_TO_RESTORE'|lang}-->');
+		return false;
+	}
+	if(confirm('<!--{'RECOVERY_CONFIRM'|lang}-->')){
+		$('#doaction').val('resume');
+		return true;
+	}else{
+		return false;
+	}
+
+}
+function checkIsSelected(){
+	var tag = false;
+	$.each($(':checkbox[name=EIds[]]'),function(key,sub_check){		
+		if(sub_check.checked){
+			tag = true;
+		}
+	})
+	return tag;
+}
+
+</script>
+<form id="form" method="get">
+<table width="99%" border="0" cellspacing="0" cellpadding="3"><tr><td>
+    <input type="hidden" name="c" value="MasterFRG" />
+    <input type="hidden" name="a" value="EmployeeResume" />
+    <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <!--{'USER_ID'|lang}--> 
+    <input class="text" name="UserId" value="<!--{$selected.UserId}-->" />
+    
+    <!--{'DELETE_DAYS'|lang}-->
+	<!--{html_options name="DelDay" options=$DelDay selected=$selected.DelDay}-->
+	
+    <!--{'IS_BEING_DUG'|lang}-->
+    <!--{html_options name="DigStatus" options=$DigStatus selected=$selected.DigStatus}-->
+	<input class="btn-blue" type="submit" value="<!--{'INQUIRY'|lang}-->" /> &nbsp;&nbsp;(<!--{'EQUIVALENT_FIRST_DAY'|lang}-->)
+<!--{$DataTable|default:'NoDataTable'}--></td></tr></table>
+</form>
+
+<form method="post">
+	<input type="hidden" name="doaction"  id="doaction" value="" />
+    <table width="99%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col">S</th>
+        <th scope="col"><!--{'EMPLOYEES_NAME'|lang}--></th>
+        <th scope="col"><!--{'INDUSTRY'|lang}--></th>
+        <th scope="col"><!--{'EXPERIENCE'|lang}--></th>
+        <th scope="col"><!--{'TALENT'|lang}--></th>
+        <th scope="col"><!--{'LOYALTY'|lang}--></th>
+        <th scope="col"><!--{'PROFICIENCY'|lang}--></th>
+        <th scope="col"><!--{'DELETE_DAYS'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=list name=foo}-->
+		  <tr>
+			<td style=" text-align:center">
+            	<input type="checkbox" name="EIds[]" value="<!--{$list.Id}-->" />
+                <input type="hidden" name="ENames_<!--{$list.Id}-->" value='<!--{$list.Name}-->' />
+                <!--{$smarty.foreach.foo.index+1}-->
+            </td>
+			<td style=" text-align:center">
+            	<!--{$list.Name}-->
+                <!--{if $list.LastDigTime > 0}--><b>(<!--{'DUGED'|lang}-->)</b><!--{/if}-->
+            </td>
+			<td style=" text-align:center"><!--{$list.Industrys}--></td>
+            <td style=" text-align:center"><!--{$list.SkillLevel}--></td>
+			<td style=" text-align:center"><!--{$list.DowerLevel}-->(<!--{$list.DowerState}-->)</td>
+			<td style=" text-align:center"><!--{$list.Fealty}--></td>
+			<td style=" text-align:center"><!--{$list.SkillDegree}--></td>
+			<td style=" text-align:center"><!--{$list.Deleted}--></td>
+		  </tr>  
+		  
+	  <!--{/foreach}-->
+       <tr >
+           <td style=" text-align:center">
+            	<!--{'SELECT_ALL'|lang}--> <input type="checkbox" onclick="selectAll($(this))"/>
+           </td>
+           <td colspan="7">&nbsp;</td>
+       </tr>
+       <tr >
+           <td style=" text-align:center"><!--{'OPERATIONAL_REASONS'|lang}--></td>
+           <td colspan="7">
+            	<textarea style=" width:500px;" name="cause" id="cause"></textarea>
+           </td>
+       </tr>
+       <tr >
+           <td style=" text-align:center">
+            	<input class="btn-blue" type="submit" value="<!--{'RECOVERY'|lang}-->" onclick="return submitCheck();" />
+           </td>
+           <td colspan="7">&nbsp;</td>
+       </tr>
+       <tr >
+    </table>
+    
+
+</form>
+
+<!--{/if}-->

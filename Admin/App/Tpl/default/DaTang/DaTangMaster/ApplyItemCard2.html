@@ -1,0 +1,360 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+
+<style>
+.server label {
+	display: inline-block;
+}
+
+.pd {
+	padding: 3px;
+}
+
+.usageDesc {
+	display: none;
+	margin: 2px;
+	color: #F00
+}
+</style>
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+
+	function onSubmit(){
+		if(!checkSaveCardSubmit()){
+			return false;
+		}
+		var v = $(":checkbox[name='server_ids[]']:checked").attr('value');
+		if(undefined == v){
+			alert('请选择服务器');
+			return false;
+		}
+		$('.returnTip').remove();	//去掉旧提示
+		$(":checkbox[name='server_ids[]']:checked").each(function(i,n){
+				var curLi=$("#server_"+n.value);
+				$("#lbform").ajaxSubmit({
+					dataType:'json',
+					data:{server_id:n.value},
+					success:function(data){
+						var fontColor=(data.status==1)?'#00cc00':'#ff0000';
+						curLi.append("<font class='returnTip' color='"+fontColor+"'> "+data.info+"</font>");
+					}
+				});
+		});
+		
+	}
+
+function sendMentod(isPoint){
+	$('#closedTest').hide();
+	if(isPoint=='all'){
+		$('#send_ponit').show();
+		$('#send_items').show();
+	}
+	else if(isPoint=='closedTest'){
+		$('#send_ponit').hide();
+		$('#send_items').hide();
+		$('#closedTest').show();
+	}
+	else{
+		if(isPoint){
+			$('#send_ponit').show();
+			$('#send_items').hide();
+		}else{
+			$('#send_ponit').hide();
+			$('#send_items').show();
+		}
+	}
+
+}
+	
+function makeInput(obj){
+	var id = obj.attr('checkboxId');
+	if(obj.attr('checked')){
+		var str = '<input type="text" value="" class="text" style="width:35px;height:10px;border: 1px solid red;" goodId="'+id+'" goodname="'+obj.val()+'" name="goods['+id+'_'+obj.val()+']" onblur="goodsCollectAdd($(this).attr(\'goodId\'),$(this).attr(\'goodName\'),$(this).val())" >';
+		$('#input_'+id).html(str);
+		$('#input_'+id).children().focus();
+	}else{
+		$('#input_'+id).html('');
+	}
+}
+
+function goodsCollect(goodId){
+	//alert(goodId);
+}
+
+function goodsCollectAdd(goodId,goodName,count){
+	if(goodId =='' || $.trim(count)=='')return false;
+	var str = '';		
+	var goodsCollect = $('#goodsCollect');
+	var goodsCollectId = 'goodsCollect'+goodId;
+	$('#'+goodsCollectId).remove();
+	str = '<div id="'+goodsCollectId+'" >'+goodName+'('+count+') <a href="javascript:goodsCollectDel('+goodId+')">删除</a></div>';
+	goodsCollect.append(str);
+}
+
+function goodsCollectDel(goodId){
+	if(goodId =='')return false;		
+	$('#checkboxGood'+goodId).attr('checked',false);
+	$('#input_'+goodId).html('');
+	$('#goodsCollect'+goodId).remove();
+}
+
+function checkSaveCardSubmit(){
+	var usageObj = $('[name=usage]');
+	var usageIsSelect = false;
+	for(var i=0;i<usageObj.length;i++){
+		if(usageObj[i].checked == true){
+			usageIsSelect = true;
+			break;
+		}		
+	}
+	if(!usageIsSelect){
+		alert('请选择使用类型');
+		return false;
+	}
+	
+	$.each($('[name=usage]'),function(){
+		$(this).attr('checked');					
+	});
+
+	var noEmpty = new Array("name","detail","cause");
+	var explain = new Array("卡片名称","卡片描述","申请原因");
+	for (x in noEmpty)
+	{
+		var obj = $('[name='+noEmpty[x]+']');
+		var content = $.trim(obj.val());
+		if(content=='' ){
+			alert(explain[x]+' 不能为空！');
+			obj.focus();
+			return false;
+		}
+	}
+	
+	//如果是单人卡，必须绑定玩家id
+	if($('#regive_0').attr('checked') &&  $.trim($('#playerId').val()) == '' ){
+		alert('单人卡必须填写玩家');
+		$('#playerId').val('').focus();
+		return false;
+	}
+	
+	var tip = "";
+	
+	if($('#regive_0').attr('checked')){
+		tip += '领取方式：绑定单个玩家\n\r';
+	}else{
+		tip += '领取方式：可多人重复领取\n\r';		
+	}
+	
+	if($('#isSendMail_0').attr('checked')){
+		tip += '邮件通知：否\n\r';
+	}else{
+		tip += '邮件通知：是\n\r';
+	}
+	tip += "\n\r确定申请？";
+	return confirm(tip);
+}
+
+function usageInfo(val){
+	$('.usageDesc').hide();
+	$('#usageDesc'+val).show();
+}
+
+function showemail(){
+	document.getElementById("content").disabled="";
+	document.getElementById("title").disabled="";
+	document.getElementById("content").style.background="";
+	document.getElementById("title").style.background="";
+	
+}
+
+function unshowemail(){
+	document.getElementById("content").disabled="disabled";
+	document.getElementById("title").disabled="disabled";
+	document.getElementById("content").style.background="#F1EFF1";
+	document.getElementById("title").style.background="#F1EFF1";
+}
+function hhh(){
+	if($('#no_bind').attr('checked')){
+		$('.common').hide();
+		$('.hhh').show();
+	}else if($('#no_bind_3').attr('checked')){
+		$('.common').show();
+		$('.playid').hide();
+		$('.hhh').show();
+	}else{
+		$('.common').show();
+		$('.playid').show();
+		$('.hhh').hide();
+		$('input[name=count]').val(1);
+	}	
+}
+//$(function(){
+//	$('input[name=regive]').bind('click',function(){
+//
+//	});
+//})
+//unshowemail();
+
+</script>
+<fieldset>
+<legend>创建礼包 [<a href="<!--{$URL_ReCache}-->">刷新道具和服务器</a>]</legend>
+    <form action="" method="post" id='lbform'>
+    <table width="100%" border="0" cellpadding="3">
+    	<tr>
+        	<th width="120">使用类型</th>
+        	<td>
+            	<!--{html_radios options=$usage name="usage" onclick="usageInfo($(this).val())"}-->
+                <div class="usageDesc" id="usageDesc2">
+                	补偿玩家道具元宝/礼券/道具
+                </div>
+                <div class="usageDesc" id="usageDesc3">
+                	内部人员测试用卡
+                </div>
+                <div class="usageDesc" id="usageDesc4">
+                	扣除相应元宝/礼券/道具（针对异常玩家使用）
+                </div>
+                <div class="usageDesc" id="usageDesc5">
+                	活动期间发放奖励用
+                </div>
+                <div class="usageDesc" id="usageDesc1">
+                	补偿玩家正常充值失败（已充值，但游戏中未到账），可正常触发相应充值礼包，类似补单
+                </div>
+            </td>
+        </tr>
+        <tr id="bindPlayers">
+            <th scope="row" nowrap="nowrap">
+                失效期
+            </th>
+            <td>
+              <input type="text" class="text" name="validTime"  onFocus="WdatePicker({startDate:'<!--{$dataList.Start_time|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+            </td>
+        </tr>
+        <tr id="bindPlayers">
+            <th scope="row" nowrap="nowrap">
+                领取方式
+            </th>
+            <td>
+              <input type="radio" value="0" id="regive_0" name="regive" onclick="$('#userIdTips').hide();hhh();"  checked="checked">绑定单个玩家
+              <!--{if $allowRegive}-->
+           	  <input type="radio" value="1" id="regive_1" name="regive" onclick="$('#userIdTips').show();hhh();">可多人重复领取
+              <input type="radio" value="-1" id="no_bind" name="regive" onclick="hhh();" >批量生成(不绑定,单次领取)
+              <input type="radio" value="3" id="no_bind_3" name="regive" onclick="hhh();" >一卡多领
+              <!--{/if}-->
+            </td>
+        </tr>
+        <tr class="playid">
+            <th scope="row" nowrap="nowrap" >
+                玩家ID
+            </th>
+        	<td>
+            	<textarea id="playerId" name="playerId" style="width:400px; height:60px; " ></textarea><span id='userIdTips' style="display:none">玩家ID用","隔开</span>
+            </td>
+        </tr>
+        <tr id="send_mail" class="common">
+
+            <th scope="row" nowrap="nowrap" >
+                发送邮件
+            </th>
+            <td>
+            	<input type="radio" id="isSendMail_0" value="0" name="isSendMail" checked="checked" onchange="unshowemail()">不发邮件
+         		<input type="radio" id="isSendMail_1" value="1" name="isSendMail" onchange="showemail()">发邮件通知
+
+              	<div class="pd">邮件标题:<input name="title" id="title" type="text" class="text" style="width:400px; background:#F1EFF1" value="" disabled="disabled" /></div>
+                <div class="pd">
+                	<span style="vertical-align:top">邮件内容:</span><textarea disabled="disabled" id="content" name="content" style="width:400px; height:60px; background:#F1EFF1" >亲爱的玩家：
+    您好，您的礼品已申请，您可以通过点击领取道具，请您注意查收。</textarea>
+                </div>
+            </td>
+        </tr>
+        <tr class="hhh" style="display:none">
+            <th scope="row" nowrap="nowrap" >
+                生成数量
+            </th>
+            <td>
+                <input class="text"  name="count" type="text" value="1"/><font color="red">*</font>
+                作用域：<select name='server'>
+             	<option value="">全服生效</option>   
+             	<!--{foreach from=$gameser_list item=list key=k}-->
+             	<option value='<!--{$k}-->'><!--{$list.server_name}--></option>   
+             	<!--{/foreach}-->
+             </select>
+            </td>	
+        </tr>
+		<tr>
+            <th scope="row" nowrap="nowrap" rowspan="1">参数设定</th>
+            <td>
+                卡片名称：<input class="text"  name="name" type="text" value=""/><font color="red">*</font>
+                卡片描述：<input class="text"  name="detail" type="text" value=""/><font color="red">*</font>
+            </td>					
+        </tr>
+        <tr>
+            <th scope="row" nowrap="nowrap" style="color: red" rowspan="1">卡内容</th>
+            
+            <td >
+            	<div style="margin:5px;">
+                <input type="radio" name="point" tag="send_ponit" onclick="$('#yuanbaoLiquan').html('礼券');sendMentod('all')" value="3" checked="checked" />全部(礼券)
+            	<input type="radio" name="point" tag="send_ponit" onclick="$('#yuanbaoLiquan').html('元宝');sendMentod(true)" value="1" />只送点
+                <input type="radio" name="point" tag="send_items" onclick="sendMentod(false)" value="0" />只送道具
+                <input type="radio" name="point" tag="send_items" onclick="sendMentod('closedTest')" value="4" />内部充值卡
+                </div>
+                  <div id="closedTest" style="display:none; margin:5px;">
+                	<!--内部测试值-->
+                	<select name="closedTestValue">
+                    	<option value="0">100 元宝套餐卡</option>
+                        <option value="1">1000 元宝套餐卡</option>
+                        <option value="2">5000 元宝套餐卡</option>
+                    </select>
+                </div>
+                <div id="send_ponit" style="margin:5px;"> 
+                <font id="yuanbaoLiquan">礼券</font>:<input class="text"  name="pointVal[0]" type="text" value="0"/>
+                铜币:<input class="text"  name="pointVal[1]" type="text" value="0"/>
+                阅历:<input class="text"  name="pointVal[2]" type="text" value="0"/>
+                </div>
+                <div id="send_items" style="margin:5px;">
+                <table width="100%" border="0" cellpadding="3">
+                  <tr>
+                  <!--{foreach from=$Goods item=list key=key name=foo}-->              
+                    <td><!--{$list.Name}-->
+                        <div style="background:white;margin:6px;font-size:14px;border:1px dashed silver;padding:5px;width:200px;">
+                            <div style="overflow:auto;height:200px; width:200px;text-align:left;">
+                                <!--{foreach from=$list.Item item=goodclass key=k}--> 
+                                    <div style="font-size:13px; margin-top:4px;">
+                                        <!--{$goodclass}-->
+                                        <input type="checkbox" id="checkboxGood<!--{$k}-->" onclick="makeInput($(this));" value="<!--{$goodclass}-->" checkboxId="<!--{$k}-->">
+                                        <span id="input_<!--{$k}-->"></span>
+                                    </div>
+                                <!--{/foreach}--> 
+                            </div>
+                        </div>
+                    </td>
+                    <!--{if $smarty.foreach.foo.index%4==3}--> 
+                        </tr><tr>
+                    <!--{/if}-->
+                  <!--{/foreach}--> 
+                  </tr>
+                </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>道具汇总</th>
+          <td  valign="top">
+          	<div id="goodsCollect"></div>
+          </td>
+        </tr>
+        <tr>
+            <th>申请原因<font color="red">*</font></th>
+          <td  valign="top"><textarea name="cause" id="cause" style="width:400px; height:60px;"></textarea></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><input class="btn-blue" type="button" onclick="onSubmit();" value="生成卡片"></td>
+        </tr>
+    </table>
+    </form>
+</fieldset>

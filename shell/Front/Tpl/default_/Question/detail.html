@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>优玩网 - 问题明细</title>
+<link rel="stylesheet" type="text/css" href="css/page.css" />
+<include file="../common/libs"/>
+<script src="__PUBLIC__/common/js/libs/jquery.form.js" language="javascript"></script>
+<script>
+$(function(){
+	$('#menu_question').addClass('d');
+	$("#ev_submit").ajaxForm({
+		dataType:'json',
+		success:processJson
+	});
+});
+
+function processJson(data){
+	var tag = $('#re_question').find(':radio').attr("checked")&&($('#re_question').find(':radio').val()==1);
+	$("#ev_submit").empty();
+	if(tag){
+		$("#ev_submit").append('<h2 style="text-align:center;padding:20px 0;">感谢您对我们工作的支持！</h2>');
+		}
+	else{
+		$("#ev_submit").append('<h2 style="text-align:center;padding:20px 0;">感谢您对我们工作的支持！您还可以通过<a href="{:U(\'Question/index\')}">提交问题</a>给我们的客服，以获得满意的答案！</h2>');
+		}
+	$("#reply_href").hide();
+}
+</script>
+</head>
+
+<body>
+<include file="../common/head"/>
+<div id="contai">
+	<include file="../common/menu"/>
+	<include file="left"/>
+	<div class="neiright">
+		
+		<div class="tiontit">
+            <b>当前位置：</b><a href="{:U('Index/index')}">客服中心</a> > <a href="#">结果查询 </a>
+        </div>
+        
+		<div class="list">
+			<div class="listhaera"><a href="javascript:history.go(-1);">返回</a></div>		 
+			 <div class="listkan">
+                 <p class="listkann">
+                     <b>问题标题：</b>{$workOrder.title}<br/>
+                     <b>问题类型：</b>{$workOrder.question_type_name}<br/>	
+                     <b>游戏类型：</b>{$workOrder.game_type_name}<br/>		
+                     <if condition="$game_server_name">
+                        <b>所在服务器：</b>{$workOrder.game_server_name}
+                     </if> 
+                    <!--动态表单-->
+                    <volist name="workOrder[actionFormArray]" id="form">
+                        <b>{$key}：</b>{$form}<br/>
+                    </volist>
+			 	</p>
+			 	<volist name="list" id="vo">
+			 		<p class="listkann">
+                        <b>
+                            <if condition="$i eq 1">
+                                问题描述 {$vo.create_time|date="Y-m-d H:i:s",###}：
+                            <elseif condition="$vo.qa eq 0"/>
+                                追问内容 {$vo.create_time|date="Y-m-d H:i:s",###}：
+                            <else/>
+                                客服[{$serivceUsers[$vo[user_id]]}] {$vo.create_time|date="Y-m-d H:i:s",###}：
+                            </if>
+                        </b>
+                    	<br />
+						{$vo.content|nl2br}
+                   </p>
+				</volist>	
+            <div id="re_question" >
+            
+            <if condition="$workOrder.evaluation_status eq 0">
+                <a href="javascript:void(0)" onclick="$('#reply').show();$('#ev_submit').hide();$(this).hide()" id="reply_href">继续追问</a>
+                <form name="myform" action="{:U('Question/addqa')}" id="reply" method="post" style="display:none" onsubmit="if ($('#content').val()==''){alert('回复内容不能为空');return false;}">
+                <input type="hidden" value="{$id}" name="id" />
+                    <p><b>问题补充：</b><textarea id="content" name="content"></textarea></p>	
+                    <p style="text-align:center;border:0"><a href="#"><input type="image" src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/input_03.gif" /></a></p>		
+                </form>	
+                <form action="{:U("Question/opinion/id/$workOrder[Id]")}" id="ev_submit" method="post" <if condition="$workOrder.status neq 3">style="display:none"</if> >
+                     <font style="margin-top:7px;color:#de6100">请对我们的服务质量进行评价： </font>
+                     <volist name="playerEvaluation" id="ev" key="evi">
+                         <input name="ev" type="radio" value="{$key}" 
+                                <if condition="$ev.isDefault eq true">checked="checked"</if>
+                                <if condition="$ev.Description != null">onclick="$('#ev_des').show();"<else/>onclick="$('#ev_des').hide();$('#des').hide();"</if>
+                          />{$ev.title}
+                         
+                         <if condition="$ev.Description != null">
+                             <select name="ev_des" id="ev_des" style="display:none;">
+                              <volist name="ev.Description" key="des_key" id="ev_des">
+                                <option value="{$des_key}">{$ev_des}</option>
+                              </volist>
+                             </select>
+                         </if>
+                     </volist>
+                     <input type="submit" value="提交" />
+                </form>
+            </if>
+            
+            </div> 	
+      	</div>
+ 
+	</div>
+	 <div class="neibottom"></div>
+</div>
+<div style="clear:both"></div>
+<include file="../common/footer"/>
+</div>
+</body>
+
+</html>

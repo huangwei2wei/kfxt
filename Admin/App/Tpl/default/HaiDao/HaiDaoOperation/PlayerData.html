@@ -1,0 +1,119 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+function jumpUrl(url){
+	form=$("#form");
+	form.attr("action",url);
+	form.submit();
+}
+</script>
+<style type="text/css">
+p{	margin:2px;	padding:0px;}
+</style>
+<fieldset>
+	<legend><!--{'830E108A1CD15883767584096E15E611'|lang}--></legend>
+    <form action="<!--{$url.OperationFRG_PlayerData_import_excel}-->" method="post" enctype="multipart/form-data">
+    	<p><font color="#FF0000"><!--{'F411D0F1F925D9B48D8C1D451BD809B1'|lang}--></font>：<!--{'2F867659D31A5D5DA1BF5F9526713D3E'|lang}--> <i>Excel</i> <!--{'01D7AA494B0727F8DB77BE1D3685DE9E'|lang}--> <i>xls</i> <!--{'072CA6DAF7F23935032A7FC4B1C3E97A'|lang}--> <i>xlsx</i> <!--{'32536950C0EB5CB77D8024B690F5A038'|lang}-->，<!--{'D8BE5CCDECEF5215C833E1668E45FA4F'|lang}-->，<!--{'E02712C305D7E7E905F33E1304060B1F'|lang}-->ID(<!--{'55D4790C5D819CD0462CBE89561B0DD4'|lang}-->)，<!--{'32F95D7BAAAFE2A93912F4046EC2F3A8'|lang}-->ID。</p>
+ 		<p><!--{'BC485585A87E7D6FD392801256B29A25'|lang}-->，<!--{'901B2B2A848D71706FF101F0F2649062'|lang}-->，<!--{'257D1E75264241662F1325DEE48ADCA6'|lang}-->。</p>
+        <p>demo: <font color="#FF0000">OPERATOR</font><!--{'B377A31E60F6D3801778CDA055724447'|lang}--> <i><!--{'1F18A3433AE6B90723C79E8EAA7ED375'|lang}--></i> <!--{'0B3074982D8C4F31FDCD27272D8B77BC'|lang}--></p>
+        <table width="300" border="0" cellpadding="3">
+          <tr>
+            <th scope="col">SERVER</th>
+            <th scope="col">ACCOUNT</th>
+            <th scope="col"><font color="#FF0000">OPERATOR</font></th>
+          </tr>
+          <tr>
+            <td >S1</td>
+            <td >52</td>
+            <td ><font color="#FF0000">dwcn</font></td>
+          </tr>
+          <tr>
+            <td >S11</td>
+            <td >3795</td>
+            <td ><font color="#FF0000">dwcn</font></td>
+          </tr>
+          <tr>
+            <td >...</td>
+            <td >...</td>
+            <td ><font color="#FF0000">...</font></td>
+          </tr>
+        </table>
+  <select name="operator_id"><!--{html_options options=$operatorList}--></select>
+        <input type="file" name="upload" /><font color="#ff0000"><!--{'663619A9583B639CFFFF094AD757F584'|lang}-->8MB<!--{'600C3478280C8A011C8758B6EAACB5C8'|lang}--></font>
+        <input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" />
+    </form>
+</fieldset>
+
+<fieldset>
+  <legend><!--{'147341DE2B997C3C71A0F28E983E6314'|lang}--></legend>
+  <form action="" method="get">
+  <input type="hidden" name="c" value="OperationFRG" />
+  <input type="hidden" name="a" value="PlayerData" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="row"><!--{'7866226EB814F681DCC4037E7489AAB8'|lang}--></th>
+        <td>
+    	<input type="text" class="text" name="start_time" value="<!--{$selected.start_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.start_time}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/> 
+        <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}-->
+        <input type="text" class="text" name="end_time" value="<!--{$selected.end_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.end_time}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'B09F4CA805E29FB623110C695FE24951'|lang}--></th>
+        <td><input type="text" class="text" value="<!--{$selected.batch_num}-->" name="batch_num"  /></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /></th>
+      </tr>
+    </table>
+    </form>
+</fieldset>
+<fieldset>
+	<legend><!--{'77FDD35933C099CDCB64B71F3FBE7A6C'|lang}--></legend>
+    <a href="<!--{$url.OperationFRG_PlayerData_import}-->"><!--{'2C7151A5DF2C44B9C08B1B680BF3AA34'|lang}--></a>
+    <form action="<!--{$url.OperationFRG_PlayerData_del}-->" id="form" method="post">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col"><!--{'F82BEDDCD7005F7F0ECA4C96999A865B'|lang}--></th>
+        <th scope="col"><!--{'C566CA59602C7C5C0D3FE5E18ADE447D'|lang}--></th>
+        <th scope="col"><!--{'069A4B89AE4E24F7718E5DF99E80B75D'|lang}-->ID</th>
+        <th scope="col"><!--{'930A1402A1649A4CF8CE1253A7856364'|lang}--></th>
+        <th scope="col"><!--{'2D25E06001B5E36A4F6EA60A820C57A3'|lang}--></th>
+        <th scope="col"><!--{'B09F4CA805E29FB623110C695FE24951'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td>
+        	<input type="checkbox" value="<!--{$list.Id}-->" name="ids[<!--{$list.Id}-->]" />
+            <input type="hidden" name="player_id[<!--{$list.Id}-->]" value="<!--{$list.player_id}-->" />
+            <input type="hidden" name="server_id[<!--{$list.Id}-->]" value="<!--{$list.server_id}-->" />
+        	<!--{$list.Id}-->
+        </td>
+        <td><!--{$list.word_operator_id}--></td>
+        <td><!--{$list.word_server_id}--></td>
+        <td><!--{$list.player_id}--></td>
+        <td><!--{$list.create_time}--></td>
+        <td><!--{$list.word_user_id}--></td>
+        <td><!--{$list.batch_num}--></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="7"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="7">
+        <input type="checkbox" onclick="$('#form :checkbox').attr('checked',$(this).attr('checked'))" /> <!--{'66EEACD93A7C1BDA93906FE908AD11A0'|lang}-->
+        <input type="submit" class="btn-blue" value="<!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}-->" />
+        <input type="button" class="btn-blue" value="<!--{'3C815104727AB041CB326CCB743C567E'|lang}-->" onclick="jumpUrl('<!--{$url.OperationFRG_RewardBefore}-->')" />
+        <!--{'C96E23F4CD9C433FE3E0E58A2D46D4EB'|lang}-->：
+        <input type="radio" name="player_type" value="0" /><!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->ID
+        <input type="radio" name="player_type" value="1" /><!--{'819767ADA1805B0F0117F10967B94D4D'|lang}-->
+        <input type="radio" name="player_type" checked="checked" value="2" /><!--{'B928A342787D4AA74AE7351F152B11A9'|lang}-->
+        </td>
+      </tr>
+    </table>
+    </form>
+    <div align="right"><!--{$pageBox}--></div>
+</fieldset>

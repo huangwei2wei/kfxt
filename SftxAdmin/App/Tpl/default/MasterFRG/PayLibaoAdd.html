@@ -1,0 +1,146 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<style type="text/css">
+.addline{
+	padding:3px;
+}
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:100%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/default/frg.js"></script>
+<script language="javascript">
+
+<!--{if $objData}-->
+var objData=eval(<!--{$objData}-->);
+<!--{/if}-->
+
+<!--{if $toolData}-->
+var toolData=eval(<!--{$toolData}-->);
+<!--{/if}-->
+
+<!--{if $effData}-->
+var effData=eval(<!--{$effData}-->);
+<!--{/if}-->
+
+
+var condInputNum=1;
+var effectInputNum=1;
+var toolInputNum=1;
+
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"服务器ID不存在",oncorrect:"请重新输入服务器ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"服务器数值不正确"});
+	$("#PName").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"礼包名称不能为空"},onerror:"礼包名称不能为空,请确认"});
+	$("#PDescribe").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"礼包描述不能为空"},onerror:"礼包描述不能为空,请确认"});
+	$("#MsgTitle").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"消息标题不能为空"},onerror:"消息标题不能为空,请确认"});
+	$("#MsgContent").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"消息标题不能为空"},onerror:"消息标题不能为空,请确认"});
+	$("#Cash").formValidator({onshow:"请输入数字",oncorrect:"金额输入正确"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"数字不正确"});
+	$("#Times").formValidator({onshow:"请输入数字",oncorrect:"累计次数输入正确"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"数字不正确"});
+	$("#TotalCash").formValidator({onshow:"请输入数字",oncorrect:"累计金额输入正确"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"数字不正确"});
+})
+
+</script>
+<fieldset>
+<legend>添加充值礼包 [<font color="#0000FF">此操作无须审核</font>]</legend>
+
+<div id="showItem"></div>
+
+<form action="" id="form" method="post" >
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">礼包名称</th>
+    <td><input type="text" class="text" name="PName" id="PName" size="60" /><div id="PNameTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">礼包描述</th>
+    <td><textarea name="PDescribe" cols="50" id="PDescribe" rows="8"></textarea><div id="PDescribeTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">消息标题</th>
+    <td><input type="text" class="text" name="MsgTitle" id="MsgTitle" size="60" value="" /><div id="MsgTitleTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">消息内容</th>
+    <td><textarea name="MsgContent" id="MsgContent" rows="6" cols="50"></textarea><div id="MsgContentTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">充值金额达到</th>
+    <td><input name="Cash" type="text" id="Cash" class="text" size="60" /><div id="CashTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">累计次数达到</th>
+    <td><input name="Times" type="text" id="Times" class="text" value="0" size="60" /><div id="TimesTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">累计次数每次限额</th>
+    <td>
+    	<input type="radio" name="EachLimit" value="1" onClick="$('#each').show()" />是
+        <input type="radio" name="EachLimit" value="0" onClick="$('#each').hide()" checked />否
+    </td>
+  </tr>
+  <tr id="each" style="display:none">
+    <th scope="row">每次达到</th>
+    <td><input type="text" class="text" name="PEach" size="60" /></td>
+  </tr>
+  <tr>
+    <th scope="row">累计金额达到</th>
+    <td><input name="TotalCash" type="text" class="text" id="TotalCash" value="0" size="60" /><div id="TotalCashTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">是否有时间限制</th>
+    <td>
+    	<input type="radio" name="TimeLimit" onClick="$('#time').show()" value="1" />是
+        <input type="radio" name="TimeLimit" onClick="$('#time').hide()" checked value="0" />否
+    </td>
+  </tr>
+  <tr id="time" style="display:none">
+    <th scope="row">限制时间</th>
+    <td>
+    	<input type="text" class="text" name="SendTime" value="<!--{$systemTime|strtotime:'+1 hours'}-->" onFocus="WdatePicker({startDate:'<!--{$systemTime|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/> 
+        至
+        <input type="text" class="text" name="EndTime" value="<!--{$systemTime|strtotime:'+1 day'}-->" onFocus="WdatePicker({startDate:'<!--{$systemTime|strtotime:'+1 day'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        当前系统时间：<font color="#FF0000"><!--{$systemTime|date_format:"%Y-%m-%d %H:%M:%S"}--></font>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">领取条件</th>
+    <td>
+    	<input type="button" class="btn-blue" onclick="addGetCond($(this))" value="添加领取条件" />
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">奖励作用效果</th>
+    <td>
+    	<input type="button" class="btn-blue" onclick="addEffect($(this))" value="添加作用效果" />
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">奖励道具</th>
+    <td>
+        <input type="button" class="btn-blue" onclick="addTool($(this))" value="添加奖励道具" />
+    </td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">
+      <input type="submit" class="btn-blue" value="提交" />
+      </th>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

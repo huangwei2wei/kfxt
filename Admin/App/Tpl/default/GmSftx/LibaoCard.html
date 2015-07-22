@@ -1,0 +1,79 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+function del(){
+	if(confirm('确定要删除吗?')){
+		$('form').submit();
+	}
+}
+function showChild(val){
+	if(val==3){
+		$("#child_select").show();
+	}else{
+		$("#child_select").hide();
+	}
+}
+$(function(){
+	$("#search_type").change();
+})
+</script>
+
+<fieldset>
+	<legend><!--{'SEARCH'|lang}--></legend>
+    <form action="" method="get">
+    	<input type="hidden" name="c" value="GmSftx" />
+        <input type="hidden" name="a" value="LockUser" />
+        <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+        <select id="search_type" onchange="showChild($(this).val())" name="type"><!--{html_options options=$optionList.optionList selelcted=$selectedArr.type}--></select>
+        <select id="child_select" name="dataMin" style="display:none" ><!--{html_options options=$optionList.statusList selelcted=$selectedArr.dataMin}--></select>
+        <input type="submit" class="btn-blue" value="<!--{'SUBMIT'|lang}-->" />
+    </form>
+</fieldset>
+
+<fieldset>
+<legend><!--{'PRESENT_CARD_NO_LIST'|lang}--></legend>
+<form action="" method="post" onsubmit="return checksub();">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <td colspan="6">
+    	<a href="<!--{$url.GmSftx_LibaoCard_Add}-->"><!--{'BUILD_PRESENT_CARD_NO'|lang}--></a>
+    </td>
+    </tr>
+  <tr>
+    <th scope="col"><!--{'OPERATE'|lang}--></th>
+    <th scope="col"><!--{'USER_ID'|lang}--></th>
+    <th scope="col"><!--{'STATUS'|lang}--></th>
+    <th scope="col"><!--{'REGISTER_TIME'|lang}--></th>
+    <th scope="col"><!--{'DONTTALK_START_TIME'|lang}--></th>
+    <th scope="col"><!--{'DONTTALK_END_TIME'|lang}--></th>
+  </tr>
+  <!--{foreach from=$dataList key=key item=list}-->
+  <tr>
+    <td scope="col"><input type="checkbox" value="<!--{$list.id}-->" name="idList[]" /></td>
+    <td scope="col"><!--{$list.uid}--></td>
+    <td scope="col"><!--{$list.status}--></td>
+    <td scope="col"><!--{$list.createAt}--></td>
+    <td scope="col"><!--{$list.begin}--></td>
+    <td scope="col"><!--{$list.end}--></td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="6" scope="col">
+  		<!--{$noData}--> 	
+    </th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <td colspan="6" scope="col">
+  		<!--{'SELECT_ALL'|lang}--><input type="checkbox" onclick="$(':checkbox[name=\'idList[]\']').attr('checked',$(this).attr('checked'))" /><input type="button" class="btn-blue" onClick="del()" value="<!--{'DELETE'|lang}-->" />  	
+    </td>
+  </tr>
+</table>
+</form>
+<div align="right"><!--{$pageBox}--></div>
+</fieldset>
+<!--{/if}-->

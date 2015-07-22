@@ -1,0 +1,196 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<style type="text/css">
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:99%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+</style>
+
+<!--{include file="MasterFRG/UserModifyHref.html"}-->
+<!--{if $display}-->
+<script language="javascript">
+var read='<!--{$read}-->';
+$(function(){
+	$(":radio").click(function(){
+		var value=$(this).val();
+		$(".search_option").attr("disabled","disabled");
+		$("#"+value).removeAttr("disabled");
+	});
+	if(read){
+		$("input").attr("disabled","disabled");
+		$("select").attr("disabled","disabled");
+		$("textarea").attr("readonly","readonly");
+		changeEmployee('<!--{$postData.staffid}-->');
+		$("#DowerState_text").html("修改为:"+$("#DowerState option[value='<!--{$postData.staff.DowerState}-->']").text());
+		$("#DowerLevel_text").html("修改为:"+$("#DowerLevel option[value='<!--{$postData.staff.DowerLevel}-->']").text());
+		$("#SkillMaster1_text").html("修改为:"+$("#SkillMaster1 option[value='<!--{$postData.staff.SkillMaster1}-->']").text());
+		$("#SkillMaster2_text").html("修改为:"+$("#SkillMaster2 option[value='<!--{$postData.staff.SkillMaster2}-->']").text());
+		$("#SkillMaster4_text").html("修改为:"+$("#SkillMaster4 option[value='<!--{$postData.staff.SkillMaster4}-->']").text());
+		$("#SkillMaster8_text").html("修改为:"+$("#SkillMaster8 option[value='<!--{$postData.staff.SkillMaster8}-->']").text());
+		$("#SkillMaster16_text").html("修改为:"+$("#SkillMaster16 option[value='<!--{$postData.staff.SkillMaster16}-->']").text());
+	}
+});
+
+<!--{if $detailTrue}-->
+var el=eval(<!--{$el}-->);
+
+
+
+
+
+function selectEmployee(){
+	showItem=$("#showItem");
+	showItem.empty();
+	$.each(el,function(i,n){
+		showItem.append('<a href="javascript:void(0)" onclick="changeEmployee('+n.Id+')">'+n.Name+'</a>');
+	});
+	showItem.slideDown("fast");
+}
+
+function changeEmployee(employeeId){
+	$("#showItem").slideUp("fast");
+	if(!employeeId)return false;
+	$("#staffid").val(el[employeeId].Id);
+	$("#employee_id").html(el[employeeId].Id);
+	$("#employee_name").html(el[employeeId].Name);
+	$("#staff_name").val(el[employeeId].Name);
+	if(el[employeeId].NickName){
+		$("#employee_nickname").html(el[employeeId].NickName);
+	}else{
+		$("#employee_nickname").html("员工没有呢称");
+	}
+	$("#Power").html(el[employeeId].Power);
+	$("#SkillDegree").html(el[employeeId].SkillDegree);
+	$("#Fealty").html(el[employeeId].Fealty);
+	$("#Dower").html(el[employeeId].Dower);
+	$("#SkillMaster1").val(el[employeeId].SkillMaster1);
+	$("#SkillMaster2").val(el[employeeId].SkillMaster2);
+	$("#SkillMaster4").val(el[employeeId].SkillMaster4);
+	$("#SkillMaster8").val(el[employeeId].SkillMaster8);
+	$("#SkillMaster16").val(el[employeeId].SkillMaster16);
+	$("#DowerState").val(el[employeeId].DowerState);
+	$("#DowerLevel").val(el[employeeId].DowerLevel);
+}
+
+<!--{/if}-->
+
+
+
+
+</script>
+
+<fieldset>
+	<legend>员工数值修改(如未作特别说明，均填写相应增减值) [<font color="#FF0000">此操作须要审核</font>]</legend>
+    <div id="showItem"></div>
+	<form action="" method="post" onsubmit="return checksub();">
+	<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+	<input type="hidden" value="" id="staffid" name="staffid" />
+    <input type="hidden" value="" id="staff_name" name="staff_name" />
+	<input type="hidden" value="<!--{$uo->UserId}-->" name="userid" />
+    <table width="100%" border="0" cellpadding="3">
+      <!--{if $errMsg}--><caption><font color="#FF0000"><!--{$errMsg}--></font></caption><!--{/if}-->
+      <thead>
+          <tr>
+            <th colspan="6">
+                <input type="radio" id="ids" name="userflag" value="txtids" /><label for="ids">用户Id <font color="#FF0000"><!--{$uo->UserId}--></font></label>
+                <input type="text" class="search_option" id="txtids" name="txtids" size="22" value="" disabled>        
+                
+                <input type="radio" id="names" name="userflag" value="txtnames" /><label for="names">用户名 <font color="#FF0000"><!--{$uo->UserName}--></font></label>
+                <input type="text" class="search_option" id="txtnames" name="txtnames" size="22" value="" disabled>        
+                
+                <input type="radio" id="vnames" name="userflag" value="txtvnames" /><label for="vnames">角色名称 <font color="#FF0000"><!--{$uo->VUserName}--></font></label>
+                <input type="text" class="search_option" id="txtvnames" name="txtvnames" size="22" value="" disabled>        
+                
+                <input type="submit" class="btn-blue" name="search_user" value="搜索" />
+            </th>
+          </tr>
+      </thead>
+      
+      <!--{if $detailTrue}-->
+      <tbody>
+          <tr>
+          	<th>申请理由：</th>
+            <td colspan="5"><textarea name="cause" cols="50" rows="8"><!--{$auditData.cause}--></textarea></td>
+          </tr>
+          <tr>
+            <td colspan="6">
+            	<input type="button" class="btn-blue" value="选择员工" onClick="selectEmployee()" /> 
+                员工姓名： <font color="#FF0000" id="employee_name"></font>
+                员工Id： <font color="#FF0000" id="employee_id"></font>
+                员工昵称： <font color="#FF0000" id="employee_nickname"></font>
+            </td>
+          </tr>
+          <tr>
+            <th>能力值 <font color="#FF0000" id="Power"></font></th>
+            <td><input type="text" class="text"  name="staff[Power]" value="<!--{$postData.staff.Power}-->" /></td>
+            <th>熟练度 <font color="#FF0000" id="SkillDegree"></font></th>
+            <td><input type="text" class="text" name="staff[SkillDegree]" value="<!--{$postData.staff.SkillDegree}-->" /></td>
+            <th>忠诚度 <font color="#FF0000" id="Fealty"></font></th>
+            <td><input type="text" class="text" name="staff[Fealty]" value="<!--{$postData.staff.Fealty}-->" /></td>
+          </tr>
+          <tr>
+            <th>执行值 </th>
+            <td><input type="text" class="text" name="staff[Exec]" value="<!--{$postData.staff.Exec}-->" /></td>
+            <th>管理值</th>
+            <td><input type="text" class="text" name="staff[Admin]" value="<!--{$postData.staff.Admin}-->" /></td>
+            <th>信心值</th>
+            <td><input type="text" class="text" name="staff[Hope]" value="<!--{$postData.staff.Hope}-->" /></td>
+          </tr>
+          <tr>
+            <th>执行值上限</th>
+            <td><input type="text" class="text" name="staff[ExecUpLimit]" value="<!--{$postData.staff.ExecUpLimit}-->" /></td>
+            <th>管理值上限</th>
+            <td><input type="text" class="text" name="staff[AdminUpLimit]" value="<!--{$postData.staff.AdminUpLimit}-->" /></td>
+            <th>信心值上限</th>
+            <td><input type="text" class="text" name="staff[HopeUpLimit]" value="<!--{$postData.staff.HopeUpLimit}-->" /></td>
+          </tr>
+          <tr>
+            <th>天赋类型 </th>
+            <td>
+            	<select id="DowerState" name="staff[DowerState]"><!--{html_options options=$selectSysDowerState}--></select>
+                <font id="DowerState_text" color="#0000FF"></font>
+            </td>
+            <th>天赋级别</th>
+            <td>
+            	<select id="DowerLevel" name="staff[DowerLevel]"><!--{html_options options=$selectSysDowerLevel}--></select>
+                <font id="DowerLevel_text" color="#0000FF"></font>
+            </td>
+            <th>天赋点数 <font color="#FF0000" id="Dower"></font></th>
+            <td><input type="text" class="text" name="staff[Dower]" value="<!--{$postData.staff.Dower}-->" /></td>
+          </tr>
+          <tr>
+            <th>可分配点数</th>
+            <td><input type="text" class="text" name="staff[prizegiving]" value="<!--{$postData.staff.prizegiving}-->" /></td>
+            <th>&nbsp;</th>
+            <td>&nbsp;</td>
+            <th>&nbsp;</th>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th>行业特殊经验</th>
+            <td colspan="5">
+            <!--{foreach from=$sysIndustries key=key item=list}-->
+            <!--{$list}-->：<select id="SkillMaster<!--{$key}-->" name="staff[SkillMaster<!--{$key}-->]"><!--{html_options options=$selectSysSkillLevel}--></select>&nbsp;&nbsp;
+            				<font color="#0000FF" id="SkillMaster<!--{$key}-->_text"></font>
+            <!--{/foreach}-->
+            </td>
+          </tr>
+          <tr>
+            <th colspan="6"><input type="submit" class="btn-blue" name="user_edit" value="更改数据" /></th>
+          </tr>
+      </tbody>
+      <!--{/if}-->
+      </table>
+	</form>
+</fieldset>
+<!--{/if}-->

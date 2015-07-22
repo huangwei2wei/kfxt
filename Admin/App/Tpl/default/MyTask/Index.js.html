@@ -1,0 +1,107 @@
+<script language="javascript">
+$(function(){ 
+	$("form :radio").click(function(){$("form").submit();});
+	bindOrderTitle();
+});
+
+
+
+
+function searchForm(curHref){
+	$("#user_nickname").val(curHref.html());
+	$(":radio[name='view_type'][value='2']").attr('checked','checked');
+	$("form").submit();
+}
+
+var timer=eval(<!--{$timeInterval}-->);
+var forTime;
+function doTime(){
+	$.each(timer,function(i,n){
+		if(n.time>0){
+			minutes=Math.floor(n.time/60);
+			seconds=Math.floor(n.time%60);
+			if(minutes<20){
+				msg="<font color='red'>"+minutes+"<!--{'MINUTES'|lang:'Common'}-->"+seconds+"<!--{'SECONDS'|lang:'Common'}--></font>";
+			}else{
+				msg="<font color='#00CC00'>"+minutes+"<!--{'MINUTES'|lang:'Common'}-->"+seconds+"<!--{'SECONDS'|lang:'Common'}--></font>";
+			}
+			
+			n.time--;
+		}else{
+			msg='<font color="#ff0000"><!--{"TIMEOUT"|lang:"Common"}--></font>';
+		}
+		$("#show_time_"+n.div).html(msg);
+	})
+}
+forTime=setInterval("doTime()",1000);
+
+
+var autoInt=null;
+
+/**
+ * <!--{'4AF7FDE258D36B643729FC1E3FCFFE76'|lang}-->
+ */
+function autoRef(){
+	var ref=$("#autoCheckBox");
+	var time=$("#timeInterval").val();
+	time=parseInt(time);
+	if(time<30){
+		time=30;
+		$("#timeInterval").val(time);
+	}
+	time=time*1000;
+	if(ref.attr("checked")){
+		autoInt=setInterval('refDataList()',time);
+	}else{
+		clearInterval(autoInt);
+	}
+}
+
+function refDataList(){
+	$.ajax({
+		cache:false,
+		async:false,
+		data:{url:window.location.search},
+		url:'<!--{$url.MyTask_Index_ref}-->',
+		type:'POST',
+		dataType:'json',
+		success:function(data){
+					if(data.status==1){
+						$("#refDiv").html(data.data.dataList);
+						if(data.data.timer)timer=$.parseJSON(data.data.timer);
+					}
+				}
+		   });
+	bindOrderTitle();
+}
+
+function bindOrderTitle(){
+	$(".order_title").hover(function(){$(this).addClass("td_move")},function(){$(this).removeClass("td_move")});
+	$(".order_title").one('click',function(){
+		var curTd=$(this);
+		$.getJSON(
+			$(this).attr("url"),
+			function(data){
+				if(data.status==1){
+					var tmpStr='';
+					$.each(data.data,function(i,n){
+						if(n.qa==0){
+							tmpStr+='<div style="background:#FFE1E1; border:1px dashed #CCC; padding:10px; padding-top:3px; margin:10px;">'+n.create_time+'&nbsp;<font style="font-weight:bold"><!--{"PLAYER_ASK"|lang:"Common"}-->：</font><br />'+n.content+'</div>';
+						}else{
+							tmpStr+='<div style="background:#D9FFDC; border:1px dashed #CCC; padding:10px; padding-top:3px; margin:10px; margin-left:50px;">['+n.word_reply_name+']&nbsp;'+n.create_time+'&nbsp;<font style="font-weight:bold"><!--{"REPLY"|lang:"Common"}-->：</font><br />'+n.content+'</div>';
+						}
+					});
+					curTd.parent().after("<tr style='background:#FFF' id='"+curTd.attr("dialogId")+"'><td colspan='8'>"+tmpStr+"</td></tr>");
+				}
+			}
+		);
+	});
+	$(".order_title").click(function(){
+		var id=$(this).attr("dialogId");
+		$("#"+id).toggle();
+	});
+}
+
+
+
+</script>

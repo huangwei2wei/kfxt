@@ -1,0 +1,126 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<!--{include file="HaiDao/HaiDaoMaster/UserModifyHref.html"}-->
+<!--{if $display}-->
+<script language="javascript">
+var read='<!--{$read}-->';
+
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"<!--{'C566CA59602C7C5C0D3FE5E18ADE447D'|lang}-->ID<!--{'D7D11654A707D7E7B661C90295E58B20'|lang}-->",oncorrect:"<!--{'124D617A6875038C81E03DEC5E2501F4'|lang}-->ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'BA2DD64CC4F6DDF27CB1526EFB449E2D'|lang}-->"});
+	$("#cause").formValidator({onshow:"<!--{'A73F63486CB97A8D6C136D7DC82F11D2'|lang}-->",oncorrect:"<!--{'FD75CEECBD2676048590A1695702F29A'|lang}-->"}).inputValidator({min:1,empty:{leftempty:true,rightempty:true,emptyerror:"<!--{'A73F63486CB97A8D6C136D7DC82F11D2'|lang}-->"},onerror:"<!--{'E85E13CC2A5C76D4E44E62F70E1F1BED'|lang}-->"});
+
+	$(":radio").click(function(){
+		var value=$(this).val();
+		$(".search_option").attr("disabled","disabled");
+		$("#"+value).removeAttr("disabled");
+	});
+	if(read){
+		$("input").attr("disabled","disabled");
+		$("select").attr("disabled","disabled");
+		$("textarea").attr("readonly","readonly");
+	}
+});
+
+</script>
+
+<fieldset>
+	<legend><!--{'A055D7C7F368F230142A8215E7C724BF'|lang}-->(<!--{'B6D8D85297CB90865DD58007F1A94CF5'|lang}-->，<!--{'AEDDAE071CE7A1EC8033E74B85B2A074'|lang}-->) [<font color="#FF0000"><!--{'541018CC8BD963A5718F321903B9D907'|lang}--></font>]</legend>
+  <form action="" method="post" id="form" >
+	<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+	<input type="hidden" value="<!--{$uo->UserId}-->" name="userid" />
+    <table width="100%" border="0" cellpadding="3">
+      <!--{if $errMsg}--><caption><font color="#FF0000"><!--{$errMsg}--></font></caption><!--{/if}-->
+      <thead>
+          <tr>
+            <th colspan="6">
+                <input type="radio" id="ids" name="userflag" value="txtids" /><label for="ids"><!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->Id <font color="#FF0000"><!--{$uo->UserId}--></font></label>
+                <input type="text" class="search_option" id="txtids" name="txtids" size="22" value="" disabled>        
+                
+                <input type="radio" id="names" name="userflag" value="txtnames" /><label for="names"><!--{'819767ADA1805B0F0117F10967B94D4D'|lang}--> <font color="#FF0000"><!--{$uo->UserName}--></font></label>
+                <input type="text" class="search_option" id="txtnames" name="txtnames" size="22" value="" disabled>        
+                
+                <input type="radio" id="vnames" name="userflag" value="txtvnames" /><label for="vnames"><!--{'10A6F1219A3A36CE2D7A9ED0F2D096A0'|lang}--> <font color="#FF0000"><!--{$uo->VUserName}--></font></label>
+                <input type="text" class="search_option" id="txtvnames" name="txtvnames" size="22" value="" disabled>        
+                
+                <input type="submit" class="btn-blue" name="search_user" value="<!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}-->" />
+            </th>
+          </tr>
+      </thead>
+      
+      <!--{if $detailTrue}-->
+      <tbody>
+          <tr>
+            <th><!--{'C5AE2E7BD2CB8F79F3DD66FA7212B58B'|lang}--></th>
+            <td colspan="5"><textarea name="cause" id="cause" cols="50" rows="8"><!--{$auditData.cause|htmlspecialchars}--></textarea><div id="causeTip"></div></td>
+          </tr>
+          <tr>
+            <th><!--{'4271B1B2BEED5B3F83CCD10E3C084B66'|lang}--> <font color="#FF0000"><!--{$car->Experience}--></font></th>
+            <td><input type="text" class="text" name="Car[Experience]" value="<!--{$postData.Car.Experience}-->" /></td>
+            <th><!--{'92D33894CA26D66D4863DDB1A59486AF'|lang}--> <font color="#FF0000"><!--{$car->Stable}--></font></th>
+            <td><input type="text" class="text" name="Car[Stable]" value="<!--{$postData.Car.Stable}-->" /></td>
+            <th><!--{'1BE34FE957B368A7BEBC5104A8F5EA75'|lang}--> <font color="#FF0000"><!--{$car->Cozy}--></font></th>
+            <td><input type="text" class="text" name="Car[Cozy]" value="<!--{$postData.Car.Cozy}-->" /></td>
+          </tr>
+          <tr>
+            <th><!--{'9C27C43DDA3FBC24EDA40419B7BA3A99'|lang}--> <font color="#FF0000"><!--{$car->Safety}--></font></th>
+            <td><input type="text" class="text" name="Car[Safety]" value="<!--{$postData.Car.Safety}-->" /></td>
+            <th><!--{'37BE5A59B15294D9393D8E6AB9C7B9F6'|lang}--> <font color="#FF0000"><!--{$car->Life}--></font></th>
+            <td><input type="text" class="text" name="Car[Life]" value="<!--{$postData.Car.Life}-->" /></td>
+            <th><!--{'68F1C6981214C8EF5354CD53981D5D2F'|lang}--> <font color="#FF0000"><!--{$car->Attack}--></font></th>
+            <td><input type="text" class="text" name="Car[Attack]" value="<!--{$postData.Car.Attack}-->" /></td>
+          </tr>
+          <tr>
+            <th><!--{'85AFB9BEA3EDDEB5186FDF28B2A1DB9D'|lang}--> <font color="#FF0000"><!--{$car->Defence}--></font></th>
+            <td><input type="text" class="text" name="Car[Defence]" value="<!--{$postData.Car.Defence}-->" /></td>
+            <th><!--{'02D855A0D6F08B415E93E24D41E37160'|lang}--> <font color="#FF0000"><!--{$car->HitValue}--></font></th>
+            <td><input type="text" class="text" name="Car[HitValue]" value="<!--{$postData.Car.HitValue}-->" /></td>
+            <th><!--{'C8591061014A3532BE30246EFA8E2CC0'|lang}--> <font color="#FF0000"><!--{$car->precise}--></font></th>
+            <td><input type="text" class="text" name="Car[precise]" value="<!--{$postData.Car.precise}-->" /></td>
+          </tr>
+          <tr>
+            <th><!--{'9A415D1E0C23ECFAFE5E13660EE29526'|lang}--> <font color="#FF0000"><!--{$car->Quickly}--></font></th>
+            <td><input type="text" class="text" name="Car[Quickly]" value="<!--{$postData.Car.Quickly}-->" /></td>
+            <th>&nbsp;</th>
+            <td>&nbsp;</td>
+            <th>&nbsp;</th>
+            <td>&nbsp;</td>
+          </tr>
+		  <tr>
+            <th>船身改造<font color="#FF0000"><!--{$car->RecastLevels[1]}--></font></th>
+            <td><input type="text" class="text" name="Car[RecastLevels][1]" value="<!--{$postData.Car.RecastLevels[1]}-->" /></td>
+            <th>火炮改造<font color="#FF0000"><!--{$car->RecastLevels[2]}--></th>
+           <td><input type="text" class="text" name="Car[RecastLevels][2]" value="<!--{$postData.Car.RecastLevels[2]}-->" /></td>
+            <th>装甲改造<font color="#FF0000"><!--{$car->RecastLevels[3]}--></th>
+           <td><input type="text" class="text" name="Car[RecastLevels][3]" value="<!--{$postData.Car.RecastLevels[3]}-->" /></td>
+          </tr>
+		  <tr>
+            <th>炮台改造<font color="#FF0000"><!--{$car->RecastLevels[4]}--></font></th>
+            <td><input type="text" class="text" name="Car[RecastLevels][4]" value="<!--{$postData.Car.RecastLevels[4]}-->" /></td>
+            <th>船桨改造<font color="#FF0000"><!--{$car->RecastLevels[5]}--></th>
+            <td><input type="text" class="text" name="Car[RecastLevels][5]" value="<!--{$postData.Car.RecastLevels[5]}-->" /></td>
+            <th>弹药改造<font color="#FF0000"><!--{$car->RecastLevels[6]}--></th>
+            <td><input type="text" class="text" name="Car[RecastLevels][6]" value="<!--{$postData.Car.RecastLevels[6]}-->" /></td>
+          </tr>
+          <tr>
+            <th colspan="6"><input type="submit" class="btn-blue" name="user_edit" value="<!--{'D371CA4DE9F25FDE279099F7EA4ED87C'|lang}-->" /></th>
+          </tr>
+      </tbody>
+      <!--{/if}-->
+    </table>
+	</form>
+    
+    <!--{if $detailTrue}-->
+    <!--
+    <form action="" method="post">
+    	<input type="hidden" value="<!--{$uo->UserId}-->" name="userid" />
+        <!--{'E3473E07B39595FF5BBD5617D08201DD'|lang}-->：
+    	<select name="ToolId"><!--{html_options options=$selectTools}--></select>
+        <input type="text" class="text" name="Num">
+        <input type="submit" class="btn-blue" name="addtool" value="<!--{'BE5FBBE34CE9979BFB6576D9EDDC5612'|lang}-->" />
+    </form>
+    -->
+    <!--{/if}-->
+</fieldset>
+<!--{/if}-->

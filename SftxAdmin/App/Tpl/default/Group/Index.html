@@ -1,0 +1,48 @@
+<center>
+<a href="<!--{$url.Group_Add}-->">创建回复专区</a>
+<table width="98%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">回复区</th>
+    <th scope="col">登录/退出</th>
+    <th scope="col">人数</th>
+    <th scope="col">总工单数/未完成数</th>
+    <th scope="col">入口</th>
+    <th scope="col">出口</th>
+    <th scope="col">操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <th rowspan="2"><!--{$list._roomName}--></th>
+    <td><!--{$list.in_room}--></td>
+    <td><!--{$list.userClassNum}--></td>
+    <td><!--{$list._orderNum.total|intval}--> / <!--{$list._orderNum.incomplete|intval}--></td>
+    <td><!--{$list.word_entrance}--></td>
+    <td><!--{$list.word_exit}--></td>
+    <td>
+    	<a href="<!--{$list.url_monitor}-->">现场监控</a>
+        <a href="<!--{$list.url_edit_server}-->">设置服务器</a>
+    	<a href="<!--{$list.url_edit}-->">编辑</a>
+        <a onclick="return confirm('确定要初始化吗?')" href="<!--{$list.url_Initialize}-->">回复区初始化</a>
+    </td>
+  </tr>
+  <tr>
+  	<td colspan="6">
+    	服务器列表：<br />
+    	<!--{foreach from=$list.server_list item=serverList}-->
+        <span><!--{$serverList.full_name}--></span>
+        <!--{foreachelse}-->
+        <span><font color="#666666">暂无服务器列表</font></span>
+        <!--{/foreach}-->
+    </td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="8"><!--{$noData}--></th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <td align="right" colspan="8"></td>
+  </tr>
+</table>
+
+</center>

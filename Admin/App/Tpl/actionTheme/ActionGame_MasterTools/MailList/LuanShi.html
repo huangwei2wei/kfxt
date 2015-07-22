@@ -1,0 +1,66 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+  <legend>搜索</legend>
+<form id="form" action=""  method="get">
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+        	收件玩家ID:<input type="text" class="text" name="toPlayerId" value="<!--{$_GET.toPlayerId}-->" />
+           	 发件玩家ID:<input type="text" style="width:300px;" class="text" name="fromPlayerId" value="<!--{$_GET.fromPlayerId}-->" />
+            <input class="btn-blue" type="submit" name="sbm" value="查询" /></td>
+      </tr>
+    </table>
+</form>
+
+
+</fieldset>
+
+<fieldset>
+  <legend>玩家邮件</legend>
+<table width="100%" border="0" cellpadding="3">
+    <tr>
+        <th scope="col">收件人</th>
+        <th scope="col">发件人</th>
+        <th scope="col">邮件标题</th>
+        <th scope="col">邮件内容</th>
+        <th scope="col">已读</th>
+        <th scope="col">收件删除</th>
+        <th scope="col">发件删除</th>
+        <th scope="col">附件</th>
+        <th scope="col">发送时间</th>
+    </tr>
+    <!--{foreach from=$dataList item=list}-->
+    <tr>
+        <td><!--{$list.toRoleName}-->(<!--{$list.toPlayerId}-->)</td>
+        <td><!--{$list.fromRoleName}-->(<!--{$list.fromPlayerId}-->)</td>
+        <td><!--{$list.title}--></td>
+        <td><!--{$list.content}--></td>
+        <td><!--{if $list.estate&1 }-->已读<!--{else}-->未读<!--{/if}--></td>
+        <td><!--{if $list.estate&4 }-->已删<!--{else}-->--<!--{/if}--></td>
+        <td><!--{if $list.estate&2 }-->已删<!--{else}-->--<!--{/if}--></td>
+        <td>
+			<!--{if $list.awards }-->
+				<!--{if $list.estate&8 }-->已领<!--{else}-->未领<!--{/if}-->
+				<!--{else}-->无
+			<!--{/if}-->
+		</td>
+        <td><!--{$list.time}--></td>
+    </tr>  
+    <!--{foreachelse}-->
+        <tr>
+          <td align="center" colspan="10">暂无数据</td>
+        </tr>
+    <!--{/foreach}-->
+</table>
+<div><!--{$pageBox}--></div>
+</fieldset>
+<!--{/if}-->

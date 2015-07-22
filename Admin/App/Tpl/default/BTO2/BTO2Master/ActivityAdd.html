@@ -1,0 +1,118 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<style type="text/css">
+.addline{
+	padding:3px;
+}
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:100%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/default/frg_activity.js"></script>
+<script language="javascript">
+
+<!--{if $objData}-->
+var objData=eval(<!--{$objData}-->);
+<!--{/if}-->
+
+<!--{if $toolData}-->
+var toolData=eval(<!--{$toolData}-->);
+<!--{/if}-->
+
+<!--{if $effData}-->
+var effData=eval(<!--{$effData}-->);
+<!--{/if}-->
+
+
+var condInputNum=1;
+var effectInputNum=1;
+var toolInputNum=1;
+
+</script>
+
+<legend><!--{'345D447D5FD85787218851AFD2995114'|lang}--></legend>
+
+<div id="showItem"></div>
+
+<form id="form" action="" method="post" >
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row"><!--{'902A3DD676DF1D56EA8D5DAB69C15A2B'|lang}--></th>
+    <td><input type="text" class="text" name="Activity[Title]" id="Activity[Title]" size="60" /><div id="Activity[Title]Tip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'166BF87A26C6B16B9158CBD34592AF71'|lang}--><br>
+      (<!--{'A056265B9677CF461738FD36BEA4EDB5'|lang}-->)</th>
+    <td><input type="text" class="text" name="Activity[Identifier]" id="Activity[Identifier]" value="" /><div id="Activity[Identifier]Tip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'6AB0DE60E0F323A73157206EABB823E6'|lang}--></th>
+    <td><textarea name="Activity[OpenTime]" id="Activity[OpenTime]" rows="6" cols="50"></textarea><!--{'E3127CC1B379748A6CE5496BE9A25B2F'|lang}-->(<!--{'DBBEA68BB6C21F210DE9B6EF9F5481B8'|lang}-->||<!--{'666AA082EE6CC6494A690CF5D5614393'|lang}-->)：13:00-14:00 || 20:30-22:00 <div id="Activity[OpenTime]Tip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'A8C118B227B2C7083E693A2B3F945A6C'|lang}--></th>
+    <td><input type="text" class="text" name="Activity[MaxNum]" id="Activity[MaxNum]" /><div id="Activity[MaxNum]Tip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'0CBB00EF851BEDCCECD020619CF7817E'|lang}--></th>
+    <td><textarea name="Activity[Content]" id="Activity[Content]" rows="6" cols="50"></textarea><div id="Activity[Content]Tip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'78DCD17225ECCE79C27D5CB376FA8903'|lang}--></th>
+    <td><input type="text" class="text" name="Activity[AcceptDesc]" id="Activity[AcceptDesc]" size="60" /><div id="Activity[AcceptDesc]Tip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'FA747595DA0EC4173563F50BD660BFCD'|lang}--><br>      <font color="#FF0000">(<!--{'60FFB6D553B3A8BABCF641039214DDCD'|lang}-->)</font></th>
+    <td><input type="button" class="btn-blue" onclick="addGetCond($(this))" value="<!--{'DB91B7077D6D7729D12A6A303687B73A'|lang}-->" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'0AA562BB16D7544262637C4B7EF08295'|lang}-->(<!--{'24D67862F87F439DB7CA957AECB77CCE'|lang}-->)</th>
+    <td><input type="button" class="btn-blue" onclick="addEffect($(this))" value="<!--{'49A7C5D712077C73A99679825AAC6FD7'|lang}-->(<!--{'24D67862F87F439DB7CA957AECB77CCE'|lang}-->)" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'0AA562BB16D7544262637C4B7EF08295'|lang}-->(<!--{'DE24BFB740EF7421E00B7346EA704E3E'|lang}-->)</th>
+    <td><input type="button" class="btn-blue" onclick="addTool($(this))" value="<!--{'49A7C5D712077C73A99679825AAC6FD7'|lang}-->(<!--{'DE24BFB740EF7421E00B7346EA704E3E'|lang}-->)" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'B321A62FF8D434E7520DB97B3668C8C7'|lang}--></th>
+    <td><input type="text" class="text" value="" size="40" name="Activity[Window]"></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'FAC54C3430528339AC075D688DB27CE8'|lang}--></th>
+    <td><input type="text" class="text" value="" size="40" name="Activity[Model]"></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'3D0A2DF9EC50C48081E0543B697552B0'|lang}--></th>
+    <td><input type="text" class="text" value="" size="40" name="Activity[Params]"></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'B33D94477C8CAE97DB617645C2AF5165'|lang}--></th>
+    <td><input type="text" class="text" value="" size="40" name="Activity[Interface]"></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'EA3EAAEA501EB0A641FE0D434592B217'|lang}--></th>
+    <td><input type="text" class="text" value="" size="40" name="Activity[Prompt]"></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">
+      <input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" />
+      </th>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

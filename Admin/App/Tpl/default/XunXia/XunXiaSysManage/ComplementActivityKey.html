@@ -1,0 +1,39 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	
+	$("#playerId").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"不能为空,请确认"});
+	
+})
+</script>
+<fieldset>
+<legend>新增游戏公告</legend>
+<form action="" method="post" id="form">
+    <table width="98%" border="0" cellpadding="3">
+ 		<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+      <tr>
+      <tr>
+        <th scope="row">活动列表</th>
+        <td>
+        	<select name="activeList">
+            	<!--{html_options options=$activeList selected=$_POST.activeList}-->
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">玩家id(只能一个用户)</th>
+        <td><textarea name="playerId" cols="40" rows="8" id="playerId"></textarea><div id="playerIdTip"></div></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

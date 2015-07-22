@@ -1,0 +1,31 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+</script>
+<fieldset>
+
+<form action=""  method="post">
+类型 :
+	<select name="cardType">
+		<!--{html_options options=$cardTypeList selected=$_POST.cardType}-->
+	</select>
+	
+    <input class="btn-blue" type="submit" name="sbm" value="生成此类型的卡号(100)个">
+</form>
+</fieldset>
+<!--{/if}-->

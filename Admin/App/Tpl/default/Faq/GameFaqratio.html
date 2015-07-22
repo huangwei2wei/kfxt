@@ -1,0 +1,46 @@
+<fieldset>
+	<legend><!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}--></legend>
+    <form id="search" action="" method="get">
+    	<input type="hidden" name="c" value="Faq" />
+        <input type="hidden" name="a" value="GameFaq" />
+        <input type="hidden" name="doaction" value="ratio" />
+        <!--{html_radios options=$game_type name="game_type_id" selected=$selectedGameTypeId onclick="$('#search').submit()"}-->
+    </form>
+</fieldset>
+
+<fieldset>
+  <legend><!--{'3712972D84ADF48ACBD6AD24B4D75AD0'|lang}--></legend>
+    <table width="100%" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col"><!--{'9D1AF8A250315FB503099EA5C384E1E7'|lang}--></th>
+        <th scope="col"><!--{'5DC99F6EFE53ADDA80974655B26B8DF8'|lang}--></th>
+        <th scope="col"><!--{'7671DEBAE7B1334C837F9604E46C4E09'|lang}--></th>
+        <th scope="col"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td><!--{$list.word_game_type_id}--></td>
+        <td title="<!--{$list.question}-->"><!--{$list.question|truncateutf8:30}--></td>
+        <td title="<!--{$list.answer}-->"><!--{$list.answer|truncateutf8:30}--></td>
+        <td>
+        	<form action="<!--{$url.Faq_GameFaq_ratioedit}-->" method="post">
+            	<input type="hidden" name="Id" value="<!--{$list.Id}-->" />
+                <input type="text" class="text" name="ratio" value="<!--{$list.ratio}-->">
+                <input type="submit" class="btn-blue" value="<!--{'CC3E67C3984CF82A5164259B93203EC7'|lang}-->" />
+                <a href="<!--{$list.url_edit}-->"><!--{'95B351C86267F3AEDF89520959BCE689'|lang}--></a>
+            </form>
+            
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="5"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td align="right" colspan="5"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+</fieldset>

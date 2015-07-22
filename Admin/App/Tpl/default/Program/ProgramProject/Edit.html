@@ -1,0 +1,33 @@
+<style type="text/css">
+label{
+	display:inline-block;
+	width:100px;
+	}
+</style>
+<fieldset>
+	<legend>编辑项目组</legend>
+    <form action="" method="post">
+    <input type="hidden" name="Id" value="<!--{$_GET.Id}-->" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap" scope="row">项目名称</th>
+        <td><input type="text" name="name" value="<!--{$dataList.name}-->" class="text" /></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">项目负责人</th>
+        <td><select name="principal_user_id"><!--{html_options options=$users.full_user selected=$dataList.principal_user_id}--></select></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">项目内容</th>
+        <td><textarea name="detail" cols="50" rows="8"><!--{$dataList.detail}--></textarea></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">项目成员</th>
+        <td><!--{html_checkboxes options=$users.all_user name="user_id" selected=$users.is_selected}--></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+	</form>
+</fieldset>

@@ -1,0 +1,18 @@
+<fieldset>
+	<legend>批量增加</legend>
+    <form action="<!--{$url.GameOperator_VipAdd}-->" method="post">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">游戏</th>
+        <td><!--{html_radios name="game_type" options=$gameTypeList separator="&nbsp;"}--></td>
+      </tr>
+      <tr>
+        <th scope="row">运营商</th>
+        <td><!--{html_checkboxes name="operator_ids" options=$operatorList separator="&nbsp;"}--></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="增加" /></th>
+        </tr>
+    </table>
+	</form>
+</fieldset>

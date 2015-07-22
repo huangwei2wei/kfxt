@@ -1,0 +1,95 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{include file="HaiDao/HaiDaoMaster/UserModifyHref.html"}-->
+
+<!--{if $display}-->
+<script language="javascript">
+var read='<!--{$read}-->';
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"服务器ID不存在",oncorrect:"请重新输入服务器ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"服务器数值不正确"});
+	$("#cause").formValidator({onshow:"请输入申请理由",oncorrect:"申请理由正确"}).inputValidator({min:1,empty:{leftempty:true,rightempty:true,emptyerror:"请输入申请理由"},onerror:"申请理由不能为空"});  	   
+		   
+	$(":radio").click(function(){
+		value=$(this).val();
+		$(".search_option").attr("disabled","disabled");
+		$("#"+value).removeAttr("disabled");
+	});
+	if(read){
+		$("input").attr("disabled","disabled");
+		$("select").attr("disabled","disabled");
+		$("textarea").attr("readonly","readonly");
+	}
+});
+
+function addVIPtime(time){
+	$("#u_vip").val(time);
+}
+</script>
+
+
+
+<fieldset>
+	<legend>玩家数值修改 (如未作特别说明，均填写相应增减值) [<font color="#FF0000">此操作须要审核</font>]</legend>
+  <form action="" method="post" id="form">
+	<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+	<input type="hidden" name="userid" value="<!--{$uo->UserId}-->" />
+    <table width="100%" border="0" cellpadding="3">
+      <!--{if $errMsg}--><caption><font color="#FF0000"><!--{$errMsg}--></font></caption><!--{/if}-->
+      <thead>
+      <tr>
+        <th colspan="6">
+        	<input type="radio" id="ids" name="userflag" value="txtids" /><label for="ids">用户Id <font color="#FF0000"><!--{$uo->UserId}--></font></label>
+            <input type="text" class="search_option" id="txtids" name="txtids" size="22" value="" disabled>        
+            
+            <input type="radio" id="names" name="userflag" value="txtnames" /><label for="names">用户名 <font color="#FF0000"><!--{$uo->UserName}--></font></label>
+			<input type="text" class="search_option" id="txtnames" name="txtnames" size="22" value="" disabled>        
+            
+            <input type="radio" id="vnames" name="userflag" value="txtvnames" /><label for="vnames">角色名称 <font color="#FF0000"><!--{$uo->VUserName}--></font></label>
+            <input type="text" class="search_option" id="txtvnames" name="txtvnames" size="22" value="" disabled>        
+            
+            <input type="submit" class="btn-blue" name="search_user" value="搜索" />
+        </th>
+      </tr>
+      </thead>
+      
+      <!--{if $detailTrue}-->
+      <tbody>
+        <tr>
+       	  <th>申请理由：</th><td colspan="5"><textarea name="cause" cols="50" id="cause" rows="8"><!--{$auditData.cause|htmlspecialchars}--></textarea><div id="causeTip"></div></td>
+        </tr>
+      <tr>
+        <th>岛屿等级 <font color="#FF0000">
+          <!--{$co->Level}-->
+        </font></th>
+        <td><input class="user_info" name="company[Level]" type="text" id="u_level" value="<!--{$postData.company.Level}-->" /></td>
+        <th>声望(魅力) <font color="#FF0000">
+          <!--{$uo->Fame}-->
+        </font></th>
+        <td><input class="user_info" name="user[Fame]" type="text" id="u_fame" value="<!--{$postData.user.Fame}-->" /></td>
+        <th>建造点<font color="#FF0000"><!--{$co->ShopPoint}--></font></th>
+        <td><input class="user_info" name="company[ShopPoint]" type="text" id="u_shoppoint" value="<!--{$postData.company.ShopPoint}-->" /></td>
+      </tr>
+      <tr>
+        <th>功勋 <font color="#FF0000">
+          <!--{$uo->Chop}-->
+        </font></th>
+        <td><input class="user_info" name="user[Chop]" type="text" id="u_chop" value="<!--{$postData.user.Chop}-->" /></td>
+        <th>市场交易币 <font color="#FF0000">
+          <!--{$uo->MarketCurrency}-->
+        </font></th>
+        <td><input class="user_info" name="user[MarketCurrency]" type="text" id="u_marketcurrency" value="<!--{$postData.user.MarketCurrency}-->" /></td>
+        <th>声望值<font color="#FF0000"><!--{$uo->UCofcPoints}--></font></th>
+        <td><input class="user_info" name="user[UCofcPoints]" type="text" id="u_ucofcpoints" value="<!--{$postData.user.UCofcPoints}-->" /></td>
+      </tr>
+      <tr>
+        <th colspan="6"><input type="submit" class="btn-blue" name="edit_user" value="更改数据" /></th>
+      </tr>
+      </tbody>
+    </table>
+    <!--{/if}-->
+	</form>
+</fieldset>
+<!--{/if}-->

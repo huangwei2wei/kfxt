@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>问卷调查 - 优玩网 - 客服中心</title>
+<include file="../common/libs"/>
+</head>
+
+<body>
+<div id="bg"><div id="bgtainer">
+	<div id="bgtai">
+		<include file="../common/head"/>
+        
+	<div class="muencon">
+		<ul>
+		<volist name="list" id="vo" key="i">
+		<li>{$i+($p*10)},&nbsp;<a href="{:U("Askform/detail/id/$vo[Id]")}">{$vo.title}</a></li>
+		</volist>
+		</ul>
+		<p style="text-align:right; width: 869px;">{$show}</p>
+		
+	</div>
+    
+    
+        </div>
+     </div>
+	<include file="../common/footer"/>	
+</div>
+</body>
+
+</html>

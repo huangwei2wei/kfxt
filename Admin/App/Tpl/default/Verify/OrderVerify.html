@@ -1,0 +1,93 @@
+<!--{if $dataList}-->
+<fieldset>
+<legend><!--{'HISTORY_TITLE'|lang}--></legend>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col"><!--{'HISTORY_TABLE_1'|lang}--></th>
+    <th scope="col"><!--{'HISTORY_TABLE_2'|lang}--></th>
+    <th scope="col"><!--{'HISTORY_TABLE_3'|lang}--></th>
+    <th scope="col"><!--{'HISTORY_TABLE_4'|lang}--></th>
+    <th scope="col"><!--{'HISTORY_TABLE_5'|lang}--></th>
+    <th scope="col"><!--{'HISTORY_TABLE_6'|lang}--></th>
+    <th scope="col"><!--{'HISTORY_TABLE_7'|lang}--></th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr <!--{if $workOrderId==$list.work_order_id}-->style="background:#9F9"<!--{/if}--> >
+    <td><!--{$list.word_status}--></td>
+    <td><!--{$list.word_type}--></td>
+    <td><!--{$list.word_level}--></td>
+    <td><!--{$list.word_department_id}--></td>
+    <td><!--{$list.title}--></td>
+    <td><!--{$list.create_time}--></td>
+    <td><a href="<!--{$list.url_detail}-->"><!--{'HISTORY_TABLE_8'|lang}--></a></td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+</fieldset>
+<!--{/if}-->
+    
+<fieldset>
+<legend><!--{'ADD_TITLE'|lang}--></legend>
+	<form action="" id="verify_form" method="post">
+    <input type="hidden" value="<!--{$workOrderId}-->" name="work_order_id" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row"><!--{'ADD_TABLE_1'|lang}--></th>
+        <td>
+            <select name="game_type_id" id="game_type" onChange="changeType($(this).val())"><option value=""><!--{'ADD_TABLE_2'|lang}--></option><!--{html_options options=$gameType}--></select>
+            <select name="operator_id"  onchange="changeOperatorType($(this).val())" id="operator_id"><option value=""><!--{'ADD_TABLE_3'|lang}--></option><!--{html_options options=$operatorList}--></select>
+            <select name="game_server_id" id="game_server_id"><option value=""><!--{'ADD_TABLE_4'|lang}--></option></select>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'ADD_TABLE_5'|lang}--></th>
+        <td>
+        	<!--{'ADD_TABLE_6'|lang}-->：<input type="text" class="text" name="game_user_id" value="<!--{$gameUserId}-->"  /> 
+            <!--{'ADD_TABLE_7'|lang}-->：<input type="text" class="text" name="game_user_account" value="<!--{$userAccount}-->" /> 
+           <!--{'ADD_TABLE_8'|lang}-->：<input type="text" class="text" name="game_user_nickname" value="<!--{$userNickname}-->" />
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'ADD_TABLE_9'|lang}--></th>
+        <td><select name="type" tip="<!--{'AFA162A2597B61D9C417FA8463CC7801'|lang}-->" id="type"><option value=""><!--{'ADD_TABLE_4'|lang}--></option></select></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'ADD_TABLE_10'|lang}--></th>
+        <td><select name="level"><!--{html_options options=$verifyLevel}--></select></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'ADD_TABLE_11'|lang}--></th>
+        <td>
+        	<select name="source"><!--{html_options options=$verifySource selected=2}--></select>
+            <!--{'ADD_TABLE_12'|lang}-->：<input type="text" class="text" name="source_detail" size="60" />
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'ADD_TABLE_13'|lang}--></th>
+        <td><select name="department_id"><!--{html_options options=$department}--></select></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'ADD_TABLE_14'|lang}--></th>
+        <td><select name="status"><!--{html_options options=$verifyStatus}--></select></td>
+      </tr>
+
+      <tr>
+        <th scope="row" rowspan="2"><!--{'ADD_TABLE_15'|lang}--></th>
+        <td>
+		<!--{'ADD_TABLE_16'|lang}-->：
+        <input type="text" class="text" name="title"  /></td>
+      </tr>
+      <tr>
+        <td>
+           	<a href="javascript:void(0)" onclick="KE.create('content')"><!--{'ADD_EDITOR'|lang:'Common'}--></a>
+            <a href="javascript:void(0)" onclick="KE.remove('content')"><!--{'DEL_EDITOR'|lang:'Common'}--></a>
+        	<br />
+        	<textarea name="content" id="content" cols="60" rows="12"></textarea>
+       	</td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="<!--{'SUBMIT'|lang:'Common'}-->" /></th>
+      </tr>
+    </table>
+  </form>
+</fieldset>

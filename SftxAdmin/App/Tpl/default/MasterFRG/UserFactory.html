@@ -1,0 +1,209 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<!--{include file="MasterFRG/UserModifyHref.html"}-->
+<!--{if $display}-->
+
+<script language="javascript">
+<!--{if $detailTrue}-->
+var detailTrue=true;
+<!--{/if}-->
+
+var read='<!--{$read}-->';
+
+var selectSysGoodsLevel=eval(<!--{$selectSysGoodsLevel}-->);
+
+$(function(){
+	$(":radio").click(function(){
+		var value=$(this).val();
+		$(".search_option").attr("disabled","disabled");
+		$("#"+value).removeAttr("disabled");
+	});
+	if(read){//如果是只读察看
+		$("#SkillMaster1_text").html("修改为:<!--{$postData.factory.SkillMaster1}-->");
+		$("#SkillMaster2_text").html("修改为:<!--{$postData.factory.SkillMaster2}-->");
+		$("#SkillMaster4_text").html("修改为:<!--{$postData.factory.SkillMaster4}-->");
+		$("#SkillMaster8_text").html("修改为:<!--{$postData.factory.SkillMaster8}-->");
+		$("#SkillMaster16_text").html("修改为:<!--{$postData.factory.SkillMaster16}-->");
+		$("#PurchaseMaster1_text").html("修改为:<!--{$postData.factory.PurchaseMaster1}-->");
+		$("#PurchaseMaster2_text").html("修改为:<!--{$postData.factory.PurchaseMaster2}-->");
+		$("#PurchaseMaster4_text").html("修改为:<!--{$postData.factory.PurchaseMaster4}-->");
+		$("#PurchaseMaster8_text").html("修改为:<!--{$postData.factory.PurchaseMaster8}-->");
+		$("#PurchaseMaster16_text").html("修改为:<!--{$postData.factory.PurchaseMaster16}-->");
+		$("#DeviceLevel_text").html("修改为:"+$("#DeviceLevel option[value='<!--{$postData.factory.DeviceLevel}-->']").text());
+		$("#StoreLevel_text").html("修改为:"+$("#StoreLevel option[value='<!--{$postData.factory.StoreLevel}-->']").text());
+		$("#MiningSkill_text").html("修改为:<!--{$postData.factory.MiningSkill}-->");
+		$("#MeterialsIndustryType").val('<!--{$postData.MeterialsIndustryType}-->').change();
+		$("#MeterialsLevel").val('<!--{$postData.MeterialsLevel}-->');
+		$("#selfproducing").val('<!--{$postData.selfproducing}-->');
+		$("#fromoutside").val('<!--{$postData.fromoutside}-->');
+		$("input").attr("disabled","disabled");
+		$("select").attr("disabled","disabled");
+		$("textarea").attr("readonly","readonly");
+	}
+});
+
+
+function selectGoods(industryType){
+	var curSelect=selectSysGoodsLevel[industryType];
+	var MeterialsLevel=$("#MeterialsLevel");
+	MeterialsLevel.empty();
+	MeterialsLevel.append('<option value="0" selected="selected">请选择</option>');
+	$.each(curSelect,function(i,n){
+		MeterialsLevel.append('<option value="'+i+'">'+n+'</option>');
+	});
+}
+</script>
+
+<fieldset>
+  <legend>工厂数值修改(如未作特别说明，均填写相应增减值)  [<font color="#FF0000">此操作须要审核</font>]</legend>
+    <form action="" method="post" onsubmit="return checksub();">
+    <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" value="<!--{$fo->UserId}-->" name="userid" id="userid">
+    <input type="hidden" value="<!--{$fo->Id}-->" name="factoryid" id="factoryid">
+    <input type="hidden" value="<!--{$fo->IsCreatedFactory}-->" name="iscreated" id="iscreated">
+    <table width="100%" border="0" cellpadding="3">
+    <!--{if $errMsg}--><caption><font color="#FF0000"><!--{$errMsg}--></font></caption><!--{/if}-->
+    <thead>
+    <tr>
+    	<th colspan="5">
+        	<input type="radio" id="ids" name="userflag" value="txtids" /><label for="ids">用户Id <font color="#FF0000"><!--{$uo->UserId}--></font></label>
+            <input type="text" class="search_option" id="txtids" name="txtids" size="22" value="" disabled>        
+            
+            <input type="radio" id="names" name="userflag" value="txtnames" /><label for="names">用户名 <font color="#FF0000"><!--{$uo->UserName}--></font></label>
+			<input type="text" class="search_option" id="txtnames" name="txtnames" size="22" value="" disabled>        
+            
+            <input type="radio" id="vnames" name="userflag" value="txtvnames" /><label for="vnames">角色名称 <font color="#FF0000"><!--{$uo->VUserName}--></font></label>
+            <input type="text" class="search_option" id="txtvnames" name="txtvnames" size="22" value="" disabled>        
+            
+            <input type="submit" class="btn-blue" name="search_user" value="搜索" />
+        </th>
+    </tr>
+    </thead>
+    <!--{if $detailTrue}-->
+    <tbody>
+    <tr>
+      <th>申请理由</th>
+      <td colspan="4"><textarea name="cause" cols="50" rows="8"><!--{$auditData.cause}--></textarea></td>
+      </tr>
+    <tr>
+        <th>工厂名称： </th>
+        <td><font color="#FF0000"><!--{$fo->Name}--></font></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <th>开采技能值(直接调整为以下值)</th>
+        <td>
+        	<input name="factory[MiningSkill]" value="<!--{$fo->MiningSkill}-->" disabled="disabled" type="text" class="text" />
+            <font color="#0000FF" id="MiningSkill_text"></font>
+        </td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <th>货物行业类型</th>
+        <td><select id="MeterialsIndustryType" name="MeterialsIndustryType" onchange="selectGoods($(this).val())">
+                <option value="0" selected="selected">请选择</option>
+                <!--{html_options options=$selectSysIndustries}-->
+       	    </select>
+        </td>
+        <th>货物级别</th>
+        <td><select id="MeterialsLevel" name="MeterialsLevel">
+            	<option value="0" selected="selected">请选择</option>
+        	</select>
+        </td>
+        <td>
+        	<input id="selfproducing" name="selfproducing" value="" type="text" class="text">生产所得【增量】<br>
+			<input id="fromoutside" name="fromoutside" value="" type="text" class="text">非生产所得【增量】
+        </td>
+    </tr>
+    <tr>
+        <th>设备级别</th>
+        <td>
+        	<select id="DeviceLevel" name="factory[DeviceLevel]" disabled="disabled" >
+				<!--{html_options options=$selectSysDeviceLevel}-->
+        	</select>
+            <font color="#0000FF" id="DeviceLevel_text"></font>
+        </td>
+        <th>仓库级别</th>
+        <td colspan="2">
+            <select id="StoreLevel" name="factory[StoreLevel]" disabled="disabled" >
+				<!--{html_options options=$selectSysStoreLevel}-->
+            </select>
+            <font color="#0000FF" id="StoreLevel_text"></font>
+        </td>
+      </tr>
+    <tr>
+        <th>生产经验(直接调整为以下值)</th>
+        <td colspan="4">
+        	餐饮
+            <input name="factory[SkillMaster1]" type="text" class="text" disabled="disabled" value="<!--{$fo->SkillMaster1}-->" size="10">
+            <font color="#0000FF" id="SkillMaster1_text"></font>
+            服务
+          	<input name="factory[SkillMaster2]" type="text" class="text" disabled="disabled" value="<!--{$fo->SkillMaster2}-->" size="10">
+            <font color="#0000FF" id="SkillMaster2_text"></font>
+            娱乐
+         	<input name="factory[SkillMaster4]"  type="text" class="text" disabled="disabled" value="<!--{$fo->SkillMaster4}-->" size="10">
+            <font color="#0000FF" id="SkillMaster4_text"></font>
+            零售
+          	<input name="factory[SkillMaster8]"  type="text" class="text" disabled="disabled" value="<!--{$fo->SkillMaster8}-->" size="10">
+            <font color="#0000FF" id="SkillMaster8_text"></font>
+            电子
+            <input name="factory[SkillMaster16]" type="text" class="text" disabled="disabled" value="<!--{$fo->SkillMaster16}-->" size="10">
+            <font color="#0000FF" id="SkillMaster16_text"></font>
+		</td>
+      </tr>
+    <tr>
+        <th>销售经验(直接调整为以下值)</th>
+        <td colspan="4">
+        	餐饮
+            <input name="factory[PurchaseMaster1]" type="text" class="text" disabled="disabled" value="<!--{$fo->PurchaseMaster1}-->" size="10">
+            <font color="#0000FF" id="PurchaseMaster1_text"></font>
+            服务
+          	<input name="factory[PurchaseMaster2]" type="text" class="text" disabled="disabled" value="<!--{$fo->PurchaseMaster2}-->" size="10">
+            <font color="#0000FF" id="PurchaseMaster2_text"></font>
+            娱乐
+          	<input name="factory[PurchaseMaster4]" type="text" class="text" disabled="disabled" value="<!--{$fo->PurchaseMaster4}-->" size="10">
+            <font color="#0000FF" id="PurchaseMaster4_text"></font>
+            零售
+          	<input name="factory[PurchaseMaster8]"  type="text" class="text" disabled="disabled" value="<!--{$fo->PurchaseMaster8}-->" size="10">
+            <font color="#0000FF" id="PurchaseMaster8_text"></font>
+            电子
+            <input name="factory[PurchaseMaster16]" type="text" class="text" disabled="disabled" value="<!--{$fo->PurchaseMaster16}-->" size="10">
+            <font color="#0000FF" id="PurchaseMaster16_text"></font>
+		</td>
+      </tr>
+    <tr>
+        <th>原料仓库</th>
+        <td colspan="4">
+        	油料 <font color="#FF0000"><!--{$fo->MeterialsRoom1}--></font>
+            <input name="factory[MeterialsRoom1]" type="text" class="text" disabled="disabled" value="<!--{$postData.factory.MeterialsRoom1|intval}-->" size="10">
+			
+            木材 <font color="#FF0000"><!--{$fo->MeterialsRoom2}--></font>
+			<input name="factory[MeterialsRoom2]" type="text" class="text" disabled="disabled" value="<!--{$postData.factory.MeterialsRoom2|intval}-->" size="10">
+            
+			橡胶 <font color="#FF0000"><!--{$fo->MeterialsRoom4}--></font>
+			<input name="factory[MeterialsRoom4]" type="text" class="text" disabled="disabled" value="<!--{$postData.factory.MeterialsRoom4|intval}-->" size="10">
+            
+			皮革 <font color="#FF0000"><!--{$fo->MeterialsRoom8}--></font>
+			<input name="factory[MeterialsRoom8]" type="text" class="text" disabled="disabled" value="<!--{$postData.factory.MeterialsRoom8|intval}-->" size="10">
+            
+            金属 <font color="#FF0000"><!--{$fo->MeterialsRoom16}--></font>
+          <input name="factory[MeterialsRoom16]" type="text" class="text" disabled="disabled" value="<!--{$postData.factory.MeterialsRoom16|intval}-->" size="10">
+         </td>
+      </tr>
+    <tr>
+        <th colspan="5">
+        	<input type="button" class="btn-blue" value="修改所有禁用项" onclick="$('tbody input,select').removeAttr('disabled');"  />
+        	<input type="submit" class="btn-blue" value="更改数据" name="user_edit" /> 
+        </th>
+      </tr>
+      </tbody>
+    <!--{/if}-->
+    </table>
+	</form>
+</fieldset>
+<!--{/if}-->

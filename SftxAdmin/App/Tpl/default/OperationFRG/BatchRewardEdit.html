@@ -1,0 +1,161 @@
+<style type="text/css">
+.addline{
+	padding:3px;
+}
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:100%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+ul{
+	margin:0px;
+	padding:0px;
+}
+ul li{
+	margin:1px;
+	list-style-type: none;
+	display:inline;
+}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/default/frg.js"></script>
+<script language="javascript">
+function sendReward(){
+	if(!$("#gameServer :checkbox[name='server_ids[]'][checked]").length){
+		alert("请选择服务器");
+		return ;
+	}
+	var button=$("#submit");
+	button.attr("disabled","disabled");
+	var reward=$("#reward");
+	
+	var serverId=$("#server_id");
+	var mainId=$("#main_id");
+	var autoId=$("#auto_id");
+	
+	$("#gameServer :checkbox[name='server_ids[]'][checked]").each(function(){														   
+		serverId.val($(this).val());
+		mainId.val($(this).attr("main_id"));
+		autoId.val($(this).attr("auto_id"));
+		reward.ajaxSubmit({
+			async:false,
+			type:"POST",
+			dataType:'json',
+			success:function(data){
+				if(data.status==1){
+					$(":checkbox[value='"+data.data.server_id+"']").after('<font color="#00CC00">['+data.msg+']</font> ');
+				}else{
+					$(":checkbox[value='"+data.data.server_id+"']").after('<font color="#FF0000">['+data.msg+']</font> ');
+				}
+			}
+		});
+	})
+	button.removeAttr("disabled");
+}
+
+
+<!--{if $readOnly}-->
+var readOnly=<!--{$readOnly}-->;
+<!--{/if}-->
+
+<!--{if $objData}-->
+var objData=eval(<!--{$objData}-->);
+<!--{/if}-->
+
+<!--{if $toolData}-->
+var toolData=eval(<!--{$toolData}-->);
+<!--{/if}-->
+
+<!--{if $effData}-->
+var effData=eval(<!--{$effData}-->);
+<!--{/if}-->
+
+
+var condInputNum=<!--{$num.cond}-->;
+var effectInputNum=<!--{$num.effect}-->;
+var toolInputNum=<!--{$num.tool}-->;
+
+$(function(){
+	if(typeof(readOnly)!='undefined')$("form input,form textarea,form select").attr("disabled","disabled");
+})
+</script>
+
+同时修改以下服务器：
+<ul id="gameServer">
+    <!--{foreach from=$servers key=key item=list}-->
+    <li><input type="checkbox" name="server_ids[]" main_id="<!--{$list.main_id}-->" auto_id="<!--{$list.Id}-->" checked="checked" value="<!--{$key}-->" /><!--{$list.server_name}--></li>
+    <!--{/foreach}-->
+</ul>
+
+<fieldset>
+<legend>编辑道具发放</legend>
+<div id="showItem"></div>
+<form action="<!--{$url.OperationFRG_BatchRewardEdit}-->" method="post" id="reward" >
+<input type="hidden" value="" name="auto_id" id="auto_id" />
+<input type="hidden" id="server_id" name="server_id" value="" />
+<input type="hidden" name="Id" id="main_id" value="" />
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">奖励描述</th>
+    <td><input type="text" class="text" name="Title" value="<!--{$data.Title}-->" size="80" /></td>
+  </tr>
+  <tr>
+    <th scope="row">消息标题</th>
+    <td><input type="text" class="text" value="<!--{$data.MsgTitle}-->" name="MsgTitle" size="80" /></td>
+  </tr>
+  <tr>
+    <th scope="row">消息内容</th>
+    <td><textarea name="MsgContent" rows="6" cols="50"><!--{$data.MsgContent}--></textarea></td>
+  </tr>
+  <tr>
+    <th scope="row">发放时间</th>
+    <td>
+    	<input type="text" class="text" name="SendTime" value="<!--{$data.SendTime|date_format:"%Y-%m-%d %H:%M:%S"}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/> 
+        至
+        <input type="text" class="text" name="EndTime" value="<!--{$data.EndTime|date_format:"%Y-%m-%d %H:%M:%S"}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        当前系统时间：<font color="#FF0000"><!--{$systemTime|date_format:"%Y-%m-%d %H:%M:%S"}--></font>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">是否每日发放</th>
+    <td><!--{html_radios options=$everyDayRadio selected=$data.EveryDay name="EveryDay"}--></td>
+  </tr>
+  <tr>
+    <th scope="row">领取条件</th>
+    <td><input type="button" class="btn-blue" onclick="addGetCond($(this))" value="添加领取条件" />
+    	<!--{foreach from=$chageCond item=list}-->
+        <!--{$list.html}-->
+        <!--{/foreach}-->
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">奖励作用效果</th>
+    <td><input type="button" class="btn-blue" onclick="addEffect($(this))" value="添加作用效果" />
+    	<!--{foreach from=$chageEffect item=list}-->
+        <!--{$list.html}-->
+        <!--{/foreach}-->
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">奖励道具</th>
+    <td><input type="button" class="btn-blue" onclick="addTool($(this))" value="添加奖励道具" />
+      <!--{foreach from=$chageTool item=list}-->
+      <!--{$list.html}-->
+      <!--{/foreach}-->
+      </td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">
+      <input type="button" class="btn-blue" id="submit" onClick="sendReward()" value="提交" />
+      </th>
+  </tr>
+</table>
+</form>
+</fieldset>

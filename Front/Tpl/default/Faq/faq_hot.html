@@ -1,0 +1,79 @@
+<style type="text/css">
+#nav { 
+	float:left;
+	margin:-1px 1px 0 13px; 
+	list-style-type: none;
+	line-height:24px;
+	overflow:hidden;
+}
+#nav a {
+	display: block;
+}
+#nav li {
+	float: left; width: 100px;
+}
+#nav li ul {
+	overflow:hidden; display:none;
+	width:205px;
+	padding:10px 0 0 10px;
+	position: absolute; height:130px;background:url('__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/icon_10.gif');
+}
+#nav li ul li{ height:27px; margin-bottom:3px;
+	 float: left;width:97px; border-bottom:1px #a9b8cb dashed; }
+#nav li ul li img{
+	vertical-align:middle; margin-right:7px;
+}
+#nav li ul a{ font-size:12px;font-weight:normal; color:#333;
+	display: block; width:92px;text-align:left; padding-left:5px;
+}
+#nav li ul a:hover  {
+	color:#2e3f55;text-decoration: underline;
+}
+#nav li:hover ul {
+	 display:block; margin-left:-63px;
+}
+#nav li.sfhover ul {
+ display:block;
+}
+</style>
+
+<script>
+function getDetail(game_type){
+	$.ajax({
+		dataType:'text',	
+		type: 'GET',
+		data:{gametype:game_type},
+		url: "{:U('Faq/questionTop')}",
+		success:function(msg){
+			$('#faq_hot_list').html("");
+			$('#faq_hot_list').append(msg);
+		}
+	});
+}
+</script>
+<div class="right_tit">
+	<span>
+        <ul id="nav">
+        <li><a href="#"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/icon_09.gif"></a>
+            <ul style="margin-left:-115px;">
+                <li><a onclick="getDetail('2');" href="javascript:void(0);"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/icon_11.gif">富人国</a></li>
+                <li><a onclick="getDetail('1');" href="javascript:void(0);"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/icon_12.gif">商业大亨</a></li>
+                <li><a onclick="getDetail('6');" href="javascript:void(0);"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/icon_13.gif">幻世仙征</a></li>
+                <li><a onclick="getDetail('7');" href="javascript:void(0);"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/icon_14.gif">双龙诀</a></li>
+                <li><a onclick="getDetail('9');" href="javascript:void(0);"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/icon_15.gif">商业大亨2</a></li>
+                <li><a onclick="getDetail('8');" href="javascript:void(0);"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/icon_16.gif">海岛大亨</a></li>
+                <li><a onclick="getDetail('10');" href="javascript:void(0);"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/icon_17.gif">功夫</a></li>
+            </ul>
+        </li>
+        </ul>
+    </span>热点问题
+    
+</div>
+<div class="right1">
+    <ul id="faq_hot_list">
+        <!--{/*
+        <li><span>[富人国] </span><a href="#">富人国国会职位每天领取的官印数量是多少？</a></li>
+        */}-->
+        <include file="../Faq/questionTop"/>
+    </ul>
+</div>

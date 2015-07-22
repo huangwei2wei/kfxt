@@ -1,0 +1,101 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+</script>
+
+<fieldset>
+  <legend>邮件列表<a href="<!--{$Add_Url}-->">[发送邮件]</a></legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+   收件人:<input class="text" type="text" name="Receiver" value="<!--{$_GET.Receiver}-->">
+   發送時間:<input class="text" type="text" name="SendTime" value="<!--{$_GET.SendTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+ 郵件類型： <input type="radio" name="mailtype" <!--{if $_GET.mailtype==1}-->checked="checked"<!--{/if}-->value="1" />已刪除
+          <input type="radio" name="mailtype" value="0" <!--{if $_GET.mailtype!=1}-->checked="checked"<!--{/if}-->/>当前
+    <input class="btn-blue" type="submit" name="sbm" value="查询">
+</form>
+
+<form action="" id="playerIdsForm" method="post">
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>邮件ID</th>
+          <th>收件人ID</th>
+          <th>发件时间</th>
+          <th>标题</th>
+          <th>正文</th>
+          <th>经验</th>
+          <th>钱</th>
+          
+          <th>是否发送礼包</th>
+          <th>道具或礼包ID</th>
+          <th>道具数量</th>
+          <th>道具是否绑定</th>
+          <th>是否道具到期时间，下线计时</th>
+          <th>是否道具耐久时间，在线计时</th>
+          <th>是否道具流失时间，下线计时</th>
+          <th>时间耐久度</th>
+          <th>强化等级</th>
+          <th>附加属性</th>
+          <!-- <th>操作</th> -->
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+       	  <td align="center"><!--{$list.MailID}--></td>
+          <td align="center"><!--{$list.PlayerID}--></td>
+          <td align="center"><!--{$list.DateTime}--></td>
+          <td align="center"><!--{$list.Title}--></td>
+          <td align="center"><!--{$list.Content}--></td>
+          <td align="center"><!--{$list.Exp}--></td>
+          <td align="center"><!--{$list.Money}--></td>
+          
+          <td align="center"><!--{$list.IsPack}--></td>
+          <td align="center"><!--{$list.ItemID}--></td>
+          <td align="center"><!--{$list.ItemNum}--></td>
+          <td align="center"><!--{$list.IsBinded}--></td>
+          <td align="center"><!--{$list.IsTimeMaturity}--></td>
+          <td align="center"><!--{$list.IsTimeDurable}--></td>
+          <td align="center"><!--{$list.IsTimeLoss}--></td>
+          
+          <td align="center"><!--{$list.TimeDurable}--></td>
+          <td align="center"><!--{$list.ImproveLevel}--></td>
+          <td align="center"><!--{$list.AttachAttribute}--></td>
+         <!-- <td align="center"><a href="<!--{$Del_Url}-->&MailID=<!--{$list.MailID}-->">[删除]</a></td> --> 
+         
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="18" align="center">
+                查无数据
+            </th>
+          </tr>
+		<!--{/foreach}-->
+          <tr>
+            <th colspan="18" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+</form>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

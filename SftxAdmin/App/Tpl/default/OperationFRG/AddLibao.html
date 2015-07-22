@@ -1,0 +1,95 @@
+<form action="<!--{$url.OperationFRG_AddLibao}-->" id="form" method="post" >
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<style type="text/css">
+.addline{
+	padding:3px;
+}
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:100%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+</style>
+
+<script language="javascript" src="<!--{$__JS__}-->/default/frg.js"></script>
+<script language="javascript">
+<!--{if $objData}-->
+var objData=eval(<!--{$objData}-->);
+<!--{/if}-->
+
+<!--{if $toolData}-->
+var toolData=eval(<!--{$toolData}-->);
+<!--{/if}-->
+
+<!--{if $effData}-->
+var effData=eval(<!--{$effData}-->);
+<!--{/if}-->
+
+var condInputNum=1;
+var effectInputNum=1;
+var toolInputNum=1;
+
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#card_name").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"礼包名称不能为空"},onerror:"礼包名称不能为空,请确认"});
+	$("#card_describe").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"礼包描述不能为空"},onerror:"礼包描述不能为空,请确认"});
+})
+</script>
+<fieldset>
+<legend>添加礼包 [<font color="#0000FF">此操作无须审核</font>]</legend>
+<div id="showItem"></div>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">礼包名称</th>
+    <td><input type="text" class="text" name="CardName" size="60" id="card_name" /><div id="card_nameTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">礼包图片</th>
+    <td><input type="text" class="text" name="CardImage" size="60" /></td>
+  </tr>
+  <tr>
+    <th scope="row">描述</th>
+    <td><textarea name="CardDescribe" cols="60" id="card_describe" rows="8"></textarea><div id="card_describeTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">是否生效</th>
+    <td>
+    	<input type="radio" name="Active" value="1" checked="checked" />是
+        <input type="radio" name="Active" value="0" />否
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">同类卡不允许重激活</th>
+    <td>
+    	<input type="radio" name="DisRepeat" value="1" checked="checked" />是
+        <input type="radio" name="DisRepeat" value="0" />否
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">领取条件</th>
+    <td><input type="button" class="btn-blue" onclick="addGetCond($(this))" value="添加领取条件" /></td>
+  </tr>
+  <tr>
+    <th scope="row">奖励作用效果</th>
+    <td><input type="button" class="btn-blue" onclick="addEffect($(this))" value="添加作用效果" /></td>
+  </tr>
+  <tr>
+    <th scope="row">奖励道具</th>
+    <td><input type="button" class="btn-blue" onclick="addTool($(this))" value="添加奖励道具" /></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">
+      <input type="submit" class="btn-blue" value="提交" />
+    </th>
+  </tr>
+</table>
+</fieldset>
+</form>

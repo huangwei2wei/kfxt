@@ -1,0 +1,137 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+</script>
+
+<fieldset>
+  <legend>消耗记录</legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+   玩家:
+   <input class="text" type="text" name="player" value="<!--{$_GET.player}-->">
+   				<label><input type="radio" name="playerType" checked="checked" value="1" />玩家ID</label><br>
+                区号:
+    <input class="text" type="text" name="WorldId" value="<!--{$_GET.WorldId}-->"><br/>
+时间:
+    <input class="text" type="text" name="beginTime" value="<!--{$_GET.beginTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    -
+    <input class="text" type="text" name="endTime" value="<!--{$_GET.endTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    <input class="btn-blue" type="submit" name="sbm" value="查询">
+</form>
+
+<form action="" id="playerIdsForm" method="post">
+<!--{if $is_tw==1}-->
+<table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>大区</th>
+          <th>角色ID</th>
+          <th>现金操作事件</th>
+          <th>游戏事件ID</th>
+          <th>玩家操作时间</th>
+          <th>操做场景</th>
+          <th>道具</th>
+          <th>旧值</th>
+          <th>新值</th>
+          <th>改变的值</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+       	  <td align="center"><!--{$list.iWorldId}--></td>
+          <td align="center"><!--{$list.iRoleId}--></td>
+          <td align="center"><!--{$list.iDoingEvent}--></td>
+          <td align="center"><!--{$list.iEventId}--></td>
+          <td align="center"><!--{$list.dtEventTime}--></td>
+          <td align="center"><!--{$list.iSceneID}--></td>
+          <td align="center"><!--{$list.iObjectID}--></td>
+          <td align="center"><!--{$list.iFromValue}--></td>
+          <td align="center"><!--{$list.iToValue}--></td>
+          <td align="center"><!--{$list.iChangeValue}--></td>
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="15" align="center">
+                <!--{if $_GET.submit}-->
+                查无数据
+                <!--{else}-->
+                <font color="#FF0000">请使用"查询"按钮</font>
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/foreach}-->
+          <tr>
+            <th colspan="15" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+<!--{else}-->
+
+<table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>大区</th>
+          <th>角色ID</th>
+          <th>用户QQ号</th>
+          <th>发货内容</th>
+          <th>发货令牌</th>
+          <th>支付流水号</th>
+          <th>扣款金额</th>
+          <th>扣取的游戏币总数</th>
+          <th>扣取的抵用券总金额</th>
+          <th>发货时间</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+       	  <td align="center"><!--{$list.iWorldId}--></td>
+          <td align="center"><!--{$list.iRoleId}--></td>
+          <td align="center"><!--{$list.iUin}--></td>
+          <td align="center"><!--{$list.vPayItem}--></td>
+          <td align="center"><!--{$list.vToken}--></td>
+          <td align="center"><!--{$list.vBillno}--></td>
+          <td align="center"><!--{$list.iAmt}--></td>
+          <td align="center"><!--{$list.iPayAmtCoins}--></td>
+          <td align="center"><!--{$list.iPubacctPayAmtCoins}--></td>
+          <td align="center"><!--{$list.dtEventTime}--></td>
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="15" align="center">
+                <!--{if $_GET.submit}-->
+                查无数据
+                <!--{else}-->
+                <font color="#FF0000">请使用"查询"按钮</font>
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/foreach}-->
+          <tr>
+            <th colspan="15" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+<!--{/if}-->
+      
+</form>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

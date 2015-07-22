@@ -1,0 +1,47 @@
+<script language="javascript">
+var everyone='<!--{$everyone}-->';
+$(function(){
+	if(everyone==1){
+		$("#rbac_everyone").attr("checked","checked");
+		$(":checkbox[name='allow[]']").attr("disabled","disabled");
+	}
+})
+function toggleAct(checkBox){
+	if(checkBox.attr('checked')){
+		$(":checkbox[name='allow[]']").attr("disabled","disabled");
+	}else{
+		$(":checkbox[name='allow[]']").removeAttr("disabled");
+	}
+}
+</script>
+<fieldset>
+	<legend>权限修改</legend>
+<form action="<!--{$url.Prem_EditCtl}-->" method="post">
+<input type="hidden" value="<!--{$id}-->" name="Id" />
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">控制器名</th>
+    <td><input type="text" class="text" name="value" value="<!--{$data.value}-->" /></td>
+  </tr>
+      <tr>
+        <th scope="row">所有用户</th>
+        <td>RBAC_EVERYONE <input type="checkbox" name="rbac_everyone" onclick="toggleAct($(this))" id="rbac_everyone" value="1" /></td>
+      </tr>
+      <tr>
+        <th scope="row">授权的角色</th>
+        <td><!--{html_checkboxes options=$allRoles selected=$selectedRoles name="allow"}--></td>
+      </tr>
+      <tr>
+        <th scope="row">授权的用户</th>
+        <td>
+            <!--{foreach from=$selectedUser item=list}-->
+                <span style="width:200px;"><!--{$list}--></span>
+            <!--{/foreach}-->
+        </td>
+      </tr>
+  <tr>
+    <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+  </tr>
+</table>
+</form>
+</fieldset>

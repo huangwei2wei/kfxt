@@ -1,0 +1,43 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+  <legend>激活码列表 [<a href="<!--{$URL_Add}-->">添加</a>]</legend>
+  
+  <form method="post" action="">
+    <select name="cardType">
+       <!--{html_options options=$cardTypesp selected=$_POST.cardType}-->
+    </select>
+    <input type="submit" value="查询" class="btn-blue">
+</form>
+  
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">玩家id</th>
+        <th scope="col">玩家昵称</th>
+        <th scope="col">卡类型</th>
+        <th scope="col">卡号</th>
+        <th scope="col">是否已使用</th>
+        <th scope="col">使用日期</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$cardList item=list}-->
+      <tr>
+        <td><!--{$list.playerId}--></td>
+        <td><!--{$list.prolename}--></td>
+        <td><!--{$cardTypesp[$list.cardType]}--></td>
+        <td><!--{$list.cardID}--></td>
+        <td><!--{if $list.used == 1}-->已使用<!--{else}-->未使用<!--{/if}--></td>
+        <td><!--{$list.useDate|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+        <td>
+        	<!--[<a onclick="return confirm('确定删除？');" href="<!--{$list.URL_del}-->">删除</a>]
+        	[<a href='<!--{$list.URL_edit}-->'>编辑</a>]-->
+        </td>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+<div style="text-align:right"><!--{$pageBox}--></div>
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,56 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+
+function statAll(){
+	var totalMoney = 0;
+	var totalIngot = 0;
+	var remainedIngot = 0;
+	var serverList=$(":checkbox[name='server_ids[]']").filter(function(){return $(this).attr('checked');});
+	$('.tag').remove();
+	if(serverList.length > 0){
+		$.each(serverList,function(i,n){
+			//$(this).attr('checked',false);
+			var curLi=$("#server_"+n.value);
+			$("#form").ajaxSubmit({
+				dataType:'json',
+				data:{server_id:n.value},
+				success:function(dataResult){
+					if(dataResult.status == 1){
+						curLi.after('<font class="tag" color="#FF0000"> '+dataResult.data.totalMoney+'|'+dataResult.data.totalIngot+'|'+dataResult.data.remainedIngot+'</font>');
+						totalMoney += (dataResult.data.totalMoney);
+						totalIngot += (dataResult.data.totalIngot);
+						remainedIngot += (dataResult.data.remainedIngot);
+						$('#totalMoney').html(totalMoney);
+						$('#totalIngot').html(totalIngot);
+						$('#remainedIngot').html(remainedIngot);
+					}else{
+						curLi.after('<b><font class="tag" color="#FF0000"> '+dataResult.info+'</font></b>');
+					}
+				}
+			});
+		});
+	}
+}
+</script>
+<fieldset>
+	<legend>运营商充值统计</legend>
+<div style=" margin:5px;">
+<form action="<!--{$URL_stat}-->" method="post" id="form">
+	时间范围：
+    <input class="text" value="" type="text" name="startTime" onFocus="WdatePicker({startDate:'<!--{$selectedStartTime}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"  value="<!--{$selectedStartTime}-->" />
+    -
+    <input class="text" value="" type="text" name="endTime" onFocus="WdatePicker({startDate:'<!--{$selectedEndTime}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" value="<!--{$selectedEndTime}-->" />
+
+	<input type="button" onclick="statAll()" value="统计" class="btn-blue" />
+</form>
+</div>
+<div style=" margin:5px;">
+	totalMoney：<span style="color:#F00" id="totalMoney">0</span>,
+    totalIngot：<span style="color:#F00" id="totalIngot">0</span>,
+    remainedIngot：<span style="color:#F00" id="remainedIngot">0</span>
+</div>
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+</fieldset>

@@ -1,0 +1,132 @@
+<fieldset>
+    <legend>工单信息</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>工单编号：<!--{$data.Id}--></td>
+        <td>提问时间：<!--{$data.create_time}--></td>
+        <td>工单来源：<!--{$data.word_source}--></td>
+      </tr>
+      <tr>
+        <td>质检：<!--{$data.word_quality_id}--></td>
+        <td>提问/回复数：<!--{$data.question_num}-->/<!--{$data.answer_num}--></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>评价：</th>
+        <td colspan="2">
+            <!--{if $data.evaluation_status==0}-->
+            未评价
+            <!--{else}-->
+            <!--{$evaluation}-->
+            <!--{/if}-->
+        </td>
+      </tr>
+    </table>
+</fieldset>
+
+<fieldset>
+    <legend>玩家信息</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>UID：<!--{$userData.user_id}--></td>
+        <td>账号：<!--{$userData.user_account}--></td>
+        <td>昵称：<!--{$userData.user_nickname}--></td>
+      </tr>
+      <tr>
+        <td>注册时间：<!--{$userData.register_date}--></td>
+        <td>总充值：<!--{$userData.money_total}--></td>
+        <td>近月总值：<!--{$userData.money_month}--></td>
+      </tr>
+      <tr>
+        <td>游戏类型：<!--{$data.word_game_type}--></td>
+        <td>运营商：<!--{$data.word_operator_id}--></td>
+        <td>服务器：<!--{$data.word_game_server_id}--></td>
+      </tr>
+      <tr>
+        <td>用户IP：<!--{$userData.ip}--></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+</fieldset>
+
+<fieldset>
+    <legend>玩家提问</legend>
+        <ul>
+            <li>问题标题 ： <!--{$data.title}--></li>
+            
+            <!--动态显示问题类型-->
+            <!--{if $data.source != 2}-->
+                <li>问题类型 ： <!--{$data.word_question_type}--></li>
+                <!--{foreach from=$userQuestionDetailArr key=key item=value}-->
+                <li><!--{$key}--> ： <!--{$value}--></li>
+                <!--{foreachelse}-->
+                <li>无问题类型</li>
+            <!--{/foreach}-->
+            <!--{/if}-->
+            <!--动态显示问题类型结束-->
+        </ul>
+        
+        <!--{foreach from=$dataList item=list}-->
+            <!--{if $list.qa==1}-->
+                <div style="background:#D9FFDC; border:1px dashed #CCC; padding:10px; padding-top:3px; margin:10px; margin-left:50px; width:80%">
+                <div>
+                    <!--{if $list.is_timeout}--><font color="#FF0000"><b>已超时</b></font><!--{/if}-->
+                    [<!--{$list.word_reply_name}-->]&nbsp;<!--{$list.create_time}-->&nbsp;<font style="font-weight:bold">回复：</font>
+                </div>
+                <div class="content"><!--{$list.content|nl2br}--></div>
+                <!--{if $list.is_quality==0}-->
+                <a href="javascript:void(0)" onclick="quality($(this))" qualityId="<!--{$list.Id}-->">加入质检</a>
+                <!--{else}-->
+                <a qa_id="<!--{$list.Id}-->" href="javascript:void(0)" onclick="showQuality($(this))">察看质检</a>
+                <!--{/if}-->
+                
+                </div>
+            <!--{else}-->
+                <div style="background:#FFE1E1; border:1px dashed #CCC; padding:10px; padding-top:3px; margin:10px; width:80%">
+                <!--{$list.create_time}-->&nbsp;<font style="font-weight:bold">玩家提问：</font><br />
+                <!--{$list.content|nl2br}-->
+                </div>
+            <!--{/if}-->
+        <!--{/foreach}-->
+        <form action="<!--{$url.QualityCheck_Dialog}-->" method="post" id="quality_form" style="display:none">
+        <input type="hidden" name="game_type_id" value="<!--{$gameTypeId}-->" />
+        <input type="hidden" name="operator_id" value="<!--{$operatorId}-->" />
+        <input type="hidden" name="qa_id" id="qa_id" />
+        <input type="hidden" name="work_order_id" value="<!--{$workOrderId}-->" />
+        <table width="98%" border="0" cellpadding="3">
+          <tr>
+            <th>质检内容：</th>
+            <td id="content" style="background:#D9FFDC"></td>
+          </tr>
+          <tr>
+            <th>分数：</th>
+            <td>
+                <select name="scores">
+                    <option value="-3">-3</option>
+                    <option value="-2">-2</option>
+                    <option value="-1">-1</option>
+                    <option selected="selected" value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">质检选项</th>
+            <td><!--{html_radios name="option_id" options=$qualityOptions selected=1}--></td>
+          </tr>
+          <tr>
+            <th scope="row">质检描述</th>
+            <td><textarea name="quality_content" cols="40" rows="5"></textarea></td>
+          </tr>
+          <tr>
+            <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+          </tr>
+        </table>
+        </form>
+</fieldset>
+
+
+

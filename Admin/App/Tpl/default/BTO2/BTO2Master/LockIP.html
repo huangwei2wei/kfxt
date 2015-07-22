@@ -1,0 +1,32 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"<!--{'C566CA59602C7C5C0D3FE5E18ADE447D'|lang}-->ID<!--{'D7D11654A707D7E7B661C90295E58B20'|lang}-->",oncorrect:"<!--{'124D617A6875038C81E03DEC5E2501F4'|lang}-->ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'BA2DD64CC4F6DDF27CB1526EFB449E2D'|lang}-->"});
+	$("#cause").formValidator({onshow:"<!--{'CED19C3DA8C1B8CCFF50C0F2A50473B3'|lang}-->",oncorrect:"<!--{'707472EF069EFD2EF24F82164BC61C70'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'CED19C3DA8C1B8CCFF50C0F2A50473B3'|lang}-->"},onerror:"<!--{'855F36FA7498C388CF6FF6A0DD6B3143'|lang}-->"});
+})
+</script>
+<fieldset>
+	<legend>IP<!--{'8347A927C09A4EC2FE473B0A93F667D0'|lang}-->  [<font color="#0000FF"><!--{'ED4EBD5BB7CFCAD8BEDE3C87F8C6AA65'|lang}--></font>]</legend>
+	<form action="" method="post" id="form" >
+	<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="row"><!--{'2088BDE458445E265704715AA8DACE5A'|lang}--></th>
+        <td><textarea name="cause" id="cause" cols="60" rows="10"></textarea><div id="causeTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row">IP</th>
+        <td><textarea name="Setting[ForbiddenIPList]" cols="60" rows="10"><!--{$data.VarValue}--></textarea><!--{$data.VarDesc}--></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /></th>
+      </tr>
+    </table>
+    </form>
+</fieldset>
+<!--{/if}-->

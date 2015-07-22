@@ -1,0 +1,56 @@
+<?php
+return array(
+	'DaTangMaster'=>array(
+		'name'=>'双龙诀GM工具',
+		'display'=>true,
+		'child'=>array(
+			'UserQuery'=>array('name'=>'用户查询','display'=>true,),
+			'MailQuery'=>array('name'=>'邮箱查询','display'=>false,),
+			'OperationLog'=>array('name'=>'玩家操作日志','display'=>true,),
+			'GameLogin'=>array('name'=>'游戏登录','display'=>true,),
+			'DepositList'=>array('name'=>'充值查询','display'=>true,),
+			'SendMail'=>array('name'=>'发邮件','display'=>true,),
+			'LockUser'=>array('name'=>'封号管理','display'=>true,),
+			'LockUserAdd'=>array('name'=>'添加封号','display'=>false,),
+			'ForbiddenChat'=>array('name'=>'禁言管理','display'=>true,),
+			'ForbiddenChatAdd'=>array('name'=>'添加禁言','display'=>false,),
+			'Alllock'=>array('name'=>'多服（禁言/封号）','display'=>true,),
+			'LockIp'=>array('name'=>'IP封锁管理','display'=>true,),
+			'GameLogin'=>array('name'=>'游戏登录','display'=>true,),
+			'ItemCard'=>array('name'=>'道具卡管理','display'=>true,),
+			'ApplyItemCard2'=>array('name'=>'可申请多人领取礼包卡','display'=>false,),
+			'Invalidate'=>array('name'=>'注销道具卡','display'=>false,),
+			//'ModifyInfo'=>array("name"=>"数值修改申请","display"=>true),
+			'PlayerDataModify'=>array('name'=>'玩家数据调整','display'=>true),
+			'PhenixModify'=>array('name'=>'长生诀修改','display'=>true),
+			'UpdateUserInfo'=>array('name'=>'修改玩家的属性','display'=>true),
+			'UserPartners'=>array('name'=>'修改玩家武将','display'=>true),
+			'UpdateUserPartner'=>array('name'=>'在线修改玩家培养属性','display'=>true),
+			'Operategoldflow'=>array('name'=>'元宝/礼券消费日志','display'=>true),
+		),
+	),
+	'DaTangOperator'=>array(
+		'name'=>'双龙诀运营工具',
+		'display'=>true,
+		'child'=>array(
+			'Announcement'=>array('name'=>'公告','display'=>true,),
+			'Synchronous'=>array('name'=>'发送多服公告','display'=>true,),
+			'AllNotice'=>array('name'=>'多服公告管理','display'=>true),
+			'SendMailToAll'=>array('name'=>'全服发邮件','display'=>true,),
+			'SpeakToAll'=>array('name'=>'全服大喇叭','display'=>true),
+			'Activity'=>array('name'=>'活动配置','display'=>true),
+			'Interface'=>array('name'=>'配置接口','display'=>true),
+			'InvokeGMRemoteInf'=>array('name'=>'游戏接口','display'=>true),
+			'FilteredWords'=>array('name'=>'禁用字','display'=>false,),
+			'RechargeStat'=>array('name'=>'充值统计','display'=>true),
+			'Serverlist'=>array('name'=>'服务器管理','display'=>true,),
+			'UserSetup'=>array('name'=>'运营商权限管理','display'=>true,),
+			'OnlinePlayer'=>array('name'=>'在线统计','display'=>true,),
+			'GoldCount'=>array('name'=>'元宝消耗统计','display'=>true,),
+			'ServerStop'=>array('name'=>'服务器停服','display'=>true,),
+			'ActivityOpen'=>array('name'=>'活动开关','display'=>true,),
+		),
+	)	
+
+
+);

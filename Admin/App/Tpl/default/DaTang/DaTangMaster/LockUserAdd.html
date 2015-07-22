@@ -1,0 +1,51 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#cause").formValidator({onshow:"请输入操作原因",oncorrect:"操作原因正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入操作原因"},onerror:"操作原因不能为空"});
+	$("#server_id").formValidator({onshow:"服务器ID不存在",oncorrect:"请重新输入服务器ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"服务器数值不正确"});
+	$("#UserId").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"用户ID不能为空,请确认"});
+})
+</script>
+<fieldset>
+	<legend>添加封号用户  [<font color="#0000FF">此操作无须审核</font>]</legend>
+<form action="" method="post" id="form" >
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="98%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">操作原因</th>
+        <td><textarea name="cause" id="cause" cols="60" rows="5"></textarea><div id="causeTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row">封号用户，用逗号(&quot;,&quot;)隔开</th>
+        <td>
+        	<div>
+               <input type="radio" name="ReceiveType" checked="checked" value="1" /> 玩家ID
+                <input type="radio" name="ReceiveType" value="2" />昵称
+                <input type="radio" name="ReceiveType" value="3" />账号
+            </div>
+            <div>
+        		<textarea name="users" id="users" cols="60" rows="8"><!--{$users|default:''}--></textarea>
+			</div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">封号结束时间</th>
+        <td>
+        	<input type="text" class="text" name="EndTime" value="<!--{$smarty.now|strtotime:'+1 day'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|strtotime:'+1 day'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+ 
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

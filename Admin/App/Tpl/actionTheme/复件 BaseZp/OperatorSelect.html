@@ -1,0 +1,13 @@
+<script language="javascript">
+	function chageOperatorId(Id){
+		location.href=url+"?c=<!--{$__CONTROL__}-->&a=<!--{$__ACTION__}-->&zp=<!--{$__PACKAGE__}-->&__game_id=<!--{$_GET.__game_id}-->&operator_id="+Id;
+	}
+</script>
+<fieldset>
+	<legend>服务器选择</legend>
+    <select id="operator_id" onChange="chageOperatorId($(this).val())">
+    	<option value="">请选择运营商</option>
+        <!--{html_options options=$operatorList selected=$_GET.operator_id}-->
+		<!--option value="0">所有</option-->
+    </select>
+</fieldset>

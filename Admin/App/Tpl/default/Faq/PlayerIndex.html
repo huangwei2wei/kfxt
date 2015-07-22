@@ -1,0 +1,191 @@
+<style type="text/css">
+div{
+	margin:5px;
+	border-bottom:1px solid #999;
+}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+function viewRating(id){
+	$.getJSON(
+		url,
+		{c:'Faq',a:'Player',doaction:'evaluation',Id:id},
+		function(data){
+			if(data.status==1){
+				$("#rating_"+id).html('<!--{'ECA9C2CCF21E01768FA725A4502A107D'|lang}-->：<b>'+data.data.good+'</b> <!--{'E62FBCCC789A4B69251155B3BAB141AB'|lang}-->： <b>'+data.data.bad+'</b>');
+				if(data.data.faq_opinion){
+					$("#rating_"+id).append("<br>");
+					$.each(data.data.faq_opinion,function(i,n){
+						$("#rating_"+id).append(i+' ： <b>'+n+'</b>');
+					});
+				}
+			}
+		}
+	);
+}
+
+function ajaxcheck(checkid){
+	$.ajax({
+
+		type: "get",
+
+		url: "<!--{$ajaxurl}-->&id="+checkid,
+
+		beforeSend: function(XMLHttpRequest){
+
+		//ShowLoading();
+		},
+		success: function(data, textStatus){
+		thisid	=	"checkfaq_"+checkid;
+		var ojb=eval("("+data+")");
+		if(ojb.status==1){
+			$('#'+thisid).after('<font>已检查</font><br>'+ojb.data);
+			$('#'+thisid).remove();
+		}else{
+			alert(ojb.info);
+		}
+		
+		//document.getElementById(thisid).value="已检测";
+		//document.getElementById(thisid).disabled="disabled";
+		
+		},
+
+		complete: function(XMLHttpRequest, textStatus){
+
+		//HideLoading();
+		},
+		error: function(){
+
+		//请求出错处理
+		}
+		});
+}
+</script>
+<fieldset>
+	<legend><!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}--></legend>
+    <form id="search" action="" method="get">
+    	<input type="hidden" name="c" value="Faq" />
+        <input type="hidden" name="a" value="PlayerIndex" />
+        <input type="hidden" name="order" id="order" value="ratio" />
+        <input type="hidden" name="by" id="by" value="" />
+        <table width="100%" border="0" cellspacing="0" cellpadding="3">
+          <tr>
+            <th scope="row" nowrap="nowrap"><!--{'5860576396B8D22CC2971E12A2816A9E'|lang}--></th>
+            <td><!--{html_radios options=$lang name="lang" selected=$selectedLang onclick="$('#search').submit()"}--></td>
+          </tr>
+          <tr>
+            <th scope="row" nowrap="nowrap"><!--{'498CA9F72EDDB38DEA714E436A0AC57B'|lang}--></th>
+            <td><!--{html_radios options=$game_type name="game_type_id" selected=$selectedGameTypeId onclick="$('#search').submit()"}--></td>
+          </tr>
+          <tr>
+            <th scope="row" nowrap="nowrap">FAQ<!--{'401CBDBFE697EBC3C7370D963572E2F4'|lang}--></th>
+            <td><!--{html_radios options=$faqStatus name="status" selected=$selectedFaqStatus onclick="$('#search').submit()"}--></td>
+          </tr>
+          <!--{if $kindList}-->
+          <tr>
+            <th scope="row" nowrap="nowrap">FAQ<!--{'D0771A42BBC49A6941F59913FCDA35E3'|lang}--></th>
+            <td><!--{html_radios options=$kindList name="kind_id" selected=$selectedkindId onclick="$('#search').submit()"}--></td>
+          </tr>
+          <!--{/if}-->
+          <tr>
+          	<th scope="row" nowrap="nowrap">编辑时间</th>
+          	<td colspan="2">
+          		开始时间：<input type="text" class="text" name="starttime" value="<!--{$selectedstarttime}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+         		结束时间：<input type="text" class="text" name="endtime" value="<!--{$selectedendtime}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+          	</td>
+          </tr>         
+          <tr>
+          	<th scope="row" nowrap="nowrap">搜索</th>
+            <td>
+            	<!--{'5DC99F6EFE53ADDA80974655B26B8DF8'|lang}-->：<input type="text" class="text" name="question" size="40" value="<!--{$selectedQuestion}-->" />  
+                <!--{'7671DEBAE7B1334C837F9604E46C4E09'|lang}-->：<input type="text" class="text" size="40" name="answer" value="<!--{$selectedAnswer}-->" /> 
+                <input type="submit" class="btn-blue" value="<!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}-->" />
+            </td>
+          </tr>
+        </table>
+    </form>
+
+</fieldset>
+
+<fieldset>
+  <legend><!--{'3712972D84ADF48ACBD6AD24B4D75AD0'|lang}--></legend>
+  <a href="<!--{$url.Faq_Player_kindindex_cn}-->"><!--{'55D793539F8313F94848D015E5FB440D'|lang}-->(<!--{'5CCB34CF436EB6764533A70B91796DFF'|lang}-->)</a>
+  <a href="<!--{$url.Faq_Player_kindindex_en}-->"><!--{'55D793539F8313F94848D015E5FB440D'|lang}-->(<!--{'F9FB6A063D1856DA86A06DEF2DC6B921'|lang}-->)</a>
+  <a href="<!--{$url.Faq_Player_kindindex_sk}-->"><!--{'55D793539F8313F94848D015E5FB440D'|lang}-->(<!--{'BC2F65CF134D54540BC94FCF84664512'|lang}-->)</a>
+  <a href="<!--{$url.Faq_Player_kindindex_jp}-->"><!--{'55D793539F8313F94848D015E5FB440D'|lang}-->(<!--{'4DBED2E657457884E67137D3514119B3'|lang}-->)</a>
+  <a href="<!--{$url.Faq_Player_kindindex_vn}-->"><!--{'55D793539F8313F94848D015E5FB440D'|lang}-->(<!--{'29EEB04D53AFD13C6B7E3E41DBBFE1F1'|lang}-->)</a>
+  <a href="<!--{$url.Faq_Player_kindindex_tc}-->"><!--{'55D793539F8313F94848D015E5FB440D'|lang}-->(<!--{'D06F099D0ED3CA049D42FDC50DA856D8'|lang}-->)</a>
+  <a href="<!--{$url.Faq_Player_kindindex_thai}-->">编辑分类(泰文)</a>
+  <a href="<!--{$url.Faq_Player_kindindex_india}-->">编辑分类(印度)</a>
+  <a href="<!--{$url.Faq_Player_kindindex_Indonesia}-->">编辑分类(印尼)</a>
+  <a href="<!--{$url.Faq_Player_kindindex_m_cn}-->">编辑分类(移动中文)</a>
+	<br />
+  <a href="<!--{$url.Faq_Player_add_cn}-->"><!--{'491411E0AE5D09D5ECA25A2B2F275E3B'|lang}-->FAQ(<!--{'5CCB34CF436EB6764533A70B91796DFF'|lang}-->)</a>
+  <a href="<!--{$url.Faq_Player_add_en}-->"><!--{'491411E0AE5D09D5ECA25A2B2F275E3B'|lang}-->FAQ(<!--{'F9FB6A063D1856DA86A06DEF2DC6B921'|lang}-->)</a>
+  <a href="<!--{$url.Faq_Player_add_sk}-->"><!--{'491411E0AE5D09D5ECA25A2B2F275E3B'|lang}-->FAQ(<!--{'BC2F65CF134D54540BC94FCF84664512'|lang}-->)</a>
+  <a href="<!--{$url.Faq_Player_add_jp}-->"><!--{'491411E0AE5D09D5ECA25A2B2F275E3B'|lang}-->FAQ(<!--{'4DBED2E657457884E67137D3514119B3'|lang}-->)</a>
+  <a href="<!--{$url.Faq_Player_add_vn}-->"><!--{'491411E0AE5D09D5ECA25A2B2F275E3B'|lang}-->FAQ(<!--{'29EEB04D53AFD13C6B7E3E41DBBFE1F1'|lang}-->)</a>
+  <a href="<!--{$url.Faq_Player_add_tc}-->"><!--{'491411E0AE5D09D5ECA25A2B2F275E3B'|lang}-->FAQ(<!--{'D06F099D0ED3CA049D42FDC50DA856D8'|lang}-->)</a>
+  <a href="<!--{$url.Faq_Player_add_thai}-->">增加FAQ(泰文)</a>
+  <a href="<!--{$url.Faq_Player_add_india}-->">增加FAQ(印度)</a>
+  <a href="<!--{$url.Faq_Player_add_Indonesia}-->">增加FAQ(印尼)</a>
+  <a href="<!--{$url.Faq_Player_add_m_cn}-->">增加FAQ(移动中文)</a>
+	<br />
+  <a href="<!--{$url.Faq_Player_evManage}-->">FAQ<!--{'B90264713955C337435D568402A4D7CC'|lang}--></a>
+  
+    <table width="100%" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col"><!--{'9D1AF8A250315FB503099EA5C384E1E7'|lang}--></th>
+        <th scope="col"><!--{'5DC99F6EFE53ADDA80974655B26B8DF8'|lang}--></th>
+        <th scope="col">检查</th>
+        <th scope="col"><!--{'401CBDBFE697EBC3C7370D963572E2F4'|lang}--></th>
+        <th scope="col"><!--{'BEA5229BD6AA7E9BDE3901AC4EE5E7A1'|lang}--> / <a href="javascript:formOrder('time','search','<!--{$curBy}-->')"><!--{'19FCB9EB2594059036DFEDE5F4EC53E8'|lang}--></a> </th>
+        <th scope="col"><a href="javascript:formOrder('ratio','search','<!--{$curBy}-->')"><!--{'E6867BB9AD72BB75F199258E1B553CB0'|lang}--></a></th>
+        <th scope="col"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td><!--{$list.word_game_type_id}--></td>
+        <td title="<!--{$list.question}-->"><!--{$list.question|truncateutf8:30}--></td>
+        <td>
+        <!--{if $list.check_status}-->
+        	<font>已检查</font><br/><!--{$list.check_status}-->
+        <!--{else}-->
+        <input class="btn-blue" id="checkfaq_<!--{$list.Id}-->" type="button" value="检查" id="checkfaq_<!--{$list.Id}-->" onclick="ajaxcheck(<!--{$list.Id}-->)"/>
+        <!--{/if}-->
+        
+        </td>
+        <td><!--{$list.word_status}--></td>
+        <td><!--{$list.word_user_id}--> / <!--{$list.time}--></td>
+        <td>
+        	<form action="<!--{$url.Faq_Player_ratio}-->" method="post">
+            	<input type="hidden" name="Id" value="<!--{$list.Id}-->" />
+                <input type="text" class="text" name="ratio" value="<!--{$list.ratio}-->">
+                <input type="submit" class="btn-blue" value="<!--{'8347A927C09A4EC2FE473B0A93F667D0'|lang}-->" />
+            </form>
+        </td>
+        <td>
+        	<a href="<!--{$list.url_edit}-->"><!--{'95B351C86267F3AEDF89520959BCE689'|lang}--></a>
+            <a onclick="return confirm('<!--{'187D1FE0248DC951304185D455EC5437'|lang}-->?')" href="<!--{$list.url_del}-->"><!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}--></a>
+			<span style="display:block" id="rating_<!--{$list.Id}-->"><a href="javascript:void(0)" onclick="viewRating(<!--{$list.Id}-->)">[<!--{'96D7C0A765CCA0834E0EFE688A7046B2'|lang}-->]</a></span>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="8">
+        	<div style=" padding-left:30px;"><b><!--{'847652D1D88D2C774B992FFF9E113D75'|lang}-->：</b><!--{$list.answer_s}--></div>
+            <div style=" padding-left:30px;"><b><!--{'9AD3E16FF3E0C0E8B0E8ED35FB1D1E16'|lang}-->：</b><!--{$list.answer_g}--></div>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="8"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td align="right" colspan="8"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+</fieldset>

@@ -1,0 +1,64 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript">
+
+$(document).ready(function(){
+	$("form :radio").click(function(){$("form").submit();});
+});
+	
+</script>
+<fieldset>
+  <legend><!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}--></legend>
+  <form action="" method="get">
+      <input type="hidden" value="OperationFRG" name="c"  />
+      <input type="hidden" value="Link" name="a" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th width="100" scope="row"><!--{'BA08216F13DD1742157412386EEE1225'|lang}--></th>
+        <td>
+        	<!--{html_radios name="game_type_id" options=$gameTypes selected=$selected.game_type_id}-->
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'F82BEDDCD7005F7F0ECA4C96999A865B'|lang}--></th>
+        <td>
+        	<!--{html_radios name="operator_id" options=$operators selected=$selected.operator_id}-->
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'226B0912184333C81BABF2F1894EC0C1'|lang}--></th>
+        <td>
+           <!--{html_radios name="link_type" options=$linkType selected=$selected.link_type}-->
+        </td>
+      </tr>
+    </table>
+	</form>
+</fieldset>
+<fieldset>
+	<legend><!--{'3712972D84ADF48ACBD6AD24B4D75AD0'|lang}--></legend>
+		<a href="<!--{$url.Link_Add}-->" ><!--{'6AE197127395FC1832148C2FB02850C1'|lang}--></a>
+<table width="100%" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col"><!--{'BA08216F13DD1742157412386EEE1225'|lang}--></th>
+    <th scope="col"><!--{'F82BEDDCD7005F7F0ECA4C96999A865B'|lang}--></th>
+    <th scope="col"><!--{'5EA093AE7932AF5A52FC2246808929D9'|lang}--></th>
+    <th scope="col"><!--{'32C65D8D7431E76029678EC7BB73A5AB'|lang}--></th>
+    <th scope="col"><!--{'FFC7ED1CD5288FF735A3C4A059125354'|lang}--></th>
+    <th scope="col"><!--{'A6613A8CF40922917CBAFD7EA7F3A837'|lang}--></th>
+    <th scope="col"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+  </tr>
+<!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.Id}--></td>
+    <td><!--{$gameTypes[$list.game_type_id]}--></td>
+    <td><!--{$operators[$list.operator_id]}--></td>
+    <td><!--{$linkType[$list.link_type]}--></td>
+    <td><a target="_blank" href="<!--{$list.href}-->"><!--{$list.title}--></a></td>
+    <td><!--{$list.edit_time|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td><!--{$users[$list.user_id]}--></td>
+    <td><a href="<!--{$list.url_edit}-->"><!--{'95B351C86267F3AEDF89520959BCE689'|lang}--></a> <a href="<!--{$list.url_del}-->" onClick="return(confirm('<!--{'4A368D87A4E44E8B16CB50AE48210D86'|lang}-->“<!--{$list.title}-->”？'));"><!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}--></a></td>
+  </tr>
+<!--{/foreach}-->
+</table>
+    <div align="right"><!--{$pageBox}--></div>
+</fieldset>

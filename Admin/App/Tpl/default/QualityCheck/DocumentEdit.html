@@ -1,0 +1,55 @@
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript" type="text/javascript">
+KE.init({id:'content',imageUploadJson : '<!--{$url.updateQualityImgUrl}-->',afterCreate:function(id){KE.util.focus(id)}});
+</script>
+<fieldset>
+  <legend>增加质检归档</legend>
+  <form action="" method="post">
+  <input type="hidden" name="Id" value="<!--{$selected.Id}-->" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th nowrap>所在组别</th>
+        <td><select name="org_id"><!--{html_options options=$orgList selected=$selected.org_id}--></select></td>
+      </tr>
+      <tr>
+        <th nowrap>被质检人</th>
+        <td><select name="reply_user_id"><!--{html_options options=$users selected=$selected.reply_user_id}--></select></td>
+      </tr>
+      <tr>
+        <th nowrap>来源</th>
+        <td><select name="source"><!--{html_options options=$source selected=$selected.source}--></select></td>
+      </tr>
+      <tr>
+        <th nowrap>质检状态</th>
+        <td><select name="quality_status"><!--{html_options options=$verifyStatus selected=$selected.option_id}--></select></td>
+      </tr>
+      <tr>
+        <th nowrap>质检人</th>
+        <td><select name="quality_user_id"><!--{html_options options=$users selected=$selected.quality_user_id}--></select></td>
+      </tr>
+      <tr>
+        <th nowrap>分数</th>
+        <td><select name="scores"><!--{html_options options=$socres selected=$selected.scores}--></select></td>
+      </tr>
+      <tr>
+        <th nowrap>反馈</th>
+        <td><select name="feedback"><!--{html_options options=$feedBack selected=$selected.feedback}--></select></td>
+      </tr>
+      <tr>
+        <th nowrap>标题</th>
+        <td><input type="text" class="text" size="40" name="title" value="<!--{$selected.title}-->" /></td>
+      </tr>
+      <tr>
+        <th nowrap>内容</th>
+        <td>    	
+          <a href="javascript:void(0)" onclick="KE.create('content')">加载编辑器</a>
+          <a href="javascript:void(0)" onclick="KE.remove('content')">卸载编辑器</a><br />
+          <textarea name="content" cols="60" rows="8" id="content"><!--{$selected.content}--></textarea>
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" nowrap><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+  </form>
+</fieldset>

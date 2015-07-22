@@ -1,0 +1,187 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<form id="form" action="" method="post">
+    <!--{if $tplServerSelect}-->
+    <!--{include file=$tplServerSelect}-->
+    <!--{/if}-->
+    <script language="javascript">
+	$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='ids[]']").attr("checked",curCheck);
+	 });
+	});
+    $(function(){
+        $(".view_server").one('click',function(){
+            var curHref=$(this);
+            $.getJSON(
+                curHref.attr("url"),
+                function(data){
+                    if(data.status==1){
+                        curHref.parent().parent().after('<tr id="'+curHref.attr("dialogId")+'"><td colspan="8" style="background:#CCCCCC; ">'+data.data.servers+'</td></tr>');
+                    }else{
+                        alert('<!--{'C8BA5270618A061C14C8721DAC7B1BF1'|lang}-->!');
+                    }
+                }
+            );
+        });
+        $(".view_server").click(function(){
+            var id=$(this).attr("dialogId");
+            $("#"+id).toggle();
+        });
+		
+		$("#allcheck").click(function() {
+			var curCheck=$(this).attr("checked");
+			$(":checkbox[name='Ids[]']").attr("checked",curCheck);
+		});
+		
+		
+    });
+	
+	function formSubmit(curBtn,subType){
+		var form=$("#form");
+		if(subType=='syn'){//<!--{'32AC152BE1911E9360047DCB0898CF70'|lang}-->
+			form.attr("action",curBtn.attr("url"));
+			form.attr("method","post");
+			form.submit();
+		}else{//<!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}-->
+			form.attr("action",curBtn.attr("url"));
+			form.attr("method","get");
+			form.submit();
+		}
+	}
+
+    </script>
+    <fieldset>
+        <legend><!--{'6F64152E043C1A412FBA331D930A513A'|lang}--></legend>
+            <input type="hidden" name="c" value="OperationFRG" />
+            <input type="hidden" name="a" value="SpecialActivity" />
+            <input type="hidden" name="operator_id" id="operator_id" value="" />
+            <!--{'902A3DD676DF1D56EA8D5DAB69C15A2B'|lang}-->：<input name="title" type="text" class="text" value="<!--{$selectedTitle|htmlspecialchars}-->" size="40" />
+            <!--{'567FD606BDCCA9B91E2A3FD844C41C6C'|lang}-->：<input type="checkbox" value="1" name="is_group"  <!--{if $selectedGroupBy}-->checked="checked"<!--{/if}--> />
+            <input type="button" class="btn-blue" onclick="formSubmit($(this),'search')" url="<!--{$url.OperationFRG_SpecialActivity}-->" value="<!--{'BEE912D79EEFB7335988C4997AA9138D'|lang}-->" />&nbsp;
+            <input type="button" class="btn-blue" onclick="formSubmit($(this),'syn')" url="<!--{$url.OperationFRG_SpecialActivity_Syn}-->" value="<!--{'6A620E3C07048291FDB26B6EDCEE7ABA'|lang}-->" /> <font color="#FF0000"></font>
+    </fieldset>
+</form>
+
+
+
+<fieldset>
+<legend><!--{'43316541FD6FC935019D0EF81CE098C3'|lang}--></legend>
+<form action="<!--{$url.OperationFRG_SpecialActivity_Del}-->" id="form" method="post" onsubmit="return checksub();">
+
+
+<!--{if $selectedGroupBy}-->
+
+<input type="hidden" name="operator_id" id="operator_id" value="<!--{$selectedOperatorId}-->"/>
+<table width="100%" border="0" cellpadding="3" >
+
+    <th scope="col"><!--{'153FA67A7FB6ADA66A1FCCCABBBFAB72'|lang}--></th>
+    <th scope="col"><!--{'07BD02FB8B56F1962666484814DE0CC9'|lang}--></th>
+
+    <th scope="col"><!--{'902A3DD676DF1D56EA8D5DAB69C15A2B'|lang}--></th>
+    <th scope="col"><!--{'13955E03D40587B0147A40BD84574BE0'|lang}--></th>
+    <th scope="col"><!--{'0C56E353EFE9F054EBA32D9BCCA68E20'|lang}--></th>
+    <th scope="col"><!--{'AE57B19F893F64784C70BD2AEA0D9899'|lang}--></th>
+    <th scope="col"><!--{'780AFEAC650E4A425184286CC004C214'|lang}--></th>
+    <th scope="col"><!--{'3FEA7CA76CDECE641436D7AB0D02AB1B'|lang}--></th>
+
+    </tr>
+  <!--{foreach from=$dataList key=key item=list}-->
+  <tr>
+    <td scope="col">
+    <input type="checkbox" name="title[]" value="<!--{$list.Title}-->" />
+    </td>
+    <td scope="col"><!--{$list.server_num}-->&nbsp;&nbsp;&nbsp;&nbsp;<a class="view_server" href="javascript:void(0);" dialogId="s_<!--{$key}-->" url="<!--{$url.OperationFRG_SpecialActivityDetail}-->&title=<!--{$list.Title}-->&IdentifierValue=<!--{$list.IdentifierValue}-->&StartTime=<!--{$list.StartTime}-->&EndTime=<!--{$list.EndTime}-->&operator_id=<!--{$selectedOperatorId}-->"><!--{'607E7A4F377FA66B0B28CE318AAB841F'|lang}--></a></td>
+
+    <td scope="col"><a href="<!--{$list.URL_edit}-->"><!--{$list.Title}--></a></td>
+    <td scope="col"><!--{$list.Identifier}--></td>
+    <td scope="col"><!--{$list.StartTime|date_format:"%Y-%m-%d %H:%M:%S"}--> <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}--> <!--{$list.EndTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td scope="col"><!--{$is_open[$list.IsShow]}--></td>
+    <td scope="col"><!--{$is_show[$list.IsOpen]}--></td>
+    
+    <td scope="col"><!--{$list.Status}--></td>
+
+    </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="8" scope="col">
+  		<!--{$noData}--> 	
+    </th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <td colspan="8" scope="col">
+  		<!--{'6F92B63DB2645063CF534B90300C13A1'|lang}--><input type="checkbox" id="allcheck" />
+        <input type="submit" class="btn-blue" onClick="return confirm('<!--{'187D1FE0248DC951304185D455EC5437'|lang}-->?')" value="<!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}-->" />  	
+        
+    </td>
+  </tr>
+</table>
+
+<!--{else}-->
+
+<table width="100%" border="0" cellpadding="3">
+
+  <tr>
+    <th scope="col"><!--{'153FA67A7FB6ADA66A1FCCCABBBFAB72'|lang}--></th>
+    <th scope="col"><!--{'C566CA59602C7C5C0D3FE5E18ADE447D'|lang}--></th>
+    <th scope="col"><!--{'902A3DD676DF1D56EA8D5DAB69C15A2B'|lang}--></th>
+    <th scope="col"><!--{'13955E03D40587B0147A40BD84574BE0'|lang}--></th>
+    <th scope="col"><!--{'0C56E353EFE9F054EBA32D9BCCA68E20'|lang}--></th>
+    <th scope="col"><!--{'AE57B19F893F64784C70BD2AEA0D9899'|lang}--></th>
+    <th scope="col"><!--{'780AFEAC650E4A425184286CC004C214'|lang}--></th>
+    <th scope="col"><!--{'3FEA7CA76CDECE641436D7AB0D02AB1B'|lang}--></th>
+
+    </tr>
+  <!--{foreach from=$dataList key=key item=list}-->
+  <tr>
+    <td scope="col">
+    <input type="checkbox" name="ids[]" value="<!--{$list.Id}-->" />
+    </td>
+    <td scope="col"><!--{$serverListFullName[$list.server_id]}--></td>
+    <td scope="col"><!--{$list.Title}--></td>
+    <td scope="col"><!--{$list.Identifier}--></td>
+    <td scope="col"><!--{$list.StartTime|date_format:"%Y-%m-%d %H:%M:%S"}--> <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}--> <!--{$list.EndTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td scope="col"><!--{$is_open[$list.IsShow]}--></td>
+    <td scope="col"><!--{$is_show[$list.IsOpen]}--></td>
+    
+    <td scope="col"><!--{$list.Status}--></td>
+
+    </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="8" scope="col">
+  		<!--{$noData}--> 	
+    </th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <td colspan="8" scope="col">
+  		<!--{'6F92B63DB2645063CF534B90300C13A1'|lang}--><input type="checkbox" id="allcheck" />
+        <input type="submit" class="btn-blue" onClick="return confirm('<!--{'187D1FE0248DC951304185D455EC5437'|lang}-->?')" value="<!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}-->" />  	
+        
+    </td>
+  </tr>
+</table>
+
+<!--{/if}-->
+</form>
+  <div align="right"><!--{$pageBox}--></div>
+</fieldset>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

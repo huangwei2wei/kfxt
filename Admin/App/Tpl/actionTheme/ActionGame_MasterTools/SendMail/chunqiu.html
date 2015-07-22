@@ -1,0 +1,66 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+
+<fieldset>
+	<legend>发送邮件</legend>
+	<script language="javascript">
+    $(function(){
+        $.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+        $("#server_id").formValidator({onshow:"服务器ID不存在",oncorrect:"请重新输入服务器ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"服务器数值不正确"});
+        $("#cause").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"操作原因不能为空"});
+        $("#MsgTitle").formValidator({onshow:"请输入消息标题",oncorrect:"消息标题正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入消息标题"},onerror:"消息标题不能为空"});
+        $("#MsgContent").formValidator({onshow:"请输入消息内容",oncorrect:"消息内容正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入消息内容"},onerror:"消息内容不能为空"});
+        $("#users").formValidator({onshow:"请输入用户ID,用','号隔开",oncorrect:"输入正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入用户ID"},onerror:"用户ID不能为空"});
+    })
+    </script>
+    <form id="form" action="" method="post">
+    <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">操作原因</th>
+        <td>
+            <textarea name="cause" id="cause" style="width:400px; height:60px;"></textarea>
+            <div id="causeTip"></div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">否是通服</th>
+        <td>
+        	否<input class="radio" type="radio" value="0" name="is_common" checked="checked">
+        	&nbsp;是<input class="radio" type="radio" value="1" name="is_common">
+        	
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">消息标题</th>
+        <td><input name="title" id="MsgTitle" type="text" class="text" style="width:400px;"/><div id="MsgTitleTip"></div></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">消息内容</th>
+        <td><textarea name="content" id="MsgContent" style="width:400px; height:80px;"></textarea><div id="MsgContentTip"></div></td>
+      </tr>
+      <!--{if !$_GET.lock}-->
+      <tr>
+        <th nowrap="nowrap" scope="row">发送给以下用户<br/>(用户之间用&quot;,&quot;号隔开)</th>
+        <td>
+        	<div>
+            <!--{html_radios options=$playerTypes name="userType" selected=$userTypeSelect|default:3}-->
+            </div>
+        	<textarea name="users" id="users" style="width:400px; height:100px;"><!--{$users}--></textarea>
+        	<div id="usersTip"></div>
+        </td>
+      </tr>
+      <!--{/if}-->
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" name="sbm" value="立即发送" /></th>
+      </tr>
+    </table>
+    </form>
+    </fieldset>
+<!--{/if}-->
+
+
+

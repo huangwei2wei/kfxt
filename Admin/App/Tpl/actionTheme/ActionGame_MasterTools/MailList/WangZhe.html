@@ -1,0 +1,83 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+  <legend><!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}--></legend>
+<form id="form" action=""  method="get">
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+        	玩家类型： 
+        	<select name='playerType'>
+            	<!--{html_options options=$playerType selected=$_GET.playerType}-->
+            </select>
+            玩家：<input class='text' type="text" name='player' value="<!--{$_GET.player}-->"/>
+		    邮件类型:
+            <select name='mailType'>
+            	<!--{html_options options=$mailType selected=$_GET.type}-->
+            </select>
+			是否已被玩家删除：
+			<select name='isDeleted'>
+				<option value='-1' <!--{if $_GET.isDeleted=='-1'||$_GET.isDeleted==''}-->  selected="selected"  <!--{/if}-->>请选择</option>
+            	<option value='1' <!--{if $_GET.isDeleted===1}-->  selected="selected"  <!--{/if}-->>是</option>
+            	<option value='0' <!--{if $_GET.isDeleted===0}-->  selected="selected"  <!--{/if}-->>否</option>
+            </select>
+			是否已读:
+			<select name='isRead'>
+				<option value='-1' <!--{if  $_GET.isRead=='-1'||$_GET.isRead==''}-->  selected="selected"  <!--{/if}-->>请选择</option>
+            	<option value='1'<!--{if $_GET.isRead===1}-->  selected="selected"  <!--{/if}--> >是</option>
+            	<option value='0' <!--{if $_GET.isRead===0}-->  selected="selected"  <!--{/if}-->>否</option>
+            </select>
+            <br/>
+            <input class="btn-blue" type="submit" name="sbm" value="查询" />
+         </td>
+      </tr>
+    </table>
+</form>
+
+
+</fieldset>
+
+<fieldset>
+  <legend><!--{'5180B156DE2B83EA610A1DC568F95138'|lang}--></legend>
+<table width="100%" border="0" cellpadding="3">
+  	
+    <tr>
+        <th scope="col">用户ID</th>
+        <th scope="col">标题</th>
+        <th scope="col">内容</th>
+        <th scope="col">发件人ID</th>
+        <th scope="col">发件人名称</th>
+        <th scope="col">是否已读</th>
+        <th scope="col">邮件类型</th>
+        <th scope="col">发送时间</th>
+    </tr>
+    <!--{foreach from=$dataList item=list}-->
+    <tr>
+        <td><!--{$list.reciever}--></td>
+        <td><!--{$list.title}--></td>
+        <td><!--{$list.content}--></td>
+        <td><!--{$list.reciever}--></td>
+        <td><!--{$list.fromName}--></td>
+		<td><!--{$list.visited}--></td>
+		<td><!--{$list.type}--></td>
+		<td><!--{$list.createAt|date_format:"%Y-%m-%d %H:%M:%S"|default:'--'}--></td>
+    </tr>  
+    <!--{foreachelse}-->
+        <tr>
+          <td align="center" colspan="10">无邮件</td>
+        </tr>
+    <!--{/foreach}-->
+</table>
+
+<div><!--{$pageBox}--></div>
+
+</fieldset>
+<!--{/if}-->

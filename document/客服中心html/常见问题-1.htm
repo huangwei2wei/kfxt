@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题 1</title>
+<link rel="stylesheet" type="text/css" href="css/page.css" />
+<script>
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+</script>
+
+</head>
+
+<body>
+<div style="text-align:center"><img src="images/top.jpg" /></div>
+<div id="contai">
+	<div class="muen">
+		<ul>
+			<li><a href="#">自助服务</a></li>
+			<li><a href="#">客服公告</a></li>
+			<li class="d"><a href="#">常见问题</a></li>
+			<li><a href="#">提交问题</a></li>
+		</ul>
+	</div>
+	<div class="neicon">
+		<div class="contit"><span><b>当前位置：</b><a href="#">客服中心</a> > <a href="#">客服公告</a></span>客服公告</div>
+		<div class="conde">
+			<h2>请选择游戏</h2>
+			<div class="gamelogo"><img src="images/gamelogo_01.gif" /><h3><a href="#">点击进入</a></h3></div>
+			<div class="gamelogo"><img src="images/gamelogo_02.jpg" /><h3><a href="#">点击进入</a></h3></div>
+			<div class="gamelogo"><img src="images/gamelogo_03.gif" /><h3><a href="#">点击进入</a></h3></div>
+		</div>
+		<img src="images/title_11.gif" />
+	</div>
+		</div>
+</body>
+
+</html>

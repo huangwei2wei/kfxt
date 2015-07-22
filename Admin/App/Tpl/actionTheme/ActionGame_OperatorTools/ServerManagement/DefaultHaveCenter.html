@@ -1,0 +1,78 @@
+<fieldset>
+	<legend><!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}--></legend>
+  <form action="" method="get" id="search">
+   	  <input type="hidden" name="c" value="OperatorTools" />
+      <input type="hidden" name="a" value="ServerManagement" />
+      <input type="hidden" name="zp" value="ActionGame" />
+      <input type="hidden" name="__game_id" value="<!--{$get.__game_id}-->" />
+      <table width="100%" border="0" cellspacing="0" cellpadding="3">
+        <tr>
+          <th nowrap="nowrap" scope="row"><!--{'F82BEDDCD7005F7F0ECA4C96999A865B'|lang}--></th>
+          <td><!--{html_radios options=$operatorList name="operator_id" onclick="$('#search').submit()" selected=$get.operator_id}--></td>
+        </tr>
+        <tr>
+          <th nowrap="nowrap" scope="row"><!--{'48FEC81C5CF76DDA609C1DB09DBE801D'|lang}--></th>
+          <td><!--{html_radios options=$timer name="timer" selected=$get.timer onclick="$('#search').submit()"}--></td>
+        </tr>
+          <tr>
+            <th nowrap="nowrap" scope="row"><!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}--></th>
+            <td>
+            ID:<input type="text" class="text" name="Id" value="<!--{$get.Id}-->" />
+            <!--{'B425713F0D82F61D992F068D136B71FA'|lang}-->:<input type="text" class="text" name="server_name" value="<!--{$get.server_name}-->" />
+            <!--{'45235F6C8FA2F6BBB0D5B69742EB1076'|lang}-->:<input type="text" class="text" name="marking" value="<!--{$get.marking}-->" />
+            URL:<input type="text" class="text" name="server_url" value="<!--{$get.server_url}-->" />
+            <input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" />
+            </td>
+          </tr>
+      </table>
+    </form>
+</fieldset>
+<fieldset>
+  <legend><!--{'045677D08976BA2C328E374549F38E54'|lang}--></legend>
+[<a href="<!--{$cacheurl}-->"><!--{'304AFC3FFE8791D14752D68F57620F5C'|lang}--></a>]
+[<a href="<!--{$addurl}-->"><!--{'9FE510CC0F346168659549CB53E0FFDC'|lang}--></a>]
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th>Id</th>
+    <th><!--{'9D1AF8A250315FB503099EA5C384E1E7'|lang}--></th>
+    <th><!--{'F82BEDDCD7005F7F0ECA4C96999A865B'|lang}--></th>
+    <th><!--{'CE00B3927EFF976B963DFA0401B5E0C4'|lang}--></th>
+    <th><!--{'B425713F0D82F61D992F068D136B71FA'|lang}--></th>
+    <th><!--{'45235F6C8FA2F6BBB0D5B69742EB1076'|lang}--></th>
+    <th><!--{'0A8FF2A88C6B44914A68D91883010286'|lang}--></th>
+    <th><!--{'1220B05A052977A05451A3ECBAF8BD21'|lang}--></th>
+    <th><!--{'5D57821D7E851B35F235735179F598D9'|lang}--></th>
+    <th><!--{'FEC3D6E4792AC745850D2622F016E8CD'|lang}--></th>
+    <th>中心服</th>
+    <th><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.Id}--></td>
+    <td><!--{$list.word_game_type}--></td>
+    <td><!--{$list.word_operator_name}--></td>
+    <td><!--{$list.ordinal|intval}--></td>
+    <td><!--{$list.server_name}--></td>
+    <td><!--{$list.marking}--></td>
+    <td><!--{$list.time_zone}--></td>
+    <td><!--{$list.timezone|default:'<font color="#999999">no</font>'}--></td>
+    <td title="<!--{$list.server_url}-->"><!--{$list.server_url|truncate:70}--></td>
+    <td>
+    	<!--{if $list.timer}-->
+        <!--{'CC42DD3170FDF36BDC2B0F58AB23EB84'|lang}-->
+        <!--{else}-->
+        <font color="#999999"><!--{'B15D91274E9FC68608C609999E0413FA'|lang}--></font>
+        <!--{/if}-->
+    </td>
+    <td><!--{if $list.isCenter == 1}-->是<!--{else}-->否<!--{/if}--></td>
+    <td>
+    	[<a href="<!--{$list.url_edit}-->"><!--{'95B351C86267F3AEDF89520959BCE689'|lang}--></a>]
+        [<a onclick="return confirm('<!--{'187D1FE0248DC951304185D455EC5437'|lang}-->?')" href="<!--{$list.url_del}-->"><!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}--></a>]
+    </td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr><th colspan="11"><!--{$noData}--></th></tr>
+  <!--{/foreach}-->
+  <tr><td colspan="11" align="right"><!--{$pageBox}--></td></tr>
+</table>
+</fieldset>

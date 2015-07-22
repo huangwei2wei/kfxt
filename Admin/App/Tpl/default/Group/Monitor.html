@@ -1,0 +1,71 @@
+<style type="text/css">
+ul{
+	margin:0px;
+	padding:0px;}
+li{
+	width:300px;
+	list-style-type:square;
+	display:inline-block;
+}	
+</style>
+<div>
+	<!--<!--{'6F20D18C0C2E0DEE94D9EF0537C6965E'|lang}-->-->
+    <fieldset>
+    	<legend><!--{'16A006ED3416E6D7FE5EF82B38332190'|lang}--></legend>
+        <div align="left">
+            <!--{'E0DB25CFEFE0068147E36C0B1E88336B'|lang}-->：<!--{$roomClass._roomName}-->
+            <a href="<!--{$url.WorkOrder_KickAllUser}-->"><!--{'97121E81EFDE77DBE6B9BEC3298F5DDB'|lang}--></a>
+            <form action="<!--{$url.WorkOrder_RoomOnOff}-->" method="post">
+                <input type="checkbox" name="entrance" value="1" <!--{if $roomClass._entrance}-->checked="checked"<!--{/if}--> /><!--{'0B234C99D679C164A8C61F201B26858E'|lang}-->
+                <input type="checkbox" name="exit" value="1" <!--{if $roomClass._exit}-->checked="checked"<!--{/if}--> /><!--{'B7AC6B0A29BC7DF83330460718B7D5CE'|lang}--><br />
+                <!--<!--{'592C59589144DDC68D05D528DA17DCDC'|lang}-->：<!--{html_select_time1 use_24_hours=true display_seconds=false prefix=start selected_time=$roomClass._roomStartEndTime.start}-->	- <!--{'F782779E8B5D709462C8E71E0D9019F2'|lang}-->：<!--{html_select_time1 use_24_hours=true display_seconds=false prefix=end selected_time=$roomClass._roomStartEndTime.end}-->-->
+                <input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" />
+            </form>
+        </div>
+	</fieldset>
+    <!--<!--{'6F20D18C0C2E0DEE94D9EF0537C6965E'|lang}-->-->
+    
+    <fieldset>
+    <legend><!--{'63E605C836D8E6FF1CDC7FF5CF9FA476'|lang}--></legend>
+    <input type="button" value="<!--{'E2EDDE5ADBDF33F6DCE59A299CBF5FAD'|lang}-->/<!--{'DCE5379CB978A8259ECFCA8F08F00817'|lang}-->" class="btn-blue" onclick="$('#server_list').toggle()" />
+    <ul id="server_list" style="display:none">
+    <!--{foreach from=$serverList item=list}-->
+    <li><!--{$list.full_name}--></li>
+    <!--{/foreach}-->
+    </ul>
+    </fieldset>
+    
+    <!--<!--{'45D7557F5A8BA71C9E07B1F8D9E1E846'|lang}-->-->
+    <fieldset>
+    	<legend><!--{'CE311315A7EF57421AA1E8A50EFEFD5D'|lang}--></legend>
+    	<table width="100%" border="0" cellpadding="3">
+          <tr>
+            <td colspan="4" ><!--{'B4432C835DF61A7D5DF557F160CA0E5E'|lang}-->：<!--{$roomClass._orderNum|intval}--></td>
+          </tr>
+          <tr>
+            <th scope="col"><!--{'819767ADA1805B0F0117F10967B94D4D'|lang}-->/<!--{'60D0458AC6EBEF0FFF1331AF196B3C82'|lang}--></th>
+            <th scope="col"><!--{'6B97E371B890DEE77C0D21F9530CB5B7'|lang}--></th>
+            <th scope="col"><!--{'F622CDE8897C5B632C8826AFF06E795F'|lang}-->/<!--{'2CAF3DE629780E19480B05419FB64B75'|lang}--></th>
+            <th scope="col"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+          </tr>
+          <!--{foreach from=$dataList item=list}-->
+          <tr>
+            <td><!--{$list._fullName}--></td>
+            <td><!--{$list.online}--></td>
+            <td><!--{$list->getReplyNum('total')}--> / <!--{$list->getReplyNum()}--></td>
+            <td>
+                <a href="<!--{$list.url_edit_operator}-->"><!--{'B5AF212322F27FE20E381A7DD909A251'|lang}--></a>
+                <a onclick="return confirm('<!--{'6255A0B052C28EA7FB50E4A97D795AEB'|lang}-->?')" href="<!--{$list.url_clear_order}-->"><!--{'22C4CCFAC8495E006C27E877BC3E05DD'|lang}--></a>
+                <a onclick="return confirm('<!--{'6255A0B052C28EA7FB50E4A97D795AEB'|lang}-->?')" href="<!--{$list.url_clear_quality_check}-->"><!--{'408E77F1A4BA059371C6197E9AD94A70'|lang}--></a>
+                <a href="<!--{$list.url_kill_user}-->"><!--{'D1840B4D19821FA8D8BDFE4EE55389DB'|lang}--></a>
+            </td>
+          </tr>
+          <!--{foreachelse}-->
+          <tr>
+            <th colspan="4"><!--{$noData}--></th>
+          </tr>
+          <!--{/foreach}-->
+        </table>
+    </fieldset>
+    <!--<!--{'45D7557F5A8BA71C9E07B1F8D9E1E846'|lang}-->-->
+</div>

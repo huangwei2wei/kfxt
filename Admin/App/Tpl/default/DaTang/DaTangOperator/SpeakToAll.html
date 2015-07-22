@@ -1,0 +1,50 @@
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#cause").formValidator({onshow:"请输入操作原因",oncorrect:"操作原因正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入操作原因"},onerror:"操作原因不能为空"});
+	$("#message").formValidator({onshow:"请输入消息内容",oncorrect:"消息内容正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入消息内容"},onerror:"消息内容不能为空"});
+})
+function sendData(){
+	var serverList=$(":checkbox[name='server_ids[]']").filter(function(){return $(this).attr('checked');});
+	$('.tag').remove();
+	if(serverList.length > 0){
+		$.each(serverList,function(i,n){
+			var curLi=$("#server_"+n.value);
+			$("#form").ajaxSubmit({
+				dataType:'json',
+				data:{server_id:n.value},
+				success:function(dataResult){
+					if(dataResult.status == 1){
+						curLi.after('<font class="tag" color="#00FF00"> '+dataResult.info+'</font>');
+					}else{
+						curLi.after('<b><font class="tag" color="#FF0000"> '+dataResult.info+'</font></b>');
+					}
+				}
+			});
+		});
+	}
+}
+</script>
+<fieldset>
+	<legend>全服大喇叭</legend>
+<form id="form" action="" method="post">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">操作原因</th>
+    <td><textarea name="cause" id="cause" cols="60" rows="2"></textarea><div id="causeTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">消息内容</th>
+    <td><textarea name="message" id="message" cols="60" rows="6"></textarea><div id="messageTip"></div></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row"><input type="button" onclick="sendData()" value="发送" class="btn-blue" /></th>
+  </tr>
+</table>
+</form>
+</fieldset>
+
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->

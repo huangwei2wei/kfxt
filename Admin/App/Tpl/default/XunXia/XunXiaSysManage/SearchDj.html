@@ -1,0 +1,43 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#Goodsname").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"道具名称不能为空"});
+})
+</script>
+<form id="form" action="" method="post">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" >
+  <tr>
+    <th scope="row">道具名称</th>
+    <td>
+        <input id='Goodsname' type="text" class="text" name="Goodsname" value="<!--{$Goodsname}-->" style="width:380px;"/><div id="GoodsnameTip"></div>
+    </td>
+    <td>
+		<input type="submit" class="btn-blue" name="submit" value="立即发送" />
+    </td>
+  </tr>
+</table>
+
+
+
+<table width="100%" cellpadding="3" border="0">
+  <tbody>
+  
+  
+  <!--{foreach from=$data item=a}-->
+  
+  <tr class="alt">
+  	<!--{foreach from=$a item=v key=k}-->
+	    <td nowrap="nowrap" scope="col"><!--{$info.$k}--> : <!--{$v}--></td>
+      <!--{/foreach}-->
+  </tr>
+  <!--{/foreach}-->
+  
+</tbody></table>
+</form>
+<!--{/if}-->

@@ -1,0 +1,3 @@
+<volist name="topFaqlist" id="vo">
+    <li><span>[{$vo.game_name}] </span><a title="{$vo.question|strip_tags}" href="{:U("/Faq/show/game_type_id/$vo[game_type_id]/Id/$vo[Id]")}">{$vo.question|strip_tags|mb_substr=0,20,'utf-8'}</a></li>
+</volist>

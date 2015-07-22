@@ -1,0 +1,2 @@
+<?php 
+return 'C:11:"Object_Room":176:{a:7:{s:3:"_id";i:12;s:9:"_roomName";s:12:"测试房间";s:9:"_entrance";b:0;s:5:"_exit";b:0;s:14:"_userClassList";a:0:{}s:17:"_roomStartEndTime";a:0:{}s:9:"_orderNum";s:1:"1";}}'; 

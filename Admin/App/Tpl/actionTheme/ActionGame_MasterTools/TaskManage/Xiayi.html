@@ -1,0 +1,19 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<fieldset id="fieldset_userlist">
+<form action=""  method="POST">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    玩家信息:<input class="text" type="text" name="user" value="">
+    <input type="radio" name="userType" value="1" checked="checked">玩家ID
+    <input type="radio" name="userType" value="2" checked="checked">玩家账号
+    <input type="radio" name="userType" value="3" checked="checked">玩家昵称
+    <br>任务Id:<input type="text" name="quest_id" value="">
+    <input class="btn-blue" type="submit" name="sbm" value="接受任务">
+</form>
+</fieldset>

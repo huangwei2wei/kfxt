@@ -1,0 +1,65 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+
+<fieldset>
+<legend>增加挑战次数</legend>
+
+
+    <table border="0" cellpadding="3">
+      <tr>
+      	<th scope="row" colspan="3">修改玩家的属性</th>
+      </tr>
+      <form action="" method="get" id="form">
+      <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+      <input type="hidden" name="zp" value="DaTang"/>
+      <input type="hidden" name="a" value="UpdateUserInfo"/>
+      <input type="hidden" name="c" value="DaTangMaster"/>
+      <tr>
+        <th scope="row">玩家ID</th>
+        <td colspan="2"><input type="text" class="text" name="UserId" value='<!--{$UserId}-->'/><input type="submit" class="btn-blue" value='确认'/></td>
+      </tr>
+      </form>
+      <!--{if $userinfo_display}-->
+      <form action="" method="post" id="form">
+      <input type="hidden" name="userId" value="<!--{$UserId}-->"/>
+      <!--{foreach from=$item key=key item=list}-->
+      	<!--{if $key=="skills"}-->
+      	<!--{foreach from=$list key=keyson item=msg}-->
+      	<tr>
+        <th scope="row"><!--{$msg.name}--></th>
+        <td><!--{$msg.value}--></td>
+      	<td>修改：<input type="text" class="text" name="<!--{$key}-->[<!--{$keyson}-->]" value=''/></td>
+      	</tr>
+      	<!--{/foreach}-->
+		<!--{else}-->
+		<tr>
+        <th scope="row"><!--{$list.name}--></th>
+        <td><!--{$list.value}--></td>
+      	<td>添加：<input type="text" class="text" name="<!--{$key}-->" value=''/></td>
+      	</tr>
+      	<!--{/if}-->
+     
+      <!--{/foreach}-->
+      <tr class="">
+		<th scope="row">操作原因</th>
+		<td colspan="2">
+		<textarea id="cause" class="" rows="10" cols="60" name="cause"></textarea>
+		</td>
+		</tr>
+		<tr>
+			<td colspan="3"><input type="submit" class="btn-blue" value='确认'/></td>
+		</tr>
+		</form>
+		<!--{/if}-->
+    </table>
+
+</fieldset>
+<!--{/if}-->

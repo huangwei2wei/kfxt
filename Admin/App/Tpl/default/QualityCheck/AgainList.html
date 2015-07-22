@@ -1,0 +1,97 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+	<legend>搜索</legend>
+    <form action="" method="get" id="search">
+    	<input type="hidden" name="c" value="QualityCheck" />
+        <input type="hidden" name="a" value="AgainList" />
+        <table width="100%" border="0" cellpadding="3" >
+          <tr>
+            <th scope="row">质检人</th>
+            <td>
+            	<select name="quality_user_id" >
+                	<option value="">请选择...</option>
+                    <!--{foreach from=$users item=list}-->
+                    	<option  <!--{if $selected.quality_user_id==$list.Id}-->selected="selected"<!--{/if}--> value="<!--{$list.Id}-->"><!--{$list.nick_name}--></option>
+                    <!--{/foreach}-->
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">复检人</th>
+            <td>
+            	<select name="again_user_id" >
+                	<option value="">请选择...</option>
+                    <!--{foreach from=$users item=list}-->
+                    	<option  <!--{if $selected.again_user_id==$list.Id}-->selected="selected"<!--{/if}--> value="<!--{$list.Id}-->"><!--{$list.nick_name}--></option>
+                    <!--{/foreach}-->
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">复检状态</th>
+            <td><!--{html_radios options=$againStatus name="again_status" onclick="$('search').subit()" selected=$selected.again_status}--></td>
+          </tr>
+          <tr>
+            <th scope="row">时间范围</th>
+            <td>
+            <input type="text" class="text" name="start_time" value="<!--{$selected.start_time}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+            至
+            <input type="text" class="text" name="end_time" value="<!--{$selected.end_time}-->" onFocus="WdatePicker({startDate:'%y-%M-30 23:59:59',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+            <input type="submit" class="btn-blue" value="提交" />
+            </td>
+          </tr>
+        </table>
+
+    </form>
+</fieldset>
+<fieldset>
+  <legend>复检列表</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap" scope="col">Id</th>
+        <th nowrap="nowrap" scope="col">质检人</th>
+        <th nowrap="nowrap" scope="col">质检选项</th>
+        <th nowrap="nowrap" scope="col">质检时间</th>
+        <th nowrap="nowrap" scope="col">申诉处理人</th>
+        <th nowrap="nowrap" scope="col">申诉时间</th>
+        <th nowrap="nowrap" scope="col">复检人</th>
+        <th nowrap="nowrap" scope="col">复检时间</th>
+        <th nowrap="nowrap" scope="col">复检状态</th>
+        <th nowrap="nowrap" scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td nowrap="nowrap"><!--{$list.Id}--></td>
+        <td nowrap="nowrap"><!--{$list.word_quality_user_id}--></td>
+        <td nowrap="nowrap"><!--{$list.word_option_id}--></td>
+        <td nowrap="nowrap"><!--{$list.quality_time}--></td>
+        <td nowrap="nowrap"><!--{$list.word_reply_user_id}--></td>
+        <td nowrap="nowrap"><!--{$list.complain_time}--></td>
+        <td nowrap="nowrap"><!--{$list.word_again_user_id}--></td>
+        <td nowrap="nowrap"><!--{$list.again_time}--></td>
+        <td nowrap="nowrap"><!--{$list.word_again_status}--></td>
+        <td nowrap="nowrap">
+          <a href="<!--{$list.url_detail}-->">察看详细</a>
+            <a href="<!--{$list.url_document}-->">加入归档</a>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="10" >
+   	  <ul style="margin:0px; list-style:square;">
+            	<li><b>质检内容：</b><!--{$list.quality_content}--></li>
+                <li><b>申诉内容：</b><!--{$list.complain_content}--></li>
+                <li><b>复检内容：</b><!--{$list.again_content}--></li>
+            </ul>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="10"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="10" align="right"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+</fieldset>

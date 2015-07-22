@@ -1,0 +1,136 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+
+<script>
+function cltSend(cid,uid,doaction){
+	var server_id = parseInt($('#server_id').val());
+	cid = parseInt(cid);
+	uid = parseInt(uid);	
+	if(server_id>0 &&cid>0 && uid>0){		
+		$.ajax({
+			dataType:'json',	
+			type: 'GET',
+			data:{server_id:server_id,Cid:cid,UserId:uid,doaction:doaction},
+			url: '<!--{$URL_Send}-->',
+			success:function(msg){
+				var json = eval(msg);
+				if(0 == json.status){
+					alert('操作失败,返回错误:'+json.info);
+				}
+				else if(1 == json.status){
+					alert('操作成功');
+					$('#CollectionUserID').val(json.data);
+					$('#toSubmit').click();
+				}
+			}
+		});	
+	}else{
+		alert('服务器ID:'+server_id+'或 收藏ID:'+cid+'或 用户ID:'+uid+'错误');
+	}
+}
+</script>
+
+<fieldset>
+
+<legend>玩家收藏列表 [<a href="<!--{$URL_CollectionDel}-->">灭掉玩家开启收藏</a>]</legend>
+<form method="GET">
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->">
+<table width="100%" border="0" cellpadding="3">
+<tr>
+    <td height="25" width="100%" colspan="6" align="center" id="tabletitlelink">
+        <a name="setting3"></a>查询玩家收藏列表并开启
+    </td>
+</tr>
+<tr>
+	<td height="25" width="100%" colspan="6" align="left">
+		玩家ID:<input class="text" type="text" id="CollectionUserID" name="UserId" value="<!--{$_GET.UserId}-->" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="hidden" id="cidhidden" name="Cid" value="" />
+		<input type="submit" class="btn-blue" id="toSubmit" name="toSubmit" value="查询">
+	</td>
+</tr>
+<tr>
+	<th>收藏号</th>
+    <th>名</th>
+	<th>开启收藏</th>
+    <th>刷新座驾缓存</th>
+	<th>刷新员工缓存</th>
+    <th>补发奖励</th>
+</tr>
+<!--{if $Lists}-->
+	<!--{foreach from=$Lists item=List}-->
+		<tr>
+        	<td ><!--{$List.id}--></td>
+            <td ><!--{$List.CName}--></td>
+            
+            <td >
+                <!--{if $UserInfo[$List.id] == 0}-->
+                    <input type="button" class="btn-blue"  onclick="cltSend(<!--{$List.id}-->,<!--{$_GET.UserId}-->,'opencollection')" value="开启收藏">
+                <!--{else}-->
+                    <font color="red">已开启该收藏</font>
+                <!--{/if}-->
+            </td>
+            
+            <td >
+            <!--{if $CollectionConfig[$List.id].Award.0.0 == 'Car' || $CollectionConfig[$List.id].Award.0.0=='CarDriver'}-->
+            	<input type="button" class="btn-blue" onclick="cltSend(<!--{$List.id}-->,<!--{$_GET.UserId}-->,'carcache')" value="刷新座驾缓存">
+            <!--{else}-->
+            	<font>不可用</font>
+            <!--{/if}-->
+            </td>
+            
+            <td >
+                <!--{if $CollectionConfig[$List.id].Condition.type == 'employee'}-->
+                    <input type="button" class="btn-blue" onclick="cltSend(<!--{$List.id}-->,<!--{$_GET.UserId}-->,'peoplecache')" value="刷新员工缓存">
+                <!--{else}-->
+                	<font>不可用</font>
+                <!--{/if}-->
+            </td>
+            
+ 			<td >
+                <!--{if $UserInfo[$List.id] == 1}-->
+                    <input type="button" class="btn-blue" onclick="cltSend(<!--{$List.id}-->,<!--{$_GET.UserId}-->,'sendaward')" value="补发奖励">
+                <!--{else}-->
+                    <font>不可用</font>
+                <!--{/if}-->     
+            </td>       
+        </tr>
+    <!--{/foreach}-->
+<!--{/if}-->
+</table>
+<!--{if $Lists}-->
+    <table width="300" border="0" cellpadding="3">
+    <!--{foreach from=$CacheFileData item=cacheList key=k}-->
+        <!--{if $cacheList|is_array}-->    	
+                <tr>
+                    <td width="150"><!--{$k}--></td>
+                    <td width="150">&nbsp;</td>
+                </tr>
+            <!--{foreach from=$cacheList item=listSub key=kk}-->
+                <tr>
+                    <td width="150"><span style="margin-left:30px;"><!--{$kk}--></span></td>
+                    <td width="150"><!--{$listSub}--></td>
+                </tr>
+            <!--{/foreach}-->
+        <!--{else}-->
+                <tr>
+                    <td width="150"><!--{$k}--></td>
+                    <td width="150"><!--{$cacheList}--></td>
+                </tr>
+        <!--{/if}-->
+    <!--{foreachelse}-->   
+                <tr>
+                    <td width="150">缓存文件不存在</td>
+                    <td width="150">&nbsp;</td>
+                </tr>
+    <!--{/foreach}-->
+    </table>
+<!--{/if}-->
+</form>
+
+</fieldset>
+<!--{/if}-->

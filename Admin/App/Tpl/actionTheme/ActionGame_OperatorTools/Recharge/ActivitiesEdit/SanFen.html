@@ -1,0 +1,89 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+	<legend>发送邮件</legend>
+	<script language="javascript">
+    $(function(){
+        $("#isAllUser").change(function(){
+        	  if( $(this).attr('value') == '1'){
+        		  $("#showuser").hide();
+        	  }else{
+        		  $("#showuser").show();
+        	  }
+        });
+    })
+
+	function onSubmit(){
+    		var $title = $('#title').attr('value');
+    		var $content = $('#content').attr('value');
+    		var $isAllUser = $("#isAllUser").attr('value');
+    		if($(":checkbox[name='server_ids[]']:checked").attr('value') == undefined){
+    			alert('请选择服务器！'); return false;
+    		}
+    		if($title == ''){
+    			alert('标题不能空！'); return false;
+    		}
+    		if($content == ''){
+    			alert('内容不能空！'); return false;
+    		}
+
+       		if($isAllUser == 0){
+       			if($("#player").attr('value') == ''){
+       				alert('请填写用户！'); return false;
+       			}
+       		}
+    		$('.returnTip').remove();	//去掉旧提示
+    		$(":checkbox[name='server_ids[]']:checked").each(function(i,n){
+    				var curLi=$("#server_"+n.value);
+    				$("#form").ajaxSubmit({
+    					dataType:'json',
+    					async : false,    // 设置同步
+    					data:{server_id:n.value},
+    					success:function(data){
+    						var fontColor=(data.status==1)?'#00cc00':'#ff0000';
+    						curLi.append("<font class='returnTip' color='"+fontColor+"'> "+data.info+"</font>");
+    					}
+    				});
+    		});
+    	}
+    </script>
+    <form id="form" action="" method="post">
+    
+    <table width="100%" border="0" cellpadding="3">
+      <input name="id" type="hidden" value="<!--{$_GET.getOneById}-->"/>
+      <!-- tr>
+        <th scope="row">名称：</th>
+        <td><input name="name" id="name" type="text" class="text" style="width:400px;" value="<!--{$data.name}-->"/></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">介绍：</th>
+        <td><textarea name="intro" id="intro" style="width:400px; height:60px;"><!--{$data.intro}--></textarea></td>
+      </tr-->
+      <tr>
+        <th nowrap="nowrap" scope="row">开始时间： </th>
+        <td>
+			<input type="text" class="text" name="beginTime" value="<!--{$data.beginTime/1000|date_format:'%Y-%m-%d %H:%M:%S'}-->" onFocus="WdatePicker({startDate:'<!--{$data.beginTime/1000|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>        
+		</td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">结束时间： </th>
+        <td>
+			<input type="text" class="text" name="endTime" value="<!--{$data.endTime/1000|date_format:'%Y-%m-%d %H:%M:%S'}-->" onFocus="WdatePicker({startDate:'<!--{$data.endTime/1000|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>        
+		</td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">是否可用：</th>
+        <td> 
+            <select name="activation">
+            	<!--{html_options options=$activation selected=$data.activation}-->
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" onclick="//onSubmit();return false;" class="btn-blue" name="sbm" value="立即发送" /></th>
+      </tr>
+    </table>
+    </form>
+    </fieldset>

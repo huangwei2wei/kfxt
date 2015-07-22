@@ -1,0 +1,23 @@
+<fieldset>
+<legend>当前房间服务器列表</legend>
+<form action="<!--{$url.Group_DelServerToRoom}-->" method="post">
+<!--{html_checkboxes options=$roomServerList name="server_list"}--><br />
+<input type="submit" class="btn-blue" value="删除选定的服务器" />
+</form>
+</fieldset>
+
+<fieldset>
+<legend>未分配服务器列表</legend>
+<form action="<!--{$url.Group_SetServer}-->" method="post">
+<input type="hidden" value="<!--{$roomId}-->" name="room_id" />
+<!--{if $serverList}-->
+<!--{foreach from=$serverList key=key item=list}-->
+    <fieldset>
+    <legend><!--{$gameTypeList[$key]}--></legend>
+	<!--{html_checkboxes options=$list name="server_list" separator="&nbsp;"}-->
+    </fieldset>
+<!--{/foreach}-->
+<input type="submit" class="btn-blue" value="提交" />
+<!--{/if}-->
+</form>
+</fieldset>

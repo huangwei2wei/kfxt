@@ -1,0 +1,25 @@
+<center>
+<a href="<!--{$url.GameOperator_CreateCache}-->">生成缓存</a>
+<a href="<!--{$url.GameOperator_Add}-->">添加运营商</a>
+<table width="98%" border="0" cellpadding="3">
+  <tr>
+    <th>Id</th>
+    <th>运营商</th>
+    <th>操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.Id}--></td>
+    <td><!--{$list.operator_name}--></td>
+    <td>
+    	<a href="<!--{$list.url_edit}-->">编辑</a>
+        <a href="<!--{$list.url_del}-->">删除</a>
+    </td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr>
+  	<th colspan="3"><!--{$noData}--></th>
+  </tr>
+  <!--{/foreach}--> 
+</table>
+</center>

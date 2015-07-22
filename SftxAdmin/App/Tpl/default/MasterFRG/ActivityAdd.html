@@ -1,0 +1,98 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<style type="text/css">
+.addline{
+	padding:3px;
+}
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:100%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/default/frg_activity.js"></script>
+<script language="javascript">
+
+<!--{if $objData}-->
+var objData=eval(<!--{$objData}-->);
+<!--{/if}-->
+
+<!--{if $toolData}-->
+var toolData=eval(<!--{$toolData}-->);
+<!--{/if}-->
+
+<!--{if $effData}-->
+var effData=eval(<!--{$effData}-->);
+<!--{/if}-->
+
+
+var condInputNum=1;
+var effectInputNum=1;
+var toolInputNum=1;
+
+</script>
+
+<legend>添加道具发放</legend>
+
+<div id="showItem"></div>
+
+<form id="form" action="" method="post" >
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">活动标题</th>
+    <td><input type="text" class="text" name="Activity[Title]" id="Activity[Title]" size="60" /><div id="Activity[Title]Tip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">活动唯一标识<br>
+      (根据它来生成活动类)</th>
+    <td><input type="text" class="text" name="Activity[Identifier]" id="Activity[Identifier]" value="" /><div id="Activity[Identifier]Tip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">活动开放时段</th>
+    <td><textarea name="Activity[OpenTime]" id="Activity[OpenTime]" rows="6" cols="50"></textarea>格式(多个时段用||隔开)：13:00-14:00 || 20:30-22:00 <div id="Activity[OpenTime]Tip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">活动最大执行限制</th>
+    <td><input type="text" class="text" name="Activity[MaxNum]" id="Activity[MaxNum]" /><div id="Activity[MaxNum]Tip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">活动内容</th>
+    <td><textarea name="Activity[Content]" id="Activity[Content]" rows="6" cols="50"></textarea><div id="Activity[Content]Tip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">接受条件描述</th>
+    <td><input type="text" class="text" name="Activity[AcceptDesc]" id="Activity[AcceptDesc]" size="60" /><div id="Activity[AcceptDesc]Tip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">接受条件<br>      <font color="#FF0000">(任务必须满足接受条件才能够出现)</font></th>
+    <td><input type="button" class="btn-blue" onclick="addGetCond($(this))" value="增加接收条件" /></td>
+  </tr>
+  <tr>
+    <th scope="row">活动奖励(属性)</th>
+    <td><input type="button" class="btn-blue" onclick="addEffect($(this))" value="增加活动奖励(属性)" /></td>
+  </tr>
+  <tr>
+    <th scope="row">活动奖励(道具)</th>
+    <td><input type="button" class="btn-blue" onclick="addTool($(this))" value="增加活动奖励(道具)" /></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">
+      <input type="submit" class="btn-blue" value="提交" />
+      </th>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

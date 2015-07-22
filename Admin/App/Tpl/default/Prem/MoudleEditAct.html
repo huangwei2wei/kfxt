@@ -1,0 +1,40 @@
+<fieldset>
+	<legend>权限更改 [<font color="#FF0000"><!--{$_GET.role_value}--></font>]</legend>
+    <form action="" method="post">
+    <input type="hidden" name="role_value" value="<!--{$_GET.role_value}-->" />
+    <input type="hidden" name="moudle" value="<!--{$_GET.value}-->" />
+      <table width="100%" border="0" cellspacing="0" cellpadding="3">
+          <tr>
+          	<th scope="col">权限</th>
+            <th scope="col">动作</th>
+            <th scope="col">动作名称</th>
+            <th scope="col">是否显示</th>
+          </tr>
+          <!--{foreach from=$dataList item=actList key=actKey}-->
+          <tr>
+          	<td align="center"><input type="checkbox" name="value[]" <!--{if $actList.selected}-->checked<!--{/if}--> value="<!--{$actList.value}-->" /></td>
+            <th><!--{$actList.value}--></th>
+            <th><!--{$actList.name}--></th>
+            <th><!--{if $actList.display}-->是<!--{else}-->否<!--{/if}--></th>
+          </tr>
+              <!--{if $actList.class_methods}-->
+              <!--{foreach from=$actList.class_methods item=childList key=childListKey}-->
+              <tr>
+              	<td align="center"><input type="checkbox" name="value[]" <!--{if $childList.selected}-->checked<!--{/if}--> value="<!--{$actList.value}-->_<!--{$childList.value}-->" /></td>
+                <td align="center"><!--{$childList.value}--></td>
+                <td align="center"><!--{$childList.name}--></td>
+                <td align="center"><!--{if $childList.display}-->是<!--{else}-->否<!--{/if}--></td>
+              </tr>
+              <!--{/foreach}-->
+              <!--{/if}-->
+          <!--{foreachelse}-->
+          <tr>
+            <th colspan="4"><!--{$noData}--></th>
+          </tr>
+          <!--{/foreach}-->
+          <tr>
+            <th colspan="4"><input type="submit" class="btn-blue" value="提交" /></th>
+          </tr>
+      </table>
+      </form>
+</fieldset>

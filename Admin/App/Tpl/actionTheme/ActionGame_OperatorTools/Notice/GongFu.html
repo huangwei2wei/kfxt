@@ -1,0 +1,45 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+
+<fieldset>
+  <legend><!--{'FCC7535B0137294C877D2824AA466BC6'|lang}--> [<a href="<!--{$URL_noticeAdd}-->"><!--{'B58C7549C0246C55B9CAC96383200338'|lang}--></a>]</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col"><!--{'32C65D8D7431E76029678EC7BB73A5AB'|lang}-->(<!--{'FDCDA9CA5D55ACF2DD3FA3EDD5367F25'|lang}-->)</th>
+        <th scope="col"><!--{'592C59589144DDC68D05D528DA17DCDC'|lang}--></th>
+        <th scope="col"><!--{'F782779E8B5D709462C8E71E0D9019F2'|lang}--></th>
+        <th scope="col"><!--{'1BFBA2E545F183B1C6325B726470DF19'|lang}-->(<!--{'0C1FEC657F7865DED377B43250A015FC'|lang}-->)</th>
+        <th scope="col">URL</th>
+        <th scope="col"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <form action="<!--{$list.URL_edit}-->" method="post" id='form_<!--{$list.id}-->'>
+      <tr>
+      	<input type="hidden" value='<!--{$list.id}-->' name='id'></input>
+      	<input type="hidden" value='<!--{$list.title}-->' name='title'></input>
+      	<input type="hidden" value='<!--{$list.beginTime_t}-->' name='beginTime'></input>
+      	<input type="hidden" value='<!--{$list.endTime_t}-->' name='endTime'></input>
+      	<input type="hidden" value='<!--{$list.initialDelay}-->' name='initialDelay'></input>
+      	<input type="hidden" value='<!--{$list.url}-->' name='url'></input>
+        <td><!--{$list.id}--></td>
+        <td><!--{$list.title}--></td>
+        <td><!--{$list.beginTime}--></td>
+        <td><!--{$list.endTime}--></td>
+        <td><!--{$list.initialDelay}--></td>
+        <td> <!--{if $list.url}--><a target="_blank" href="<!--{$list.url}-->"><!--{$list.url}--></a><!--{else}--><font color="#999999"><!--{'D81BB206A889656035B929CD8BB1EF10'|lang}--></font><!--{/if}--></td>
+        <td>
+        	[<a onclick="return confirm('<!--{'4A368D87A4E44E8B16CB50AE48210D86'|lang}-->？');" href="<!--{$list.URL_del}-->"><!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}--></a>]
+        	[<a href='javascript:document.getElementById("form_<!--{$list.id}-->").submit();'><!--{'95B351C86267F3AEDF89520959BCE689'|lang}--></a>]
+        </td>
+      
+      </tr>
+      </form>
+      <!--{/foreach}-->
+    </table>
+
+</fieldset>
+<!--{/if}-->

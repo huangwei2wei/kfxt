@@ -1,0 +1,67 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+	<legend>搜索列表</legend>
+    <form action="" method="get">
+    <input type="hidden" name="c" value="ProgramDateWork" />
+    <input type="hidden" name="a" value="Index" />
+    <input type="hidden" name="zp" value="Program" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="row">用户名称</th>
+        <td><select name="user_id"><option value="">请选择</option><!--{html_options options=$users selected=$selected.user_id}--></select></td>
+      </tr>
+      <tr>
+        <th scope="row">项目组</th>
+        <td><select name="group_id"><option value="">请选择</option><!--{html_options options=$progromGroup selected=$selected.group_id}--></select></td>
+      </tr>
+      <tr>
+        <th scope="row">时间范围</th>
+        <td>        
+        <input type="text" class="text" name="start_time" value="<!--{$selected.start_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.start_time}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        -
+		<input type="text" class="text" name="end_time" value="<!--{$selected.end_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.end_time}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" value="提交" class="btn-blue" /></th>
+      </tr>
+    </table>
+	</form>
+</fieldset>
+<fieldset>
+  <legend>每日工作计划</legend>
+    <a href="<!--{$url.ProgramDateWork_Index_add}-->">增加当天计划</a>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap" scope="col">Id</th>
+        <th nowrap="nowrap" scope="col">姓名</th>
+        <th nowrap="nowrap" scope="col">项目组</th>
+        <th scope="col">工作描述</th>
+        <th nowrap="nowrap" scope="col">开始时间</th>
+        <th nowrap="nowrap" scope="col">预计完成时间</th>
+        <th nowrap="nowrap" scope="col">实际完成时间</th>
+        <th nowrap="nowrap" scope="col">是否完成</th>
+        <th nowrap="nowrap" scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td nowrap="nowrap"><!--{$list.Id}--></td>
+        <td nowrap="nowrap"><!--{$list.word_user_id}--></td>
+        <td nowrap="nowrap"><!--{$list.word_group_id}--></td>
+        <td><!--{$list.content}--></td>
+        <td nowrap="nowrap"><!--{$list.start_time}--></td>
+        <td nowrap="nowrap"><!--{$list.end_time}--></td>
+        <td nowrap="nowrap"><!--{$list.actual_time}--></td>
+        <td nowrap="nowrap"><!--{$list.word_is_over}--></td>
+        <td nowrap="nowrap">
+        	<!--{if $list.is_over==false}-->
+            <a href="<!--{$list.url_finish}-->">完成</a>
+            <a href="<!--{$list.url_edit}-->">编辑工作描述</a>
+            <!--{/if}-->
+        </td>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+	<div align="right"><!--{$pageBox}--></div>
+</fieldset>

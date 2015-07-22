@@ -1,0 +1,19 @@
+<fieldset>
+	<legend>编辑组别</legend>
+<form method="post" action="<!--{$url.User_OrgEdit}-->">
+<input type="hidden" value="<!--{$org.Id}-->" name="Id" />
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th nowrap="nowrap" scope="row">组名</th>
+    <td><input type="text" class="text" name="name" value="<!--{$org.name}-->" /></td>
+  </tr>
+  <tr>
+    <th nowrap="nowrap" scope="row">加入用户</th>
+    <td><!--{html_checkboxes options=$users name=users selected=$selected}--></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+  </tr>
+</table>
+</form>
+</fieldset>

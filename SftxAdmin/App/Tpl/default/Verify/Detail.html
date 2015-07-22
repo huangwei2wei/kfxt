@@ -1,0 +1,86 @@
+<fieldset>
+<legend>查证详情</legend>
+<form action="<!--{$url.Verify_ReplyDialog}-->" method="post">
+<input type="hidden" value="<!--{$dataList.Id}-->" name="Id" />
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">Id</th>
+    <td><!--{$dataList.Id}--></td>
+  </tr>
+  <tr>
+    <th scope="row">所属游戏/运营商/服务器</th>
+    <td>
+    	<!--{$dataList.word_game_type_id}-->/
+        <!--{$dataList.word_operator_id}-->/
+        <!--{$dataList.word_game_server_id}-->
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">转交部门</th>
+    <td><select name="department_id"><!--{html_options options=$department selected=$dataList.department_id}--></select></td>
+  </tr>
+  <tr>
+    <th scope="row">当前状态</th>
+    <td>
+    	<select name="status">
+        	<!--{html_options options=$verifyStatus selected=$dataList.status}-->
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">问题类型</th>
+    <td><!--{$dataList.word_type}--></td>
+  </tr>
+  <tr>
+    <th scope="row">处理等级</th>
+    <td><!--{$dataList.word_level}--></td>
+  </tr>
+  <tr>
+    <th scope="row">标题</th>
+    <td><!--{$dataList.title}--></td>
+  </tr>
+  <tr>
+    <th scope="row">描述</th>
+    <td><!--{$dataList.content}--></td>
+  </tr>
+  <tr>
+    <th scope="row">来源</th>
+    <td><!--{$dataList.work_source}--></td>
+  </tr>
+  <tr>
+    <th scope="row">玩家信息</th>
+    <td>玩家ID:<!--{$dataList.game_user_id}-->&nbsp;
+    	玩家账号:<!--{$dataList.game_user_account}-->&nbsp;
+        玩家呢称:<!--{$dataList.game_nickname}-->
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">日志</th>
+    <td>
+    	<!--{foreach from=$dataList.log item=list}-->
+        <!--{if $list.type==1}-->
+    	<div style="border:1px dashed #999; padding:3px; margin:3px; background:#E9FAFE">
+        	<div><b>状态修改：</b>&nbsp;[<!--{$list.time}-->]&nbsp;<b><!--{$list.user}--></b></div>
+            <div><!--{$list.description}--></div>
+        </div>
+        <!--{else}-->
+    	<div style="border:1px dashed #999; padding:3px; margin:3px; background:#EFEFF8">
+        	<div><b>留言：</b>&nbsp;[<!--{$list.time}-->]&nbsp;<b><!--{$list.user}--></b></div>
+            <div><!--{$list.description}--></div>
+        </div>
+        <!--{/if}-->
+        <!--{/foreach}-->
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">添加留言</th>
+    <td>
+		<textarea name="content" cols="50" rows="6"></textarea><br />
+    </td>
+  </tr>
+  <tr>
+    <th scope="row" colspan="2"><input type="submit" class="btn-blue" value="提交"  /></th>
+  </tr>
+</table>
+ </form>
+</fieldset>

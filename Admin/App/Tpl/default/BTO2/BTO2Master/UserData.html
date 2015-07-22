@@ -1,0 +1,148 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{include file="MasterFRG/UserModifyHref.html"}-->
+
+<!--{if $display}-->
+<script language="javascript">
+var read='<!--{$read}-->';
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"<!--{'C566CA59602C7C5C0D3FE5E18ADE447D'|lang}-->ID<!--{'D7D11654A707D7E7B661C90295E58B20'|lang}-->",oncorrect:"<!--{'124D617A6875038C81E03DEC5E2501F4'|lang}-->ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'BA2DD64CC4F6DDF27CB1526EFB449E2D'|lang}-->"});
+	$("#cause").formValidator({onshow:"<!--{'A73F63486CB97A8D6C136D7DC82F11D2'|lang}-->",oncorrect:"<!--{'FD75CEECBD2676048590A1695702F29A'|lang}-->"}).inputValidator({min:1,empty:{leftempty:true,rightempty:true,emptyerror:"<!--{'A73F63486CB97A8D6C136D7DC82F11D2'|lang}-->"},onerror:"<!--{'E85E13CC2A5C76D4E44E62F70E1F1BED'|lang}-->"});  	   
+		   
+	$(":radio").click(function(){
+		value=$(this).val();
+		$(".search_option").attr("disabled","disabled");
+		$("#"+value).removeAttr("disabled");
+	});
+	if(read){
+		$("input").attr("disabled","disabled");
+		$("select").attr("disabled","disabled");
+		$("textarea").attr("readonly","readonly");
+	}
+});
+
+function addVIPtime(time){
+	$("#u_vip").val(time);
+}
+</script>
+
+
+
+<fieldset>
+	<legend><!--{'B43F8B6B0A2D74B9235A5DD5D03FFAF3'|lang}--> (<!--{'B6D8D85297CB90865DD58007F1A94CF5'|lang}-->，<!--{'AEDDAE071CE7A1EC8033E74B85B2A074'|lang}-->) [<font color="#FF0000"><!--{'541018CC8BD963A5718F321903B9D907'|lang}--></font>]</legend>
+	<form action="" method="post" id="form">
+	<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+	<input type="hidden" name="userid" value="<!--{$uo->UserId}-->" />
+    <table width="100%" border="0" cellpadding="3">
+      <!--{if $errMsg}--><caption><font color="#FF0000"><!--{$errMsg}--></font></caption><!--{/if}-->
+      <thead>
+      <tr>
+        <th colspan="6">
+        	<input type="radio" id="ids" name="userflag" value="txtids" /><label for="ids"><!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->Id <font color="#FF0000"><!--{$uo->UserId}--></font></label>
+            <input type="text" class="search_option" id="txtids" name="txtids" size="22" value="" disabled>        
+            
+            <input type="radio" id="names" name="userflag" value="txtnames" /><label for="names"><!--{'819767ADA1805B0F0117F10967B94D4D'|lang}--> <font color="#FF0000"><!--{$uo->UserName}--></font></label>
+			<input type="text" class="search_option" id="txtnames" name="txtnames" size="22" value="" disabled>        
+            
+            <input type="radio" id="vnames" name="userflag" value="txtvnames" /><label for="vnames"><!--{'10A6F1219A3A36CE2D7A9ED0F2D096A0'|lang}--> <font color="#FF0000"><!--{$uo->VUserName}--></font></label>
+            <input type="text" class="search_option" id="txtvnames" name="txtvnames" size="22" value="" disabled>        
+            
+            <input type="submit" class="btn-blue" name="search_user" value="<!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}-->" />
+        </th>
+      </tr>
+      </thead>
+      
+      <!--{if $detailTrue}-->
+      <tbody>
+        <tr>
+       	  <th><!--{'C5AE2E7BD2CB8F79F3DD66FA7212B58B'|lang}-->：</th><td colspan="5"><textarea name="cause" cols="50" id="cause" rows="8"><!--{$auditData.cause|htmlspecialchars}--></textarea><div id="causeTip"></div></td>
+        </tr>
+      <tr>
+        <th></th>
+        <td></td>
+        <th></th>
+        <td></td>
+        <th><!--{'B60352BC4F7673301121F5F981791A88'|lang}-->G<!--{'C7A023E86EAD7544061EE23EA1C42476'|lang}-->  <font color="#FF0000"><!--{$uo->Assets}--></font></th>
+        <td><input class="user_info" name="user[Assets]" type="text" id="u_assets" value="<!--{$postData.user.Assets}-->" /></td>
+      </tr>
+      <tr>
+        <th><!--{'1ECCC078BB88861773455AA6039EEEDD'|lang}--> <font color="#FF0000"><!--{$uo->Lead}--></font></th>
+        <td><input class="user_info" name="user[Lead]" type="text" id="u_lead" value="<!--{$postData.user.Lead}-->" /></td>
+        <th><!--{'95124B3087921239D312A355FD533A6B'|lang}-->  <font color="#FF0000"><!--{$uo->Charm}--></font></th>
+        <td><input class="user_info" name="user[Charm]" type="text" id="u_charm" value="<!--{$postData.user.Charm}-->" /></td>
+        <th><!--{'332FA3AEB2BB0F1CB84E98699F679C02'|lang}-->  <font color="#FF0000"><!--{$uo->IQ}--></font></th>
+        <td><input class="user_info" name="user[IQ]" type="text" id="u_iq" value="<!--{$postData.user.IQ}-->" /></td>
+      </tr>
+      <tr>
+        <th><!--{'7697C3CCB46ADADBB5113843FE5FAC5D'|lang}-->  <font color="#FF0000"><!--{$uo->Point}--></font></th>
+        <td><input class="user_info" name="user[Point]" type="text" id="u_point" value="<!--{$postData.user.Point}-->" /></td>
+        <th><!--{'A15903115BDC91EF607F8CE699522CE0'|lang}-->  <font color="#FF0000"><!--{$uo->Experience}--></font></th>
+        <td><input class="user_info" name="user[Experience]" type="text" id="u_experience" value="<!--{$postData.user.Experience}-->" /></td>
+        <th><!--{'A11CC6262CB9CA68025B141DEDDF1468'|lang}-->  <font color="#FF0000"><!--{$co->ShopPoint}--></font></th>
+        <td><input class="user_info" name="company[ShopPoint]" type="text" id="u_shoppoint" value="<!--{$postData.user.ShopPoint}-->" /></td>
+      </tr>
+      <tr>
+        <th><!--{'CE3336F6E93D3E1E4974E04EEEC67541'|lang}-->  <font color="#FF0000"><!--{$uo->Trust}--></font></th>
+        <td><input class="user_info" name="user[Trust]" type="text" id="u_trust" value="<!--{$postData.user.Trust}-->" /></td>
+        <th><!--{'581D9EE2E06971A9F3C73345647FA968'|lang}-->(<!--{'A0014606EEA8ACC9D0090417CE8AEBDE'|lang}-->)  <font color="#FF0000"><!--{$uo->Fame}--></font></th>
+        <td><input class="user_info" name="user[Fame]" type="text" id="u_fame" value="<!--{$postData.user.Fame}-->" /></td>
+        <th><!--{'7D93B1E0C253EDE095459FE71C520F5A'|lang}-->  <font color="#FF0000"><!--{$co->Level}--></font></th>
+        <td><input class="user_info" name="company[Level]" type="text" id="u_level" value="<!--{$postData.company.Level}-->" /></td>
+      </tr>
+      <tr>
+        <th><!--{'CCC3CF422C4E82CAD6A26DDF7D4E19C9'|lang}-->  <font color="#FF0000"><!--{$uo->PersonalPoints}--></font></th>
+        <td><input class="user_info" name="user[PersonalPoints]" type="text" id="u_personalpoints" value="<!--{$postData.user.PersonalPoints}-->" /></td>
+        <th><!--{'FFBECA59C8FECDA83E6693DE44C3BDFE'|lang}-->  <font color="#FF0000"><!--{$uo->Chop}--></font></th>
+        <td><input class="user_info" name="user[Chop]" type="text" id="u_chop" value="<!--{$postData.user.Chop}-->" /></td>
+        <th><!--{'2DABBB08349FE8515BB06E7B1FD9C3C4'|lang}-->  <font color="#FF0000"><!--{$uo->Ballot}--></font></th>
+        <td><input class="user_info" name="user[Ballot]" type="text" id="u_ballot" value="<!--{$postData.user.Ballot}-->" /></td>
+      </tr>
+      <tr>
+        <th><!--{'D603F12BF2E9E85A92372CEB05EAB589'|lang}-->  <font color="#FF0000"><!--{$uo->MarketCurrency}--></font></th>
+        <td><input class="user_info" name="user[MarketCurrency]" type="text" id="u_marketcurrency" value="<!--{$postData.user.MarketCurrency}-->" /></td>
+        <th><!--{'F8D613472CAAD2FFE30B0D9DDDF6FCA5'|lang}-->  <font color="#FF0000"><!--{$uo->Direction}--></font></th>
+        <td><input class="user_info" name="user[Direction]" type="text" id="u_direction" value="<!--{$postData.user.Direction}-->" /></td>
+        <th><!--{'1E597B97E2A83EC8598947C1F191FCAB'|lang}-->  <font color="#FF0000"><!--{$uo->Morale}--></font></th>
+        <td><input class="user_info" name="user[Morale]" type="text" id="u_morale" value="<!--{$postData.user.Morale}-->" /></td>
+      </tr>
+      <tr>
+        <th><!--{'CC376221C42D0FC1EA214E3CB24197E6'|lang}-->  <font color="#FF0000"><!--{$uo->UCofcPoints}--></font></th>
+        <td><input class="user_info" name="user[UCofcPoints]" type="text" id="u_ucofcpoints" value="<!--{$postData.user.UCofcPoints}-->" /> </td>
+        <th><!--{'445C80FE43524C2B8AAFA06E7AAE6BE1'|lang}-->  <font color="#FF0000"><!--{$uo->Talent}--></font></th>
+        <td><input class="user_info" name="user[Talent]" type="text" id="u_talent" value="<!--{$postData.user.Talent}-->" /></td>
+        <th><!--{'F317AD04B1B14062C8D86448E75B0296'|lang}-->  <font color="#FF0000"><!--{$co->TodayIncome}--></font></th>
+        <td><input class="user_info" name="company[TodayIncome]" type="text" id="u_todayincome" value="<!--{$postData.company.TodayIncome}-->" /></td>
+      </tr>
+      <tr>
+        <th><!--{'FB08E448190295161E134FC4336AF082'|lang}-->  <font color="#FF0000"><!--{$co->YesterdayIncome}--></font></th>
+        <td><input class="user_info" name="company[YesterdayIncome]" type="text" id="u_yesterdayincome" value="<!--{$postData.company.YesterdayIncome}-->" /></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <th>VIP<!--{'F782779E8B5D709462C8E71E0D9019F2'|lang}-->  <font color="#FF0000"><!--{$uo->Vip|date_format:"%Y-%m-%d %H:%M:%S"}--></font></th>
+        <td><input class="user_info" name="user[Vip]" type="text" id="u_vip" value="<!--{$postData.user.Vip}-->" /> </td>
+        <td colspan="4">
+        	<a href="javascript:void(0);" onclick="addVIPtime(86400)"><!--{'491411E0AE5D09D5ECA25A2B2F275E3B'|lang}-->1<!--{'249ABA763258BBE488AF3E79A381D265'|lang}--></a>&nbsp;&nbsp;
+			<a href="javascript:void(0);" onclick="addVIPtime(604800)"><!--{'491411E0AE5D09D5ECA25A2B2F275E3B'|lang}-->7<!--{'249ABA763258BBE488AF3E79A381D265'|lang}--></a>&nbsp;&nbsp;
+			<a href="javascript:void(0);" onclick="addVIPtime(31536000)"><!--{'491411E0AE5D09D5ECA25A2B2F275E3B'|lang}-->1<!--{'465260FE80B0C3338D06194BB7A94446'|lang}-->(365<!--{'249ABA763258BBE488AF3E79A381D265'|lang}-->)</a>&nbsp;&nbsp;
+        </td>
+      </tr>
+      <tr>
+        <th><!--{'28EBF891F5BEDC2D003C1BDCFB018186'|lang}--> </th>
+        <td colspan="5"><!--{'2897C6FF866124A9B03747A06C80D1ED'|lang}--></td>
+      </tr>
+      <tr>
+        <th colspan="6"><input type="submit" class="btn-blue" name="edit_user" value="<!--{'D371CA4DE9F25FDE279099F7EA4ED87C'|lang}-->" /></th>
+      </tr>
+      </tbody>
+      </table>
+      <!--{/if}-->
+	</form>
+</fieldset>
+<!--{/if}-->

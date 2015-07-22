@@ -1,0 +1,110 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+var userdetail = <!--{$dataList_jsonencode}-->;
+function acedit(){
+	$('#userlist input').each(function (){
+		$(this).attr('disabled',false);
+	});
+}
+function showdetail(k){
+	$('#fieldset_userlist').hide();
+	
+	var u = userdetail.users[k];
+	var info = [
+			{'a':'user_id','b':'账号'},{'a':'char_id','b':'玩家ID'},{'a':'char_name','b':'玩家昵称'},
+			{'a':'register_time','b':'注册时间'},{'a':'jade','b':'元宝'},{'a':'gift_jade','b':'绑定元宝'},{'a':'gold','b':'铜钱'},
+			{'a':'gift_gold','b':'绑定铜钱'},{'a':'login_time','b':'登入时间'},{'a':'level','b':'等级'},
+			{'a':'exp','b':'经验值'},{'a':'career','b':'职业'},{'a':'faction','b':'阵营'},{'a':'team_id','b':'队伍ID'},
+			{'a':'guild_id','b':'帮派ID'},{'a':'nimbus','b':'真气值'},{'a':'evil','b':'邪恶值'},
+			{'a':'atk','b':'战斗力'},{'a':'total_online_time','b':'总的在线时间'},{'a':'total_off_exp','b':'离线经验'},{'a':'locked','b':'是否被封号'},
+			{'a':'main_city','b':'主城'},{'a':'horse_atk','b':'坐骑战力'},{'a':'scene_id','b':'场景ID'},{'a':'instance_id','b':'副本ID'},{'a':'pos_x','b':'x坐标'},
+			{'a':'pos_y','b':'y坐标'}
+		];
+	
+	var strAdd = '<form action="<!--{$submitUrl}-->"  method="post">';
+	    strAdd += '<table width="100%" border="0" cellpadding="3" id="userlist">';
+		strAdd += '<th>玩家ID:'+u.char_id+'</th><th>玩家账号:'+u.user_id+'</th><th>玩家昵称:'+u.char_name+'</th>';
+		for(var i in info){
+			strAdd += '<tr><td>'+info[i].b+':</td><td>'+u[ info[i].a ]+'</td><td><input type="hidden" name="gm_strup_'+info[i].a+'" value="'+info[i].b+'"><input type="text" value="'+u[ info[i].a ]+'" name="gm_update_'+info[i].a+'" disabled></td></tr>';
+		}
+		strAdd +='<tr colspan="3"><td><input type="button" value="修改" onclick="acedit();" ><input type="submit" value="保存" name="sbm" disabled></td></tr>';
+		strAdd +='</table>';
+		strAdd +='</form>'
+		$('#user_detail').append(strAdd);
+}
+</script>
+<fieldset>
+  <legend>用户查询</legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    玩家ID:<input class="text" type="text" name="playerId" value="<!--{$_GET.playerId}-->">
+    玩家账号:<input class="text" type="text" name="accountName" value="<!--{$_GET.accountName}-->">
+    玩家昵称:<input class="text" type="text" name="playerName" value="<!--{$_GET.playerName}-->">
+    <input class="btn-blue" type="submit" name="sbm" value="查询">
+</form>
+<fieldset id="fieldset_userlist">
+      <table width="100%" border="0" cellpadding="3" id="userlist">
+        <tr>
+          <th>用户Id</th>
+          <th>账号<br>昵称</th>
+          <th>铜钱</th>
+          <th>绑定铜钱</th>
+          <th>元宝</th>
+          <th>绑定元宝</th>
+          <th>正营</th>
+          <th>等级<br>职业</th>
+          <th>注册时间</th>
+          <th>上次登录时间</th>
+          <th>VIP等级</th>
+          <th>操作</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list key=k}-->
+        <tr>
+       
+       	  <td align="center"><!--{$list.char_id|default:'0'}--></td>
+          <td align="center"><!--{$list.user_id|default:'<font color="#999999">无</font>'}--><br><!--{$list.char_name|default:'<font color="#999999">无</font>'}--></td>
+          <td align="center"><!--{$list.gold|default:'0'}--></td>
+          <td align="center"><!--{$list.gift_gold|default:'0'}--></td>
+          <td align="center"><!--{$list.jade|default:'0'}--></td>
+          <td align="center"><!--{$list.gift_jade|default:'0'}--></td>
+          <td align="center"><!--{$list.asset|default:'0'}--></td>
+          <td align="center"><!--{$list.level}--><br><!--{$list.career}--></td>
+          <td align="center"><!--{$list.register_time|date_format:"%Y-%m-%d %H:%M:%S"|default:'--'}--></td>
+          <td align="center"><!--{$list.login_time|date_format:"%Y-%m-%d %H:%M:%S"|default:'--'}--></td>
+          <td align="center"><!--{$list.vip_info.vipLevel|default:'0'}--></td>
+          <td align="center"><a href="javascript:void(0)" onclick="showdetail(<!--{$k}-->)">修改</a></td>
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="12" align="center">
+                <!--{if $_GET.submit}-->
+                查无数据
+                <!--{else}-->
+                <font color="#FF0000">请使用"查询"按钮</font>
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/foreach}-->
+         
+          <tr>
+            <th colspan="12" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+</fieldset>
+<fieldset id="user_detail">
+</fieldset>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

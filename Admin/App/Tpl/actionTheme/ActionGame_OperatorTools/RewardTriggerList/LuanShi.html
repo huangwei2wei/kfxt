@@ -1,0 +1,67 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+	$(function(){
+		$('#pageSize').val('<!--{$_GET.pageSize}-->');
+	});
+</script>
+
+<fieldset>
+  <legend>奖励触发列表</legend>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">邮件标题</th>
+    <th scope="col">邮件内容</th>
+    <th scope="col">奖励</th>
+    <th scope="col">开始时间</th>
+    <th scope="col">结束时间</th>
+    <th scope="col">注册开始时间</th>
+    <th scope="col">注册结束时间</th>
+    <th scope="col">等级开始</th>
+    <th scope="col">等级结束</th>
+    <th scope="col">皇权范围</th>
+    <th scope="col">操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.id}--></td>
+        <td><!--{$list.title}--></td>
+        <td><!--{$list.content}--></td>
+        <td><!--{$list.award}--></td>
+        <td><!--{$list.startTime|default:"无限制"}--></td>
+        <td><!--{$list.endTime|default:"无限制"}--></td>
+        <td><!--{$list.registerTimeStart|default:"无限制"}--></td>
+        <td><!--{$list.registerTimeEnd|default:"无限制"}--></td>
+        <td><!--{if $list.plevelStart == 0}-->无限制<!--{else}--><!--{$list.plevelStart}--><!--{/if}--></td>
+        <td><!--{if $list.plevelEnd == 0}-->无限制<!--{else}--><!--{$list.plevelEnd}--><!--{/if}--></td>
+         <td><!--{$list.vipStart}-->到<!--{$list.vipEnd}--></td>
+        <td>
+        [<a onclick="return confirm('确定删除？');" href="<!--{$list.del_url}-->" >删除</a>]<br/>
+        
+        [<a onclick="return confirm('确定删除所有服同标题的吗？');" href="<!--{$list.del_urlByTitle}-->" >删除所有</a>]
+        </td>
+      </tr>
+  <!--{foreachelse}-->
+  	<!--{if $ConnectErrorInfo}-->
+      <tr>
+        <td align="center" colspan="12"><!--{$ConnectErrorInfo}--></td>
+      </tr>
+  	<!--{else}-->
+      <tr>
+        <td align="center" colspan="12">暂无数据</td>
+      </tr>
+  	<!--{/if}-->
+  <!--{/foreach}-->
+  <tr>
+    <th align="right" scope="col" colspan="12"><!--{$pageBox}--></th>
+  </tr>
+</table>
+
+</fieldset>
+<!--{/if}-->

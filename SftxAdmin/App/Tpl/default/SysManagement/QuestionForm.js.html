@@ -1,0 +1,27 @@
+<script language="javascript" type="text/javascript">
+var textForm='<table width="50%" border="0" cellpadding="3" id="text"><tr><th scope="row">控件name值</th><td><input type="text" class="text" name="name" /></td></tr><tr><th scope="row">控件名称说明</th><td><input type="text" class="text" name="title" /></td></tr><tr><th scope="row">控件描述</th><td><input type="text" class="text" name="description" /></td></tr><tr><th scope="row">是否必填</th><td><input type="checkbox" name="required" value="1" /></td></tr>    </table>';
+var selectForm='<table width="50%" border="0" cellpadding="3" id="text"><tr><th scope="row">控件name值</th><td><input type="text" class="text" name="name" /></td></tr><tr><th scope="row">控件名称说明</th><td><input type="text" class="text" name="title" /></td></tr><tr><th scope="row">控件描述</th><td><input type="text" class="text" name="description" /></td></tr><tr><th scope="row">是否必填</th><td><input type="checkbox" name="required" value="1" /></td></tr><tr><th scope="row">下拉选择框(请用","号隔开每个选项.)</th><td><input type="text" class="text" name="options" /></td></tr></table>';
+var gameServerFrom='<input type="hidden" name="name" value="game_server_id" /><input type="hidden" name="required" value="1" />';
+function switchTableForm(formType){
+	if(!formType)return false;
+	var showDiv=$("#showDiv");
+	showDiv.empty();
+	switch(formType){
+		case 'text' :{
+			showDiv.html(textForm);
+			break;
+		}
+		case 'select':{
+			showDiv.html(selectForm);
+			break;
+		}
+		case 'game_server_list':{
+			showDiv.html(gameServerFrom);
+			break;
+		}
+		default:{
+			return;
+		}
+	}
+}
+</script>

@@ -1,0 +1,149 @@
+<form action="" id="form" method="post">
+<input type="hidden" name="c" value="OperationFRG" />
+<input type="hidden" name="a" value="BatchReward" />
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+
+$(function(){
+	$(".view_server").one('click',function(){
+		var curHref=$(this);
+		$.getJSON(
+			curHref.attr("url"),
+			function(data){
+				if(data.status==1){
+					curHref.parent().parent().after('<tr id="'+curHref.attr("dialogId")+'"><td colspan="8" style="background:#0080C0; color:#FFF">'+data.data.servers+'</td></tr>');
+				}else{
+					alert('察看服务器失败!');
+				}
+			}
+		);
+	});
+	$(".view_server").click(function(){
+		var id=$(this).attr("dialogId");
+		$("#"+id).toggle();
+	})
+})
+
+function formSubmit(curBtn,subType){
+	var form=$("#form");
+	if(subType=='syn'){//更新
+		form.attr("action",curBtn.attr("url"));
+		form.attr("method","post");
+		form.submit();
+	}else{//搜索
+		form.attr("action",curBtn.attr("url"));
+		form.attr("method","get");
+		form.submit();
+	}
+}
+</script>
+<fieldset>
+	<legend>全服奖励触发搜索</legend>
+        <input type="hidden" name="operator_id" id="operator_id" />
+        开始时间：
+        <input type="text" class="text" name="start_time" value="<!--{if $selectedStartTime}--><!--{$selectedStartTime}--><!--{else}--><!--{$smarty.now|date_format:'%Y-%m-%d 00:00:00'}--><!--{/if}-->" onfocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+结束时间：
+<input type="text" class="text" name="end_time" value="<!--{if $selectedEndTime}--><!--{$selectedEndTime}--><!--{else}--><!--{$smarty.now|strtotime:'+1 week'}--><!--{/if}-->" onFocus="WdatePicker({startDate:'<!--{if $selectedEndTime}--><!--{$selectedEndTime}--><!--{else}--><!--{$smarty.now|strtotime:'+1 week'}--><!--{/if}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        标识：<input type="text" class="text" name="main_id" value="<!--{$selectedMainId}-->" />
+        标题：<input name="content" type="text" class="text" value="<!--{$selectedContent}-->" />
+        精简显示：<input type="checkbox" value="1" name="is_group"  <!--{if $selectedGroupBy}-->checked="checked"<!--{/if}--> />
+     	<input type="button" url="<!--{$url.OperationFRG_BatchReward}-->" class="btn-blue" onClick="formSubmit($(this),'search')" value="提交" />
+        <input type="button" url="<!--{$url.OperationFRG_SynReward}-->" class="btn-blue" onClick="formSubmit($(this),'syn')" value="抓取列表" />
+	</form>
+</fieldset>
+
+<fieldset id="list">
+  <legend>全服奖励触发列表</legend>
+  <form action="<!--{$url.OperationFRG_RewardDel}-->" method="post" onSubmit="return confirm('确定要删除吗?')">
+  <!--{if $selectedGroupBy}-->
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th height="25" scope="col">Id</th>
+        <th scope="col">数目</th>
+        <th scope="col">标识</th>
+        <th scope="col">标题</th>
+        <th scope="col">开始时间</th>
+        <th scope="col">结束时间</th>
+        <th scope="col">添加时间</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td>
+        	<input type="checkbox" name="title[]" value="<!--{$list.title}-->" />
+            <!--{$list.Id}-->
+        </td>
+        <td><!--{$list.server_num}--></td>
+        <td><!--{$list.main_id}--></td>
+        <td title="<!--{$list.title}-->"><a href="<!--{$list.url_edit}-->"><!--{$list.title|truncateutf8:30}--></a></td>
+        <td><!--{$list.send_time}--></td>
+        <td><!--{$list.end_time}--></td>
+        <td><!--{$list.add_time}--></td>
+        <td><a url="<!--{$list.url_server_detail}-->" href="javascript:void(0)" class="view_server" dialogId="servers_<!--{$list.Id}-->">察看服务器</a></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <td colspan="8"><!--{$noData}--></td>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="8">
+        	<input type="checkbox" id="allcheck">全选 
+        	<input type="submit" class="btn-blue" value="删除" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" colspan="8"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+  <!--{else}-->
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th height="25" scope="col">Id</th>
+        <th scope="col">服务器</th>
+        <th scope="col">标识</th>
+        <th scope="col">标题</th>
+        <th scope="col">开始时间</th>
+        <th scope="col">结束时间</th>
+        <th scope="col">添加时间</th>
+        <th scope="col">领取人数</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td>
+        	<input type="checkbox" name="ids[<!--{$list.Id}-->]" value="<!--{$list.Id}-->" />
+            <input type="hidden" value="<!--{$list.main_id}-->" name="main_id[<!--{$list.Id}-->]" />
+            <input type="hidden" value="<!--{$list.server_id}-->" name="server_id[<!--{$list.Id}-->]" />
+            <!--{$list.Id}-->
+        </td>
+        <td><!--{$list.word_server_id}--></td>
+        <td><!--{$list.main_id}--></td>
+        <td title="<!--{$list.title}-->"><a href="<!--{$list.url_edit}-->"><!--{$list.title|truncateutf8:30}--></a></td>
+        <td><!--{$list.send_time}--></td>
+        <td><!--{$list.end_time}--></td>
+        <td><!--{$list.add_time}--></td>
+        <td><!--{$list.get_num}--></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <td colspan="8"><!--{$noData}--></td>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="8">
+        	<input type="checkbox" id="allcheck">全选 
+        	<input type="submit" class="btn-blue" value="删除" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" colspan="8"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+  <!--{/if}-->
+  </form>
+
+</fieldset>

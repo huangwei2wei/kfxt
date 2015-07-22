@@ -1,0 +1,86 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>操作失败 - 优玩网 - 客服中心</title>
+<link rel="stylesheet" type="text/css" href="/Public/front/default/css/page.css" />
+<script src="/Public/front/default/js/common.js"></script>
+<script src="/Public/common/js/libs/jquery.js" language="javascript"></script>
+
+</head>
+
+<body>
+<div id="uwan_top">
+
+	<div id="top">
+		<div class="uwna_logo"><a href="http://www.uwan.com"><img src="http://www.uwan.com/images/tpl0904/top/images/uwan_logo.gif" /></a></div>
+		<div class="uwan_right">
+			<div class="uwan_hader">
+			<span><b><a href="http://www.uwan.com/UserCenter/index.php">zl8522115@foxmail.com</a></b> 欢迎您!</span>[<a href="http://www.uwan.com/UserCenter/Logout.php"> 退出 </a>|<a  style="cursor:pointer" onclick="addfavorite('http://www.uwan.com/', '优玩网'); return(false);"> 收藏 </a>]
+                        	
+						</div>			<div class="uwan_nav">
+
+				<ul>
+					<li  ><a href="http://www.uwan.com/index.php">首页</a></li>
+					<li ><a href="http://www.uwan.com/GameCenter/index.php">游戏中心</a></li>
+					<li><a href="http://www.uwan.com/UserCenter/index.php">用户中心</a></li>
+					<li><a href="https://www.uwan.com/InpourCenter/index.php">充值中心</a></li>
+					<li class="uwan_d"><a href="/index.php">客服中心</a></li>
+
+					<li style="background:0"><a href="http://www.uwan.com/bbs.php" target="_blank">游戏论坛</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="contai">
+	<div class="neicon">
+		
+ <div class="Msgbox Msgbox_2">
+
+            	<div class="msg">
+					出错啦!              </div>
+                <div class="back">
+                	<a href="/index.php?s=/Index/index" id="bid" name="bid"><img src="/Public/front/default/images/button_12.gif" alt="立即返回" /></a>
+                </div>
+            </div><!--Msgbox-->
+
+
+	</div>
+
+	﻿<DIV class="Footer" style="clear:both">
+<DIV class=tips>
+<BR/><BR/>动网旗下：<A href="http://bto.uwan.com/" target=_blank>新商业大亨2.0</A>
+<A href="http://r.uwan.com/" target=_blank>富人国</A>　　
+<A href="http://sso.uwan.com/" target=_blank>超级明星OL</A>　
+<A href="http://www.uwan.com/" target=_blank>优玩网</A>
+<A title="安网" href="http://210.76.65.188/webrecord/innernet/Welcome.jsp?bano=4409013013217" target="_blank">
+	<IMG src="/Public/front/default/images/anwang.gif" width=20 height=30  style="vertical-align:middle"/>
+</A> 
+
+<A title=网警 href="http://210.76.65.188/" target="_blank"><IMG src="/Public/front/default/images/wangji.gif" width=20 height=30 /></A>
+</DIV>
+<DIV class=copyrightlogo>
+<UL>
+  <LI><A href="http://www.cndw.com/about/">关于我们</A>| </LI>
+  <LI><A href="http://www.cndw.com/about/hr/contact/">联系我们</A>| </LI>
+  <LI><A href="http://www.cndw.com/about/hr/">人才招聘</A>| </LI>
+  <LI><A href="http://uwan.com/duty.php">免责声明</A>| </LI>
+
+  <LI><A href="http://uwan.com/link.php">友情链接</A> </LI>
+</UL>
+<UL>
+  <LI style="WHITE-SPACE: nowrap" class=copyright>&nbsp;版权所有 <A 
+  href="http://www.cndw.com/" target=_blank>动网先锋网络科技有限公司</A> <BR>&nbsp;网络文化经营许可证 
+  编号：<font color="#008000">文网文[2009]105号</font>&nbsp;增值电信业务许可证：琼 B2-20090005 
+<BR/><BR/></LI>
+</UL>
+</DIV>
+</DIV>
+
+
+		</div>
+</body>
+
+</html>

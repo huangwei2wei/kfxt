@@ -1,0 +1,141 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+	/**$(function(){
+		$("#form").submit(function() {
+				var playerId = $("#playerId").attr('value');
+				var accountName = $("#accountName").attr('value');
+				var playerName = $("#playerName").attr('value');
+				if(playerId + accountName+ playerName == ''){
+					alert("Id,账号,昵称必选择一项");
+					return false;
+				}
+		});
+	});**/
+	
+</script>
+
+<fieldset>
+  <legend>用户查询</legend>
+  
+<form action=""  method="get" id='form'>
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    玩家ID:<input class="text" type="text" name="playerId" id="playerId" value="<!--{$_GET.playerId}-->">
+    玩家账号:<input class="text" type="text" name="accountName" id="accountName" value="<!--{$_GET.accountName}-->">
+    玩家昵称:<input class="text" type="text" name="playerName" id="playerName" value="<!--{$_GET.playerName}-->">
+    <br>
+    注册时间:
+    <input class="text" type="text" name="regBeginTime" value="<!--{$_GET.regBeginTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    -
+    <input class="text" type="text" name="regEndTime" value="<!--{$_GET.regEndTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    
+    
+    登录时间:
+    <input class="text" type="text" name="loginBeginTime" value="<!--{$_GET.loginBeginTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    -
+    <input class="text" type="text" name="loginEndTime" value="<!--{$_GET.loginEndTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    <input class="btn-blue"  type="submit" name="sbm" value="查询">
+</form>
+
+<form action="" id="playerIdsForm" method="post">
+      <table width="100%" border="0" >
+        <tr>
+          <th>选择</th>
+          <th>用户Id</th>
+          <th>账号</th>
+          <th>阵营</th>
+          <th>职业</th>
+          <th>创建时间(注册时间)</th>
+          <th>昵称</th>
+          <th>等级</th>
+          <th>阶级</th>
+          <th>当前经验</th>
+          <th>生命上限</th>
+          <th>法力上限</th>
+          <th>是否封号</th>
+          <th>是否禁言</th>
+          <th>元宝</th>
+          <th>军团ID</th>
+          <th>礼金</th>
+          <th>银两</th>
+          <th>天心</th>
+          <th>行动力</th>
+          <th>上次登录时间</th>
+          <th>登录IP</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+          <td align="center"><input type="checkbox" name="playerIds[]" value="<!--{$list.UserID|default:'0'}-->"/></td>
+       	  <td align="center"><!--{$list.UserID|default:'0'}--></td>
+          <td align="center"><!--{$list.UserName|default:'<font color="#999999">无</font>'}--><br><!--{$list.playerName|default:'<font color="#999999">无</font>'}--></td>
+          <td align="center"><!--{$list.Race}--></td>
+          <td align="center"><!--{$list.Occup}--></td>
+          <td align="center"><!--{$list.CreateTime}--></td>
+          <td align="center"><!--{$list.NickName}--></td>
+          <td align="center"><!--{$list.Level}--></td>
+          <td align="center"><!--{$list.Grade}--></td>
+          <td align="center"><!--{$list.Exp}--><br><!--{$list.knightExpired|date_format:"%Y-%m-%d %H:%M:%S"|default:'--'}--></td>
+          <td align="center"><!--{$list.MaxHP}--></td>
+          <td align="center"><!--{$list.MaxMP}--></td>
+          <td align="center"><!--{if $list.Forbid==1}-->是<!--{else}-->否<!--{/if}--></td>
+          <td align="center"><!--{if $list.ForbidTalk ==1}-->是<!--{else}-->否<!--{/if}--></td>
+          <td align="center"><!--{$list.ElementCoin}--></td>
+          <td align="center"><!--{$list.UnionID}--></td>
+          <td align="center"><!--{$list.CashGift}--></td>
+          <td align="center"><!--{$list.CopperCoin}--></td>
+          <td align="center"><!--{$list.TX}--></td>
+          <td align="center"><!--{$list.Energy}--></td>
+          <td align="center"><!--{$list.LoginTime}--></td>
+          <td align="center"><!--{$list.IP}--></td>
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="11" align="center">
+                <!--{if $_GET.submit}-->
+                查无数据
+                <!--{else}-->
+                <font color="#FF0000">请使用"查询"按钮</font>
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/foreach}-->
+          <tr>
+            <td colspan="11">
+            	<input type="checkbox" onClick="$('input[name=playerIds[]]').attr('checked',$(this).attr('checked'))">全选
+                <input type="hidden" name="fromPlayerList" value="1" />            	
+            	<input type="button" class="btn-blue" value="发邮件" onclick="jumpUrl('<!--{$ShortcutUrl.SendMail}-->');" />
+            	<input type="button" class="btn-blue" value="禁言" onclick="jumpUrl('<!--{$ShortcutUrl.SilenceAdd}-->');" />
+                <input type="button" class="btn-blue" value="封号" onclick="jumpUrl('<!--{$ShortcutUrl.LockAccountAdd}-->');" />
+               
+            </td>
+          </tr>
+          <tr>
+            <th colspan="11" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+</form>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

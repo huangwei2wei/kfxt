@@ -1,0 +1,330 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript">
+//KE.init({id:'title',imageUploadJson : '<!--{$url.UploadImg_Bulletin}-->',afterCreate:function(id){KE.util.focus(id)}});
+$(function(){ 
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#title").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"活动描述不能为空,请确认"});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"公告内容不能为空,请确认"});
+	$("#interval").formValidator({onshow:"请输入时间间隔",oncorrect:"输入正确"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"时间间隔不正确"});
+})
+function fontStyle(color,b,em){
+	var font1='<font color="'+color+'">';
+	var font2='</font>';
+	var b1='<b>';
+	var b2='</b>';
+	var em1='<em>';
+	var em2='</em>';
+	if(!color){
+		font1 = font2 = '';
+	}
+	if(!b){
+		b1 = b2 = '';
+	}
+	if(!em){
+		em1 = em2 = '';
+	}
+	var obj = $('#title');
+	obj.val(obj.val()+font1+b1+em1+'请输入文字'+em2+b2+font2);
+	view()
+}
+function linkAdd(){
+	var obj = $('#title');
+	obj.val(obj.val()+'<a href="event:请输入地址">请输入内容</a>');
+	view()
+}
+function view(){
+	$('#view').html($('#title').val());
+}
+
+</script>
+<fieldset>
+<legend>添加活动<a href="<!--{$Item_url}-->">[生成缓存]</a></legend>
+<form action="" method="post" id="form">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<input type="hidden" name="id" value="<!--{$selected.id|default:"0"}-->" />
+    <!--{*<a href="javascript:void(0)" onclick="KE.create('title')">加载编辑器</a>*}-->
+	<!--{*<a href="javascript:void(0)" onclick="KE.remove('title')">卸载编辑器</a>*}-->
+    <table width="98%" border="0" cellpadding="3">
+    	<tr>
+        <th scope="row">区ID</th>
+        <td><input type="text" class="text" name="WorldID" value="<!--{$data.WorldID}-->"/>
+        </td>
+      </tr>
+       <tr>
+        <th scope="row">序号</th>
+        <td><input type="text" class="text" name="ClassID" value="<!--{$data.ClassID}-->"/>
+        </td>
+      </tr>
+       <tr>
+        <th scope="row">活动类型</th>
+        <td><input type="text" class="text" name="ClassType" value="<!--{$data.ClassType}-->"/>
+        </td>
+      </tr>
+       <tr>
+        <th scope="row">检查方式</th>
+        <td>
+		    <select name='ClassCheck'>
+			    <option value="0" <!--{if $data.ClassCheck=="0"}-->selected="selected"<!--{/if}-->>条件</option>
+			    <option value="1" <!--{if $data.ClassCheck=="1"}-->selected="selected"<!--{/if}-->>定时</option>
+			    <option value="2" <!--{if $data.ClassCheck=="2"}-->selected="selected"<!--{/if}-->>在线时间</option>
+			    <option value="3" <!--{if $data.ClassCheck=="3"}-->selected="selected"<!--{/if}-->>间隔时间</option>
+				<option value="4" <!--{if $data.ClassCheck=="4"}-->selected="selected"<!--{/if}-->>每小时</option>
+				<option value="5" <!--{if $data.ClassCheck=="5"}-->selected="selected"<!--{/if}-->>每日</option>
+				<option value="6" <!--{if $data.ClassCheck=="6"}-->selected="selected"<!--{/if}-->>每周</option>
+				<option value="7" <!--{if $data.ClassCheck=="7"}-->selected="selected"<!--{/if}-->>每月</option>
+				<option value="8" <!--{if $data.ClassCheck=="8"}-->selected="selected"<!--{/if}-->>开服时间</option>
+			</select>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">检测值</th>
+        <td><input type="text" class="text" name="ClassValue" value="<!--{$data.CheckValue}-->"/>
+        	目前只用于间隔时间
+        </td>
+      </tr>
+
+	  <tr>
+        <th scope="row">服务器启动后的开始时间</th>
+        <td><input type="text" class="text" name="WorldTimeBegin" value="<!--{$data.WorldTimeBegin}-->"/>
+        	0或不填表示永久
+        </td>
+      </tr>
+	  <tr>
+        <th scope="row">服务器启动后的截止时间</th>
+        <td><input type="text" class="text" name="WorldTimeEnd" value="<!--{$data.WorldTimeEnd}-->"/>
+        	0或不填表示永久
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">触发方式</th>
+        <td>
+			自动触发<input class="radio" type="radio" value="0" name="TriggerType" <!--{if $data.TriggerType==0}-->checked="checked"<!--{/if}-->>
+        	&nbsp;手动触发<input class="radio" type="radio" value="1" name="TriggerType" <!--{if $data.TriggerType==1}-->checked="checked"<!--{/if}-->>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">是否循环</th>
+        <td>
+			否<input class="radio" type="radio" value="0" name="IsLoop" <!--{if $data.IsLoop=="0"}-->checked="checked"<!--{/if}--> <!--{if $data.IsLoop==""}-->checked="checked"<!--{/if}-->>
+        	&nbsp;是<input class="radio" type="radio" value="1" name="IsLoop" <!--{if $data.IsLoop=="1"}-->checked="checked"<!--{/if}-->>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">最多完成循环次数</th>
+        <td><input type="text" class="text" name="MaxCount" value="<!--{$data.MaxCount}-->"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">最小等级</th>
+        <td><input type="text" class="text" name="MinLevel" value="<!--{$data.MinLevel}-->"/>
+        </td>
+      </tr>
+      
+   	<tr>
+        <th scope="row">最大等级</th>
+        <td><input type="text" class="text" name="MaxLevel" value="<!--{$data.MaxLevel}-->"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">广播</th>
+        <td><input type="text" class="text" name="BroadcastID" value="<!--{$data.BroadcastID}-->"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">需要特权类型</th>
+        <td>
+      <!--   特权类型<select name='NeedPrivilege_privilege'>
+        		<option value="0">不检测</option>
+			    <option value="1">VIP</option>
+			    <option value="2">空间</option>
+			    <option value="3">朋友网</option>
+				<option value="4">Q+</option>
+				<option value="5">3366</option>
+				<option value="6">QQGame</option>
+        	</select><br/>
+   VIP类型<select name='NeedPrivilege_VIP'>
+        		<option value="0">QQ会员</option>
+			    <option value="1">黄钻</option>
+			    <option value="2">蓝钻</option>
+        	</select><br/>
+   	活动条件<select name='NeedPrivilege_condition'>
+        		<option value="0">无条件</option>
+			    <option value="1">创建角色</option>
+			    <option value="2">在线时长</option>
+			    <option value="3">充值累计</option>
+				<option value="4">邀请好友累计</option>
+				<option value="5">登录次数</option>
+				<option value="6">充值立即奖励</option>
+				<option value="7">好友邀请成功次数</option>
+			    <option value="8">分享次数</option>
+			    <option value="9">是否达成唯一事件</option>
+			    <option value="10">消费元宝</option>
+        	</select><br/>
+     		特权等级相等<input class="checkbox" type="checkbox" name="NeedPrivilege_E" value="E">
+     		是否年费会员<input class="checkbox" type="checkbox" name="NeedPrivilege_Y" value="Y">--> 
+        	<input type="text" class="text" name="NeedPrivilege" value="<!--{$data.NeedPrivilege}-->"/>格式：特权类型_VIP类型_特权等级_EY 
+        	
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">条件类型</th>
+        <td>
+        <select name='ConditionType'>
+			    <option value="0" <!--{if $data.ConditionType=="0"}-->selected="selected"<!--{/if}-->>无条件</option>
+			    <option value="1" <!--{if $data.ConditionType=="1"}-->selected="selected"<!--{/if}-->>创建角色</option>
+			    <option value="2" <!--{if $data.ConditionType=="2"}-->selected="selected"<!--{/if}-->>在线时长</option>
+			    <option value="3" <!--{if $data.ConditionType=="3"}-->selected="selected"<!--{/if}-->>充值累计</option>
+				<option value="4" <!--{if $data.ConditionType=="4"}-->selected="selected"<!--{/if}-->>邀请好友累计</option>
+				<option value="5" <!--{if $data.ConditionType=="5"}-->selected="selected"<!--{/if}-->>登录次数</option>
+				<option value="6" <!--{if $data.ConditionType=="6"}-->selected="selected"<!--{/if}-->>充值立即奖励</option>
+				<option value="7" <!--{if $data.ConditionType=="7"}-->selected="selected"<!--{/if}-->>好友邀请成功次数</option>
+				<option value="8" <!--{if $data.ConditionType=="8"}-->selected="selected"<!--{/if}-->>分享次数</option>
+				<option value="9" <!--{if $data.ConditionType=="9"}-->selected="selected"<!--{/if}-->>是否达成唯一事件</option>
+				<option value="10" <!--{if $data.ConditionType=="10"}-->selected="selected"<!--{/if}-->>消费元宝</option>
+				<option value="11" <!--{if $data.ConditionType=="11"}-->selected="selected"<!--{/if}-->>消费礼金</option>
+				<option value="12" <!--{if $data.ConditionType=="12"}-->selected="selected"<!--{/if}-->>坐骑等级(相等时)</option>
+				<option value="13" <!--{if $data.ConditionType=="13"}-->selected="selected"<!--{/if}-->>总消费</option>
+				<option value="14" <!--{if $data.ConditionType=="14"}-->selected="selected"<!--{/if}-->>总消费礼金</option>
+				<option value="15" <!--{if $data.ConditionType=="15"}-->selected="selected"<!--{/if}-->>最小坐骑</option>
+				<option value="16" <!--{if $data.ConditionType=="16"}-->selected="selected"<!--{/if}-->>平台登录次数</option>
+				<option value="17" <!--{if $data.ConditionType=="17"}-->selected="selected"<!--{/if}-->>平台消费值</option>
+				<option value="18" <!--{if $data.ConditionType=="18"}-->selected="selected"<!--{/if}-->>弓箭等级(相等)</option>
+				<option value="19" <!--{if $data.ConditionType=="19"}-->selected="selected"<!--{/if}-->>最小弓箭等级</option>
+				<option value="20" <!--{if $data.ConditionType=="20"}-->selected="selected"<!--{/if}-->>每消费元宝领取</option>
+				
+				<option value="21" <!--{if $data.ConditionType=="21"}-->selected="selected"<!--{/if}-->>拥有静态buff</option>
+				<option value="22" <!--{if $data.ConditionType=="22"}-->selected="selected"<!--{/if}-->>没有静态buff</option>
+				<option value="23" <!--{if $data.ConditionType=="23"}-->selected="selected"<!--{/if}-->>宝石等级(等于)</option>
+				<option value="24" <!--{if $data.ConditionType=="24"}-->selected="selected"<!--{/if}-->>宝石等级(最小)</option>
+		</select>
+			
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">条件值</th>
+        <td><input type="text" class="text" name="ConditionValue" value="<!--{$data.ConditionValue}-->"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">只可参与一次性索引值</th>
+        <td><input type="text" class="text" name="UniqueIndex" value="<!--{$data.UniqueIndex}-->"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">事件类型</th>
+        <td>
+        	<select name='EventType'>
+        		<option value="2" <!--{if $data.EventType=="2"}-->selected="selected"<!--{/if}-->>获得礼包</option>
+			    <option value="0" <!--{if $data.EventType=="0"}-->selected="selected"<!--{/if}-->>多倍收益</option>
+			    <option value="1" <!--{if $data.EventType=="1"}-->selected="selected"<!--{/if}-->>获得坐骑</option>
+			    
+			    <option value="3" <!--{if $data.EventType=="3"}-->selected="selected"<!--{/if}-->>获得buff</option>
+			    <option value="4" <!--{if $data.EventType=="4"}-->selected="selected"<!--{/if}-->>获得静态buff</option>
+			    <option value="5" <!--{if $data.EventType=="5"}-->selected="selected"<!--{/if}-->>获得消耗坐骑丹数量个道具</option>
+			    <option value="6" <!--{if $data.EventType=="6"}-->selected="selected"<!--{/if}-->>补偿事件</option>
+			     <option value="7" <!--{if $data.EventType=="7"}-->selected="selected"<!--{/if}-->>获得武将</option>
+			     <option value="8" <!--{if $data.EventType=="8"}-->selected="selected"<!--{/if}-->>获得参与次数礼包</option>
+			</select>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">道具领取类型</th>
+        <td>
+        	默认全部<input class="radio" type="radio" value="0" name="ItemGetType" <!--{if $data.ItemGetType==0}-->checked="checked"<!--{/if}-->>
+        	&nbsp;根据特权等级<input class="radio" type="radio" value="1" name="ItemGetType" <!--{if $data.ItemGetType==1}-->checked="checked"<!--{/if}-->>
+        	&nbsp;根据触发次数<input class="radio" type="radio" value="2" name="ItemGetType" <!--{if $data.ItemGetType==2}-->checked="checked"<!--{/if}-->>
+        	&nbsp;根据玩家等级<input class="radio" type="radio" value="3" name="ItemGetType" <!--{if $data.ItemGetType==3}-->checked="checked"<!--{/if}-->>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">事件ID</th>
+        <td><input type="text" class="text" name="EventID" value="<!--{$data.EventID}-->"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">浮点参数</th>
+        <td><input type="text" class="text" name="Fparameter" value="<!--{$data.Fparameter}-->"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">起效时间段</th>
+        <td><input type="text" class="text" style="width:300px;" name="DateTime" <!--{if $_GET.ClassID!=""}-->value="<!--{$data.DateTime}-->"<!--{else}-->value="[*][*][*][17:00-22:00]"<!--{/if}-->/>支持多个，用 ; 分隔。
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">时间格式</th>
+        <td>
+        [*][*][*][17:00-22:00]					表示每天17点到22点<br>
+		[2012][*][10-10][00:00-23:59]			表示2012年每月10日<br>
+		[2012][9][w4,w5,w6][00:00-23:59]		表示2012年9月的周五、周六、周日
+
+        
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">礼包序列</th>
+        <td><input type="text" class="text" name="ItemPack" value="<!--{$data.ItemPack}-->"/>礼包ID的序列，用 ; 分隔。
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">活动名称</th>
+        <td><input type="text" class="text" name="ClassName" value="<!--{$data.ClassName}-->"/>
+        </td>
+      </tr>
+
+      
+      <tr>
+        <th scope="row">活动描述</th>
+        <td>
+        	<div>
+				颜色<select id="color_select">
+                	<option value="">默认</option>
+                	<option value="FF0000">红色</option>
+                    <option value="0000FF">蓝色</option>
+                    <option value="00FF00">绿色</option>
+                    <option value="FFFF00">黄色</option>
+                    <option value="FF00FF">紫色</option>
+                </select>
+                加粗<input id="b_select" type="checkbox" value="b" />
+                下划线<input id="em_select" type="checkbox" value="em" />
+                <input class="btn-blue" type="button" value="添加" onclick="fontStyle($('#color_select').val(),$('#b_select').attr('checked'),$('#em_select').attr('checked'));" />
+                <input class="btn-blue" type="button" value="添加超链接" onclick="linkAdd();" />
+       		</div>
+        	<textarea name="SellText" id="title" style="width:600px; height:200px;" onkeyup="view();"><!--{$data.Describes}--></textarea><div id="titleTip"></div>
+            <div>
+            	<input class="btn-blue" type="button" value="预览" onclick="view();" />
+                <div id="view"></div>
+            </div>
+        </td>
+      </tr>
+
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

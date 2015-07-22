@@ -1,0 +1,27 @@
+<a href="<!--{$url.ServiceTools_AddVoteConf}-->">增加配置</a>
+<fieldset>
+	<legend>列表</legend>
+    <table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">名称</th>
+    <th scope="col">说明</th>
+    <th scope="col">删除</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.Id}--></td>
+    <td><!--{$list.conf_name}--></td>
+    <td title="<!--{$list.description}-->"><!--{$list.description|truncateutf8:30}--></td>
+    <td>
+    	<a href="<!--{$list.url_edit}-->">编辑</a>
+        <a href="<!--{$list.url_del}-->">删除</a>
+    </td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr>
+  	<th colspan="4"><!--{$noData}--></th>
+  </tr>
+  <!--{/foreach}-->
+</table>
+</fieldset>

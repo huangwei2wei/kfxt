@@ -1,0 +1,61 @@
+<script language="javascript">
+var gameOperatorIndex=eval(<!--{$gameOperatorIndex}-->);
+function displayOperator(gameTypeId){
+	var operator=$("#operatorList");
+	operator.empty();
+	$.each(gameOperatorIndex,function(i,n){
+		if(n.game_type_id==gameTypeId){
+			operator.append('<input type="checkbox" name=operator_id[] value='+n.operator_id+' />'+n.word_operator_id+'&nbsp;');
+		}
+	});
+}
+
+$(function(){
+	$("#gameTypeList :radio").first().click();
+});
+</script>
+<fieldset>
+	<legend>增加运营商</legend>
+    <form action="<!--{$url.User_UserAddOperator}-->" method="post">
+    	<input type="hidden" value="<!--{$userId}-->" name="user_id" />
+        <table width="98%" border="0" cellpadding="3">
+          <tr>
+            <th width="15%" scope="row">游戏类型</th>
+            <td id="gameTypeList"><!--{html_radios name="game_type_id" onclick="displayOperator($(this).val())" options=$gameTypeList separator="&nbsp;"}--></td>
+          </tr>
+          <tr>
+            <th width="20%" scope="row">运营商</th>
+            <td id="operatorList">&nbsp;</td>
+          </tr>
+          <tr>
+            <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="增加" /></th>
+          </tr>
+        </table>
+    </form>
+</fieldset>
+
+<fieldset>
+	<legend>所能管理的运营商</legend>
+    <form action="<!--{$url.User_SortUserOperator}-->" method="post">
+    <input type="hidden" value="<!--{$userId}-->" name="user_id" />
+    <table width="60%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">优先级</th>
+        <th scope="col">[游戏]运营商名称</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$userOperatorList item=list}-->
+      <tr>
+        <td><input type="text" class="text" value="<!--{$list.priority_level}-->" name="priority_level[<!--{$list.operator_id}-->]" /></td>
+        <td><b>[<!--{$list.word_game_type_id}-->]</b>  <!--{$list.word_operator_id}--></td>
+        <td>[<a href="<!--{$list.url_del}-->">删除</a>]</td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr><th colspan="3"><!--{$noData}--></th></tr>
+      <!--{/foreach}-->
+      <!--{if $userOperatorList}-->
+      <tr><td colspan="3"><input type="submit" class="btn-blue" value="排序" /></td></tr>
+      <!--{/if}-->
+    </table>
+	</form>
+</fieldset>

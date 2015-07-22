@@ -1,0 +1,28 @@
+<script language="javascript">
+function quality(href){
+	$("#qa_id").val(href.attr("qualityId"));
+	$("#user_id").val(href.attr("user_id"));
+	$("#content").html(href.siblings(".content").html());
+	$("#quality_form").fadeIn("fast");
+	$("html,body").animate({scrollTop: $("#quality_form").offset().top}, 1000);
+}
+
+
+
+/*
+function processJson(data){
+	if(data.status==1){
+		parent.$("#qualityUser_"+data.data.workOrderId).html('<font color="#FF0000">'+data.data.nickName+'</font>');
+	}
+	window.location.href=data.data.url;
+}
+
+$(function(){
+	$("body").css("background","#FFF");
+	$("#quality_form").ajaxForm({
+		dataType:'json',
+		success:processJson
+	});
+})*/
+
+</script>

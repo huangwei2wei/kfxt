@@ -1,0 +1,85 @@
+<fieldset>
+<legend>增加服务器</legend>
+<form action="<!--{$url.GameSerList_Add}-->" method="post">
+<input type="hidden" name="Id" value="<!--{$get.Id}-->" />
+<input type="hidden" name="game_type" value="<!--{$get.__game_id}-->" />
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th>运营商</th>
+    <td>
+    	<select name="operator_id">
+        	<option value="0">-请选择-</option>
+        	<!--{html_options options=$operatorList selected=$data.operator_id}-->
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <th>服务器号</th>
+    <td>
+        <input type="text" class="text" name="ordinal" value='<!--{$data.ordinal|default:$_GET.ordinal|trim}-->' /> (填数字，一般情况下，如：http://s<font color="#FF0000">5</font>.r.uwan.com/ 填 <font color="#FF0000">5</font>)
+    </td>
+  </tr>
+  <tr>
+    <th>服务器名称</th>
+    <td>
+    	<input type="text" class="text" name="server_name" value='<!--{$data.server_name|default:$_GET.server_name|trim}-->' />
+    </td>
+  </tr>
+  <tr>
+    <th>标识</th>
+    <td><input type="text" class="text" name="marking" style="width:400px;" value='<!--{$data.marking|default:$_GET.marking|trim}-->'/></td>
+  </tr>
+  <tr>
+    <th>工单时差</th>
+    <td><input type="text" class="text" name="time_zone" value="<!--{$data.time_zone|default:'0'}-->" /> (以当前服务器时间[<font color="#FF0000"><!--{$smarty.now|date_format:"%Y-%m-%d %H:%M:%S"}--></font>]为准,加小时或是减小时,例如:-8)</td>
+  </tr>
+  <tr>
+    <th>时区标识</th>
+    <td><input type="text" class="text" name="timezone" value="<!--{$data.timezone|default:'PRC'}-->" /> (中国:PRC,太平洋:PST8PDT)</td>
+  </tr>
+  <tr>
+    <th>服务器地址</th>
+    <td><input type="text" class="text" name="server_url" value="<!--{$data.server_url|default:$_GET.server_url|trim}-->" style="width:400px;" /></td>
+  </tr>
+  <tr>
+    <th>数据连接地址<br/>个别游戏需要添加</th>
+    <td><input type="text" class="text" name="data_url" value="<!--{$data.data_url|default:$_GET.data_url|trim}-->" style="width:400px;" /></td>
+  </tr>
+  <tr>
+    <th>接入定时器</th>
+    <td>
+    	<!--{html_radios options=$timer name="timer" selected='0'}--> 
+        (在腾讯代理的游戏中，定时调用游戏接口)
+    </td>
+  </tr>
+  <tr>
+    <th>是否批量添加
+      <input type="checkbox" value="1" name="batch_add" /></th>
+    <td>范围：<input type="text" size="4" name="start" class="text" value="1" /> - <input type="text" class="text" size="4" name="end" value="10" /> 需要变量的地方请用[<font color="#FF0000">{$var}</font>]</td>
+  </tr>
+  <tr>
+    <th colspan="2"><input type="submit" class="btn-blue" value="提交" onclick="return checkSubmit();" /></th>
+  </tr>
+</table>
+</form>
+</fieldset>
+<script language="javascript">
+	function checkSubmit(){
+		var operatorIds = $('select[name=operator_id]');
+		if(operatorIds.val()>0){
+			return true;
+		}
+		alert('请选择运营商');
+		operatorIds.focus();
+		return false;
+	}
+	<!--{if $_GET.operator_name}-->
+		var operatorIds = $('select[name=operator_id]');
+		$.each(operatorIds[0],function(id,option){
+			if('<!--{$_GET.operator_name}-->'==option.text ){
+				operatorIds.val(option.value);
+				return false;
+			}
+		});
+	<!--{/if}-->
+</script>

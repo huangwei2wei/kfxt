@@ -1,0 +1,69 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+	<legend>编辑任务</legend>
+    <form action="" method="post">
+    <input type="hidden" name="Id" value="<!--{$dataList.Id}-->" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="row">任务负责人</th>
+        <td>
+        	<select name="accept_user_id">
+            	<!--{html_options options=$users selected=$dataList.accept_user_id}-->
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">难度系数</th>
+        <td><input type="text" class="text" name="difficulty" value="<!--{$dataList.difficulty}-->" /></td>
+      </tr>
+      <tr>
+        <th scope="row">预计完成时间(小时)</th>
+        <td><input type="text" class="text" name="precast_hour" value="<!--{$dataList.precast_hour}-->" /></td>
+      </tr>
+      <tr>
+        <th scope="row">实际完成时间(小时)</th>
+        <td><input type="text" class="text" name="actual_hour" value="<!--{$dataList.actual_hour}-->" /></td>
+      </tr>
+      <tr>
+        <th scope="row">开始时间 - 结束时间</th>
+        <td>
+        <input type="text" class="text" name="start_time" value="<!--{$dataList.start_time}-->" onFocus="WdatePicker({startDate:'<!--{$dataList.start_time}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/> - 
+        <input type="text" class="text" name="end_time" value="<!--{$dataList.end_time}-->" onFocus="WdatePicker({startDate:'<!--{$dataList.end_time}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">效率得分</th>
+        <td><input type="text" class="text" name="quality_scorce" value="<!--{$dataList.quality_scorce}-->" /></td>
+      </tr>
+      <tr>
+        <th scope="row">质量得分</th>
+        <td><input type="text" class="text" name="efficiency_scorce" value="<!--{$dataList.efficiency_scorce}-->" /></td>
+      </tr>
+      <tr>
+        <th scope="row">质量</th>
+        <td>
+        	<select name="efficiency_level ">
+            	<option value="">请选择...</option>
+            	<!--{html_options options=$efficiencyLevel  selected=$dataList.efficiency_level }-->
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">BUG评分</th>
+        <td><input type="text" class="text" name="efficiency_scorce" value="<!--{$dataList.bug_scorce}-->" /></td>
+      </tr>
+      <tr>
+        <th scope="row">延时原因</th>
+        <td><textarea cols="50" rows="8" name="timeout_cause"><!--{$dataList.timeout_cause}--></textarea></td>
+      </tr>
+      <tr>
+        <th scope="row">任务描述</th>
+        <td><textarea cols="50" rows="8" name="task_content"><!--{$dataList.task_content}--></textarea></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" ./></th>
+      </tr>
+    </table>
+	</form>
+</fieldset>

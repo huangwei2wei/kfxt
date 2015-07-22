@@ -1,0 +1,32 @@
+<fieldset>
+	<legend>获取工单</legend>
+    <form action="" method="post">
+    
+    <div>
+    	<!--{foreach from=$user item=u}-->
+    	<input <!--{if $u.is_post==1}-->checked="checked"<!--{/if}--> type="checkbox" name='userid[]' value='<!--{$u.Id}-->'/><!--{$u.full_name}-->&nbsp;&nbsp;
+    	<!--{/foreach}-->
+	</div>
+    选择日期：
+    <input type="text" class="text" name="start_date" value="<!--{$selectedTime.start}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+    至
+    <input type="text" class="text" name="end_date" value="<!--{$selectedTime.end}-->" onFocus="WdatePicker({startDate:'%y-%M-01 23:59:59',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+    <input type="submit" class="btn-blue" value="统计"/>
+    </form> 
+    <!--{if $addOrderDeatil}-->
+    您获取了<font color="#FF0000"><b><!--{$addOrderDeatil.num}--></b></font>个工单，ID分别为[ <em><!--{$addOrderDeatil.addIds}--></em> ]
+    <!--{/if}-->
+</fieldset>
+
+<fieldset>
+	<legend>工单列表</legend>
+    <table width="20%" border="0" cellpadding="3">
+    <!--{foreach from=$gamecount item=msg}-->
+      <tr>
+        <th><!--{$msg.name}--></th>
+        <td align="center"><!--{$msg.count}--></td>
+      </tr>
+    <!--{/foreach}-->
+    </table>
+</fieldset>
+

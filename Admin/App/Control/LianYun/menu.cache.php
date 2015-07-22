@@ -1,0 +1,34 @@
+<?php
+return array(
+	'Worker'=>array(
+		'name'=>'工作交接',
+		'display'=>true,
+		'child'=>array(
+			'Index'=>array('name'=>'工作交接列表','display'=>true),
+			'Add'=>array('name'=>'增加工作交接','display'=>true),
+			'Edit'=>array('name'=>'编辑工作交接','display'=>false),
+			'Del'=>array('name'=>'删除工作交接','display'=>false),
+			'Problem'=>array('name'=>'问题记录列表','display'=>true),
+			'ProblemOpt'=>array('name'=>'问题记录列表操作','display'=>false),
+			'OperatorInfo'=>array('name'=>'合作方详细信息','display'=>true),
+			'OperatorInfoEdit'=>array('name'=>'合作方详细信息管理','display'=>false),
+		),
+	),
+	'ShareToCs'=>array(
+		'name'=>'客服信息共享',
+		'display'=>true,
+		'child'=>array(
+			'ShareInfo'=>array('name'=>'奖励发放进度','display'=>true),
+			'ShareInfoEdit'=>array('name'=>'奖励发放进度管理','display'=>false),
+			'OperatorInfoMini'=>array('name'=>'合作方信息共享','display'=>true),
+		),
+	),
+	'ShareToOperator'=>array(
+		'name'=>'联运资料信息',
+		'display'=>true,
+		'child'=>array(
+			'PsdLink'=>array('name'=>'PSD链接','display'=>true),
+			'PsdLinkOpt'=>array('name'=>'PSD链接管理','display'=>false),
+		),
+	),
+);

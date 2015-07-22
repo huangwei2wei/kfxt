@@ -1,0 +1,64 @@
+
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+	function delMsg(url){
+		var bo = confirm("确认删除");
+		if(bo){
+			window.location.href=url;
+			}
+	}
+</script>
+<fieldset>
+  <legend>web列表<a href="<!--{$modify_Url}-->">[添加]</a></legend>
+  
+      <table width="100%">
+        <tr>
+
+		<th>服务器ID</th>
+		<th>服务器IP</th>
+		<th>服务端口</th>
+		<th>支付资源地址</th>
+		<th>支付资源端口</th>
+		<th>语言</th>
+		<th>静态资源URL地址</th>
+		<th>资源版本</th>
+		<th>服务器名</th>
+       	<th>操作</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+			<td align="center"><!--{$list.world_id}--></td>
+			<td align="center"><!--{$list.server_ip}--></td>
+			<td align="center"><!--{$list.server_port}--></td>
+			<td align="center"><!--{$list.platform_ip}--></td>
+			<td align="center"><!--{$list.platform_port}--></td>
+			<td align="center"><!--{$list.language_pack}--></td>
+			<td align="center"><!--{$list.resource_url}--></td>
+			<td align="center"><!--{$list.resource_version}--></td>
+			<td align="center"><!--{$list.world_name}--></td>
+       		<td align="center">
+       		<a href="javascript:delMsg('<!--{$Del_Url}-->&world_id=<!--{$list.world_id}-->&op=del')">[删除]</a>
+       		<a href="<!--{$modify_Url}-->&world_id=<!--{$list.world_id}-->">[编辑]</a></td>
+        </tr>
+        <!--{/foreach}-->
+
+          <tr>
+            <th colspan="10" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>

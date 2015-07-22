@@ -1,0 +1,48 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+
+<fieldset>
+  <legend>在线用户</legend>
+
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>玩家Id</th>
+          <th>账号</th>
+          <th>昵称</th>
+          <th>最后在线时间</th>
+          <th>最后离线时间</th>
+          <th>金币</th>
+          <th>银两</th>
+          <th>等级</th>
+          <th>经验值</th>
+          <th>职业</th>
+          <th>注册时间</th>
+          <th>详情</th>
+        </tr>
+        <!--{foreach from=$dataList item=vo}-->
+        <tr>
+       	  <td align="center"><!--{$vo.userId}--></td>
+          <td align="center"><!--{$vo.username}--></td>
+          <td align="center"><!--{$vo.nickname}--></td>
+          <td align="center"><!--{$vo.loginTime/1000|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+          <td align="center"><!--{$vo.offlineTime/1000|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+          <td align="center"><!--{$vo.cash}--></td>
+          <td align="center"><!--{$vo.coin}--></td>
+          <td align="center"><!--{$vo.level}--></td>
+          <td align="center"><!--{$vo.exp}--></td>
+          <td align="center"><!--{if $vo.vocationId==1}-->战士<!--{elseif $vo.vocationId==2}-->法师<!--{elseif $vo.vocationId==3}-->道士<!--{/if}--></td>
+          <td align="center"><!--{$vo.regTime}--></td>
+          <td align="center"><a href="admin.php?c=XianHunUser&a=UserDetail&zp=XianHun&server_id=742&userId=<!--{$vo.userId}-->">[详细]</a></td>
+        </tr>
+        <!--{foreachelse}-->
+        <tr>
+          <th colspan="12"><!--{$noData}--></th>
+        </tr>
+        <!--{/foreach}-->
+      </table>
+
+<!--{/if}-->

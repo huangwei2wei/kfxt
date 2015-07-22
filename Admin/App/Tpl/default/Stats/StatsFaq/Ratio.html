@@ -1,0 +1,111 @@
+<style type="text/css">
+ul{
+	margin:0px;
+	padding:0px;
+	list-style:none;
+}
+li{
+	display:inline-block;
+	width:250px;
+}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$(":radio[value='<!--{$selected.stats_type}-->']").click();
+})
+</script>
+<fieldset>
+<legend>统计搜索</legend>
+<form action="" method="post">
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">游戏</th>
+    <td><!--{html_radios options=$gameTypes selected=$selected.game_type_id name="game_type_id"}--></td>
+  </tr>
+  <tr>
+    <th scope="row">语言</th>
+    <td><!--{html_radios options=$lang selected=$selected.lang_id name="lang_id"}--></td>
+  </tr>
+  <tr>
+    <th scope="row">来源</th>
+    <td><!--{html_radios options=$sources selected=$selected.source name="source"}--></td>
+  </tr>
+  <tr>
+    <th scope="row">统计类型</th>
+    <td>
+    	<input type="radio" name="stats_type" value="day" />按天 
+        <input type="radio" name="stats_type" value="hour" />按小时
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">时间范围</th>
+    <td>
+      <input name="start_time" type="text" id="start_time" class="text" onFocus="WdatePicker({startDate:'<!--{$selected.start_time}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" value="<!--{$selected.start_time}-->"/>
+      至
+      <input name="end_time" type="text" id="end_time" class="text" onFocus="WdatePicker({startDate:'<!--{$selected.end_time}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" value="<!--{$selected.end_time}-->"/>
+      </td>
+  </tr>
+  <tr>
+  </tr>
+  <tr>
+  	<td colspan="2">
+		<input type="submit" class="btn-blue" value="统计" />
+        <input type="submit" name="xls" class="btn-blue" value="导出EXCEL" />
+    </td>
+  </tr>
+</table>
+</form>
+</fieldset>
+<fieldset>
+	<legend>统计列表</legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap" scope="col">FAQ分类</th>
+        <th scope="col">点击率</th>
+      </tr>
+      <tr>
+        <th nowrap="nowrap">total</th>
+        <th><!--{$dataList.total.total}--></th>
+      </tr>
+      <!--{if $selected.stats_type=='day'}-->
+      <!--{foreach from=$allDay key=day item=value}-->
+      <tr>
+        <th rowspan="2" nowrap="nowrap"><!--{$day}--></th>
+        <th>total : <b><!--{$dataList.$day.total|intval}--></b></th>
+      </tr>
+      <tr>
+        <td>
+            <ul>
+            
+            <!--{foreach from=$kindList key=kind_id item=kind_name}-->
+                    <li><!--{$kind_name}--> : <b><!--{$dataList.$day.$kind_id|intval}--></b></li>
+            <!--{/foreach}-->
+            </ul>
+        </td>
+      </tr>
+      <!--{/foreach}-->
+      
+      <!--{else}-->
+      
+      <!--{foreach from=$allHour key=hour item=value}-->
+      <tr>
+        <th rowspan="2" nowrap="nowrap"><!--{$hour}--></th>
+        <th>total : <b><!--{$dataList.$hour.total|intval}--></b></th>
+      </tr>
+      <tr>
+        <td>
+            <ul>
+            
+            <!--{foreach from=$kindList key=kind_id item=kind_name}-->
+                <li><!--{$kind_name}--> : <b><!--{$dataList.$hour.$kind_id|intval}--></b></li>
+            <!--{/foreach}-->
+            </ul>
+        </td>
+      </tr>
+      <!--{/foreach}-->
+      <!--{/if}-->
+    </table>
+    
+</fieldset>

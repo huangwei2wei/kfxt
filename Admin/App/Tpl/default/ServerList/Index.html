@@ -1,0 +1,75 @@
+<fieldset>
+	<legend>搜索</legend>
+  <form action="" method="get" id="search">
+   	  <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+      <input type="hidden" name="a" value="Serverlist" />
+      <input type="hidden" name="zp" value="<!--{$zp}-->" />
+      <table width="100%" border="0" cellspacing="0" cellpadding="3">
+        <tr>
+          <th nowrap="nowrap" scope="row">运营商</th>
+          <td><!--{html_radios options=$operatorList name="operator_id" onclick="$('#search').submit()" selected=$get.operator_id}--></td>
+        </tr>
+        <tr>
+          <th nowrap="nowrap" scope="row">使用定时器</th>
+          <td><!--{html_radios options=$timer name="timer" selected=$get.timer onclick="$('#search').submit()"}--></td>
+        </tr>
+          <tr>
+            <th nowrap="nowrap" scope="row">搜索</th>
+            <td>
+            ID:<input type="text" class="text" name="Id" value="<!--{$get.Id}-->" />
+            服务器名:<input type="text" class="text" name="server_name" value="<!--{$get.server_name}-->" />
+            标识:<input type="text" class="text" name="marking" value="<!--{$get.marking}-->" />
+            URL:<input type="text" class="text" name="server_url" value="<!--{$get.server_url}-->" />
+            <input type="submit" class="btn-blue" value="提交" />
+            </td>
+          </tr>
+      </table>
+    </form>
+</fieldset>
+<fieldset>
+  <legend>服务器列表</legend>
+[<a href="<!--{$url.GameSerList_CreateCache}-->">生成缓存</a>]
+[<a href="<!--{$url.GameSerList_Add}-->">添加服务器</a>]
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th>Id</th>
+    <th>所属游戏</th>
+    <th>运营商</th>
+    <th>服号</th>
+    <th>服务器名</th>
+    <th>标识</th>
+    <th>工单时差</th>
+    <th>时区</th>
+    <th>服务器地址</th>
+    <th>定时器</th>
+    <th>操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.Id}--></td>
+    <td><!--{$list.word_game_type}--></td>
+    <td><!--{$list.word_operator_name}--></td>
+    <td><!--{$list.ordinal|intval}--></td>
+    <td><!--{$list.server_name}--></td>
+    <td><!--{$list.marking}--></td>
+    <td><!--{$list.time_zone}--></td>
+    <td><!--{$list.timezone|default:'<font color="#999999">未设置</font>'}--></td>
+    <td title="<!--{$list.server_url}-->"><!--{$list.server_url|truncate:70}--></td>
+    <td>
+    	<!--{if $list.timer}-->
+        开启
+        <!--{else}-->
+        <font color="#999999">关闭</font>
+        <!--{/if}-->
+    </td>
+    <td>
+    	[<a href="<!--{$list.url_edit}-->">编辑</a>]
+        [<a onclick="return confirm('确定要删除吗?')" href="<!--{$list.url_del}-->">删除</a>]
+    </td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr><th colspan="9"><!--{$noData}--></th></tr>
+  <!--{/foreach}-->
+  <tr><td colspan="9" align="right"><!--{$pageBox}--></td></tr>
+</table>
+</fieldset>

@@ -1,0 +1,84 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='UserId[]']").attr("checked",curCheck);
+	 });
+	$("#Items").change();
+});
+
+function jumpUrl(url){
+	if(confirm('<!--{'4CEC2A2B2D19F8C1705FB195B1CE60F8'|lang}-->?')){
+		form=$("#form");
+		form.attr("action",url);
+		form.submit();
+	}
+}
+</script>
+<fieldset>
+  <legend><!--{'41192B3D62C7F96C759CAA83B33467E4'|lang}--></legend>
+  	<a href="<!--{$url.MasterFRG_AddCard}-->"><!--{'1A2F0E48B0B0FF341B48195D6D3981D9'|lang}--></a>
+    <a href="<!--{$url.MasterFRG_ImportCard}-->"><!--{'2863CC015978553D68BEAB6C30AD2C62'|lang}--></a>
+    <a onclick="return confirm('<!--{'4CEC2A2B2D19F8C1705FB195B1CE60F8'|lang}-->?')" href="<!--{$url.MasterFRG_DelInvalidCard}-->"><!--{'B9D3FF320C95A2D7A75AFD8E330B0F87'|lang}--></a>
+    <form action=""  method="get" onsubmit="return checksub();">
+        <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+        <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+        <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+        <select name="Query[Items]" id="Items" >
+          <!--{html_options options=$select selected=$selectedQuery.Items}-->
+        </select>
+        <input type="text" class="text" name="Query[typeName]" value="<!--{$selectedQuery.typeName|htmlspecialchars}-->" />
+        <select name="PageSize"><!--{html_options options=$selectPage selected=$selectedPageSize}--></select>
+        <input type="submit" class="btn-blue" name="submit" id="submit" value="<!--{'DC5D07A1867B1C0B57153AFE054D0332'|lang}-->">
+    </form>  
+    <form action="" id="form" method="post">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th>Id</th>
+        <th><!--{'8F8ED0E3AB533211CE82DD1E4B1C22BB'|lang}--></th>
+        <th><!--{'C7375AD4A1177F7E286D520D7DF3B1C9'|lang}--></th>
+        <th><!--{'B683C82E9310494611D6A8C1DB41BD34'|lang}--></th>
+        <th><!--{'3FEA7CA76CDECE641436D7AB0D02AB1B'|lang}--></th>
+        <th><!--{'FC92E9352345771B0CEA8487FC6671A9'|lang}--></th>
+        <th><!--{'1FA23F4DAA01D5DDFAE6179AA43F0720'|lang}--></th>
+        <th><!--{'EA36274662D3F85A56DFC9E7340B449E'|lang}--> ID / <!--{'819767ADA1805B0F0117F10967B94D4D'|lang}--> / <!--{'3EAAA36CCA7996391D410481FCF63A80'|lang}--></th>
+        <th><!--{'ECFF77A8D4263545654CE610EACF996B'|lang}-->IP</th>
+        <th><!--{'011009727D0D2E503215AFF0476D8727'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=vo}-->
+      <tr>
+        <td><!--{$vo.Id}--><input type="checkbox" name="Id[]" value="<!--{$vo.Id}-->" /></td>
+        <td><!--{$vo.CardNum}--></td>
+        <td><!--{$vo.CardName}--></td>
+        <td><!--{$vo.CreateTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+        <td><!--{$vo.word_State}--></td>
+        <td><!--{$vo.StartTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+        <td><!--{$vo.EndTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+        <td><!--{$vo.UserId}--> / <!--{$vo.UserName}--> / <!--{$vo.VUserName}--></td>
+        <td><!--{$vo.UseIP}--></td>
+        <td><!--{$vo.UseTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="10"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}--> 
+      <tr>
+        <td><input type="checkbox" onclick="$('#form :checkbox').attr('checked',$(this).attr('checked'))" /> <!--{'66EEACD93A7C1BDA93906FE908AD11A0'|lang}--></td>
+        <td colspan="9">
+        	<input type="button" class="btn-blue" onclick="jumpUrl('<!--{$url.MasterFRG_CardRest}-->')" value="<!--{'CEA3E8E05B69E0742B40230FA1C27E4B'|lang}-->" />
+            <input type="button" class="btn-blue" onclick="jumpUrl('<!--{$url.MasterFRG_CardInvalid}-->')" value="<!--{'646B2F070F85513C802914AA493E9AAD'|lang}-->" />
+        </td>
+      </tr>
+    </table>
+    </form>
+    <div align="right"><!--{$pageBox}--></div>
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,60 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<style>
+	ul{
+		margin:0px;
+		padding:0px;
+		list-style:none;
+	}
+	li{
+		width:200px;
+		display:inline-block;
+	}
+	.red { color:#F00}
+</style>
+
+<fieldset>
+	<legend>长生诀修改</legend>
+    <form method="get" action="">
+    	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+        <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+        <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+        <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+        <input type="hidden" name="doaction" value="<!--{$_GET.doaction}-->" />
+        <table width="98%" border="0" cellpadding="3">
+          <tr>
+            <td>
+                玩家ID:<input class="text" type="text" name="playerId" value="<!--{$_GET.playerId}-->" />
+                <input class="btn-blue" type="submit" name="submit" value="查询" />
+            </td>
+          </tr>
+        </table>
+	</form>
+    
+    <!--{if $player}-->
+    <form method="post" action="">
+    <!--{foreach from=$dataList item=list key=key}-->
+    <fieldset>
+    	<legend><!--{$list.name}--></legend>
+    	<input type="hidden" name="playerId" value="<!--{$player.playerId}-->" />	
+        <div style="padding:5px;">
+        	<ul>
+        	<!--{foreach from=$list.data item=subList key=subkey}-->
+            	<li>
+                    <!--{$subList.name}-->
+                    <font class="red"><!--{$subList.level}--></font>
+                    <input type="text" name="<!--{$subList.id}-->" class="text" style="width:70px;">
+                </li>
+            <!--{/foreach}-->
+            </ul>
+        </div>
+    </fieldset>
+    <!--{/foreach}-->
+    	<input class="btn-blue" type="submit" value="提交" />
+    </form>
+    <!--{/if}-->
+</fieldset>
+<!--{/if}-->

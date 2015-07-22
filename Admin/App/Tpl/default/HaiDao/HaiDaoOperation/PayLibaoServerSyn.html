@@ -1,0 +1,40 @@
+<form action="" method="post">
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<fieldset>
+	<legend><b><!--{$serverName}--></b></legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col"><!--{'D7EC2D3FEA4756BC1642E0F10C180CF5'|lang}--></th>
+        <th scope="col"><!--{'FC92E9352345771B0CEA8487FC6671A9'|lang}--></th>
+        <th scope="col"><!--{'3BDD08ADAB6EA90B9164B20A0E4151AC'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList key=key item=list}-->
+      <tr>
+        <td>
+        	<input type="hidden" name="data[<!--{$key}-->][PName]" value="<!--{$list.PName|htmlspecialchars}-->" />
+			<input type="hidden" name="data[<!--{$key}-->][PLimit]" value="<!--{$list.PLimit|htmlspecialchars}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][Prize]" value="<!--{$list.Prize|htmlspecialchars}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][MsgTitle]" value="<!--{$list.MsgTitle|htmlspecialchars}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][MsgContent]" value="<!--{$list.MsgContent|htmlspecialchars}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][PDescribe]" value="<!--{$list.PDescribe|htmlspecialchars}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][Cash]" value="<!--{$list.Cash}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][Times]" value="<!--{$list.Times}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][TotalCash]" value="<!--{$list.TotalCash}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][StartTime]" value="<!--{$list.EndTime}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][PEach]" value="<!--{$list.PEach}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][TimesDetail]" value="<!--{$list.TimesDetail}-->" />
+        	<!--{$list.PName}-->
+        </td>
+        <td><!--{$list.StartTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+        <td><!--{$list.PDescribe}--></td>
+      </tr>
+      <!--{/foreach}-->
+      <tr><td colspan="3" align="center"><input type="submit" name="submit" class="btn-blue" value="<!--{'17A5565D05ABB505E0B8164C80F618B1'|lang}-->" /></td></tr>
+    </table>
+</fieldset>
+
+
+</form>

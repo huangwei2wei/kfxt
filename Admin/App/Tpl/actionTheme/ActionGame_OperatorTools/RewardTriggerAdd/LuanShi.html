@@ -1,0 +1,227 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<style type="text/css">
+.addline{
+	padding:3px;
+}
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:100%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/default/frg.js"></script>
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript">
+
+<!--{if $toolData}-->
+var toolData=eval(<!--{$toolData}-->);
+<!--{/if}-->
+
+<!--{if $outfitData}-->
+var outfitData=eval(<!--{$outfitData}-->);
+<!--{/if}-->
+
+var toolInputNum=1;
+var outfitDataNum=1;
+
+$(function(){
+	$.formValidator.initConfig({
+		formid:"form",
+		onerror:function(){return false;},
+		onsuccess:function(){
+			if($(":checkbox[name='server_ids[]']:checked").attr('value') == undefined){
+				alert('请选择服务器！'); return false;
+			}
+			$('.returnTip').remove();	//去掉旧提示
+			$(":checkbox[name='server_ids[]']:checked").each(function(i,n){
+					var curLi=$("#server_"+n.value);
+					$("#form").ajaxSubmit({
+						dataType:'json',
+						data:{server_id:n.value},
+						success:function(data){
+							var fontColor=(data.status==1)?'#00cc00':'#ff0000';
+							curLi.append("<font class='returnTip' color='"+fontColor+"'> "+data.info+"</font>");
+						}
+					});
+			});
+			alert('操作完成！');
+			return false;
+		},
+	
+	
+	});
+	$("#cause").formValidator({onshow:"请输入申请理由",oncorrect:"申请理由正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入申请理由"},onerror:"申请理由不能为空"});
+	$("#server_id").formValidator({onshow:"服务器ID不存在",oncorrect:"请重新输入服务器ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"服务器数值不正确"});
+	$("#title").formValidator({onshow:"请输入标题",oncorrect:"正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入标题"},onerror:"标题不能为空"});
+	$("#content").formValidator({onshow:"请输入邮件内容 ",oncorrect:"正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入邮件内容 "},onerror:"邮件内容 不能为空"});
+})
+
+function fontStyle(color,b,em){
+	var font1='<font color="'+color+'">';
+	var font2='</font>';
+	var b1='<b>';
+	var b2='</b>';
+	var em1='<em>';
+	var em2='</em>';
+	if(!color){
+		font1 = font2 = '';
+	}
+	if(!b){
+		b1 = b2 = '';
+	}
+	if(!em){
+		em1 = em2 = '';
+	}
+	var obj = $('#content');
+	obj.val(obj.val()+font1+b1+em1+'请输入文字'+em2+b2+font2);
+	view()
+}
+function linkAdd(){
+	var obj = $('#content');
+	obj.val(obj.val()+'<a href="event:请输入地址">请输入内容</a>');
+	view()
+}
+function view(){
+	$('#view').html($('#content').val());
+}
+
+
+function onSubmit(){
+	if($(":checkbox[name='server_ids[]']:checked").attr('value') == undefined){
+		alert('请选择服务器！'); return false;
+	}
+	$('.returnTip').remove();	//去掉旧提示
+	$(":checkbox[name='server_ids[]']:checked").each(function(i,n){
+			var curLi=$("#server_"+n.value);
+			$("#form").ajaxSubmit({
+				dataType:'json',
+				data:{server_id:n.value},
+				success:function(data){
+					var fontColor=(data.status==1)?'#00cc00':'#ff0000';
+					curLi.append("<font class='returnTip' color='"+fontColor+"'> "+data.info+"</font>");
+				}
+			});
+	});
+}
+</script>
+<fieldset>
+<legend>添加奖励促发[<font color="#FF0000">此操作须要审核</font>]</legend>
+
+<div id="showItem"></div>
+
+<form action="" method="post" id="form" >
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">申请理由</th>
+    <td><textarea name="cause" cols="50" id="cause" rows="8"></textarea><div id="causeTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">消息标题</th>
+    <td><input type="text" class="text" name="title" id="title" size="80" value="" /><div id="titleTip"></div></td>
+  </tr>
+  <tr>
+        <th scope="row">邮件内容 </th>
+        <td>
+        	<div>
+				颜色<select id="color_select">
+                	<option value="">默认</option>
+                	<option value="FF0000">红色</option>
+                    <option value="0000FF">蓝色</option>
+                    <option value="00FF00">绿色</option>
+                    <option value="FFFF00">黄色</option>
+                    <option value="FF00FF">紫色</option>
+                </select>
+                加粗<input id="b_select" type="checkbox" value="b" />
+                下划线<input id="em_select" type="checkbox" value="em" />
+                <input class="btn-blue" type="button" value="添加" onclick="fontStyle($('#color_select').val(),$('#b_select').attr('checked'),$('#em_select').attr('checked'));" />
+                <input class="btn-blue" type="button" value="添加超链接" onclick="linkAdd();" />
+       		</div>
+        	<textarea name="content" id="content" style="width:600px; height:200px;" onkeyup="view();"><!--{$_POST.content|htmlspecialchars}--></textarea><div id="contentTip"></div>
+            <div>
+            	<input class="btn-blue" type="button" value="预览" onclick="view();" />
+                <div id="view"></div>
+            </div>
+         </td>
+   </tr>
+
+  <tr>
+    <th scope="row">战令</th>
+    <td><input type="text" name="WarAward[warCard]" class='text'/></td>
+  </tr>
+  <tr>
+     <th scope="row">人物属性</th>
+     <td>
+                  铜币:<input name="playerAward[copper]" type="text" class='text'/>
+	        声望:<input name="playerAward[popularity]" type="text" class='text' />
+	        经验:<input name="playerAward[curExp]" type="text" class='text' />
+	        银两:<input name="playerAward[silver]" type="text" class='text'/>
+	         战魂:<input name="playerAward[soul]" type="text" class='text'>
+	 </td>
+  </tr>
+
+  <tr>
+    <th scope="row">奖励道具</th>
+    <td><input type="button" class="btn-blue" onclick="addTool($(this))" value="添加奖励道具" /></td>
+  </tr>
+  <tr>
+    <th scope="row">装备列表</th>
+    <td><input type="button" class="btn-blue" onclick="addOutfitData($(this))" value="添加装备道具" /></td>
+  </tr>
+  
+  <tr>
+    <th scope="row">开始时间</th>
+    <td><input type="text" name="startTime" class='text' onfocus="WdatePicker({startDate:'',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/></td>
+  </tr>
+   <tr>
+    <th scope="row">结束时间 *</th>
+    <td><input type="text" name="endTime" class='text' onfocus="WdatePicker({startDate:'',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/></td>
+  </tr>
+   <tr>
+    <th scope="row">注册开始时间</th>
+    <td><input type="text" name="registerTimeStart" class='text' onfocus="WdatePicker({startDate:'',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/></td>
+  </tr>
+   <tr>
+    <th scope="row">注册结束时间</th>
+    <td><input type="text" name="registerTimeEnd" class='text' onfocus="WdatePicker({startDate:'',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/></td>
+  </tr>
+   <tr>
+    <th scope="row">人物等级开始</th>
+    <td><input type="text" name="plevelStart" class='text' /></td>
+  </tr>
+  <tr>
+    <th scope="row">人物等级结束</th>
+    <td><input type="text" name="plevelEnd" class='text' />
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">皇权开始</th>
+    <td><input type="text" name="vipStart" class='text' />
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">皇权结束</th>
+    <td><input type="text" name="vipEnd" class='text' />
+    </td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">
+      <input type="submit" class="btn-blue" name="button" value="提交"/>
+      </th>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

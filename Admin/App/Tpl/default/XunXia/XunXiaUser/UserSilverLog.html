@@ -1,0 +1,88 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+function chageSearch(curVal){
+		var searchSpan=$("#search");
+		searchSpan.empty();
+		switch(curVal){
+			case '2': //用户名
+			case '1':{//用户ID
+				searchSpan.append('<input type="text" class="text" name="dataMin" value="<!--{$selected.dataMin}-->">');
+				break;
+			}
+			case '3':{	//日期
+				searchSpan.append('<input type="text" class="text" name="dataMin" onFocus="WdatePicker({startDate:\'\',dateFmt:\'yyyy-MM-dd HH:mm:ss\',alwaysUseStartDate:true})" value="<!--{$selected.dataMin}-->"> 至 <input type="text" class="text" name="dataMax" onFocus="WdatePicker({startDate:\'\',dateFmt:\'yyyy-MM-dd HH:mm:ss\',alwaysUseStartDate:true})" value="<!--{$selected.dataMax}-->" >');
+				break;
+			}
+			default :{
+				searchSpan.append('<input type="text" class="text" name="dataMin" value="<!--{$selected.dataMin}-->"> 至 <input type="text" class="text" name="dataMax" id="end" value="<!--{$selected.dataMax}-->" >');
+			}
+		}
+}
+$(function(){
+	$("#search_select").val('<!--{$selected.type}-->').change();
+})
+</script>
+<fieldset>
+  <legend>用户查询日志</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td colspan="9">
+        <form action=""  method="get" onsubmit="return checksub();">
+      		<input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+        	<input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+            <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+            <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+            <select name="type" id="search_select" onchange="chageSearch($(this).val())">
+            	<!--{html_options options=$searchType selected=$selected.search_type}-->
+            </select>
+            <span id="search">
+            </span>
+            <input type="submit" class="btn-blue" name="submit" value="查找">
+        </form>    
+        </td>
+        </tr>
+      <tr>
+        <th>用户Id</th>
+        <th>玩家Id</th>
+        <th>玩家名称</th>
+        <th>消费时间</th>
+        <th>消费前铜钱数</th>
+        <th>消费后铜钱数</th>
+        <th>消费铜钱</th>
+        <th>类型</th>
+        <th>子类型</th>
+        <th>详细ID</th>
+      </tr>
+      <form action="" id="form" method="post">
+      <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+      <!--{foreach from=$dataList item=vo}-->
+      <tr>
+        <td align="center"><!--{$vo->id}--></td>
+        <td align="center"><!--{$vo->playerId}--></td>
+        <td align="center"><!--{$vo->playerName}--></td>
+        <td align="center"><!--{$vo->createAt}--></td>
+        <td align="center"><!--{$vo->oldValue}--></td>
+        <td align="center"><!--{$vo->newValue}--></td>
+        <td align="center"><!--{$vo->diffValue}--></td>
+        <td align="center"><!--{$vo->type}--></td>
+        <td align="center"><!--{$vo->subType}--></td>
+        <td align="center"><!--{$vo->detailId}--></td>
+        </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="9"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}--> 
+      </form>
+      <tr>
+        <th colspan="9" align="right"><!--{$pageBox}--></th>
+      </tr>
+    </table>
+</fieldset>
+<!--{/if}-->

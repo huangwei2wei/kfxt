@@ -1,0 +1,177 @@
+<fieldset>
+<legend>统计搜索</legend>
+<form action="<!--{$url.Stats_Detail}-->" method="post">
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">时间范围：</th>
+    <td>
+    <input type="text" class="text" name="start_date" value="<!--{$selectedTime.start}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+    至
+	<input type="text" class="text" name="end_date" value="<!--{$selectedTime.end}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+	</td>
+  </tr>
+  <!--{foreach from=$orgList item=list}-->
+  <tr>
+    <th scope="row"><!--{$list.name}--></th>
+    <td>
+    	<!--{if $list.user}-->
+        <!--{html_checkboxes options=$list.user name="check_users" selected=$selectedUsers}-->
+        <!--{/if}-->
+    </td>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+  </tr>
+  <tr>
+  	<td colspan="2">
+		<input type="submit" class="btn-blue" value="统计" />
+        <input type="button" class="btn-blue" value="导出EXCEL" />
+    </td>
+  </tr>
+</table>
+</form>
+</fieldset>
+
+
+<!--{if $displayTrue}-->
+<fieldset>
+<legend><b>汇总</b></legend>
+<div class="option_description" align="right">
+质检选项：
+<!--{foreach from=$qualityOptions key=key item=list}-->
+<span><!--{$key}-->:<!--{$list}--></span>&nbsp;&nbsp;&nbsp;
+<!--{/foreach}-->
+</div>
+<div style="float:left; width:39.9%;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      <tr>
+        <th scope="col">工单回复/日期</th>
+        <th scope="col">总回复量</th>
+        <th scope="col">超时回复</th>
+        <th scope="col">未超时回复</th>
+        <th scope="col">质检回复</th>
+        <th scope="col">未质检回复</th>
+      </tr>
+      <!--{foreach from=$baseTotal.workload item=list key=key}-->
+      <tr>
+        <th scope="row"><!--{$key}--></th>
+        <td><!--{$list.total}--></td>
+        <td><!--{$list.timeout_num}--></td>
+        <td><!--{$list.no_timeout_num}--></td>
+        <td><!--{$list.quality_num}--></td>
+        <td><!--{$list.no_quality_num}--></td>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+</div>
+<div style="float:right; width:59.9%">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      <tr>
+        <th scope="col">质检详细/日期</th>
+        <th scope="col">未申诉</th>
+        <th scope="col">已经申诉</th>
+        <th scope="col">申诉成功</th>
+        <th scope="col">申诉失败</th>
+        <th scope="col">同意质检</th>
+        <th scope="col" colspan="8">质检选项</th>
+        <th scope="col">加分</th>
+        <th scope="col">扣分</th>
+      </tr>
+      <!--{foreach from=$baseTotal.quality item=list key=key}-->
+      <tr>
+        <th scope="row"><!--{$key}--></th>
+        <td><!--{$list.status_num.1}--></td>
+        <td><!--{$list.status_num.2}--></td>
+        <td><!--{$list.status_num.3}--></td>
+        <td><!--{$list.status_num.4}--></td>
+        <td><!--{$list.status_num.5}--></td>
+        
+        <td><span class="option"><!--{$list.option_num.1}--></span></td>
+        <td><span class="option"><!--{$list.option_num.2}--></span></td>
+        <td><span class="option"><!--{$list.option_num.3}--></span></td>
+        <td><span class="option"><!--{$list.option_num.4}--></span></td>
+        <td><span class="option"><!--{$list.option_num.5}--></span></td>
+        <td><span class="option"><!--{$list.option_num.6}--></span></td>
+        <td><span class="option"><!--{$list.option_num.7}--></span></td>
+        <td><span class="option"><!--{$list.option_num.8}--></span></td>
+        
+        <td><!--{$list.deduction}--></td>
+        <td><!--{$list.bonus}--></td>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+</div>
+<div style="clear:both"></div>
+</fieldset>
+
+
+<!--{foreach from=$statsUsers item=childUser}-->
+<fieldset>
+<legend><!--{$childUser.nick_name}--></legend>
+<div class="option_description" align="right">
+质检选项：
+<!--{foreach from=$qualityOptions key=key item=list}-->
+<span><!--{$key}-->:<!--{$list}--></span>&nbsp;&nbsp;
+<!--{/foreach}-->
+</div>
+<div style="float:left; width:39.9%;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      <tr>
+        <th scope="col">工单回复/日期</th>
+        <th scope="col">总回复量</th>
+        <th scope="col">超时回复</th>
+        <th scope="col">未超时回复</th>
+        <th scope="col">质检回复</th>
+        <th scope="col">未质检回复</th>
+      </tr>
+      <!--{foreach from=$childUser.workload item=list key=key}-->
+      <tr>
+        <th scope="row"><!--{$key}--></th>
+        <td><!--{$list.total|intval}--></td>
+        <td><!--{$list.timeout_num|intval}--></td>
+        <td><!--{$list.no_timeout_num|intval}--></td>
+        <td><!--{$list.quality_num|intval}--></td>
+        <td><!--{$list.no_quality_num|intval}--></td>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+</div>
+<div style="float:right; width:59.9%">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      <tr>
+        <th scope="col">质检详细/日期</th>
+        <th scope="col">未申诉</th>
+        <th scope="col">已经申诉</th>
+        <th scope="col">申诉成功</th>
+        <th scope="col">申诉失败</th>
+        <th scope="col">同意质检</th>
+        <th scope="col" colspan="8">质检选项</th>
+        <th scope="col">加分</th>
+        <th scope="col">扣分</th>
+      </tr>
+      <!--{foreach from=$childUser.quality item=list key=key}-->
+      <tr>
+        <th scope="row"><!--{$key}--></th>
+        <td><!--{$list.status_num.1|intval}--></td>
+        <td><!--{$list.status_num.2|intval}--></td>
+        <td><!--{$list.status_num.3|intval}--></td>
+        <td><!--{$list.status_num.4|intval}--></td>
+        <td><!--{$list.status_num.5|intval}--></td>
+        <td><span class="option"><!--{$list.option_num.1|intval}--></span></td>
+        <td><span class="option"><!--{$list.option_num.2|intval}--></span></td>
+        <td><span class="option"><!--{$list.option_num.3|intval}--></span></td>
+        <td><span class="option"><!--{$list.option_num.4|intval}--></span></td>
+        <td><span class="option"><!--{$list.option_num.5|intval}--></span></td>
+        <td><span class="option"><!--{$list.option_num.6|intval}--></span></td>
+        <td><span class="option"><!--{$list.option_num.7|intval}--></span></td>
+        <td><span class="option"><!--{$list.option_num.8|intval}--></span></td>
+        <td><!--{$list.deduction|intval}--></td>
+        <td><!--{$list.bonus|intval}--></td>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+</div>
+<div style="clear:both"></div>
+</fieldset>
+<!--{/foreach}-->
+<!--{/if}-->

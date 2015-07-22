@@ -1,0 +1,78 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+</script>
+
+<fieldset>
+  <legend>用户查询</legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+   帐号ID:<input class="text" type="text" name="AccountID" value="<!--{$_GET.AccountID}-->">
+    帐号名:<input class="text" type="text" name="AccountName" value="<!--{$_GET.AccountName}-->">
+    <input class="btn-blue" type="submit" name="sbm" value="查询">
+</form>
+
+<form action="" id="playerIdsForm" method="post">
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>帐号ID</th>
+          <th>帐号名</th>
+          <th>首次登录IP</th>
+          <th>首次登录时间</th>
+          <th>登录次数</th>
+          <th>最后登录IP</th>
+          <th>最后登录时间</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+       	  <td align="center"><!--{$list.AccountID}--></td>
+          <td align="center"><!--{$list.AccountName}--></td>
+          <td align="center"><!--{$list.FirstLoginIP}--></td>
+           <td align="center"><!--{$list.FirstLoginTime|date_format:"%Y-%m-%d %H:%M:%S"|default:'--'}--></td>
+          <td align="center"><!--{$list.LoginNumber}--></td>
+          <td align="center"><!--{$list.LastLoginIP}--></td>
+          <td align="center"><!--{$list.LastLoginTime|date_format:"%Y-%m-%d %H:%M:%S"|default:'--'}--></td>
+         
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="15" align="center">
+                <!--{if $_GET.submit}-->
+                查无数据
+                <!--{else}-->
+                <font color="#FF0000">请使用"查询"按钮</font>
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/foreach}-->
+          <tr>
+            <th colspan="15" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+</form>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

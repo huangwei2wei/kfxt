@@ -1,0 +1,91 @@
+<fieldset>
+<legend>服务器设置</legend>
+    <form action="<!--{$url.GameSerList_Edit}-->" method="post">
+    <input type="hidden" value="<!--{$data.Id}-->" name="Id" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th>游戏类型</th>
+        <td>
+            <select name="game_type" >
+                <!--{html_options options=$gameTypeList selected=$data.game_type_id}-->
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <th>运营商</th>
+        <td>
+            <select name="operator_id">
+                <!--{html_options options=$operatorList selected=$data.operator_id}-->
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <th>服务器号</th>
+        <td>
+            <input type="text" class="text" name="ordinal" value="<!--{$data.ordinal}-->" /> (填数字，一般情况下，如：http://s<font color="#FF0000">5</font>.r.uwan.com/ 填 <font color="#FF0000">5</font>)
+        </td>
+      </tr>
+      <tr>
+        <th>服务器名称</th>
+        <td>
+            <input type="text" class="text" value="<!--{$data.server_name}-->" name="server_name" />
+        </td>
+      </tr>
+      <tr>
+        <th>标识</th>
+        <td><input type="text" class="text" name="marking"  value="<!--{$data.marking}-->" style="width:400px;" /></td>
+      </tr>
+
+  <tr>
+    <th>工单时差</th>
+    <td><input type="text" class="text" name="time_zone" value="<!--{$data.time_zone}-->" /> (以当前服务器时间[<font color="#FF0000"><!--{$smarty.now|date_format:"%Y-%m-%d %H:%M:%S"}--></font>]为准,加小时或是减小时,例如:-8)</td>
+  </tr>
+  <tr>
+    <th>时区标识</th>
+    <td><input type="text" class="text" name="timezone" value="<!--{$data.timezone}-->" /> (中国:PRC,太平洋:PST8PDT)</td>
+  </tr>
+  <tr>
+    <th>服务器地址</th>
+    <td><input type="text" class="text" name="server_url" value="<!--{$data.server_url}-->" style="width:400px;" /></td>
+  </tr>
+  <tr>
+    <th>数据连接地址<br/>个别游戏需要添加</th>
+    <td><input type="text" class="text" name="data_url" value="<!--{$data.data_url|default:$_GET.data_url|trim}-->" style="width:400px;" /></td>
+  </tr>
+  <tr>
+    <th>接入定时器</th>
+    <td>
+    	<!--{html_radios options=$timer name="timer" selected=$data.timer|intval}--> 
+        (在腾讯代理的游戏中，定时调用游戏接口)
+    </td>
+  </tr>
+  <tr>
+    <th colspan="2">数据库配置</th>
+  </tr>
+  <tr>
+    <th>数据库服务器</th>
+    <td><input type="text" class="text" name="db_host" value="<!--{$data.ext.db_host}-->"  style="width:300px;" /></td>
+  </tr>
+
+  <tr>
+    <th>数据库用户</th>
+    <td><input type="text" class="text" name="db_user" value="<!--{$data.ext.db_user}-->"  style="width:300px;" /></td>
+  </tr>
+  <tr>
+    <th>数据库密码</th>
+    <td><input type="password" class="text" name="db_pwd" value="<!--{$data.ext.db_pwd}-->"  style="width:300px;" /></td>
+  </tr>
+  <tr>
+    <th>数据库名</th>
+    <td><input type="text" class="text" name="db_name" value="<!--{$data.ext.db_name}-->"  style="width:300px;" /></td>
+  </tr>
+  <tr>
+    <th>数据库端口号</th>
+    <td><input type="text" class="text" name="db_port" value="<!--{$data.ext.db_port}-->"  style="width:300px;" /></td>
+  </tr>
+      <tr>
+        <th colspan="2"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+    </form>
+</fieldset>

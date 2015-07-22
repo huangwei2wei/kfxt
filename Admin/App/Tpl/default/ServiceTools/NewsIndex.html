@@ -1,0 +1,81 @@
+<script language="javascript" type="text/javascript">
+//function addFileCheck(cls){
+//	if($('.'+cls).length<5){
+//		return true;
+//	}
+//	alert('到达上限');
+//	return false;
+//}
+</script>
+<fieldset>
+	<legend>搜索 [<a href="<!--{$URL_newsType}-->">类型管理</a>]</legend>
+    <form action="" method="get" id="searchForm">
+    	<input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    	<input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+        <div style=" margin-bottom:5px;">类型：<!--{html_radios options=$types name="type" selected=$_GET.type onclick="$('#searchForm').submit();"}--></div>
+        <div>
+        	标题：<input class="text" type="text" name="title" value="<!--{$_GET.title}-->" />
+            内容：<input class="text" type="text" name="content" value="<!--{$_GET.content}-->" />
+            <input class="btn-blue" type="submit" value="查询" />
+        </div>
+    </form>
+</fieldset>
+<fieldset>
+	<legend>
+    	工作交接 
+    	[<a href="<!--{$URL_newsAdd}-->">添加交接</a>]
+    </legend>
+    <table width="100%" border="0" cellpadding="3">
+      <!--{foreach from=$dataList item=childList}-->
+      <tr>
+        <th align="left">
+        	<div style=" margin:2px;">
+            <span <!--{if $childList.top}-->style="color:#FF6600"<!--{/if}--> onclick="$('#content_<!--{$childList.Id}-->').toggle()">
+            	<font style="font-size:14px;"><b><!--{$childList.title}--></b></font> 
+                <font style=" color:#660; font-weight:lighter">
+                &nbsp;
+                [<!--{$childList.word_type}-->,<!--{$childList.update_time}--> , <!--{$childList.word_user_id}-->] 
+                </font>
+            </span>
+            <font style="font-weight:lighter">
+                [<a href="<!--{$childList.URL_edit}-->">编辑</a>]
+                	<!--{if $childList.top}-->
+                [<a href="<!--{$childList.URL_del_top}-->">取消顶置</a>]
+               		<!--{else}-->
+                [<a href="<!--{$childList.URL_top}-->">顶置</a>]
+             </font>
+            <!--{/if}-->
+            <!--{if $childList.user_no_read}-->
+            <input type="button" class="btn-blue" value="我已阅读" cur_id='<!--{$childList.Id}-->' onclick="userRead($(this))" />
+            <!--{/if}-->
+            </div>
+        </th>
+      </tr>
+      <tr>
+        <td id="content_<!--{$childList.Id}-->" style=" display:none">
+            <div style="margin-left:10px; margin-top:5px;"><!--{$childList.content}--></div>
+            
+            <div style="margin:5px; padding:2px; background:#D6E8F1" >
+            	<label>附件：</label>
+                <!--{foreach from=$childList.files item=file}-->
+                	<div style="margin:5px;">
+                    	<a href="<!--{$URL_download}-->&file_path=<!--{$file.path|urlencode}-->&file_name=<!--{$file.name|urlencode}-->" class="uploadFiles<!--{$childList.Id}-->"><!--{$file.name}--></a>
+                        <font color="#999999">(<!--{$file.size}-->)</font>
+                    </div>
+                <!--{foreachelse}-->
+                    <font color="#999999">无</font>
+                <!--{/foreach}-->
+            </div>
+            <div style="padding-bottom:0px; padding-right:5px; float:right">
+            	[<a onclick="return confirm('确定删除？');" href="<!--{$childList.URL_del}-->">删除交接</a>]
+            </div>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th scope="col"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+    <div style="margin-top:5px;"><!--{$pageBox}--></div>
+</fieldset>

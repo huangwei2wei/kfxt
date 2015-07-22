@@ -1,0 +1,13 @@
+<div class="right_game">
+    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+        <tr>
+        <!--{*每7个换行*}-->
+        <volist name="faqKind" id="list" key="k">
+            <td><a href='{$list.ask_url}'><img src="{$list.img}" /></a><br /><a href='{$list.ask_url}'>{$list.name}</a></td>
+            <if condition="(($k-1) % 7) ==6"> 
+                </tr><tr>
+            </if>
+        </volist>
+        </tr>
+    </table>						
+</div>

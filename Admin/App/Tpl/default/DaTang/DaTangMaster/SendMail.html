@@ -1,0 +1,53 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"服务器ID不存在",oncorrect:"请重新输入服务器ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"服务器数值不正确"});
+	$("#cause").formValidator({onshow:"请输入操作原因",oncorrect:"操作原因正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入操作原因"},onerror:"操作原因不能为空"});
+	$("#MsgTitle").formValidator({onshow:"请输入消息标题",oncorrect:"消息标题正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入消息标题"},onerror:"消息标题不能为空"});
+	$("#MsgContent").formValidator({onshow:"请输入消息内容",oncorrect:"消息内容正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入消息内容"},onerror:"消息内容不能为空"});
+	$("#UserIds").formValidator({onshow:"请输入用户ID,用','号隔开",oncorrect:"输入正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入用户ID"},onerror:"用户ID不能为空"});
+})
+</script>
+<fieldset>
+	<legend>发送短消息  [<font color="#0000FF">此操作无须审核</font>]<!--{if $_GET.lock}-->	发送玩家用户: <font color="#FF0000"><!--{$_GET.user_name}--></font> ( <!--{$_GET.nick_name}--> ) <!--{/if}--></legend>
+<form id="form" action="" method="post">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">操作原因</th>
+    <td><textarea name="cause" id="cause" cols="60" rows="5"></textarea><div id="causeTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">消息标题</th>
+    <td><input name="title" id="title" type="text" class="text" style="width:390px;"/><div id="MsgTitleTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">消息内容</th>
+    <td><textarea name="content" id="content" cols="60" rows="10"></textarea><div id="MsgContentTip"></div></td>
+  </tr>
+  
+  <tr <!--{if $_GET.lock}-->style="display:none;"<!--{/if}-->>
+    <th scope="row">发送给以下用户</th>
+    <td>
+    	<div>
+            <input type="radio" name="receiveType" checked="checked" value="0" /> 玩家ID
+            <input type="radio" name="receiveType"  value="1" /> 昵称
+        </div>
+        <div>
+       		<textarea name="users" id="users" cols="60" rows="10"><!--{$users|default:''}--></textarea>
+        </div>
+        </td>
+  </tr>
+  
+  <tr>
+    <th colspan="2" scope="row"><input type="submit" class="btn-blue" name="submit" value="立即发送" /></th>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

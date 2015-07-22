@@ -1,0 +1,139 @@
+<script language="javascript" src="<!--{$__JS__}-->/Libs/jquery.form.js"></script>
+<script language="javascript">
+function onSubmit(){
+	var serverList=$(":checkbox[name='server_ids[]']");
+	$.each(serverList,function(i,n){
+		if(n.checked==true){
+			var curLi=$("#server_"+n.value);
+			$("#form").ajaxSubmit({
+				dataType:'json',
+				data:{server_id:n.value},
+				success:function(dataResult){
+					var fontColor=(dataResult.status==1)?'#00cc00':'#ff0000';
+					curLi.after("<font color='"+fontColor+"'>"+dataResult.msg+"</font>");
+				}
+			});
+		}
+	});
+	
+}
+
+function onSubmitB(){
+	if(confirm("你确定热加载吗？")){
+		var serverList=$(":checkbox[name='server_ids[]']");
+		$.each(serverList,function(i,n){
+			if(n.checked==true){
+				var curLi=$("#server_"+n.value);
+				$("#form1").ajaxSubmit({
+					dataType:'json',
+					data:{server_id:n.value},
+					success:function(dataResult){
+						var fontColor=(dataResult.status==1)?'#00cc00':'#ff0000';
+						curLi.after("<font color='"+fontColor+"'>"+dataResult.msg+"</font>");
+					}
+				});
+			}
+		});
+	}
+}
+</script>
+
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#title").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'752F8926DB21639D9F8ECDC7BF1D7159'|lang}-->"},onerror:"<!--{'1C556BF4A724BF1B83C6FC64D44DE0B2'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'752F8926DB21639D9F8ECDC7BF1D7159'|lang}-->"},onerror:"<!--{'81B8114F80F252C34993100C3BD6F046'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+	$("#interval").formValidator({onshow:"<!--{'62DF1C363CC3B9F23706E4504BC0EC25'|lang}-->",oncorrect:"<!--{'315F61935B8933FF105D5FA610D202C3'|lang}-->"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'49D109F09975997457A4623EEE9A558F'|lang}-->"});
+})
+
+function fontStyle(color,b,em){
+	var font1='<font color="'+color+'">';
+	var font2='</font>';
+	var b1='<b>';
+	var b2='</b>';
+	var em1='<em>';
+	var em2='</em>';
+	if(!color){
+		font1 = font2 = '';
+	}
+	if(!b){
+		b1 = b2 = '';
+	}
+	if(!em){
+		em1 = em2 = '';
+	}
+	var obj = $('#content');
+	obj.val(obj.val()+font1+b1+em1+'<!--{'4F6A3C19F9DCAC1C9A46E623609E7638'|lang}-->'+em2+b2+font2);
+	view()
+}
+function linkAdd(){
+	var obj = $('#content');
+	obj.val(obj.val()+'<a href="event:<!--{'6107B3C4FD8587589210CB9FE2FCDAD9'|lang}-->"><!--{'A11CC7A65B27F3993D58438D275F3447'|lang}--></a>');
+	view()
+}
+function view(){
+	$('#view').html($('#content').val());
+}
+</script>
+<fieldset>
+<legend>多服同步</legend>
+<form action="<!--{$ajax}-->" method="post" id="form">
+客户端GM指令<input type="checkbox" value="1" name="ClientGM" >&nbsp;&nbsp;
+
+防沉迷<input type="checkbox" value="1" name="Adult" >&nbsp;&nbsp;
+
+商城<input type="checkbox" value="1" name="Store" >&nbsp;&nbsp;
+
+组队<input type="checkbox" value="1" name="Team" >&nbsp;&nbsp;
+
+帮会<input type="checkbox" value="1" name="Faction" >&nbsp;&nbsp;
+
+交易<input type="checkbox" value="1" name="Trade" >&nbsp;&nbsp;
+
+挂售<input type="checkbox" value="1" name="Sale" >&nbsp;&nbsp;
+
+神树<input type="checkbox" value="1" name="LifeTree" >&nbsp;&nbsp;
+
+好友<input type="checkbox" value="1" name="Friend" >&nbsp;&nbsp;
+
+坐骑<input type="checkbox" value="1" name="Mount" >&nbsp;&nbsp;
+
+宝石<input type="checkbox" value="1" name="Precious">&nbsp;&nbsp;
+
+强化<input type="checkbox" value="1" name="Improve" >&nbsp;&nbsp;
+
+先天道法<input type="checkbox" value="1" name="Potential" >&nbsp;&nbsp;
+
+军团商店<input type="checkbox" value="1" name="FactionShop" >&nbsp;&nbsp;
+
+加速齿轮检测<input type="checkbox" value="1" name="SpeededUPCheck">&nbsp;&nbsp;
+
+武将(缠绵、升级、出战)<input type="checkbox" value="1" name="General" >&nbsp;&nbsp;
+
+国战(查询与触发)<input type="checkbox" value="1" name="City" >&nbsp;&nbsp;
+
+遁甲(升级)<input type="checkbox" value="1" name="Fighters" >&nbsp;&nbsp;
+
+弓箭(升级)<input type="checkbox" value="1" name="Bow" >&nbsp;&nbsp;
+
+骑战兵器(升级)<input type="checkbox" value="1" name="RidingWeapon">&nbsp;&nbsp;
+      <br>
+       <br>
+<input type="button" class="btn-blue" value="提交" onClick="onSubmit()" />
+
+  </form>
+</fieldset>
+<fieldset>
+  <legend>热加载游戏数据</legend>
+  
+<form action="<!--{$ajax}-->" method="post" id="form1">
+<input type="hidden" name="updataType"  value="1"/>
+<input type="button" class="btn-blue" value="热加载游" onClick="onSubmitB()"/>
+</form>
+</fieldset>
+

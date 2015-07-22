@@ -1,0 +1,974 @@
+[ 2012-12-11T17:02:08+08:00 ] SQL:  RunTime:0.002196s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:02:08+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:02:08+08:00 ] SQL:  RunTime:0.000303s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:02:08+08:00 ] SQL:  RunTime:0.000196s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:02:08+08:00 ] SQL:  RunTime:0.002305s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-12-11T17:02:08+08:00 ] SQL:  RunTime:0.001643s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:02:08+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:02:09+08:00 ] SQL:  RunTime:0.228926s SQL = SELECT * FROM `cndw_player_faq` WHERE ( `lang_id` = 1 ) AND ( (`status` >= 0) AND (`status` <= 1)  ) AND ( `game_type_id` IN (1,2,3,5,6,7,9,8,24,1008,20,23) ) ORDER BY ratio desc LIMIT 20 
+[ 2012-12-11T17:02:09+08:00 ] SQL:  RunTime:0.017514s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:02:09+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:02:20+08:00 ] SQL:  RunTime:0.001685s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:02:20+08:00 ] SQL:  RunTime:0.002462s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:02:20+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:02:20+08:00 ] SQL:  RunTime:0.000334s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:02:20+08:00 ] SQL:  RunTime:0.000222s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:02:20+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:02:20+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:02:20+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:02:20+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:02:21+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:02:21+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:02:21+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:02:21+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:02:21+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:02:21+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:02:21+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:02:21+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:02:21+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:02:21+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:02:21+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:02:21+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:02:21+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:03:37+08:00 ] SQL:  RunTime:0.002192s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:03:37+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:03:37+08:00 ] SQL:  RunTime:0.000732s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:03:37+08:00 ] SQL:  RunTime:0.001285s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:03:37+08:00 ] SQL:  RunTime:0.002377s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-12-11T17:03:37+08:00 ] SQL:  RunTime:0.001810s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:03:37+08:00 ] SQL:  RunTime:0.001572s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:03:37+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:03:43+08:00 ] SQL:  RunTime:0.001641s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:03:43+08:00 ] SQL:  RunTime:0.003683s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:03:43+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:03:43+08:00 ] SQL:  RunTime:0.000445s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:03:43+08:00 ] SQL:  RunTime:0.000355s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:03:43+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:03:43+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:03:43+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:03:43+08:00 ] SQL:  RunTime:0.002073s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-12-11T17:03:43+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 51 行.
+[ 2012-12-11T17:03:43+08:00 ] SQL:  RunTime:0.032766s SQL = SELECT * FROM `cndw_player_faq` WHERE ( `game_type_id` = 1 ) AND ( `lang_id` = 1 ) ORDER BY ratio desc LIMIT 10 
+[ 2012-12-11T17:03:43+08:00 ] SQL:  RunTime:0.008244s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_player_faq` WHERE ( `game_type_id` = 1 ) AND ( `lang_id` = 1 ) LIMIT 1 
+[ 2012-12-11T17:03:43+08:00 ] SQL:  RunTime:0.001763s SQL = SHOW COLUMNS FROM cndw_player_kind_faq
+[ 2012-12-11T17:03:43+08:00 ] SQL:  RunTime:0.000468s SQL = SELECT * FROM `cndw_player_kind_faq` WHERE game_type_id=1 and lang_id=1 ORDER BY sort_id asc
+[ 2012-12-11T17:03:43+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:03:43+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:03:43+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:03:43+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:03:43+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:03:43+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:03:43+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:03:43+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:03:43+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:03:43+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:03:43+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:03:43+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:03:43+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:03:43+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:09:45+08:00 ] SQL:  RunTime:0.002153s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:09:45+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:09:45+08:00 ] SQL:  RunTime:0.000575s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:09:45+08:00 ] SQL:  RunTime:0.000271s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:09:45+08:00 ] SQL:  RunTime:0.001952s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-12-11T17:09:45+08:00 ] SQL:  RunTime:0.001628s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:09:45+08:00 ] SQL:  RunTime:0.001575s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:09:45+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:09:48+08:00 ] SQL:  RunTime:0.002343s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:09:48+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:09:48+08:00 ] SQL:  RunTime:0.000306s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:09:48+08:00 ] SQL:  RunTime:0.000198s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:09:48+08:00 ] SQL:  RunTime:0.001981s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-12-11T17:09:48+08:00 ] SQL:  RunTime:0.001613s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:09:48+08:00 ] SQL:  RunTime:0.001574s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:09:48+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:09:50+08:00 ] SQL:  RunTime:0.003683s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:09:50+08:00 ] SQL:  RunTime:0.003213s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:09:50+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:09:50+08:00 ] SQL:  RunTime:0.000316s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:09:50+08:00 ] SQL:  RunTime:0.000201s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:09:50+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:09:50+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:09:50+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:09:50+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:09:50+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:09:50+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:09:50+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:09:50+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:09:50+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:09:50+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:09:50+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:09:50+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:09:50+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:09:50+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:09:50+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:09:50+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:09:50+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:10:46+08:00 ] SQL:  RunTime:0.002184s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:10:46+08:00 ] SQL:  RunTime:0.002886s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:10:46+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:10:46+08:00 ] SQL:  RunTime:0.000420s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:10:46+08:00 ] SQL:  RunTime:0.000302s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:10:46+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:10:46+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:10:46+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:10:46+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:10:46+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:10:46+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:10:46+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:10:46+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:10:46+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:10:46+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:10:46+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:10:46+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:10:46+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:10:46+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:10:46+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:10:46+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:10:46+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 126 行.
+[ 2012-12-11T17:10:46+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:14:25+08:00 ] SQL:  RunTime:0.003166s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:14:25+08:00 ] SQL:  RunTime:0.002712s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:14:25+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:14:25+08:00 ] SQL:  RunTime:0.000308s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:14:25+08:00 ] SQL:  RunTime:0.000357s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:14:25+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:14:25+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:14:25+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:14:25+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:14:25+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:14:25+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:14:30+08:00 ] SQL:  RunTime:0.001931s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:14:30+08:00 ] SQL:  RunTime:0.002748s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:14:30+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:14:30+08:00 ] SQL:  RunTime:0.000310s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:14:30+08:00 ] SQL:  RunTime:0.000202s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:14:30+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:14:30+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:14:30+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:14:30+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:14:30+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:14:30+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:15:41+08:00 ] SQL:  RunTime:0.001835s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:15:41+08:00 ] SQL:  RunTime:0.001680s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Model\QuestionTypesModel.class.php:46) BaseAction.class.php 第 128 行.
+[ 2012-12-11T17:15:41+08:00 ] SQL:  RunTime:0.002293s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:15:41+08:00 ] SQL:  RunTime:0.000302s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:15:41+08:00 ] SQL:  RunTime:0.000201s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Model\QuestionTypesModel.class.php:46) ~runtime.php 第 2 行.
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Model\QuestionTypesModel.class.php:46) ~runtime.php 第 2 行.
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:15:41+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:16:50+08:00 ] SQL:  RunTime:0.001866s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:16:50+08:00 ] SQL:  RunTime:0.001850s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [8] Undefined index:  lang_id QuestionTypesModel.class.php 第 46 行.
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Model\QuestionTypesModel.class.php:46) BaseAction.class.php 第 128 行.
+[ 2012-12-11T17:16:50+08:00 ] SQL:  RunTime:0.004440s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:16:50+08:00 ] SQL:  RunTime:0.000434s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:16:50+08:00 ] SQL:  RunTime:0.000360s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Model\QuestionTypesModel.class.php:46) ~runtime.php 第 2 行.
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Model\QuestionTypesModel.class.php:46) ~runtime.php 第 2 行.
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:16:50+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:21:38+08:00 ] SQL:  RunTime:0.002804s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:21:38+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:21:38+08:00 ] SQL:  RunTime:0.000412s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:21:38+08:00 ] SQL:  RunTime:0.000294s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:21:38+08:00 ] SQL:  RunTime:0.003032s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-12-11T17:21:38+08:00 ] SQL:  RunTime:0.001763s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:21:38+08:00 ] SQL:  RunTime:0.001612s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:21:38+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:56:18+08:00 ] SQL:  RunTime:0.002639s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:56:18+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:56:18+08:00 ] SQL:  RunTime:0.000333s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:56:18+08:00 ] SQL:  RunTime:0.000202s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:56:18+08:00 ] SQL:  RunTime:0.002142s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-12-11T17:56:18+08:00 ] SQL:  RunTime:0.001996s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:56:18+08:00 ] SQL:  RunTime:0.001955s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:56:18+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:56:20+08:00 ] SQL:  RunTime:0.001903s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:56:20+08:00 ] SQL:  RunTime:0.002107s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:56:20+08:00 ] SQL:  RunTime:0.002752s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:56:20+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:56:20+08:00 ] SQL:  RunTime:0.000451s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:56:20+08:00 ] SQL:  RunTime:0.000229s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:56:20+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:56:20+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:56:20+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:56:20+08:00 ] SQL:  RunTime:0.002325s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-12-11T17:56:20+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 51 行.
+[ 2012-12-11T17:56:20+08:00 ] SQL:  RunTime:0.047456s SQL = SELECT * FROM `cndw_player_faq` WHERE ( `game_type_id` = 2 ) AND ( `lang_id` = 1 ) ORDER BY ratio desc LIMIT 10 
+[ 2012-12-11T17:56:20+08:00 ] SQL:  RunTime:0.007665s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_player_faq` WHERE ( `game_type_id` = 2 ) AND ( `lang_id` = 1 ) LIMIT 1 
+[ 2012-12-11T17:56:20+08:00 ] SQL:  RunTime:0.001998s SQL = SHOW COLUMNS FROM cndw_player_kind_faq
+[ 2012-12-11T17:56:20+08:00 ] SQL:  RunTime:0.000467s SQL = SELECT * FROM `cndw_player_kind_faq` WHERE game_type_id=2 and lang_id=1 ORDER BY sort_id asc
+[ 2012-12-11T17:56:21+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:56:21+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:56:21+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:56:35+08:00 ] SQL:  RunTime:0.001928s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:56:35+08:00 ] SQL:  RunTime:0.002938s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:56:35+08:00 ] SQL:  RunTime:0.002580s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:56:35+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:56:35+08:00 ] SQL:  RunTime:0.000611s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:56:35+08:00 ] SQL:  RunTime:0.000360s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:56:35+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:56:35+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:56:35+08:00 ] SQL:  RunTime:0.001974s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-12-11T17:56:35+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 51 行.
+[ 2012-12-11T17:56:35+08:00 ] SQL:  RunTime:0.000328s SQL = SELECT * FROM `cndw_player_faq` WHERE ( `game_type_id` = 5 ) AND ( `lang_id` = '10' ) ORDER BY ratio desc LIMIT 10 
+[ 2012-12-11T17:56:35+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:56:35+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:56:35+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:56:36+08:00 ] SQL:  RunTime:0.002008s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:56:36+08:00 ] SQL:  RunTime:0.002559s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:56:36+08:00 ] SQL:  RunTime:0.002313s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:56:36+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:56:36+08:00 ] SQL:  RunTime:0.000302s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:56:36+08:00 ] SQL:  RunTime:0.000200s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:56:36+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:56:36+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:56:36+08:00 ] SQL:  RunTime:0.001926s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-12-11T17:56:36+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 51 行.
+[ 2012-12-11T17:56:36+08:00 ] SQL:  RunTime:0.000308s SQL = SELECT * FROM `cndw_player_faq` WHERE ( `game_type_id` = 5 ) AND ( `lang_id` = '10' ) ORDER BY ratio desc LIMIT 10 
+[ 2012-12-11T17:56:36+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:56:36+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:56:36+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:56:37+08:00 ] SQL:  RunTime:0.001617s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:56:37+08:00 ] SQL:  RunTime:0.002275s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:56:37+08:00 ] SQL:  RunTime:0.002749s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:56:37+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:56:37+08:00 ] SQL:  RunTime:0.000400s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:56:37+08:00 ] SQL:  RunTime:0.000207s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:56:37+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:56:37+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:56:37+08:00 ] SQL:  RunTime:0.001948s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-12-11T17:56:37+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 51 行.
+[ 2012-12-11T17:56:37+08:00 ] SQL:  RunTime:0.000310s SQL = SELECT * FROM `cndw_player_faq` WHERE ( `game_type_id` = 5 ) AND ( `lang_id` = '10' ) ORDER BY ratio desc LIMIT 10 
+[ 2012-12-11T17:56:37+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:56:37+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:56:37+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:56:42+08:00 ] SQL:  RunTime:0.001653s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:56:42+08:00 ] SQL:  RunTime:0.001630s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:56:42+08:00 ] SQL:  RunTime:0.002270s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:56:42+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:56:42+08:00 ] SQL:  RunTime:0.000429s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:56:42+08:00 ] SQL:  RunTime:0.000374s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:56:42+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:56:42+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:56:42+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:56:42+08:00 ] SQL:  RunTime:0.002599s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-12-11T17:56:42+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 51 行.
+[ 2012-12-11T17:56:42+08:00 ] SQL:  RunTime:0.012393s SQL = SELECT * FROM `cndw_player_faq` WHERE ( `game_type_id` = 5 ) AND ( `lang_id` = 1 ) ORDER BY ratio desc LIMIT 10 
+[ 2012-12-11T17:56:42+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:56:42+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:56:42+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:56:48+08:00 ] SQL:  RunTime:0.001641s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:56:48+08:00 ] SQL:  RunTime:0.001636s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:56:48+08:00 ] SQL:  RunTime:0.002246s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:56:48+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:56:48+08:00 ] SQL:  RunTime:0.001372s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:56:48+08:00 ] SQL:  RunTime:0.000595s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:56:48+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:56:48+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:56:48+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:56:48+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:56:48+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:56:52+08:00 ] SQL:  RunTime:0.001636s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:56:52+08:00 ] SQL:  RunTime:0.001582s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:56:52+08:00 ] SQL:  RunTime:0.002286s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:56:52+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:56:52+08:00 ] SQL:  RunTime:0.000465s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:56:52+08:00 ] SQL:  RunTime:0.000339s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:56:52+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:56:52+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:56:52+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:56:52+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:56:52+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:56:52+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:57:22+08:00 ] SQL:  RunTime:0.001622s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:57:22+08:00 ] SQL:  RunTime:0.001583s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:57:22+08:00 ] SQL:  RunTime:0.002209s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:57:22+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:57:22+08:00 ] SQL:  RunTime:0.000303s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:57:22+08:00 ] SQL:  RunTime:0.000671s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:57:22+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:57:22+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:57:22+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:57:22+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:57:22+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:57:22+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:57:24+08:00 ] SQL:  RunTime:0.002546s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:57:24+08:00 ] SQL:  RunTime:0.001604s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:57:24+08:00 ] SQL:  RunTime:0.002233s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:57:24+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:57:24+08:00 ] SQL:  RunTime:0.000300s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:57:24+08:00 ] SQL:  RunTime:0.000199s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:57:24+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:57:24+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:57:24+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:57:24+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:57:24+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:57:24+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:57:25+08:00 ] SQL:  RunTime:0.001981s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:57:25+08:00 ] SQL:  RunTime:0.002267s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:57:25+08:00 ] SQL:  RunTime:0.002838s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:57:25+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:57:25+08:00 ] SQL:  RunTime:0.000464s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:57:25+08:00 ] SQL:  RunTime:0.000353s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:57:25+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:57:25+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:57:25+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:57:25+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:57:25+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:57:25+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:57:25+08:00 ] SQL:  RunTime:0.004966s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:57:25+08:00 ] SQL:  RunTime:0.002086s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:57:25+08:00 ] SQL:  RunTime:0.002936s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:57:25+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:57:25+08:00 ] SQL:  RunTime:0.000447s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:57:25+08:00 ] SQL:  RunTime:0.000301s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:57:25+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:57:25+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:57:25+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:57:25+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:57:25+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:57:25+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:57:31+08:00 ] SQL:  RunTime:0.001648s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:57:31+08:00 ] SQL:  RunTime:0.001726s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:57:31+08:00 ] SQL:  RunTime:0.002248s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:57:31+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:57:31+08:00 ] SQL:  RunTime:0.000562s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:57:31+08:00 ] SQL:  RunTime:0.000350s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:57:31+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:57:31+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:57:31+08:00 ] SQL:  RunTime:0.002486s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-12-11T17:57:31+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 51 行.
+[ 2012-12-11T17:57:31+08:00 ] SQL:  RunTime:0.002449s SQL = SELECT * FROM `cndw_player_faq` WHERE ( `kind_id` = 193 ) AND ( `game_type_id` = 5 ) AND ( `lang_id` = 1 ) ORDER BY ratio desc LIMIT 10 
+[ 2012-12-11T17:57:31+08:00 ] SQL:  RunTime:0.002200s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_player_faq` WHERE ( `kind_id` = 193 ) AND ( `game_type_id` = 5 ) AND ( `lang_id` = 1 ) LIMIT 1 
+[ 2012-12-11T17:57:31+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:57:31+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:57:31+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:57:50+08:00 ] SQL:  RunTime:0.018204s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:57:50+08:00 ] SQL:  RunTime:0.001610s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:57:50+08:00 ] SQL:  RunTime:0.002252s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:57:50+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:57:50+08:00 ] SQL:  RunTime:0.000304s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:57:50+08:00 ] SQL:  RunTime:0.000200s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:57:50+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:57:50+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:57:50+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:57:50+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Action\FaqAction.class.php:150) ~runtime.php 第 2 行.
+[ 2012-12-11T17:57:50+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Action\FaqAction.class.php:150) ~runtime.php 第 2 行.
+[ 2012-12-11T17:57:50+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:57:50+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:57:50+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:58:20+08:00 ] SQL:  RunTime:0.002812s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:58:20+08:00 ] SQL:  RunTime:0.002004s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:58:20+08:00 ] SQL:  RunTime:0.002126s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:58:20+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:58:20+08:00 ] SQL:  RunTime:0.000301s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:58:20+08:00 ] SQL:  RunTime:0.000201s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:58:20+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:58:20+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:58:20+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:58:21+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:58:21+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:58:21+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:58:21+08:00 ] SQL:  RunTime:0.001978s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:58:21+08:00 ] SQL:  RunTime:0.002065s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:58:21+08:00 ] SQL:  RunTime:0.002541s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:58:21+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:58:21+08:00 ] SQL:  RunTime:0.000394s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:58:21+08:00 ] SQL:  RunTime:0.000342s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:58:21+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:58:21+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:58:21+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:58:21+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:58:21+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:58:21+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:58:22+08:00 ] SQL:  RunTime:0.002150s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:58:22+08:00 ] SQL:  RunTime:0.001848s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:58:22+08:00 ] SQL:  RunTime:0.002185s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:58:22+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:58:22+08:00 ] SQL:  RunTime:0.000306s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:58:22+08:00 ] SQL:  RunTime:0.000202s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:58:22+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:58:22+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:58:22+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:58:22+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:58:22+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:58:22+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:58:23+08:00 ] SQL:  RunTime:0.001626s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:58:23+08:00 ] SQL:  RunTime:0.002755s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:58:23+08:00 ] SQL:  RunTime:0.002227s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:58:23+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:58:23+08:00 ] SQL:  RunTime:0.000303s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:58:23+08:00 ] SQL:  RunTime:0.000201s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:58:23+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:58:23+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:58:23+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:58:23+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:58:23+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:58:23+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:58:42+08:00 ] SQL:  RunTime:0.001677s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:58:42+08:00 ] SQL:  RunTime:0.001579s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:58:42+08:00 ] SQL:  RunTime:0.002425s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:58:42+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:58:42+08:00 ] SQL:  RunTime:0.000308s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:58:42+08:00 ] SQL:  RunTime:0.000201s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:58:42+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:58:42+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T17:58:42+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:58:42+08:00 ] SQL:  RunTime:0.001731s SQL = SHOW COLUMNS FROM cndw_player_kind_faq
+[ 2012-12-11T17:58:42+08:00 ] SQL:  RunTime:0.000300s SQL = SELECT * FROM `cndw_player_kind_faq` WHERE game_type_id=5 and lang_id=1 ORDER BY sort_id asc
+[ 2012-12-11T17:58:42+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Action\FaqAction.class.php:153) ~runtime.php 第 2 行.
+[ 2012-12-11T17:58:42+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Action\FaqAction.class.php:153) ~runtime.php 第 2 行.
+[ 2012-12-11T17:58:42+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:58:42+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:58:42+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:58:48+08:00 ] SQL:  RunTime:0.001644s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:58:48+08:00 ] SQL:  RunTime:0.001618s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:58:48+08:00 ] SQL:  RunTime:0.002215s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:58:48+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:58:48+08:00 ] SQL:  RunTime:0.000299s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:58:48+08:00 ] SQL:  RunTime:0.000199s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:58:48+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:58:48+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:58:48+08:00 ] SQL:  RunTime:0.003351s SQL = SHOW COLUMNS FROM cndw_player_kind_faq
+[ 2012-12-11T17:58:48+08:00 ] SQL:  RunTime:0.000457s SQL = SELECT * FROM `cndw_player_kind_faq` WHERE game_type_id=5 and lang_id=10 ORDER BY sort_id asc
+[ 2012-12-11T17:58:48+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Action\FaqAction.class.php:153) ~runtime.php 第 2 行.
+[ 2012-12-11T17:58:48+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Action\FaqAction.class.php:153) ~runtime.php 第 2 行.
+[ 2012-12-11T17:58:48+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:58:48+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:58:48+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:58:56+08:00 ] SQL:  RunTime:0.007683s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:58:56+08:00 ] SQL:  RunTime:0.001604s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:58:56+08:00 ] SQL:  RunTime:0.002236s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:58:56+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:58:56+08:00 ] SQL:  RunTime:0.000299s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:58:56+08:00 ] SQL:  RunTime:0.000200s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:58:56+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:58:56+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:58:56+08:00 ] SQL:  RunTime:0.002534s SQL = SHOW COLUMNS FROM cndw_player_kind_faq
+[ 2012-12-11T17:58:56+08:00 ] SQL:  RunTime:0.000304s SQL = SELECT * FROM `cndw_player_kind_faq` WHERE game_type_id=5 and lang_id=10 ORDER BY sort_id asc
+[ 2012-12-11T17:58:56+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Action\FaqAction.class.php:153) ~runtime.php 第 2 行.
+[ 2012-12-11T17:58:56+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Action\FaqAction.class.php:153) ~runtime.php 第 2 行.
+[ 2012-12-11T17:58:56+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:58:56+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:58:56+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:58:57+08:00 ] SQL:  RunTime:0.001894s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:58:57+08:00 ] SQL:  RunTime:0.001677s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:58:57+08:00 ] SQL:  RunTime:0.002239s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:58:57+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:58:57+08:00 ] SQL:  RunTime:0.000304s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:58:57+08:00 ] SQL:  RunTime:0.000199s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:58:57+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:58:57+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:58:57+08:00 ] SQL:  RunTime:0.001825s SQL = SHOW COLUMNS FROM cndw_player_kind_faq
+[ 2012-12-11T17:58:57+08:00 ] SQL:  RunTime:0.000287s SQL = SELECT * FROM `cndw_player_kind_faq` WHERE game_type_id=5 and lang_id=10 ORDER BY sort_id asc
+[ 2012-12-11T17:58:57+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Action\FaqAction.class.php:153) ~runtime.php 第 2 行.
+[ 2012-12-11T17:58:57+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Action\FaqAction.class.php:153) ~runtime.php 第 2 行.
+[ 2012-12-11T17:58:57+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:58:57+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:58:57+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:58:57+08:00 ] SQL:  RunTime:0.001685s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:58:57+08:00 ] SQL:  RunTime:0.001620s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:58:57+08:00 ] SQL:  RunTime:0.002165s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:58:57+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:58:57+08:00 ] SQL:  RunTime:0.000298s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:58:57+08:00 ] SQL:  RunTime:0.000200s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:58:57+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:58:57+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:58:57+08:00 ] SQL:  RunTime:0.001709s SQL = SHOW COLUMNS FROM cndw_player_kind_faq
+[ 2012-12-11T17:58:57+08:00 ] SQL:  RunTime:0.000283s SQL = SELECT * FROM `cndw_player_kind_faq` WHERE game_type_id=5 and lang_id=10 ORDER BY sort_id asc
+[ 2012-12-11T17:58:57+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Action\FaqAction.class.php:153) ~runtime.php 第 2 行.
+[ 2012-12-11T17:58:57+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Action\FaqAction.class.php:153) ~runtime.php 第 2 行.
+[ 2012-12-11T17:58:58+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:58:58+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:58:58+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:59:08+08:00 ] SQL:  RunTime:0.001629s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:59:08+08:00 ] SQL:  RunTime:0.001582s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:59:08+08:00 ] SQL:  RunTime:0.002789s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:59:08+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:59:08+08:00 ] SQL:  RunTime:0.000318s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:59:08+08:00 ] SQL:  RunTime:0.000202s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:59:08+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:59:08+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:59:08+08:00 ] SQL:  RunTime:0.001734s SQL = SHOW COLUMNS FROM cndw_player_kind_faq
+[ 2012-12-11T17:59:08+08:00 ] SQL:  RunTime:0.000281s SQL = SELECT * FROM `cndw_player_kind_faq` WHERE game_type_id=5 and lang_id=10 ORDER BY sort_id asc
+[ 2012-12-11T17:59:08+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:59:08+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:59:08+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:59:09+08:00 ] SQL:  RunTime:0.002042s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:59:09+08:00 ] SQL:  RunTime:0.001668s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:59:09+08:00 ] SQL:  RunTime:0.002224s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:59:09+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:59:09+08:00 ] SQL:  RunTime:0.000303s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:59:09+08:00 ] SQL:  RunTime:0.000199s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:59:09+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:59:09+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:59:09+08:00 ] SQL:  RunTime:0.001731s SQL = SHOW COLUMNS FROM cndw_player_kind_faq
+[ 2012-12-11T17:59:09+08:00 ] SQL:  RunTime:0.000280s SQL = SELECT * FROM `cndw_player_kind_faq` WHERE game_type_id=5 and lang_id=10 ORDER BY sort_id asc
+[ 2012-12-11T17:59:09+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:59:09+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:59:09+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T17:59:10+08:00 ] SQL:  RunTime:0.001646s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T17:59:10+08:00 ] SQL:  RunTime:0.001627s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T17:59:10+08:00 ] SQL:  RunTime:0.002269s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T17:59:10+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T17:59:10+08:00 ] SQL:  RunTime:0.000301s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T17:59:10+08:00 ] SQL:  RunTime:0.000199s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T17:59:10+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T17:59:10+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T17:59:10+08:00 ] SQL:  RunTime:0.001722s SQL = SHOW COLUMNS FROM cndw_player_kind_faq
+[ 2012-12-11T17:59:10+08:00 ] SQL:  RunTime:0.000285s SQL = SELECT * FROM `cndw_player_kind_faq` WHERE game_type_id=5 and lang_id=10 ORDER BY sort_id asc
+[ 2012-12-11T17:59:10+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T17:59:10+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T17:59:10+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T18:03:41+08:00 ] SQL:  RunTime:0.001677s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T18:03:41+08:00 ] SQL:  RunTime:0.001611s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T18:03:41+08:00 ] SQL:  RunTime:0.002080s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T18:03:41+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T18:03:41+08:00 ] SQL:  RunTime:0.000583s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T18:03:41+08:00 ] SQL:  RunTime:0.000359s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T18:03:41+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T18:03:41+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T18:03:41+08:00 ] SQL:  RunTime:0.001972s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-12-11T18:03:41+08:00 ] SQL:  RunTime:0.000276s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_player_faq` WHERE ( `game_type_id` = 5 ) AND ( `lang_id` = '10' ) LIMIT 1 
+[ 2012-12-11T18:03:41+08:00 ] SQL:  RunTime:0.001741s SQL = SHOW COLUMNS FROM cndw_player_kind_faq
+[ 2012-12-11T18:03:41+08:00 ] SQL:  RunTime:0.000279s SQL = SELECT * FROM `cndw_player_kind_faq` WHERE game_type_id=5 and lang_id=10 ORDER BY sort_id asc
+[ 2012-12-11T18:03:41+08:00 ] SQL:  RunTime:0.001809s SQL = SHOW COLUMNS FROM cndw_player_faq_keywords
+[ 2012-12-11T18:03:41+08:00 ] SQL:  RunTime:0.000186s SQL = SELECT * FROM `cndw_player_faq_keywords`
+[ 2012-12-11T18:03:41+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T18:03:41+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T18:03:41+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T18:03:42+08:00 ] SQL:  RunTime:0.001629s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T18:03:42+08:00 ] SQL:  RunTime:0.001561s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T18:03:42+08:00 ] SQL:  RunTime:0.002168s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T18:03:42+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T18:03:42+08:00 ] SQL:  RunTime:0.000302s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T18:03:42+08:00 ] SQL:  RunTime:0.000198s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T18:03:42+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T18:03:42+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T18:03:42+08:00 ] SQL:  RunTime:0.001702s SQL = SHOW COLUMNS FROM cndw_player_kind_faq
+[ 2012-12-11T18:03:42+08:00 ] SQL:  RunTime:0.000279s SQL = SELECT * FROM `cndw_player_kind_faq` WHERE game_type_id=5 and lang_id=10 ORDER BY sort_id asc
+[ 2012-12-11T18:03:42+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T18:03:42+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T18:03:42+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T18:03:43+08:00 ] SQL:  RunTime:0.001625s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T18:03:43+08:00 ] SQL:  RunTime:0.001574s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T18:03:43+08:00 ] SQL:  RunTime:0.002249s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T18:03:43+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T18:03:43+08:00 ] SQL:  RunTime:0.000307s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T18:03:43+08:00 ] SQL:  RunTime:0.000200s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T18:03:43+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T18:03:43+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T18:03:43+08:00 ] SQL:  RunTime:0.001719s SQL = SHOW COLUMNS FROM cndw_player_kind_faq
+[ 2012-12-11T18:03:43+08:00 ] SQL:  RunTime:0.000280s SQL = SELECT * FROM `cndw_player_kind_faq` WHERE game_type_id=5 and lang_id=10 ORDER BY sort_id asc
+[ 2012-12-11T18:03:43+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T18:03:43+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T18:03:43+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T18:03:43+08:00 ] SQL:  RunTime:0.044466s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T18:03:43+08:00 ] SQL:  RunTime:0.001693s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T18:03:43+08:00 ] SQL:  RunTime:0.002248s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T18:03:43+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T18:03:43+08:00 ] SQL:  RunTime:0.000302s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T18:03:43+08:00 ] SQL:  RunTime:0.000201s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T18:03:43+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T18:03:43+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T18:03:43+08:00 ] SQL:  RunTime:0.002125s SQL = SHOW COLUMNS FROM cndw_player_kind_faq
+[ 2012-12-11T18:03:43+08:00 ] SQL:  RunTime:0.000300s SQL = SELECT * FROM `cndw_player_kind_faq` WHERE game_type_id=5 and lang_id=10 ORDER BY sort_id asc
+[ 2012-12-11T18:03:43+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T18:03:43+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T18:03:43+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T18:03:44+08:00 ] SQL:  RunTime:0.002274s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T18:03:44+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T18:03:44+08:00 ] SQL:  RunTime:0.000304s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T18:03:44+08:00 ] SQL:  RunTime:0.000354s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T18:03:44+08:00 ] SQL:  RunTime:0.002642s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-12-11T18:03:44+08:00 ] SQL:  RunTime:0.002114s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T18:03:44+08:00 ] SQL:  RunTime:0.001643s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T18:03:44+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T18:12:26+08:00 ] SQL:  RunTime:0.003107s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T18:12:26+08:00 ] SQL:  RunTime:0.007886s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T18:12:26+08:00 ] SQL:  RunTime:0.003309s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T18:12:26+08:00 ] SQL:  RunTime:0.000585s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T18:12:26+08:00 ] SQL:  RunTime:0.000375s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:26+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T18:12:27+08:00 ] SQL:  RunTime:0.001637s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T18:12:27+08:00 ] SQL:  RunTime:0.001582s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T18:12:27+08:00 ] SQL:  RunTime:0.002114s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T18:12:27+08:00 ] SQL:  RunTime:0.000296s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T18:12:27+08:00 ] SQL:  RunTime:0.000199s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T18:12:27+08:00 ] SQL:  RunTime:0.003807s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 51 行.
+[ 2012-12-11T18:12:27+08:00 ] SQL:  RunTime:0.001044s SQL = SELECT * FROM `cndw_player_faq` WHERE ( `kind_id` = 33 ) AND ( `game_type_id` = 2 ) AND ( `lang_id` = 1 ) ORDER BY ratio desc LIMIT 10 
+[ 2012-12-11T18:12:27+08:00 ] SQL:  RunTime:0.000818s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_player_faq` WHERE ( `kind_id` = 33 ) AND ( `game_type_id` = 2 ) AND ( `lang_id` = 1 ) LIMIT 1 
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:12:27+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T18:30:28+08:00 ] SQL:  RunTime:0.003148s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T18:30:28+08:00 ] SQL:  RunTime:0.001864s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T18:30:28+08:00 ] SQL:  RunTime:0.002353s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T18:30:28+08:00 ] SQL:  RunTime:0.000316s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T18:30:28+08:00 ] SQL:  RunTime:0.000203s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined variable: value FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:28+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T18:30:30+08:00 ] SQL:  RunTime:0.001638s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T18:30:30+08:00 ] SQL:  RunTime:0.001577s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T18:30:30+08:00 ] SQL:  RunTime:0.003113s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T18:30:30+08:00 ] SQL:  RunTime:0.000316s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T18:30:30+08:00 ] SQL:  RunTime:0.000201s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined variable: value FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 160 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined index:  lang_id 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:30:30+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T18:32:02+08:00 ] SQL:  RunTime:0.001638s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T18:32:02+08:00 ] SQL:  RunTime:0.001634s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T18:32:02+08:00 ] SQL:  RunTime:0.003205s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T18:32:02+08:00 ] SQL:  RunTime:0.000357s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T18:32:02+08:00 ] SQL:  RunTime:0.000225s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined variable: value FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:02+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T18:32:07+08:00 ] SQL:  RunTime:0.001614s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T18:32:07+08:00 ] SQL:  RunTime:0.001622s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T18:32:07+08:00 ] SQL:  RunTime:0.003946s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T18:32:07+08:00 ] SQL:  RunTime:0.000503s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T18:32:07+08:00 ] SQL:  RunTime:0.000221s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined variable: value FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:07+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T18:32:08+08:00 ] SQL:  RunTime:0.001638s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T18:32:08+08:00 ] SQL:  RunTime:0.001622s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T18:32:08+08:00 ] SQL:  RunTime:0.002220s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T18:32:08+08:00 ] SQL:  RunTime:0.000300s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T18:32:08+08:00 ] SQL:  RunTime:0.000197s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined variable: value FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:08+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T18:32:19+08:00 ] SQL:  RunTime:0.001890s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T18:32:19+08:00 ] SQL:  RunTime:0.001918s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T18:32:19+08:00 ] SQL:  RunTime:0.003869s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T18:32:19+08:00 ] SQL:  RunTime:0.000500s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T18:32:19+08:00 ] SQL:  RunTime:0.000291s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [8] Undefined variable: value FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T18:32:19+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T18:32:23+08:00 ] SQL:  RunTime:0.001633s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T18:32:23+08:00 ] SQL:  RunTime:0.001608s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T18:32:23+08:00 ] SQL:  RunTime:0.002227s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T18:32:23+08:00 ] SQL:  RunTime:0.000298s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T18:32:23+08:00 ] SQL:  RunTime:0.000198s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined variable: value FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  Id FaqAction.class.php 第 161 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:32:23+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T18:33:32+08:00 ] SQL:  RunTime:0.001649s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T18:33:32+08:00 ] SQL:  RunTime:0.001582s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T18:33:32+08:00 ] SQL:  RunTime:0.002231s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T18:33:32+08:00 ] SQL:  RunTime:0.000302s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T18:33:32+08:00 ] SQL:  RunTime:0.000197s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [8] Undefined index:  lang_id FaqAction.class.php 第 44 行.
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [8] Undefined index:  ask_url 972c8cf98e4871a830fafeb7278fd4ae.php 第 136 行.
+[ 2012-12-11T18:33:32+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-12-11T18:33:43+08:00 ] SQL:  RunTime:0.001641s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-12-11T18:33:43+08:00 ] SQL:  RunTime:0.001751s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-12-11T18:33:43+08:00 ] SQL:  RunTime:0.002234s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-12-11T18:33:43+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-12-11T18:33:43+08:00 ] SQL:  RunTime:0.000302s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-12-11T18:33:43+08:00 ] SQL:  RunTime:0.000196s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = 'jt00101@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-12-11T18:33:43+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-12-11T18:33:43+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-12-11T18:33:43+08:00 ] SQL:  RunTime:0.001953s SQL = SHOW COLUMNS FROM cndw_player_kind_faq
+[ 2012-12-11T18:33:43+08:00 ] SQL:  RunTime:0.000545s SQL = SELECT * FROM `cndw_player_kind_faq` WHERE game_type_id=5 and lang_id=10 ORDER BY sort_id asc
+[ 2012-12-11T18:33:43+08:00 ] NOTIC: [2] Invalid argument supplied for foreach() FaqAction.class.php 第 154 行.
+[ 2012-12-11T18:33:43+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-12-11T18:33:43+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-12-11T18:33:43+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.

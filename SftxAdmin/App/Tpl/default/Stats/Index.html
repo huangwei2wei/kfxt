@@ -1,0 +1,200 @@
+<fieldset>
+<legend>统计搜索</legend>
+<form action="<!--{$url.Stats_Index}-->" method="post">
+<table width="98%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">日期</th>
+    <td>
+        统计：<input type="text" class="text" name="start_date_first" value="<!--{$selectedTime.start_date_first}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/> 至
+        	 <input type="text" class="text" name="start_date_last" value="<!--{$selectedTime.start_date_last}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+             ---
+        环比：<input type="text" class="text" name="end_date_first" value="<!--{$selectedTime.end_date_first}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/> 至
+        	 <input type="text" class="text" name="end_date_last" value="<!--{$selectedTime.end_date_last}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+    </td>
+  </tr>
+  <tr>
+    <th width="15%" scope="row">游戏类型</th>
+    <td id="gameTypeList"><!--{html_radios name="game_type_id" selected=$selectedGameTypeId onclick="displayOperator($(this).val())" options=$gameTypeList separator="&nbsp;"}--></td>
+  </tr>
+  <tr>
+    <th width="20%" scope="row">运营商</th>
+    <td id="operatorList">
+    	<!--{html_checkboxes name="operator_id" options=$selectedOperatorList selected=$selectedOperatorIds}-->
+    </td>
+    
+  </tr>
+  <tr>
+    <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="统计" /></th>
+  </tr>
+</table>
+</form>
+</fieldset>
+
+<!--{if $displayTrue}-->
+<fieldset>
+<legend>统计对比</legend>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">统计项目</th>
+    <th scope="col">细分</th>
+    <th scope="col">(<!--{$selectedTime.start_date_first}-->)至(<!--{$selectedTime.start_date_last}-->)</th>
+    <th scope="col">(<!--{$selectedTime.end_date_first}-->)至(<!--{$selectedTime.end_date_last}-->)</th>
+    <th scope="col">环比</th>
+  </tr>
+  <tr>
+    <th rowspan="5" scope="col">工单量</th>
+    <th scope="col">总工单量</th>
+    <td scope="col"><!--{$startTotal.total|intval}--></td>
+    <td scope="col"><!--{$endTotal.total|intval}--></td>
+    <td scope="col"><!--{$linkRelative.total|floatval}--></td>
+  </tr>
+  <tr>
+    <th scope="col">未评价工单</th>
+    <td scope="col"><!--{$startTotal.ev.0|intval}--></td>
+    <td scope="col"><!--{$endTotal.ev.0|intval}--></td>
+    <td scope="col"><!--{$linkRelative.ev.0|floatval}--></td>
+  </tr>
+  <tr>
+    <th scope="col">好评工单</th>
+    <td scope="col"><!--{$startTotal.ev.1|intval}--></td>
+    <td scope="col"><!--{$endTotal.ev.1|intval}--></td>
+    <td scope="col"><!--{$linkRelative.ev.1|floatval}--></td>
+  </tr>
+  <tr>
+    <th scope="col">中评工单</th>
+    <td scope="col"><!--{$startTotal.ev.2|intval}--></td>
+    <td scope="col"><!--{$endTotal.ev.2|intval}--></td>
+    <td scope="col"><!--{$linkRelative.ev.2|floatval}--></td>
+  </tr>
+  <tr>
+    <th scope="col">差评工单</th>
+    <td scope="col"><!--{$startTotal.ev.3|intval}--></td>
+    <td scope="col"><!--{$endTotal.ev.3|intval}--></td>
+    <td scope="col"><!--{$linkRelative.ev.3|floatval}--></td>
+  </tr>
+  <tr>
+    <th rowspan="5" scope="row">回复量</th>
+    <th scope="row">总回复量</th>
+    <td><!--{$startTotal.reply_total|intval}--></td>
+    <td><!--{$endTotal.reply_total|intval}--></td>
+    <td><!--{$linkRelative.reply_total|floatval}--></td>
+  </tr>
+  <tr>
+    <th scope="row">超时回复</th>
+    <td><!--{$startTotal.timeout_num|intval}--></td>
+    <td><!--{$endTotal.timeout_num|intval}--></td>
+    <td><!--{$linkRelative.timeout_num|floatval}--></td>
+  </tr>
+  <tr>
+    <th scope="row">未超时回复</th>
+    <td><!--{$startTotal.no_timeout_num|intval}--></td>
+    <td><!--{$endTotal.no_timeout_num|intval}--></td>
+    <td><!--{$linkRelative.no_timeout_num|floatval}--></td>
+  </tr>
+  <tr>
+    <th scope="row">被质检回复</th>
+    <td><!--{$startTotal.quality_num|intval}--></td>
+    <td><!--{$endTotal.quality_num|intval}--></td>
+    <td><!--{$linkRelative.quality_num|floatval}--></td>
+  </tr>
+  <tr>
+    <th scope="row">未质检回复</th>
+    <td><!--{$startTotal.no_quality_num|intval}--></td>
+    <td><!--{$endTotal.no_quality_num|intval}--></td>
+    <td><!--{$linkRelative.no_quality_num|floatval}--></td>
+  </tr>
+  <tr>
+    <th rowspan="5" scope="row">质检状态</th>
+    <th scope="row">未申诉</th>
+    <td><!--{$startTotal.status_num.1|intval}--></td>
+    <td><!--{$endTotal.status_num.1|intval}--></td>
+    <td><!--{$linkRelative.status_num.1|floatval}--></td>
+  </tr>
+  <tr>
+    <th scope="row">已申诉</th>
+    <td><!--{$startTotal.status_num.2|intval}--></td>
+    <td><!--{$endTotal.status_num.2|intval}--></td>
+    <td><!--{$linkRelative.status_num.2|floatval}--></td>
+  </tr>
+  <tr>
+    <th scope="row">申诉成功</th>
+    <td><!--{$startTotal.status_num.3|intval}--></td>
+    <td><!--{$endTotal.status_num.3|intval}--></td>
+    <td><!--{$linkRelative.status_num.3|floatval}--></td>
+  </tr>
+  <tr>
+    <th scope="row">申诉失败</th>
+    <td><!--{$startTotal.status_num.4|intval}--></td>
+    <td><!--{$endTotal.status_num.4|intval}--></td>
+    <td><!--{$linkRelative.status_num.4|floatval}--></td>
+  </tr>
+  <tr>
+    <th scope="row">同意质检</th>
+    <td><!--{$startTotal.status_num.5|intval}--></td>
+    <td><!--{$endTotal.status_num.5|intval}--></td>
+    <td><!--{$linkRelative.status_num.5|floatval}--></td>
+  </tr>
+  <tr>
+    <th rowspan="8" scope="row">质检类型</th>
+    <th scope="row">对</th>
+    <td><!--{$startTotal.option_num.1|intval}--></td>
+    <td><!--{$endTotal.option_num.1|intval}--></td>
+    <td><!--{$linkRelative.option_num.1|floatval}--></td>
+  </tr>
+  <tr>
+    <th scope="row">推荐</th>
+    <td><!--{$startTotal.option_num.2|intval}--></td>
+    <td><!--{$endTotal.option_num.2|intval}--></td>
+    <td><!--{$linkRelative.option_num.2|floatval}--></td>
+  </tr>
+  <tr>
+    <th scope="row">错字</th>
+    <td><!--{$startTotal.option_num.3|intval}--></td>
+    <td><!--{$endTotal.option_num.3|intval}--></td>
+    <td><!--{$linkRelative.option_num.3|floatval}--></td>
+  </tr>
+  <tr>
+    <th scope="row">内容不完整</th>
+    <td><!--{$startTotal.option_num.4|intval}--></td>
+    <td><!--{$endTotal.option_num.4|intval}--></td>
+    <td><!--{$linkRelative.option_num.4|floatval}--></td>
+  </tr>
+  <tr>
+    <th scope="row">内容不清晰</th>
+    <td><!--{$startTotal.option_num.5|intval}--></td>
+    <td><!--{$endTotal.option_num.5|intval}--></td>
+    <td><!--{$linkRelative.option_num.5|floatval}--></td>
+  </tr>
+  <tr>
+    <th scope="row">内容错误</th>
+    <td><!--{$startTotal.option_num.6|intval}--></td>
+    <td><!--{$endTotal.option_num.6|intval}--></td>
+    <td><!--{$linkRelative.option_num.6|floatval}--></td>
+  </tr>
+  <tr>
+    <th scope="row">建议优化</th>
+    <td><!--{$startTotal.option_num.7|intval}--></td>
+    <td><!--{$endTotal.option_num.7|intval}--></td>
+    <td><!--{$linkRelative.option_num.7|floatval}--></td>
+  </tr>
+  <tr>
+    <th scope="row">其它</th>
+    <td><!--{$startTotal.option_num.8|intval}--></td>
+    <td><!--{$endTotal.option_num.8|intval}--></td>
+    <td><!--{$linkRelative.option_num.8|floatval}--></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">加分</th>
+    <td><!--{$startTotal.deduction|intval}--></td>
+    <td><!--{$endTotal.deduction|intval}--></td>
+    <td><!--{$linkRelative.deduction|floatval}--></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">扣分</th>
+    <td><!--{$startTotal.bonus|intval}--></td>
+    <td><!--{$endTotal.bonus|intval}--></td>
+    <td><!--{$linkRelative.bonus|floatval}--></td>
+  </tr>
+</table>
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,71 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$("#form :checkbox").attr("checked",curCheck);
+	 });
+});
+function serverSyn(curBtn){
+	$("#form").attr('action',curBtn.attr("url"));
+	$("#form").submit();
+}
+</script>
+<fieldset>
+<legend><!--{'3445B0BF2BC17EEDF1BC0C1C9378CD67'|lang}--></legend>
+<form id="form" action="<!--{$url.MasterFRG_Libao_del}-->" method="post" id="form" onsubmit="return checksub();">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col" nowrap="nowrap">Id</th>
+        <th scope="col"><!--{'32C65D8D7431E76029678EC7BB73A5AB'|lang}--></th>
+        <th scope="col"><!--{'3BDD08ADAB6EA90B9164B20A0E4151AC'|lang}--></th>
+        
+        <th scope="col" nowrap="nowrap"><!--{'B3C9BAEE41106A819D0D83019DEA492F'|lang}--></th>
+        <th scope="col" nowrap="nowrap"><!--{'410BEC7C9DDE2F997C4A32A15ED16818'|lang}--></th>
+        <th scope="col" nowrap="nowrap"><!--{'7843A010B88722EA1E1F8EADE85711DB'|lang}--></th>
+        
+        <th scope="col" nowrap="nowrap"><!--{'20DEF7942674282277C3714ED7EA6CE0'|lang}--></th>
+        <th scope="col" nowrap="nowrap"><!--{'3BC4C876A9DC5000637FF6473E91D7C7'|lang}--></th>
+        <th scope="col" nowrap="nowrap"><!--{'D99BD99F26E541485404E1B5492A2610'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td nowrap="nowrap">
+        	<input type="checkbox" name="Id[<!--{$list.Id}-->]" value="<!--{$list.Id}-->" />
+            <input type="hidden" name="card_name[<!--{$list.Id}-->]" value="<!--{$list.CardName}-->" />
+            <!--{$list.Id}-->
+        </td>
+        <td nowrap="nowrap"><a href="<!--{$list.url_edit}-->"><!--{$list.CardName}--></a></td>
+        <td title="<!--{$list.CardDescribe}-->"><!--{$list.CardDescribe}--></td>
+        
+        <td nowrap="nowrap"><!--{$list.CardRegular}--></td>
+        <td nowrap="nowrap"><!--{$list.CardCheckLink}--></td>
+        <td nowrap="nowrap"><!--{$list.CardEName}--></td>
+        
+        <td nowrap="nowrap"><!--{$list.img}--></td>
+        <td nowrap="nowrap"><!--{$list.word_active}--></td>
+        <td nowrap="nowrap"><!--{$list.word_disrepeat}--></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="6"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="6">
+        	<input type="checkbox" id="allcheck" /><!--{'66EEACD93A7C1BDA93906FE908AD11A0'|lang}--> 
+        	<input type="submit" class="btn-blue" onclick="return confirm('<!--{'187D1FE0248DC951304185D455EC5437'|lang}-->?')" value="<!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}-->" />
+            <input type="button" class="btn-blue" url="<!--{$url.OperationFRG_Libao_serverSyn}-->" onClick="serverSyn($(this))" value="<!--{'2B169B728C2ABF6191775B3657B61040'|lang}-->" />
+            <input type="button" class="btn-blue" url="<!--{$url.OperationFRG_Libao_syncard}-->" onClick="serverSyn($(this))" value="<!--{'28988EBA4065F946421B7D28617B41B1'|lang}-->" />
+        </td>
+      </tr>
+    </table>
+</form>
+<div align="right"><!--{$pageBox}--></div>
+</fieldset>
+<!--{/if}-->

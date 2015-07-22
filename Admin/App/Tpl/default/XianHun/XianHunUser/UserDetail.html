@@ -1,0 +1,99 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+
+<fieldset>
+  <legend>用户详细查询</legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+	<input type="hidden" name="c" value="XianHunUser">
+    <input type="hidden" name="a" value="UserDetail">
+	<input type="hidden" name="zp" value="XianHun">
+    用户Id：<input class="text" type="text" name="userId" value="<!--{$select.userId}-->">
+    账号：<input class="text" type="text" name="username" value="<!--{$select.username}-->">
+    昵称：<input class="text" type="text" name="nickname" value="<!--{$select.nickname}-->">
+    <input class="btn-blue" type="submit" value="查询">
+</form>
+
+
+<table width="100%" border="0" cellpadding="3">
+<!--{if $dataList}-->
+  <tr>
+    <th>用户Id</th>    
+    <td><!--{$dataList.userId}--></td>
+    <th>用户名</th>
+    <td><!--{$dataList.username}--></td>
+    <th>用户昵称</th>
+    <td><!--{$dataList.nickname}--></td>
+    <th>力量</th>    
+    <td><!--{$dataList.power}--></td>
+  </tr>
+  <tr>
+    <th>敏捷</th>
+    <td><!--{$dataList.agile}--></td>
+    <th>智力</th>
+    <td><!--{$dataList.wit}--></td>
+    <th>耐力</th>    
+    <td><!--{$dataList.endurance}--></td>
+    <th>物理攻击上限</th>
+    <td><!--{$dataList.physicalStrengthMax}--></td>
+  </tr>
+  <tr>
+    <th>物理攻击下限</th>
+    <td><!--{$dataList.physicalStrengthMin}--></td>
+    <th>法术攻击上限</th>    
+    <td><!--{$dataList.magicStrengthMax}--></td>
+    <th>法术攻击下限</th>
+    <td><!--{$dataList.magicStrengthMin}--></td>
+    <th>物理防御</th>
+    <td><!--{$dataList.physicalDefense}--></td>
+  </tr>
+  <tr>
+    <th>物理吸收率</th>
+    <td><!--{$dataList.physicalDefenseR_float}--></td>
+    <th>法术防御</th>    
+    <td><!--{$dataList.magicDefense}--></td>
+    <th>法术吸收率</th>
+    <td><!--{$dataList.magicDefenseR_float}--></td>
+    <th>闪避</th>
+    <td><!--{$dataList.av}--></td>
+  </tr>
+  <tr>
+    <th>闪避率</th>
+    <td><!--{$dataList.avR_float}--></td>
+    <th>暴击</th>    
+    <td><!--{$dataList.vio}--></td>
+    <th>暴击率</th>
+    <td><!--{$dataList.vioR_float}--></td>
+    <th>韧性</th>
+    <td><!--{$dataList.tou}--></td>
+  </tr>
+  <tr>
+    <th>韧性率</th>
+    <td><!--{$dataList.touR_float}--></td>
+    <th>命中</th>
+    <td><!--{$dataList.aim}--></td>
+    <th>命中率</th>
+    <td><!--{$dataList.aimR_float}--></td>
+    <th>人物评分</th>    
+    <td><!--{$dataList.score}--></td>
+  </tr>
+<!--{elseif $ConnectErrorInfo}-->
+  <tr>
+    <th align="center"><font color="#FF0000"><!--{$ConnectErrorInfo}--></font></th>
+  </tr>
+<!--{else}-->
+  <tr>
+    <th align="center">查无数据</th>
+  </tr>
+<!--{/if}-->
+</table>
+
+
+
+</fieldset>
+<!--{/if}-->

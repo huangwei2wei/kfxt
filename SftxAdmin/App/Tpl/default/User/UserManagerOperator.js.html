@@ -1,0 +1,16 @@
+<script language="javascript">
+var gameOperatorIndex=eval(<!--{$gameOperatorIndex}-->);
+function displayOperator(gameTypeId){
+	var operator=$("#operatorList");
+	operator.empty();
+	$.each(gameOperatorIndex,function(i,n){
+		if(n.game_type_id==gameTypeId){
+			operator.append('<input type="checkbox" name=operator_id[] value='+n.operator_id+' />'+n.word_operator_id+'&nbsp;');
+		}
+	});
+}
+
+$(function(){
+	$("#gameTypeList :radio").first().click();
+});
+</script>

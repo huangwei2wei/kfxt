@@ -1,0 +1,62 @@
+<center>
+<a href="#">排序主菜单</a>
+<a href="<!--{$url.Menu_AddMain}-->">AddMainMenu</a>
+<a href="<!--{$url.Menu_AddChild}-->">AddChildMenu</a>
+<a href="<!--{$url.Menu_CreateCache}-->">CreateCache</a>
+<table width="98%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">主菜单/子菜单</th>
+    <th scope="col">描述</th>
+    <th scope="col">是否显示</th>
+    <th scope="col">排序 / 上级动作</th>
+    <th scope="col">操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  
+  <tr>
+    <th><!--{$list.value}--></th>
+    <th><!--{$list.name}--></th>
+    <td><!--{$list.word_status}--></td>
+    <td>
+    	<form action="<!--{$url.Menu_UpdateChild}-->" method="post">
+        	<input type="hidden" name="Id" value="<!--{$list.Id}-->" />
+            <input type="text" class="text" name="sort" value="<!--{$list.sort}-->" />
+            <input type="text" class="text" name="super_action" value="<!--{$list.super_action}-->" />
+            <input type="submit" class="btn-blue" value="更新"  />
+        </form>
+    </td>
+    <td>
+      <a href="<!--{$list.url_edit}-->">编辑</a>
+      <a href="<!--{$list.url_del}-->">删除</a>
+    </td>
+  </tr>
+  	  
+      <!--{foreach from=$list.actions item=childList}-->
+      <tr>
+      	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→<!--{$childList.value}--></td>
+        <td><!--{$childList.name}--></td>
+        <td><!--{$childList.word_status}--></td>
+        <td>
+        	<form action="<!--{$url.Menu_UpdateChild}-->" method="post">
+            	<input type="hidden" name="Id" value="<!--{$childList.Id}-->" />
+                <input type="text" class="text" name="sort" value="<!--{$childList.sort}-->" />
+                <input type="text" class="text" name="super_action" value="<!--{$childList.super_action}-->" />
+                <input type="submit" class="btn-blue" value="更新"  />
+            </form>
+        </td>
+        <td>
+            <a href="<!--{$childList.url_edit}-->">编辑</a>
+            <a href="<!--{$childList.url_del}-->">删除</a>
+        </td>
+      </tr>
+      <!--{/foreach}-->
+  
+  <!--{foreachelse}-->
+  <tr><th colspan="5"><!--{$noData}--></th></tr>
+  <!--{/foreach}-->
+  <tr>
+    <th colspan="5">&nbsp;</th>
+  </tr>
+</table>
+
+</center>

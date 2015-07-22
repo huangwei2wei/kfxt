@@ -1,0 +1,149 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<script type="text/javascript">
+function ajaxcheck(checkid){
+	$.ajax({
+
+		type: "get",
+
+		url: "<!--{$ajaxurl}-->&serverid=<!--{$serverid}-->&id="+checkid,
+
+		beforeSend: function(XMLHttpRequest){
+
+		//ShowLoading();
+		},
+		success: function(data, textStatus){
+		thisid	=	"checkfaq_"+checkid;
+		var ojb=eval("("+data+")");
+		if(ojb.status==1){
+			$('#'+thisid).after(ojb.data);
+			$('#'+thisid).remove();
+		}else{
+			alert(ojb.info);
+		}
+		
+		//document.getElementById(thisid).value="已检测";
+		//document.getElementById(thisid).disabled="disabled";
+		
+		},
+
+		complete: function(XMLHttpRequest, textStatus){
+
+
+		},
+		error: function(){
+
+
+		}
+		});
+}
+</script>
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<style>
+	.pamp li{
+		width:200px;display:inline-block; 
+	}
+	.here_td td { font-size: 12px;}
+</style>
+<script>
+	
+function showGood(id){
+	var obj = $('#good_'+id);
+	//alert(obj.css("display"));
+	if(obj.css("display") == "none"){
+		obj.show();
+	}else{
+		obj.hide();
+	}
+}
+	
+function delConfirm(){
+	if($.trim($('[name=cause]').val())==''){
+		alert('申请原因不能为空');
+		return false;
+	}
+	var itemsList = $('input[name^=delItems]');
+	var len = itemsList.length;	
+	for(var i=0;i<len;i++){
+		if(itemsList[i].type=='text' && parseInt(itemsList[i].value)<=0){
+			$('#'+itemsList[i].id).remove();
+			$('#'+itemsList[i].id+'Name').remove();
+		}
+	}
+	return true;
+}
+
+</script>
+
+<fieldset>
+  <legend><!--{$legend}--></legend>
+  
+<form id="getData" action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />  
+    用户Id：<input class="text" type="text" name="playerId" value="<!--{$_GET.playerId}-->">
+    账号：<input class="text" type="text" name="playerAccount" value="<!--{$_GET.playerAccount}-->">
+    昵称：<input class="text" type="text" name="playerNickname" value="<!--{$_GET.playerNickname}-->">
+    <input class="btn-blue" type="submit" value="查询">
+</form>
+
+<form id="getData" action="<!--{$ajaxurl}-->"  method="post">
+<input type="hidden" name="username" value="<!--{$username}-->"/>
+<table width="60%" border="0" cellpadding="3">
+
+  <tr>
+  	
+ 	<th>道具名</th>
+    <th>道具数</th>
+    <th>道具Id</th>
+    <th>是否回复</th>
+    
+  </tr>
+
+<!--{foreach from=$datalist item=list key=key}--> 
+  <tr class="here_td">
+  	
+  	<td style="font-weight:bolder">
+  	<input type="hidden" name='toolsname[<!--{$list.id}-->]' value='<!--{$list.toolsname}-->' />
+  	<input type="hidden" name='buycount[<!--{$list.id}-->]' value='<!--{$list.buycount|intval}-->' />
+  	<!--{$list.toolsname}--></td>
+    <td align="center"><!--{$list.buycount|intval}--></td>
+    
+    <td align="center"><!--{$list.id}--></td>
+    
+    <td align="center" id="checkfaq_<!--{$list.id}-->">
+    	<input type="checkbox" name='rec[]' value='<!--{$list.id}-->'/>
+    	
+    </td>
+    
+  </tr>
+<!--{foreachelse}-->
+  <tr>
+    <th colspan="5" align="center">查无数据</th>
+  </tr>
+<!--{/foreach}-->
+<tr>
+    <th colspan="5"	align='left' >
+    <div style="margin:10px;">原因:</div>
+<div style="margin:10px;"><textarea name="cause" style="width:500px; height:80px;"></textarea></div>
+    </th>
+  </tr>
+ <tr>
+  <td colspan="5"	align='left' >
+    <input type='submit' value='提交' class="btn-blue">
+    </td>
+  </tr>
+</table>
+</form>
+<!--  <div style="margin:10px;">邮件内容:</div>
+<div style="margin:10px;"><input type="text" class="text" name="titlecontent"/></div>
+<div style="margin:10px;">邮件内容:</div>
+<div style="margin:10px;"><textarea name="emailcontent" style="width:500px; height:80px;"></textarea></div>-->
+
+
+</fieldset>
+<!--{/if}-->

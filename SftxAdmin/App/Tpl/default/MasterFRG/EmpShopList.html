@@ -1,0 +1,201 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+function jumpUrl(url){
+	form=$("#form");
+	form.attr("action",url);
+	form.submit();
+}
+</script>
+<fieldset>
+	<legend>查询列表</legend>
+  <form action=""  method="get" onsubmit="return checksub();">
+        <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+        <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+        <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+        
+        <select name="Query[Items]">
+            <!--{html_options options=$data.Items selected=$data.Query.Items}-->
+        </select>
+    <input type="text" class="text" name="Query[start]" value="<!--{$data.Query.start}-->" />
+        
+        <select name="Query[TypeItems]">
+            <!--{html_options options=$data.TypeItem selected=$data.Query.TypeItems}-->
+        </select>
+    <input type="text" class="text" name="Query[end]" value="<!--{$data.Query.end}-->" />
+        
+        <select id="PageSize" name="PageSize"><!--{html_options options=$pageSize selected=$data.PageSize}--></select>
+        <input type="submit" class="btn-blue" name="submit" id="submit" value="查找">
+    </form>   
+    	<!--{if $data.Query.TypeItems==1}--><!--员工列表-->
+            <table width="100%" cellpadding="3">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">员工名称</th>
+                <th scope="col">员工呢称</th>
+                <th scope="col">年龄</th>
+                <th scope="col">性别</th>
+                <th scope="col">能力值</th>
+                <th scope="col">忠诚度</th>
+                <th scope="col">薪水</th>
+                <th scope="col">执行</th>
+                <th scope="col">管理</th>
+                <th scope="col">信心</th>
+                <th scope="col">天赋类型</th>
+                <th scope="col">天赋级别</th>
+                <th scope="col">职位</th>
+                <th scope="col">店铺名称</th>
+                <th scope="col">员工熟练度</th>
+                <th scope="col">是否删除</th>
+              </tr>
+              <!--{foreach from=$dataList item=list}-->
+              <tr>
+                <td><!--{$list.Id}--></td>
+                <td><!--{$list.Name}--></td>
+                <td><!--{$list.NickName}--></td>
+                <td><!--{$list.Age}--></td>
+                <td><!--{$list.Sex}--></td>
+                <td><!--{$list.Power}--></td>
+                <td><!--{$list.Fealty}--></td>
+                <td><!--{$list.Salary}--></td>
+                <td><!--{$list.Exec}--></td>
+                <td><!--{$list.Admin}--></td>
+                <td><!--{$list.Hope}--></td>
+                <td><!--{$list.DowerState}--></td>
+                <td><!--{$list.DowerLevel}--></td>
+                <td><!--{$list.Position}--></td>
+                <td><!--{$list.ShopName}--></td>
+                <td><!--{$list.SkillDegree}--></td>
+                <td><!--{$list.Deleted}--></td>
+              </tr>
+              <!--{foreachelse}-->
+              <tr>
+                <th colspan="17"><!--{$noData}--></th>
+              </tr>
+              <!--{/foreach}-->
+              <tr>
+                <td align="right" colspan="17"><!--{$pageBox}--></td>
+              </tr>
+            </table>
+        <!--{elseif $data.Query.TypeItems==2}--><!--店铺列表-->
+            <table width="100%" cellpadding="3">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">店铺名称</th>
+                <th scope="col">行业</th>
+                <th scope="col">规模等级</th>
+                <th scope="col">评价等级</th>
+                <th scope="col">店铺类型</th>
+                <th scope="col">当天收入</th>
+                <th scope="col">昨天收入</th>
+                <th scope="col">创建时间</th>
+                <th scope="col">员工数量</th>
+                <th scope="col">营业状态</th>
+                <th scope="col">销售的货物</th>
+                <th scope="col">工厂货物等级</th>
+                <th scope="col">员工时装加成</th>
+                <th scope="col">员工能力加成</th>
+                <th scope="col">员工经验加成</th>
+                <th scope="col">店长加成</th>
+                <th scope="col">营业模式加成</th>
+                <th scope="col">公司架构加成</th>
+                <th scope="col">店铺架构加成</th>
+              </tr>
+              <!--{foreach from=$dataList item=list}-->
+              <tr>
+                <td><!--{$list.Id}--></td>
+                <td><!--{$list.ShopName}--></td>
+                <td><!--{$list.IndustryId}--></td>
+                <td><!--{$list.Level}--></td>
+                <td><!--{$list.ShopTypeLevel}--></td>
+                <td><!--{$list.ShopTypeId}--></td>
+                <td><!--{$list.ShopIncomeBase}--></td>
+                <td><!--{$list.BaseIncome}--></td>
+                <td><!--{$list.ForCountIncome|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+                <td><!--{$list.EmployeeNums}--></td>
+                <td><!--{$list.OnBusiness}--></td>
+                <td><!--{$list.SaleGoods}--></td>
+                <td><!--{$list.FacGoodLevel}--></td>
+                <td><!--{$list.AddEmployeeFashion}--></td>
+                <td><!--{$list.AddEmployeePowerValue}--></td>
+                <td><!--{$list.AddEmployeeSkillValue}--></td>
+                <td><!--{$list.AddShopMasterValue}--></td>
+                <td><!--{$list.AddFloat}--></td>
+                <td><!--{$list.AddEmployeePosition}--></td>
+                <td><!--{$list.AddShopStrucPost}--></td>
+              </tr>
+              <!--{foreachelse}-->
+              <tr>
+                <th colspan="20"><!--{$noData}--></th>
+              </tr>
+              <!--{/foreach}-->
+              <tr>
+                <td align="right" colspan="20"><!--{$pageBox}--></td>
+              </tr>
+            </table>
+        <!--{elseif $data.Query.TypeItems==3}--><!--道具列表-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="3">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">被作用者UserId</th>
+                <th scope="col">道具Id</th>
+                <th scope="col">物品名称</th>
+                <th scope="col">道具英文名</th>
+                <th scope="col">数量</th>
+                <th scope="col">单价</th>
+                <th scope="col">总价</th>
+                <th scope="col">使用期限</th>
+                <th scope="col">购买时间</th>
+                <th scope="col">剩余使用次数</th>
+                <th scope="col">每个道具可使用次数</th>
+                <th scope="col">交易币类型</th>
+                <th scope="col">使用类型</th>
+                <th scope="col">实际支付购买的类型</th>
+                <th scope="col">所属交通工具类型</th>
+                <th scope="col">所属交通工具级别</th>
+                <th scope="col">所属交通工具载人数</th>
+                <th scope="col">道具来源</th>
+                <th scope="col">使用状态</th>
+                <th scope="col">是否删除</th>
+              </tr>
+              <!--{foreach from=$dataList item=list}-->
+              <tr>
+                <td><!--{$list.Id}--></td>
+                <td><!--{$list.ToUserId}--></td>
+                <td><!--{$list.toolsid}--></td>
+                <td><!--{$list.toolsname}--></td>
+                <td><!--{$list.toolename}--></td>
+                <td><!--{$list.buycount}--></td>
+                <td><!--{$list.BuySinglePrice}--></td>
+                <td><!--{$list.BuyTotalPrice}--></td>
+                <td><!--{$list.expireday}--></td>
+                <td><!--{$list.gettime}--></td>
+                <td><!--{$list.usefrequency}--></td>
+                <td><!--{$list.usertimes}--></td>
+                <td><!--{$list.moneytype}--></td>
+                <td><!--{$list.IsAuto}--></td>
+                <td><!--{$list.paytype}--></td>
+                <td><!--{$list.TrafficType}--></td>
+                <td><!--{$list.TrafficLevel}--></td>
+                <td><!--{$list.LoadedNum}--></td>
+                <td><!--{$list.gettype}--></td>
+                <td><!--{$list.UseMode}--></td>
+                <td><!--{$list.Deleted}--></td>
+              </tr>
+              <!--{foreachelse}-->
+              <tr>
+                <th colspan="21"><!--{$noData}--></th>
+              </tr>
+              <!--{/foreach}-->
+              <tr>
+                <td align="right" colspan="21"><!--{$pageBox}--></td>
+              </tr>
+            </table>
+    	<!--{/if}-->
+</fieldset>
+<!--{/if}-->

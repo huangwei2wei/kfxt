@@ -1,0 +1,33 @@
+<center>
+<form action="<!--{$url.Faq_PlayerEdit}-->" method="post">
+<input type="hidden" value="<!--{$gameType.Id}-->" name="game_type_id" />
+<input type="hidden" value="<!--{$kindList.Id}-->" name="kind_id" />
+<input type="hidden" value="<!--{$id}-->" name="Id" />
+<table width="80%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">所属游戏</th>
+    <td><!--{$gameType.name}--></td>
+  </tr>
+  <tr>
+    <th scope="row">问题类型</th>
+    <td><!--{$kindList.name}--></td>
+  </tr>
+  <tr>
+    <th scope="row">问题</th>
+    <td>
+    	<a href="javascript:void(0)" onclick="KE.create('question')">加载编辑器</a>
+        <a href="javascript:void(0)" onclick="KE.remove('question')">卸载编辑器</a><br />
+    	<textarea name="question" cols="70" rows="6" id="question"><!--{$faqList.question}--></textarea>
+    </td>
+  </tr>
+    <th scope="row">回答</th>
+    <td>
+    	<a href="javascript:void(0)" onclick="KE.create('answer')">加载编辑器</a>
+        <a href="javascript:void(0)" onclick="KE.remove('answer')">卸载编辑器</a><br />
+   		<textarea name="answer" cols="70" rows="12" id="answer"><!--{$faqList.answer}--></textarea>
+    </td>
+  </tr>
+  <tr><th colspan="2"><input type="submit" class="btn-blue" value="提交" /></th></tr>
+</table>
+</form>
+</center>

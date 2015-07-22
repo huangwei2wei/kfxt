@@ -1,0 +1,37 @@
+<fieldset>
+	<legend>增加职位</legend>
+    <form method="post" action="<!--{$url.ProgramUser_SetupAdd}-->">
+    	职位ID：<input type="text" class="text" name="Id" />
+        职位名称：<input type="text" class="text" name="name" />
+        <input type="submit" class="btn-blue" value="提交" />
+    </form>
+</fieldset>
+<fieldset>
+  <legend>用户职位设置</legend>
+  <form action="<!--{$url.ProgramUser_SetupEdit}-->" method="post">
+  <input type="hidden" name="doaction" value="edit" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col">职位ID</th>
+        <th scope="col">职位名称</th>
+        <th scope="col">操作</th>
+        <th scope="col">职位用户</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><input type="text" class="text" name="Id[]" value="<!--{$list.Id}-->" /></td>
+        <td><input type="text" class="text" name="name[]" value="<!--{$list.name}-->" /></td>
+        <td><a href="<!--{$list.url_del}-->">删除</a></td>
+        <td>
+        	<!--{foreach from=$list.users item=user}-->
+            	<!--{$user.nick_name}--> . 
+            <!--{/foreach}-->
+        </td>
+        </tr>
+      <!--{foreachelse}-->
+      <tr><th colspan="4"><!--{$noData}--></th></tr>
+      <!--{/foreach}-->
+      <tr><th colspan="4"><input type="submit" class="btn-blue" value="修改" /></th></tr>
+    </table>
+    </form>
+</fieldset>

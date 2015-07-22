@@ -1,0 +1,144 @@
+ <form action="" id="form" method="post">
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$(".view_server").one('click',function(){
+		var curHref=$(this);
+		$.getJSON(
+			curHref.attr("url"),
+			function(data){
+				if(data.status==1){
+					curHref.parent().parent().after('<tr id="'+curHref.attr("dialogId")+'"><td colspan="8" style="background:#0080C0; color:#FFF">'+data.data.servers+'</td></tr>');
+				}else{
+					alert('<!--{'C8BA5270618A061C14C8721DAC7B1BF1'|lang}-->!');
+				}
+			}
+		);
+	});
+	$(".view_server").click(function(){
+		var id=$(this).attr("dialogId");
+		$("#"+id).toggle();
+	})
+})
+
+function formSubmit(curBtn,subType){
+	var form=$("#form");
+	if(subType=='syn'){//<!--{'32AC152BE1911E9360047DCB0898CF70'|lang}-->
+		form.attr("action",curBtn.attr("url"));
+		form.attr("method","post");
+		form.submit();
+	}else{//<!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}-->
+		form.attr("action",curBtn.attr("url"));
+		form.attr("method","get");
+		form.submit();
+	}
+}
+</script>
+    <fieldset>
+        <legend><!--{'F659CED7C361932F7BCF1C2F2C39F669'|lang}--></legend>
+            <input type="hidden" name="c" value="HaiDaoOperation" />
+            <input type="hidden" name="a" value="Notice" />
+            <input type="hidden" name="zp" value="HaiDao" />
+            <input type="hidden" name="operator_id" id="operator_id" />
+            <!--{'592C59589144DDC68D05D528DA17DCDC'|lang}-->：<input type="text" class="text" name="start_time" value="<!--{if $selectedStartTime}--><!--{$selectedStartTime}--><!--{else}--><!--{$smarty.now|date_format:'%Y-%m-%d 00:00:00'}--><!--{/if}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+            <!--{'F782779E8B5D709462C8E71E0D9019F2'|lang}-->：<input type="text" class="text" name="end_time" value="<!--{if $selectedEndTime}--><!--{$selectedEndTime}--><!--{else}--><!--{$weekDay|date_format:'%Y-%m-%d 00:00:00'}--><!--{/if}-->" onFocus="WdatePicker({startDate:'<!--{$weekDay|date_format:'%Y'}-->-%M-<!--{$weekDay|date_format:'%d'}--> 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+            <!--{'26789BD6B3CCF401A00BA81C1DCC61AF'|lang}-->：<input name="content" type="text" class="text" value="<!--{$selectedContent}-->" size="40" />
+            <!--{'567FD606BDCCA9B91E2A3FD844C41C6C'|lang}-->：<input type="checkbox" value="1" name="is_group"  <!--{if $selectedGroupBy}-->checked="checked"<!--{/if}--> />
+            <input type="button" class="btn-blue" url="<!--{$url.OperationFRG_BatchNotice}-->" onClick="formSubmit($(this),'search')" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" />
+            <input type="button" class="btn-blue" url="<!--{$url.OperationFRG_SynNotice}-->" onClick="formSubmit($(this),'syn')" value="<!--{'E3C2C3FB9E77CB8E357C716DA889F660'|lang}-->" /><font color="#FF0000">(<!--{'233E6EC5D56AD3449FBFE96F93FC3FB0'|lang}-->，<!--{'61329126B1CE4BF9A3B5F4F8A6C99729'|lang}-->)</font>
+    </fieldset>
+</form>
+
+
+<fieldset id="list">
+  <legend><!--{'FD1FF1E1D700884C1D88DEC5CA794087'|lang}--></legend>
+  <a href="<!--{$url.OperationFRG_BatchNoticeAdd}-->"><!--{'E0D8AC33EBDDC12E874727B4F2D76FB0'|lang}--></a>
+  <form action="<!--{$url.OperationFRG_NoticeDel}-->" method="post" onSubmit="return confirm('<!--{'187D1FE0248DC951304185D455EC5437'|lang}-->?')">
+  	<!--{if $selectedGroupBy}-->
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col" nowrap="nowrap">Id</th>
+        <th scope="col" nowrap="nowrap"><!--{'8A86C2DCF49C070F1E59AB347BF52A89'|lang}--></th>
+        <th scope="col"><!--{'32C65D8D7431E76029678EC7BB73A5AB'|lang}--></th>
+        <th scope="col"><!--{'2D711B09BD0DB0AD240CC83B30DD8014'|lang}--></th>
+        <th scope="col" nowrap="nowrap">URL</th>
+        <th scope="col" nowrap="nowrap"><!--{'592C59589144DDC68D05D528DA17DCDC'|lang}--><br /><!--{'F782779E8B5D709462C8E71E0D9019F2'|lang}--></th>
+        <th scope="col" nowrap="nowrap"><!--{'FFC7ED1CD5288FF735A3C4A059125354'|lang}--><br /><!--{'E2AB2FB659C67136C69D104DCBFDCE5E'|lang}--></th>
+        <th scope="col" nowrap="nowrap"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td nowrap="nowrap">
+            <!--{$list.Id}-->
+            <input type="checkbox" name="title[]" value="<!--{$list.title}-->" />
+        </td>
+        <td nowrap="nowrap"><!--{$list.server_num}--></td>
+        <td><!--{$list.title}--></td>
+        <td title="<!--{$list.content}-->"><a href="<!--{$list.url_edit}-->"><!--{$list.content}--></a></td>
+        <td title="<!--{$list.url}-->"><!--{$list.url}--></td>
+        <td nowrap="nowrap"><!--{$list.start_time}--><br /><!--{$list.end_time}--></td>
+        <td nowrap="nowrap"><!--{$list.create_time}--><br /><font color="#FF0000"><!--{$list.interval_time}--></font></td>
+        <td nowrap="nowrap"><a url="<!--{$list.url_server_detail}-->" href="javascript:void(0)" class="view_server" dialogId="servers_<!--{$list.Id}-->"><!--{'F4BC18B5FAE0F0B95E63C1891DED9767'|lang}--></a></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="8"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="8">
+        	<input type="checkbox" id="allcheck"><!--{'66EEACD93A7C1BDA93906FE908AD11A0'|lang}--> 
+        	<input type="submit" class="btn-blue" value="<!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}-->" />
+        </td>
+      </tr>
+    </table>
+    <!--{else}-->
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col" nowrap="nowrap">Id</th>
+        <th scope="col" nowrap="nowrap"><!--{'C566CA59602C7C5C0D3FE5E18ADE447D'|lang}--></th>
+        <th scope="col"><!--{'32C65D8D7431E76029678EC7BB73A5AB'|lang}--></th>
+        <th scope="col"><!--{'2D711B09BD0DB0AD240CC83B30DD8014'|lang}--></th>
+        <th scope="col" nowrap="nowrap">URL</th>
+        <th scope="col" nowrap="nowrap"><!--{'592C59589144DDC68D05D528DA17DCDC'|lang}--><br />
+        <!--{'F782779E8B5D709462C8E71E0D9019F2'|lang}--></th>
+        <th scope="col" nowrap="nowrap"><!--{'FFC7ED1CD5288FF735A3C4A059125354'|lang}--><br />
+        <!--{'752FBDE16DE0D50BF3390F2F8C5C8CA0'|lang}--></th>
+        <th scope="col" nowrap="nowrap"><!--{'E2AB2FB659C67136C69D104DCBFDCE5E'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td nowrap="nowrap">
+            <input type="hidden" value="<!--{$list.main_id}-->" name="main_id[<!--{$list.Id}-->]" />
+            <input type="hidden" value="<!--{$list.server_id}-->" name="server_id[<!--{$list.Id}-->]" />
+            <!--{$list.Id}-->
+            <input type="checkbox" name="ids[<!--{$list.Id}-->]" value="<!--{$list.Id}-->" />
+        </td>
+        <td nowrap="nowrap"><!--{$list.word_server_id}--></td>
+        <td><a href="<!--{$list.url_edit}-->"><!--{$list.title}--></a></td>
+        <td title="<!--{$list.content}-->"><!--{$list.content}--></td>
+        <td title="<!--{$list.url}-->"><!--{$list.url}--></td>
+        <td nowrap="nowrap"><!--{$list.start_time}--><br /><!--{$list.end_time}--></td>
+        <td nowrap="nowrap"><!--{$list.create_time}--><br /><!--{$list.last_send_time}--></td>
+        <td nowrap="nowrap"><!--{$list.interval_time}--></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="8"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="8">
+        	<input type="checkbox" id="allcheck"><!--{'66EEACD93A7C1BDA93906FE908AD11A0'|lang}--> 
+        	<input type="submit" class="btn-blue" value="<!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}-->" />
+        </td>
+      </tr>
+    </table>
+    <!--{/if}-->
+  </form>
+  <div align="right"><!--{$pageBox}--></div>
+</fieldset>

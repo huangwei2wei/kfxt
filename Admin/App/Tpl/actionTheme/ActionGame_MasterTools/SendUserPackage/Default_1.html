@@ -1,0 +1,154 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<style>
+	.itemInput{width:35px;height:16px;border: 1px solid red;}
+</style>
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+	$(function(){
+		$('#pageSize').val('<!--{$_GET.pageSize}-->');
+	});
+</script>
+<script language="javascript">
+$(function(){
+    $.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+    $("#cause").formValidator({onshow:"请输入申请原因",oncorrect:"输入正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入申请原因"},onerror:"申请原因不能为空"});
+})
+
+//创建道具数量填写表单
+function makeInput(obj){
+	var itemId = obj.attr('item_Id');
+	var itemName = obj.attr('itemName');
+	var itemType = obj.attr('item_type');
+	var str = '';
+	if(obj.attr('checked')){
+		str = '<input type="text" value="" class="itemInput" name="itemNum['+itemId+']" onblur="itemCollectAdd(\''+itemId+'\',\''+itemName+'\',$(this).val())" >';
+		str +='<input type="hidden" name="itemName['+itemId+']" value="'+itemName+'">'; 
+		str +='<input type="hidden" name="itemType['+itemId+']" value="'+itemType+'">'; 
+		//str +='<label><input type="checkbox" value="1" name="is_reduce['+itemId+']">扣除</label>'; 
+		$('#input_'+itemId+'_'+itemType).html(str);
+		$('#input_'+itemId+'_'+itemType).children().focus();
+	}else{
+		$('#input_'+itemId+'_'+itemType).html('');
+	}
+}
+
+function itemCollectAdd(itemId,itemName,num){
+	if(itemId =='' || $.trim(num)=='')return false;
+	var itemsCollectId = 'itemsCollect'+itemId;
+	$('#'+itemsCollectId).remove();
+	num = parseInt(num);
+	if(num && num>0){
+		var str = '<div id="'+itemsCollectId+'" >'+itemName+'('+num+') <a href="javascript:itemCollectDel('+itemId+')">删除</a></div>';
+		$('#itemsCollect').append(str);
+	}else{
+		$('input[name=itemNum['+itemId+']]').val('');
+	}
+}
+function itemCollectDel(itemId){
+	if(itemId =='')return false;		
+	$('#checkboxItem'+itemId).attr('checked',false);
+	$('#input_'+itemId).html('');
+	$('#itemsCollect'+itemId).remove();
+}
+</script>
+<fieldset>
+  <legend>扣发道具<a href="<!--{$updatecache}-->">[更新道具属性]</a></legend>
+  
+<form action="<!--{$submitUrl}-->"  method="post" id="form">
+    <table width="100%" border="0" cellpadding="3">
+    	<tr>
+      	<th>邮件标题:</th>
+        <td>
+        	<input type="test" name="Title" id="Title">
+           <div id="titleTip" ></div>
+        </td>
+      </tr>
+      <tr>
+      	<th>邮件内容:</th>
+        <td>
+           <textarea rows="5" cols="50" name='Content' id='Content'></textarea>(邮件标题和邮件内容同时不为空才会发送邮件)
+           <div id="titleTip" ></div>
+        </td>
+      </tr>
+    	<tr>
+      	<th>原因:</th>
+        <td>
+           <textarea rows="5" cols="50" name='cause' id='cause'></textarea>
+           <div id="causeTip" ></div>
+        </td>
+      </tr>
+      <tr>
+      	<th>玩家ID:</th>
+        <td>
+        	<label>
+<input type="radio" value="0" name="userType">
+玩家ID
+</label>
+<label>
+<input type="radio" value="1" name="userType">
+玩家账号
+</label>
+<label>
+<input type="radio" checked="checked" value="2" name="userType">
+玩家昵称
+</label><br/>
+           <textarea rows="5" cols="50" name='Users' id='user_id'></textarea>
+           <div id="contentTip">玩家ID用","号隔开</div>
+        </td>
+      </tr>
+
+      <tr>
+      	<th></th>
+        <td>
+           <table width="100%" border="0" cellpadding="3">
+          <tr>
+          <!--{foreach from=$items item=list key=typeId name=foo}-->
+          	<!--{if $list}-->              
+            <td><!--<!--{$typeId}-->-->
+                <div style="background:white;margin:6px;font-size:14px;border:1px dashed silver;padding:5px;width:250px;">
+                    <div style="overflow:auto;height:200px; width:250px;text-align:left;">
+                        <!--{foreach from=$list item=itemName key=itemId}--> 
+                            <div style="font-size:13px; margin-top:4px;">
+                                <!--{$itemName}-->
+                                <input type="checkbox" onclick="makeInput($(this));" id="checkboxItem<!--{$itemId}-->" item_Id="<!--{$itemId}-->" item_type="<!--{$typeId}-->" itemName="<!--{$itemName}-->">
+                                <span id="input_<!--{$itemId}-->_<!--{$typeId}-->"></span>
+                            </div>
+                        <!--{/foreach}--> 
+                    </div>
+                </div>
+            </td>
+	            <!--{if $smarty.foreach.foo.index%3==2}--> 
+	                </tr><tr>
+	            <!--{/if}-->
+            <!--{/if}-->
+          <!--{/foreach}--> 
+
+          </tr>
+          
+        </table>
+         </td>   
+      </tr>
+      <tr>
+      <th>道具汇总</th>
+      <td  valign="top">
+        <div id="itemsCollect"></div>
+      </td>
+  </tr>
+	<tr>
+		<th colspan="2"><input class="btn-blue" type="submit" value="提交"></th>
+	</tr>
+    </table>
+</form>
+
+
+</fieldset>
+
+<!--{/if}-->

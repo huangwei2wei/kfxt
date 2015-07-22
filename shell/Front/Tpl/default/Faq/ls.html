@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>优玩网 - 常见问题</title>
+<include file="../common/libs"/>
+<script>
+$(function(){
+	$('#menu_faq').addClass('d');
+});
+</script>
+
+</head>
+
+<body>
+<div id="bg"><div id="bgtainer">
+	<div id="bgtai">
+		<include file="../common/head"/>
+		<div class="conner">
+			<div class="Personaleft">
+				<div class="servicepic">
+					<h3><img src="/Public/front/default/images/pic_02.jpg" /></h3>
+					<p><b>客服中心</b></p><p>欢迎您来到优玩客服！</p>
+				</div>
+				<div style="padding-bottom:15px;"><img src="/Public/front/default/images/button_11.gif" /></div>
+				<div class="peesonanav">
+					<ul>
+						<li><a href="/index.php?s=/Question/index">我要提问</a></li>
+						<li class="d"><a href="/index.php?s=/Faq/Index">常见问题</a></li>
+						<li><a href="/index.php?s=/Notice/">服务指引</a></li>
+						<li><a href="/index.php?s=/Notice/pay">充值指南</a></li>
+                        <li><a href="/index.php?s=/Notice/addicted">防沉迷系统</a></li>
+					</ul>
+				</div>
+				<div style="padding:15px 0;"><img src="/Public/front/default/images/button_11.gif" /></div>
+				<include file="../common/left"/>
+			</div>
+			<div class="personaquan">
+				<div class="pquantitle"><span>
+            <select onchange="window.location.href='{:U('Faq/ls/game_type_id/')}'+this.value;">
+            <volist name="faqKind" id="vo">
+              <option  value="{$vo.Id}" <if condition="$vo.Id eq $gameTypeId">selected="selected"</if>>{$vo.name}</option>
+             </volist> 
+            </select>
+	    </span>常见问题</div>
+					<div class="servicehaed">
+                        <volist name="types" id="vo">
+                            <b style=" padding-top:1px"><a href="{:U("Faq/ls/game_type_id/$gameTypeId/typeid/$vo[Id]")}">{$vo.name}</a></b>
+                        </volist>
+					</div>
+					<div class="serviceso">
+						<dl><dt><input type="text" class="bau" name="keyword" id="faqkeyword" value="{$keyword}" /></dt>
+                        <dd><a href="javascript:void(0);" id="search_button" onclick="searchFaq({$gameTypeId});"><img src="/Public/front/default/images/button_78.gif" /></a></dd></dl>
+						<p>热点关键字:
+                         <volist name="keywords" id="vo">
+                   			<a href="javascript:void(0)" onclick="$('#faqkeyword').val($(this).html());$('#search_button').click()" style="color:#fb8e00">{$vo}</a> 　 
+                		 </volist>
+                        </p>
+					</div>
+					<div class="servicerli">
+						<ul>
+                            <foreach name="faqList" item="vo">
+                            	<li><a href="{:U("/Faq/show/game_type_id/$gameTypeId/Id/$vo[Id]")}">{$vo.question|stripcslashes}</a></li>
+                            </foreach>
+						</ul>
+					</div>
+					<div class="link">{$page}</div>
+							</div>
+								</div>
+		<div class="connerbo"></div>
+						
+	</div>
+	<include file="../common/footer"/>	
+</div>
+</body>
+
+</html>

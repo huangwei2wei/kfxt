@@ -1,0 +1,149 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+</script>
+
+<fieldset>
+  <legend>用户查询</legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <!--
+    玩家ID:<input class="text" type="text" name="playerId" value="<!--{$_GET.playerId}-->">
+ -->  
+    玩家账号:<input class="text" type="text" name="accountName" value="<!--{$_GET.accountName}-->">
+    玩家昵称:<input class="text" type="text" name="playerName" value="<!--{$_GET.playerName}-->">
+<!--      <br>
+    注册时间:
+    <input class="text" type="text" name="regBeginTime" value="<!--{$_GET.regBeginTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    -
+    <input class="text" type="text" name="regEndTime" value="<!--{$_GET.regEndTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    
+    
+    登录时间:
+    <input class="text" type="text" name="loginBeginTime" value="<!--{$_GET.loginBeginTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    -
+    <input class="text" type="text" name="loginEndTime" value="<!--{$_GET.loginEndTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">-->
+    <input class="btn-blue" type="submit" name="sbm" value="查询">
+</form>
+
+<form action="" id="playerIdsForm" method="post">
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>选择</th>
+          <th>用户账号</th>
+          <th>玩家名称</th>
+          <th>性别:1男|0女</th>
+          <th>是否在线</th>
+          <th>当前金钱</th>
+          <th>当前钻石</th>
+          <th>当前原油</th>
+          <th>当前粮草</th>
+          <th>当前行动力</th>
+          <th>消费次数</th>
+          <th>消费金额</th>
+          <th>安装应用日期</th>
+          <th>安装应用IP</th>
+          <th>登陆次数</th>
+          <th>最近登陆日期</th>
+          <th>总在线时间长(毫秒)</th>
+          <th>最近在线时间长(毫秒)</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+          <td align="center"><input type="checkbox" name="playerIds[]" value="<!--{$list.playerId|default:'0'}-->"/></td>
+       	  <td align="center"><!--{$list.account|default:'0'}--></td>
+          <td align="center"><!--{$list.playerName|default:'<font color="#999999">无</font>'}--></td>
+          <td align="center"><!--{$list.sex}--></td>
+          <td align="center"><!--{$list.online}--></td>
+          <td align="center"><!--{$list.gold}--></td>
+          <td align="center"><!--{$list.diamond}--></td>
+          <td align="center"><!--{$list.roil}--></td>
+          <td align="center"><!--{$list.forage}--></td>
+          <td align="center"><!--{$list.energy}--></td>
+          <td align="center"><!--{$list.consumeCount}--></td>
+          
+          <td align="center"><!--{$list.consumeMoney}--></td>
+          <td align="center"><!--{$list.installAppDate}--></td>
+          <td align="center"><!--{$list.installAppIp}--></td>
+          <td align="center"><!--{$list.loginCount}--></td>
+          
+          <td align="center"><!--{$list.lastLoginDate}--></td>
+          <td align="center"><!--{$list.onlineTimeCount}--></td>
+          <td align="center"><!--{$list.lastOnlineTime}--></td>
+        </tr>
+    	<tr>
+    		<td colspan="18">
+    			<table width='50%'>
+    			<tr>
+          <th>道具ID</th>
+          <th>数量</th>
+          <th>名称</th>
+          </tr>
+          
+    		<!--{foreach from=$extDate item=dj}-->
+    		<tr>
+ 		<td align="center"><!--{$dj.goodsID}--></td>
+          <td align="center"><!--{$dj.number}--></td>
+          <td align="center"><!--{$dj.name}--></td>
+          </tr>
+    		<!--{/foreach}-->
+    		
+    		</table>
+    		</td>
+    	</tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="18" align="center">
+                <!--{if $_GET.submit}-->
+                查无数据
+                <!--{else}-->
+                <font color="#FF0000">请使用"查询"按钮</font>
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/foreach}-->
+          <tr>
+            <td colspan="18">
+            	<input type="checkbox" onClick="$('input[name=playerIds[]]').attr('checked',$(this).attr('checked'))">全选
+                <input type="hidden" name="fromPlayerList" value="1" />            	
+            	<!--  <input type="button" class="btn-blue" value="发邮件" onclick="jumpUrl('<!--{$ShortcutUrl.SendMail}-->');" />
+            	<input type="button" class="btn-blue" value="禁言" onclick="jumpUrl('<!--{$ShortcutUrl.SilenceAdd}-->');" />
+                <input type="button" class="btn-blue" value="封号" onclick="jumpUrl('<!--{$ShortcutUrl.LockAccountAdd}-->');" />
+                <input type="button" class="btn-blue" value="扣点" onclick="jumpUrl('<!--{$ShortcutUrl.PointDel}-->');" />
+            -->
+            </td>
+          </tr>
+          <tr>
+            <th colspan="18" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+</form>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

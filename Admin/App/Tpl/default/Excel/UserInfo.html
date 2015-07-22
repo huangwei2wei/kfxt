@@ -1,0 +1,26 @@
+    <table width="100%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <th>玩家Id</th>
+        <th>账号</th>
+        <th>昵称</th>
+        <th>公司名</th>
+        <th>公司等级</th>
+        <th>座驾等级</th>
+        <th>充值总额</th>
+        <th>注册时间</th>
+        <th>注册IP</th>
+      </tr>
+      <!--{foreach from=$dataList item=list key=childKey}-->
+      <tr>
+        <td><!--{$list.UserId}--></td>
+        <td><!--{$list.UserName}--></td>
+        <td><!--{$list.VUserName}--></td>
+        <td><!--{$list.CompanyName}--></td>
+        <td><!--{$list.CompanyLevel}--></td>
+        <td><!--{$list.Level}--></td>
+        <td><!--{$list.cash}--></td>
+        <td><!--{$list.RegTime}--></td> 
+        <td><!--{$list.RegIp}--></td>        
+      </tr>
+      <!--{/foreach}-->
+    </table>

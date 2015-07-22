@@ -1,0 +1,41 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+
+<fieldset>
+	<legend>交易管理</legend>
+	<script language="javascript">
+    //$(function(){
+    //    $.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+    //    $("#user").formValidator({onshow:"请输入玩家信息",oncorrect:"输入正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入玩家信息"},onerror:"内容不能为空"});
+    //    $("#bone_id").formValidator({onshow:"骨头ID",oncorrect:"输入正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"骨头ID"},onerror:"内容不能为空"});
+    //    $("#bone_level").formValidator({onshow:"根骨等级",oncorrect:"输入正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"根骨等级"},onerror:"内容不能为空"});
+    //})
+    </script>
+    <form id="form" action="" method="post">
+    <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">当前状态：</font></th>
+        <td>
+            <div>
+                <!--{html_radios name="trade_flag" id="trade_flag" options=$flagArr selected=$trade_flag }-->
+            </div>
+            <!--{if $error}-->
+            	<div><!--{$error}--></div>
+            <!--{/if}-->
+        </td>
+      </tr>
+      
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" name="sbm" value="修改" /></th>
+      </tr>
+    </table>
+    </form>
+    </fieldset>
+<!--{/if}-->
+
+
+

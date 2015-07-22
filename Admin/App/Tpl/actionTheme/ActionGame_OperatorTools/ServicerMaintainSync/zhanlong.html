@@ -1,0 +1,89 @@
+
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript">
+//KE.init({id:'title',imageUploadJson : '<!--{$url.UploadImg_Bulletin}-->',afterCreate:function(id){KE.util.focus(id)}});
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#title").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"公告标题不能为空,请确认"});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"公告内容不能为空,请确认"});
+	$("#interval").formValidator({onshow:"请输入时间间隔",oncorrect:"输入正确"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"时间间隔不正确"});
+})
+function fontStyle(color,b,em){
+	var font1='<font color="#'+color+'">';
+	var font2='</font>';
+	var b1='<b>';
+	var b2='</b>';
+	var em1='<U>';
+	var em2='</U>';
+	if(!color){
+		font1 = font2 = '';
+	}
+	if(!b){
+		b1 = b2 = '';
+	}
+	if(!em){
+		em1 = em2 = '';
+	}
+	var obj = $('#title');
+	obj.val(obj.val()+font1+b1+em1+'请输入文字'+em2+b2+font2);
+	view()
+}
+function linkAdd(){
+	var obj = $('#title');
+	obj.val(obj.val()+'<a href="event:请输入地址" target="_blank">请输入内容</a>');
+	view()
+}
+function view(){
+	$('#view').html($('#title').val());
+}
+function selectAll(curEvent){
+    var curCheck=curEvent.attr("checked");
+	$("#form :checkbox").attr("checked",curCheck);
+}
+</script>
+<fieldset>
+<legend>服务器维护状态修改</legend>
+<form action="" method="post" id="form">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<input type="hidden" name="id" value="<!--{$selected.id|default:"0"}-->" />
+    <!--{*<a href="javascript:void(0)" onclick="KE.create('title')">加载编辑器</a>*}-->
+	<!--{*<a href="javascript:void(0)" onclick="KE.remove('title')">卸载编辑器</a>*}-->
+    <table width="98%" border="0" cellpadding="3">
+    	<tr>
+        <th scope="row">选择修改区ID</th>
+        <td>
+        <input type="checkbox" onclick="selectAll($(this))">
+全选
+<br/>
+        	<!--{foreach from=$dataList item=list}-->
+        	<!--{$list.world_id}--><input type="checkbox" value="<!--{$list.world_id}-->" <!--{if $list.world_id==$GET.world_id}-->checked=""<!--{/if}--> <!--{if $list.ac=='1'}-->checked=""<!--{/if}-->  name="world_ids[]">&nbsp;
+        	<!--{/foreach}-->
+        </td>
+      </tr>
+       <tr>
+        <th scope="row">维护文本</th>
+        <td><input type="text" class="text" style='width:300px' name="maintain_text" value='<!--{$data.maintain_text}-->' />
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">维护连接</th>
+        <td><input type="text" class="text" style='width:300px' name="maintain_link" value='<!--{$data.maintain_link}-->'/>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">维护状态</th>
+        <td> 正常<input class="radio" type="radio" <!--{if $data.maintain_state==0}-->checked="checked"<!--{/if}--> name="maintain_state" value="0">
+ 停机<input class="radio" type="radio" name="maintain_state" value="1" <!--{if $data.maintain_state==1}-->checked="checked"<!--{/if}-->>
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>

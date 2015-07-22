@@ -1,0 +1,104 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<style>
+.AutoNewline {
+    font-size: 12px;
+    line-height: 150%;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    overflow: hidden;
+    width: 400px;
+    word-wrap: break-word;
+}
+</style>
+<script>
+	function checkLiBaoId(obj){
+		if($.trim(obj.val()) == ''){
+			return true;
+		}
+		if(obj.val()>0){
+			return true;
+		}else{
+			alert('必须为数字');
+			obj.val('');
+			obj.focus();
+			return false;
+		}
+	}
+	
+	
+</script>
+<fieldset>
+	<legend>
+        礼包列表
+        [<a href="<!--{$URL_itemCardApply}-->">礼包申请</a>]
+        [<a href="<!--{$URL_itemCardQuery}-->">卡密查询</a>]
+    </legend>
+
+<form action="" method="get">
+	<input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    礼包ID:<input class="text" type="text" name="classId" onblur="checkLiBaoId($(this));" value="<!--{$_GET.classId}-->"/>
+    礼包名:<input class="text" type="text" name="className" value="<!--{$_GET.className}-->"/>
+    <input class="btn-blue" type="submit" name="submit" value="查询" />
+</form>
+
+<table width="100%" border="0" >
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">礼包名</th>
+    <th scope="col">类型</th>
+    <th scope="col">重领</th>
+    <th scope="col">卡密量</th>
+    <th scope="col">绑定服</th>
+    <th scope="col">绑定类型</th>
+    <th scope="col">银两</th>
+    <th scope="col">元宝</th>
+    <th scope="col">银票</th>
+    <th scope="col">道具</th>
+    <th scope="col">卡密（多个用逗号隔开）</th>
+    <!-- th scope="col">操作</th-->
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td align="center"><!--{$list.classId}--></td>
+    <td><a href="<!--{$list.URL_ItemPackageEdit}-->"><!--{$list.name}--></a></td>
+    <td align="center"><!--{$list.type}--></td><!--{*类型*}-->
+    <td align="center"><!--{if $list.repeat}-->是<!--{else}-->否<!--{/if}--></td><!--{*重领*}-->
+    <td align="center"><!--{$list.counts|intval}--></td>
+    <td align="center"><!--{$list.serverId|default:'<font color="#999999">无</font>'}--></td>
+    <td><!--{$list.bindType}--></td>
+    <td><!--{$list.points.assetValue|intval}--></td>
+    <td><!--{$list.points.goldValue|intval}--></td>
+    <td><!--{$list.points.goldTickeValue|intval}--></td>
+    <td><div class="AutoNewline"><!--{$list.itemInfo|default:'<font color="#999999">无</font>'}--></div></td>
+    <!-- td align="center">
+        [<a href="<!--{$list.URL_itemCardAppendApply}-->">追加道具卡</a>]
+    	[<a href="<!--{$list.URL_batchList}-->">批次列表</a>]
+    </td-->
+    <td><!--{$list.secreKey}--></td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr>
+  	<td colspan="15" align="center">
+    	<!--{if $connectError}-->
+        	<!--{$connectError}-->
+    	<!--{elseif $_GET.submit}-->
+    	查无数据
+        <!--{else}-->
+        <font color="#FF0000">请使用"查询"按钮</font>
+        <!--{/if}-->
+    </td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+<div style="text-align:right"><!--{$pageBox}--></div>
+</fieldset>
+
+<!--{/if}-->

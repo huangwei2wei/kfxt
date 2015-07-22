@@ -1,0 +1,75 @@
+<fieldset>
+  <legend>我的个人资料</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td height="22" colspan="4" scope="row">
+        	常用链接：
+            <a target="_blank" href=" http://mail.cndw.com/">工作邮箱</a>、
+            
+            <a target="_blank" href=" http://passport.uwan.com/">PassPort</a>、
+            
+            <a target="_blank" href=" http://work.uwan.com/myjob/index.asp">MyJob</a>、
+            
+            <a target="_blank" href=" http://work.uwan.com/buglist/members.asp">大亨buglist</a>、
+            
+            <a target="_blank" href=" http://gm.bto.uwan.com/">大亨回复后台</a>、
+            
+            <a target="_blank" href=" http://bbs.uwan.com/">大亨国服论坛</a>、
+            
+            <a target="_blank" title="大亨海外官网" href=" http://bto.dovogame.com/index.html">海外官网</a>、
+            
+            <a target="_blank" title="大亨海外论坛" href=" http://btobbs.dovogame.com/index.php">海外论坛</a>、
+            
+            <a target="_blank" title="大亨海外Support后台" href=" http://bto.dovogame.com/gmdovo/login.php">Support后台</a>
+        </td>
+      </tr>
+      <tr>
+        <th width="114" scope="row">姓名</th>
+        <td width="548">
+        	<!--{$userClass._nickName}-->
+        	<!--{if $userClass._serviceId}-->
+            (<!--{$userClass._serviceId}-->)
+            <!--{/if}-->
+            、<!--{$userClass.word_department}-->
+        </td>
+        <th width="135">所在角色</th>
+        <td width="529"><!--{$userClass.word_roles}--></td>
+      </tr>
+      <tr>
+        <th width="114" scope="row">负责的运营商</th>
+        <td>
+        	<!--{foreach from=$userOeratorIds item=list}-->
+            <!--{$list}-->&nbsp;&nbsp;
+            <!--{foreachelse}-->
+            暂无可处理的运营商
+            <!--{/foreach}-->
+        </td>
+        <th>负责的VIP等级</th>
+        <td>
+			<!--{$userClass.word_vip}-->
+        </td>
+      </tr>
+      <tr>
+        <td height="69" colspan="2" valign="top">
+        	<b>公告</b>
+            <ol>
+            <!--{foreach from=$userClass.bulletin_list item=list}-->
+            	<li><!--{$list.word_is_read}--> (<!--{$list.create_time|date_format:"%Y-%m-%d %H:%M:%S"}-->) <!--{$list.title}--></li>
+            <!--{foreachelse}-->
+            	<li><!--{$noData}--></li>
+            <!--{/foreach}-->
+            </ol>
+        </td>
+        <td colspan="2" valign="top">
+        	<b>工作交接</b>
+            <ol>
+            <!--{foreach from=$userClass.work_list item=list}-->
+            	<li><!--{$list.word_is_read}--> (<!--{$list.create_time|date_format:"%Y-%m-%d %H:%M:%S"}-->)  <!--{$list.title}--></li>
+            <!--{foreachelse}-->
+            	<li><!--{$noData}--></li>
+            <!--{/foreach}-->
+          </ol>
+        </td>
+      </tr>
+    </table>
+</fieldset>

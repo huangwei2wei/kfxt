@@ -1,0 +1,126 @@
+<style type="text/css">
+.addline{
+	padding:3px;
+}
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:100%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+ul{
+	margin:0px;
+	padding:0px;
+}
+ul li{
+	margin:1px;
+	list-style-type: none;
+	display:inline;
+}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/default/frg.js"></script>
+<script language="javascript">
+<!--{if $data.SendMsg}-->
+var isSendMsg=<!--{$data.SendMsg}-->;
+<!--{/if}-->
+
+<!--{if $objData}-->
+var objData=eval(<!--{$objData}-->);
+<!--{/if}-->
+
+<!--{if $toolData}-->
+var toolData=eval(<!--{$toolData}-->);
+<!--{/if}-->
+
+<!--{if $effData}-->
+var effData=eval(<!--{$effData}-->);
+<!--{/if}-->
+
+var condInputNum=<!--{$num.cond}-->;
+var effectInputNum=<!--{$num.effect}-->;
+var toolInputNum=<!--{$num.tool}-->;
+
+</script>
+
+<fieldset>
+<legend><!--{'095142E163642241542AA9649DEB052B'|lang}--></legend>
+<form action="<!--{$url.OperationFRG_EditLibao}-->" method="post" id="form" >
+<!--{'2EF40686D3B6F3E7269FAC933FF25E1B'|lang}-->：
+<ul id="gameServer">
+    <!--{foreach from=$servers key=key item=list}-->
+    <li>
+    	<input type="checkbox" name="server_ids[<!--{$list.Id}-->]" checked="checked" value="<!--{$key}-->" />
+        <input type="hidden" name="main_id[<!--{$list.Id}-->]" value="<!--{$list.main_id}-->" />
+        <input type="hidden" name="Id[<!--{$list.Id}-->]" value="<!--{$list.Id}-->" />
+        <!--{$list.server_name}-->
+    </li>
+    <!--{/foreach}-->
+</ul>
+<div id="showItem"></div>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row"><!--{'C7375AD4A1177F7E286D520D7DF3B1C9'|lang}--></th>
+    <td><input type="text" class="text" name="CardName" value="<!--{$data.CardName|htmlspecialchars}-->" size="60" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'99B97FB839527753F0961C22FA392CDD'|lang}--></th>
+    <td><input type="text" class="text" name="CardImage" size="60" value="<!--{$data.CardImage}-->" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'3BDD08ADAB6EA90B9164B20A0E4151AC'|lang}--></th>
+    <td><textarea name="CardDescribe" cols="60" rows="8"><!--{$data.CardDescribe|htmlspecialchars}--></textarea></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'6D6998C1A589C3DA7FDEBA139C43ED98'|lang}--></th>
+    <td>
+        <input type="radio" name="Active" value="1"  <!--{if $data.Active==1}-->checked="checked"<!--{/if}--> /><!--{'0A60AC8F02CCD2CF723F927284877851'|lang}-->
+        <input type="radio" name="Active" value="0" <!--{if $data.Active==0}-->checked="checked"<!--{/if}--> /><!--{'C9744F45E76D885AE1C74D4F4A934B2E'|lang}-->
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'ABE0153D6F51570D853E7D0338BD2FB3'|lang}--></th>
+    <td>
+        <input type="radio" name="DisRepeat" value="1"  <!--{if $data.DisRepeat==1}-->checked="checked"<!--{/if}--> /><!--{'0A60AC8F02CCD2CF723F927284877851'|lang}-->
+        <input type="radio" name="DisRepeat" value="0" <!--{if $data.DisRepeat==0}-->checked="checked"<!--{/if}--> /><!--{'C9744F45E76D885AE1C74D4F4A934B2E'|lang}-->
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'664B9B5DAEA434BBF3C63574392CF287'|lang}--></th>
+    <td><input type="button" class="btn-blue" onclick="addGetCond($(this))" value="<!--{'53547608D8563C352DD64D33CA4E4C98'|lang}-->" />
+      <!--{foreach from=$chageCond item=list}-->
+      <!--{$list.html}-->
+      <!--{/foreach}-->
+      </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'46C52C767383B0A4246F5149E7E585FE'|lang}--></th>
+    <td><input type="button" class="btn-blue" onclick="addEffect($(this))" value="<!--{'9617335C840B393D4E12F66620C06240'|lang}-->" />
+    	<!--{foreach from=$chageEffect item=list}-->
+        <!--{$list.html}-->
+        <!--{/foreach}-->
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'62C341F9C880236471E35B60EE816B3B'|lang}--></th>
+    <td><input type="button" class="btn-blue" onclick="addTool($(this))" value="<!--{'BF9E805569213C27D1CE1C611B8B964E'|lang}-->" />
+      <!--{foreach from=$chageTool item=list}-->
+      <!--{$list.html}-->
+      <!--{/foreach}-->
+      </td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">
+      <!--input type="button" class="btn-blue" id="submit" onClick="sendLibao()" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /-->
+      <input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" />  
+    </th>
+  </tr>
+</table>
+</form>
+</fieldset>

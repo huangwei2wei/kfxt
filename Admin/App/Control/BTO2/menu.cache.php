@@ -1,0 +1,56 @@
+<?php
+return array(
+	'BTO2Master'=>array(
+		'name'=>'GM工具',
+		'display'=>true,
+		'child'=>array(
+			'EventList'=>array('name'=>'事件簿','display'=>true),
+			'GameLogin'=>array('name'=>'游戏登录','display'=>true),
+			'UserInquire'=>array('name'=>'用户查询','display'=>true),
+			'UserLog'=>array('name'=>'玩家操作日志','display'=>true),
+			'UserPayLog'=>array('name'=>'玩家充值记录','display'=>true),
+			'SendMail'=>array('name'=>'发送邮件','display'=>true),
+			'Donttalk'=>array('name'=>'禁言管理','display'=>true),
+			'LockUsers'=>array('name'=>'封号管理','display'=>true),
+			'LockIP'=>array('name'=>'IP锁定管理','display'=>true),
+			'EmpShopList'=>array('name'=>'员工店铺列表','display'=>true),
+			'_RewardBeforeone'=>array('c'=>'BTO2Operation','a'=>'RewardBeforeone','name'=>'道具发送申请','display'=>true),
+			'_ItemsDel'=>array('c'=>'BTO2Operation','a'=>'ItemsDel','name'=>'道具删除申请','display'=>true),
+			'Notice'=>array('name'=>'单服公告管理','display'=>false),
+			'Reward'=>array('name'=>'单服奖励触发','display'=>false),
+			'Libao'=>array('name'=>'单服礼包管理','display'=>false),
+			'OrderPk'=>array('name'=>'驱逐奸商清理','display'=>true),
+
+		),
+	),
+	'BTO2Operation'=>array(
+		'name'=>'运营工具',
+		'display'=>true,
+		'child'=>array(
+			'Libao'=>array('name'=>'多服礼包管理','display'=>true),
+			'Reward'=>array('name'=>'多服奖励触发','display'=>true),
+			'Notice'=>array('name'=>'多服公告管理','display'=>true),
+			'AllSendMail'=>array('name'=>'全服发短信','display'=>true),
+			'ServerStats'=>array('name'=>'服务器状态','display'=>true),
+			'_Notice'=>array('c'=>'BTO2Master','a'=>'Notice','name'=>'单服公告管理','display'=>true),
+			'_Reward'=>array('c'=>'BTO2Master','a'=>'Reward','name'=>'单服奖励触发','display'=>true),
+			'_Libao'=>array('c'=>'BTO2Master','a'=>'Libao','name'=>'单服礼包管理','display'=>true),
+			'CardList'=>array('name'=>'礼包卡号列表','display'=>true),
+			'PayLibao'=>array('name'=>'充值礼包','display'=>true),
+	
+			'RewardBeforeone'=>array('name'=>'道具发送申请','display'=>false),
+			'ItemsDel'=>array('name'=>'道具删除申请','display'=>false),
+			'Serverlist'=>array('name'=>'服务器管理','display'=>true,)
+		),
+	),
+	'BTO2Gold'=>array(
+		'name'=>'金币管理',
+		'display'=>true,
+		'child'=>array(
+			'Card'=>array('name'=>'金币卡列表','display'=>true),
+			'CardAdd'=>array('name'=>'金币卡申请','display'=>true),
+			'CardPay'=>array('name'=>'金币卡使用','display'=>true),
+			'MyApplyCard'=>array('name'=>'我的申请','display'=>true),
+		),
+	),
+);

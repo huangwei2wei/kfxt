@@ -1,0 +1,143 @@
+<style type="text/css">
+.question label{
+	display:inline-block;
+	width:180px;
+}
+</style>
+<fieldset>
+	<legend><!--{'TITLE'|lang}--></legend>
+    <form action="" method="get" >
+    <input type="hidden" value="MyTask" name="c" />
+    <input type="hidden" value="Index" name="a" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'AUTOREF'|lang}--></th>
+        <td>
+       		<input type="checkbox" id="autoCheckBox" onclick="autoRef()" value="1" /><!--{'OPEN_REF'|lang}--> 
+             <input type="text" class="text" id="timeInterval" size="3" value="30" /> <!--{'AUTOREF_INTERVAL'|lang}--> 
+        </td>
+      </tr>
+      <tr>
+        <th width="16%" nowrap="nowrap" scope="row"><!--{'SERVER_NAME'|lang}--></th>
+        <td width="84%">
+            <!--{if $roomClass}-->
+            <span><!--{$roomClass._roomName}--></span>
+            [<a href="<!--{$url.MyTask_OutRoom}-->"><!--{'OUT_ROOM'|lang}--></a>]	
+            <!--{else}-->
+            <b><font color="#FF0000"><!--{'NOT_IN_ROOM_MSG'|lang}--></font></b>
+            <!--{/if}-->
+            
+            
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'LAST_ORDER_NUM'|lang}--> / <!--{'CUR_ORDER_NUM'|lang}--></th>
+        <td><!--{$userClass->getOrderNum($lastYmd)}--> / <!--{$userClass->getOrderNum()}--> </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'LAST_REPLY_NUM'|lang}--> / <!--{'CUR_REPLY_NUM'|lang}--></th>
+        <td>
+        	<!--{$userClass->getReplyNum($lastYmd)}--> / <!--{$userClass->getReplyNum()}-->
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'MY_EXECUTE_OPERATOR'|lang}--></th>
+        <td>
+        <!--{foreach from=$userOperator item=list}-->
+        <span><b>[<!--{$list.word_game_type_id}-->]</b><!--{$list.word_operator_id}--></span>
+        <!--{foreachelse}-->
+        <font color="#666666"><!--{'EMPTY'|lang:'Common'}--></font>
+        <!--{/foreach}-->
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'QUESTION_TYPE'|lang}--></th>
+        <td class="question"><!--{html_radios options=$questionSelect name="question_type" selected=$selectedQuestion}--></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'WORKORDER_SEARCH'|lang}--></th>
+        <td><!--{html_radios options=$viewType selected=$selectedViewType name="view_type"}--></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'STATUS_SEARCH'|lang}--></th>
+        <td>
+            <!--{html_radios options=$workOrderStatusArr name="order_status" selected=$selectedOrderStatus}-->	|	
+            <!--{html_radios options=$verify name="is_verify" selected=$selectedIsVerify}-->
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'VIP_LEVEL_SEARCH'|lang}--></th>
+        <td>
+            <!--{html_radios options=$vipLevel name="vip_level" selected=$selectedVipLevel}-->
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'EV_SEARCH'|lang}--></th>
+        <td><!--{html_radios options=$evArr selected=$selectedEv name="evaluation_status"}--></td>
+      </tr>
+      <!--{if $badev_display}-->
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'BAD_EV_SEARCH'|lang}--></th>
+        <td><!--{html_radios options=$badEvArr selected=$selectedBadEv name="evaluation_desc"}--></td>
+      </tr>
+      <!--{/if}-->
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'TITLE_SEARCH'|lang}--></th>
+        <td>
+        <input type="text" class="text" name="title" id="title" size="60" value="<!--{$selectedTitle}-->" /></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'SEARCH_TYPE'|lang}--></th>
+        <td>
+       	  	ID <input type="text" class="text" name="Id" value="<!--{$selectedId}-->" /> 
+            <!--{'VUSERNAME_SEARCH'|lang}--> <input type="text" class="text" name="user_nickname" id="user_nickname" value="<!--{$selectedUserNickname}-->" />
+            <!--{'PLAYER_ACCOUNT_SEARCH'|lang}--> <input type="text" class="text" name="user_account" id="user_account" value="<!--{$selectedUserAccount}-->" />
+        <input type="submit" class="btn-blue" value="<!--{'SUBMIT'|lang:'Common'}-->"  /></td>
+      </tr>
+      </table>
+    </form>
+</fieldset>
+
+<fieldset>
+  <legend><!--{'MY_ORDER'|lang}--></legend>
+  	<div id="refDiv">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th><!--{'TABLE_TITLE_1'|lang}--></th>
+        <th><!--{'TABLE_TITLE_2'|lang}--></th>
+        <th><!--{'TABLE_TITLE_3'|lang}--></th>
+        <th><!--{'TABLE_TITLE_9'|lang}--></th>
+        <th><!--{'TABLE_TITLE_4'|lang}--></th>
+        <th><!--{'TABLE_TITLE_5'|lang}--></th>
+        <th><!--{'TABLE_TITLE_6'|lang}--></th>
+        <th><!--{'TABLE_TITLE_7'|lang}--></th>
+        <th><!--{'TABLE_TITLE_8'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td align="center" nowrap="nowrap"><font style="font-size:14px; font-family:'<!--{'971F54E2A4D4F1678001C5817A748739'|lang}-->';"><!--{$list.word_status}--></font></td>
+        <td class="order_title" url="<!--{$list.url_dialog}-->" dialogId="detail_<!--{$list.Id}-->" title="<!--{$list.title}-->">
+        	 <font style="font-size:14px; font-family:'<!--{'971F54E2A4D4F1678001C5817A748739'|lang}-->';"><!--{$list.title|truncateutf8:20}--></font> 	[<!--{$list.word_ev}-->] <font color="#999999"><!--{$list.word_ev_desc}--></font><br />
+             <!--{$list.create_time}-->
+             <!--{if $list.time_out_true}--><font color="red" ><span style="font-size:14px; font-family:'<!--{'971F54E2A4D4F1678001C5817A748739'|lang}-->';font-weight:bold;"><!--{'IS_TIMEOUT'|lang}--></span></font><!--{else}--><span id="show_time_<!--{$list.Id}-->"></span><!--{/if}-->
+        </td>
+        <td><!--{$list.word_verify_status|default:'无'}--></td>
+        <td>
+        	<!--{$list.word_game_type}--> / <!--{$list.word_operator_id}--> /	<!--{$list.word_game_server_id}--> / <font color="#666666">VIP:</font> <b><!--{$list.vip_level}--></b><br />
+        	<font color="#666666"><!--{'ACCOUNT'|lang}-->：</font><!--{$list.user_account}-->，<font color="#666666">UID：</font><!--{$list.game_user_id}-->，<font color="#666666"><!--{'VUSERNAME'|lang}-->：</font><a href="javascript:void(0)" onclick="searchForm($(this))"><!--{$list.user_nickname}--></a>，<font color="#666666"><!--{'PAY_NUM'|lang}-->：</font><!--{$list.money}-->
+        </td>
+        <td><!--{$list.word_source}--><br /><!--{$list.word_question_type}--></td>
+        <td><!--{$list.question_num}--> / <!--{$list.answer_num}--></td>
+        <td><!--{$list.word_owner_user_id}--></td>
+        <td>
+            <a href="<!--{$list.url_detail}-->"><!--{'ORDER_DETAIL'|lang}--></a>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr><th colspan="10"><!--{$noData}--></th></tr>
+      <!--{/foreach}-->
+    </table>
+    </div>
+    <div align="right"><!--{$pageBox}--></div>
+</fieldset>

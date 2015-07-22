@@ -1,0 +1,144 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{include file="MasterFRG/UserModifyHref.html"}-->
+
+<!--{if $display}-->
+<script language="javascript">
+var read='<!--{$read}-->';
+$(function(){
+	$(":radio").click(function(){
+		value=$(this).val();
+		$(".search_option").attr("disabled","disabled");
+		$("#"+value).removeAttr("disabled");
+	});
+	if(read){
+		$("input").attr("disabled","disabled");
+		$("select").attr("disabled","disabled");
+		$("textarea").attr("readonly","readonly");
+	}
+});
+
+function addVIPtime(time){
+	$("#u_vip").val(time);
+}
+</script>
+
+
+
+<fieldset>
+	<legend>玩家数值修改 (如未作特别说明，均填写相应增减值) [<font color="#FF0000">此操作须要审核</font>]</legend>
+	<form action="" method="post" onsubmit="return checksub();">
+	<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+	<input type="hidden" name="userid" value="<!--{$uo->UserId}-->" />
+    <table width="100%" border="0" cellpadding="3">
+      <!--{if $errMsg}--><caption><font color="#FF0000"><!--{$errMsg}--></font></caption><!--{/if}-->
+      <thead>
+      <tr>
+        <th colspan="6">
+        	<input type="radio" id="ids" name="userflag" value="txtids" /><label for="ids">用户Id <font color="#FF0000"><!--{$uo->UserId}--></font></label>
+            <input type="text" class="search_option" id="txtids" name="txtids" size="22" value="" disabled>        
+            
+            <input type="radio" id="names" name="userflag" value="txtnames" /><label for="names">用户名 <font color="#FF0000"><!--{$uo->UserName}--></font></label>
+			<input type="text" class="search_option" id="txtnames" name="txtnames" size="22" value="" disabled>        
+            
+            <input type="radio" id="vnames" name="userflag" value="txtvnames" /><label for="vnames">角色名称 <font color="#FF0000"><!--{$uo->VUserName}--></font></label>
+            <input type="text" class="search_option" id="txtvnames" name="txtvnames" size="22" value="" disabled>        
+            
+            <input type="submit" class="btn-blue" name="search_user" value="搜索" />
+        </th>
+      </tr>
+      </thead>
+      
+      <!--{if $detailTrue}-->
+      <tbody>
+        <tr>
+       	  <th>申请理由：</th><td colspan="5"><textarea name="cause" cols="50" rows="8"><!--{$auditData.cause}--></textarea></td>
+        </tr>
+      <tr>
+        <th>赠送金币 <font color="#FF0000"><!--{$uo->LiQuan}--></font></th>
+        <td><input class="user_info" name="user[LiQuan]" type="text" id="u_liquan" value="<!--{$postData.user.LiQuan}-->" /></td>
+        <th>金币 <font color="#FF0000"><!--{$uo->Gold}--></font></th>
+        <td><input class="user_info" name="user[Gold]" type="text" id="u_gold" value="<!--{$postData.user.Gold}-->" /></td>
+        <th>虚拟G币  <font color="#FF0000"><!--{$uo->Assets}--></font></th>
+        <td><input class="user_info" name="user[Assets]" type="text" id="u_assets" value="<!--{$postData.user.Assets}-->" /></td>
+      </tr>
+      <tr>
+        <th>领导数值 <font color="#FF0000"><!--{$uo->Lead}--></font></th>
+        <td><input class="user_info" name="user[Lead]" type="text" id="u_lead" value="<!--{$postData.user.Lead}-->" /></td>
+        <th>策略数值  <font color="#FF0000"><!--{$uo->Charm}--></font></th>
+        <td><input class="user_info" name="user[Charm]" type="text" id="u_charm" value="<!--{$postData.user.Charm}-->" /></td>
+        <th>智慧数值  <font color="#FF0000"><!--{$uo->IQ}--></font></th>
+        <td><input class="user_info" name="user[IQ]" type="text" id="u_iq" value="<!--{$postData.user.IQ}-->" /></td>
+      </tr>
+      <tr>
+        <th>人物属性点  <font color="#FF0000"><!--{$uo->Point}--></font></th>
+        <td><input class="user_info" name="user[Point]" type="text" id="u_point" value="<!--{$postData.user.Point}-->" /></td>
+        <th>用户经验  <font color="#FF0000"><!--{$uo->Experience}--></font></th>
+        <td><input class="user_info" name="user[Experience]" type="text" id="u_experience" value="<!--{$postData.user.Experience}-->" /></td>
+        <th>店铺升级点  <font color="#FF0000"><!--{$co->ShopPoint}--></font></th>
+        <td><input class="user_info" name="company[ShopPoint]" type="text" id="u_shoppoint" value="<!--{$postData.user.ShopPoint}-->" /></td>
+      </tr>
+      <tr>
+        <th>依赖度  <font color="#FF0000"><!--{$uo->Trust}--></font></th>
+        <td><input class="user_info" name="user[Trust]" type="text" id="u_trust" value="<!--{$postData.user.Trust}-->" /></td>
+        <th>声望(魅力)  <font color="#FF0000"><!--{$uo->Fame}--></font></th>
+        <td><input class="user_info" name="user[Fame]" type="text" id="u_fame" value="<!--{$postData.user.Fame}-->" /></td>
+        <th>公司等级  <font color="#FF0000"><!--{$co->Level}--></font></th>
+        <td><input class="user_info" name="company[Level]" type="text" id="u_level" value="<!--{$postData.company.Level}-->" /></td>
+      </tr>
+      <tr>
+        <th>荣誉礼券  <font color="#FF0000"><!--{$uo->PersonalPoints}--></font></th>
+        <td><input class="user_info" name="user[PersonalPoints]" type="text" id="u_personalpoints" value="<!--{$postData.user.PersonalPoints}-->" /></td>
+        <th>官印  <font color="#FF0000"><!--{$uo->Chop}--></font></th>
+        <td><input class="user_info" name="user[Chop]" type="text" id="u_chop" value="<!--{$postData.user.Chop}-->" /></td>
+        <th>投票次数  <font color="#FF0000"><!--{$uo->Ballot}--></font></th>
+        <td><input class="user_info" name="user[Ballot]" type="text" id="u_ballot" value="<!--{$postData.user.Ballot}-->" /></td>
+      </tr>
+      <tr>
+        <th>市场交易币  <font color="#FF0000"><!--{$uo->MarketCurrency}--></font></th>
+        <td><input class="user_info" name="user[MarketCurrency]" type="text" id="u_marketcurrency" value="<!--{$postData.user.MarketCurrency}-->" /></td>
+        <th>指导值  <font color="#FF0000"><!--{$uo->Direction}--></font></th>
+        <td><input class="user_info" name="user[Direction]" type="text" id="u_direction" value="<!--{$postData.user.Direction}-->" /></td>
+        <th>士气值  <font color="#FF0000"><!--{$uo->Morale}--></font></th>
+        <td><input class="user_info" name="user[Morale]" type="text" id="u_morale" value="<!--{$postData.user.Morale}-->" /></td>
+      </tr>
+      <tr>
+        <th>头衔经验值  <font color="#FF0000"><!--{$uo->UCofcPoints}--></font></th>
+        <td><input class="user_info" name="user[UCofcPoints]" type="text" id="u_ucofcpoints" value="<!--{$postData.user.UCofcPoints}-->" /> </td>
+        <th>天赋值  <font color="#FF0000"><!--{$uo->Talent}--></font></th>
+        <td><input class="user_info" name="user[Talent]" type="text" id="u_talent" value="<!--{$postData.user.Talent}-->" /></td>
+        <th>今天收入  <font color="#FF0000"><!--{$co->TodayIncome}--></font></th>
+        <td><input class="user_info" name="company[TodayIncome]" type="text" id="u_todayincome" value="<!--{$postData.company.TodayIncome}-->" /></td>
+      </tr>
+      <tr>
+        <th>昨天收入  <font color="#FF0000"><!--{$co->YesterdayIncome}--></font></th>
+        <td><input class="user_info" name="company[YesterdayIncome]" type="text" id="u_yesterdayincome" value="<!--{$postData.company.YesterdayIncome}-->" /></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <th>VIP结束时间  <font color="#FF0000"><!--{$uo->Vip|date_format:"%Y-%m-%d %H:%M:%S"}--></font></th>
+        <td><input class="user_info" name="user[Vip]" type="text" id="u_vip" value="<!--{$postData.user.Vip}-->" /> </td>
+        <td colspan="4">
+        	<a href="javascript:void(0);" onclick="addVIPtime(86400)">增加1天</a>&nbsp;&nbsp;
+			<a href="javascript:void(0);" onclick="addVIPtime(604800)">增加7天</a>&nbsp;&nbsp;
+			<a href="javascript:void(0);" onclick="addVIPtime(31536000)">增加1年(365天)</a>&nbsp;&nbsp;
+        </td>
+      </tr>
+      <tr>
+        <th>用户最后充值记录 </th>
+        <td colspan="5">暂不开放</td>
+      </tr>
+      <tr>
+        <th colspan="6"><input type="submit" class="btn-blue" name="edit_user" value="更改数据" /></th>
+      </tr>
+      </tbody>
+      </table>
+      <!--{/if}-->
+	</form>
+</fieldset>
+<!--{/if}-->

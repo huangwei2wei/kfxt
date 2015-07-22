@@ -1,0 +1,31 @@
+<fieldset>
+	<legend>列表</legend>
+    <a href="<!--{$url.SysManagement_QuestionAdd}-->">增加</a>
+    <a href="<!--{$url.SysManagement_QuestionCreateCache}-->">生成缓存</a>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th>Id</th>
+        <th>所属游戏</th>
+        <th>问题名称(中文)</th>
+        <th>问题名称(英文)</th>
+        <th>问题表单</th>
+        <th>操作</th>
+      </tr>
+    <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td><!--{$list.game_type}--></td>
+        <td><!--{$list.title}--></td>
+        <td><!--{$list.title_2}--></td>
+        <td><!--{$list.form_table|truncate}--></td>
+        <td>
+            <a href="<!--{$list.url_question_form}-->">问题表单编辑</a>
+            <a href="<!--{$list.url_edit}-->">编辑</a>
+            <a href="<!--{$list.url_del}-->">删除</a>
+        </td>
+      </tr>
+    <!--{foreachelse}-->
+      <tr><td colspan="6"><!--{$noData}--></td></tr>
+    <!--{/foreach}-->
+    </table>
+</fieldset>

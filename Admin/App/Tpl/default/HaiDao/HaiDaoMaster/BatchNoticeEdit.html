@@ -1,0 +1,69 @@
+<style type="text/css">
+ul{
+	margin:0px;
+	padding:0px;
+}
+ul li{
+	margin:1px;
+	list-style-type: none;
+	display:inline;
+}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#title").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'752F8926DB21639D9F8ECDC7BF1D7159'|lang}-->"},onerror:"<!--{'1C556BF4A724BF1B83C6FC64D44DE0B2'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'752F8926DB21639D9F8ECDC7BF1D7159'|lang}-->"},onerror:"<!--{'81B8114F80F252C34993100C3BD6F046'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+	$("#interval").formValidator({onshow:"<!--{'62DF1C363CC3B9F23706E4504BC0EC25'|lang}-->",oncorrect:"<!--{'315F61935B8933FF105D5FA610D202C3'|lang}-->"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'49D109F09975997457A4623EEE9A558F'|lang}-->"});
+})
+</script>
+<fieldset>
+	<legend><!--{'51D3250B4C3C5C4263251FAB4B173208'|lang}--></legend>
+    <form action="<!--{$url.OperationFRG_BatchNoticeEdit}-->" id="notice_form" method="post">
+    <!--{'2EF40686D3B6F3E7269FAC933FF25E1B'|lang}-->：
+    <ul id="gameServer">
+        <!--{foreach from=$servers key=key item=list}-->
+        <li>
+            <input type="checkbox" name="server_ids[<!--{$list.Id}-->]" checked="checked" value="<!--{$key}-->" />
+            <input type="hidden" name="main_id[<!--{$list.Id}-->]" value="<!--{$list.main_id}-->" />
+            <input type="hidden" name="Id[<!--{$list.Id}-->]" value="<!--{$list.Id}-->" />
+            <!--{$list.server_name}-->
+        </li>
+        <!--{/foreach}-->
+    </ul>
+    <input type="hidden" value="" name="auto_id" id="auto_id" />
+    <input type="hidden" id="server_id" name="server_id" value="" />
+    <input type="hidden" name="Id" id="main_id" value="" />
+        <table width="98%" border="0" cellpadding="3">
+          <tr>
+            <th scope="row"><!--{'22F454634D216B2787C24A90EFD297AA'|lang}--></th>
+            <td><input name="Notice[Title]" type="text" class="text" id="title" value="<!--{$data.title|htmlentities}-->" size="60" /><div id="titleTip"></div></td>
+          </tr>
+          <tr>
+            <th scope="row"><!--{'0DFFC10FD1EB0371106F6CEC88009025'|lang}--></th>
+            <td><textarea name="Notice[Content]" cols="60" id="content" rows="8"><!--{$data.content|htmlentities}--></textarea><div id="contentTip"></div></td>
+          </tr>
+          <tr>
+            <th scope="row"><!--{'592C59589144DDC68D05D528DA17DCDC'|lang}--></th>
+            <td><input type="text" class="text" name="Notice[Start_time]" value="<!--{$data.start_time|date_format:'%Y-%m-%d %H:%M:%S'}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/></td>
+          </tr>
+          <tr>
+            <th scope="row"><!--{'F782779E8B5D709462C8E71E0D9019F2'|lang}--></th>
+            <td><input type="text" class="text" name="Notice[End_time]" value="<!--{$data.end_time|date_format:'%Y-%m-%d %H:%M:%S'}-->" onFocus="WdatePicker({startDate:'<!--{$data.end_time|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/></td>
+          </tr>
+          <tr>
+            <th scope="row"><!--{'E1317F673E37DABE7AFF7C31134898F6'|lang}--></th>
+            <td><input type="text" class="text" id="interval" name="Notice[Interval]" value="<!--{$data.interval_time}-->" /> <!--{'0C1FEC657F7865DED377B43250A015FC'|lang}--><div id="intervalTip"></div></td>
+          </tr>
+          <tr>
+            <th scope="row">URL</th>
+            <td><input type="text" class="text" name="Notice[Link]" value="<!--{$data.url}-->" size="70" /></td>
+          </tr>
+          <tr>
+            <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /></th>
+          </tr>
+        </table>
+    </form>
+</fieldset>

@@ -1,0 +1,38 @@
+<center>
+<a href="<!--{$url.User_CompanyAdd}-->">Add</a>
+<a href="<!--{$url.User_CompanyCreateCache}-->">CreateCahe</a>
+<table width="98%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">公司名称</th>
+    <th scope="col">运营商数</th>
+    <th scope="col">运营商列表</th>
+    <th scope="col">描述</th>
+    <th scope="col">添加日期</th>
+    <th scope="col">更新日期</th>
+    <th scope="col">操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.Id}--></td>
+    <td><!--{$list.name}--></td>
+    <td><!--{$list.operator_num}--></td>
+    <td><!--{$list.word_operator}--></td>
+    <td><!--{$list.description}--></td>
+    <td><!--{$list.date_created}--></td>
+    <td><!--{$list.date_updated}--></td>
+    <td>
+    	<a href="#">编辑</a>
+        <a href="#">删除</a>
+    </td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="8"><!--{$noData}--></th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <th colspan="8" align="right"><!--{$pageBox}--></th>
+  </tr>
+</table>
+</center>

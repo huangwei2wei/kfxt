@@ -1,0 +1,368 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='playerId[]']").attr("checked",curCheck);
+	 });
+});
+function del(){
+	if(confirm('确定要删除吗?')){
+		$('#DelFrom').submit();
+	}
+}
+function getDetail(obj){
+	var kid = obj.attr('kid');
+	if($('#detail'+kid).html() == ''){		
+		$.ajax({
+			dataType:'json',	
+			type: 'GET',
+			url: obj.attr('url'),
+			success:function(msg){
+				var json = eval(msg);				
+				if(1 == json.status){				
+					if(json.data.length>0){
+						$.each(json.data,
+							function(Id,subobj){ 
+								$('#detail'+kid).append('<div style="margin:5px;">'+subobj.info+'</div><hr>');
+							}
+						);	
+					}else{
+						$('#detail'+kid).append('<div color="margin:5px;">无操作记录</div>');
+					}				
+				}
+				else if(0 == json.status){
+					alert(json.info);
+				}else{
+					alert('unknow error');
+				}
+			}
+		});
+	}
+}
+
+function viewDetail(obj){
+	var kid = obj.attr('kid');
+	
+	var trDetail = $('#trDetail'+kid);
+	if(trDetail.css("display")=="none"){
+		getDetail(obj);
+		trDetail.show();		
+	}else{
+		trDetail.hide();
+	}	
+}
+
+function hindParent(obj){
+	obj.parent().parent().parent().hide();
+}
+
+function buttonsub(obj){
+	document.getElementById(obj).value	=	$('#cause').val();
+	if(document.getElementById(obj).value	==	""){
+		window.alert("原因不能为空");
+		return false;
+	}
+	document.getElementById(obj+"form").submit();
+}
+</script>
+
+<fieldset>
+	<legend>查询玩家宠物信息</legend>
+	
+    <form action="" method="GET">
+    <input type="hidden" name="c" value="XianHunUser" />
+        <input type="hidden" name="a" value="SoulModification" />
+        <input type="hidden" name="zp" value="XianHun" />
+        <input type="hidden" name="playerId" value="<!--{$playerId}-->" />
+        <input type="hidden" name="soul_playerId" value="<!--{$soul_playerId}-->" />
+    	<table>
+		<tr>
+			<th width='200'>玩家ID：</th>
+			<td><input type="text" class="text" name="soul_playerId" id="playerId" value="<!--{$soul_playerId}-->" /></td>
+			<td><input type="submit" value="确认" class="btn-blue" /></td>
+		</tr>
+		</table>
+    </form>
+    <!--{if $soul_playerId_display}-->
+    <table>
+    	<tr>
+    		<th>
+    		id
+    		</th>
+    		<th>
+    		名字
+    		</th>
+    		<th>
+    		外观
+    		</th>
+    		<th>
+    		档次
+    		</th>
+    		<th>
+    		默认成长值
+    		</th>
+    		<th>
+    		力量专精
+    		</th>
+    		<th>
+    		敏捷专精
+    		</th>
+    		<th>
+    		智力专精
+    		</th>
+    		<th>
+    		耐力专精
+    		</th>
+    		<th>
+    		产地
+    		</th>
+    		<th>
+    		等级
+    		</th>
+    		<th>
+    		经验
+    		</th>
+    		<th>
+    		本级经验上限
+    		</th>
+    		<th>
+    		力量
+    		</th>
+    		<th>
+    		敏捷
+    		</th>
+    		<th>
+    		智力
+    		</th>
+    		<th>
+    		耐力
+    		</th>
+    		
+    		<th>
+    		初始力量
+    		</th>
+    		<th>
+    		初始敏捷
+    		</th>
+    		<th>
+    		初始智力
+    		</th>
+    		<th>
+    		初始耐力
+    		</th>
+    		<th>
+    		附加值 洗髓
+    		</th>
+    		<th>
+    		成功率
+    		</th>
+    	<!-- <th>
+    		铸魂道具
+    		</th>
+    		<th>
+    		镇魂道具
+    		</th> -->	
+    		<th>
+    		铸魂符个数
+    		</th>
+    		<th>
+    		镇魂石个数
+    		</th>
+    		<th>
+    		转生要求等级
+    		</th>
+    		<th>
+    		是否自动转生
+    		</th>
+    		<th>
+    		战斗等级描述
+    		</th>
+    		<th>
+    		训练时间倒计时
+    		</th>
+    		<th>
+    		训练时间段
+    		</th>
+    		<th>
+    		是否能转生
+    		</th>
+    		<th>
+    		训练类型
+    		</th>
+    	</tr>
+    	<!--{foreach from=$soul_playerId_array item=list  name=foo}-->
+		<tr>
+			<td><!--{$list.id}--></td>
+			<td><!--{$list.name}--></td>
+			<td><!--{$list.figure}--></td>
+			<td><!--{$list.grade}--></td>
+			<td><!--{$list.growth}--></td>
+			<td><!--{$list.powerEx}--></td>
+			<td><!--{$list.agileEx}--></td>
+			<td><!--{$list.witEx}--></td>
+			<td><!--{$list.enduranceEx}--></td>
+			<td><!--{$list.source}--></td>
+			<td><!--{$list.level}--></td>
+			<td><!--{$list.exp}--></td>
+			<td><!--{$list.maxExp}--></td>
+			
+			<td><!--{$list.power}--></td>
+			<td><!--{$list.agile}--></td>
+			<td><!--{$list.wit}--></td>
+			<td><!--{$list.endurance}--></td>
+			
+			<td><!--{$list.initPower}--></td>
+			<td><!--{$list.initAgile}--></td>
+			<td><!--{$list.initWit}--></td>
+			<td><!--{$list.initEndurance}--></td>
+			<td><!--{$list.powerAddition}--></td>
+			
+			<td><!--{$list.rate_float}--></td>
+			<!-- <td><!--{$list.castItem}--></td>
+			<td><!--{$list.calmItem}--></td> -->
+			<td><!--{$list.castCount}--></td>
+			<td><!--{$list.calmCount}--></td>
+			<td><!--{$list.reincarnateLimit}--></td>
+			<td><!--{$list.autoReincarnate}--></td>
+			<td><!--{$list.battleLevelDesc}--></td>
+			<td><!--{$list.endTime}--></td>
+			<td><!--{$list.tranMaxTime}--></td>
+			<td><!--{$list.reincarnate}--></td>
+			<td><!--{$list.tranType}--></td>
+		</tr>
+		<!--{/foreach}-->
+		
+	</table>
+	<!--{else}-->
+	<!--{$soul_playerId_array}-->
+    <!--{/if}-->
+</fieldset>
+
+<fieldset>
+	<legend>填写</legend>
+	
+    <form action="" method="GET">
+    <input type="hidden" name="c" value="XianHunUser" />
+        <input type="hidden" name="a" value="SoulModification" />
+        <input type="hidden" name="zp" value="XianHun" />
+    	<table>
+		<tr>
+			<th width='200'>宠物ID：</th>
+			<td><input type="text" class="text" name="playerId" id="playerId" value="<!--{$playerId}-->" /></td>
+			<td><input type="submit" value="确认" class="btn-blue" /></td>
+		</tr>
+		</table>
+    </form>
+</fieldset>
+<fieldset>
+<legend>申请原因</legend>
+
+<table>
+		<tr>
+			<th width='200'>申请原因：</th>
+			<td><textarea id="cause" rows="7" cols="50"></textarea></td>
+			<td></td>
+		</tr>
+		</table>
+</fieldset>
+<!--{if $modifdisplay}-->
+<fieldset>
+<legend>修改内容</legend>
+
+
+<form action="" method="post" id='setPlayerSoulform'>
+	<input type="hidden" name="cause" id='setPlayerSoul' />
+	<input type="hidden" name="actionfunction" value="setPlayerSoul" />
+	<table>
+		<tr>
+			<th colspan='3'>设置宠物等级 经验 成长 品质 </th>
+		</tr>
+		<tr>
+			<th width='200'>宠物等级:</th>
+			<td><input type="text" class='text' name='level'></input></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th width='200'>宠物经验:</th>
+			<td><input type="text" class='text' name='exp'></input></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th width='200'>宠物成长:</th>
+			<td><input type="text" class='text' name='growth'></input></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th width='200'>宠物品质:</th>
+			<td><input type="text" class='text' name='color'></input></td>
+			<td><input type="button" value="确认" class="btn-blue" onclick='buttonsub("setPlayerSoul")' /></td>
+		</tr>
+	</table>
+</form>
+
+<form action="" method="post" id='setPlayerSoulExform'>
+<input type="hidden" name="cause" id='setPlayerSoulEx' />
+	<input type="hidden" name="actionfunction" value="setPlayerSoulEx" />
+	<table>
+		<tr>
+			<th colspan='3'>设置天赋力敏智耐值 </th>
+		</tr>
+		<tr>
+			<th width='200'>力:</th>
+			<td><input type="text" class='text' name='powerEx'></input></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th width='200'>敏:</th>
+			<td><input type="text" class='text' name='agileEx'></input></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th width='200'>智:</th>
+			<td><input type="text" class='text' name='witEx'></input></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th width='200'>耐:</th>
+			<td><input type="text" class='text' name='enduranceEx'></input></td>
+			<td><input type="button" value="确认" class="btn-blue" onclick='buttonsub("setPlayerSoulEx")' /></td>
+		</tr>
+	</table>
+</form>
+
+<form action="" method="post" id='setPlayerSoulAdditionform'>
+<input type="hidden" name="cause" id='setPlayerSoulAddition' />
+	<input type="hidden" name="actionfunction" value="setPlayerSoulAddition" />
+	<table>
+		<tr>
+			<th colspan='3'>设置洗髓力敏智耐值 </th>
+		</tr>
+		<tr>
+			<th width='200'>力:</th>
+			<td><input type="text" class='text' name='powerAddition'></input></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th width='200'>敏:</th>
+			<td><input type="text" class='text' name='agileAddition'></input></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th width='200'>智:</th>
+			<td><input type="text" class='text' name='witAddition'></input></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th width='200'>耐:</th>
+			<td><input type="text" class='text' name='enduranceAddition'></input></td>
+			<td><input type="button" value="确认" class="btn-blue" onclick='buttonsub("setPlayerSoulAddition")' /></td>
+		</tr>
+	</table>
+</form>
+</fieldset>
+<!--{/if}-->
+<!--{/if}-->

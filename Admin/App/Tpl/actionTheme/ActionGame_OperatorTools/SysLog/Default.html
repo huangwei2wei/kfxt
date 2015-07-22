@@ -1,0 +1,100 @@
+
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+	function delMsg(url){
+		var bo = confirm("确认删除");
+		if(bo){
+			window.location.href=url;
+			}
+	}
+
+	function logDesc(actime,acuser){
+		$.ajax( {
+			type : "post",
+			url : "<!--{$ajax_url}-->",
+			data :"actime="+actime+"&acuser="+acuser,
+			success : function(dataResult) {
+				$("#rMsg").html(dataResult);
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				
+			}
+		});
+	}
+</script>
+<fieldset>
+  <legend>检索条件</legend>
+  <form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+  操作人：<input type="text" class="text" name="Acuser" value="<!--{$_GET.Acuser}-->"/>
+  
+  操作栏目：<select name='Actype'>
+  	<option value="" <!--{if $_GET.Actype==""}-->selected="selected"<!--{/if}-->>--全部--</option>
+  	<!--{foreach from=$ac_type.MasterTools.child key=k item=list}-->
+  		 <option value="<!--{$k}-->" <!--{if $_GET.Actype==$k}-->selected="selected"<!--{/if}-->><!--{$list.name}--></option>
+  	<!--{/foreach}-->
+  	<!--{foreach from=$ac_type.OperatorTools.child key=k item=list}-->
+  		 <option value="<!--{$k}-->" <!--{if $_GET.Actype==$k}-->selected="selected"<!--{/if}-->><!--{$list.name}--></option>
+  	<!--{/foreach}-->
+  </select>
+  操作时间：<input type="text" class="text" name="begin" value="<!--{$_GET.begin}-->" onFocus="WdatePicker({startDate:'<!--{$dataList.Start_time|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+  -
+  <input type="text" class="text" name="end" value="<!--{$_GET.end}-->" onFocus="WdatePicker({startDate:'<!--{$dataList.End_time|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+  <input type="submit" class="btn-blue" name='subbutton' value="提交" />
+  </form>
+</fieldset>
+<fieldset>
+  <legend>请求、返回信息</legend>
+  <div id='rMsg'></div>
+</fieldset>
+<fieldset>
+  <legend>Log列表</legend>
+  
+      <table width="100%">
+        <tr>
+
+		<th>所属游戏</th>
+		<th>操作人</th>
+		<th>IP</th>
+		<th>操作时间</th>
+		<th>control</th>
+		<th>action</th>
+		<th>查看</th>
+        </tr>
+        
+		<!--{foreach from=$dataLog key=k item=list}-->
+        <tr>
+			<td align="center"><!--{$list.game_id}--></td>
+			<td align="center"><!--{$list.acuser}--></td>
+			<td align="center"><!--{$list.acIP}--></td>
+			<td align="center"><!--{$list.actime}--></td>
+			<td align="center"><!--{$list.control}--></td>
+			<td align="center"><!--{$list.action}--></td>
+			<td align="center"><a href="javascript:logDesc('<!--{$list.time}-->','<!--{$list.user}-->')">详细信息</a></td>
+
+        </tr>
+        <!--{/foreach}-->
+
+          <tr>
+            <th colspan="10" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>

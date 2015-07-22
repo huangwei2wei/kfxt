@@ -1,0 +1,44 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+
+<fieldset>
+  <legend>公告查询 [<a href="<!--{$URL_noticeAdd}-->">添加</a>]</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">标题(滚动内容)</th>
+        <th scope="col">开始时间</th>
+        <th scope="col">结束时间</th>
+        <th scope="col">相隔(秒)</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <form action="<!--{$list.URL_edit}-->" method="post" id='form_<!--{$list.id}-->'>
+      <tr>
+      	<input type="hidden" value='<!--{$list.id}-->' name='id'></input>
+      	<input type="hidden" value='<!--{$list.content}-->' name='content'></input>
+      	<input type="hidden" value='<!--{$list.begin_time|date_format:"%Y-%m-%d %H:%M:%S"|default:'--'}-->' name='begin_time'></input>
+      	<input type="hidden" value='<!--{$list.end_time|date_format:"%Y-%m-%d %H:%M:%S"|default:'--'}-->' name='end_time'></input>
+      	<input type="hidden" value='<!--{$list.interval_time}-->' name='interval_time'></input>
+
+        <td><!--{$list.id}--></td>
+        <td><!--{$list.content}--></td>
+        <td align="center"><!--{$list.begin_time|date_format:"%Y-%m-%d %H:%M:%S"|default:'--'}--></td>
+        <td align="center"><!--{$list.end_time|date_format:"%Y-%m-%d %H:%M:%S"|default:'--'}--></td>
+        <td><!--{$list.interval_time}--></td>
+      
+        <td>
+        	[<a onclick="return confirm('确定删除？');" href="<!--{$list.URL_del}-->">删除</a>]
+        	[<a href='javascript:document.getElementById("form_<!--{$list.id}-->").submit();'>编辑</a>]
+        </td>
+      
+      </tr>
+      </form>
+      <!--{/foreach}-->
+    </table>
+
+</fieldset>
+<!--{/if}-->

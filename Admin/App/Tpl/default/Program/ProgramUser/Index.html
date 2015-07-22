@@ -1,0 +1,25 @@
+<fieldset>
+	<legend>用户列表</legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">账号</th>
+        <th scope="col">姓名</th>
+        <th scope="col">职位</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td><!--{$list.user_name}--></td>
+        <td><!--{$list.nick_name}--></td>
+        <td><!--{$list.word_position_id}--></td>
+        <td><a href="<!--{$list.url_edit}-->">编辑</a></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="5"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+</fieldset>

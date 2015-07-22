@@ -1,0 +1,199 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+	var type = <!--{$TypeSlt|default:"0"}-->;
+	var typeid = <!--{$selected.typeid|default:"0"}-->;
+	function rootchange(rootid){
+		$('#typeid').html('');
+		$('<option/>').attr('value',0).text('所有子类').appendTo('#typeid');		
+		if(rootid>0){			
+			$.each(type[rootid],
+				function(Id,name){ 
+					$('<option/>').attr('value',Id).text(name).appendTo('#typeid');
+				}
+			);	
+			if(typeid)$("#typeid").val(typeid);
+		}
+		if(rootid == 0){
+			TypeChange(0,0);
+		}
+	}
+	
+	function logTypeSearch(rootid,typeid){
+		$("#rootid").val(rootid);
+		$('#typeid').html('');
+		$('<option/>').attr('value',typeid).text(typeid).appendTo('#typeid');
+		$("#typeid").val(typeid);
+		$('#LogFrom').submit();
+	}
+	
+	function checkForm(){
+		var noEmpty = new Array("playerId","name");
+		//var explain = new Array("角色Id","昵称");
+		for (x in noEmpty)
+		{
+			var obj = $('[name='+noEmpty[x]+']');
+			var content = $.trim(obj.val());
+			if(content!='' ){
+				return true;
+			}
+		}
+		alert("缺少:角色Id 或 昵称");
+		return false;
+	}
+	
+	$(function(){
+		rootchange($('#rootid').val());
+		if(typeid)$("#typeid").val(typeid);
+	})
+function ajaxlog(id,thisdate){
+		$.ajax({
+			type: 'get',
+			url: "<!--{$URL_AJAX}-->&id="+id+"&thetime="+thisdate,
+			success:function(data){	
+				alert(data);
+			}
+		});	
+}
+</script>
+<style>
+	.AutoNewline {
+		font-size:12px;
+		line-height:150%;
+		overflow: hidden;
+		width: 400px;
+		word-wrap:break-word;
+		margin-bottom:3px;
+		margin-top:3px;
+	}
+</style>
+
+<fieldset>
+  <legend>玩家操作日志 [<a href="<!--{$URL_ReCacheLogType}-->">更新日志类型</a>]</legend>
+<form action=""  method="get" id="LogFrom">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="LogId" id="LogId" value="0">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+            <span style="padding-right:20px;">
+                日志类型
+                <select name="rootid" id="rootid" onchange="rootchange($(this).val())">
+                    <!--{html_options options=$RootSlt selected=$selected.rootid}-->
+                </select>
+                <select name="typeid" id="typeid" >
+                    <option value="0">所有子类</option>
+                </select>
+            </span>
+            
+            
+            操作时间：
+            <input class="text" type="text" name="StartTime" value="<!--{$selected.StartTime}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+            至
+            <input class="text" type="text" name="EndTime" value="<!--{$selected.EndTime}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+        </td>
+      </tr>
+      
+      
+      <tr>
+        <td>
+            角色Id：<input class="text" type="text" name="playerId" id="playerId" value="<!--{$selected.playerId}-->">
+            昵称：<input class="text" type="text" name="name" id="name" value="<!--{$selected.name}-->">
+            关键字：<input type="text" class="text" name="keyword" value="<!--{$selected.keyword}-->">
+            <input class="btn-blue" type="submit" name="submit" onclick="return checkForm();" value="查询" >
+            
+        </td>
+      </tr>
+    </table>    
+    
+</form>
+    
+    <table width="100%" border="0" cellpadding="3">
+    
+      <tr>
+        <th>Id</th>
+        <th>玩家Id</th>
+        <th>昵称</th>
+        <th>元宝<br>铜钱</th>
+        <th>修为</th>
+		<th>精力<br>等级</th>
+             
+        <th>操作时间<br>操作IP</th>
+        <th>主类<br>分类</th>
+        <th width="400">详细操作内容</th>
+      </tr>
+
+
+    <!--{foreach from=$dataList item=list}--> 
+      <tr class="here_td">
+        <td align="center"><!--{$list->logId}--></td>
+        <td align="center"><!--{$list->playerId}--></td>
+        <td align="center"><!--{$list->playerName|default:'<font color="#999999">无</font>'}--></td> 
+        <td align="center"><!--{$list->gold|default:'0'}--><br><!--{$list->copper|default:'0'}--></td>
+        <td align="center"><!--{$list->exploit|default:'0'}--></td>
+        <td align="center"><!--{$list->token|default:'0'}--><br><!--{$list->level|default:'0'}--></td>
+
+
+        <td align="center" style="font-size:10px;"><!--{$list->actionTime|default:'<font color="#999999">无</font>'}--><br><!--{$list->ip|default:'<font color="#999999">无</font>'}--></td> 
+
+        <td align="center">
+        	<!--{$list->rootDesc}-->    
+            <br>
+           <!--{$list->subTypeDesc}-->    
+        </td> 
+        <td><div class="AutoNewline"><!--{$list->operateDesc}--><input type='button' onclick='ajaxlog("<!--{$list->playerId}-->","<!--{$list->actionTime}-->")' value='查询' class="btn-blue"></div></td>  
+      </tr>
+    <!--{foreachelse}-->
+    	<!--{if $ConnectErrorInfo}-->
+          <tr>
+            <th colspan="10" align="center"><!--{$ConnectErrorInfo}--></th>
+          </tr>
+        <!--{else}-->
+          <tr>
+            <th colspan="10" align="center">查无数据</th>
+          </tr>
+        <!--{/if}-->
+        
+
+    <!--{/foreach}-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </table>
+
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th align="right"><!--{$pageBox}--> </th>
+  </tr>
+</table>
+</fieldset>
+<!--{/if}-->

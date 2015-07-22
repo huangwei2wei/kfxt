@@ -1,0 +1,65 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+
+$(document).ready(function(){
+	$("form :radio").click(function(){$("form").submit();});
+});
+	
+</script>
+<fieldset>
+  <legend>PSD链接搜索</legend>
+  <form action="" method="get">
+      <input type="hidden" value="ShareToOperator" name="c"  />
+      <input type="hidden" value="PsdLink" name="a" />
+      <input type="hidden" value="LianYun" name="zp" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th width="100" scope="row">游戏</th>
+        <td>
+        	<!--{html_radios name="game_type_id" options=$gameTypes selected=$selected.game_type_id}-->
+        </td>
+      </tr>
+      <tr>
+        <th width="100" scope="row">时间</th>
+        <td>
+            <input name="start_time" type="text" class="text" onFocus="WdatePicker({startDate:'<!--{$selectedStartTime}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"  value="<!--{$selected.start_time}-->" size="25"/>
+            - 
+            <input name="end_time" type="text" class="text" onFocus="WdatePicker({startDate:'<!--{$selectedEndTime}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" value="<!--{$selected.end_time}-->" size="25"/>
+            <input class="btn-blue" type="submit" value="搜索" />
+        </td>
+      </tr>
+    </table>
+	</form>
+</fieldset>
+<fieldset>
+	<legend>PSD链接</legend>
+		<a href="<!--{$url.Link_Add}-->" ><!--{'6AE197127395FC1832148C2FB02850C1'|lang}--></a>
+<table width="100%" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td scope="col" colspan="6"><a href="<!--{$url.PsdLinkDAdd}-->">添加</a></td>
+  </tr>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">时间</th>
+    <th scope="col">名称</th>
+    <th scope="col">链接地址</th>
+    <th scope="col">所属游戏</th>
+    <th scope="col">操作</th>
+  </tr>
+<!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.Id}--></td>
+    <td><!--{$list.edit_time|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td><!--{$list.title}--></td>
+    <td><a target="_blank" href="<!--{$list.href}-->" ><!--{$list.href}--></a></td>
+    <td><!--{$list.game_type}--></td>
+    <td>
+        <a href="<!--{$list.edit}-->">操作</a>
+        <a href="<!--{$list.del}-->" onClick="return(confirm('确定删除“<!--{$list.title}-->”？'));">删除</a>
+    </td>
+  </tr>
+<!--{/foreach}-->
+</table>
+    <div align="right"><!--{$pageBox}--></div>
+</fieldset>

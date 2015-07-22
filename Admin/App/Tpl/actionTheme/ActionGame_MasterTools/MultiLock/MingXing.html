@@ -1,0 +1,104 @@
+<script language="javascript" src="<!--{$__JS__}-->/Libs/jquery.form.js"></script>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"账号不能为空,请确认"});
+	$("#cause").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"原因不能为空,请确认"});
+})
+
+function onSubmit(){
+	var optType = getOptType();
+	if(!optType){
+		alert('请选择操作类型');
+		return false;
+	}
+	var sendUrl = $.trim($('form').attr('action'));
+	if(sendUrl == ''){
+		alert('发送地址错误');
+		return false;
+	}
+	$('.returnTip').remove();	//去掉旧提示
+	$(":checkbox[name='server_ids[]']:checked").each(function(i,n){
+			var curLi=$("#server_"+n.value);
+			$("#form").ajaxSubmit({
+				dataType:'json',
+				data:{server_id:n.value},
+				success:function(data){
+					var fontColor=(data.status==1)?'#00cc00':'#ff0000';
+					curLi.append("<font class='returnTip' color='"+fontColor+"'> "+data.info+"</font>");
+				}
+			});
+	});
+	
+}
+function getOptType(){
+	var optType = 0;
+	var optTypeRadios = $('input[name=optType]');
+	for(var i=0;i<optTypeRadios.length;i++){
+		if(optTypeRadios[i].checked == true){
+			optType = optTypeRadios[i].value;
+			break;
+		}		
+	}
+	return optType;
+}
+</script>
+
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<fieldset>
+<legend>多服禁言/封号</legend>
+<form action="" method="post" id="form">
+    <table width="100%" border="0" cellpadding="3">
+    	<tr>
+        <th scope="row">原因：</th>
+        <td><textarea name="cause" style="width:500px; height:80px;" id="cause"></textarea><div id="causeTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row">账号类型：</th>
+        <td>
+			<label><input checked="checked" type="radio" value="2" name="playerType">OpenId</label>
+            <label><input type="radio" value="1" name="playerType">昵称</label>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">账号：</th>
+        <td>
+        	<textarea name="players" style="width:500px; height:80px;" id="content"></textarea>
+        	<font color='red'>&nbsp;&nbsp;以&quot;<!--{$separator|default:','}-->&quot;号分隔账号</font>
+            <input type="hidden" name="playerType" value="<!--{$playerType}-->" />
+            <input type="hidden" name="separator" value="<!--{$separator}-->" />
+        </td>
+      </tr>
+      <tr>
+      <tr>
+        <th scope="row">操作类型：</th>
+        <td>
+        	<!--{foreach from=$optType item=val key=key}-->
+            	<label>
+                    <input type="radio" name="optType" onclick="$('#form').attr('action','<!--{$url.$key}-->')" value="<!--{$key}-->" >
+                    <!--{$val}-->
+                </label>
+            <!--{/foreach}-->
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">封号期限：</th>
+        <td>
+        	<input type="text" class="text" name="endTime" value="<!--{$smarty.now|strtotime:'+1 day'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|strtotime:'+1 day'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        	当前系统时间： <font color="#FF0000"><!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}--></font>
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" onclick="onSubmit();return false;" value="提交" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+
+

@@ -1,0 +1,256 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+	<legend>
+    礼包申请
+    [<a href="<!--{$URL_itemCard}-->">礼包列表</a>]
+    [<a href="<!--{$URL_itemReceiveConditions}-->">更新领取条件</a>]
+    [<a href="<!--{$URL_itemUpdate}-->">更新道具</a>]
+    </legend>
+
+<style>
+	.itemInput{width:35px;height:16px;border: 1px solid red;}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+//创建道具数量填写表单
+function makeInput(obj){
+	var itemId = obj.attr('itemId');
+	var itemName = obj.attr('itemName');
+	var str = '';
+	if(obj.attr('checked')){
+		str = '<input type="text" value="" class="itemInput" name="itemNum['+itemId+']" onblur="itemCollectAdd(\''+itemId+'\',\''+itemName+'\',$(this).val())" >';
+		str +='<input type="hidden" name="itemName['+itemId+']" value="'+itemName+'">'; 
+		$('#input_'+itemId).html(str);
+		$('#input_'+itemId).children().focus();
+	}else{
+		$('#input_'+itemId).html('');
+	}
+}
+//道具收集
+function itemCollectAdd(itemId,itemName,num){
+	if(itemId =='' || $.trim(num)=='')return false;
+	var itemsCollectId = 'itemsCollect'+itemId;
+	$('#'+itemsCollectId).remove();
+	num = parseInt(num);
+	if(num && num>0){
+		var str = '<div id="'+itemsCollectId+'" >'+itemName+'('+num+') <a href="javascript:itemCollectDel('+itemId+')">删除</a></div>';
+		$('#itemsCollect').append(str);
+	}else{
+		$('input[name=itemNum['+itemId+']]').val('');
+	}
+}
+//在收集的道具中删除道具
+function itemCollectDel(itemId){
+	if(itemId =='')return false;		
+	$('#checkboxItem'+itemId).attr('checked',false);
+	$('#input_'+itemId).html('');
+	$('#itemsCollect'+itemId).remove();
+}
+//是否显示发送邮件
+function showemail(isShow){
+	var disabledValue = false;	//显示状态
+	var backgroundValue = "";	//显示状态
+	if(!isShow){
+		disabledValue = true;			//禁用状态
+		backgroundValue = "#F1EFF1";	//禁用状态
+	}
+	$('#mailTitle').attr('disabled',disabledValue).css('background',backgroundValue);
+	$('#mailContent').attr('disabled',disabledValue).css('background',backgroundValue);
+}
+function checkPlayer(playerId){
+	if($.trim(playerId)==''){
+		return;
+	}
+	$.ajax({
+		dataType:'json',	
+		type: 'GET',
+		data:{playerId:playerId},
+		url: '<!--{$URL_playerLookup}-->',
+		success:function(jsonData){
+			if(0 == jsonData.status){
+				alert(jsonData.info);
+			}
+			else if(1 == jsonData.status){
+				
+				if(jsonData.data.dataList && jsonData.data.dataList[0].playerId == playerId){
+					$('#playerInfo').html('<font color="#FF0000">'+jsonData.data.dataList[0].playerName+'</font>');
+				}else{
+					$('#playerInfo').html('<font color="#999999">未找到匹配玩家</font>');
+				}
+			}
+		}
+	});
+}
+function addTimePic(obj,i,field){
+	var id = i+field;
+	obj.after('<img onclick="WdatePicker({el:\''+id+'\'})" src="<!--{$__JS__}-->/Libs/My97DatePicker/skin/datePicker.gif" width="16" height="22" align="absmiddle">');
+	obj.after('<input type="hidden" class="text" name="conditions['+i+'][isTime]" value="1" />');
+	obj.remove();
+}
+
+$(function(){
+	var i=1;
+	$('#receiveConditions').find('a').click(function(){
+		$('#receiveConditions').hide();
+		var name = $(this).html();
+		var field = $(this).attr('field');
+		var strAdd = '<div style="margin:2px;" >[<a href="javascript:void(0);" onclick="$(this).parent().remove()">移除</a>] <font style=" display:inline-block; margin-right:10px;">'+name+'</font><select name="conditions['+i+'][relation]">';
+		strAdd += '<option value="1">大于</option><option value="2">小于</option><option value="0">等于</option></select> ';
+		strAdd += '<input type="hidden" class="text" name="conditions['+i+'][name]" value="'+name+'" />';
+		strAdd += '<input type="hidden" class="text" name="conditions['+i+'][field]" value="'+field+'" />';
+		strAdd += '</select><input type="text" class="text" id="'+i+field+'" name="conditions['+i+'][value]" value="" /> ';
+		strAdd += '<a href="javascript:void(0);" onclick="addTimePic($(this),\''+i+'\',\''+field+'\')" >加载日期控件</a> ';
+		strAdd += '</div>';
+		$('#addedConditions').prepend(strAdd);
+		i++;
+	});
+	
+ 	$("[name='bindType']").click(function(){
+ 		var val = $(this).attr('value');
+ 		if(val == 2){
+ 			$("#isSendMail_1").attr('checked','checked');
+ 			showemail(true);
+ 		}else{
+ 			$("#isSendMail_0").attr('checked','checked');
+ 			showemail(false);
+ 		}
+ 	});
+	
+})
+
+
+</script>
+<form action="" method="post">
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">礼包类型</th>
+    <td><!--{html_radios options=$itemPackageType name="type" selected=$editData.type|default:$selected.itemPackageType}--></td>
+  </tr>
+  <tr>
+    <th scope="row">是否可重复</th>
+    <td>
+    	<input type="checkbox" name="repeat" value="1" <!--{if $editData.repeat}-->checked<!--{/if}-->/> <font color="#FF0000">请慎用</font>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">卡密长度</th>
+    <td><!--{html_radios options=$keyType name="keyType" selected=$editData.keyType|default:$selected.keyType}--></td>
+  </tr>
+
+  <tr>
+    <th scope="row">绑定方式</th>
+    <td><!--{html_radios options=$bindType name="bindType" selected=$editData.bindType|default:$selected.bindType}--></td>
+  </tr>
+  <tr>
+    <th scope="row">多个玩家用','隔开</th>
+    <td>
+    	<label><input name="playerType" value="1" checked="checked" type="radio">玩家id</label>
+		<label><input name="playerType" value="2" type="radio">玩家账号</label>
+		<label><input name="playerType" value="3" type="radio">玩家昵称</label>
+    	<textarea style="width:400px; height:60px;" name="playerId"><!--{$editData.playerId}--></textarea>
+        <span id="playerInfo"></span>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"> 发送邮件 </th>
+    <td>
+        <input type="radio" id="isSendMail_0" value="0" name="isSendMail" onchange="showemail(false)">不发邮件
+        <input type="radio" id="isSendMail_1" value="1" name="isSendMail" checked="checked" onchange="showemail(true)">发邮件通知
+
+        <div class="pd">邮件标题:<input name="mailTitle" id="mailTitle" type="text" class="text" style="width:400px;" value="<!--{$editData.mailTitle}-->" /></div>
+        <div class="pd">
+            <span style="vertical-align:top">邮件内容:</span><textarea  id="mailContent" name="mailContent" style="width:400px; height:60px;" ><!--{if $editData.mailContent}--><!--{$editData.mailContent}--><!--{else}-->亲爱的玩家：
+您好，您的礼品已申请，您可以通过点击领取道具，请您注意查收。<!--{/if}--></textarea>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">参数设定</th>
+    <td>
+    礼包名:<input name="name" type="text" class="text" value="<!--{$editData.name}-->" ><font color="red">*</font>
+    生成数量:<input name="counts" type="text" class="text" value="<!--{$editData.counts|default:"1"}-->"><font color="red">*</font>
+    过期时间:<input name="expiration" type="text" class="text" value="" onFocus="WdatePicker({startDate:'<!--{$smarty.now|strtotime:'+1 month'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">领取条件</th>
+    <td>
+       	<input type="button" class="btn-blue" value="领取条件 展开/收起"  onclick="$('#receiveConditions').toggle();" />
+        <div id="receiveConditions" style="display:none; margin:5px;">
+        	<hr />
+            <!--{foreach from=$itemReceiveConditions key=conditionField item=conditionName}-->
+            	[<a href="javascript:void(0);" field="<!--{$conditionField}-->"><!--{$conditionName}--></a>]
+            <!--{/foreach}-->
+            <hr />
+        </div>
+        <div id="addedConditions"></div>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">点数</th>
+    <td>
+       	元宝<!--{html_options options=$exchangeTypeApply name="exchangeType" selected=$selected.exchangeTypeApply}-->
+        :<input type="text" class="text" name="goldValue" value="">,
+    	银两:<input type="text" class="text" name="assetValue" value="" />,
+    	天心:<input type="text" class="text" name="goldTickeValue" value=""><br/>
+    	声望:<input type="text" class="text" name="Prestige" value="">,
+    	礼金:<input type="text" class="text" name="CashGift" value="">,
+    	行动值:<input type="text" class="text" name="Energy" value="">
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">道具</th>
+    <td>
+        <table width="100%" border="0" cellpadding="3">
+          <tr>
+          <!--{foreach from=$items item=list key=typeId name=foo}-->              
+            <td><!--{$itemType.$typeId}-->
+                <div style="background:white;margin:6px;font-size:14px;border:1px dashed silver;padding:5px;width:250px;">
+                    <div style="overflow:auto;height:200px; width:250px;text-align:left;">
+                        <!--{foreach from=$list item=itemName key=itemId}--> 
+                            <div style="font-size:13px; margin-top:4px;">
+                                <!--{$itemName}-->
+                                <input type="checkbox" onclick="makeInput($(this));" id="checkboxItem<!--{$itemId}-->" itemId="<!--{$itemId}-->" itemName="<!--{$itemName}-->">
+                                <span id="input_<!--{$itemId}-->"></span>
+                            </div>
+                        <!--{/foreach}--> 
+                    </div>
+                </div>
+            </td>
+            <!--{if $smarty.foreach.foo.index%3==2}--> 
+                </tr><tr>
+            <!--{/if}-->
+          <!--{/foreach}--> 
+
+          </tr>
+        </table>
+    
+    </td>
+  </tr>
+  
+  <tr>
+      <th>道具汇总</th>
+      <td  valign="top">
+        <div id="itemsCollect"></div>
+      </td>
+  </tr>
+  <!--{if !$editData}--> 
+  <tr>
+      <th>申请原因<font color="red">*</font></th>
+      <td  valign="top"><textarea name="cause" id="cause" style="width:400px; height:60px;"></textarea></td>
+    </tr>
+  <tr>
+  <!--{/if}-->
+    <td>&nbsp;</td>
+    <td><input class="btn-blue" type="submit" value="提交申请" ></td>
+  </tr>
+</table>
+</form>
+
+</fieldset>
+<!--{/if}-->

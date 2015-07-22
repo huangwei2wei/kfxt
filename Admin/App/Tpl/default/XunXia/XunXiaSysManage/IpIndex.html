@@ -1,0 +1,49 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+function del(){
+	if(confirm('确定要删除吗?')){
+		$('form').submit();
+	}
+}
+
+</script>
+<fieldset>
+<legend>锁定IP列表</legend>
+<a href="<!--{$url.XunXiaSysManage_IpAdd}-->">增加封IP</a>
+<form action="<!--{$url.XunXiaSysManage_IpDel}-->" method="post" onsubmit="return checksub();">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">操作</th>
+    <th scope="col">封锁IP</th>
+    <th scope="col">封IP时间</th>
+    <th scope="col">封IP结束时间</th>
+    </tr>
+  <!--{foreach from=$dataList key=key item=list}-->
+  <tr>
+    <td scope="col"><input type="checkbox" value="<!--{$list->id}-->" name="idList[]" /></td>
+    <td scope="col"><!--{$list->ip}--></td>
+    <td scope="col"><!--{$list->createTime}--></td>
+    <td scope="col"><!--{$list->endTime}--></td>
+    </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="4" scope="col">
+  		<!--{$noData}--> 	
+    </th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <td colspan="4" scope="col">
+  		选择所有<input type="checkbox" onclick="$(':checkbox[name=\'idList[]\']').attr('checked',$(this).attr('checked'))" /><input type="button" class="btn-blue" onClick="del()" value="解禁" />  	
+    </td>
+  </tr>
+</table>
+</form>
+<div align="right"><!--{$pageBox}--></div>
+</fieldset>
+<!--{/if}-->

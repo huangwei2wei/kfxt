@@ -1,0 +1,127 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+</script>
+
+<fieldset>
+  <legend>帮会查询</legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="otype" value="<!--{$_GET.otype}-->" />
+    区ID:<input class="text" type="text" name="WorldID" value="<!--{$_GET.WorldID}-->">
+    <input class="btn-blue" type="submit" name="sbm" value="查询">
+    &nbsp;&nbsp;<a href="<!--{$OrganizeUrl2}-->">[注册帮会]</a>&nbsp;&nbsp;<a href="<!--{$OrganizeUrl}-->">[帮会]</a>
+</form>
+
+</fieldset>
+<fieldset>
+  <legend>列表</legend>
+  <!--{if $_GET.otype}-->
+<table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>区ID</th>
+          <th>帮会ID</th>
+          <th>帮会名</th>
+		  <th>创建者ID</th>
+          <th>旗帜ID</th>
+          <th>区ID</th>
+          <th>创建时间</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+          <td align="center"><!--{$list.WorldID}--></td>
+       	  <td align="center"><!--{$list.FactionID}--></td>
+          <td align="center"><!--{$list.FactionName}--></td>
+          <td align="center"><!--{$list.PlayerID}--></td>
+          <td align="center"><!--{$list.BannerID}--></td>
+          <td align="center"><!--{$list.WorldID}--></td>
+          <td align="center"><!--{$list.CreateTime}--></td>
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="11" align="center">
+                <!--{if $_GET.submit}-->
+                查无数据
+                <!--{else}-->
+                <font color="#FF0000">请使用"查询"按钮</font>
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/foreach}-->
+          <tr>
+            <th colspan="11" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+<!--{else}-->
+<table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>区ID</th>
+          <th>帮会ID</th>
+          <th>帮会名</th>
+          <th>旗帜ID</th>
+          <th>旗帜等级</th>
+          <th>战斗力</th>
+          <th>成员数量</th>
+          <th>创建时间</th>
+          <th>活跃度</th>
+          <th>解散值<br>(大于8就解散了)</th>
+          <th>操作</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+          <td align="center"><!--{$list.WorldID}--></td>
+       	  <td align="center"><!--{$list.FactionID}--></td>
+          <td align="center"><!--{$list.FactionName}--></td>
+          <td align="center"><!--{$list.BannerID}--></td>
+          <td align="center"><!--{$list.BannerLevel}--></td>
+          <td align="center"><!--{$list.FightPower}--></td>
+          <td align="center"><!--{$list.MemberNumber}--></td>
+          <td align="center"><!--{$list.CreateTime|date_format:"%Y-%m-%d %H:%M:%S"|default:'--'}--></td>
+          <td align="center"><!--{$list.Activity}--></td>
+          <td align="center"><!--{$list.DissolveValue}--></td>
+          <td align="center"><a href="<!--{$list.memberUrl}-->">[查看帮会成员]</a></td>
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="11" align="center">
+                <!--{if $_GET.submit}-->
+                查无数据
+                <!--{else}-->
+                <font color="#FF0000">请使用"查询"按钮</font>
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/foreach}-->
+          <tr>
+            <th colspan="11" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+
+<!--{/if}-->
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

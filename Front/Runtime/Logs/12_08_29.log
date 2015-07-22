@@ -1,0 +1,44 @@
+[ 2012-08-29T17:26:58+08:00 ] NOTIC: [8] Undefined index:  dovo_UserName BaseAction.class.php 第 13 行.
+[ 2012-08-29T17:26:58+08:00 ] SQL:  RunTime:0.002587s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-08-29T17:26:58+08:00 ] SQL:  RunTime:0.011031s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-08-29T17:26:58+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-08-29T17:26:58+08:00 ] SQL:  RunTime:0.087426s SQL = SELECT * FROM `cndw_player_faq` WHERE ( `lang_id` = 1 ) AND ( (`status` >= 0) AND (`status` <= 1)  ) AND ( `game_type_id` IN (1,2,6,7,9,8,10,21) ) ORDER BY ratio desc LIMIT 20 
+[ 2012-08-29T17:26:58+08:00 ] SQL:  RunTime:0.012338s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-08-29T17:26:58+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-08-29T17:26:58+08:00 ] NOTIC: [8] Undefined variable: username 972c8cf98e4871a830fafeb7278fd4ae.php 第 39 行.
+[ 2012-08-29T17:26:58+08:00 ] NOTIC: [8] Undefined variable: waitCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 86 行.
+[ 2012-08-29T17:26:58+08:00 ] NOTIC: [8] Undefined variable: haveCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 87 行.
+[ 2012-08-29T17:27:42+08:00 ] NOTIC: [8] Undefined index:  dovo_UserName BaseAction.class.php 第 13 行.
+[ 2012-08-29T17:27:42+08:00 ] SQL:  RunTime:0.002970s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-08-29T17:27:42+08:00 ] SQL:  RunTime:0.001827s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-08-29T17:27:42+08:00 ] SQL:  RunTime:0.001606s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-08-29T17:27:43+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-08-29T17:27:43+08:00 ] NOTIC: [8] Undefined variable: username 972c8cf98e4871a830fafeb7278fd4ae.php 第 39 行.
+[ 2012-08-29T17:27:43+08:00 ] NOTIC: [8] Undefined variable: waitCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 86 行.
+[ 2012-08-29T17:27:43+08:00 ] NOTIC: [8] Undefined variable: haveCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 87 行.
+[ 2012-08-29T17:29:44+08:00 ] NOTIC: [8] Undefined index:  dovo_UserName BaseAction.class.php 第 13 行.
+[ 2012-08-29T17:29:44+08:00 ] SQL:  RunTime:0.003120s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-08-29T17:29:44+08:00 ] SQL:  RunTime:0.002201s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-08-29T17:29:44+08:00 ] SQL:  RunTime:0.001906s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-08-29T17:29:44+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-08-29T17:29:44+08:00 ] NOTIC: [8] Undefined variable: username 972c8cf98e4871a830fafeb7278fd4ae.php 第 39 行.
+[ 2012-08-29T17:29:44+08:00 ] NOTIC: [8] Undefined variable: waitCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 86 行.
+[ 2012-08-29T17:29:44+08:00 ] NOTIC: [8] Undefined variable: haveCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 87 行.
+[ 2012-08-29T17:30:30+08:00 ] NOTIC: [8] Undefined index:  dovo_UserName BaseAction.class.php 第 13 行.
+[ 2012-08-29T17:30:30+08:00 ] SQL:  RunTime:0.002402s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-08-29T17:30:30+08:00 ] SQL:  RunTime:0.001701s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-08-29T17:30:30+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-08-29T17:30:31+08:00 ] SQL:  RunTime:0.010862s SQL = SELECT * FROM `cndw_player_faq` WHERE ( `lang_id` = 1 ) AND ( (`status` >= 0) AND (`status` <= 1)  ) AND ( `game_type_id` IN (1,2,6,7,9,8,10,21) ) ORDER BY ratio desc LIMIT 20 
+[ 2012-08-29T17:30:31+08:00 ] SQL:  RunTime:0.001684s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-08-29T17:30:31+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-08-29T17:30:31+08:00 ] NOTIC: [8] Undefined variable: username 972c8cf98e4871a830fafeb7278fd4ae.php 第 39 行.
+[ 2012-08-29T17:30:31+08:00 ] NOTIC: [8] Undefined variable: waitCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 86 行.
+[ 2012-08-29T17:30:31+08:00 ] NOTIC: [8] Undefined variable: haveCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 87 行.
+[ 2012-08-29T17:30:38+08:00 ] NOTIC: [8] Undefined index:  dovo_UserName BaseAction.class.php 第 13 行.
+[ 2012-08-29T17:30:38+08:00 ] SQL:  RunTime:0.002487s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-08-29T17:30:38+08:00 ] SQL:  RunTime:0.001658s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-08-29T17:30:38+08:00 ] SQL:  RunTime:0.001596s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-08-29T17:30:38+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-08-29T17:30:38+08:00 ] NOTIC: [8] Undefined variable: username 972c8cf98e4871a830fafeb7278fd4ae.php 第 39 行.
+[ 2012-08-29T17:30:38+08:00 ] NOTIC: [8] Undefined variable: waitCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 86 行.
+[ 2012-08-29T17:30:38+08:00 ] NOTIC: [8] Undefined variable: haveCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 87 行.

@@ -1,0 +1,143 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<style>
+	.AutoNewline {
+		font-size:12px;
+		line-height:150%;
+		overflow: hidden;
+		width: 400px;
+		word-wrap:break-word;
+		margin-bottom:2px;
+		margin-top:2px;
+	}
+</style>
+<fieldset>
+  <legend>道具发放/扣除</legend>
+  <div style="float:left;width:50%;">
+		  <form id="search" method="POST" action="#">
+		  <table width="100%" border="0" cellpadding="3">
+		    <tr>
+		      <th scope="col" width='150'>账号</th>
+		      <td>
+		      <input class="text" type="text" name="accounts" id="accounts">
+		      <input class="btn-blue" type="button" onclick="onSubmitplayer($(this))" value="查询" >
+		      </td>
+		    </tr>
+		    <tr>
+		      <th scope="col" width='150'>删除/增加</th>
+		      <td>
+		      	删除<input type="radio" value="delete" name="e" checked="checked" />
+		      	&nbsp;&nbsp;
+		      	增加<input type="radio" value="add" name="e" />
+		      </td>
+		    </tr>
+		    <tr>
+		      <th scope="col" width='150'>道具和数量</th>
+		      <td id='goods_app'>
+			        <!-- input class="text" type="text" name="goods" style="width:250px;">
+			        <br/>格式为 "道具ID|数量,道具ID|数量,道具ID|数量"，多组用英文逗号","隔开，中间不要有空格<br/>
+			        
+			      	道具ID：<input class="text" type="text" name="goodsId[]" style="width:100px;">
+			      	数量：<input class="text" type="text" name="goodsNum[]" style="width:50px;">
+			      	<br/-->
+		      	
+		      </td>
+		    </tr>
+		    <tr>
+		      <th scope="col" width='150'>申请原因</th>
+		      <td><textarea style="width:400px; height:60px;" id="cause" name="cause" class=""></textarea></td>
+		    </tr>
+		    <tr>
+		      <th scope="col" width='150'></th>
+		      <td><input class="btn-blue" type="submit" value="提交"></td>
+		    </tr>
+			</table>
+			</form>
+		<table id="detail"></table>
+</div>
+<div style="float:right;width:50%">
+	<table width="100%" border="0" cellpadding="3">
+		<tr>
+		      <th scope="col" width='150'>道具分类查询</th>
+		      <td>
+					<select id="type_dj">
+							<!--{foreach from=$type key=key item=list}-->
+							<option value="<!--{$key}-->"><!--{$list}--></option>
+							<!--{/foreach}-->
+					</select>
+		      </td>
+		</tr>
+	</table>
+	<table id='show_dj' style="width: 100%"></table>
+</div>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<script type="text/javascript">
+function checkedDj(obj){
+	var id = $(obj).find('td:eq(0)').html();
+	var v =  $(obj).find('td:eq(1)').html();
+	var str = '<input type="hidden" name="nameDj[]" value="'+v+'" />'+'道具ID：<input class="text" type="text" name="goodsId[]" style="width:100px;" value="'+id+'"> 数量：<input class="text" value="1" type="text" name="goodsNum[]" style="width:50px;"><br/>'
+	$('#goods_app').append(str);
+}
+
+
+	var ajax_url = "<!--{$ajax_url}-->";
+	function onSubmitplayer(obj){
+		var val = $('#accounts').attr('value');
+		if(val == ''){
+			alert('请填写帐号');
+			return;
+		}
+		$.ajax({
+			dataType:'json',	
+			type: 'GET',
+			url: ajax_url+"&playerid="+val+'&doaction=ajaxForZh',
+			success:function(o){
+				if(1 == o.status){
+					$("#detail").html("");
+					$('#detail').append('<tr><th scope="col" width="200">用户</th><th scope="col" width="150">名称</th><th scope="col" width="150">ID</th><th scope="col" width="100">数量</th></tr>');
+					for(var account in o.data){
+						//alert(o.data[account].account);
+						var goods = o.data[account].GoodsSet;
+						for(var g in goods){
+							$('#detail').append('<tr><td>'+o.data[account].account+":"+o.data[account].playerName+'</td>'+'<td>'+goods[g].name+'</td><td>'+goods[g].goodsID+'</td><td>'+goods[g].number+'</td></tr>');
+						}
+					}
+				}
+				else if(0 == o.status){
+					alert(o.info);
+				}else{
+					alert('unknow error');
+				}
+			}
+		});
+	}
+	
+	$("#type_dj").change(function(){
+		var val = $(this).attr('value');
+		if(val != 0){
+				$.ajax({
+					type: "GET",
+					//async : false,    //设置同步
+					dataType: 'html',
+					url: ajax_url+"&type="+val+'&doaction=ajaxForDj',
+					success: function(data){
+						$('#show_dj').empty();
+						$('#show_dj').append(data);
+					}
+		   });
+		}
+	});
+	
+</script>
+<!--{/if}-->

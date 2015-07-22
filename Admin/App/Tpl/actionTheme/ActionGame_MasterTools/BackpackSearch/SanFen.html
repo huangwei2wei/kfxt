@@ -1,0 +1,76 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+
+function submitCheck(){
+	if($.trim($('[name=cause]').val())==''){
+		alert('申请原因不能为空');
+		return false;
+	}
+	return true;
+}
+</script>
+<fieldset>
+  <legend>搜索</legend>
+<form action=""  method="post">
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+      <td>
+      	玩家类型：
+            <select name="userType">
+            	<!--{html_options options=$userType selected=$_POST.userType}-->
+            </select>
+	            玩家:<input class="text" type="text" name="user" value="<!--{$_POST.user}-->">
+	         <input class="btn-blue" type="submit" value="查询">
+        </td>
+      </tr>
+      
+    </table>
+</form>
+</fieldset>
+<fieldset>
+  <legend>
+	背包查询
+  		<!--{if $UserID}-->玩家ID:<!--{$UserID}-->&nbsp;&nbsp;玩家账号:<!--{$UserName}-->&nbsp;&nbsp;玩家昵称:<!--{$NickName}--><!--{/if}-->
+    <font color="#FF0000"><!--{$playerSelect.1|default:''}--></font>
+  </legend>
+<form action="<!--{$URL_itemsDel}-->" method="post">
+	<input type="hidden" name="playerType" value="<!--{$playerType}-->">
+    <input type="hidden" name="player" value="<!--{$player}-->">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">名称</th>
+        <th scope="col">现有数量</th>
+        <th scope="col">修改后数量</th>
+      </tr>
+        <!--{foreach from=$dataList item=sub key=key}-->
+              <tr>
+                <td><!--{$sub.id}--></td>
+                <td><!--{$sub.modelName}--></td>
+                <td><!--{$sub.number}--></td>
+                <td>
+                	- <input type="text" class="text" value="" id="item_<!--{$key}-->_<!--{$k}-->" name="itemNum[<!--{$sub.id}-->]">                	
+                    <input type="hidden" class="text" value="<!--{$sub.modelName}-->"  name="goodsName[<!--{$sub.id}-->]">
+                </td>
+              </tr>
+        <!--{/foreach}-->
+    </table>
+    <div style="margin:10px;">原因:</div>
+    <div style="margin:10px;"><textarea name="cause" style="width:500px; height:80px;"></textarea></div>
+    <div style="margin:10px;"><input type="submit" class="btn-blue" onclick="return submitCheck();" value="调整数量" /></div>
+</form>
+</fieldset>
+
+
+<!--{/if}-->

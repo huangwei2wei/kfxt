@@ -1,0 +1,55 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#title").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'BOTH_SIDES_CAN_INCLUDE_BLANK'|lang}-->"},onerror:"<!--{'CONFIRM_THE_NOTICE_TITLE'|lang}-->"});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'BOTH_SIDES_CAN_INCLUDE_BLANK'|lang}-->"},onerror:"<!--{'CONFIRM_THE_NOTICE_CONTENT'|lang}-->"});
+	$("#interval").formValidator({onshow:"<!--{'PLEASE_ENTER'|lang}--><!--{'INTERVAL'|lang}-->",oncorrect:"<!--{'CORRECT_ENTER'|lang}-->"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'INTERVAL'|lang}--><!--{'ERROR'|lang}-->"});
+})
+</script>
+<fieldset>
+<legend><!--{'ADD_NOTICE'|lang}--></legend>
+<form action="" method="post" id="form">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="98%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row"><!--{'NOTICE_TITLE'|lang}--></th>
+        <td><input type="text" class="text" name="title" id="title" /><div id="titleTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'NOTICE_CONTENT'|lang}--></th>
+        <td><textarea name="content" cols="40" rows="8" id="content"></textarea><div id="contentTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'START_TIME'|lang}--></th>
+        <td><input type="text" class="text" name="begin" value="<!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        	<!--{'PLEASE_ENTER_THE_SERVERTIME'|lang}-->
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'END_TIME'|lang}--></th>
+        <td><input type="text" class="text" name="end" value="<!--{$smarty.now|strtotime:'+1 week'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|strtotime:'+1 week'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        	<!--{'PLEASE_ENTER_THE_SERVERTIME'|lang}-->
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'INTERVAL'|lang}--></th>
+        <td><input type="text" class="text" name="interval" id="interval" /> <!--{'MINUTE'|lang}--><div id="intervalTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'URL'|lang}--></th>
+        <td><input type="text" class="text" name="url" size="80" /></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="<!--{'SUBMIT'|lang}-->" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

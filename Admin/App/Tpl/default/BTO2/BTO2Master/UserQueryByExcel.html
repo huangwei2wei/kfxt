@@ -1,0 +1,55 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+        <legend>Excle<!--{'031B9D702AF80A9245428647FAC6A1C7'|lang}--></legend>
+    <form action="" method="post" enctype="multipart/form-data">
+    
+<table width="500" border="0" cellpadding="3">
+  <tr>
+    <td> <!--{'87D5EB8F8845C7472BACF9FD969D560C'|lang}-->：</td>
+    <td>
+    <input type="text" class="text" name="StartTime" value=""  onFocus="WdatePicker({startDate:'<!--{$selected.start_time}-->',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" />
+       <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}-->
+    <input type="text" class="text" name="EndTime" value=""  onFocus="WdatePicker({startDate:'<!--{$selected.start_time}-->',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+    Excel<!--{'2A0C4740F156A9536049F4610DA25400'|lang}-->：
+    </td>
+    <td><input type="file" name="upload" /><font color="#ff0000"><!--{'663619A9583B639CFFFF094AD757F584'|lang}-->8MB<!--{'600C3478280C8A011C8758B6EAACB5C8'|lang}--></font></td>
+
+  </tr>
+  <tr>
+    <td>
+    &nbsp;
+    </td>
+   <td><input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /></td>
+
+  </tr>
+</table>
+
+    
+    </form>
+    <p><font color="#FF0000"><!--{'EE0477388FAEEAD5FCBD495ED173CB4C'|lang}--></font></p>
+            <table width="100" border="0" cellpadding="3">
+              <tr>
+                <th scope="col">ACCOUNT</th>
+              </tr>
+              <tr>
+                <td >52</td>
+              </tr>
+              <tr>
+                <td >3795</td>
+              </tr>
+              <tr>
+                <td >...</td>
+              </tr>
+            </table>
+</fieldset>
+<!--{/if}-->
+

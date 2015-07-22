@@ -1,0 +1,51 @@
+<form action="<!--{$url.OperationFRG_BatchNoticeAdd}-->" id="form" method="post">
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#title").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"公告标题不能为空,请确认"});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"公告内容不能为空,请确认"});
+	$("#interval").formValidator({onshow:"请输入时间间隔",oncorrect:"输入正确"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"时间间隔不正确"});
+})
+</script>
+<fieldset>
+	<legend>发布公告 [<font color="#0000FF">此操作无须审核</font>]</legend>
+    <ul id="gameServer" style="padding:5px; margin:5px;"></ul>
+
+    <input type="hidden" id="server_id" name="server_id" />
+        <table width="98%" border="0" cellpadding="3">
+          <tr>
+            <th scope="row">公告标题</th>
+            <td><input name="Notice[Title]" id="title" type="text" class="text" size="60" /><div id="titleTip"></div></td>
+          </tr>
+          <tr>
+            <th scope="row">公告内容</th>
+            <td><textarea name="Notice[Content]" id="content" cols="60" rows="8"></textarea><div id="contentTip"></div></td>
+          </tr>
+          <tr>
+            <th scope="row">开始时间</th>
+            <td><input type="text" class="text" name="Notice[Start_time]" value="<!--{$systemTime|date_format:'%Y-%m-%d %H:%M:%S'}-->" onFocus="WdatePicker({startDate:'<!--{$systemTime|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>	
+            当前系统时间： <font color="#FF0000"><!--{$systemTime|date_format:'%Y-%m-%d %H:%M:%S'}--></font></td>
+          </tr>
+          <tr>
+            <th scope="row">结束时间</th>
+            <td><input type="text" class="text" name="Notice[End_time]" value="<!--{$systemTime|strtotime:'+1 week'}-->" onFocus="WdatePicker({startDate:'<!--{$systemTime|strtotime:'+1 week'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/></td>
+          </tr>
+          <tr>
+            <th scope="row">时间间隔</th>
+            <td><input type="text" class="text" id="interval" name="Notice[Interval]" /> 秒<div id="intervalTip"></div></td>
+          </tr>
+          <tr>
+            <th scope="row">URL</th>
+            <td><input type="text" class="text" name="Notice[Link]" size="70" /></td>
+          </tr>
+          <tr>
+            <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+          </tr>
+        </table>
+</fieldset>    
+</form>

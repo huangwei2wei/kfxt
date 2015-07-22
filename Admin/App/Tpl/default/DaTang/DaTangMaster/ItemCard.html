@@ -1,0 +1,221 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<!--{if $display}-->
+<script language="javascript">
+
+function ajaxGet(k){
+	var sn = $('#sn'+k);
+	if(sn.html()==''){
+		$.ajax({
+			dataType:'json',	
+			type: 'GET',
+			url: $('#a_sn'+k).attr('url'),
+			success:function(msg){
+				var json = eval(msg);
+				if(1 == json.status){
+					var str = '';
+					$.each(json.data,function(key,val){
+						str +=val+'<br>';
+					});
+					if(str==''){
+						str = '<font color="#999999">无</font>';
+					}
+					str = '<td colspan="11" style="padding-left:20px;"><b>卡密</b>:<br>'+str+'</td>';
+					sn.html(str);
+				}else{
+					alert(json.info);
+				}
+			}
+		});	
+	}	
+}
+
+function showSerialNumber(k){
+	var sn = $('#sn'+k);
+	if(sn.css("display")=="none"){
+		ajaxGet(k);
+		sn.show();
+	}else{
+		sn.hide();
+	}
+}
+
+function showGoods(k){
+	var goods = $('#goods'+k);
+	if(goods.css("display")=="none"){
+		goods.show();
+	}else{
+		goods.hide();
+	}
+}
+
+function showAll(k){
+	var sn = $('#sn'+k);
+	var goods = $('#goods'+k);
+	if(sn.css("display")=="none" || goods.css("display")=="none"){
+		sn.show();
+		goods.show();
+		ajaxGet(k);
+	}else{
+		sn.hide();
+		goods.hide();
+	}
+}
+
+function getApllyInfo(k){
+	var applyInfo = $('#applyInfo'+k);
+	if(applyInfo.html()==''){
+		$.ajax({
+			dataType:'json',	
+			type: 'GET',
+			url: $('#apply'+k).attr('url'),
+			success:function(msg){
+				var json = eval(msg);
+				if(1 == json.status){
+					var str = '';
+					str += '申请人：'+json.data.apply_user_id+'('+json.data.create_time+')'; 
+					str += '，审核人：'+json.data.audit_user_id+'('+json.data.send_time+')'; 
+					applyInfo.html('<td colspan="11" style="padding-left:40px;"><b>审核详情</b>:<br>'+str+'</td>');
+				}else{
+					alert(json.info);
+				}
+			}
+		});	
+	}
+}
+
+function showApllyInfo(k){
+	var applyInfo = $('#applyInfo'+k);
+	if(applyInfo.css("display")=="none"){
+		getApllyInfo(k);
+		applyInfo.show();
+	}else{
+		applyInfo.hide();
+	}
+}
+
+function showAll(k){
+	var goods = $('#goods'+k);
+	var applyInfo = $('#applyInfo'+k);
+	if(applyInfo.css("display")=="none" || goods.css("display")=="none"){
+		goods.show();
+		applyInfo.show();
+		getApllyInfo(k);
+	}else{
+		goods.hide();
+		applyInfo.hide();
+	}
+}
+
+function invalidate(id,url){
+	$.ajax({
+		dataType:'json',	
+		type: 'GET',
+		url: url,
+		success:function(msg){
+			var json = eval(msg);
+			if(0 == json.status){
+				alert(json.info);
+			}
+			else if(1 == json.status){
+				$('#invalidate'+id).html('否');
+			}
+		}
+	});
+}
+</script>
+<style>
+.goods li{
+	display:inline-block;
+	width:130px;
+}
+</style>
+<fieldset>
+<legend>
+    礼包列表&nbsp;
+    [<a href="<!--{$URL_ApplyItemCard}-->">申请礼包卡</a>]&nbsp;
+    [<a href="<!--{$URL_ApplyItemCard2}-->">申请礼包卡</a>(<font color="#FF0000">可申请多人重复领取</font>)]&nbsp;
+    [<a href="<!--{$URL_AddGiftCard}-->">创建礼包</a>]&nbsp;
+    [<a href="<!--{$URL_ReCache}-->">刷新道具和服务器</a>]
+</legend>
+<form method="post" action="<!--{$URL_del}-->">
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">礼包名</th>
+    <th scope="col">道具类型</th>
+    <th scope="col">领取方式</th>
+    <th scope="col">卡密</th>
+    <th scope="col">用途</th>
+    <th scope="col">申请人/审核人(建卡时间)</th>
+    <th scope="col">有效</th>
+    <th scope="col">服务器</th>
+    <th scope="col">操作</th>
+  </tr>
+  <!--{foreach from=$dataList key=k item=list}-->
+  <tr>
+    <td><!--{$list.id}--></td>
+    <td style=" font-weight:bolder; background:#9CF" onclick="showAll('<!--{$k}-->');" ><!--{$list.name|default:'<font color="#999999">无</font>'}--></td>
+    <td align="center">
+    	<!--{if $list.point == 0}-->
+        	只送道具
+        <!--{elseif $list.point == 1}-->
+        	只送点
+        <!--{elseif $list.point == 2}-->
+        	道具和点(元宝)
+        <!--{elseif $list.point == 3}-->
+        	道具和点(礼券)
+        <!--{elseif $list.point == 4}-->
+        	内部充值卡
+        <!--{else}-->
+        	<!--{$list.point}-->
+        <!--{/if}-->
+    </td>
+    <td align="center">
+    	<!--{if $list.type == 0}-->
+        	单人一次
+        <!--{elseif $list.type == 1}-->
+        	多人重复
+        <!--{else}-->
+        	<!--{$list.type}-->
+        <!--{/if}-->
+    	
+    </td>
+    <td align="center"><!--{$list.uuid}--></td>
+    <td align="center"><!--{$list.usage}--></td>
+    <td align="center">
+    	<!--{$list.applyName|default:'<font color="#999999">无记录</font>'}-->/
+        <!--{$list.verifyName|default:'<font color="#999999">无记录</font>'}-->(<!--{$list.createTime|default:'<font color="#999999">无记录</font>'}-->)
+    </td>
+    <td><div id="invalidate<!--{$list.id}-->"><!--{if $list.valid|intval ===0}-->是 [<a onclick="if(confirm('确定注销？'))invalidate('<!--{$list.id}-->','<!--{$list.URL_invalidate}-->');else return false;" href="javascript:void(0);">注销</a>]<!--{else}-->否<!--{/if}--></div></td>
+	<td><!--{if $list.server}--><!--{$list.server}--><!--{else}-->全服生效<!--{/if}--></td>   
+    <td>
+    	
+        [<a href="javascript:void(0);" onclick="showGoods('<!--{$k}-->')">道具详细</a>]
+        [<a href="javascript:void(0);" url="<!--{$list.URL_ApplyInfo}-->" id="apply<!--{$k}-->" onclick="showApllyInfo('<!--{$k}-->');" >审核详情</a>]
+    </td>
+  </tr>
+  <tr>
+  	<td colspan="9" id="goods<!--{$k}-->" style="display:none; padding-left:40px;">
+    <div style="margin:3px;"><!--{$list.awardInfo}--></div>
+    <!--{if $list.singleInfo}--> 
+    	<div style="margin:3px;"><!--{$list.singleInfo}--></div>
+    <!--{/if}-->
+    </td>
+  </tr>
+  <tr style="display:none;" id="applyInfo<!--{$k}-->"></tr>
+  <!--{/foreach}-->
+  <tr>
+  	<td colspan="9" align="right"><!--{$pageBox}--></td>
+  </tr>
+</table>
+
+</form>
+
+</fieldset>
+    
+    
+
+
+<!--{/if}-->

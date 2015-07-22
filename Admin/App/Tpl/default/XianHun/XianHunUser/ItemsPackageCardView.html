@@ -1,0 +1,52 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+<legend>搜索</legend>
+<form action="" method="get">
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="doaction" value="<!--{$_GET.doaction}-->" />
+	<!--{html_options options=$typeList name="type" selected=$_GET.type}-->
+	日志范围：
+    <input type="text" name="startDate" class="text" value="<!--{$_GET.startDate}-->"  onFocus="WdatePicker({startDate:'<!--{$_GET.startDate}-->',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})">
+    -
+    <input type="text" name="endDate" class="text" value="<!--{$_GET.endDate}-->" onFocus="WdatePicker({startDate:'<!--{$_GET.endDate}-->',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})">
+	<input type="submit" name="submit" class="btn-blue" value="搜索">
+</form>
+
+</fieldset>
+<fieldset>
+<legend>卡号列表</legend>
+<form method="post" action="">
+
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+  	<th scope="col">序号</th>
+    <th scope="col">卡号</th>
+    <th scope="col">time</th>
+    <th scope="col">创建日期</th>
+    <th scope="col">使用者ID</th>
+    <th scope="col">typeID</th>
+  </tr>
+  <!--{foreach from=$dataList item=list  name=foo}-->
+  <tr>
+  	<td><!--{$smarty.foreach.foo.index+1}--></td>
+    <td><!--{$list.cardId}--></td>
+    <td><!--{$list.time|default:''}--></td>
+    <td><!--{$list.createTime}--></td>
+    <td><!--{$list.playerId}--></td>
+    <td><!--{$list.type}--></td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+
+</form>
+</fieldset>
+<!--{/if}-->

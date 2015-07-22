@@ -1,0 +1,2 @@
+<?php 
+return 'C:15:"Object_UserInfo":536:{a:16:{s:2:"Id";s:2:"52";s:9:"user_name";s:4:"golf";s:13:"department_id";s:1:"4";s:10:"service_id";s:0:"";s:5:"roles";a:2:{i:0;s:3:"opt";i:1;s:5:"opt_h";}s:9:"nick_name";s:9:"高尔夫";s:12:"date_created";i:1287974460;s:12:"date_updated";i:1287974460;s:6:"roomId";i:0;s:12:"operator_ids";a:0:{}s:8:"orderNum";a:0:{}s:5:"orgId";s:1:"0";s:9:"full_name";s:20:"高尔夫[运营部]";s:9:"reply_num";a:0:{}s:9:"vip_level";a:7:{i:0;s:1:"0";i:1;s:1:"1";i:2;s:1:"2";i:3;s:1:"3";i:4;s:1:"4";i:5;s:1:"5";i:6;s:1:"6";}s:18:"incompleteOrderNum";N;}}'; 

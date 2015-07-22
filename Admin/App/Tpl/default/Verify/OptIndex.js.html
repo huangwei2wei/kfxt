@@ -1,0 +1,87 @@
+<script language="javascript">
+<!--{if $selectedGameTypeId}-->var selectedGameTypeId=<!--{$selectedGameTypeId}-->;<!--{/if}-->
+<!--{if $selectedOperatorId}-->var selectedOperatorId=<!--{$selectedOperatorId}-->;<!--{/if}-->
+<!--{if $selectedGameServerId}-->var selectedGameServerId=<!--{$selectedGameServerId}-->;<!--{/if}-->
+<!--{if $selectedStatus}-->var selectedStatus=<!--{$selectedStatus}-->;<!--{/if}-->
+<!--{if $selectedType}-->var selectedType=<!--{$selectedType}-->;<!--{/if}-->
+<!--{if $selectedLevel}-->var selectedLevel=<!--{$selectedLevel}-->;<!--{/if}-->
+
+var gameServerList=eval(<!--{$gameServerList}-->);
+var verifyType=eval(<!--{$verifyTypeJson}-->);
+
+function displayDetail(id){
+	if(!id)return false;
+	$("#detail_"+id).toggle();
+}
+
+$(function(){
+	$(".list_title").hover(
+		function(){$(this).addClass("td_move")},
+		function(){$(this).removeClass("td_move")}
+	);
+
+	if(typeof(selectedGameTypeId)!='undefined')$("#game_type_id").val(selectedGameTypeId).change();
+	if(typeof(selectedOperatorId)!='undefined')$("#operator_id").val(selectedOperatorId).change();
+	if(typeof(selectedGameServerId)!='undefined')$("#game_server_id").val(selectedGameServerId).change();
+	if(typeof(selectedStatus)!='undefined')$("#status").val(selectedStatus);
+	if(typeof(selectedType)!='undefined')$("#type").val(selectedType);
+	if(typeof(selectedLevel)!='undefined')$("#level").val(selectedLevel);
+})
+
+function changeStatus(curSelect){
+	var value=curSelect.val();
+	var name=curSelect.find("option:selected").text();
+	if(confirm("change status "+name+" ?")){
+		var id=curSelect.attr("listId");
+		$.getJSON(
+			"<!--{$url.Verify_ChangeStatus}-->",
+			{Id:id,status:value},
+			function(data){
+				alert(data.msg);
+			}
+		);
+	}
+}
+
+function changeType(gameTypeId){//选择游戏之后找到问题类型和游戏服务器列表
+    var operatorId=$("#operator_id").val();
+    if(gameTypeId!=""){
+        var askType=$("#type");
+		askType.empty();
+		askType.append("<option value=''><!--{'JS_SELECT_ASK_TYPE'|lang}--></option>");
+		for(j in verifyType[gameTypeId]){
+			askType.append("<option value='"+j+"'>"+verifyType[gameTypeId][j]+"</option>");
+		}
+    }
+
+    if(gameTypeId!="" && operatorId!=""){
+        var gameServerSelect=$("#game_server_id");
+        gameServerSelect.empty();
+		gameServerSelect.append("<option value=''><!--{'JS_SELECT_SERVERLIST'|lang}--></option>");
+        $.each(gameServerList,function(i,n){
+            if(n.game_type_id==gameTypeId && n.operator_id==operatorId){
+                gameServerSelect.append("<option value='"+n.Id+"'>"+n.server_name+"</option>");
+            }
+        })
+    }
+}
+
+function changeOperatorType(operatorId){//输出服务器列表
+	var gameTypeId=$("#game_type_id").val();
+	if(gameTypeId!="" && operatorId!=""){
+        var gameServerSelect=$("#game_server_id");
+        gameServerSelect.empty();
+		gameServerSelect.append("<option value=''><!--{'JS_SELECT_SERVERLIST'|lang}--></option>");
+        $.each(gameServerList,function(i,n){
+            if(n.game_type_id==gameTypeId && n.operator_id==operatorId){
+                gameServerSelect.append("<option value='"+n.Id+"'>"+n.server_name+"</option>");
+            }
+        })
+	}
+}
+
+function searchForm(curHref,formId){
+	$("#"+formId).val(curHref.html());
+	$("#formSearch").submit();
+}
+</script>

@@ -1,0 +1,49 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+
+	function LookForDetail(iEventId){
+			$.ajax( {
+				type : "post",
+				url : "<!--{$ajax}-->",
+				data :"iEventId="+iEventId,
+				success : function(dataResult) {
+					$("#rMsg").html(dataResult);
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					
+				}
+			});
+	}
+</script>
+
+<fieldset>
+  <legend>开服时间</legend>
+	<!--{$opentime}-->
+	</fieldset>
+<fieldset>
+  <legend>修改</legend>
+  <form action=""  method="Post" onsubmit="return confirm('确认将 '+$('#operator').find('option:selected').text()+' '+$('#gameServer').find('option:selected').text()+' 的开服时间改为\r'+$('#BeginTime').val())">
+   开服时间:<input type="text" class="text" name="BeginTime" id="BeginTime" value="<!--{$selected.begin|date_format:'%Y-%m-%d %H:%M:%S'}-->" onFocus="WdatePicker({startDate:'<!--{$dataList.Start_time|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+    <input class="btn-blue" type="submit" name="sbm" value="修改">
+</form>
+</fieldset>
+<!--{/if}-->

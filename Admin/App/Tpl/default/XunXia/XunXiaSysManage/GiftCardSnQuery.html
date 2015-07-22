@@ -1,0 +1,28 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+<legend>卡密查询</legend>
+    <form action="" method="post">
+        卡密：<input type="text" name="sn"class="text" style="width:300px;" value="<!--{$sn|default:''}-->" >
+        <input type="submit" class="btn-blue" value="查询">
+    </form>
+    <!--{if $dataList}-->
+        <div style="margin:10px;">
+            查询结果:
+        </div>
+        <div style="margin:10px;">
+            申请人:<!--{$dataList.apply_user_id}-->
+            (<!--{$dataList.create_time}-->)
+            <br>
+            审核人:<!--{$dataList.audit_user_id}-->
+            (<!--{$dataList.send_time}-->)<br/>
+      使用卡的用户Id:<!--{$dataList.userId}-->
+            <br>
+            卡使用在的服务器:<!--{$dataList.useServerId}-->
+        </div>
+    <!--{/if}-->
+</fieldset>
+<!--{/if}-->

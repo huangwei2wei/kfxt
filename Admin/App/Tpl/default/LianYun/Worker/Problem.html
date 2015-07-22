@@ -1,0 +1,172 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+var gameTypes = <!--{$gameTypesJson}-->;
+var gameOperator = <!--{$gameOperatorJson}-->;
+var selected = <!--{$selectedJson}-->;
+var selected_game_id = 0;
+var selected_operator_id = 0;
+$(document).ready(function(){
+	if(selected !=null ){
+		if(selected.game_type_id!=null){
+			selected_game_id = selected.game_type_id;
+		}
+		if(selected.operator_id!=null ){
+			selected_operator_id = selected.operator_id;
+		}
+	}
+	var game = $('#gameTypes');
+	var str_append ="";
+	$.each(gameTypes,
+		   function(Id,name){
+				str_append="<input type='radio' name='game_type_id' id='game_type_id' value='"+Id+"' onclick='gameChange($(this).val(),true)'";
+				if(selected_game_id == Id){
+					str_append+=" checked ";
+				}
+				str_append+=">"+name;
+				game.append(str_append);
+			}
+	);
+	gameChange(selected_game_id,false);
+});
+function gameChange(game_type_id,t){
+	if(t)selected_operator_id = 0;
+	var str_append ="";
+	var operator = $('#operator_id');
+	operator.html('');
+	if(game_type_id==0){
+		$.each(gameOperator,
+			function(Id,one){ 
+				$.each(one,function(key,name){
+						str_append="<input type='radio' name='operator_id' id='operator_id' value='"+Id+"' ";
+						if(selected_operator_id == Id){
+							str_append+=" checked ";
+						}
+						str_append+=">"+name;
+						operator.append(str_append);
+					}
+				);
+			}
+		);
+	}
+	else{
+		$.each(gameOperator[game_type_id],
+			function(Id,name){
+				str_append="<input type='radio' name='operator_id' id='operator_id' value='"+Id+"' ";
+				if(selected_operator_id == Id){
+					str_append+=" checked ";
+				}
+				str_append+=">"+name;
+				operator.append(str_append);		
+			}
+		);
+	}
+	if(selected_operator_id==0){
+		operator.append("<input type='radio' name='operator_id' id='operator_id' value='0' checked >全部");
+	}
+	else{
+		operator.append("<input type='radio' name='operator_id' id='operator_id' value='0' >全部");
+	}
+}
+
+function userRead(Id){
+	$.ajax({
+		dataType:'json',	
+		type: 'GET',
+		data:{Id:Id},
+		url: '<!--{$url.read}-->',
+		success:function(msg){
+			var json = eval(msg);
+			if(0 == json.status){
+				alert(json.info);
+			}
+			else if(1 == json.status){
+				$('#iRead_'+Id).remove();
+				$('#no_reader_'+Id).html(json.data);
+			}
+		}
+	});
+	
+}
+</script>
+<fieldset>
+  <legend>搜索</legend>
+  <form action="" method="get">
+      <input type="hidden" value="Worker" name="c"  />
+      <input type="hidden" value="Problem" name="a" />
+      <input type="hidden" value="LianYun" name="zp" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th width="100" scope="row">游戏</th>
+        <td>
+        	<div id="gameTypes"></div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">运营商</th>
+        <td>
+        	<div id="operator_id"></div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">时间范围</th>
+        <td>
+        <input type="text" class="text" name="start_time" value="<!--{$selected.start_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.start_time}-->',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"/> 
+        至
+        <input type="text" class="text" name="end_time" value="<!--{$selected.end_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.end_time}-->',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"/>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">添加人</th>
+        <td>
+            <select name="user_id">
+              <option value="">全部</option>
+              <!--{html_options options=$users selected=$selected.user_id}-->
+            </select> 
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" value="搜索" class="btn-blue" /></th>
+      </tr>
+    </table>
+	</form>
+</fieldset>
+<fieldset>
+	<legend>列表</legend>
+		<a href="<!--{$url.Problem_Add}-->" >添加问题</a>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="3">
+<!--{foreach from=$dataList item=list}-->
+  <tr style="background:#666; font-family:'微软雅黑'; color:#FFF">
+    <td scope="col" style="color:#FFF">游戏:<b><!--{$list.game_type_id}--></b></th>
+    <td scope="col" style="color:#FFF">运营商:<!--{$list.operator_id}-->&nbsp;&nbsp;服务器:<!--{$list.server_id}--></th>
+    <td scope="col" style="color:#FFF">发生时间:<!--{$list.start_time}-->&nbsp;至&nbsp;<!--{$list.end_time}--></th>
+  </tr>
+  <tr>
+      <tr>
+        <td colspan="3">
+        	<font ><b>事件说明:</b></font> [<font color="#FF6600"><!--{$list.create_time}-->,<!--{$list.user_id}--></font>]  <a href="<!--{$list.url_edit}-->">编辑</a> <a onclick="return confirm('确定删除？');" href="<!--{$list.url_del}-->">删除 </a>
+            
+            <!--{if $list.iNoRead}-->
+            <input type="button" class="btn-blue" value="我已阅读" id="iRead_<!--{$list.Id}-->" onclick="userRead('<!--{$list.Id}-->');" />
+            <!--{/if}-->
+            
+            <br />
+            <div style="margin-left:10px; margin-top:5px;"><!--{$list.content}--></div>	
+            <div style="margin:5px; padding:2px; background:#D6E8F1">
+            	<label>未阅读用户：</label>
+                <div id="no_reader_<!--{$list.Id}-->"><!--{$list.not_read}--></div>
+            </div>		
+        </td>
+      </tr>
+  
+<!--{/foreach}-->
+</table>
+
+        
+        
+        
+
+
+    <div align="right"><!--{$pageBox}--></div>
+</fieldset>

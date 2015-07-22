@@ -1,0 +1,124 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">
+function checkuserid(){
+	var ids = document.getElementById("user").value;
+	if($.trim(ids)!==''){
+		$.ajax({
+			type: 'get',
+			url: "<!--{$checkurl}-->&ids="+ids,
+			success:function(data, textStatus){	
+				var myObject = eval('('+data+')');
+				if($.trim(myObject.noExist) != ''){
+					window.alert('<!--{'D7D11654A707D7E7B661C90295E58B20'|lang}-->:'+myObject.noExist);
+				}else{
+					alert('<!--{'1207F119D13B6C40FC209F3DB80951D0'|lang}-->');
+				}
+			}
+		});	
+	}else{
+		alert('<!--{'F12CA9580BD9861D372828330A1662AC'|lang}-->');
+	}
+}
+</script>
+<fieldset>
+	<legend><!--{'E5168E97E79AFFA99EE71FE81F6734C1'|lang}--> [<a href="<!--{$URL_updateRewardConfig}-->">参数配置</a>]</legend>
+<form action="" method="post">
+    <table width="98%" border="0" cellpadding="3">
+      <tr>
+      	<td>
+        	<!--{'2088BDE458445E265704715AA8DACE5A'|lang}-->：<br/>
+            <textarea style="width:550px; height:80px;" name="cause"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <div><!--{'D340E9A6B9AA11A2303C75F880B24B8A'|lang}-->:
+            <select name="usertype">
+                <option value="1"><!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->ID</option>
+                <option value="2"><!--{'819767ADA1805B0F0117F10967B94D4D'|lang}--></option>
+            </select>
+            </div>
+            <div style=" padding:5px;padding-left:10px; "><textarea style="width:550px; height:80px;" name="user" id='user'></textarea></div>
+            <div style=" padding-left:10px;"><!--{'A1F5777D70231C616DF0A2E602F6EE8D'|lang}-->","<!--{'BBC56D684360D07586ED94A558CF33C1'|lang}--><input type="button" value="<!--{'3AE24D3D7929A7A968DFA814AE81E3E2'|lang}-->" onclick='checkuserid()' class="btn-blue"/></div>
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <!--{'08ECA7BB612A12C5EF8879F6BB9E2B30'|lang}-->:
+            <select name="goldtype">
+                <option value="1"><!--{'SYS_GOLE'|lang}--></option>
+                <option value="2"><!--{'USER_GOLD'|lang}--></option>
+            </select>
+            <!--{'CB1399566A84ADE345662204F1376121'|lang}-->:<input type="text" class="text" name="gold" value="">
+           
+        </td>
+      </tr>
+      <tr>
+        <td>
+
+            <!--{*
+            	以下是旧数据
+                <!--{'019A095A16A2B0A50473DB3CF3DEF1B2'|lang}-->:<input type="text" class="text" name="copper" value="">
+                <!--{'A4DC0C84A37A1F706CF600756070B06C'|lang}-->:<input type="text" class="text" name="token" value="">
+                <!--{'93A9AA6381D561F2C3AAE17C2E5DF9EB'|lang}-->:<input type="text" class="text" name="exploit" value="">
+                <!--{'BA8C2067F044900E1C00604EE4FA25EC'|lang}-->:<input type="text" class="text" name="prestige" value="">
+                <br>
+                <!--{'999D9A9F9D1C6DD7A2F548CB6A9C50FF'|lang}-->:<input type="text" class="text" name="food" value="">   
+                 <!--{'52609437FC0A7747900FDD173DBBEF20'|lang}-->:<input type="text" class="text" name="textile" value="">
+                <!--{'F753EBDF6D82CD5482699A0C0827105A'|lang}-->:<input type="text" class="text" name="carnum" value="">
+                <!--{'453CE54BD146DB94FE9A02203AB390B5'|lang}-->:<input type="text" class="text" name="impose" value="">
+                <br>
+                    晶石:<input type="text" class="text" name="spar" value="">   
+                     幻石:<input type="text" class="text" name="magicStone" value="">
+                    灵石:<input type="text" class="text" name="spiritSton" value="">
+                     血石:<input type="text" class="text" name="bloodStone" value="">
+                <br/>
+            *}--> 
+            <!--{foreach from=$dataConfig item=cname key=field name=foo}-->
+        		<!--{$cname}-->:<input type="text" class="text" name="<!--{$field}-->" value="">   
+                <!--{if $smarty.foreach.foo.index % 4 ==3}-->
+                <br>
+        		<!--{/if}-->
+        	<!--{/foreach}-->
+        </td>
+      </tr>
+      <tr>
+      	<td>
+        	<!--{'DE24BFB740EF7421E00B7346EA704E3E'|lang}-->ID:<input type="text" style="width:600px;" class="text" name="goodsId" value="">
+            <!--{'4B61E6F7DD0DFCC3AFD11C8DAB1FEFBE'|lang}-->id=5<!--{'D0D4799B152841975477E3A8C9F9BA1F'|lang}-->，id=6<!--{'5C603DE728BE6731D179FD7AA5F9270D'|lang}-->3<!--{'930882BB0A8C7B53565DE4F4D59F5CA7'|lang}-->，<!--{'40B2C1D511B9A693DDAAD6F046DF740E'|lang}-->：5,6,6,6
+        </td>
+      </tr>
+      <tr>
+        <td>
+        	<div style="padding:2px;">            
+                <!--{'45EC69D516418E907C1AE7347ADFD1C5'|lang}-->:
+                <select name="isSentMail">
+                	<option value="0"><!--{'675317466D6F0FDE947C02D81D2EE789'|lang}--></option>
+                    <option value="1"><!--{'1535FCFA4CB8E4D467127154977E9788'|lang}--></option>                    
+                </select>
+            </div>
+            <div style="padding:2px;">
+            	<!--{'00F7F1404D8CC8314C41EDB4D4F6685E'|lang}-->:<input type="text" style="width:500px;" class="text" name="title" value="">
+            </div>
+            <div style="padding:2px; height:80px;">
+            	<!--{'42516993D82605002CA3BFECD66EEABE'|lang}-->:
+                <textarea name="contents" style="width:500px; height:80px;"></textarea>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+            <input type="submit" value="<!--{'SUBMIT'|lang}-->" class="btn-blue">
+        </td>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

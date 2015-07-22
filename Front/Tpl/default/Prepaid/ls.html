@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>结果查询</title>
+<include file="../common/libs"/>
+<script>
+$(function(){
+	$('#menu_question').addClass('d');
+});
+function showDetail(id){
+	var lay=$('#listkan_'+id);
+	if(lay.css('display')=='none'){
+		lay.css('display','block');
+		loadQuesitonDetail(id);
+	}else{
+		lay.css('display','none');
+	}
+}
+var haveLoad=new Array();
+function loadQuesitonDetail(id){
+	if(haveLoad[id]!=true){
+		$.ajax({
+		url: '/index.php?s=/Question/qacontent/id/'+id,
+					type: 'GET',
+					timeout: 10000,
+					dataType: 'json',
+					async:true,
+					error: function(){						
+					},
+					success: function(result){	
+						if(result.status==1 ){	
+								haveLoad[id]=true;	
+								var msg=$('#question_qa_'+id);
+								$.each(result.data,function(i,n){
+									if(n.qa==0){
+										//用户提问
+										msg.append('<div>提问：'+n.content+'</div>');
+									}else{
+										//客服提问
+										msg.append('<div>客服回复：'+n.content+'</div>');
+									}
+								})
+						}
+					}
+		});
+	}
+}
+/**
+选择评价项
+id=工单ID,evi=评价选项
+**/
+function selEv(id,evi){
+	//alert('ok');
+	var desc=$("[name='ev_des_"+id+"']");
+	if(typeof(desc) != 'undefined'){
+		desc.each(function() {
+			//存在补充选择
+				$(this).css('display','none');
+			
+		});
+	}
+
+	var ev_des=$('#ev_des_'+id+'_'+evi);
+	if(typeof(ev_des) != 'undefined'){
+		ev_des.css('display','');
+	}	
+}
+/**
+提交评价
+id=工单ID,evi=评价选项
+**/
+function subEv(id){
+	var selVal=0;
+	var radios=$('input[name=ev_'+id+'][type=radio]');
+	if(typeof(radios) != 'undefined'){
+		radios.each(function(){
+			if(this.checked==true){
+				selVal=this.value;
+				return;
+			}
+		});
+		//alert(selVal);
+		var ev_des=$('#ev_des_'+id+'_'+selVal);
+		//alert(ev_des);
+		var div_ev=$('#div_ev_'+id);
+		var postData=null;
+		if(typeof(ev_des.val()) != 'undefined'){
+			postData={'ev':selVal,'des':ev_des.val()};
+		}else{
+			postData={'ev':selVal};
+		}
+		$.ajax({
+		url: '/index.php?s=/Question/opinion/id/'+id,
+					type: 'POST',
+					dataType: 'json',
+					data:postData,
+					success: function(result){	
+						if(result.status==1 ){
+							div_ev.empty();
+							if(typeof(ev_des.val()) != 'undefined'){
+								div_ev.append('<h2 style="text-align:center;padding:20px 0;">感谢您对我们工作的支持！</h2>');
+							}else{
+								div_ev.append('<h2 style="text-align:center;padding:20px 0;">非常感谢您对于我们工作的评价！</h2>');
+							}
+						}
+					}
+		});
+		
+	}
+}
+</script>
+</head>
+<body>
+<include file="../common/head"/>
+<div id="contai">
+	<include file="../common/menu"/>	
+		<!--left-->
+		<include file="left"/>		
+	<div class="neiright">
+		<div class="tiontit"><b>当前位置：</b><a href="/index.php">客服中心</a> > <a href="#">结果查询</a></div>
+		<div class="list">
+			<div class="listtitle">
+				<table border="0" align="center" cellpadding="0" cellspacing="0" style="width:644px;height:33px; padding:0px;margin:0">
+					<tr align="center">
+						<td style="width: 100px">提问类型</td>
+						<td style="width: 221px">标题</td>
+						<td style="width: 110px">状态</td>
+						<td style="width: 87px">评价</td>
+						<td>时间</td>
+					</tr>
+			  </table>
+			</div>
+			<volist name="list" id="vo">
+			<table width="644px" border="0" align="center" cellpadding="0" cellspacing="0" class="rdtd" style=" margin-left:20px; height:22px; padding:0px;margin-top:8px; line-height:22px">
+					<tr align="center">
+					  <td  style="width: 100px; text-align: center;" align="center"><strong>[{$typeMap[$vo["question_type"]]}]</strong></td>
+					  <td  align="left" style="width: 220px; text-align: center;"><a href="javascript:showDetail('{$vo.Id}')">{$vo.title}</a></td>
+					  <td  style="width: 110px" class="rad" align="center">({$questionStatus[$vo["status"]]})</td>
+					  <td  style="width: 87px" class="red">
+					  <if condition="$vo.evaluation_status gt 0">{$playerEvaluation[$vo[evaluation_status]].title}<else/>
+					  <if condition="$vo.status eq '3'"><a href="#">未评价</a><else/> 未评价</if></if></td>
+					  <td >{$vo.create_time|date="Y-m-d",###}</td>
+                    </tr>
+  		   </table> 
+  	 <div class="listkan" id="listkan_{$vo.Id}" style="display:none;">
+			 	<p style="text-align:right"><a href="{:U("Question/detail/id/$vo[Id]")}">查看全部交谈内容>></a></p>
+			 	<p id="question_qa_{$vo.Id}">
+               		<b>问题描述：</b>
+                </p>
+				 
+			<php>if(($vo['evaluation_status'] == 0) && ($vo['status'] == 3)){</php>
+			<hr size="1" />
+			<div id="div_ev_{$vo.Id}">
+				 <p style="margin-top:7px;color:#de6100">请对我们的服务质量进行评价： </p>
+			 <p style="border:0">
+			 <volist name="playerEvaluation" id="ev" key="evi">
+			 <input onchange="selEv({$vo.Id},{$key});" name="ev_{$vo.Id}" type="radio" value="{$key}" id="ev_{$vo.Id}_{$key}" <if condition="$ev.isDefault eq true">checked="checked"</if>/>{$ev.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<if condition="$ev.Description != null">
+			  <select name="ev_des_{$vo.Id}" id="ev_des_{$vo.Id}_{$key}" style="display:none;">
+			  <volist name="ev.Description" id="ev_des">
+			  	<option value="{$key}">{$ev_des}</option>
+			  </volist>
+			  </select>
+			 
+			</if>
+			 </volist>
+			 　　</p>
+			<p style="border-style: none; border-color: inherit; border-width: 0; text-align:center; width: 364px;"><a href="javascript:subEv({$vo.Id});"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/input_03.gif" /></a></p>
+			 </div>
+			<php>}</php>
+			 </div>
+			</volist>
+		<div class="rda"><a href="{:U('Question/index')}"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/input_04.gif" /></a></div>			  
+      </div>
+		<div class="neibottom">{$page}</div>
+	</div>
+<include file="../common/footer"/>
+</div>
+
+</body>
+</html>

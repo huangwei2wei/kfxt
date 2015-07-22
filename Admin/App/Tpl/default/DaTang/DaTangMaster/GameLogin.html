@@ -1,0 +1,55 @@
+<script language="javascript">
+$(function(){
+	$("#operator_id").change(function(){
+		location.href=url+"?c=DaTangMaster&a=GameLogin&zp=DaTang&operator_id="+$(this).val();
+	});
+})
+function check(formId){
+	if($('#cause_'+formId).val()==""){
+		alert('请输入理由');
+		$('#cause_'+formId).focus();
+		return false;
+	}
+	if($('#user_name_'+formId).val()==""){
+		alert('请输入用户名');
+		$('#user_name_'+formId).focus();
+		return false;
+	}
+	return true;
+}
+</script>
+<fieldset>
+	<legend>运营商选择</legend>
+    <select id="operator_id" name="operator_id">
+        <option value="">请选择服务器</option>
+        <!--{html_options options=$operatorList selected=$selectedOperatorId}-->
+    </select>
+</fieldset>
+<fieldset>
+	<legend>服务器列表</legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col">服务器名</th>
+        <th scope="col">登录</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.server_name}--></td>
+        <td>
+        	<form action="" method="post" target="_blank" id="form_<!--{$list.Id}-->" onsubmit="return check(<!--{$list.Id}-->)">
+            	操作原因&nbsp;&nbsp;&nbsp;：
+            	<input type="text" class="text" id="cause_<!--{$list.Id}-->" name="cause" style="width:200px;" /><br />
+            	<input type="hidden" name="server_id" value="<!--{$list.Id}-->" />
+                登录用户名：
+            	<input type="text" class="text" style="width:200px;" id="user_name_<!--{$list.Id}-->" name="user_name" />
+                <input type="submit" class="btn-blue" value="登录" />
+        	</form>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="2"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+</fieldset>

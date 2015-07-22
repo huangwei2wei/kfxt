@@ -1,0 +1,70 @@
+
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+  <legend>搜索</legend>
+  
+<form method="get" >
+<input type="hidden" name="c" value="SysManagement" />
+<input type="hidden" name="a" value="GameLogTpl" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td scope="col">
+            所属游戏：
+            <!--{html_options name="game_type" options=$game_type selected=$selected.game_type}-->
+            所属大类：
+            <!--{html_options name="rootid" options=$root selected=$selected.rootid}-->
+            分类名：
+            <input type="text" class="text" name="typename" value="<!--{$selected.typename}-->" />
+            模板名：
+            <input type="text" class="text" name="tpl" value="<!--{$selected.tpl}-->" />
+            <input type="submit" class="btn-blue" value="搜索" />
+        </td>
+      </tr>
+    </table>
+</form>
+  
+</fieldset>
+<fieldset>
+  <legend>玩家操作日志模板</legend>
+<a href="<!--{$url.SysManagement_GameLogTplAdd}-->">[添加]</a>
+<a href="<!--{$url.SysManagement_GameLogTplCache}-->">[生成缓存]</a>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">所属游戏</th>
+    <th scope="col">类型</th>
+    <th scope="col">分类id</th>
+    <th scope="col">分类名</th>
+    <th scope="col">参数数量</th>
+    <th scope="col">模板</th>
+    <th scope="col">创建时间</th>
+    <th scope="col">操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td align="center"><!--{$list.Id}--></td>
+    <td align="center"><!--{$list.game_type}--></td>
+    <td align="center"><!--{$list.rootid}--></td>
+    <td align="center"><!--{$list.typeid}--></td>
+    <td align="center"><!--{$list.typename}--></td>
+    <td align="center"><!--{$list.var_count}--></td>
+    <td align="center"><!--{$list.tpl}--></td>
+    <td align="center"><!--{$list.create_time}--></td>
+    <td align="center">
+    	<a href="<!--{$list.EditUrl}-->">[编辑]</a>
+        <a onclick="return confirm('确定删除?');" href="<!--{$list.DelUrl}-->">[删除]</a>
+    </td>
+  </tr>
+  
+  <!--{/foreach}-->
+  <tr>
+    <td align="right" colspan="10"><!--{$pageBox}--></td>
+    </td>
+  </tr>
+</table>
+  
+
+
+
+</fieldset>

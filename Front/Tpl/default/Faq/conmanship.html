@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>网络骗术</title>
+<include file="../common/libs"/>
+<script>
+$(function(){
+	$('#menu_faq').addClass('d');
+});
+</script>
+</head>
+
+<body>
+<include file="../common/head"/>
+<div id="contai">
+	<include file="../common/menu"/>
+	<div class="cheaterleft">
+	<ul>
+		<volist name="list" id="vo">
+		<li><a href="{:U("Faq/conmanship/id/$vo[Id]")}">{$vo.question}</a></li>
+		</volist>
+		
+	</ul>
+	</div>
+	<div class="neiright">
+		<div class="tiontit"><b>当前位置：</b><a href="/index.php">客服中心</a> > <a href="#">网络骗术</a></div>
+		<div class="list">
+			
+				<h2>{$nowVo.question}</h2>
+			
+  			<div class="neri"><b>优玩网提醒您：</b>我们不会咨询玩家的账号与密码的，需要充值请进入优玩平台充值中心进行充值，绝不会私下交易。</div>
+  			<div class="duihua">
+			{$nowVo.answer}
+  			</div>
+		
+  		
+  			      </div>
+		<div class="neibottom"></div>
+	</div>
+
+<include file="../common/footer"/>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='UserId[]']").attr("checked",curCheck);
+	 });
+	$("#Items").change();
+});
+
+function chageSearch(curVal){
+		var searchSpan=$("#search");
+		searchSpan.empty();
+		switch(curVal){
+			case '1':{
+			}
+			case '2':{
+			}
+			case '4':{
+				searchSpan.append('<input type="text" class="text" name="Query[start]" onFocus="WdatePicker({startDate:\'%y-%M-01 00:00:00\',dateFmt:\'yyyy-MM-dd HH:mm:ss\',alwaysUseStartDate:true})" id="start" value="<!--{$selectedQuery.start}-->"> 至 <input type="text" class="text" name="Query[end]" onFocus="WdatePicker({startDate:\'%y-%M-01 00:00:00\',dateFmt:\'yyyy-MM-dd HH:mm:ss\',alwaysUseStartDate:true})" id="end" value="<!--{$selectedQuery.end}-->" >');
+				break;
+			}
+			case '3':{
+			}
+			case '5':{
+			}
+			case '6':{
+				searchSpan.append('<input type="text" class="text" name="Query[start]" id="start" value="<!--{$selectedQuery.start}-->"> 至 <input type="text" class="text" name="Query[end]" id="end" value="<!--{$selectedQuery.end}-->" >');
+				break;
+			}
+			case '7':{
+			}
+			case '8':{
+			}
+			case '9':{
+				searchSpan.append('<input type="text" class="text" name="Query[start]" id="start" value="<!--{$selectedQuery.start}-->">');
+				break;
+			}
+			default :{
+				searchSpan.append('<input type="text" class="text" name="Query[start]" id="start" value="<!--{$selectedQuery.start}-->"> 至 <input type="text" class="text" name="Query[end]" id="end" value="<!--{$selectedQuery.end}-->" >');
+			}
+		}
+}
+
+function jumpUrl(url){
+	form=$("#form");
+	form.attr("action",url);
+	form.submit();
+}
+</script>
+<fieldset>
+	<legend>用户查询</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td colspan="10">
+        <form action=""  method="get" onsubmit="return checksub();">
+            <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+            <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+            <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+            <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+            <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+            <select name="Query[Items]" id="Items" onchange="chageSearch($(this).val())">
+            	<!--{html_options options=$select selected=$selectedQuery.Items}-->
+            </select>
+            <span id="search">
+            </span>
+            <select name="PageSize"><!--{html_options options=$selectPage selected=$selectedPageSize}--></select>
+            <input type="submit" class="btn-blue" name="submit" id="submit" value="查找">
+        </form>    
+        </td>
+        </tr>
+      <tr>
+        <th>用户Id</th>
+        <th>用户名<br />
+        角色名称</th>
+        <th>公司名称</th>
+        <th>注册时间<br />
+        注册IP</th>
+        <th>最后登录时间<br />
+        最后操作时间</th>
+        <th>最后登录IP<br />
+        总共登录天数</th>
+        <th>赠送金币/金币/<br />
+        虚拟G币</th>
+        <th>官印<br />市场交易币</th>
+        <th>登陆次数<br />
+        在线时长</th>
+        <th>操作</th>
+      </tr>
+      <form action="" id="form" method="post">
+      <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+      <!--{foreach from=$dataList item=vo}-->
+      <tr>
+        <td><input type="checkbox" name="UserId[]" value="<!--{$vo.UserId}-->" /><!--{$vo.UserId}--></td>
+        <td align="center"><!--{$vo.UserName}--><br /><!--{$vo.VUserName}--></td>
+        <td align="center"><!--{$vo.CompanyName}--></td>
+        <td align="center"><!--{$vo.RegTime|date_format:"%Y-%m-%d %H:%M:%S"}--><br /><!--{$vo.RegIp}--></td>
+        <td align="center"><!--{$vo.LoginTime|date_format:"%Y-%m-%d %H:%M:%S"}--><br /><!--{$vo.LastUpdate|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+        <td align="center"><!--{$vo.LoginIp}--><br /><!--{$vo.LoginDays}--></td>
+        <td align="center"><!--{$vo.LiQuan}-->&nbsp;/&nbsp;<!--{$vo.Gold}--><br /><!--{$vo.Assets}--></td>
+        <td align="center"><!--{$vo.Chop}--><br /><!--{$vo.MarketCurrency}--></td>
+        <td align="center"><!--{$vo.LoginDays}--><br /><!--{$vo.OnLineLong}--></td>
+        <td>
+          [<a href="<!--{$vo.url_ask}-->">提交bug</a>]
+          [<a href="<!--{$vo.url_send_msg}-->">发送短消息</a>]
+          [<a href="<!--{$vo.url_event_list}-->">事件簿</a>]
+          <br />
+          [<a href="<!--{$vo.url_emp}-->">员工列表</a>]
+          [<a href="<!--{$vo.url_shop}-->">店铺列表</a>]
+          [<a href="<!--{$vo.url_tools}-->">道具列表</a>]
+          [<a href="<!--{$vo.url_msg}-->">消息列表</a>]
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="10"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}--> 
+      <tr>
+      	<td><input type="checkbox" id="allcheck" />全选</td>
+        <td colspan="9">
+        	<input type="button" class="btn-blue" value="发送奖励" onclick="jumpUrl('<!--{$url.MasterFRG_RewardBefore}-->')" />
+            <input type="button" class="btn-blue" value="踢人" onclick="jumpUrl('<!--{$url.MasterFRG_KickUser}-->')" />
+            <input type="button" class="btn-blue" value="发消息" onclick="jumpUrl('<!--{$url.MasterFRG_SendMail}-->')" />
+            <input type="button" class="btn-blue" value="禁言" onclick="jumpUrl('<!--{$url.MasterFRG_AddDonttalk}-->')" />
+            <input type="button" class="btn-blue" value="封号" onclick="jumpUrl('<!--{$url.MasterFRG_AddLockUsers}-->')" />
+            <input type="button" class="btn-blue" value="增加教官" onclick="jumpUrl('<!--{$url.MasterFRG_Drillmaster_Add}-->')" />
+            公司创建总数： <b><!--{$companyNum}--></b>
+        </td>
+      </tr>
+      </form>
+      <tr>
+        <th colspan="10" align="right"><!--{$pageBox}--></th>
+      </tr>
+    </table>
+</fieldset>
+<!--{/if}-->

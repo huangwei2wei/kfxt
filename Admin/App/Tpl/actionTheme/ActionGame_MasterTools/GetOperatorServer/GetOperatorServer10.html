@@ -1,0 +1,95 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<fieldset>
+	<legend>从游戏读取服务器数据 [<a href="javascript:void(0);" onclick="checkAllServer('');" >检查全部</a>]</legend>
+<script language="javascript">
+var isAlert = true;
+function checkOneServer(obj){
+	var marking = obj.attr('marking');
+	$.ajax({
+		dataType:'json',	
+		type: 'get',
+		data:{marking:marking},
+		url: '<!--{$URL_check}-->',
+		success:function(json){
+			if(1 == json.status){
+				var info = json.info;
+				if(json.data != 1){	//不存在就出现同步按钮
+					var ordinal = obj.attr('ordinal');
+					var server_name = obj.attr('server_name');
+					var server_url = obj.attr('server_url');
+					var operator_name= obj.attr('operator_name');
+					info +=' <a href="javascript:void(0);" ordinal="'+ordinal+'" marking="'+marking+'" server_name="'+server_name+'" server_url="'+server_url+'" operator_name="'+operator_name+'"  onclick="update($(this));">同步</a>';
+				}
+				obj.after(info);
+				obj.remove();
+			}else if(isAlert){
+				alert(json.info);
+			}
+			
+		}
+	});
+}
+
+function checkAllServer(checkServerClass){
+	isAlert = false;
+	if(checkServerClass){
+		$('.'+checkServerClass).click();
+	}else{
+		$('.checkServer').click();
+	}
+	isAlert = true;
+}
+
+function update(obj){
+	var ordinal = obj.attr('ordinal');
+	var server_name = obj.attr('server_name');
+	var marking = obj.attr('marking');
+	var server_url = obj.attr('server_url');
+	var operator_name= obj.attr('operator_name');
+	var url="<!--{$URL_update}-->";
+	url +='&ordinal='+ordinal+'&server_name='+server_name+'&marking='+marking+'&server_url='+server_url+'&operator_name='+operator_name; 
+	window.open(url);
+}
+</script>
+
+<table width="100%" border="0" cellpadding="3">
+
+<!--{foreach from=$dataList item=subOpt}-->
+  <tr>
+    <th scope="col" colspan="11"><!--{$subOpt.name}-->(<!--{$subOpt.partnerEName}-->，<!--{$subOpt.url}-->)</th>
+  </tr>
+  
+  <tr>
+    <th scope="col">服务器名</th>
+    <th scope="col">type</th>
+    <th scope="col">后台使用标识</th>
+    <th scope="col">服号</th>
+    <th scope="col">svrId</th>
+    <th scope="col">ip</th>
+    <th scope="col">url</th>
+    <th scope="col">port</th>
+    <th scope="col">addTime</th>
+    <th scope="col"><a href="javascript:void(0);" onclick="checkAllServer('<!--{$subOpt.partnerEName}-->');" >检查全部</a></th>
+  </tr>
+  <!--{foreach from=$subOpt.list item=server}-->
+  <tr>
+    <td><!--{$server.name}--></td>
+    <td><!--{$server.type}--></td>
+    <td><!--{$subOpt.partnerEName}-->|<!--{$server.svrId}--></td>
+    <td><!--{$server.serverId}--></td>
+    <td><!--{$server.svrId}--></td>
+    <td><!--{$server.ip}--></td>
+    <td><!--{$server.url}--></td>
+    <td><!--{$server.port}--></td>
+    <td><!--{$server.addTime}--></td>
+    <td>
+    	[<a href="javascript:void(0);" class="checkServer <!--{$subOpt.partnerEName}-->" operator_name="<!--{$subOpt.name}-->" ordinal="<!--{$server.serverId}-->" server_name="<!--{$server.name}-->"  marking="<!--{$subOpt.partnerEName}-->|<!--{$server.svrId}-->" server_url="<!--{$subOpt.url}-->" onclick="checkOneServer($(this));">检查</a>]
+    </td>
+  </tr>
+  <!--{/foreach}-->
+
+<!--{/foreach}-->
+</table>
+</fieldset>

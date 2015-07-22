@@ -1,0 +1,108 @@
+<form action="<!--{$url.OperationFRG_BatchRewardAdd}-->" id="form" method="post" >
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<style type="text/css">
+.addline{
+	padding:3px;
+}
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:100%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/default/frg.js"></script>
+<script language="javascript">
+
+<!--{if $objData}-->
+var objData=eval(<!--{$objData}-->);
+<!--{/if}-->
+
+<!--{if $toolData}-->
+var toolData=eval(<!--{$toolData}-->);
+<!--{/if}-->
+
+<!--{if $effData}-->
+var effData=eval(<!--{$effData}-->);
+<!--{/if}-->
+
+var condInputNum=1;
+var effectInputNum=1;
+var toolInputNum=1;
+
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#cause").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"申请理由不能为空,请确认"});
+	$("#Title").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"奖励描述不能为空,请确认"});
+	$("#MsgTitle").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"消息标题不能为空,请确认"});
+	$("#MsgContent").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"消息内容不能为空,请确认"});
+})
+</script>
+<fieldset>
+<legend>申请道具发放 [<font color="#FF0000">此操作须要审核</font>]</legend>
+<div id="showItem"></div>
+
+<input type="hidden" disabled="disabled" name="server_id" id="server_id" />
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">申请理由</th>
+    <td><textarea name="cause" id="cause" cols="50" rows="8"></textarea><div id="causeTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">奖励描述</th>
+    <td><input type="text" class="text" name="Title" id="Title" size="80" /><div id="TitleTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">消息标题</th>
+    <td><input type="text" class="text" name="MsgTitle" id="MsgTitle" size="80" value="" /><div id="MsgTitleTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">消息内容</th>
+    <td><textarea name="MsgContent" id="MsgContent" rows="6" cols="50"></textarea><div id="MsgContentTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row">发放时间</th>
+    <td>
+    	<input type="text" class="text" name="SendTime" value="<!--{$systemTime|strtotime:'+1 hours'}-->" onFocus="WdatePicker({startDate:'<!--{$systemTime|strtotime:'+1 hours'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/> 
+        至
+        <input type="text" class="text" name="EndTime" value="<!--{$systemTime|strtotime:'+1 day'}-->" onFocus="WdatePicker({startDate:'<!--{$systemTime|strtotime:'+1 day'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        当前系统时间：<font color="#FF0000"><!--{$systemTime|date_format:"%Y-%m-%d %H:%M:%S"}--></font>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">是否每发放</th>
+    <td>
+    	<input type="radio" name="EveryDay" value="1" />是 
+        <input type="radio" name="EveryDay" value="0" checked="checked" />否
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">领取条件</th>
+    <td><input type="button" class="btn-blue" onclick="addGetCond($(this))" value="添加领取条件" /></td>
+  </tr>
+  <tr>
+    <th scope="row">奖励作用效果</th>
+    <td><input type="button" class="btn-blue" onclick="addEffect($(this))" value="添加作用效果" /></td>
+  </tr>
+  <tr>
+    <th scope="row">奖励道具</th>
+    <td><input type="button" class="btn-blue" onclick="addTool($(this))" value="添加奖励道具" /></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">
+    	<input type="submit" class="btn-blue" value="提交" />
+      </th>
+  </tr>
+</table>
+</fieldset>
+
+</form>

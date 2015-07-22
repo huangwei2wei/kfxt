@@ -1,0 +1,85 @@
+﻿<include file="../common/libs"/>
+<script src="__PUBLIC__/common/js/libs/jquery.form.js" language="javascript"></script>
+<script>
+$(function(){
+	$('#menu_faq').addClass('d');
+});
+
+function displaySelect(){
+	$("#cause").css("display","");
+}
+function checkOther(value){
+	if(value==5){
+		$("#cause").after("<input type='text' id='opinion' name='content' />");	
+	}else{
+		$("#opinion").remove();
+	}
+}
+function processJson(data){
+	if(data.msg==1){
+		$('#tion_03_1').css("display","none");
+		if($('#faq_info').attr('checked')==true){
+			//有用
+			$("#tion_03_2").css("display","");
+		}else{
+			$("#tion_03_3").css("display","");
+		}
+		
+		
+	}
+}
+
+$(function(){
+	$("#faqOpinionForm").ajaxForm({
+		dataType:'json',
+		success:processJson
+	});
+	$('#menu_faq').addClass('d');
+});
+</script>
+
+<div class="personaquan">
+				<div class="pquantitle"><span>返回上一页</span>开通网上银行</div>
+					
+					
+					<div class="showtext">
+							<div class="tion_02">
+                                <dl><dt>问题标题：</dt><dd>{$faq.question|stripcslashes}</dd></dl>
+                                <div style="clear:left;"></div>
+                                <dl><dt>解决方法：</dt><dd>{$faq.answer_s|stripcslashes}</dd></dl>
+                            </div>
+                            
+                            <div class="tion_03" id="tion_03_1">
+                            <form action="{:U('Faq/opinion')}" id="faqOpinionForm" method="post">
+                            <input type="hidden" value="{$Id}" name="player_faq_id" />
+                                <h2>以上信息是否能为您解决问题？</h2>
+                                <p>
+                                    <input name="faq_info" id="faq_info" type="radio" value="1" onclick="$('#cause').css('display','none')" checked = "true" />是　
+                                    <input onclick="displaySelect()" name="faq_info" type="radio" value="0"  />否
+                                    <input type="hidden" name="game_type_id" value="{$Think.get.game_type_id}" />
+                                    <select style="display:none;" id="cause" name="faq_opinion" onchange="checkOther($(this).val())">
+                                    <foreach name="faqOpinion" item="vo" key="k">
+                                        <option value="{$k}">{$vo}</option>
+                                    </foreach>
+                                    </select>
+                                </p>
+                                <p><input type="image" src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/input_14.gif" /></p>
+                            </form>
+                            </div>
+                            <div class="tion_03" id="tion_03_2" style="display:none;">
+                                <h2 style="padding:20px 0; font-weight:normal; color:#666">感谢您对我们工作的支持！</h2>
+                            </div>
+                            <div class="tion_03" id="tion_03_3" style="display:none;">
+                                <h2 style="text-align:center;padding:20px 0;">非常感谢您对于我们工作的评价，您还可以通过 <a href="{:U('Question/index')}">提交问题</a> 给我们客服，以获得满意的答案。 </h2>
+                            </div>
+                            <div class="tion_04">
+                                <h2 style="text-align:left">相关问题:</h2>
+                                <ul>
+                                    <foreach name="relatedFaq" item="list">
+                                    <li><a href="{:U("/Faq/show/game_type_id/$gameTypeId/Id/$list[Id]")}">{$list.question|stripcslashes}</a></li>
+                                    </foreach>
+                                </ul>
+                            </div>
+					</div>
+					
+							</div>

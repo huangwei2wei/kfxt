@@ -1,0 +1,18 @@
+<fieldset>
+  <legend>增加问题类型</legend>
+  <form action="<!--{$url.SysManagement_QuestionAdd}-->" method="post">
+  <table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">所属游戏</th>
+    <td><select name="game_type_id"><!--{html_options options=$gameType}--></select></td>
+  </tr>
+  <tr>
+    <th scope="row">问题名称</th>
+    <td><input type="text" class="text" name="title" /></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+    </tr>
+  </table>
+  </form>
+</fieldset>

@@ -1,0 +1,69 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+
+<fieldset>
+  <legend>修改玩家的游戏名</legend>
+<form action="" method="post">
+    <table width="100%" border="0" cellpadding="3">
+
+      <!--{if $dataList}-->
+      <tr>
+      	<th scope="row">玩家信息</th>
+        <td>
+        	玩家ID：<!--{$dataList.playerId}--><br>
+            玩家游戏名字：<!--{$dataList.playerName}--><br>         
+        </td>
+      </tr>
+      <tr>
+      	<th scope="row">重命名为</th>
+        <td>
+        	<input type="hidden" name="playerId" value="<!--{$dataList.playerId}-->" />
+            <input type="hidden" name="doaction" value="modifyName" />
+        	<input type="text" class="text" name="rename" value="<!--{$dataList.playerName}-->" />
+        </td>
+        <tr>
+            <th scope="row">&nbsp;</th>
+            <td>
+            	<input type="submit" class="btn-blue" value="提交" onclick="return confirm('确定提交?');" />
+                <input type="button" class="btn-blue" value="重新查询" onclick="location.href='<!--{$dataList.URL_ReQuery}-->'" />
+            
+            </td>
+        </tr>
+      </tr>
+      <!--{elseif $ConnectErrorInfo}-->
+      <tr>
+      	<th scope="row">PhpRpc Error</th>
+        <td>
+        	<font color="#FF0000"><!--{$ConnectErrorInfo}--></font>
+        </td>
+       <tr>
+      <!--{else}-->
+          <tr>
+            <th scope="row">查询类型</th>
+            <td>
+                <label>
+                    <input type="radio" name="playerType" checked="checked" value="0" />玩家ID
+                </label>
+                <label>
+                    <input type="radio" name="playerType" value="1" />玩家游戏名
+                </label>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">查询信息</th>
+            <td>
+                <input type="text" class="text" value="" name="player" />        
+            </td>
+          </tr>      
+          <tr>
+            <th scope="row">&nbsp;</th>
+            <td><input type="submit" class="btn-blue" value="查询" /></td>
+          </tr>
+      <!--{/if}-->
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

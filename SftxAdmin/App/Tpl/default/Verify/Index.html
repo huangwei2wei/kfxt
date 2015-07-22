@@ -1,0 +1,106 @@
+<style type="text/css">
+ul{	margin:0px;	padding:0px;list-style-type:none;}
+ul li{margin:3px;}
+</style>
+<fieldset>
+<legend>搜索列表</legend>
+<form action="" method="get" id="formSearch">
+	<input type="hidden" value="<!--{$__CONTROL__}-->" name="c" />
+    <input type="hidden" value="<!--{$__ACTION__}-->" name="a" />
+    <ul>
+    	<li>
+            转交部门：
+              <select name="department_id"><option value="">部门选择</option><!--{html_options options=$department selected=$selectedDepartment}--></select>
+            游戏类型：<select name="game_type_id" id="game_type_id" onChange="changeType($(this).val())"><option value="">请选择游戏</option><!--{html_options options=$gameType}--></select>
+            运营商：<select name="operator_id" onchange="changeOperatorType($(this).val())" id="operator_id"><option value="">请选择运营商</option><!--{html_options options=$operatorList}--></select>
+            游戏服务器：<select name="game_server_id" id="game_server_id"><option value="">请选择游戏和运营商...</option></select>
+            状态：<select name="status" id="status"><option value="">状态选择</option><!--{html_options options=$verifyStatus}--></select>
+            问题类型：<select name="type" id="type"><option value="">请选择游戏...</option></select>
+            处理等级：<select name="level" id="level"><option value="">选择处理等级</option><!--{html_options options=$verifyLevel}--></select>
+        </li>
+        <li>
+            添加人：<select name="user_id"><option value="">选择添加人</option><!--{html_options options=$users selected=$selectedUserId}--></select>  
+            来源:<select name="source"><option value="">选择来源</option><!--{html_options options=$verifySource selected=$selectedSource}--></select>
+            来源详细：<input type="text" class="text" name="source_detail" value="<!--{$selectedSourceDetail}-->" size="40" />
+        </li>
+        <li>
+            标题：<input type="text" class="text" name="title" id="title" value="<!--{$selectedTitle}-->" size="40" />
+            游戏玩家ID：<input type="text" class="text" id="game_user_id" value="<!--{$selectedGameUserId}-->" name="game_user_id"  />
+            游戏玩家账号：<input type="text" class="text" id="game_user_account" name="game_user_account" value="<!--{$selectedGameUserAccount}-->" />
+            游戏玩家呢称：<input type="text" class="text" id="game_user_nickname" name="game_user_nickname" value="<!--{$selectedGameUserNickName}-->" />
+            <input type="submit" class="btn-blue" value="提交" />
+        </li>
+    </ul>
+</form>
+</fieldset>
+
+<fieldset>
+<legend>查证处理列表</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">[处理等级]标题</th>
+        <th scope="col">游戏类型 / 运营商 / 服务器 / 玩家Id/账号/呢称</th>
+        <th scope="col">问题类型</th>
+        <th scope="col">提交部门</th>
+        <th scope="col">状态</th>
+        <th scope="col">来源</th>
+        <th scope="col">来源详细</th>
+        <th scope="col">添加人</th>
+        <th scope="col">提交时间</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td class="list_title" onclick="displayDetail(<!--{$list.Id}-->)"><b>[<!--{$list.word_level}-->]</b>&nbsp;<!--{$list.title}--></td>
+        <td><!--{$list.word_game_type_id}--> / <!--{$list.word_operator_id}--> / <!--{$list.word_game_server_id}--> / 
+        	<a href="javascript:void(0)" onclick="searchForm($(this),'game_user_id')"><!--{$list.game_user_id}--></a> / 
+            <a href="javascript:void(0)" onclick="searchForm($(this),'game_user_account')"><!--{$list.game_user_account}--></a> / 
+            <a href="javascript:void(0)" onclick="searchForm($(this),'game_user_nickname')"><!--{$list.game_user_nickname}--></a> </td>
+        <td><!--{$list.word_type}--></td>
+        <td><!--{$list.word_department_id}--></td>
+        <td>
+          <select onchange="changeStatus($(this))" listId="<!--{$list.Id}-->">
+            <!--{html_options options=$verifyStatus selected=$list.status}-->
+          </select>
+        </td>
+        <td><!--{$list.word_source}--></td>
+        <td title="<!--{$list.source_detail}-->"><!--{$list.source_detail|truncateutf8:30}--></td>
+        <td><!--{$list.work_user_id}--></td>
+        <td><!--{$list.create_time}--></td>
+        <td>
+        	<a href="<!--{$list.url_detail}-->">回复</a>
+            <!--{if $list.work_order_id}--><a href="<!--{$list.url_order_detail}-->">工单详情</a><!--{/if}-->
+        </td>
+      </tr>
+      <tr>
+      	<td colspan="11" style="display:none; background:#FFF" id="detail_<!--{$list.Id}-->">
+        	<div style="border:1px solid #CCC; padding:3px; margin:3px;">
+            	详细描述：<br />
+				<!--{$list.content}-->
+            </div>
+            
+            <div>
+                <!--{foreach from=$list.log item=childList}-->
+                <!--{if $childList.type==1}-->
+                <div style="border:1px dashed #999; padding:3px; margin:3px; background:#E9FAFE">
+                    <div><b>状态修改：</b>&nbsp;[<!--{$childList.time}-->]&nbsp;<b><!--{$childList.user}--></b></div>
+                    <div><!--{$childList.description}--></div>
+                </div>
+                <!--{else}-->
+                <div style="border:1px dashed #999; padding:3px; margin:3px; background:#EFEFF8">
+                    <div><b>留言：</b>&nbsp;[<!--{$childList.time}-->]&nbsp;<b><!--{$childList.user}--></b></div>
+                    <div><!--{$childList.description}--></div>
+                </div>
+                <!--{/if}-->
+                <!--{/foreach}-->
+            </div>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr><th colspan="11"><!--{$noData}--></th></tr>
+      <!--{/foreach}-->
+      <tr><td colspan="11" align="right"><!--{$pageBox}--></td></tr>
+    </table>
+</fieldset>

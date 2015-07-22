@@ -1,0 +1,40 @@
+
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+
+
+<fieldset>
+  <legend><!--{$legend}--></legend>
+<form action="" method="post">
+    <table width="400" border="0" cellpadding="3">
+     <!--{if $dataList.Id >0}-->
+     <tr>
+        <th scope="row" width="200">Id</th>
+        
+        <td>
+        	<!--{$dataList.Id}-->
+        </td>
+        
+      </tr>
+      <!--{/if}-->
+      <tr>
+        <th scope="row" width="200">所属游戏</th>
+        <td> <!--{html_options name="game_type" options=$game_type selected=$dataList.game_type}--></td>
+      </tr>
+      <tr>
+        <th scope="row">类型Id</th>
+        <td><input class="text" type="text" name="rootid" value="<!--{$dataList.rootid}-->"></td>
+      </tr>
+      <tr>
+        <th scope="row">类型名</th>
+        <td><input class="text" type="text" name="rootname" value="<!--{$dataList.rootname}-->"></td>
+      </tr>
+      <tr>
+        <th scope="row" colspan="2"><input class="btn-blue" type="submit" value="保存"></th>
+      </tr>
+    </table>
+
+</form>
+
+
+</fieldset>

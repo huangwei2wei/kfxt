@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>优玩网 - 客服中心</title>
+<include file="../common/libs"/>
+<script>
+function search(){
+	$v=$('#keyword').val();
+	if($v==''){
+		alert('请输入关键词！');
+		return false;
+	}
+	$gtype=$('#game_type_id').val();
+	
+	window.location.href='/index.php?s=/Faq/search/game_type_id/'+$gtype+'/keyword/'+$v;
+}
+</script>
+</head>
+<body>
+<include file="../common/head"/>
+<div id="contai">
+	<div class="left">
+		<div class="left_01">
+			<p><a href="{:U('Question/index')}">提交问题</a><br /><span><a href="{:U('Question/ls')}">>>查询结果</a></span></p>
+			<p style="line-height:40px"><a href="{:U('Faq/index')}">常见问题（FAQ）</a><br /></p>
+			<p style="line-height:40px"><a href="{:U('SelfService/index')}">自助服务</a><br /></p>
+		</div>
+        <div class="right_tit">联系客服</div>
+<div class="lianxi">
+    <p style="padding-bottom: 5px; padding-top: 20px;"><img src="/Public/front/default/images/bur_22.gif"> <b>电话：</b>400-888-4818</p>
+    <p style="padding-bottom: 5px;"><img  src="/Public/front/default/images/bur_23.gif"> <b>传真：</b>020-38741065</p>
+    <p style="padding-bottom: 5px;"><img  src="/Public/front/default/images/bur_24.gif"> <b>投诉通道：</b><a href="/index.php?s=/Question/index">点击进入</a></p>
+    <p style="padding-bottom: 5px;"><a href="mailto:BTOcustomerservice@cndw.com" title="投诉邮箱">BTOcustomerservice@cndw.com</a></p>
+    <p class="d">欢迎对我们的客服质量进行监督</p>
+</div>
+
+	</div>
+	<div class="conner">
+		<div class="flash"><a href="{:U('SelfService/index')}"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/1.jpg" /></a></div>
+		
+		<div id="tabs0" style="position:relative">
+		
+ <ul class="menu0" id="menu0">
+  <div style=" position:absolute;; top:7px; left:213px;">
+
+
+  </div>
+
+<span style="float:center;padding-top:13px">
+<a href="{:U('Faq/index')}" target="_blank">更多热点问题</a>
+ </span>
+  <li onmouseover="setTab(0,0)" class="hover" style="cursor:text">商业大亨</li>
+  <li onmouseover="setTab(0,1)" style="cursor:text">富人国</li>
+ </ul>
+
+ <div class="main" id="main0">
+ 
+  <ul class="block">
+      <volist name="listBto" id="vo">
+      <li><span>{$games[$vo[game_type_id]]['name']}</span><a href="{:U("/Faq/show/game_type_id/$vo[game_type_id]/Id/$vo[Id]")}">{$vo.question|strip_tags}</a></li>
+      </volist>
+  </ul>
+  <ul class="none">
+      <volist name="listBto2" id="vo">
+      <li><span>{$games[$vo[game_type_id]]['name']}</span><a href="{:U("/Faq/show/game_type_id/$vo[game_type_id]/Id/$vo[Id]")}">{$vo.question|strip_tags}</a></li>
+      </volist>
+  </ul>
+  
+ </div>
+ 
+</div>
+<div style="float:right">
+	<div class="left_02">
+			<div class="left_tit">扩展功能 </div>
+			<div class="left_con" style="height:176px;">
+				<ul>
+					<li><a href="http://www.uwan.com/UserCenter/Indulged.php" target="_blank"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/icon_1.gif" /></a></li>
+					<li><a href="{:U('Notice/index')}" target="_blank"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/icon_2.gif" /></a></li>					
+					<li><a href="{:U('Notice/pay')}" target="_blank"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/icon_3.gif" /></a></li>
+					<li><a href="{:U('Question/index')}" target="_blank"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/icon_4.gif" /></a></li>
+					<li><a href="http://www.uwan.com/jianhu/index.htm" target="_blank"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/icon_5.gif" /></a></li>
+					<li><a href="http://www.uwan.com/bbs.php" target="_blank"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/icon_6.gif" /></a></li>
+                    <li><a href="{:U('Notice/trick')}" target="_blank"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/icon_7.gif" /></a></li>
+                    <li><a href="#" target="_blank"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/icon_8.gif" /></a></li>
+					</ul>
+			</div>
+
+		</div>
+		
+	</div>
+ </div>   
+	<include file="../common/footer"/>
+</div>
+<div style="display:none">
+<script src=" http://s11.cnzz.com/stat.php?id=2558818&web_id=2558818" language="JavaScript"></script>
+</div>
+</body>
+
+</html>

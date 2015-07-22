@@ -1,0 +1,53 @@
+<script language="javascript">
+function onoffMark(thisBox){
+	if(thisBox.attr('checked')){
+		$("#marking").removeAttr("disabled");
+	}else{
+		$("#marking").attr("disabled","disabled");
+	}
+}
+</script>
+<center>
+<form action="<!--{$url.GameSerList_Edit}-->" method="post">
+<input type="hidden" value="<!--{$data.Id}-->" name="Id" />
+<table width="60%" border="0" cellpadding="3">
+  <tr>
+    <th>游戏类型</th>
+    <td>
+    	<select name="game_type" >
+            <!--{html_options options=$gameTypeList selected=$data.game_type_id}-->
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <th>运营商</th>
+    <td>
+    	<select name="operator_id">
+        	<!--{html_options options=$operatorList selected=$data.operator_id}-->
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <th>服务器名称</th>
+    <td>
+    	<input type="text" class="text" value="<!--{$data.server_name}-->" name="server_name" />
+    </td>
+  </tr>
+  <tr>
+    <th>标识</th>
+    <td><input type="text" class="text" name="marking"  id="marking" value="<!--{$data.marking}-->" disabled="disabled"  /> <input type="checkbox" value="1" onclick="onoffMark($(this))" name="modify_mark" />修改标识</td>
+  </tr>
+  <tr>
+    <th>服务器地址</th>
+    <td><input type="text" class="text" name="server_url" value="<!--{$data.server_url}-->"  style="width:300px;" /></td>
+  </tr>
+  <tr>
+    <th>客服回复消息地址</th>
+    <td><input type="text" class="text" name="send_msg_url" value="<!--{$data.send_msg_url}-->" style="width:300px;" /></td>
+  </tr>
+  <tr>
+    <th colspan="2"><input type="submit" class="btn-blue" value="提交" /></th>
+  </tr>
+</table>
+</form>
+</center>

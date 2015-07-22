@@ -1,0 +1,135 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+function delApply(obj){
+	var url = '<!--{$URL_ItemDel}-->';
+	var goodsId = obj.attr('goodsId');
+	var googsName = obj.attr('googsName');
+	var delNum = obj.prev().val();
+	var cause = $('#cause').val();
+	if($.trim(cause) ==''){
+		alert('操作原因必须');
+		return false;
+	}
+	if(delNum<1){
+		alert('填写删除数量错误');
+		return false;
+	}
+	$.ajax({
+		dataType:'json',	
+		type: 'POST',
+		data:{
+				nickName:'<!--{$_GET.nickName}-->',
+				openId:'<!--{$_GET.openId}-->',
+				goodsId:goodsId,
+				googsName:googsName,
+				delNum:delNum,
+				type:'<!--{$_GET.type|intval}-->',
+				cause:cause
+			},
+		url: url,
+		success:function(returnData){
+			if(returnData.status==1){
+				//alert(returnData.info);return false;
+				obj = obj.parent();
+				obj.after('<font color="#00FF00">已提交申请</font>');
+				obj.remove();
+			}else{
+				alert(returnData.info);
+			}
+		}
+	});
+}
+</script>
+<fieldset>
+  <legend>搜索</legend>
+  
+<form action=""  method="get">
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+        	昵称:<input type="text" class="text" name="nickName" value="<!--{$_GET.nickName}-->" />
+            openId:<input type="text" style="width:300px;" class="text" name="openId" value="<!--{$_GET.openId}-->" />
+            操作位置:
+            <select name="type">
+            	<!--{html_options options=$siteType selected=$_GET.type}-->
+            </select>
+            <input class="btn-blue" type="submit" name="sbm" value="查询">
+        </td>
+      </tr>
+    </table>
+</form>
+
+
+</fieldset>
+
+<fieldset>
+  <legend>玩家信息</legend>
+  <div>操作原因:<textarea id="cause" style="width:500px; height:30px;"></textarea></div>
+<table width="100%" border="0" cellpadding="3">
+  	
+    <tr>
+        <th scope="col">物品id</th>
+        <th scope="col">名称</th>
+        <th scope="col">所在格子编号</th>
+        <th scope="col">品质</th>
+        <th scope="col">类型</th>
+        <th scope="col">叠加数量</th>
+        <th scope="col">过期时间</th>
+        <th scope="col">操作申请</th>
+    </tr>
+    <!--{foreach from=$dataList item=list}-->
+    <tr>
+        <td><!--{$list.goodsId}--></td>
+        <td><!--{$list.name|urldecode}--></td>
+        <td><!--{$list.gridId}--></td>
+        <td>
+             <!--{switch var=$list.quality}-->
+            	<!--{case value=1}-->白色<!--{/case}-->
+                <!--{case value=2}-->绿色<!--{/case}-->
+                <!--{case value=3}-->蓝色<!--{/case}-->
+                <!--{case value=4}-->紫色<!--{/case}-->
+                <!--{default}--><!--{$list.quality}-->
+            <!--{/switch}-->  
+        </td>
+        <td>
+             <!--{switch var=$list.type}-->
+            	<!--{case value=1}-->装备<!--{/case}-->
+                <!--{default}-->道具
+            <!--{/switch}-->        
+        </td>
+        <td><!--{$list.count}--></td>
+        <td>
+        	<!--{switch var=$list.expireTime}-->
+            	<!--{case value=0}-->不过期<!--{/case}-->
+                <!--{default}--><!--{$list.expireTime|date_format:'%Y-%m-%d %H:%M:%S'}-->
+            <!--{/switch}-->
+        </td>
+        <td>
+            <span>
+                删除数量 
+                <input class="text" style="width:30px;" type="text" name="delNum" value="" /> 
+                <input type="button" class="btn-blue" value="提交" googsName="<!--{$list.name|urldecode}-->" goodsId="<!--{$list.goodsId}-->" onclick="delApply($(this));" />
+            </span>
+        </td>
+    </tr>  
+    <!--{foreachelse}-->
+        <tr>
+          <td align="center" colspan="7">暂无数据</td>
+        </tr>
+    <!--{/foreach}-->
+</table>
+
+<div><!--{$pageBox}--></div>
+</fieldset>
+<!--{/if}-->

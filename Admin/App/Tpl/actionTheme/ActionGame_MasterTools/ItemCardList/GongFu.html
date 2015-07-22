@@ -1,0 +1,38 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+	<legend>
+         <!--{'625FF3692A75FD09C5B2FAD68A04AACC'|lang}-->
+    </legend>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col"><!--{'0224A887AB19A26FB2AE1C0FE7E38A8A'|lang}-->ID</th>
+    <th scope="col"><!--{'9BC7F8EABA93AD47294F7DD971A66182'|lang}-->Id</th>
+    <th scope="col"><!--{'E683517F148C3451C7861E8FB249EF6F'|lang}-->ID</th>
+    <th scope="col"><!--{'7C8803F3C15EF8FD97E725786A1BA02B'|lang}--></th>
+    <th scope="col"><!--{'81463B2FCFA4E5B7A894CCA4F2846AB1'|lang}-->ID</th>
+    <th scope="col"><!--{'B683C82E9310494611D6A8C1DB41BD34'|lang}--></th>
+    <th scope="col"><!--{'5B669BEE806E607E958F630AE5159D84'|lang}--></th>
+    <th scope="col"><!--{'0224A887AB19A26FB2AE1C0FE7E38A8A'|lang}--></th>
+    
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td align="center"><!--{$list.id}--></td>
+    <td align="center"><!--{$list.classId}--></td>
+    <td align="center"><!--{$list.batchId}--></td>
+    <td align="center"><!--{$list.serverId}--></td>
+    <td align="center"><!--{$list.playerId}--></td>
+    <td align="center"><!--{if $list.addTime}--><!--{$list.addTime|date_format:"%Y-%m-%d %H:%M:%S"}--><!--{else}-->--<!--{/if}--></td>
+    <td align="center"><!--{if $list.exchangeTime}--><!--{$list.exchangeTime|date_format:"%Y-%m-%d %H:%M:%S"}--><!--{else}-->--<!--{/if}--></td>
+    <td align="center"><!--{$list.secretKey}--></td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+<div style="text-align:right"><!--{$pageBox}--></div>
+</fieldset>
+
+<!--{/if}-->

@@ -1,0 +1,83 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='UserId[]']").attr("checked",curCheck);
+	 });
+	$("#Items").change();
+});
+
+function jumpUrl(url){
+	if(confirm('确定要执行吗?')){
+		form=$("#form");
+		form.attr("action",url);
+		form.submit();
+	}
+}
+</script>
+<fieldset>
+  <legend>用户查询</legend>
+  	<a href="<!--{$url.MasterFRG_AddCard}-->">生成卡号</a>
+    <a href="<!--{$url.MasterFRG_ImportCard}-->">导入卡号</a>
+    <a onclick="return confirm('确定要执行吗?')" href="<!--{$url.MasterFRG_DelInvalidCard}-->">清除无效的卡号</a>
+    <form action=""  method="get" onsubmit="return checksub();">
+        <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+        <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+        <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+        <select name="Query[Items]" id="Items" >
+          <!--{html_options options=$select selected=$selectedQuery.Items}-->
+        </select>
+        <input type="text" class="text" name="Query[typeName]" value="<!--{$selectedQuery.typeName}-->" />
+        <select name="PageSize"><!--{html_options options=$selectPage selected=$selectedPageSize}--></select>
+        <input type="submit" class="btn-blue" name="submit" id="submit" value="查找">
+    </form>  
+    <form action="" id="form" method="post">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th>Id</th>
+        <th>卡号</th>
+        <th>礼包名称</th>
+        <th>生成时间</th>
+        <th>状态</th>
+        <th>生效时间</th>
+        <th>过期时间</th>
+        <th>使用用户 ID / 用户名 / 呢称</th>
+        <th>使用IP</th>
+        <th>使用时间</th>
+      </tr>
+      <!--{foreach from=$dataList item=vo}-->
+      <tr>
+        <td><!--{$vo.Id}--><input type="checkbox" name="Id[]" value="<!--{$vo.Id}-->" /></td>
+        <td><!--{$vo.CardNum}--></td>
+        <td><!--{$vo.CardName}--></td>
+        <td><!--{$vo.CreateTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+        <td><!--{$vo.word_State}--></td>
+        <td><!--{$vo.StartTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+        <td><!--{$vo.EndTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+        <td><!--{$vo.UserId}--> / <!--{$vo.UserName}--> / <!--{$vo.VUserName}--></td>
+        <td><!--{$vo.UseIP}--></td>
+        <td><!--{$vo.UseTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="10"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}--> 
+      <tr>
+        <td><input type="checkbox" onclick="$('#form :checkbox').attr('checked',$(this).attr('checked'))" /> 全选</td>
+        <td colspan="9"><input type="button" class="btn-blue" onclick="jumpUrl('<!--{$url.MasterFRG_CardRest}-->')" value="重置为可用卡号" /></td>
+      </tr>
+      <tr>
+        <th colspan="10" align="right"><!--{$pageBox}--></th>
+      </tr>
+    </table>
+    </form>
+</fieldset>
+<!--{/if}-->

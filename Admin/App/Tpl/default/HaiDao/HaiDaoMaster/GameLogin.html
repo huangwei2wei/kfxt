@@ -1,0 +1,54 @@
+<script language="javascript">
+$(function(){
+	$("#operator_id").change(function(){
+		location.href=url+"?c=<!--{$__CONTROL__}-->&a=<!--{$__ACTION__}-->&zp=<!--{$__PACKAGE__}-->&operator_id="+$(this).val();
+	});
+}) 
+function check(formId){
+	if($('#cause_'+formId).val()==""){
+		alert('<!--{'C3F15B59EFB4C45F7E450BB661A9AB7E'|lang}-->');
+		$('#cause_'+formId).focus();
+		return false;
+	}
+//	if($('#user_name_'+formId).val()==""){
+//		alert('<!--{'08B1FA1304152D1213C1A758056E2350'|lang}-->');
+//		$('#user_name_'+formId).focus();
+//		return false;
+//	}
+	return true;
+}
+</script>
+<fieldset>
+	<legend><!--{'833517FFC6CBBAC5B2375782A2541867'|lang}--></legend>
+    <select id="operator_id" name="operator_id"><option value=""><!--{'E3CF0A04C6E79FD7E595B263B33B4801'|lang}--></option><!--{html_options options=$operatorList selected=$selectedOperatorId}--></select>
+</fieldset>
+<fieldset>
+	<legend><!--{'045677D08976BA2C328E374549F38E54'|lang}--></legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col"><!--{'B425713F0D82F61D992F068D136B71FA'|lang}--></th>
+        <th scope="col"><!--{'402D19E50FFF44C827A4F3B608BD5812'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.server_name}--></td>
+        <td>
+        	<form action="" method="post" target="_blank" id="form_<!--{$list.Id}-->" onsubmit="return check(<!--{$list.Id}-->)">
+            	<!--{'2088BDE458445E265704715AA8DACE5A'|lang}-->&nbsp;&nbsp;&nbsp;：
+            	<input type="text" class="text" id="cause_<!--{$list.Id}-->" name="cause" size="50" /><br />
+            	<input type="hidden" name="server_id" value="<!--{$list.Id}-->" />
+                <!--{'39B5F4517CCBE15C344633B1937963C5'|lang}-->：
+            	<input type="text" class="text" size="50" id="user_name_<!--{$list.Id}-->" name="user_name" /><br/>
+            	角色名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：
+            	<input type="text" class="text" size="50" id="user_name_<!--{$list.name}-->" name="user_username" />
+                <input type="submit" class="btn-blue" value="<!--{'402D19E50FFF44C827A4F3B608BD5812'|lang}-->" />
+        	</form>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="2"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+</fieldset>

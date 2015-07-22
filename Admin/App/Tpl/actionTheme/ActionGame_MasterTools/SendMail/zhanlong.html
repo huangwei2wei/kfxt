@@ -1,0 +1,241 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript">
+//KE.init({id:'title',imageUploadJson : '<!--{$url.UploadImg_Bulletin}-->',afterCreate:function(id){KE.util.focus(id)}});
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#title").formValidator().inputValidator({min:1,max:140,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"公告标题不能为空,不能超过70个中文,请确认"});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"公告内容不能为空,请确认"});
+	$("#interval").formValidator({onshow:"请输入时间间隔",oncorrect:"输入正确"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"时间间隔不正确"});
+})
+function fontStyle(color,b,em){
+	var font1='<font color="'+color+'">';
+	var font2='</font>';
+	var b1='<b>';
+	var b2='</b>';
+	var em1='<em>';
+	var em2='</em>';
+	if(!color){
+		font1 = font2 = '';
+	}
+	if(!b){
+		b1 = b2 = '';
+	}
+	if(!em){
+		em1 = em2 = '';
+	}
+	var obj = $('#title');
+	obj.val(obj.val()+font1+b1+em1+'请输入文字'+em2+b2+font2);
+	view()
+}
+function linkAdd(){
+	var obj = $('#title');
+	obj.val(obj.val()+'<a href="event:请输入地址">请输入内容</a>');
+	view()
+}
+function view(){
+	$('#view').html($('#title').val());
+}
+function viewTitle(){
+	alert("注意：你选择了送给全服所有人！（客服人员禁止使用）");
+}
+
+function addattribute(i){
+	var select = "<select name='attribute["+i+"][]'>";
+	<!--{foreach from=$attribute item=list}-->
+		select+="<option value='<!--{$list.Key}-->'><!--{$list.Note}--></option>"
+	<!--{/foreach}-->
+		select+="</select>";
+		select+="&nbsp;&nbsp;<input class='text' type='text' style='width:50px;' name='attribute_mun["+i+"][]'  /><br>";
+		$('#addattribute'+i).append(select);	
+}
+
+function clearaddattribute(i){
+	$('#addattribute'+i).html("");
+}
+var i=1;
+function additem(){
+	var select = '<hr>';
+	select += '<table><tr><th scope="row">发送类型</th><td>&nbsp;礼包<input class="radio" type="radio" value="1" name="IsPack['+i+']">&nbsp;道具<input class="radio" type="radio" value="0" name="IsPack['+i+']" checked="checked"></td></tr>';
+	select += '<tr><th scope="row">道具或礼包的ID</th><td><input type="text" class="text" name="ItemID['+i+']"/></td></tr>';
+	select += '<tr><th scope="row">数量</th><td><input type="text" class="text" name="ItemNum['+i+']"/>(最大数量不能超过999)</td></tr>';
+	select += '<tr><th scope="row">是否绑定</th><td>&nbsp;是<input class="radio" type="radio" value="1" name="IsBinded['+i+']" checked="checked">&nbsp;否<input class="radio" type="radio" value="0" name="IsBinded['+i+']"></td></tr>';
+	select += '<tr><th scope="row">道具的时间流逝方式</th><td>&nbsp;无限制<input class="radio" type="radio" value="0" name="TimeDurableType['+i+']" checked="checked">&nbsp;到期时间<input class="radio" type="radio" value="1" name="TimeDurableType['+i+']">&nbsp;耐久时间（在线计时）<input class="radio" type="radio" value="2" name="TimeDurableType['+i+']">&nbsp;流失时间（下线计时）<input class="radio" type="radio" value="3" name="TimeDurableType['+i+']"></td></tr>';
+	select += '<tr><th scope="row">时间耐久度</th><td><input type="text" class="text" name="TimeDurable['+i+']"  id="TimeDurable" onFocus="WdatePicker({startDate:\'%y-%M-%d 00:00:00\',dateFmt:\'yyyy-MM-dd HH:mm:ss\',alwaysUseStartDate:true})"/> </td></tr>';
+	select += '<tr><th scope="row">强化等级</th><td><input type="text" class="text" name="ImproveLevel['+i+']"  id="ImproveLevel" /> </td></tr>';
+	select += '<tr><th scope="row">附加属性</th><td><input type="button" class="btn-blue" value="添加属性" onclick="addattribute('+i+')" /><input type="button" class="btn-blue" value="清除属性" onclick="clearaddattribute('+i+')" /><div id="addattribute'+i+'"></div></td></tr>';
+	select += '<tr><th scope="row">钱</th><td>';
+	<!--{foreach from=$gold item=list}-->
+		select += '<!--{$list.Note}--><input type="checkbox" value="<!--{$list.Key}-->" name="Money['+i+'][]"><input class="text" type="text" style="width:20px;" name="Money<!--{$list.Key}-->['+i+']"  />&nbsp;&nbsp;';
+    <!--{/foreach}-->
+    select += '</td></tr>';
+    select += '<tr><th scope="row">经验</th><td><input type="text" class="text" name="Exp['+i+']"  /></td></tr>';
+	select += '</table>';
+	i++;
+	$('#additem').append(select);
+}
+</script>
+<fieldset>
+<legend>批量处理</legend>
+格式：按下面顺序填写到excel文档中，只支持.xls文件<br>
+<table border="0" cellpadding="3">
+	<tr>
+		<td>区ID1</td>
+		<td>玩家ID1</td>
+		<td>邮件标题1</td>
+		<td>邮件内容1</td>
+		<td>发送类型1</td>
+		<td>道具或礼包的ID1</td>
+		<td>数量1</td>
+		<td>是否绑定1</td>
+		<td>道具的时间流逝方式1</td>
+		<td>时间耐久度1</td>
+		<td>强化等级1</td>
+		<td>附加属性1</td>
+		<td>钱1</td>
+		<td>经验1</td>
+	</tr>
+	
+	<tr>
+		<td>区ID2</td>
+		<td>玩家ID2</td>
+		<td>邮件标题2</td>
+		<td>邮件内容2</td>
+		<td>发送类型2</td>
+		<td>道具或礼包的ID2</td>
+		<td>数量2</td>
+		<td>是否绑定2</td>
+		<td>道具的时间流逝方式2</td>
+		<td>时间耐久度2</td>
+		<td>强化等级2</td>
+		<td>附加属性2</td>
+		<td>钱2</td>
+		<td>经验2</td>
+	</tr>
+	
+	<tr>
+		<td>区ID3</td>
+		<td>玩家ID3</td>
+		<td>邮件标题3</td>
+		<td>邮件内容3</td>
+		<td>发送类型3</td>
+		<td>道具或礼包的ID3</td>
+		<td>数量3</td>
+		<td>是否绑定3</td>
+		<td>道具的时间流逝方式3</td>
+		<td>时间耐久度3</td>
+		<td>强化等级3</td>
+		<td>附加属性3</td>
+		<td>钱3</td>
+		<td>经验3</td>
+	</tr>
+</table>
+<form id="reply" enctype="multipart/form-data" method="post" action="<!--{$batch_url}-->">
+Excel:<input type="file" style="margin:5px;" value="" name="Excel">
+<input type="submit" class="btn-blue" value="提交" />
+</form>
+</fieldset>
+<fieldset>
+<legend>发送邮件<a href="<!--{$Item_url}-->">[更新属性缓存]</a></legend>
+<form action="" method="post" id="form">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<input type="hidden" name="id" value="<!--{$selected.id|default:"0"}-->" />
+    <!--{*<a href="javascript:void(0)" onclick="KE.create('title')">加载编辑器</a>*}-->
+	<!--{*<a href="javascript:void(0)" onclick="KE.remove('title')">卸载编辑器</a>*}-->
+    <table width="98%" border="0" cellpadding="3">
+     <tr>
+        <th scope="row">操作原因</th>
+        <td>
+            <textarea name="cause" id="cause" style="width:400px; height:60px;"></textarea>
+            <div id="causeTip"></div>
+        </td>
+      </tr>
+    	<tr>
+        <th scope="row" width="100">区ID</th>
+        <td><input type="text" class="text" name="WorldID" value="<!--{$_GET.WorldID}-->"/>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row" width="100">是否发送给全服所有人</th>
+        <td>&nbsp;否<input class="radio" type="radio" value="0" name="IsAllPlayer" checked="checked" <!--{if $allServer!=1}-->disabled="disabled"<!--{/if}-->>
+        	&nbsp;是<input class="radio" type="radio" value="1" name="IsAllPlayer" onclick="viewTitle()" <!--{if $allServer!=1}-->disabled="disabled"<!--{/if}-->>
+			<font color="red">（客服人员禁止使用）</font>
+        </td>
+      </tr>
+       <tr>
+        <th scope="row">收件人</th>
+        <td>ID<input type="text" class="text" name="Receiver"/>&nbsp;&nbsp;昵称:<input type="text" class="text" name="ReceiveName"/>用“,”分隔多个
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">只发送文本邮件：</th>
+        <td>
+        &nbsp;是<input class="radio" type="radio" value="1" name="IsSendEmain">
+        	&nbsp;否<input class="radio" type="radio" value="0" name="IsSendEmain" checked="checked">
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">标题</th>
+        <td><input type="text" class="text" name="Title"/>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">内容</th>
+        <td>
+        	<textarea name="Content" id="title" style="width:600px; height:200px;"></textarea><div id="titleTip"></div>
+
+        </td>
+      </tr>
+      <tr>
+      	<th scope="row">道具内容</th>
+        <td id="additem">
+        <input type="button" class="btn-blue" value="添加道具" onclick="additem()" />
+        	 
+
+        </td>
+      </tr>
+     
+      		<tr>
+			<th scope="row">道具列表</th>
+			<td>
+				<table width="100%" border="0" cellpadding="3">
+          <tr>
+          <!--{foreach from=$items item=list key=typeId name=foo}-->              
+            <td>
+                <div style="background:white;margin:6px;font-size:14px;border:1px dashed silver;padding:5px;width:250px;">
+                    <div style="overflow:auto;height:200px; width:250px;text-align:left;">
+                        <!--{foreach from=$list item=itemName key=itemId}--> 
+                            <div style="font-size:13px; margin-top:4px;">
+                            ID:<!--{$itemName.ItemID}-->&nbsp;&nbsp;名称：<!--{$itemName.ItemName}-->
+                                <!--<input type="checkbox" onclick="makeInput($(this));" id="checkboxItem<!--{$itemId}-->" itemId="<!--{$itemId}-->" itemName="<!--{$itemName}-->">
+                                <span id="input_<!--{$itemId}-->"></span>-->
+                            </div>
+                        <!--{/foreach}--> 
+                    </div>
+                </div>
+            </td>
+            <!--{if $smarty.foreach.foo.index%3==2}--> 
+                </tr><tr>
+            <!--{/if}-->
+          <!--{/foreach}--> 
+
+          </tr>
+        </table>
+			</td>
+		</tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,176 @@
+<center>
+<div>
+	<fieldset>
+    	<legend>工单信息</legend>
+            <table width="100%" border="0" cellpadding="3">
+              <tr>
+                <td>工单编号：<!--{$data.Id}--></td>
+                <td>提问时间：<!--{$data.create_time}--></td>
+                <td>工单来源：<!--{$data.word_source}--></td>
+              </tr>
+              <tr>
+                <td>质检：<!--{$data.word_quality_id}--></td>
+                <td>提问/回复数：<!--{$data.question_num}-->/<!--{$data.answer_num}--></td>
+                <td></td>
+              </tr>
+              <tr>
+              	<th>评价：</th>
+              	<td colspan="2">
+                	<!--{if $data.evaluation_status==0}-->
+                    未评价
+                    <!--{else}-->
+                    <!--{$evaluation}-->
+                    <!--{/if}-->
+                </td>
+              </tr>
+            </table>
+
+    </fieldset>
+    
+    <fieldset>
+    	<legend>玩家信息</legend>
+         <table width="100%" border="0" cellpadding="3">
+          <tr>
+            <td>UID：<!--{$userData.user_id}--></td>
+            <td>账号：<!--{$userData.user_account}--></td>
+            <td>昵称：<!--{$userData.user_nickname}--></td>
+          </tr>
+          <tr>
+            <td>注册时间：<!--{$userData.register_date}--></td>
+            <td>总充值：<!--{$userData.money_total}--></td>
+            <td>近月总值：<!--{$userData.money_month}--></td>
+          </tr>
+          <tr>
+            <td>游戏类型：<!--{$data.word_game_type}--></td>
+            <td>运营商：<!--{$data.word_operator_id}--></td>
+            <td>服务器：<!--{$data.word_game_server_id}--></td>
+          </tr>
+          <tr>
+            <td>用户IP：<!--{$userData.ip}--></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+   	</fieldset>
+    
+    <fieldset>
+    	<legend>玩家提问</legend>
+		<div align="left" style="border:1px dashed #E0E0E0">
+        	<ul>
+            	<li>问题标题 ： <!--{$data.title}--></li>
+                
+                <!--动态显示问题类型-->
+            	<!--{foreach from=$userQuestionDetailArr key=key item=list}-->
+                <li><!--{$key}--> ： <!--{$list}--></li>
+                <!--{foreachelse}-->
+                <li>无问题类型</li>
+                <!--{/foreach}-->
+                <!--动态显示问题类型结束-->
+            </ul>
+            
+            <!--玩家提问与客服对话列表-->
+            <!--{foreach from=$dialogArr item=list}-->
+            	<!--{if $list.qa==1}-->
+                	<!--客服回复显示-->
+                    
+          <div style="background:#D9FFDC; border:1px dashed #CCC; padding:10px; padding-top:3px; margin:10px; margin-left:50px; width:40%">
+          			<!--{if $list.is_timeout}--><font color="#FF0000"><b>已超时</b></font><!--{/if}-->
+                    [<!--{$list.word_reply_name}-->]&nbsp;<!--{$list.qa_time}-->&nbsp;<font style="font-weight:bold">回复：</font><br />
+                    <!--{$list.content}--><br>
+                    
+            <!--{if $list.qa_id==$qualityList.qa_id }--><!--&& $qualityList==1-->
+           	  <table width="100%" border="0" cellpadding="3">
+                <tr>
+                  <th scope="row">质检人：</th>
+                  <td><!--{$qualityList.word_quality_user_id}--></td>
+                </tr>
+                <tr>
+                  <th scope="row">当前状态：</th>
+                  <td><b><!--{$qualityList.word_status}--></b></td>
+                </tr>
+                <tr>
+                  <th scope="row">评价：</th>
+                  <td><!--{$qualityList.word_option_id}--></td>
+                </tr>
+                <tr>
+                  <th scope="row">分数：</th>
+                  <td><!--{$qualityList.scores}--></td>
+                </tr>
+                <tr>
+                  <th scope="row">质检内容：</th>
+                  <td><!--{$qualityList.quality_content|nl2br}--></td>
+                </tr>
+                <tr>
+                  <th scope="row">申诉内容：</th>
+                  <td>
+                  	  <!--当前状态为1(未申诉)并且为回复人才能回复-->
+                   	  <!--{if $userClass._userName==$list.reply_name && $qualityList.status==1 && ($qualityList.scores<0 || $qualityList.option_id<0)}-->
+                          <form action="<!--{$url.QualityCheck_QualityDetail}-->" method="post">
+                          	  <input type="hidden" value="1" name="submit_type" />
+                           	  <input type="hidden" value="<!--{$qualityList.Id}-->" name="Id" />
+                              <input type="radio" name="status" value="2" checked="checked" />申诉
+                              <input type="radio" name="status" value="5" />同意质检<br />
+                          <textarea name="complain_content" cols="40" rows="5" style="border:1px dashed #CCC"></textarea><br />
+                              <input type="submit" class="btn-blue" value="提交" />
+                          </form>
+                      <!--{else}-->
+                      	<!--{$list.word_reply_name}--> <!--{$qualityList.complain_time}--><br />
+                      	<!--{$qualityList.complain_content|nl2br}-->
+                      <!--{/if}-->
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">回复申诉：</th>
+                  <td>
+                  	  <!--当前状态为2(已经申诉)并且为质检人才能申诉-->
+                   	  <!--{if $qualityList.status==2 && $userClass._id==$qualityList.quality_user_id}-->
+                          <form action="<!--{$url.QualityCheck_QualityDetail}-->" method="post">
+                           	  <input type="hidden" value="<!--{$qualityList.Id}-->" name="Id" />
+                              <input type="radio" name="status" value="3" checked />同意
+                              <input type="radio" name="status" value="4" />驳回<br>
+                              <font style="font-weight:bold">回复内容：</font><br />
+                          <textarea name="reply_content" cols="40" rows="5" style="border:1px dashed #CCC"></textarea><br />
+                              <input type="submit" class="btn-blue" value="提交" />
+                          </form>
+                      <!--{else}-->
+                      	<!--{$qualityList.word_quality_user_id}--> <!--{$qualityList.reply_time}--><br />
+                      	<!--{$qualityList.reply_content|nl2br}-->
+                      <!--{/if}-->
+                  </td>
+                </tr>
+                
+                <tr>
+                  <th scope="row">复检</th>
+                  <td>
+                  	<!--{if $qualityList.again_user_id}-->
+                    	<!--{$qualityList.word_again_user_id}--> <!--{$qualityList.again_time}--><br />
+						<!--{$qualityList.again_content|nl2br}-->
+                    <!--{else}-->
+                        <!--{if $rbac->checkAct("QualityCheck_Again")==1}--><!--有无权力复检-->
+                        <form method="post" action="<!--{$url.QualityCheck_Again}-->">
+                            <input type="hidden" value="<!--{$qualityList.Id}-->" name="Id" />
+                            <textarea cols="40" rows="5" name="again_content"></textarea><br />
+                            <input type="submit" class="btn-blue" value="提交" />
+                        </form>
+                        <!--{/if}-->
+                    <!--{/if}-->
+                  </td>
+                </tr>
+                <!--{/if}-->
+              </table>
+            
+                    
+            </div>
+                <!--{else}-->
+                	<!--用户提问显示-->
+                    <div style="background:#FFE1E1; border:1px dashed #CCC; padding:10px; padding-top:3px; margin:10px; width:40%">
+                    <!--{$list.qa_time}-->&nbsp;<font style="font-weight:bold">提问：</font><br />
+                    <!--{$list.content|nl2br}-->
+                    </div>
+                <!--{/if}-->
+            <!--{/foreach}-->
+            <!--玩家提问与客服对话列表结束-->
+        </div>
+    </fieldset>
+</div>
+</center>

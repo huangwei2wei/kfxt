@@ -1,0 +1,102 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<style>
+.AutoNewline {
+    font-size: 12px;
+    line-height: 150%;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    overflow: hidden;
+    width: 400px;
+    word-wrap: break-word;
+}
+</style>
+<script>
+	function checkLiBaoId(obj){
+		if($.trim(obj.val()) == ''){
+			return true;
+		}
+		if(obj.val()>0){
+			return true;
+		}else{
+			alert('<!--{'FE374AFD6287FD4CE38ABD0B41BC9929'|lang}-->');
+			obj.val('');
+			obj.focus();
+			return false;
+		}
+	}
+	
+	
+</script>
+<fieldset>
+	<legend>
+        <!--{'3445B0BF2BC17EEDF1BC0C1C9378CD67'|lang}-->
+        [<a href="<!--{$URL_itemCardApply}-->"><!--{'670E7A07AEBD9EFA02AF70FFFCAAA5DA'|lang}--></a>]
+        [<a href="<!--{$URL_itemCardQuery}-->"><!--{'EB6E43B40E16FFEF5137CBBA3BB3A89D'|lang}--></a>]
+    </legend>
+
+<form action="" method="get">
+	<input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <!--{'9BC7F8EABA93AD47294F7DD971A66182'|lang}-->ID:<input class="text" type="text" name="classId" onblur="checkLiBaoId($(this));" value="<!--{$_GET.classId}-->"/>
+    <!--{'592794B9B7889C7511DB6999F548AD6F'|lang}-->:<input class="text" type="text" name="className" value="<!--{$_GET.className}-->"/>
+    <input class="btn-blue" type="submit" name="submit" value="<!--{'BEE912D79EEFB7335988C4997AA9138D'|lang}-->" />
+</form>
+
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col"><!--{'592794B9B7889C7511DB6999F548AD6F'|lang}--></th>
+    <th scope="col"><!--{'226B0912184333C81BABF2F1894EC0C1'|lang}--></th>
+    <th scope="col"><!--{'F4D04221CBEDC5C45DDB753B31016671'|lang}--></th>
+    <th scope="col"><!--{'5CFA8D8D480DB7DC4821291FF1020653'|lang}--></th>
+    <th scope="col"><!--{'F74A87C4CEB825DA53AA4B25E3350686'|lang}--></th>
+    <th scope="col"><!--{'9FC68E1B932FF380C0231660C7B1B60A'|lang}--></th>
+    <th scope="col"><!--{'609C2380B214A2BFC444A140CC8AB316'|lang}--></th>
+    <th scope="col"><!--{'82104FD1E0D8B9790B9F57BC702CBF1D'|lang}--></th>
+    <th scope="col"><!--{'77E0CA7A67BFA6FC3143B21A711255A0'|lang}--></th>
+    <th scope="col"><!--{'DE24BFB740EF7421E00B7346EA704E3E'|lang}--></th>
+    <th scope="col"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td align="center"><!--{$list.id}--></td>
+    <td><a href="<!--{$list.URL_ItemPackageEdit}-->"><!--{$list.name}--></a></td>
+    <td align="center"><!--{$list.type}--></td><!--{*<!--{'226B0912184333C81BABF2F1894EC0C1'|lang}-->*}-->
+    <td align="center"><!--{if $list.repeat}--><!--{'0A60AC8F02CCD2CF723F927284877851'|lang}--><!--{else}--><!--{'C9744F45E76D885AE1C74D4F4A934B2E'|lang}--><!--{/if}--></td><!--{*<!--{'F4D04221CBEDC5C45DDB753B31016671'|lang}-->*}-->
+    <td align="center"><!--{$list.counts|intval}--></td>
+    <td align="center"><!--{$list.serverId|default:'<font color="#999999"></font>'}--></td>
+    <td><!--{$list.bindType}--></td>
+    <td><!--{$list.assetValue|intval}--></td>
+    <td><!--{$list.goldValue|intval}--></td>
+    <td><!--{$list.goldTickeValue|intval}--></td>
+    <td><div class="AutoNewline"><!--{$list.itemInfo|default:'<font color="#999999"></font>'}--></div></td>
+    <td align="center">
+        [<a href="<!--{$list.URL_itemCardAppendApply}-->"><!--{'2ED84C046C39199BABB66EC0A0624B1B'|lang}--></a>]
+    	[<a href="<!--{$list.URL_batchList}-->"><!--{'461B90C2102A10BB69B801D04D5B045B'|lang}--></a>]
+    </td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr>
+  	<td colspan="15" align="center">
+    	<!--{if $connectError}-->
+        	<!--{$connectError}-->
+    	<!--{elseif $_GET.submit}-->
+    	<!--{'48E07E7DEAE53593B6FB5F4315CF0D1F'|lang}-->
+        <!--{else}-->
+        <font color="#FF0000"><!--{'F98214970C09E9F6FB18AD06420B8402'|lang}-->"<!--{'BEE912D79EEFB7335988C4997AA9138D'|lang}-->"<!--{'FA966345577BA81AF19408F203DB968F'|lang}--></font>
+        <!--{/if}-->
+    </td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+<div style="text-align:right"><!--{$pageBox}--></div>
+</fieldset>
+
+<!--{/if}-->

@@ -1,0 +1,75 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+	<legend>查询</legend>
+    <link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+    <script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+    <form action="" method="get">
+        <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+        <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+        <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+        <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+        <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+        <table width="100%" border="0" cellpadding="3">
+          <tr>
+            <td>
+                日志类型:<!--{html_options options=$costType name="costType" selected=$_GET.costType}-->
+                ,
+                操作时间:
+                    <input class="text" type="text" name="startTime" value="<!--{$_GET.startTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+                    -
+                    <input class="text" type="text" name="endTime" value="<!--{$_GET.endTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+            </td>
+          </tr>
+          <tr>
+            <td>
+                ID:<input type="text" name="playerId" value="<!--{$_GET.playerId}-->" class="text"/>
+                帐号:<input type="text" name="playerAccount" value="<!--{$_GET.playerAccount}-->" class="text"/>
+                昵称:<input type="text" name="playerName" value="<!--{$_GET.playerName}-->" class="text"/>	
+                <input class="btn-blue" type="submit" name="sbm" value="查询" />
+            </td>
+          </tr>
+        </table>
+	</form>
+</fieldset>
+
+<fieldset>
+	<legend>列表</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">角色ID</th>
+        <th scope="col">角色名/帐号</th>
+        <th scope="col">帮派/帮派等级</th>
+        <th scope="col">操作时间</th>
+        <th scope="col">消费前</th>
+        <th scope="col">消费后</th>
+        <th scope="col">消费数目</th>
+        <th scope="col">消费类型</th>
+        <th scope="col">消费内容</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.id}--></td>
+        <td><!--{$list.playerId}--></td>
+        <td><!--{$list.playerName}--> / <!--{$list.playerAccount}--></td>
+        <td><!--{$list.legionName}--> / <!--{$list.legionLevel}--></td>
+        <td><!--{$list.logTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+        <td><!--{$list.oldIngot}--></td>
+        <td><!--{$list.newIngot}--></td>
+        <td><!--{$list.costValue}--></td>
+        <td><!--{$costType[$list.costType]}--></td>
+        <td><!--{$list.param}--></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+      	<td colspan="10"><!--{$errorInfo|default:'查无内容'}--></td>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+<div><!--{$pageBox}--></div>
+</fieldset>
+<!--{/if}-->

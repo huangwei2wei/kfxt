@@ -1,0 +1,31 @@
+<fieldset>
+	<legend>组别管理</legend>
+<a href="<!--{$url.User_OrgAdd}-->">Add</a>
+<a href="<!--{$url.User_OrgCreateCache}-->">CreateCahe</a>
+<table width="98%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">组名</th>
+    <th scope="col">用户数</th>
+    <th scope="col">操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.Id}--></td>
+    <td><!--{$list.name}--></td>
+    <td><!--{$list.total_num}--></td>
+    <td>
+    	<a href="<!--{$list.url_edit}-->">编辑</a>
+        <a href="<!--{$list.url_del}-->">删除</a>
+    </td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="4"><!--{$noData}--></th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <th colspan="4" align="right"><!--{$pageBox}--></th>
+  </tr>
+</table>
+</fieldset>

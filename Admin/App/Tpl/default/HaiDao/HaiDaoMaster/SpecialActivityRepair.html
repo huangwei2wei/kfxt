@@ -1,0 +1,92 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+
+<script type="text/javascript">
+$(function(){
+	$("#submit").click(function(){
+		var actionName =  $("[name='activeName']").attr("value");
+		var uid = $("[name='playerId']").attr('value');
+		var Score = $("[name='num']").attr('value');
+		var o = new Object();
+		$("#adminRepairForm").find("input").each(function(){
+			var name = $(this).attr('name');
+		    var value = $(this).attr('value');
+		    o[name]=value;
+		});
+		o['activeName'] = actionName;
+		if(actionName=='' || uid == '' || Score==''){
+			alert('信息不全');
+			return;
+		}
+		//actionName:actionName,UserId:uid,Score:Score
+		$.ajax({
+			type: "POST",
+			//dataType: 'json',
+			url: "<!--{$url}-->",
+			data: o,
+			success: function(data){
+				$("#showMsg").html(data);
+			}
+			});
+	});
+})
+</script>
+
+<table width="1000" border="0" cellpadding="3">
+  <tr>
+    <th colspan="2" scope="col">活动数据修复</th>
+  </tr>
+  <tr>
+   <td>请选择活动</td>
+    <td>
+    	<form action="" method="POST">
+            <select name="activeName">
+            	<!--{html_options options=$dataArray selected=$_POST.activeName}-->
+            </select>
+            <input type="submit" class="btn" value='确定'>
+         </form>
+	</td>
+  </tr>
+  <!--{if $activeName}-->
+
+  <tr>
+    <td>活动名称：</td>
+    <td><!--{$chooseActiveName.Title}--></td>
+  </tr>
+  <tr>
+    <td>活动标识</td>
+    <td><!--{$chooseActiveName.Identifier}--></td>
+  </tr>
+  <tr>
+    <td>开始时间</td>
+    <td>
+    <!--{$chooseActiveName.StartTime|date_format:"%Y-%m-%d %H:%M:%S"}-->
+    </td>
+  </tr>
+  <tr>
+    <td>结束时间</td>
+    <td>
+    <!--{$chooseActiveName.EndTime|date_format:"%Y-%m-%d %H:%M:%S"}-->
+    </td>
+  </tr>
+  
+  <tr id='adminRepairForm'>
+   <th colspan="2" scope="col"><!--{$adminRepairForm}--></th>
+  </tr>
+  <tr>
+   <th colspan="2" scope="col">
+   				<div id='showMsg'></div>
+   </th>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input class="btn-blue" id="submit" type="submit" value="<!--{'5AE9F3C6BAED68493419537BE9EF5BEC'|lang}-->" /></td>
+  </tr>
+<!--{/if}-->
+</table>
+
+
+<!--{/if}-->

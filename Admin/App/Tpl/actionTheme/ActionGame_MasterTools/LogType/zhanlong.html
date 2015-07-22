@@ -1,0 +1,55 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+</script>
+<fieldset>
+  <legend>[添加日志类别]</legend>
+  <form action="" method="post" id="form">
+	<input type="hidden" name="op" value="add"/>
+  类别ID：<input type="text" class="text" name="type_id" />
+  &nbsp;
+  中文名：<input type="text" class="text" name="chinese" />
+  &nbsp;
+  英文名：<input type="text" class="text" name="english" />
+  &nbsp;
+  <input type="submit" class="btn-blue" value="添加" />
+  </form>
+</fieldset>
+<fieldset>
+  <legend>[日志类别管理]</legend> 
+<table width="100%">
+        <tr>
+
+		<th>类别ID</th>
+		<th>中文名</th>
+       	<th>英文名</th>
+       	<th>操作</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list key=k}-->
+        <tr>
+			<td align="center"><!--{$k}--></td>
+			<td align="center"><!--{$list.cn}--></td>
+       		<td align="center"><!--{$list.en}--></td>
+       		<td align="center"><a href="<!--{$delete_url}-->&id=<!--{$k}-->">[删除]</a></td>
+        </tr>
+        <!--{/foreach}-->
+
+          <tr>
+            <th colspan="3" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+
+<div style="color:#F00;"><!--{$connectError}--></div>
+
+</fieldset>

@@ -1,0 +1,178 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<!--{if $pet_info_json}-->
+<script language="javascript">
+var userInfoArr = [['玩家ID'],['玩家账号'],['玩家昵称']];
+
+var pet_info = <!--{$pet_info_json}-->;
+var mount_info=<!--{$mount_info_json}-->;
+
+function acedit(){
+	$('#info_detail_show input').each(function (){
+		$(this).attr('disabled',false);
+	});
+}
+function showdetail(k){
+	$('#fieldset_info').hide();
+	$('#fieldset_info2').hide();
+	
+	if(k=='pet'){
+		var cur_data = pet_info;
+		var info = [{'a':'id','b':'宠物id'},{'a':'char_id','b':'玩家id'},
+			{'a':'name','b':'宠物昵称'},{'a':'exp','b':'经验值'},{'a':'hp','b':'生命值'},{'a':'career','b':'职业'},
+			{'a':'mp','b':'内力值'},{'a':'level','b':'等级'},
+			{'a':'loyalty','b':'忠诚度'},{'a':'talents','b':'天赋值'},
+			{'a':'nimbus','b':'真气'},{'a':'color','b':'品质'},
+			{'a':'status','b':'状态'},{'a':'ai_status','b':'AI状态'},
+			{'a':'remain_time','b':'剩余时间'}
+		];
+		
+		var formtitle = '<th>'+userInfoArr[<!--{$GET.userType}-->-1]+':'+<!--{$GET.user}-->+'</th><th>宠物ID：'+cur_data.id+'</th><th></th>';
+	} else {
+		var cur_data = mount_info;
+		var info = [
+			{'a':'nimbus','b':'真气'},{'a':'remain_time','b':'剩余时间'},{'a':'status','b':'状态'},
+			{'a':'loyalty','b':'忠诚度'},{'a':'level','b':'等级'},
+			{'a':'conversion','b':'转化率'}
+		];
+		
+		var formtitle = '<th>'+userInfoArr[<!--{$GET.userType}-->-1]+':'+<!--{$GET.user}-->+'</th><th></th><th></th>';
+	}
+	
+	var strAdd = '<form action=""  method="post">';
+	    strAdd += '<table width="100%" border="0" cellpadding="3" id="info_detail_show">';
+		strAdd += formtitle;
+		for(var i in info){
+			strAdd += '<tr><td>'+info[i].b+':</td><td>'+cur_data[ info[i].a ]+'</td><td><input type="text" value="'+cur_data[ info[i].a ]+'" name="update_'+k+'_'+info[i].a+'" disabled><input type="hidden" name="upstr_'+k+'_'+info[i].a+'" value="'+info[i].b+'"></td></tr>';
+		}
+		strAdd +='<tr colspan="3"><td><input type="button" value="修改" onclick="acedit();"><input type="submit" value="保存" name="sbm" disabled><input type="button" value="返回" onclick="$(\'#info_detail\').empty();$(\'#fieldset_info\').show();$(\'#fieldset_info2\').show();"></td></tr>';
+		strAdd +='</table>';
+		strAdd += '<input type="hidden" name="updateType" value="'+k+'">';
+		strAdd += '<input type="hidden" name="userType" value="'+<!--{$GET.userType}-->+'">';
+		strAdd += '<input type="hidden" name="user" value="'+<!--{$GET.user}-->+'">';
+		strAdd +='</form>';
+		$('#info_detail').append(strAdd);
+}
+</script>
+<!--{/if}-->
+
+<fieldset>
+  <legend>用户查询</legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    玩家信息:<input class="text" type="text" name="user" value="<!--{$_GET.user}-->">
+    <input type="radio" name="userType" value="1" <!--{if $GET.userType eq 1}-->checked="checked"<!--{/if}-->>玩家ID
+    <input type="radio" name="userType" value="2" <!--{if $GET.userType eq 2}-->checked="checked"<!--{/if}-->>玩家账号
+    <input type="radio" name="userType" value="3" <!--{if $GET.userType eq 3}-->checked="checked"<!--{/if}-->>玩家昵称
+    <input class="btn-blue" type="submit" name="sbm" value="查询">
+</form>
+<br>
+<fieldset id="fieldset_info">
+<legend>宠物信息</legend>
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>宠物id</th>
+          <th>宠物昵称</th>
+          <th>玩家id</th>
+          <th>职业</th>
+          <th>经验值</th>
+          <th>生命值</th>
+          <th>内力值</th>
+          <th>等级</th>
+          <th>忠诚度</th>
+          <th>天赋值</th>
+          <th>真气</th>
+          <th>剩余时间(秒)</th>
+          <th>品质</th>
+          <th>状态</th>
+          <th>状态</th>
+          <th>修改</th>
+        </tr>
+        
+		<!--{if $pet_info}-->
+        <tr>
+       
+       	  <td align="center"><!--{$pet_info.id|default:'0'}--></td>
+          <td align="center"><!--{$pet_info.name|default:'<font color="#999999">无</font>'}--></td>
+          <td align="center"><!--{$pet_info.char_id|default:''}--></td>
+          <td align="center"><!--{$pet_info.career|default:''}--></td>
+          <td align="center"><!--{$pet_info.exp|default:'0'}--></td>
+          <td align="center"><!--{$pet_info.hp|default:'0'}--></td>
+          <td align="center"><!--{$pet_info.mp|default:'0'}--></td>
+          <td align="center"><!--{$pet_info.level|default:'0'}--></td>
+          <td align="center"><!--{$pet_info.loyalty|default:'0'}--></td>
+          <td align="center"><!--{$pet_info.talents|default:'0'}--></td>
+          <td align="center"><!--{$pet_info.nimbus|default:'0'}--></td>
+          <td align="center"><!--{$pet_info.remain_time|default:'0'}--></td>
+          <td align="center"><!--{$pet_info.color|default:'0'}--></td>
+          <td align="center"><!--{$pet_info.status|default:'0'}--></td>
+          <td align="center"><!--{$pet_info.ai_status|default:'0'}--></td>
+          <td align="center"><a href="javascript:void(0)" onclick="showdetail('pet')">修改</a></td>
+        </tr>
+        <!--{else}-->
+          <tr>
+            <th colspan="16" align="center">
+                <!--{if $_GET.submit}-->
+                查无数据
+                <!--{else}-->
+                <font color="#FF0000">请使用"查询"按钮</font>
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/if}-->
+         
+      </table>
+</fieldset>
+<br>
+<fieldset id="fieldset_info2">
+<legend>坐骑信息</legend>
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>真气</th>
+          <th>剩余时间</th>
+          <th>状态</th>
+          <th>忠诚度</th>
+          <th>等级</th>
+          <th>转化率</th>
+          <th>修改</th>
+        </tr>
+        
+		<!--{if $mount_info}-->
+        <tr>
+          <td align="center"><!--{$mount_info.nimbus|default:'0'}--></td>
+          <td align="center"><!--{$mount_info.remain_time|default:'0'}--></td>
+          <td align="center"><!--{$mount_info.status|default:'0'}--></td>
+          <td align="center"><!--{$mount_info.loyalty|default:'0'}--></td>
+          <td align="center"><!--{$mount_info.level|default:'0'}--></td>
+          <td align="center"><!--{$mount_info.conversion|default:'0'}--></td>
+          <td align="center"><a href="javascript:void(0)" onclick="showdetail('mount')">修改</a></td>
+        </tr>
+        <!--{else}-->
+          <tr>
+            <th colspan="16" align="center">
+                <!--{if $_GET.submit}-->
+                查无数据
+                <!--{else}-->
+                <font color="#FF0000">请使用"查询"按钮</font>
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/if}-->
+         
+      </table>
+</fieldset>
+<fieldset id="info_detail">
+</fieldset>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

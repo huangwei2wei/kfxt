@@ -1,0 +1,74 @@
+<script language="javascript">
+var serverList=eval(<!--{$serverList}-->);
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#use_name").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"账号不能为空,请确认"});
+	$("#card").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"卡号不能为空,请确认"});
+	//$("#server_id").formValidator({onshow:"请选择服务器",onfocus:"请选择服务器",oncorrect:"选择正确"}).inputValidator({min:1,onerror: "请选择服务器"});
+})
+function selectSerer(operatorId){
+	var serverSelect=$("#server_id");
+	serverSelect.empty();
+	$.each(serverList,function(i,n){
+		if(n.operator_id==operatorId && n.Id!=100 && n.Id!=200)serverSelect.append("<option value="+n.Id+">"+n.server_name+"</option>");
+	});
+}
+
+function showUserName(userName){
+	var serverId=$("#server_id").val();
+	if(serverId){
+		$.getJSON(
+			url,
+			{c:'FrgGold',a:'CardPay','user_name':userName,'server_id':serverId},
+			function(data){
+				if(data.status==1){
+					$("#displayUser").html("人物名称：<font color='#0000FF'>"+data.data+"</font>");
+				}else{
+					$("#displayUser").html("<font color='#ff0000'>账号不存在!</font>");
+				}
+				
+			}
+		);
+	}
+}
+</script>
+<fieldset>
+	<legend>卡号充值</legend>
+    <form action="" id="form" method="post" onSubmit="return confirm('确定要充值吗?')">
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="row">运营商选择</th>
+        <td>
+        	<select onchange="selectSerer($(this).val())">
+            	<option value="">请选择</option>
+            	<!--{html_options options=$operatorList}-->
+            </select>
+            
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">选择大区</th>
+        <td>
+        	<select name="server_id" id="server_id">
+				<option value="">请选择运营商</option>
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">充值账号</th>
+        <td><input type="text" class="text" name="use_name" id="use_name" onblur="showUserName($(this).val())" size="40" /> <span id="displayUser"></span> <div id="use_nameTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row">充值金额</th>
+        <td><input type="text" class="text" name="Money" id="card" size="60" /></td>
+      </tr>
+      <tr>
+        <th scope="row">订单号</th>
+        <td><input type="text" class="text" name="Transactionid" id="card" size="60" /></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+    </form>
+</fieldset>

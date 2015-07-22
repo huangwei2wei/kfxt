@@ -1,0 +1,52 @@
+<fieldset>
+	<legend>增加方法</legend>
+    <form action="<!--{$url.Control_AddAct}-->" method="post">
+    <table width="98%" border="0" cellpadding="3">
+      <tr>
+        <th>所属控制器</th>
+        <td>
+            <select name="control_id" onchange="displayActionList($(this).val())">
+            <!--{html_options options=$controlList}-->
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <th>动作名</th>
+        <td><input type="text" class="text" name="action_name" /></td>
+      </tr>
+      <tr>
+        <th>是否所有用户</th>
+        <td>
+            <input type="radio" name="all_role" value="1" />所有
+            <input type="radio" name="all_role" checked value="0" />受角色控制
+        <input type="submit" class="btn-blue" value="提交" /></td>
+      </tr>
+      </table>
+    </form>
+</fieldset>
+<fieldset>
+	<legend>方法列表</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th>Id</th>
+        <th>控制器</th>
+        <th>动作名</th>
+        <th>角色控制</th>
+        <th>操作</th>
+      </tr>
+      <!--{foreach from=$actionList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td><!--{$list.word_control}--></td>
+        <td><!--{$list.value}--></td>
+        <td><!--{$list.word_allow}--></td>
+        <td>
+            <a href="<!--{$list.url_edit}-->">编辑</a>
+            <a href="<!--{$list.url_del}-->">删除</a>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr><th colspan="5"><!--{$noData}--></th></tr>
+      <!--{/foreach}-->
+    </table>
+</fieldset>

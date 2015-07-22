@@ -1,0 +1,116 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<form id="form" action="" method="post">
+    <!--{if $tplServerSelect}-->
+    <!--{include file=$tplServerSelect}-->
+    <!--{/if}-->
+    <script language="javascript">
+	$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='ids[]']").attr("checked",curCheck);
+	 });
+	});
+    $(function(){
+        $(".view_server").one('click',function(){
+            var curHref=$(this);
+            $.getJSON(
+                curHref.attr("url"),
+                function(data){
+                    if(data.status==1){
+                        curHref.parent().parent().after('<tr id="'+curHref.attr("dialogId")+'"><td colspan="8" style="background:#CCCCCC; ">'+data.data.servers+'</td></tr>');
+                    }else{
+                        alert('察看服务器失败!');
+                    }
+                }
+            );
+        });
+        $(".view_server").click(function(){
+            var id=$(this).attr("dialogId");
+            $("#"+id).toggle();
+        });
+		
+		$("#allcheck").click(function() {
+			var curCheck=$(this).attr("checked");
+			$(":checkbox[name='Ids[]']").attr("checked",curCheck);
+		});
+		
+		
+    });
+	
+
+    </script>
+</form>
+
+<fieldset>
+<legend>多服参数监控</legend>
+<input type="button" onClick="$('#form').submit();" value="检查" class="btn-blue">
+<table width="100%" border="0" cellpadding="3" >
+  <tr>
+    <th scope="col">本地ID</th>
+
+<!--{foreach from=$fields item=FieldExp key=k}-->   
+    <th scope="col">
+    	<!--{$FieldExp.1}-->
+            <!--{if $GetBad.$k}-->
+            <br/>(
+            <!--{if $fields.$k.0}-->
+            	<font color="#660000">有不同</font>
+            <!--{else}-->
+            	<font color="#006633">有相同</font>
+            <!--{/if}-->
+            ,<font color="#FF0000">请检查</font>
+            
+            )
+    		<!--{/if}-->
+    </th>
+<!--{/foreach}-->
+  </tr>
+<!--{foreach from=$dataList item=list key=key}--> 
+    <!--{if $list.error}-->
+      <tr>
+      	<td align="center"><!--{$key}--></td>
+        <td colspan="10"><font color="#FF0000"><!--{$list.error}--></font></td>
+      </tr>
+    <!--{else}-->
+      <tr>
+        <td align="center"><!--{$key}--></td>
+        <td align="center"><!--{$list.GameName}--></td>
+        <td align="center"><!--{$list.co_action}--></td>
+        <td align="center"><!--{$list.ServerSSID}--></td>
+        <td align="center"><!--{$list.GameId}--></td>
+        <td align="center"><!--{$list.JS_LanguageName}--></td>
+        <td align="center"><!--{if $list.SysVindicate}-->开<!--{else}-->关<!--{/if}--></td>    
+        <td align="center"><!--{if $list.DuplicateCrossStatus}-->开<!--{else}-->关<!--{/if}--></td>
+        <td align="center"><!--{$list.GAME_LANGUAGE_NAME}--></td>
+        <td align="center"><!--{if $list.SERVER_INIT_TIME}--> <!--{$list.SERVER_INIT_TIME|date_format:'%Y-%m-%d %H:%M:%S'}--> <!--{else}--> <font color="#FF0000">未初始化</font> <!--{/if}--></td>
+        <td align="center"><!--{$list.SERVER_UNIQUEID}--></td>
+        <td align="center"><!--{$list.JS_ServerHost}--></td>
+        <td align="center"><!--{$list.JS_ServerPort}--></td>
+      </tr>
+    <!--{/if}-->
+<!--{/foreach}-->
+</table>
+
+
+    
+    
+	
+
+</fieldset>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

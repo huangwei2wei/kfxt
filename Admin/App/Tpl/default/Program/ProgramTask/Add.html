@@ -1,0 +1,30 @@
+<fieldset>
+	<legend>新增任务</legend>
+    <form action="" method="post">
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="row">任务负责人</th>
+        <td>
+        	<select name="accept_user_id">
+            	<!--{html_options options=$users}-->
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">难度系数</th>
+        <td><input type="text" class="text" name="difficulty" value="4" /></td>
+      </tr>
+      <tr>
+        <th scope="row">预计完成时间(小时)</th>
+        <td><input type="text" class="text" name="precast_hour" value="0" /></td>
+      </tr>
+      <tr>
+        <th scope="row">任务描述</th>
+        <td><textarea cols="50" rows="8" name="task_content"></textarea></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" ./></th>
+      </tr>
+    </table>
+	</form>
+</fieldset>

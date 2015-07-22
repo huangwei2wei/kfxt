@@ -1,0 +1,30 @@
+<center>
+<a href="<!--{$url.Role_Add}-->">增加角色</a>
+<table width="98%" border="0" cellpadding="3">
+  <tr>
+    <th>Id</th>
+    <th>角色(唯一)</th>
+    <th>角色名</th>
+    <th>创建时期</th>
+    <th>更新日期</th>
+    <th>操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.Id}--></td>
+    <td><!--{$list.role_value}--></td>
+    <td><!--{$list.role_name}--></td>
+    <td><!--{$list.date_created}--></td>
+    <td><!--{$list.date_updated}--></td>
+    <td>
+   		<a href="<!--{$list.url_edit_perm}-->">修改权限</a>
+    	<a href="<!--{$list.url_edit}-->">编辑</a>
+        <a href="<!--{$list.url_del}-->">删除</a>
+    </td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr><th colspan="6"><!--{$noData}--></th></tr>
+  <!--{/foreach}-->
+</table>
+
+</center>

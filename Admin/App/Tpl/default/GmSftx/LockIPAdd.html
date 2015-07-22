@@ -1,0 +1,36 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"<!--{'SERVER_ID_Not_EXIST'|lang}-->",oncorrect:"<!--{'PLEASE_INPUT_SERVER_ID_AGAIN'|lang}-->"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'SERVER_ERROR'|lang}-->"});
+	$("#UserId").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'BOTH_SIDES_CAN_INCLUDE_BLANK'|lang}-->"},onerror:"<!--{'USER_ID_CAN_BE_NULL'|lang}-->"});
+})
+</script>
+<fieldset>
+<legend><!--{'ADD_IP_LOCK'|lang}--></legend>
+<form action="" method="post" id="form" >
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="98%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row"><!--{'USER_ID_SPLITE'|lang}--></th>
+        <td><textarea name="userIds" id="UserId" cols="60" rows="8"><!--{$users}--></textarea><div id="UserIdTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'END_TIME'|lang}--></th>
+        <td><input type="text" class="text" name="endTime" value="<!--{$smarty.now|strtotime:'+1 hour'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|strtotime:'+1 hour'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        	<!--{'PLEASE_ENTER_THE_SERVERTIME'|lang}-->
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" name="submit" value="<!--{'SUBMIT'|lang}-->" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,28 @@
+<center>
+<div>
+<a href="<!--{$url.SysManagement_SysSetupCreateCache}-->">生成缓存文件</a>
+</div>
+<table width="98%" border="0" cellpadding="3">
+  <tr>
+    <th>Id</th>
+    <th>配置名称唯一标识</th>
+    <th>配置说明</th>
+    <th>配置值</th>
+    <th>操作</th>
+  </tr>
+<!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.Id}--></td>
+    <td><!--{$list.config_name}--></td>
+    <td><!--{$list.title}--></td>
+    <td><!--{$list.config_value|truncateutf8:50}--></td>
+    <td>
+    	<a href="<!--{$list.url_edit}-->">编辑</a>
+        <a href="<!--{$list.url_del}-->">删除</a>
+    </td>
+  </tr>
+<!--{foreachelse}-->
+	<tr><td colspan="5"><!--{$noData}--></td></tr>
+<!--{/foreach}-->
+</table>
+</center>

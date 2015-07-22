@@ -1,0 +1,37 @@
+<center>
+<a href="<!--{$url.WorkOrder_CreateRoom}-->"><!--{'2867A660BF5A5B03B380B7161D7B6352'|lang}--></a>
+<table width="98%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col"><!--{'E0DB25CFEFE0068147E36C0B1E88336B'|lang}--></th>
+    <th scope="col"><!--{'7BB8BF7E2D29B9304ABCD109D7F83B04'|lang}--></th>
+    <th scope="col"><!--{'3640D278B97C513EDD0E012E9F87E2DF'|lang}--></th>
+    <th scope="col"><!--{'5639F70CA4AE933159C7C46AAA1A250C'|lang}--></th>
+    <th scope="col"><!--{'551CE9C9FE6C3F94883F73B3DCA9D33E'|lang}--></th>
+    <th scope="col"><!--{'19C3ECE939262FBA73BAD7F77569F800'|lang}--></th>
+    <th scope="col"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list._roomName}--></td>
+    <td><!--{if $list._entrance}--><a href="<!--{$list.url_enter_room}-->"><!--{'84B2BD4A95E9CB9962A4EEB5E2CC2F93'|lang}--></a><!--{else}--><!--{'84B2BD4A95E9CB9962A4EEB5E2CC2F93'|lang}--><!--{/if}--></td>
+    <td><!--{$list.userClassNum}--></td>
+    <td><!--{$list.word_entrance}--></td>
+    <td><!--{$list.word_exit}--></td>
+    <td><!--{$list.word_workOrderStatus}--></td>
+    <td>
+    	<a href="<!--{$list.url_monitor}-->"><!--{'F7C4240E3CC2F110A08444687FC80E2A'|lang}--></a>
+    	<a href="<!--{$list.url_edit}-->"><!--{'95B351C86267F3AEDF89520959BCE689'|lang}--></a>
+        <a href="<!--{$list.url_del}-->"><!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}--></a>
+    </td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="7"><!--{$noData}--></th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <td align="right" colspan="7"></td>
+  </tr>
+</table>
+
+</center>

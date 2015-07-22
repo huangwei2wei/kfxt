@@ -1,0 +1,199 @@
+<style type="text/css">
+.operator label{
+	display:inline-block;
+	width:100px;
+}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+var timer=eval(<!--{$timeInterval}-->);
+var forTime;
+function doTime(){
+	$.each(timer,function(i,n){
+		if(n.time>0){
+			minutes=Math.floor(n.time/60);
+			seconds=Math.floor(n.time%60);
+			if(minutes<20){
+				msg="<font color='red'>"+minutes+"<!--{'DAF783C8CDF97643B4D2B4EC6E5B8F21'|lang}-->"+seconds+"<!--{'0C1FEC657F7865DED377B43250A015FC'|lang}--></font>";
+			}else{
+				msg="<font color='#00CC00'>"+minutes+"<!--{'DAF783C8CDF97643B4D2B4EC6E5B8F21'|lang}-->"+seconds+"<!--{'0C1FEC657F7865DED377B43250A015FC'|lang}--></font>";
+			}
+			
+			n.time--;
+		}else{
+			msg='<font color="#ff0000" style="font-size:14px"><!--{'0E7B6CB416D3EC8D8ECBAC75EAC4F513'|lang}--></font>';
+		}
+		$("#show_time_"+n.div).html(msg);
+	})
+}
+forTime=setInterval("doTime()",1000);
+function questionText(Id,game_id){
+	$("#detail1_"+Id).html("");
+	var Str = "";
+	Str+="<form method=\"get\" action=''>";
+	Str+="<input type=\"hidden\" value=\""+Id+"\" name=\"ID\" />";
+	Str+="<input type=\"hidden\" value=\""+game_id+"\" name=\"Game_id\" />";
+	Str+="<input type=\"hidden\" value=\"WorkOrder\" name=\"c\" />";
+	Str+="<input type=\"hidden\" value=\"VIPQuestion\" name=\"a\" />";
+	Str+="<textarea class='' style=\"margin-bottom:10px;\" rows=\"8\" cols=\"60\" name=\"content\"></textarea>";
+	Str+="<br/><input class=\"btn-blue\" type=\"submit\" value=\"追问\">";
+	Str+="</form>";
+	$("#detail1_"+Id).html(Str);
+}
+
+function questionEnd(Id,game_id){
+	$("#detail1_"+Id).html("");
+	var Str = "";
+	Str+="<form method=\"get\" action=''>";
+	Str+="<input type=\"hidden\" value=\""+Id+"\" name=\"ID\" />";
+	Str+="<input type=\"hidden\" value=\""+game_id+"\" name=\"Game_id\" />";
+	Str+="<input type=\"hidden\" value=\"WorkOrder\" name=\"c\" />";
+	Str+="<input type=\"hidden\" value=\"VIPQuestionEnd\" name=\"a\" />";
+	Str+="<select name='Type'><option value='1'>满意</option><option value='2'>一般</option><option value='3'>不满意</option></select>";
+	Str+="<input class=\"btn-blue\" type=\"submit\" value=\"评价\">";
+	Str+="</form>";
+	$("#detail1_"+Id).html(Str);
+}
+</script>
+<fieldset>
+	<legend><!--{'13FE8D8C74CB94357D8E105686778DFE'|lang}--></legend>
+  <form action="" method="get" id='form1'>
+	<input type="hidden" value="WorkOrder" name="c" />
+    <input type="hidden" value="VIPWorkOrder" name="a" />
+    <table width="100%" border="0" cellpadding="3">
+      
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'498CA9F72EDDB38DEA714E436A0AC57B'|lang}--></th>
+        <td>
+        	<!--{html_radios options=$gameTypeList name="game_type_id" selected=$selectedGameTypeId class="radio"}-->
+        </td>
+      </tr>
+      <!--{if $qType}-->
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'78B3126BD9E9DF389AB21858C30489BB'|lang}--></th>
+        <td><!--{html_radios options=$qType selected=$selectedQtype name="question_type" class="radio"}--></td>
+      </tr>
+      <!--{/if}-->
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'F82BEDDCD7005F7F0ECA4C96999A865B'|lang}--></th>
+        <td class="operator"><!--{html_radios options=$operatorList name="operator_id" selected=$selectedOperatorId class="radio"}--></td>
+      </tr>
+      <!--{if $gameOptServerLists}-->
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'C566CA59602C7C5C0D3FE5E18ADE447D'|lang}--><!--{*服务器*}--></th>
+        <td class="operator">
+        	<select name="server_id">
+            	<option value="" > -请选择- </option>
+            	<!--{html_options options=$gameOptServerLists selected=$_GET.server_id}-->
+            </select>
+        </td>
+      </tr>
+      <!--{/if}-->
+      
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'85C6DB559826C1036D846B8F5F5F6143'|lang}--></th>
+        <td>
+            <!--{html_radios options=$workOrderStatusArr name="order_status" selected=$selectedOrderStatus class="radio"}-->	|	
+            <!--{html_radios options=$verify name="is_verify" selected=$selectedIsVerify class="radio"}-->
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'50A6E2E1F9601D5472ED37B20A41839A'|lang}--></th>
+        <td><!--{html_radios options=$vipLevel name="vip_level" selected=$selectedVipLevel class="radio"}--></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'F380730B8D457992B0ECA7DC110898A0'|lang}--></th>
+        <td><!--{html_radios options=$roomList name='room_id' selected=$selectedRoomId class="radio"}--></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'F3E64523D27D6C7936F03B63C50743F3'|lang}--></th>
+        <td><!--{html_radios options=$evArr selected=$selectedEv name="evaluation_status" class="radio"}--></td>
+      </tr>
+      <!--{if $badev_display}-->
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'247D7692F6DD568F789C57C3BD8A2D0F'|lang}--></th>
+        <td><!--{html_radios options=$badEvArr selected=$selectedBadEv name="evaluation_desc" class="radio"}--></td>
+      </tr>
+      <!--{/if}-->
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'CD649F76D42355E6AEF72227F9152FEB'|lang}--></th>
+        <td>
+        	<input name="start_time" type="text" class="text" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" value="<!--{$selectedStartTime}-->" size="25"/> - 
+            <input name="end_time" type="text" class="text" onFocus="WdatePicker({startDate:'%y-%M-%d 23:59:59',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" value="<!--{$selectedEndTime}-->" size="25"/>
+        </td>
+      </tr>
+      <tr>
+      	<th nowrap="nowrap" scope="row"><!--{'32C65D8D7431E76029678EC7BB73A5AB'|lang}--></th>
+        <td><input name="title" type="text" class="text" id="title" value="<!--{$selectedTitle}-->" size="60" /></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'5344B448B0C7B24677BB2B39D8277C98'|lang}--></th>
+        <td>
+        ID <input type="text" class="text" name="Id" value="<!--{$selectedId}-->" /> 
+        <!--{'1FC581B4EBF9123FD6EF9EB06A9D460E'|lang}--> <input type="text" class="text" name="user_nickname" id="user_nickname" value="<!--{$selectedUserNickname}-->" />
+		<!--{'A62EF326801450211051F4E56D37FA4E'|lang}-->  <input type="text" class="text" name="user_account" id="user_account" value="<!--{$selectedUserAccount}-->" />
+		<input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->"  /></td>
+      </tr>
+    </table>
+    </form>
+</fieldset>
+
+
+<fieldset>
+
+<legend><!--{'4729DAECF82BF2CACFA6042F514D5161'|lang}--></legend>
+<form action='<!--{$statusurl}-->' method="post" id='formdeal' name='formdeal'>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap">Id</th>
+        <th nowrap="nowrap"><!--{'54259D6BA1709F0B64613CE78FA08D7E'|lang}--></th>
+        <th nowrap="nowrap">[<!--{'54259D6BA1709F0B64613CE78FA08D7E'|lang}-->]<!--{'32C65D8D7431E76029678EC7BB73A5AB'|lang}--> / <!--{'CCC283935D96ABAA8E596AAE9E7460A7'|lang}--></th>
+        <th nowrap="nowrap">Bug状态</th>
+        <th nowrap="nowrap"><!--{'BA08216F13DD1742157412386EEE1225'|lang}--> / <!--{'F82BEDDCD7005F7F0ECA4C96999A865B'|lang}--> / <!--{'C566CA59602C7C5C0D3FE5E18ADE447D'|lang}--> / <!--{'5BFE13275EDC2C552F7BD2F030EA0C78'|lang}--> / VIP<!--{'95E0D70D1809D5267C2419EDA58E78CA'|lang}--><br /><!--{'08D8CEE29B07022D38A163EF42F0DAD5'|lang}--></th>
+        <th nowrap="nowrap"><!--{'0502F4F4045C9B6883BFA1FF7D9DC1B0'|lang}--><br /><!--{'D5A57C1C4DC6F04018E0F73B658B35B2'|lang}--></th>
+        <th nowrap="nowrap"><!--{'57FE12BFC3E50489BC8CCD4FFBD45B46'|lang}--> / <!--{'416F5354782E109F7D69AA42311AEA14'|lang}--></th>
+        <th nowrap="nowrap"><!--{'4C8C9D4F5D2B6A3A36445D5AF7141003'|lang}--></th>
+        <th nowrap="nowrap"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td align="center" nowrap="nowrap"><font style="font-size:14px; font-family:'<!--{'971F54E2A4D4F1678001C5817A748739'|lang}-->';"><!--{$list.word_status}--></font></td>
+        <td class="order_title" url="<!--{$list.url_dialog}-->" dialogId="detail_<!--{$list.Id}-->" title="<!--{$list.title}-->">
+        	 <font style="font-size:14px; font-family:'<!--{'971F54E2A4D4F1678001C5817A748739'|lang}-->';"><!--{$list.title|truncateutf8:20}--></font> 	[<!--{$list.word_ev}-->] <font color="#999999"><!--{$list.word_ev_desc}--></font><br />
+             <!--{$list.create_time}-->
+             <!--{if $list.time_out_true}--><font color="red" style="font-size:14px"><!--{'0E7B6CB416D3EC8D8ECBAC75EAC4F513'|lang}--></font><!--{else}--><span id="show_time_<!--{$list.Id}-->"></span><!--{/if}-->
+        </td>
+        <td><!--{$list.word_verify_status|default:'无'}--></td>
+        <td>
+            <!--{$list.word_game_type}--> / <!--{$list.word_operator_id}--> /	<!--{$list.word_game_server_id}--> / <!--{$list.word_room_id}--> / <font color="#666666">VIP:</font> <b><!--{$list.vip_level}--></b><br />
+            <font color="#666666"><!--{'7035C62FB00576FED9B3A1F2B7D48E6C'|lang}-->：</font><!--{$list.user_account}-->，<font color="#666666">UID：</font><!--{$list.game_user_id}-->，<font color="#666666"><!--{'3EAAA36CCA7996391D410481FCF63A80'|lang}-->：</font><a href="javascript:void(0)" onclick="searchForm($(this))"><!--{$list.user_nickname}--></a>，<font color="#666666"><!--{'E7867F285D4C647A8B67951234868761'|lang}-->：</font><!--{$list.money}-->
+        </td>
+        <td><!--{$list.word_source}--><br /><!--{$list.word_question_type}--></td>
+        <td><!--{$list.question_num}--> / <!--{$list.answer_num}--></td>
+        <td><a href="<!--{$list.url_reply_detail}-->" ><!--{$list.word_owner_user_id}--></a></td>
+        <td>
+        <!--{if $list.evaluation_status==0}-->
+            <a href="<!--{$list.url_question}-->">追问</a><br>
+            <a href="<!--{$list.url_questionend}-->">评价</a>
+        <!--{else}-->
+        	已结单
+        <!--{/if}-->
+        </td>
+      </tr>
+<tr  class="" style="background: none repeat scroll 0% 0% rgb(255, 255, 255); display: table-row;">
+<td colspan="8" id="detail1_<!--{$list.Id}-->">
+</td>
+</tr>
+      <!--{foreachelse}-->
+      <tr><th colspan="10"><!--{$noData}--></th></tr>
+      <!--{/foreach}-->
+      <tr>
+      	<td colspan="3" align='left'>
+      	
+      	</td>
+      	<td align="right" colspan="7"><!--{$pageBox}--></td></tr>
+    </table>
+    </form>
+</fieldset>

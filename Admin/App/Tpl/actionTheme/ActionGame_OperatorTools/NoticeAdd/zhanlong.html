@@ -1,0 +1,124 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript">
+//KE.init({id:'title',imageUploadJson : '<!--{$url.UploadImg_Bulletin}-->',afterCreate:function(id){KE.util.focus(id)}});
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#title").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"公告标题不能为空,请确认"});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"公告内容不能为空,请确认"});
+	$("#interval").formValidator({onshow:"请输入时间间隔",oncorrect:"输入正确"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"时间间隔不正确"});
+})
+function fontStyle(color,b,em){
+	var font1='<font color="#'+color+'">';
+	var font2='</font>';
+	var b1='<b>';
+	var b2='</b>';
+	var em1='<u>';
+	var em2='</u>';
+	if(!color){
+		font1 = font2 = '';
+	}
+	if(!b){
+		b1 = b2 = '';
+	}
+	if(!em){
+		em1 = em2 = '';
+	}
+	var obj = $('#title');
+	obj.val(obj.val()+font1+b1+em1+'请输入文字'+em2+b2+font2);
+	view()
+}
+function linkAdd(){
+	var obj = $('#title');
+	obj.val(obj.val()+'<a href="http://请输入地址" target="_blank">请输入内容</a>');
+	view()
+}
+function view(){
+	$('#view').html($('#title').val());
+}
+
+</script>
+<fieldset>
+<legend>添加公告</legend>
+<form action="" method="post" id="form">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<input type="hidden" name="id" value="<!--{$selected.id|default:"0"}-->" />
+    <!--{*<a href="javascript:void(0)" onclick="KE.create('title')">加载编辑器</a>*}-->
+	<!--{*<a href="javascript:void(0)" onclick="KE.remove('title')">卸载编辑器</a>*}-->
+    <table width="98%" border="0" cellpadding="3">
+    	<tr>
+        <th scope="row">区ID</th>
+        <td><input type="text" class="text" name="WorldID"/>
+        </td>
+      </tr>
+       <tr>
+        <th scope="row">系统广播的序号</th>
+        <td><input type="text" class="text" name="OrderID"/>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">公告标题</th>
+        <td>
+        	<div>
+				颜色<select id="color_select">
+                	<option value="">默认</option>
+                	<option value="FF0000">红色</option>
+                    <option value="0000FF">蓝色</option>
+                    <option value="00FF00">绿色</option>
+                    <option value="FFFF00">黄色</option>
+                    <option value="FF00FF">紫色</option>
+                </select>
+                加粗<input id="b_select" type="checkbox" value="b" />
+                下划线<input id="em_select" type="checkbox" value="em" />
+                <input class="btn-blue" type="button" value="添加" onclick="fontStyle($('#color_select').val(),$('#b_select').attr('checked'),$('#em_select').attr('checked'));" />
+                <input class="btn-blue" type="button" value="添加超链接" onclick="linkAdd();" />
+       		</div>
+        	<textarea name="Msg" id="title" style="width:600px; height:200px;" onkeyup="view();"><!--{$selected.title|htmlspecialchars}--></textarea><div id="titleTip"></div>
+            <div>
+            	<input class="btn-blue" type="button" value="预览" onclick="view();" />
+                <div id="view"></div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">发布时间</th>
+        <td><input type="text" class="text" style="width:300px;" name="DateTime" <!--{if $_GET.OrderID!=""}-->value="<!--{$data.DateTime}-->"<!--{else}-->value="[*][*][*][17:00-22:00]"<!--{/if}-->/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">时间格式</th>
+        <td>
+        [*][*][*][17:00-22:00]					表示每天17点到22点
+		[2012][*][10-10][00:00-23:59]			表示2012年每月10日
+		[2012][9][w4,w5,w6][00:00-23:59]		表示2012年9月的周五、周六、周日
+        
+        </td>
+      </tr>
+       <tr>
+        <th scope="row">发布位置</th>
+        <td>
+        聊天框系统频道<input class="checkbox" type="checkbox" name="Place[]" value="0">
+        屏幕上方滚动条<input class="checkbox" type="checkbox" name="Place[]" value="1">
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">广播间隔时间</th>
+        <td><input type="text" class="text" name="Timeout"  id="Timeout" /> </td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

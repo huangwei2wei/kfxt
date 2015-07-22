@@ -1,0 +1,162 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<style type="text/css">
+.addline{
+	padding:3px;
+}
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:100%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/default/frg.js"></script>
+<script language="javascript">
+
+<!--{if $objData}-->
+var objData=eval(<!--{$objData}-->);
+<!--{/if}-->
+
+<!--{if $toolData}-->
+var toolData=eval(<!--{$toolData}-->);
+<!--{/if}-->
+
+<!--{if $effData}-->
+var effData=eval(<!--{$effData}-->);
+<!--{/if}-->
+
+
+var condInputNum=<!--{$num.cond}-->;
+var effectInputNum=<!--{$num.effect}-->;
+var toolInputNum=<!--{$num.tool}-->;
+
+$(function(){
+	if(<!--{$data.PEach}-->){
+		$(":radio[name='EachLimit'][value='1']").click();
+	}else{
+		$(":radio[name='EachLimit'][value='0']").click();
+	}
+	if(<!--{$data.StartTime}-->){
+		$(":radio[name='TimeLimit'][value='1']").click();
+	}else{
+		$(":radio[name='TimeLimit'][value='0']").click();
+	}
+	$(":radio[name='TimesDetail'][value='<!--{$timesDetail}-->']").click();
+})
+
+</script>
+<fieldset>
+<legend><!--{'343B20BEE4185B8E9524296AD5BA76C7'|lang}--></legend>
+
+<div id="showItem"></div>
+
+<form action="" method="post" onsubmit="return checksub();" >
+<input type="hidden" name="Id" value="<!--{$data.Id}-->" /> 
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row"><!--{'C7375AD4A1177F7E286D520D7DF3B1C9'|lang}--></th>
+    <td><input type="text" class="text" name="PName" value="<!--{$data.PName|htmlspecialchars}-->" size="60" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'F195F63A87BBDE9372609887D36CECC5'|lang}-->,<!--{'6CC0605613CD77B0B3802A2D1FCD6F38'|lang}--></th>
+    <td><textarea name="PDescribe" cols="50" rows="8"><!--{$data.PName|htmlspecialchars}--></textarea></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'A53DB51463C2D8EC4AE21144C4579A15'|lang}--></th>
+    <td><input type="text" class="text" name="MsgTitle" value="<!--{$data.MsgTitle|htmlspecialchars}-->" size="60" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'B87B77561E776367E6756E11EA652217'|lang}--></th>
+    <td><textarea name="MsgContent" rows="6" cols="50"><!--{$data.MsgContent|htmlspecialchars}--></textarea></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'6E66A1D85E3661EB2B14E315B09337C4'|lang}--></th>
+    <td><input name="Cash" type="text" class="text" value="<!--{$data.Cash}-->" size="60" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'0D912B76098A55C0CB3BFB62D54E19EE'|lang}--></th>
+    <td>
+    	<input name="Times" type="text" class="text" value="<!--{$data.Times}-->" size="60" /><br />
+    	<input type="radio" value="0" name="TimesDetail" ><!--{'C200ADCDE094208482D1007E4BF6BE0C'|lang}-->
+        <input type="radio" value="1" name="TimesDetail" ><!--{'02752BE751F7367B2CE2CB02197EF718'|lang}--> 
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'29B6DD14238ABDFC00836BEAD6DEE3FA'|lang}--></th>
+    <td>
+    	<input type="radio" name="EachLimit" value="1" onClick="$('#each').show()" /><!--{'0A60AC8F02CCD2CF723F927284877851'|lang}-->
+        <input type="radio" name="EachLimit" value="0" onClick="$('#each').hide()" /><!--{'C9744F45E76D885AE1C74D4F4A934B2E'|lang}-->
+    </td>
+  </tr>
+  <tr id="each" style="display:none">
+    <th scope="row"><!--{'086BF2DFF8AFA5C0549E55B07FDEEFAA'|lang}--></th>
+    <td><input type="text" class="text" name="PEach" value="<!--{$data.PEach}-->" size="60" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'096EFBA460CCD679E7002EEA643DD266'|lang}--></th>
+    <td><input name="TotalCash" type="text" class="text" value="<!--{$data.TotalCash}-->"  size="60" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'ADF8C2E2A80BE27A856F110244AC09C1'|lang}--></th>
+    <td>
+    	<input type="radio" name="TimeLimit" onClick="$('#time').show()" value="1" /><!--{'0A60AC8F02CCD2CF723F927284877851'|lang}-->
+        <input type="radio" name="TimeLimit" onClick="$('#time').hide()" value="0" /><!--{'C9744F45E76D885AE1C74D4F4A934B2E'|lang}-->
+    </td>
+  </tr>
+  <tr id="time" style="display:none">
+    <th scope="row"><!--{'6A050C2A04BB69E4B24FCBF029CF33BD'|lang}--></th>
+    <td>
+    	<input type="text" class="text" name="StartTime" value="<!--{$data.StartTime|date_format:'%Y-%m-%d %H:%M:%S'}-->" onFocus="WdatePicker({startDate:'<!--{$data.StartTime|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/> 
+        <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}-->
+        <input type="text" class="text" name="EndTime" value="<!--{$data.EndTime|date_format:'%Y-%m-%d %H:%M:%S'}-->" onFocus="WdatePicker({startDate:'<!--{$data.EndTime|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        <!--{'4C82AEABE39C801738069F81294C24B0'|lang}-->：<font color="#FF0000"><!--{$systemTime|date_format:"%Y-%m-%d %H:%M:%S"}--></font>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'664B9B5DAEA434BBF3C63574392CF287'|lang}--></th>
+    <td>
+    	<input type="button" class="btn-blue" onclick="addGetCond($(this))" value="<!--{'53547608D8563C352DD64D33CA4E4C98'|lang}-->" />
+    	<!--{foreach from=$chageCond item=list}-->
+        <!--{$list.html}-->
+        <!--{/foreach}-->
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'46C52C767383B0A4246F5149E7E585FE'|lang}--></th>
+    <td>
+    	<input type="button" class="btn-blue" onclick="addEffect($(this))" value="<!--{'9617335C840B393D4E12F66620C06240'|lang}-->" />
+    	<!--{foreach from=$chageEffect item=list}-->
+        <!--{$list.html}-->
+        <!--{/foreach}-->
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'62C341F9C880236471E35B60EE816B3B'|lang}--></th>
+    <td>
+        <input type="button" class="btn-blue" onclick="addTool($(this))" value="<!--{'BF9E805569213C27D1CE1C611B8B964E'|lang}-->" />
+        <!--{foreach from=$chageTool item=list}-->
+        <!--{$list.html}-->
+        <!--{/foreach}-->
+    </td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">
+      <input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" />
+      </th>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

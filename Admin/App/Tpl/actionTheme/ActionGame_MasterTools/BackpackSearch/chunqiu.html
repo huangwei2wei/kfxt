@@ -1,0 +1,95 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+
+function submitCheck(){
+	if($.trim($('[name=cause]').val())==''){
+		alert('申请原因不能为空');
+		return false;
+	}
+	var itemsList = $('input[name^=itemNum]');
+	var len = itemsList.length;	
+	var value = 0;
+	for(var i=0;i<len;i++){
+		value = parseInt(itemsList[i].value);
+		if(itemsList[i].type=='text' && (!value || value<=0) ){
+			$('#'+itemsList[i].id+'_type').remove();
+			$('#'+itemsList[i].id+'_position').remove();
+			$('#'+itemsList[i].id+'_id').remove();
+			$('#'+itemsList[i].id+'_name').remove();
+			$('#'+itemsList[i].id).remove();
+		}
+	}
+	return true;
+}
+
+</script>
+<fieldset>
+  <legend>搜索</legend>
+  
+<form action=""  method="post">
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+            <input class="text" type="text" name="user" value="<!--{$GET.user}-->">
+            <label><input type="radio" name="userType" checked="checked" value="1" />玩家ID</label>
+            <label><input type="radio" name="userType" value="2" />账号</label>
+            <label><input type="radio" name="userType" value="3" />昵称</label>
+            <input class="btn-blue" type="submit" value="查询">
+        </td>
+      </tr>
+      
+    </table>
+</form>
+
+
+</fieldset>
+<fieldset>
+  <legend>
+	背包查询
+    <!--{if $playerSelect.0 ==1}-->玩家ID:<!--{elseif $playerSelect.0 ==2}-->玩家账号:<!--{elseif $playerSelect.0 ==3}-->玩家昵称:<!--{/if}-->
+    <font color="#FF0000"><!--{$playerSelect.1|default:''}--></font>
+  </legend>
+<form action="" method="post">
+	<input type="hidden" class="text" value="1" name="apply">
+	<input type="hidden" name="user" value="<!--{$GET.user}-->">
+    <input type="hidden" name="userType" value="<!--{$GET.userType}-->">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">道具ID</th>
+        <th scope="col">道具名</th>
+        <th scope="col">现有数量</th>
+        <th scope="col">扣除数量</th>
+      </tr>
+            <!--{foreach from=$dataList item=list key = k}-->
+              <tr>
+                <td><!--{$list.item_id}--></td>
+                <td><!--{$list.name}--></td>
+                <td><!--{$list.number}--></td>
+                <td>
+                	<input type="text" class="text" value="" id="item_<!--{$key}-->_<!--{$k}-->" name="itemNum[<!--{$k}-->]">
+                    <input type="hidden" class="text" value="<!--{$list.item_id}-->" id="item_id" name="item_id[<!--{$k}-->]">
+                    <input type="hidden" class="text" value="<!--{$list.name}-->" id="item_id" name="itemName[<!--{$k}-->]">
+                </td>
+              </tr>
+            <!--{/foreach}-->
+    
+    </table>
+    
+    <div style="margin:10px;">扣除原因:</div>
+    <div style="margin:10px;"><textarea name="cause" style="width:500px; height:80px;"></textarea></div>
+    <div style="margin:10px;"><input type="submit" class="btn-blue" onclick="return submitCheck();" value="申请扣除" /></div>
+</form>
+</fieldset>
+
+
+<!--{/if}-->

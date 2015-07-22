@@ -1,0 +1,72 @@
+<style type="text/css">
+ul{
+	margin:0px;
+	padding:0px;
+}
+ul li{
+	margin:3px;
+	list-style-type: none;
+	display:inline;
+}
+</style>
+<script language="javascript">
+var gameServerList=eval(<!--{$gameServerList}-->);
+var selectedOperatorId='<!--{$selectedOperatorId}-->';
+var selectedServerId='<!--{$selectedServerId}-->';
+
+var selid = 0;
+function select_next(n) {
+	var i = 0;
+	var len = $(":checkbox[name='server_ids[]']").length;
+	if (selid > len) selid = 0;
+	$(":checkbox[name='server_ids[]']").each(function() {
+		if (i >= selid && i < selid + n) {
+			$(this).attr('checked', true);
+		} else {
+			$(this).attr('checked', false);
+		}
+		i ++;
+	});
+	selid += n;
+}
+
+function chageServer(operatorId){
+	operatorId=parseInt(operatorId);
+	var gameServer=$("#gameServer");
+	gameServer.empty();
+	gameServer.append("<li><input type='checkbox' checked onclick='selectAll($(this))'><!--{'66EEACD93A7C1BDA93906FE908AD11A0'|lang}--> [<a href='javascript:select_next(50);'>选择50个</a>]</li><br>");
+	$.each(gameServerList,function(i,n){
+		if(operatorId===0){
+			gameServer.append("<li><input type='checkbox' operator_id='"+n.operator_id+"' name='server_ids[]' checked value='"+n.Id+"' />"+n.full_name+'</li>');
+		}else{
+			if(n.operator_id==operatorId)gameServer.append("<li><input type='checkbox' name='server_ids[]' operator_id='"+n.operator_id+"' checked value='"+n.Id+"' />"+n.server_name+'</li>');
+		}
+		
+	});
+	$("#operator_id").val(operatorId);
+}
+
+function selectAll(check){
+	var curCheck=check.attr("checked");
+	$(":checkbox[name='server_ids[]']").attr("checked",curCheck);
+}
+
+$(function(){
+	if(selectedOperatorId)$("#operator").val(selectedOperatorId).change();
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$("#list :checkbox").attr("checked",curCheck);
+	 });
+})
+</script>
+<fieldset>
+	<legend><!--{'D4E2DE1AC32F6392C736C778A11E1785'|lang}--></legend>
+    
+    <select id="operator" onChange="chageServer($(this).val())">
+    	<option value=""><!--{'09CA502079E062CD7C8425CC483905ED'|lang}--></option>
+        <!--{html_options options=$operatorList}-->
+		<!--option value="0"><!--{'9A7B52FC8659F1786907FE93EFA85BF7'|lang}--></option-->
+    </select>
+    <input type="button" class="btn-blue" value="<!--{'4D775D4CD79E2ED6A2FC66FD1E7139C8'|lang}-->/<!--{'08950B30B7114C17878F9858808C98A8'|lang}-->" onclick="$('#gameServer').slideToggle('fast')" />
+    <ul id="gameServer" style="padding:5px; margin:5px;"></ul>
+</fieldset>

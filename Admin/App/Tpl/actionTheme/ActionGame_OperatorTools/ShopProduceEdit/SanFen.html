@@ -1,0 +1,150 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+	<legend>发送邮件</legend>
+	<script language="javascript">
+    $(function(){
+        $("#isAllUser").change(function(){
+        	  if( $(this).attr('value') == '1'){
+        		  $("#showuser").hide();
+        	  }else{
+        		  $("#showuser").show();
+        	  }
+        });
+    })
+
+	function onSubmit(){
+    		var $title = $('#title').attr('value');
+    		var $content = $('#content').attr('value');
+    		var $isAllUser = $("#isAllUser").attr('value');
+    		if($(":checkbox[name='server_ids[]']:checked").attr('value') == undefined){
+    			alert('请选择服务器！'); return false;
+    		}
+    		if($title == ''){
+    			alert('标题不能空！'); return false;
+    		}
+    		if($content == ''){
+    			alert('内容不能空！'); return false;
+    		}
+
+       		if($isAllUser == 0){
+       			if($("#player").attr('value') == ''){
+       				alert('请填写用户！'); return false;
+       			}
+       		}
+    		$('.returnTip').remove();	//去掉旧提示
+    		$(":checkbox[name='server_ids[]']:checked").each(function(i,n){
+    				var curLi=$("#server_"+n.value);
+    				$("#form").ajaxSubmit({
+    					dataType:'json',
+    					async : false,    // 设置同步
+    					data:{server_id:n.value},
+    					success:function(data){
+    						var fontColor=(data.status==1)?'#00cc00':'#ff0000';
+    						curLi.append("<font class='returnTip' color='"+fontColor+"'> "+data.info+"</font>");
+    					}
+    				});
+    		});
+    	}
+    </script>
+    <form id="form" action="" method="post">
+    <table width="100%" border="0" cellpadding="3">
+      <input name="id" type="hidden" value="<!--{$_GET.getOneById}-->"/>
+
+      <tr>
+        <th nowrap="nowrap" scope="row">火热特卖商品： </th>
+        <td>
+			<select name="hot">
+            	<!--{html_options options=$ys selected=$data.hot}-->
+            </select>
+		</td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">时装商品： </th>
+        <td>
+			<select name="fashion">
+            	<!--{html_options options=$ys selected=$data.fashion}-->
+            </select>
+		</td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">坐骑商品： </th>
+        <td>
+			<select name="horse">
+            	<!--{html_options options=$ys selected=$data.horse}-->
+            </select>
+		</td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row"> 礼券专区： </th>
+        <td>
+			<select name="gift">
+            	<!--{html_options options=$ys selected=$data.gift}-->
+            </select>
+		</td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">VIP专区： </th>
+        <td>
+			<select name="vip">
+            	<!--{html_options options=$ys selected=$data.vip}-->
+            </select>
+		</td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">神秘商品： </th>
+        <td>
+			<select name="mystical">
+            	<!--{html_options options=$ys selected=$data.mystical}-->
+            </select>
+		</td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">是否为抢购： </th>
+        <td>
+			<select name="purchase">
+            	<!--{html_options options=$ys selected=$data.purchase}-->
+            </select>
+		</td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">是否禁用： </th>
+        <td>
+			<select name="forbid">
+            	<!--{html_options options=$ys selected=$data.forbid}-->
+            </select>
+		</td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">需要金币数： </th>
+        <td>
+			<input type="text" name='userIngot' class="text" value="<!--{$data.userIngot}-->"/>
+		</td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">需要礼券数： </th>
+        <td>
+			<input type="text" name='sysIngot' class="text" value="<!--{$data.sysIngot}-->"/>
+		</td>
+      </tr>
+	  <tr>
+        <th nowrap="nowrap" scope="row">商品数量： </th>
+        <td>
+			<input type="text" name='num' class="text" value="<!--{$data.num}-->"/>
+		</td>
+      </tr>      
+      <tr>
+        <th nowrap="nowrap" scope="row">排序： </th>
+        <td>
+			<input type="text" name='sequence' class="text" value="<!--{$data.sequence}-->"/>
+		</td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" onclick="//onSubmit();return false;" class="btn-blue" name="sbm" value="立即发送" /></th>
+      </tr>
+    </table>
+    </form>
+    </fieldset>

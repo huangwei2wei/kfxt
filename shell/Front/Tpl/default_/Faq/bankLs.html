@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>优玩网 - 充值指南</title>
+<include file="../common/libs"/>
+</head>
+<style type="text/css">
+.list{ line-height:22px}
+.list a{color:#C60}
+</style>
+<script language="javascript">
+$(function(){
+	$('#menu_pay').addClass('d');
+})
+</script>
+<body>
+<include file="../common/head"/>
+<div id="contai">
+	<include file="../common/menu"/>
+	<div class="neileft">
+		<div class="quesleftren_r">
+		</div>
+		<div class="left_con">				
+			<dl>
+                <dd id="menu_1"><a href="{:U('/Notice/pay/viewId/1')}">如何在优玩平台充值？</a></dd>
+                <dd id="menu_12"><a href="{:U('/Notice/pay/viewId/12')}">什么是优玩币？</a></dd>
+            	<dd id="menu_2"><a href="{:U('/Notice/pay/viewId/2')}">充值常见问题FAQ</a></dd>
+                <dd id="menu_3" class="ttbg"><a href="{:U('Faq/bankList')}">网上银行充值指南</a></dd>
+                <dd id="menu_4"><a href="{:U('/Notice/pay/viewId/4')}">短信充值帮助</a></dd>
+                <dd id="menu_5"><a href="{:U('/Notice/pay/viewId/5')}">电信卡充值帮助</a></dd>
+                <dd id="menu_6"><a href="{:U('/Notice/pay/viewId/6')}">联通卡充值帮助</a></dd>
+                <dd id="menu_7"><a href="{:U('/Notice/pay/viewId/7')}">神州卡充值帮助</a></dd>
+                <dd id="menu_8"><a href="{:U('/Notice/pay/viewId/8')}">固话（V币）充值帮助</a></dd>
+                <dd id="menu_9"><a href="{:U('/Notice/pay/viewId/9')}">盛大卡充值帮助</a></dd>
+                <dd id="menu_10"><a href="{:U('/Notice/pay/viewId/10')}">骏网卡充值帮助</a></dd>
+                <dd id="menu_11"><a href="{:U('/Notice/pay/viewId/11')}">征途卡充值帮助</a></dd>
+            </dl><br />
+		</div><br />
+		<div class="left_02">
+			<div class="left_tit">联系客服</div>
+			<div class="left_con" style="height:127px; padding-top:15px;">
+				<p><b>电话：</b>400-888-4818<br />
+<b>传真：</b>020-38741065<br />
+<b>投诉通道：</b><a href="{:U('Question/index')}">点击进入</a></p>
+			<p class="d">欢迎对我们的客服质量进行监督</p>
+			</div>
+		</div><br />
+		<div class="left_02" style="clear:both">
+			<div class="left_tit">健康游戏忠告</div>
+			<div class="left_con" style="height:113px; padding-top:15px;">
+				<p>抵制不良游戏  　  拒绝盗版游戏 <br />
+                    注意自我保护   　 谨防受骗上当 <br />
+                    适度游戏益脑  　  沉迷游戏伤身 <br />
+                    合理安排时间  　  享受健康生活</p>
+			</div>
+		</div>
+
+	</div>
+	<div class="neiright">
+		<div class="listtit">开通网上银行</div>
+		<!--主体-->
+		<div class="list">
+        	<div>
+            	<!--分类-->
+				<volist name="types" id="vo">
+				<span style=" padding-top:1px;width:120px; float:left; margin-right:10px; list-style:none">[ <a href="{:U("Faq/bankList/game_type_id/$gameTypeId/typeid/$vo[Id]")}">{$vo.name}</a> ]</span>
+				</volist>
+                <!--分类结束-->
+            </div>
+            
+            <div style="clear:both">
+            	<!--列表-->
+				<ul>
+                	<foreach name="faqList" item="vo">
+					<li><a href="{:U("/Faq/bankShow/game_type_id/$gameTypeId/Id/$vo[Id]")}">{$vo.question|stripcslashes}</a></li>
+					</foreach>
+				</ul>
+                <!--列表结束-->
+
+            </div>
+        </div>
+        <!--主体结束-->
+	  <div class="neibottom">{$page}</div>
+	</div>
+	<include file="../common/footer"/>
+</div>
+</body>
+
+</html>

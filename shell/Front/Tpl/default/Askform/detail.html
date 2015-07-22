@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>问卷调查 - 优玩网 - 客服中心</title>
+<include file="../common/libs"/>
+</head>
+
+<body>
+<div id="bg"><div id="bgtainer">
+	<div id="bgtai">
+		<include file="../common/head"/>
+	<div class="muencon">
+		<form name="myform" action="{:U('Askform/save')}" method="post" id="myform">
+		<input type="hidden" name="id" value="{$askVo.Id}"/>
+		<p><h1>{$askVo.title}</h1></p>
+		
+        <volist name="list" id="vo" key="listi">
+		<div class="survey" id="ask_div_{$listi}">
+			<h2>{$listi}, {$vo.title}</h2>
+			<if condition="$vo.types eq 1">
+				<volist name="vo.content" id="option" key="voi">
+				<dl><dt><input type="radio" name="radio_{$vo.Id}" value="{$voi-1}" id="radio_{$listi}"/></dt><dd>{$option}</dd></dl>
+				</volist>
+				<if condition="$vo.allow_other eq 1">
+				<dl><dt><input type="radio" name="radio_{$vo.Id}" value="-1" id="radio_{$listi}"/>其他：</dt><dd><input type="text" name="other_{$vo.Id}" id="other_{$listi}"/></dd></dl>
+			</if>
+			<else/>
+				<volist name="vo.content" id="option" key="voi">
+				<dl><dt><input type="checkbox" name="checkbox_{$vo.Id}[]" value="{$voi-1}" id="checkbox_{$listi}" /></dt><dd>{$option}</dd></dl>
+				</volist>
+							<if condition="$vo.allow_other eq 1">
+				<dl><dt><input type="checkbox" name="checkbox_{$vo.Id}[]" value="-1" id="checkbox_{$listi}"/>其他：</dt><dd><input type="text" name="other_{$vo.Id}" id="other_{$listi}"/></dd></dl>
+			</if>
+			</if>
+		</div>
+		</volist>
+        您的手机号码：<input type="text" name="moblie" />
+        您的QQ号码：<input type="text" name="qq" />
+        <input type="submit" value="提交" />
+	</form>
+	</div>
+	
+    
+        </div>
+     </div>
+	<include file="../common/footer"/>	
+</div>
+</body>
+
+</html>

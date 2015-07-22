@@ -1,0 +1,62 @@
+<script language="javascript" type="text/javascript">
+var departmentList=eval(<!--{$departmentList}-->);
+var orgList=eval(<!--{$orgList}-->);
+function displayDepartment(companyId){
+	if(!companyId)return false;
+	$("#department_id").empty();
+	$("#department_id").append("<option value=''>请选择部门</option>");
+	$.each(departmentList,function(i,n){
+		if(n.company_id==companyId){
+			$("#department_id").append("<option value='"+n.Id+"'>"+n.name+"</option>");
+		}
+	});
+}
+function displayOrg(deparementId){
+	if(!deparementId)return false;
+	$("#org_id").empty();
+	$("#org_id").append("<option value=''>请选择组别</option>");
+	$.each(orgList,function(i,n){
+		if(n.department_id==deparementId){
+			$("#org_id").append("<option value='"+n.Id+"'>"+n.name+"</option>");
+		}
+	});
+}
+</script>
+<fieldset>
+	<legend>增加用户</legend>
+    <form action="<!--{$url.User_Add}-->" method="post">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row" nowrap="nowrap">所属部门</th>
+        <td><select name="department_id" id="department_id" ><!--{html_options options=$departmentList}--></select></td>
+      </tr>
+      <tr>
+        <th scope="row" nowrap="nowrap">拥有的角色</th>
+        <td><!--{html_checkboxes options=$rolesList name=roles separator="&nbsp;"}--></td>
+      </tr>
+      <tr>
+        <th scope="row" nowrap="nowrap">客服编号</th>
+        <td><input type="text" class="text" name="service_id" /></td>
+      </tr>
+      <tr>
+        <th scope="row" nowrap="nowrap">用户名</th>
+        <td><input type="text" class="text" name="user_name" /></td>
+      </tr>
+      <tr>
+        <th scope="row" nowrap="nowrap">姓名</th>
+        <td><input type="text" class="text" name="nick_name" /></td>
+      </tr>
+      <tr>
+        <th scope="row" nowrap="nowrap">密码</th>
+        <td><input type="text" class="text" name="password" /></td>
+      </tr>
+      <tr>
+        <th scope="row" nowrap="nowrap">确认密码</th>
+        <td><input type="text" class="text" name="pwd_confirm" /></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+        </tr>
+    </table>
+    </form>
+</fieldset>

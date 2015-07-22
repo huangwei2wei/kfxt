@@ -1,0 +1,105 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+  <legend><!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}--></legend>
+<form id="form" action=""  method="get">
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+        	<!--{'1E53917566ED8EBA75810D9ECFE7F41E'|lang}-->：
+        	<select name='playerType'>
+            	<!--{html_options options=$playerType selected=$_GET.playerType}-->
+            </select>
+                                <!--{'069A4B89AE4E24F7718E5DF99E80B75D'|lang}-->：<input class='text' type="text" name='player' value="<!--{$_GET.player}-->"/>
+                                
+           <!--{'6024BFAFC7EA9DCE596DF66A6D99345A'|lang}-->：
+            <select name='mailType'>
+            	<!--{html_options options=$mailType selected=$_GET.type}-->
+            </select>
+                               <!--{'350A8E5F3FC76DB20D0C5F917C1E13E6'|lang}-->：
+			<select name='haveAtt'>
+            	<option value='1' <!--{if $_GET.haveAtt==1}-->  selected="selected"  <!--{/if}-->><!--{'0A60AC8F02CCD2CF723F927284877851'|lang}--></option>
+            	<option value='0' <!--{if $_GET.haveAtt==0}-->  selected="selected"  <!--{/if}-->><!--{'C9744F45E76D885AE1C74D4F4A934B2E'|lang}--></option>
+            </select>
+           	 <!--{'BEEFBD6500E0589683A16B5EC31A553D'|lang}-->：
+			<select name='gotAtt'>
+            	<option value='1'<!--{if $_GET.gotAtt==1}-->  selected="selected"  <!--{/if}--> ><!--{'0A60AC8F02CCD2CF723F927284877851'|lang}--></option>
+            	<option value='0' <!--{if $_GET.gotAtt==0}-->  selected="selected"  <!--{/if}-->><!--{'C9744F45E76D885AE1C74D4F4A934B2E'|lang}--></option>
+            </select>
+            <br/>
+            <input class="btn-blue" type="submit" name="sbm" value="<!--{'BEE912D79EEFB7335988C4997AA9138D'|lang}-->" />
+         </td>
+      </tr>
+    </table>
+</form>
+
+
+</fieldset>
+
+<fieldset>
+  <legend><!--{'5180B156DE2B83EA610A1DC568F95138'|lang}--></legend>
+<table width="100%" border="0" cellpadding="3">
+  	
+    <tr>
+        <th scope="col"><!--{'E9E8054F8B9B30A5BC0EAB3AA4645F9C'|lang}-->id</th>
+        <th scope="col"><!--{'00F7F1404D8CC8314C41EDB4D4F6685E'|lang}--></th>
+        <th scope="col"><!--{'42516993D82605002CA3BFECD66EEABE'|lang}--></th>
+        <th scope="col"><!--{'01A4CCAD9D3AA4EEDC408374F7390431'|lang}--></th>
+        <th scope="col"><!--{'EDAA6618EE1695D2F52BD4DC6B7067FE'|lang}--></th>
+        <th scope="col"><!--{'413DC937042E44E48F67C222A12489CD'|lang}-->id</th>
+        <th scope="col"><!--{'468DC987D5B27DD5F1AB8152EC6DC37D'|lang}--></th>
+        <th scope="col"><!--{'88340EADC24F69A435DA5624BDE14AEA'|lang}-->id</th>
+        <th scope="col"><!--{'8AC80B09236784A50A37F69151971434'|lang}--></th>
+        <th scope="col"><!--{'EB575A9BD2403615B148CD41A0F6B35A'|lang}--></th>
+        <th scope="col"><!--{'BFED7C63CDFCD6D8045928205B534CE6'|lang}--></th>
+        <th scope="col"><!--{'247048DBE3149877C604EF1FC0DC6146'|lang}--></th>
+    </tr>
+    <!--{foreach from=$dataList item=list}-->
+    <tr>
+        <td><!--{$list.id}--></td>
+        <td><!--{$list.title}--></td>
+        <td><!--{$list.content}--></td>
+        <td><!--{$list.addTime}--></td>
+        <td><!--{$list.getTime}--></td>
+
+        <td><!--{if $list.senderId>0}--><!--{$list.senderId}--><!--{/if}--></td>
+        <td><!--{$list.senderName|urldecode}--></td>
+        <td><!--{if $list.playerId>0}-->  <!--{$list.playerId}--> <!--{/if}--></td>
+        <td><!--{$list.playerName|urldecode}--></td>
+        <td>
+            <!--{switch var=$list.readed}-->
+                <!--{case value=0}--><!--{'894A101EE373F0E34F0047A004CBFEFE'|lang}--><!--{/case}-->
+                <!--{case value=1}--><!--{'8AD629E52F51BE63DEF4064C4D2BA0FC'|lang}--><!--{/case}-->
+                <!--{default}--><!--{'894A101EE373F0E34F0047A004CBFEFE'|lang}-->
+            <!--{/switch}-->
+        </td>
+        <td><!--{$list.attachment}--></td>
+        <td>
+            <!--{switch var=$list.senderDel}-->
+                <!--{case value=0}--><!--{'C9744F45E76D885AE1C74D4F4A934B2E'|lang}--><!--{/case}-->
+                <!--{case value=1}--><!--{'0A60AC8F02CCD2CF723F927284877851'|lang}--><!--{/case}-->
+                <!--{default}--><!--{'C9744F45E76D885AE1C74D4F4A934B2E'|lang}-->
+            <!--{/switch}-->
+        </td>
+        
+        
+    </tr>  
+    <!--{foreachelse}-->
+        <tr>
+          <td align="center" colspan="10"><!--{'21EFD88B67A39834582AD99AABB9DC60'|lang}--></td>
+        </tr>
+    <!--{/foreach}-->
+</table>
+
+<div><!--{$pageBox}--></div>
+
+</fieldset>
+<!--{/if}-->

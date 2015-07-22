@@ -1,0 +1,18 @@
+[ 2012-08-14T18:00:42+08:00 ] NOTIC: [8] Undefined index:  dovo_UserName BaseAction.class.php 第 13 行.
+[ 2012-08-14T18:00:42+08:00 ] SQL:  RunTime:0.010746s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-08-14T18:00:42+08:00 ] SQL:  RunTime:0.008137s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-08-14T18:00:42+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-08-14T18:00:42+08:00 ] SQL:  RunTime:0.174920s SQL = SELECT * FROM `cndw_player_faq` WHERE ( `lang_id` = 1 ) AND ( (`status` >= 0) AND (`status` <= 1)  ) AND ( `game_type_id` IN (1,2,6,7,9,8,10,21) ) ORDER BY ratio desc LIMIT 20 
+[ 2012-08-14T18:00:42+08:00 ] SQL:  RunTime:0.011583s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-08-14T18:00:43+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-08-14T18:00:43+08:00 ] NOTIC: [8] Undefined variable: username 972c8cf98e4871a830fafeb7278fd4ae.php 第 39 行.
+[ 2012-08-14T18:00:43+08:00 ] NOTIC: [8] Undefined variable: waitCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 86 行.
+[ 2012-08-14T18:00:43+08:00 ] NOTIC: [8] Undefined variable: haveCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 87 行.
+[ 2012-08-14T18:00:54+08:00 ] NOTIC: [8] Undefined index:  dovo_UserName BaseAction.class.php 第 13 行.
+[ 2012-08-14T18:00:54+08:00 ] SQL:  RunTime:0.001337s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-08-14T18:00:54+08:00 ] SQL:  RunTime:0.001162s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-08-14T18:00:54+08:00 ] SQL:  RunTime:0.001180s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-08-14T18:00:54+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-08-14T18:00:54+08:00 ] NOTIC: [8] Undefined variable: username 972c8cf98e4871a830fafeb7278fd4ae.php 第 39 行.
+[ 2012-08-14T18:00:54+08:00 ] NOTIC: [8] Undefined variable: waitCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 86 行.
+[ 2012-08-14T18:00:54+08:00 ] NOTIC: [8] Undefined variable: haveCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 87 行.

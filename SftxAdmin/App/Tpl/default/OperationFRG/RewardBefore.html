@@ -1,0 +1,92 @@
+<style type="text/css">
+ul{
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+}
+li{
+	margin:2px;
+}
+.addline{
+	padding:3px;
+}
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:100%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+</style>
+<script language="javascript" src="<!--{$__JS__}-->/default/frg.js"></script>
+<script language="javascript">
+
+<!--{if $toolData}-->
+var toolData=eval(<!--{$toolData}-->);
+<!--{/if}-->
+
+<!--{if $effData}-->
+var effData=eval(<!--{$effData}-->);
+<!--{/if}-->
+
+var effectInputNum=1;
+var toolInputNum=1;
+
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#cause").formValidator({onshow:"请输入申请理由",oncorrect:"申请理由正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入申请理由"},onerror:"申请理由不能为空"});
+	$("#MsgTitle").formValidator({onshow:"请输入消息标题",oncorrect:"消息标题正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入消息标题"},onerror:"消息标题不能为空"});
+	$("#MsgContent").formValidator({onshow:"请输入消息内容",oncorrect:"消息内容正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入消息内容"},onerror:"消息内容不能为空"});
+})
+
+</script>
+<fieldset>
+	<legend>发送奖励 [<font color="#FF0000">此操作须要审核</font>]</legend>
+	<div id="showItem"></div>
+    <ul>
+    	<!--{foreach from=$playerIds item=list key=key}-->
+    	<li>
+        	<font color="#FF0000"><b>[<!--{$serverList.$key.server_name}-->]</b> 玩家ID：</font>
+            <span>
+            	<!--{foreach from=$list item=player}-->
+                <!--{$player}-->. 
+                <!--{/foreach}-->
+            </span>
+        </li>
+        <!--{/foreach}-->
+    </ul>
+    <form id="form" action="" method="post">
+    <input type="hidden" name="send_players" value='<!--{$serializePlayerIds}-->' />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">申请理由</th>
+        <td><textarea name="cause" id="cause" cols="50" rows="8"></textarea><div id="causeTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row">消息标题</th>
+        <td><input type="text" class="text" name="MsgTitle" id="MsgTitle" size="80" value="" /><div id="MsgTitleTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row">消息内容</th>
+        <td><textarea name="MsgContent" id="MsgContent" rows="6" cols="50"></textarea><div id="MsgContentTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row">奖励作用效果</th>
+        <td><input type="button" class="btn-blue" onclick="addEffect($(this))" value="添加作用效果" /></td>
+      </tr>
+      <tr>
+        <th scope="row">奖励道具</th>
+        <td><input type="button" class="btn-blue" onclick="addTool($(this))" value="添加奖励道具" /></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row">
+          <input type="submit" class="btn-blue" name="submit" value="提交" />
+          </th>
+      </tr>
+    </table>
+    </form>
+</fieldset>

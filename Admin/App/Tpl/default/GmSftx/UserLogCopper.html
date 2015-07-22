@@ -1,0 +1,100 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+function chageSearch(curVal){
+		var searchSpan=$("#search");
+		searchSpan.empty();
+		switch(curVal){
+			case '1':{//id
+			}
+			case '2':{//呢称
+				searchSpan.append(' <input type="text" class="text" value="<!--{$selectedArr.dataMin}-->" name="dataMin" />');
+				break;
+			}
+			case '3':{
+				searchSpan.append('<input type="text" class="text" name="dataMin" onFocus="WdatePicker({startDate:\'<!--{$selectedArr.dataMin}-->\',dateFmt:\'yyyy-MM-dd HH:mm:ss\',alwaysUseStartDate:true})" value="<!--{$selectedArr.dataMin}-->" /> <!--{'TO'|lang}--> <input type="text" class="text" name="dataMax" onFocus="WdatePicker({startDate:\'<!--{$selectedArr.dataMax}-->\',dateFmt:\'yyyy-MM-dd HH:mm:ss\',alwaysUseStartDate:true})" value="<!--{$selectedArr.dataMax}-->" />');
+				break;
+			}
+		}
+}
+$(function(){
+	$("#searchType").change();
+})
+</script>
+<fieldset>
+	<legend><!--{'TYPE_SELECT'|lang}--></legend>
+    <a href="<!--{$url.GmSftx_UserLog_Copper}-->"><!--{'SILVER_OPT_LOG'|lang}--></a>
+    <a href="<!--{$url.GmSftx_UserLog_Gold}-->"><!--{'GOLD_OPT_LOG'|lang}--></a>
+    <a href="<!--{$url.GmSftx_UserLog_Food}-->"><!--{'FOOD_OPT_LOG'|lang}--></a>
+</fieldset>
+<fieldset>
+  <legend><!--{'USER_QUERY'|lang}--></legend>
+    <table width="98%" border="0" cellpadding="3">
+      <thead>
+      <tr>
+        <td colspan="10">
+        <form action="<!--{$url.GmSftx_UserLog}-->" method="get">
+            <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+            <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+            <input type="hidden" name="doaction" value="copper" />
+            <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+            <!--{'SEARCH_TYPE'|lang}-->:<select id="searchType" name="type" onchange="chageSearch($(this).val())"><!--{html_options options=$optionList selected=$selectedArr.type}--></select>
+            <span id="search"></span>
+            详细Id<input type="text" class="text" name="detailId" value="<!--{$selected.detailId}-->" />
+            用户Id<input type="text" class="text" name="playerId" value="<!--{$selected.playerId}-->" />
+            <input type="submit" class="btn-blue" value="<!--{'SEARCH'|lang}-->">
+        </form>
+        </td>
+      </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th><!--{'ID'|lang}--></th>
+            <th><!--{'USER_ID'|lang}--></th>
+            <th><!--{'MODEL_ID'|lang}--></th>
+            <th><!--{'PART_ID'|lang}--></th>
+            <th><!--{'ISPLUS'|lang}--></th>
+            <th><!--{'DETAIL_ID'|lang}--></th>
+            <th><!--{'SILVER_BEFORE_CONSUME'|lang}--></th>
+            <th><!--{'SILVER_AFTER_CONSUME'|lang}--></th>
+            <th><!--{'SILVERIN_CONSUME'|lang}--></th>
+            <th><!--{'OPT_TIME'|lang}-->
+                (
+                    <!--{if $BeiJing_time}-->
+                        <!--{'BJT'|lang}-->
+                    <!--{else}-->
+                        <!--{'SERVER_TIME'|lang}-->
+                    <!--{/if}-->
+                )
+            </th>
+          </tr>
+          <!--{foreach from=$dataList item=vo}-->
+          <tr>
+            <td><!--{$vo.id}--></td>
+            <td><!--{$vo.playerId}--></td>
+            <td><!--{$vo.modelId}--></td>
+            <td><!--{$vo.partId}--></td>
+            <td><!--{if $vo.isPlus}--><!--{'YES'|lang}--><!--{else}--><!--{'NO'|lang}--><!--{/if}--></td>
+            <td><!--{$vo.detailId}--></td>
+            <td><!--{$vo.oldCopper}--></td>
+            <td><!--{$vo.newCopper}--></td> 
+            <td><!--{$vo.copper}--></td>
+            <td><!--{$vo.createAtStr|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+          </tr>
+          <!--{foreachelse}-->
+          <tr>
+            <th colspan="10"><!--{$noData}--></th>
+          </tr>
+          <!--{/foreach}--> 
+          <tr>
+            <th colspan="10" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </tbody>
+    </table>
+</fieldset>
+<!--{/if}-->

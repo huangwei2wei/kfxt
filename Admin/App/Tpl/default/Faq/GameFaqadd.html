@@ -1,0 +1,38 @@
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript" type="text/javascript">
+KE.init({id:'answer',imageUploadJson : '<!--{$url.updateGameFapImgUrl}-->',afterCreate:function(id){KE.util.focus(id)}});
+KE.init({id:'question',imageUploadJson : '<!--{$url.updateGameFapImgUrl}-->',afterCreate:function(id){KE.util.focus(id)}});
+</script>
+<center>
+<form action="" method="post">
+<input type="hidden" value="<!--{$gameType.Id}-->" name="game_type_id" />
+<input type="hidden" value="<!--{$kindList.Id}-->" name="kind_id" />
+<table width="80%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row"><!--{'9D1AF8A250315FB503099EA5C384E1E7'|lang}--></th>
+    <td><!--{$gameType.name}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'D5A57C1C4DC6F04018E0F73B658B35B2'|lang}--></th>
+    <td><!--{$kindList.name}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'5DC99F6EFE53ADDA80974655B26B8DF8'|lang}--></th>
+    <td>
+    	<a href="javascript:void(0)" onclick="KE.create('question')"><!--{'FC04B2EDCC5D8EB765739EFF3F733A69'|lang}--></a>
+        <a href="javascript:void(0)" onclick="KE.remove('question')"><!--{'916A4D1CD3E92D5F10566BB3F6D0F3D4'|lang}--></a><br />
+    	<textarea name="question" cols="70" rows="6" id="question"></textarea>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'C08A41C4BE1582F12E5DB69330DF48EE'|lang}--></th>
+    <td>
+    	<a href="javascript:void(0)" onclick="KE.create('answer')"><!--{'FC04B2EDCC5D8EB765739EFF3F733A69'|lang}--></a>
+        <a href="javascript:void(0)" onclick="KE.remove('answer')"><!--{'916A4D1CD3E92D5F10566BB3F6D0F3D4'|lang}--></a><br />
+   		<textarea name="answer" cols="70" rows="12" id="answer"></textarea>
+    </td>
+  </tr>
+  <tr><th colspan="2"><input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /></th></tr>
+</table>
+</form>
+</center>

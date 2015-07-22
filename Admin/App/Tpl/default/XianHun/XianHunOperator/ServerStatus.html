@@ -1,0 +1,104 @@
+<script language="javascript">
+$(function(){
+	$("#operator_id").change(function(){
+		location.href=url+"?c=<!--{$__CONTROL__}-->&a=<!--{$__ACTION__}-->&zp=<!--{$__PACKAGE__}-->&operator_id="+$(this).val();
+	});
+})
+function ajaxstatus(id){
+		$.ajax({
+		    url: '<!--{$checkuserurl}-->&id='+id,
+		    type: 'GET',
+		    dataType:'json',
+		    error: function(){
+		        alert('Error loading XML document');
+		    },
+		    success: function(dataResult){
+		    	if(dataResult.status==1){
+		    		$('#status_id_'+id).html("<font color='#00cc00'>"+dataResult.msg+"</font>");
+		    	}else{
+		    		$('#status_id_'+id).html("<font color='red'>"+dataResult.msg+"</font>");
+		    	}
+		    }
+		});
+}
+function ajaxmangen(id,statusid){
+	$.ajax({
+	    url: '<!--{$manageurl}-->&id='+id+'&statusid='+statusid,
+	    type: 'GET',
+	    dataType:'json',
+	    error: function(){
+	        alert('Error loading XML document');
+	    },
+	    success: function(dataResult){
+	    	if(dataResult.status==1){
+	    		$('#status_id_'+id).html("<font color='#00cc00'>"+dataResult.msg+"</font>");
+	    	}else{
+	    		alert(dataResult.msg);
+	    	}
+	    }
+	});
+}
+function ajaxkick(id){
+	$.ajax({
+	    url: '<!--{$kickOnlineurl}-->&id='+id,
+	    type: 'GET',
+	    dataType:'json',
+	    error: function(){
+	        alert('Error loading XML document');
+	    },
+	    success: function(dataResult){
+	    	if(dataResult.status==1){
+	    		$('#status_id_'+id).html("<font color='#00cc00'>"+dataResult.msg+"</font>");
+	    		
+	    	}else{
+	    		$('#status_id_'+id).html("<font color='red'>"+dataResult.msg+"</font>");
+	    	}
+	    }
+	});
+}
+</script>
+
+<fieldset>
+	<legend>运营商选择</legend>
+    <select id="operator_id" name="operator_id"><option value="">请选运营商</option><!--{html_options options=$operatorList selected=$selectedOperatorId}--></select>
+</fieldset>
+<fieldset>
+  <legend>服务器状态</legend>
+
+<table width="100%" border="0" cellpadding="3">
+<tr>
+	<th>服务器Id</th>
+	<th>服务器名称</th>
+	<th>服务器Url</th>
+	<th>服务器状态</th>
+	<th>操作</th>
+</tr>
+<!--{foreach from=$dataList item=list}-->
+<tr>
+	<td><!--{$list.Id}--></td>
+	<td><!--{$list.server_name}--></td>
+	<td><!--{$list.server_url}--></td>
+	<td id='status_id_<!--{$list.Id}-->'>
+	<!--{$list.server_status}-->
+	</td>
+	<td>
+	<input class="btn-blue btnclass" type="button" value="获取状态" onclick='ajaxstatus("<!--{$list.Id}-->")'>
+	<input class="btn-blue closeclass" type="button" value="关闭" onclick='ajaxmangen("<!--{$list.Id}-->","-1")'>
+	<input class="btn-blue openclass" type="button" value="开启" onclick='ajaxmangen("<!--{$list.Id}-->","1")'>
+	<input class="btn-blue kickclass" type="button" value="踢人" onclick='ajaxkick("<!--{$list.Id}-->")'>
+	</td>
+</tr>
+<!--{/foreach}-->
+<tr>
+<td colspan='5'>
+<input type='button' class='btn-blue' onclick="$('.btnclass').click();" value='全服获取状态'/>
+<input type='button' class='btn-blue' onclick="if(window.confirm('确定全服关闭吗?'))$('.closeclass').click()" value='全服关闭'/>
+<input type='button' class='btn-blue' onclick="if(window.confirm('确定全服开启吗?'))$('.openclass').click()" value='全服开启'/>
+<input type='button' class='btn-blue' onclick="if(window.confirm('确定全服踢人吗?'))$('.kickclass').click()" value='全服踢人'/>
+</td>
+</tr>
+</table>
+
+
+
+</fieldset>

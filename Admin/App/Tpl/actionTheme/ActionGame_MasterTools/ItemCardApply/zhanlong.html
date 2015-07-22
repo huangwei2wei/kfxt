@@ -1,0 +1,171 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript">
+//KE.init({id:'title',imageUploadJson : '<!--{$url.UploadImg_Bulletin}-->',afterCreate:function(id){KE.util.focus(id)}});
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#title").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"不能为空,请确认"});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"不能为空,请确认"});
+	$("#interval").formValidator({onshow:"请输入时间间隔",oncorrect:"输入正确"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"时间间隔不正确"});
+})
+function fontStyle(color,b,em){
+	var font1='<font color="'+color+'">';
+	var font2='</font>';
+	var b1='<b>';
+	var b2='</b>';
+	var em1='<em>';
+	var em2='</em>';
+	if(!color){
+		font1 = font2 = '';
+	}
+	if(!b){
+		b1 = b2 = '';
+	}
+	if(!em){
+		em1 = em2 = '';
+	}
+	var obj = $('#title');
+	obj.val(obj.val()+font1+b1+em1+'请输入文字'+em2+b2+font2);
+	view()
+}
+function linkAdd(){
+	var obj = $('#title');
+	obj.val(obj.val()+'<a href="event:请输入地址">请输入内容</a>');
+	view()
+}
+function view(){
+	$('#view').html($('#title').val());
+}
+
+</script>
+<fieldset>
+<legend>礼包<a href="<!--{$Item_url}-->">[更新道具缓存]</a></legend>
+<form action="" method="post" id="form">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<input type="hidden" name="id" value="<!--{$selected.id|default:"0"}-->" />
+    <!--{*<a href="javascript:void(0)" onclick="KE.create('title')">加载编辑器</a>*}-->
+	<!--{*<a href="javascript:void(0)" onclick="KE.remove('title')">卸载编辑器</a>*}-->
+    <table width="98%" border="0" cellpadding="3">
+    	<tr>
+        <th scope="row">区ID</th>
+        <td><input type="text" class="text" name="WorldID" value="<!--{$data.WorldID}-->"/>
+        </td>
+      </tr>
+       <tr>
+        <th scope="row">礼包ID</th>
+        <td><input type="text" class="text" name="PackID" value="<!--{$data.PackID}-->"/>
+        </td>
+      </tr>
+       <tr>
+        <th scope="row">礼包名</th>
+        <td><input type="text" class="text" name="PackName" value="<!--{$data.PackName}-->"/>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">礼包类型</th>
+        <td><select name="PackType">
+		    <option value="0">全部获取</option>
+			<option value="1">几率获取</option>
+			<option value="2">互斥获取</option>
+		</select>
+        </td>
+      </tr>
+       <tr>
+        <th scope="row">礼包描述</th>
+        <td><textarea name="Describes" style="width:600px; height:200px;" ><!--{$data.Describes}--></textarea><div id="titleTip"></div>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">礼包内容</th>
+        <td>
+        	<textarea name="ItemList" id="title" style="width:600px; height:200px;" ><!--{$data.ItemList}--></textarea><div id="titleTip"></div>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">礼包内容格式</th>
+        <td>
+        物品ID_数量_职业需求_强化等级_附加属性类型|附加属性比例;物品ID_数量_职业需求_强化等级_#随即属性数量_最小百分比-最大百分比;物品ID_数量_职业需求;物品ID_数量$几率;）$几率 = 互斥几率 或 获取几率（万分比）
+        <br>固定部分的格式：
+物品ID_数量<br>
+
+可选但必须按顺序填写部分的格式：<br>
+_职业需求<br>
+_强化等级<br>
+_附加属性类型|附加属性比例<br>
+（每一个可选项必须包含前面的可选项，比如要指定_强化等级就必须要有_职业需求）<br>
+
+可选无顺序部分的格式:<br>
+$几率<br>
+B绑定<br>
+D时间耐久<br>
+M到期时间<br>
+L流失时间<br>
+#随机属性数量_最小百分比-最大百分比<br>
+
+P.S.
+物品数量：最大为该物品的最大叠加数。
+职业需求：按位计算出的值。
+0 猛将<br>
+1 术士男<br>
+2 术士女<br>
+3 天师<br>
+如果是全职业，也就是0;1;2;3;，那么值就是15<br>
+
+强化等级：最大为10。<br>
+附加属性：见附加属性<br>
+几率：指定几率，是否互斥几率，有礼包获取类型来决定。<br>
+绑定：0 不绑定，1 绑定<br>
+时间耐久：道具可用时间，单位秒，下线不计时。<br>
+到期时间：格式化时间 (YYYY-MM-DD HH:MM:SS)，到期后，道具删除。<br>
+流失时间：道具可用时间，单位秒，下线计时。<br>
+时间耐久、到期时间、流失时间三者互斥！<br>
+        </td>
+   		</tr>
+   		
+   		<tr>
+        <th scope="row">道具查询</th>
+        <td>
+       
+        	<table width="100%" border="0" cellpadding="3">
+          <tr>
+          <!--{foreach from=$items item=list key=typeId name=foo}-->              
+            <td>
+                <div style="background:white;margin:6px;font-size:14px;border:1px dashed silver;padding:5px;width:250px;">
+                    <div style="overflow:auto;height:200px; width:250px;text-align:left;">
+                        <!--{foreach from=$list item=itemName key=itemId}--> 
+                            <div style="font-size:13px; margin-top:4px;">
+                            ID:<!--{$itemName.ItemID}-->&nbsp;&nbsp;名称：<!--{$itemName.ItemName}-->
+                                <!--<input type="checkbox" onclick="makeInput($(this));" id="checkboxItem<!--{$itemId}-->" itemId="<!--{$itemId}-->" itemName="<!--{$itemName}-->">
+                                <span id="input_<!--{$itemId}-->"></span>-->
+                            </div>
+                        <!--{/foreach}--> 
+                    </div>
+                </div>
+            </td>
+            <!--{if $smarty.foreach.foo.index%3==2}--> 
+                </tr><tr>
+            <!--{/if}-->
+          <!--{/foreach}--> 
+
+          </tr>
+        </table>
+        </td>
+   		</tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

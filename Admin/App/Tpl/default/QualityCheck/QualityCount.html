@@ -1,0 +1,48 @@
+<fieldset>
+	<legend>获取工单</legend>
+    <form action="" method="post">
+    
+    <div>
+    	<!--{foreach from=$user item=u}-->
+    	<input <!--{if $u.is_post==1}-->checked="checked"<!--{/if}--> type="checkbox" name='userid[]' value='<!--{$u.Id}-->'/><!--{$u.full_name}-->&nbsp;&nbsp;
+    	<!--{/foreach}-->
+	</div>
+    选择日期：
+    <input type="text" class="text" name="start_date" value="<!--{$selectedTime.start}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+    至
+    <input type="text" class="text" name="end_date" value="<!--{$selectedTime.end}-->" onFocus="WdatePicker({startDate:'%y-%M-01 23:59:59',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+    <input type="submit" class="btn-blue" value="统计"/>
+    </form>
+    <!--{if $addOrderDeatil}-->
+    您获取了<font color="#FF0000"><b><!--{$addOrderDeatil.num}--></b></font>个工单，ID分别为[ <em><!--{$addOrderDeatil.addIds}--></em> ]
+    <!--{/if}-->
+</fieldset>
+
+<fieldset>
+	<legend>工单列表</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th>总数</th>
+        <th>对</th>
+        <th>加分</th>
+        <th>错字</th>
+        <th>内容不完整</th>
+        <th>内容错误</th>
+        <th>建议优化</th>
+        <th>超时</th>
+        <th>其它</th>
+      </tr>
+      <tr>
+        <td align="center"><!--{$dataList.count}--></td>
+        <td align="center"><!--{$dataList.true}--></td>
+        <td align="center"><!--{$dataList.Points}--></td>
+        <td align="center"><!--{$dataList.Typo}--></td>
+        <td align="center"><!--{$dataList.incomplete}--></td>
+        <td align="center"><!--{$dataList.Contents_error}--></td>
+       	<td align="center"><!--{$dataList.optimization}--></td>
+        <td align="center"><!--{$dataList.Out}--></td>
+        <td align="center"><!--{$dataList.Other}--></td>
+      </tr>
+    </table>
+</fieldset>
+

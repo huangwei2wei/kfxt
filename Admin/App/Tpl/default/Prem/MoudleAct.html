@@ -1,0 +1,38 @@
+<fieldset>
+	<legend>动作列表</legend>
+    <form method="post" action="<!--{$url.Prem_Moudle_cache}-->" >
+      <table width="100%" border="0" cellspacing="0" cellpadding="3">
+          <tr>
+            <th scope="col">动作</th>
+            <th scope="col">动作名称</th>
+            <th scope="col">是否显示</th>
+            <th scope="col">权限</th>
+          </tr>
+          <!--{foreach from=$act item=actList}-->
+          <tr>
+            <th><!--{$actList.value}--></th>
+            <th><!--{$actList.name}--></th>
+            <th><!--{if $actList.display}-->是<!--{else}-->否<!--{/if}--></th>
+            <th><input type="text" class="text" style="width:700px;" name="act[<!--{$actList.value}-->]" value="<!--{$actList.act}-->" /></th>
+          </tr>
+              <!--{if $actList.class_methods}-->
+              <!--{foreach from=$actList.class_methods item=childList}-->
+              <tr>
+                <td align="center"><!--{$childList.value}--></td>
+                <td align="center"><!--{$childList.name}--></td>
+                <td align="center"><!--{if $childList.display}-->是<!--{else}-->否<!--{/if}--></td>
+                <td align="center"><input type="text" class="text" style="width:700px;" name="act[<!--{$actList.value}-->_<!--{$childList.value}-->]" value="<!--{$childList.act}-->" /></td>
+              </tr>
+              <!--{/foreach}-->
+              <!--{/if}-->
+          <!--{foreachelse}-->
+          <tr>
+            <th colspan="4"><!--{$noData}--></th>
+          </tr>
+          <!--{/foreach}-->
+          <tr>
+            <th colspan="4"><input type="submit" class="btn-blue" value="创建ACT文件"  /></th>
+          </tr>
+      </table>
+  </form>
+</fieldset>

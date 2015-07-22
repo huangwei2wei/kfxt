@@ -1,0 +1,104 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript">
+//KE.init({id:'title',imageUploadJson : '<!--{$url.UploadImg_Bulletin}-->',afterCreate:function(id){KE.util.focus(id)}});
+$(function(){
+	$.formValidator.initConfig({
+		formid:"form",
+		onerror:function(){return false;},
+		onsuccess:function(){
+			$title = $('#title').attr('value');
+			$interval = $('#interval').attr('value');
+			if($(":checkbox[name='server_ids[]']:checked").attr('value') == undefined){
+				alert('请选择服务器！'); return false;
+			}
+			$('.returnTip').remove();	//去掉旧提示
+			$(":checkbox[name='server_ids[]']:checked").each(function(i,n){
+					var curLi=$("#server_"+n.value);
+					$("#form").ajaxSubmit({
+						dataType:'json',
+						data:{server_id:n.value},
+						success:function(data){
+							var fontColor=(data.status==1)?'#00cc00':'#ff0000';
+							curLi.append("<font class='returnTip' color='"+fontColor+"'> "+data.info+"</font>");
+						}
+					});
+			});
+			alert('处理完成！');
+			return false;
+		},
+	
+	});
+	$("#title").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"邮件标题不能为空,请确认"});
+
+})
+function fontStyle(color,b,em){
+	var font1='<font color="'+color+'">';
+	var font2='</font>';
+	var b1='<b>';
+	var b2='</b>';
+	var em1='<em>';
+	var em2='</em>';
+	if(!color){
+		font1 = font2 = '';
+	}
+	if(!b){
+		b1 = b2 = '';
+	}
+	if(!em){
+		em1 = em2 = '';
+	}
+	var obj = $('#title');
+	obj.val(obj.val()+font1+b1+em1+'请输入文字'+em2+b2+font2);
+	view()
+}
+function linkAdd(){
+	var obj = $('#title');
+	obj.val(obj.val()+'<a target="_blank" href="event:请输入地址">请输入内容</a>');
+	view()
+}
+function view(){
+	$('#view').html($('#title').val());
+}
+</script>
+<fieldset>
+<legend>编辑公告</legend>
+<form action="" method="post" id="form">
+    <!--{*<a href="javascript:void(0)" onclick="KE.create('title')">加载编辑器</a>*}-->
+	<!--{*<a href="javascript:void(0)" onclick="KE.remove('title')">卸载编辑器</a>*}-->
+    <table width="98%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">邮件标题</th>
+        <td>
+        	<div>
+				颜色<select id="color_select">
+                	<option value="">默认</option>
+                	<option value="FF0000">红色</option>
+                    <option value="0000FF">蓝色</option>
+                    <option value="00FF00">绿色</option>
+                    <option value="FFFF00">黄色</option>
+                    <option value="FF00FF">紫色</option>
+                </select>
+                加粗<input id="b_select" type="checkbox" value="b" />
+                下划线<input id="em_select" type="checkbox" value="em" />
+                <input class="btn-blue" type="button" value="添加" onclick="fontStyle($('#color_select').val(),$('#b_select').attr('checked'),$('#em_select').attr('checked'));" />
+                <input class="btn-blue" type="button" value="添加超链接" onclick="linkAdd();" />
+       		</div>
+        	<textarea name="title" id="title" style="width:600px; height:200px;" onkeyup="view();"><!--{$_POST.Message|htmlspecialchars}--></textarea><div id="titleTip"></div>
+            <div>
+            	<input class="btn-blue" type="button" value="预览" onclick="view();" />
+                <div id="view"></div>
+            </div>
+         </td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" name='subbutton' value="提交" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>

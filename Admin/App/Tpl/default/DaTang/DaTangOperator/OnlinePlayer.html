@@ -1,0 +1,22 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+	<legend>在线统计</legend>
+    <form action="" method="post">
+        <table width="30%" border="0" cellpadding="3">
+          <tr>
+            <th scope="row" width="100">当前在线人数|当日最高在线人数|当天最低在线人数</th>
+          </tr>
+          <tr>
+            <th scope="row" width="100"><!--{$online}--></th>
+          </tr>
+        </table>
+	</form>
+	
+</fieldset>
+<!--{/if}-->

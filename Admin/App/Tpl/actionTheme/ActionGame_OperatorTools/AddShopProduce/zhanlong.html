@@ -1,0 +1,303 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript">
+//KE.init({id:'title',imageUploadJson : '<!--{$url.UploadImg_Bulletin}-->',afterCreate:function(id){KE.util.focus(id)}});
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#title").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"不能为空,请确认"});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"不能为空,请确认"});
+	$("#interval").formValidator({onshow:"请输入时间间隔",oncorrect:"输入正确"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"时间间隔不正确"});
+})
+function fontStyle(color,b,em){
+	var font1='<font color="'+color+'">';
+	var font2='</font>';
+	var b1='<b>';
+	var b2='</b>';
+	var em1='<em>';
+	var em2='</em>';
+	if(!color){
+		font1 = font2 = '';
+	}
+	if(!b){
+		b1 = b2 = '';
+	}
+	if(!em){
+		em1 = em2 = '';
+	}
+	var obj = $('#title');
+	obj.val(obj.val()+font1+b1+em1+'请输入文字'+em2+b2+font2);
+	view()
+}
+function linkAdd(){
+	var obj = $('#title');
+	obj.val(obj.val()+'<a href="event:请输入地址">请输入内容</a>');
+	view()
+}
+function view(){
+	$('#view').html($('#title').val());
+}
+function addattribute(){
+	var select = "<select name='attribute[]'>";
+	<!--{foreach from=$attribute item=list}-->
+		select+="<option value='<!--{$list.Key}-->'><!--{$list.Note}--></option>"
+	<!--{/foreach}-->
+		select+="</select>";
+		select+="&nbsp;&nbsp;<input class='text' type='text' style='width:50px;' name='attribute_mun[]'  /><br>";
+	$('#addattribute').append(select);	
+}
+
+function addproduct(item_id,item_name){
+	$("#Item_ID").val(item_id);
+	$("#ItemName").val(item_name);
+}
+</script>
+<fieldset>
+<legend>添加商品</legend>
+<form action="" method="post" id="form">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<input type="hidden" name="id" value="<!--{$selected.id|default:"0"}-->" />
+    <!--{*<a href="javascript:void(0)" onclick="KE.create('title')">加载编辑器</a>*}-->
+	<!--{*<a href="javascript:void(0)" onclick="KE.remove('title')">卸载编辑器</a>*}-->
+    <table width="98%" border="0" cellpadding="3">
+    	<tr>
+        <th scope="row">区ID</th>
+        <td><input type="text" class="text" name="WorldID" value="<!--{$data.WorldID}-->"/>
+        </td>
+      </tr>
+       <tr>
+        <th scope="row">序号</th>
+        <td><input type="text" class="text" name="SellID" value="<!--{$data.SellID}-->"/>
+        </td>
+      </tr>
+       <tr>
+        <th scope="row">排序等级</th>
+        <td><input type="text" class="text" name="OrderLevel" value="<!--{$data.OrderLevel}-->"/>
+        </td>
+      </tr>
+       <tr>
+        <th scope="row">标签页ID</th>
+        <td><input type="text" class="text" name="ShopLableID" value="<!--{$data.ShopLableID}-->"/>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">是否在商城面板隐藏</th>
+        <td>显示<input class="radio" type="radio" value="0" name="IsHide"  <!--{if $data.IsHide=="0"}-->checked="checked"<!--{/if}-->>
+        	&nbsp;隐藏<input class="radio" type="radio" value="1" name="IsHide" <!--{if $data.IsHide=="1"}-->checked="checked"<!--{/if}-->>
+        	
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">适用职业</th>
+        <td>猛将<input class="checkbox" type="checkbox" value="0" name="NeedJob[]"  <!--{if $data.NeedJob.0=="0"}-->checked="checked"<!--{/if}-->>
+        	&nbsp;术士男<input class="checkbox" type="checkbox" value="1" name="NeedJob[]" <!--{if $data.NeedJob.1=="1"}-->checked="checked"<!--{/if}-->>
+        	&nbsp;术士女<input class="checkbox" type="checkbox" value="2" name="NeedJob[]" <!--{if $data.NeedJob.2=="2"}-->checked="checked"<!--{/if}-->>
+        	&nbsp;天师<input class="checkbox" type="checkbox" value="3" name="NeedJob[]" <!--{if $data.NeedJob.3=="3"}-->checked="checked"<!--{/if}-->>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">标签页名</th>
+        <td><input type="text" class="text" name="ShopLableName" value="<!--{$data.ShopLableName}-->"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">道具ID</th>
+        <td><input type="text" class="text" name="ItemID" id="Item_ID" value="<!--{$data.ItemID}-->"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">道具名称</th>
+        <td><input type="text" class="text" name="ItemName" id="ItemName" value="<!--{$data.ItemName}-->"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">图标链接</th>
+        <td><input type="text" class="text" name="IconFile" value="<!--{$data.IconFile}-->"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">道具数量</th>
+        <td><input type="text" class="text" name="ItemNum" value="<!--{$data.ItemNum}-->"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">强化等级</th>
+        <td><input type="text" class="text" name="ImproveLevel" value="<!--{$data.ImproveLevel}-->"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">强化属性</th>
+        <td>
+        <input type="button" class="btn-blue" value="添加属性" onclick="addattribute()" />
+      	<div id="addattribute">
+      	
+      	</div>
+        </td>
+      </tr>
+      
+   	<tr>
+        <th scope="row">过期时间</th>
+        <td>
+        <input type="text" class="text" name="MaturityTime" value="<!--{$data.MaturityTime}-->" onFocus="WdatePicker({startDate:'<!--{$dataList.Start_time|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">时间耐久度</th>
+        <td><input type="text" class="text" name="TimeDurable" value="<!--{$data.TimeDurable}-->"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">货币类型</th>
+        <td>
+       		 游戏币<input class="checkbox" type="checkbox" value="0" name="CurrencyType[]"  <!--{if $data.CurrencyType.0=="0"}-->checked="checked"<!--{/if}-->>
+        	&nbsp;元宝<input class="checkbox" type="checkbox" value="1" name="CurrencyType[]" <!--{if $data.CurrencyType.1=="1"}-->checked="checked"<!--{/if}-->>
+        	&nbsp; 绑定元宝<input class="checkbox" type="checkbox" value="2" name="CurrencyType[]" <!--{if $data.CurrencyType.2=="2"}-->checked="checked"<!--{/if}-->>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">售卖价格</th>
+        <td>
+       		 游戏币<input class="checkbox" type="checkbox" value="0" name="PriceSell[]"  <!--{if $data.PriceSell.0.a=="0"}-->checked="checked"<!--{/if}-->><input class="text" type="text" style="width:50px;" name="PriceSell0" value="<!--{$data.PriceSell.0.b}-->"  />
+        	&nbsp;元宝<input class="checkbox" type="checkbox" value="1" name="PriceSell[]" <!--{if $data.PriceSell.1.a=="1"}-->checked="checked"<!--{/if}-->><input class="text" type="text" style="width:50px;" name="PriceSell1"  value="<!--{$data.PriceSell.1.b}-->"/>
+        	&nbsp; 绑定元宝<input class="checkbox" type="checkbox" value="2" name="PriceSell[]" <!--{if $data.PriceSell.2.a=="2"}-->checked="checked"<!--{/if}-->><input class="text" type="text" style="width:50px;" name="PriceSell2"  value="<!--{$data.PriceSell.2.b}-->"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">原价</th>
+        <td>
+         	游戏币<input class="checkbox" type="checkbox" value="0" name="Original[]"  <!--{if $data.Original.0.a=="0"}-->checked="checked"<!--{/if}-->><input class="text" type="text" style="width:50px;" name="Original0" value="<!--{$data.Original.0.b}-->"  />
+        	&nbsp;元宝<input class="checkbox" type="checkbox" value="1" name="Original[]" <!--{if $data.Original.1.a=="1"}-->checked="checked"<!--{/if}-->><input class="text" type="text" style="width:50px;" name="Original1"  value="<!--{$data.Original.1.b}-->"/>
+        	&nbsp; 绑定元宝<input class="checkbox" type="checkbox" value="2" name="Original[]" <!--{if $data.Original.2.a=="2"}-->checked="checked"<!--{/if}-->><input class="text" type="text" style="width:50px;" name="Original2"  value="<!--{$data.Original.2.b}-->"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">是否买入即绑定</th>
+        <td>是<input class="radio" type="radio" value="1" name="IsBuyBind" <!--{if $data.IsBuyBind==1}-->checked="checked"<!--{/if}-->>
+        	&nbsp;否<input class="radio" type="radio" value="0" name="IsBuyBind" <!--{if $data.IsBuyBind==0}-->checked="checked"<!--{/if}-->>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">是否热卖</th>
+        <td>是<input class="radio" type="radio" value="1" name="IsHot" <!--{if $data.IsHot==1}-->checked="checked"<!--{/if}-->>
+        	&nbsp;否<input class="radio" type="radio" value="0" name="IsHot" <!--{if $data.IsHot==0}-->checked="checked"<!--{/if}-->>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">是否打折</th>
+        <td>是<input class="radio" type="radio" value="1" name="IsDiscout" <!--{if $data.IsDiscout==1}-->checked="checked"<!--{/if}-->>
+        	&nbsp;否<input class="radio" type="radio" value="0" name="IsDiscout" <!--{if $data.IsDiscout==0}-->checked="checked"<!--{/if}-->>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">是否下线后还记时间流失</th>
+        <td>是<input class="radio" type="radio" value="1" name="IsTimeLoss" <!--{if $data.IsTimeLoss==1}-->checked="checked"<!--{/if}-->>
+        	&nbsp;否<input class="radio" type="radio" value="0" name="IsTimeLoss" <!--{if $data.IsTimeLoss==0}-->checked="checked"<!--{/if}-->>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">售卖类型</th>
+        <td>过期<input class="radio" type="radio" value="0" name="SaleType" <!--{if $data.SaleType==0}-->checked="checked"<!--{/if}-->>
+        	&nbsp;正常<input class="radio" type="radio" value="1" name="SaleType" <!--{if $data.SaleType==1}-->checked="checked"<!--{/if}--><!--{if $data.SaleType==""}-->checked="checked"<!--{/if}-->>
+        	&nbsp;限时<input class="radio" type="radio" value="2" name="SaleType" <!--{if $data.SaleType==2}-->checked="checked"<!--{/if}-->>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">商品描述</th>
+        <td>
+        	<div>
+				颜色<select id="color_select">
+                	<option value="">默认</option>
+                	<option value="FF0000">红色</option>
+                    <option value="0000FF">蓝色</option>
+                    <option value="00FF00">绿色</option>
+                    <option value="FFFF00">黄色</option>
+                    <option value="FF00FF">紫色</option>
+                </select>
+                加粗<input id="b_select" type="checkbox" value="b" />
+                下划线<input id="em_select" type="checkbox" value="em" />
+                <input class="btn-blue" type="button" value="添加" onclick="fontStyle($('#color_select').val(),$('#b_select').attr('checked'),$('#em_select').attr('checked'));" />
+                <input class="btn-blue" type="button" value="添加超链接" onclick="linkAdd();" />
+       		</div>
+        	<textarea name="SellText" id="title" style="width:600px; height:200px;" onkeyup="view();"><!--{$data.SellText}--></textarea><div id="titleTip"></div>
+            <div>
+            	<input class="btn-blue" type="button" value="预览" onclick="view();" />
+                <div id="view"></div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">售卖时间</th>
+        <td>
+        <input type="text" class="text" style="width:300px;" name="SaleTime" <!--{if $_GET.SellID!=""}-->value="<!--{$data.SaleTime}-->"<!--{else}-->value="[*][*][*][17:00-22:00]"<!--{/if}-->/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">时间格式</th>
+        <td>
+        [*][*][*][17:00-22:00]				表示每天17点到22点<br>
+		[2012][*][10-10][00:00-23:59]		表示2012年每月10日<br>
+		[2012][9][w4-w6][00:00-23:59]		表示2012年9月的每个周5到周六<br>        
+        </td>
+        <tr>
+   		<th scope="row">道具查询</th>
+        <td>
+       
+        	<table width="100%" border="0" cellpadding="3">
+          <tr>
+          <!--{foreach from=$items item=list key=typeId name=foo}-->              
+            <td>
+                <div style="background:white;margin:6px;font-size:14px;border:1px dashed silver;padding:5px;width:250px;">
+                    <div style="overflow:auto;height:200px; width:250px;text-align:left;">
+                        <!--{foreach from=$list item=itemName key=itemId}--> 
+                            <div style="font-size:13px; margin-top:4px;">
+                            ID:<!--{$itemName.ItemID}-->&nbsp;&nbsp;名称：<!--{$itemName.ItemName}-->
+                                <input type="radio" onclick="addproduct('<!--{$itemName.ItemID}-->','<!--{$itemName.ItemName}-->');" id="checkboxItem" name="checkboxItem" item_Id="<!--{$itemName.ItemID}-->" itemName="<!--{$itemName.ItemName}-->">
+
+                            </div>
+                        <!--{/foreach}--> 
+                    </div>
+                </div>
+            </td>
+            <!--{if $smarty.foreach.foo.index%3==2}--> 
+                </tr><tr>
+            <!--{/if}-->
+          <!--{/foreach}--> 
+
+          </tr>
+          </table>
+        </td>
+   		</tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

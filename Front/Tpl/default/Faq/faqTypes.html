@@ -1,0 +1,7 @@
+<div class="pquantitle">{$faqKind[$gameTypeId]['name']}</div>
+<div class="servicehaed">
+    <p>
+    <volist name="types" id="vo">
+        <a href="{:U("Faq/index/game_type_id/$gameTypeId/typeid/$vo[Id]")}">{$vo.name}</a>│ 
+    </volist>
+</div>

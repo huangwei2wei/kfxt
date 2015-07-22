@@ -1,0 +1,102 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"公告内容不能为空,请确认"});
+})
+
+function seachuser(){
+	$.ajax({
+		dataType:'json',
+		type: "POST",
+		url: "<!--{$ajaxurl}-->",
+		data:{username:$('#username').val(),seachuser:$('#seachuser').val()},
+		success: function(msg){
+			$('#ordercontent').html('');
+			var json = eval(msg);
+			if(0 == json.status){
+				alert(json.info);
+			}
+			else if(1 == json.status){
+				$.each(json.data,
+						function(Id,name){ 
+							$("#ordercontent").append('<tr><th style="text-align:left">&nbsp;&nbsp;&nbsp;&nbsp;'+name+'</th></tr>');
+						}
+				);
+				//$("#ordercontent").after(json.data['']);
+			}
+		}
+	});
+}
+</script>
+<fieldset>
+<legend>[<a href="#">修改玩家数值</a>][<a href="#">修改属性装备</a>]</legend>
+
+    	<table width="100%" border="0" cellpadding="3">
+    		<tr>
+    			<th scope="row" nowrap="nowrap" >搜索：</th>
+    			<td>
+    				<input type="radio" value="1" name="seachuser" id="seachuser" checked/>用户ID
+    				<input type="radio" value="0" name="seachuser" id="seachuser"/>昵称
+    				<input type="text" name="username" class="text" id="username"/>
+    				<input type='button' name="submitusername" value="搜索" onclick="seachuser()" class="btn-blue"/>
+    			</td>
+    			
+    		</tr>
+    	</table>
+	<table width="50%" border="0" cellpadding="3" id="ordercontent">
+		
+	</table>
+    <form action="" method="post" id="form">
+    <table width="100%" border="0" cellpadding="3">
+    	<tr>
+            <th nowrap="nowrap" scope="row">
+               	申请理由：
+            </th>
+            <td>
+               <textarea name="content" cols="40" rows="8" id="content"></textarea>
+               <div id="contentTip"></div>
+            </td>
+        </tr>
+        <tr>
+            <th nowrap="nowrap" scope="row">
+               	元宝：
+            </th>
+            <td>
+               <input type="text" name="gold" class="text" value="0" />
+               <div id="goldTip"></div>
+            </td>
+        </tr>
+        <tr>
+            <th nowrap="nowrap" scope="row">
+               	铜钱：
+            </th>
+            <td>
+               <input type="text" name="copper" class="text" value="0"/>
+               <div id="copperTip"></div>
+            </td>
+        </tr>
+        <tr>
+            <th nowrap="nowrap" scope="row">
+               	精力：
+            </th>
+            <td>
+               <input type="text" name="token" class="text" value="0"/>
+               <div id="tokenTip"></div>
+            </td>
+        </tr>
+       <tr>
+       	<td></td>
+       	<td><input class="btn-blue" type="submit" value="提交申请"></td>
+       </tr>
+    </table>
+    </form>
+</fieldset>
+<!--{/if}-->

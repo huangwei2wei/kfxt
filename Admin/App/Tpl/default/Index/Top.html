@@ -1,0 +1,181 @@
+<html>
+<head>
+<title>管理页面 </title>
+<meta http-equiv=Content-Type content=text/html;charset=utf8 />
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/jquery.js"></script>
+<script language="JavaScript">
+function logout(){
+	if (confirm("<!--{'CONFIRMLOGOUT'|lang}-->")){
+		parent.location.href="<!--{$url.Index_LoginOut}-->";
+	}
+	return false;
+}
+
+function onLine(){
+	$.getJSON("<!--{$url.Index_SetOnline}-->",
+		  function(data){
+			  $("#mail_total").html(data.data.mail_total);
+			  $("#mail_not_red").html(data.data.mail_not_read);
+			  $("#incomplete_order_num").html(data.data.incomplete_order_num);
+		  }
+	);
+}
+
+function moudle(curBtn){
+	//$('#moudle_btn :button').attr('class','btn-blue');
+	//curBtn.attr('class','btn-red');
+	//parent.leftFrame.location.href=curBtn.attr('url');
+	window.open(curBtn.attr('url'),'','');
+}
+
+function changeMoudle(obj){
+	var text = obj.find('option:selected').text(); // 选中文本
+	var url = obj.val(); // 选中值
+	if(url != ''){
+		$('#moudle_btn :button').attr('class','btn-blue');
+		parent.leftFrame.location.href=url;
+		parent.document.title='SEVICE-'+text;
+	}
+}
+
+$(function(){
+	onLine();
+	var btn = $('#model_<!--{$_GET.value|default:"Default"}-->');
+	btn.attr('class','btn-red');
+	parent.document.title='SEVICE-'+btn.val();
+})
+
+//每30秒刷新一次
+setInterval('onLine()', 1000*30);
+</script>
+<style type="text/css">
+body,td,th {font-family: Verdana, Geneva, sans-serif;font-size: 12px;}
+body { margin:0px; padding:0px;}
+a {font-size: 12px;color: #09F;}
+a:link {text-decoration: none;color: #06F;}
+a:visited {text-decoration: none;color: #06F;}
+a:hover {text-decoration: underline;color: #000000;}
+a:active {text-decoration: none;color: #06F;}
+table{margin:2px;border-collapse: collapse; border:0px;}
+ul li{display:inline;padding:2px;}
+input{
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 2px;
+	font-size: 12px;
+}
+.btn {
+	display: inline-block;
+	padding: 5px 10px;
+	color: #777 !important;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 12px;
+	font-family: Verdana, Tahoma, Arial, sans-serif;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	/*text-shadow: 0 1px 1px rgba(255,255,255,0.9);*/
+	position: relative;
+	cursor: pointer;
+	border:1px solid #ccc !important;
+	background:#fff url("<!--{$__IMG__}-->/default/btn-overlay.png") repeat-x !important;
+}
+.btn:hover, .btn:focus, .btn:active {
+	outline:medium none;
+	border:1px solid #329ECC !important;
+	opacity:0.9;
+	-khtml-opacity: .9;
+	-moz-opacity: 0.9;
+	-moz-box-shadow:0 0 5px rgba(82, 168, 236, 0.5);
+	-webkit-box-shadow: 0 0 5px rgba(82, 168, 236, 0.5);
+	box-shadow: 0 0 5px rgba(82, 168, 236, 0.5);
+}
+
+.btn-green {
+	color: #fff !important;
+	/*text-shadow: 0 1px 1px rgba(0,0,0,0.25);*/
+	border:1px solid #749217 !important;
+	background-color: #6AB620 !important;
+}
+.btn-green:hover, .btn-green:focus, .btn-green:active {
+	-moz-box-shadow:0 0 5px rgba(116, 146, 23, 0.9);
+	-webkit-box-shadow: 0 0 5px rgba(116, 146, 23, 0.9);
+	box-shadow: 0 0 5px rgba(116, 146, 23, 0.9);
+	border:1px solid #749217 !important;
+}
+
+.btn-blue {
+	color: #fff !important;
+	/*text-shadow: 0 1px 1px rgba(0,0,0,0.25);*/
+	border:1px solid #2D69AC !important;
+	background-color: #3C6ED1 !important;
+}
+.btn-blue:hover, .btn-blue:focus, .btn-blue:active {
+	-moz-box-shadow:0 0 5px rgba(71, 131, 243, 0.9);
+	-webkit-box-shadow:0 0 5px rgba(71, 131, 243, 0.9);
+	box-shadow: 0 0 5px rgba(71, 131, 243, 0.9);
+	border:1px solid #2D69AC !important;
+}
+
+.btn-red {
+	color: #fff !important;
+	/*text-shadow: 0 1px 1px rgba(0,0,0,0.25);*/
+	border:1px solid #AE2B2B !important;
+	background-color: #D22A2A !important;
+}
+.btn-red:hover, .btn-red:focus, .btn-red:active {
+	-moz-box-shadow:0 0 5px rgba(174, 43, 43, 0.9);
+	-webkit-box-shadow:0 0 5px rgba(174, 43, 43, 0.9);
+	box-shadow: 0 0 5px rgba(174, 43, 43, 0.9);
+	border:1px solid #AE2B2B !important;
+}
+
+.btn-special {
+	font-size:110%;
+	width: 210px;
+}
+</style>
+</head>          
+<body style="border-bottom:5px solid #06508b;height:47px;background:url('<!--{$__IMG__}-->/default/top_bg.gif'); padding-top:10px;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td rowspan="2"><img style="padding-left:20px;" src="<!--{$__IMG__}-->/default/top_logo.gif" /></td>
+        <td valign="bottom"><font color="#FF0000"><!--{'PLEASEUSE'|lang}--> <a target="_blank" href="http://download.mozilla.org/?product=firefox-3.6.13&os=win&lang=zh-CN">FireFox[火狐]</a> <!--{'ORUSE'|lang}--> <a href="http://www.google.com/chrome/eula.html?hl=zh_cn&brand=CHMA&utm_campaign=zh_cn&utm_source=zh_cn-ha-apac-zh_cn-bk&utm_medium=ha&installdataindex=homepagepromo" target="_blank">google[chrome]</a> <!--{'BROWSER'|lang}-->,<!--{'NOWFOR'|lang}--> <b style="color:#09F">IE</b> <!--{'SUPPORTNOTWELL'|lang}--></font>
+              </td>
+        <td align="right" valign="bottom">
+        	<ul style="padding:0px; margin:0px; padding-right:10px;">
+                <li><!--{$userClass._nickName}-->[<!--{$userClass._userName}-->] <!--{'HELLOWORD'|lang}--></li>
+                <li><a target="main" href="<!--{$url.Index_Right}-->" style="color:#09F"><!--{'PERCONALPROFILE'|lang}--></a></li>
+                <li><a href="javascript:void(0)" onClick="logout();" style="color:#09F"><!--{'SECURITYLOGOUT'|lang}--></a></li>
+          </ul>    
+        </td>
+      </tr>
+      <tr>
+        <td align="left" id="moudle_btn">
+        	<!--{if $game}-->
+        	<select onChange="changeMoudle($(this))">
+            	<option value="admin.php?c=Index&a=Left&value=">-请选择-</option>
+            	<!--{foreach from=$game item=list}-->
+            	<option value="<!--{$list.url}-->"><!--{$list.name}--></option>
+            	<!--{/foreach}-->
+            </select>
+            <!--{/if}-->
+        	<!--{foreach from=$moudelMenu item=list}-->
+            	<input type="button" id="model_<!--{$list.value}-->" class="btn-blue" url="<!--{$list.url}-->" onClick="moudle($(this))" value="<!--{$list.name}-->" />
+            <!--{/foreach}-->
+        </td>
+        <td align="right" valign="bottom">
+        	<ul style="padding:0px; margin:0px; padding-right:10px; ">
+                <li>
+                	<b><!--{'MYTASK'|lang}--></b>:  <!--{'PENDING'|lang}--> (<a id="incomplete_order_num" target="main" href="<!--{$url.MyTask_Index}-->" style="color:#FF0000"></a>)
+                				<!--{'UNREADMSG'|lang}--> (<a id="mail_not_red" target="main" href="<!--{$url.NoReadUser_MailIndex}-->" style="color:#FF0000"></a>)
+                                <!--{'ALLMSG'|lang}-->(<a id="mail_total" target="main" href="<!--{$url.User_MailIndex}-->" style="color:#FF0000"></a>)
+                </li>
+            </ul>
+        </td>
+      </tr>
+    </table>
+</body>
+</html>

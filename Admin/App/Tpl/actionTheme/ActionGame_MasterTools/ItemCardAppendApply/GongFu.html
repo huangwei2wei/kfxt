@@ -1,0 +1,130 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+	<legend>
+    <!--{'2ED84C046C39199BABB66EC0A0624B1B'|lang}-->
+    </legend>
+<style>
+	.itemInput{width:35px;height:10px;border: 1px solid red;}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+//<!--{'B9DA394BE0ADF6505EBA651C144ED1EA'|lang}-->
+function makeInput(obj){
+	var itemId = obj.attr('itemId');
+	var itemName = obj.attr('itemName');
+	var str = '';
+	if(obj.attr('checked')){
+		str = '<input type="text" value="" class="itemInput" name="itemNum['+itemId+']" onblur="itemCollectAdd(\''+itemId+'\',\''+itemName+'\',$(this).val())" >';
+		str +='<input type="hidden" name="itemName['+itemId+']" value="'+itemName+'">'; 
+		$('#input_'+itemId).html(str);
+		$('#input_'+itemId).children().focus();
+	}else{
+		$('#input_'+itemId).html('');
+	}
+}
+//<!--{'BF52AB3C54240DF0E94B208B21905277'|lang}-->
+function itemCollectAdd(itemId,itemName,num){
+	if(itemId =='' || $.trim(num)=='')return false;
+	var itemsCollectId = 'itemsCollect'+itemId;
+	$('#'+itemsCollectId).remove();
+	num = parseInt(num);
+	if(num && num>0){
+		var str = '<div id="'+itemsCollectId+'" >'+itemName+'('+num+') <a href="javascript:itemCollectDel('+itemId+')"><!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}--></a></div>';
+		$('#itemsCollect').append(str);
+	}else{
+		$('input[name=itemNum['+itemId+']]').val('');
+	}
+}
+//<!--{'58187AF9BC6142FE074FE3798CF73DC3'|lang}-->
+function itemCollectDel(itemId){
+	if(itemId =='')return false;		
+	$('#checkboxItem'+itemId).attr('checked',false);
+	$('#input_'+itemId).html('');
+	$('#itemsCollect'+itemId).remove();
+}
+//<!--{'88B2312628EEC0909E13BD7ACC4785F4'|lang}-->
+function showemail(isShow){
+	var disabledValue = false;	//<!--{'31F0CFFD466C256BD250F7D1B56549B5'|lang}-->
+	var backgroundValue = "";	//<!--{'31F0CFFD466C256BD250F7D1B56549B5'|lang}-->
+	if(!isShow){
+		disabledValue = true;			//<!--{'5A7392A0D78BDDE002D8DF9F362707C3'|lang}-->
+		backgroundValue = "#F1EFF1";	//<!--{'5A7392A0D78BDDE002D8DF9F362707C3'|lang}-->
+	}
+	$('#mailTitle').attr('disabled',disabledValue).css('background',backgroundValue);
+	$('#mailContent').attr('disabled',disabledValue).css('background',backgroundValue);
+}
+function hhh(obj){
+	if(obj.attr('checked')){
+		$('#counts').attr("disabled", true);
+		$('#file').attr("disabled", false);
+	}else{
+		$('#counts').attr("disabled", false);
+		$('#file').attr("disabled", true);
+	}
+	
+}
+</script>
+<form action="" method="post" enctype="multipart/form-data">
+<input type="hidden" name="type" value="<!--{$_GET.type}-->">
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row"><!--{'9BC7F8EABA93AD47294F7DD971A66182'|lang}-->ID</th>
+    <td><!--{$classId}--><input type="hidden" name="classId" value="<!--{$classId}-->" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'854E1D4F9A2019E8B50DBEE5E22CEAC5'|lang}--></th>
+    <td><!--{$bindType.$bindTypeValue}--><input type="hidden" name="bindType" value="<!--{$bindTypeValue}-->" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'BBA84915BD376DB481521EC946FCEE0B'|lang}--></th>
+    <td><!--{html_radios options=$keyType name="keyType" selected=$selected.keyType}--></td>
+  </tr>
+  <!--{if $bindTypeValue==2}-->
+  <tr>
+    <th scope="row"><!--{'069A4B89AE4E24F7718E5DF99E80B75D'|lang}-->ID</th>
+    <td><input class="text" type="text" name="playerId" value=""></td>
+  </tr>
+  <tr>
+    <th scope="row"> <!--{'F4F76AD4FCD0E14CD14F8AFBCC95FA6E'|lang}--> </th>
+    <td>
+        <input type="radio" id="isSendMail_0" value="0" name="isSendMail" checked="checked" onchange="showemail(false)"><!--{'A26FC09FCC779F8804BA57229685DF37'|lang}-->
+        <input type="radio" id="isSendMail_1" value="1" name="isSendMail" onchange="showemail(true)"><!--{'D99D53EA0A5E4D62D7132A369E391E66'|lang}-->
+
+        <div class="pd"><!--{'00F7F1404D8CC8314C41EDB4D4F6685E'|lang}-->:<input name="mailTitle" id="mailTitle" type="text" class="text" style="width:400px; background:#F1EFF1" value="" disabled="disabled" /></div>
+        <div class="pd">
+            <span style="vertical-align:top"><!--{'42516993D82605002CA3BFECD66EEABE'|lang}-->:</span><textarea disabled="disabled" id="mailContent" name="mailContent" style="width:400px; height:60px; background:#F1EFF1" ><!--{'349CB33E41500067FD24370357DF5FB1'|lang}-->：
+<!--{'F070AA69F8D73650DA15A0F9D0878A41'|lang}-->，<!--{'C67CFF45C8DF56E122E4CCB11C3A7303'|lang}-->，<!--{'8F2C56C2D6A5299536792C346A82998F'|lang}-->，<!--{'63E3F0CD724975104839CE8893AD8642'|lang}-->。</textarea>
+        </div>
+    </td>
+  </tr>
+  <!--{else}-->
+
+  <tr>
+    <th scope="row"><label><!--{'8D9A071EE2EF45E045968E117A205C07'|lang}-->txt<!--{'2A0C4740F156A9536049F4610DA25400'|lang}--><input type="checkbox" value="1" name="importFile" onclick="hhh($(this));" /></label></th>
+    <td><input type="file" id="file" name="file" disabled /></td>
+  </tr>
+
+  <!--{/if}-->
+  <tr>
+    <th scope="row"><!--{'CEC27A5778A843B89AD2A4B1877D9555'|lang}--></th>
+    <td>
+    <!--{'E99DFDF4B3B6FD82AED2D0C1D5619D58'|lang}-->:<input name="counts" id="counts" type="text" class="text" value="1"><font color="red">*</font>
+    </td>
+  </tr>
+  <tr>
+      <th><!--{'6A465839F4BA361C548CBFA80C06A339'|lang}--><font color="red">*</font></th>
+      <td  valign="top"><textarea name="cause" id="cause" style="width:400px; height:60px;"></textarea></td>
+    </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input class="btn-blue" type="submit" value="<!--{'0830B48D62C64C2D0F877B1743D4CC6B'|lang}-->" ></td>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

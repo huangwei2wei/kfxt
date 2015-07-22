@@ -1,0 +1,94 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+	$(function(){
+		$('#pageSize').val('<!--{$_GET.pageSize}-->');
+	});
+</script>
+<fieldset>
+  <legend>搜索</legend>
+  
+<form action=""  method="post">
+	<input type="hidden" name="server_id" value="<!--{$server_id}-->"/>  
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+      	<th>玩家ID:</th>
+        <td>
+           <input class="text" type="text" name="user_id" value="<!--{$Playerdata.user_id}-->">
+        </td>
+      </tr>
+      <tr>
+      	<th>修改后的寶石數</th>
+        <td>
+           <input class="text" type="text" name="gem" value="<!--{$Playerdata.gem}-->">
+         </td>   
+      </tr>
+      <tr>
+      	<th>修改后的金幣數</th>
+        <td>
+           <input class="text" type="text" name="gold" value="<!--{$Playerdata.gold}-->">
+         </td>   
+      </tr>
+      <tr>
+      	<th>修改后的木頭數</th>
+        <td>
+           <input class="text" type="text" name="wood" value="<!--{$Playerdata.wood}-->">
+         </td>   
+      </tr>
+      <tr>
+      	<th>修改后的礦石數</th>
+        <td>
+           <input class="text" type="text" name="ore" value="<!--{$Playerdata.ore}-->">
+         </td>   
+      </tr>
+      <tr>
+      	<th>修改后的翡翠數</th>
+        <td>
+           <input class="text" type="text" name="metal1" value="<!--{$Playerdata.metal1}-->">
+         </td>   
+      </tr>
+      <tr>
+      	<th>修改后的琉璃數</th>
+        <td>
+           <input class="text" type="text" name="metal2" value="<!--{$Playerdata.metal2}-->">
+         </td>   
+      </tr>
+      <tr>
+      	<th>修改后的藍田玉數</th>
+        <td>
+           <input class="text" type="text" name="metal3" value="<!--{$Playerdata.metal3}-->">
+         </td>   
+      </tr>
+      <tr>
+      	<th>修改后的瑪瑙數</th>
+        <td>
+           <input class="text" type="text" name="metal4" value="<!--{$Playerdata.metal4}-->">
+         </td>   
+      </tr>
+      <tr>
+      	<th>修改后的孔雀石數</th>
+        <td>
+           <input class="text" type="text" name="metal5" value="<!--{$Playerdata.metal5}-->">
+         </td>   
+      </tr>
+      <tr>
+      	<th>修改后的沙漏數</th>
+        <td>
+           <input class="text" type="text" name="gem1" value='<!--{$Playerdata.gem1}-->'>
+         </td>   
+      </tr>
+	<tr>
+		<th colspan="2"><input class="btn-blue" type="submit" value="修改"></th>
+	</tr>
+    </table>
+</form>
+
+
+</fieldset>
+
+<!--{/if}-->

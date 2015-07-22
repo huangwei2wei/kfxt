@@ -1,0 +1,76 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"<!--{'SERVER_ID_Not_EXIST'|lang}-->",oncorrect:"<!--{'PLEASE_INPUT_SERVER_ID_AGAIN'|lang}-->"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'SERVER_ERROR'|lang}-->"});
+	$("#name").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'BOTH_SIDES_CAN_INCLUDE_BLANK'|lang}-->"},onerror:"<!--{'KEY_FOB_NEED'|lang}-->"});
+	$("#numbers").formValidator({onshow:"<!--{'PLEASE_ENTER'|lang}--><!--{'AMOUNT_TO_CREATE'|lang}-->",oncorrect:"<!--{'CORRECT_ENTER'|lang}-->"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"<!--{'AMOUNT_TO_CREATE'|lang}--><!--{'ERROR_ENTER'|lang}-->"});
+	$("#gold").formValidator({onshow:"<!--{'PLEASE_ENTER'|lang}--><!--{'GOLD'|lang}-->",oncorrect:"<!--{'CORRECT_ENTER'|lang}-->"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"<!--{'GOLD'|lang}--><!--{'ERROR_ENTER'|lang}-->"});
+	$("#good").formValidator({onshow:"<!--{'PLEASE_ENTER'|lang}--><!--{'FOOD'|lang}-->",oncorrect:"<!--{'CORRECT_ENTER'|lang}-->"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"<!--{'FOOD'|lang}--><!--{'ERROR_ENTER'|lang}-->"});
+	$("#copper").formValidator({onshow:"<!--{'PLEASE_ENTER'|lang}--><!--{'SILVER'|lang}-->",oncorrect:"<!--{'CORRECT_ENTER'|lang}-->"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"<!--{'SILVER'|lang}--><!--{'ERROR_ENTER'|lang}-->"});
+	$("#forces").formValidator({onshow:"<!--{'PLEASE_ENTER'|lang}--><!--{'TROOPS'|lang}-->",oncorrect:"<!--{'CORRECT_ENTER'|lang}-->"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"<!--{'TROOPS'|lang}--><!--{'ERROR_ENTER'|lang}-->"});
+	$("#exploit").formValidator({onshow:"<!--{'PLEASE_ENTER'|lang}--><!--{'MILITARY_MEDALS'|lang}-->",oncorrect:"<!--{'CORRECT_ENTER'|lang}-->"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"<!--{'MILITARY_MEDALS'|lang}--><!--{'ERROR_ENTER'|lang}-->"});
+	$("#prestige").formValidator({onshow:"<!--{'PLEASE_ENTER'|lang}--><!--{'PRESTIGE'|lang}-->",oncorrect:"<!--{'CORRECT_ENTER'|lang}-->"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"<!--{'PRESTIGE'|lang}--><!--{'ERROR_ENTER'|lang}-->"});
+	$("#token").formValidator({onshow:"<!--{'PLEASE_ENTER'|lang}--><!--{'MILITARY_ORDERS'|lang}-->",oncorrect:"<!--{'CORRECT_ENTER'|lang}-->"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"<!--{'MILITARY_ORDERS'|lang}--><!--{'ERROR_ENTER'|lang}-->"});
+})
+</script>
+<fieldset>
+<legend><!--{'KEY_FOB_SET'|lang}-->
+</legend><form action="" method="post" id="form" >
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td><!--{'KEY_FOB_NAME'|lang}-->:<input type="text" name="name" id="name" class="text" /><div id="nameTip"></div></td>
+    <td><!--{'USEFUL_LIFE'|lang}-->:
+      <input type="text" class="text" name="beginTime" value="<!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+       - 
+      <input type="text" class="text" name="endTime" value="<!--{$smarty.now|strtotime:'+1 week'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|strtotime:'+1 week'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+    </td>
+    <td><!--{'AMOUNT_TO_CREATE'|lang}-->:
+      <input name="numbers" type="text" class="text" id="numbers" value="0" /><div id="numbersTip"></div></td>
+  </tr>
+  <tr>
+    <td>
+      <select name="goldType">
+      	<option value="4"><!--{'GM_RECHARGE_GOLD'|lang}--></option>
+        <option value="5"><!--{'PACKAGE_GOLD'|lang}--></option>
+        <option value="6"><!--{'SMART_GOLD'|lang}--></option>
+      </select>
+      <input name="gold" type="text" class="text" id="gold" value="0" /><div id="goldTip"></div></td>
+    <td><!--{'FOOD'|lang}-->:
+      <input name="good" type="text" class="text" id="good" value="0" /><div id="goodTip"></div></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><!--{'SILVER'|lang}-->:
+      <input name="copper" type="text" class="text" id="copper" value="0" /><div id="copperTip"></div></td>
+    <td><!--{'TROOPS'|lang}-->:
+      <input name="forces" type="text" class="text" id="forces" value="0" /><div id="forcesTip"></div></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><!--{'MILITARY_MEDALS'|lang}-->:
+      <input name="exploit" type="text" class="text" id="exploit" value="0" /><div id="exploitTip"></div></td>
+    <td><!--{'PRESTIGE'|lang}-->:
+      <input name="prestige" type="text" class="text" id="prestige" value="0" /><div id="prestigeTip"></div></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><!--{'MILITARY_ORDERS'|lang}-->:
+      <input name="token" type="text" class="text" id="token" value="0" /><div id="tokenTip"></div></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3"><input type="submit" class="btn-blue" name="submit" value="<!--{'SUBMIT'|lang}-->" /></td>
+    </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

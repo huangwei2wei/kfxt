@@ -1,0 +1,78 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+	
+	
+</script>
+<fieldset>
+	<legend>
+   		封号
+   		[<a href="<!--{$URL_silenceLocalLog}-->">本地日志数据</a>]
+        [<a href="<!--{$URL_LockAccountAdd}-->">添加</a>]
+    </legend>
+
+<!--{if $showlog !=1}-->
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">账号</th>
+    <th scope="col">玩家ID</th>
+    <th scope="col">玩家昵称</th>
+    <th scope="col">结束时间</th>
+    <th scope="col">操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td align="center"><!--{$list.UserAccount}--></td>
+    <td align="center"><!--{$list.UserId|default:'<font color="#999999">no</font>'}--></td>
+    <td align="center"><!--{$list.UserName|default:'<font color="#999999">no</font>'}--></td>
+    <td align="center"><!--{$list.EndTime|date_format:"%Y-%m-%d %H:%M:%S"|default:'<font color="#999999">no</font>'}--></td>
+    <td align="center">
+    	<!--{if $list.sub_type != 1}-->
+        [<a onclick="return confirm('是否删除:<!--{$list.UserName}-->？')" href="<!--{$list.URL_del}-->">删除</a>]
+        <!--{/if}-->
+    </td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+
+    <div style="float:right"><!--{$pageBox}--></div>
+    <!--{if $connectError}-->
+		<div style="color:#F00;"><!--{$connectError}--></div>
+	<!--{/if}-->
+<!--{else}-->
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">账号</th>
+    <th scope="col">玩家ID</th>
+    <th scope="col">玩家昵称</th>
+    <th scope="col">添加时间</th>
+    <th scope="col">结束时间</th>
+    <th scope="col">操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list key=key}-->
+  <tr>
+    <td align="center"><!--{$list.info.FromGame.UserAccount|default:''}--></td>
+    <td align="center"><!--{$list.info.FromGame.UserId|default:'0'}--></td>
+    <td align="center"><!--{$list.info.FromGame.UserNickname|default:''}--></td>
+    <td align="center"><!--{$list.create_time|date_format:"%Y-%m-%d %H:%M:%S"|default:'<font color="#999999">no</font>'}--></td>
+    <td align="center"><!--{$list.info.FromGame.endTime|date_format:"%Y-%m-%d %H:%M:%S"|default:'<font color="#999999">no</font>'}--></td>
+    <td align="center">
+        [<a  onclick="$('#log_<!--{$key}-->').toggle();" href="javascript:void();">查看详细</a>]
+    </td>
+  </tr>
+  <tr style="display:none" id="log_<!--{$key}-->"><td colspan="6"><!--{$list.info.AddString}--></td></tr>
+  <!--{/foreach}-->
+</table>
+
+    <div style="float:right"><!--{$pageBox}--></div>
+    <!--{if $connectError}-->
+		<div style="color:#F00;"><!--{$connectError}--></div>
+	<!--{/if}-->
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,66 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+ol{
+	margin:0px 0px 0px 22px;
+	padding:0px;
+}
+ol li{
+	margin-bottom:5px;
+}
+</style>
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/Libs/vote/vote.js"></script>
+<script language="javascript">
+var vote=eval(<!--{$jsonDataList}-->);
+//<a href="javascript:viewVote('show_<!--{$list.Id}-->','<!--{$list.title}-->','<!--{$list.vote}-->')">显示</a>
+$(function(){
+	$('input').attr('disabled','disabled');
+	$.each(vote,function(i,n){
+		var bar1 = new bar();
+		bar1.id="show_"+n.Id;
+		bar1.title=n.title;
+		bar1.data=n.vote;
+		bar1.width='100%';
+		bar1.show();
+	});
+})
+
+function addOption(){
+	$("#option").append('<li><input type="text" class="text" name="option[]" />&nbsp;<input type="button" class="btn-blue" value="删除此项" onclick="$(this).parent().remove()" /></li>');
+}
+
+</script>
+<fieldset>
+	<legend>问卷详细</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th>问卷名称</th>
+        <td><!--{$data.title}--></td>
+      </tr>
+      <tr>
+        <th>简介</th>
+        <td><!--{$data.description}--></td>
+      </tr>
+      <tr>
+        <th>开始时间</th>
+        <td><!--{$data.start_time}--></td>
+      </tr>
+      <tr>
+        <th>结束时间</th>
+        <td><!--{$data.end_time}--></td>
+      </tr>
+      <tr>
+        <th>是否可用</th>
+        <td><!--{html_radios options=$askStatus name="status" selected=$data.status}--></td>
+      </tr>
+    </table>
+</fieldset>
+
+<fieldset>
+	<legend>选项调察</legend>
+    <!--{foreach from=$dataList item=list}-->
+        <div id="show_<!--{$list.Id}-->"></div>
+    <!--{foreachelse}-->
+    	<!--{$noData}-->
+    <!--{/foreach}-->
+</fieldset>

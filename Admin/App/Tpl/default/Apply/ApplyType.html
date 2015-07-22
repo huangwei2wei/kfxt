@@ -1,0 +1,55 @@
+<fieldset>
+<legend>搜索</legend>
+
+<form action="" method="get">
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+        所属游戏:
+        <select name="game_type">
+            <!--{html_options options=$game_type selected=$_GET.game_type}-->
+        </select>
+        所属列表ID:<input type="text" class="text" name="list_type" value="<!--{$_GET.list_type}-->">
+        <input type="submit" class="btn-blue" value="搜索">
+        </td>
+      </tr>
+    </table>
+</form>
+</fieldset>
+
+
+
+<fieldset>
+<legend>审核类型</legend>
+<a href="<!--{$url.URL_ApplyTypeAdd}-->" >添加</a>
+<a href="<!--{$url.URL_ApplyTypeCahce}-->" >生成缓存</a>
+
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">类型名</th>
+    <th scope="col">所属游戏</th>
+    <th scope="col">所属列表ID</th>
+    <th scope="col">操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td align="center"><!--{$list.Id}--></td>
+    <td align="center"><!--{$list.name}--></td>
+    <td align="center"><!--{$list.game_type}--></td>
+    <td align="center"><!--{$list.list_type}--></td>
+    <td align="center">
+    	[<a href="<!--{$list.URL_edit}-->">编辑</a>]
+        [<a onClick="return confirm('确定删除？');" href="<!--{$list.URL_del}-->">删除</a>]
+    </td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+
+<table width="100%" border="0" cellpadding="3">
+  <tr><td align="right"><!--{$pageBox}--></td></tr>
+</table>
+</fieldset>

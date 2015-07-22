@@ -1,0 +1,16 @@
+<form action="<!--{$url.WorkOrder_RoomEdit}-->" method="post">
+<input type="hidden" name="Id" value="<!--{$roomClass._id}-->" />
+<table width="60%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row"><!--{'DF0A002B9859E7620478293139030884'|lang}--></th>
+    <td><input type="text" class="text" name="name" value="<!--{$roomClass._roomName}-->" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'4F239F8A66E84381677437811A6396F5'|lang}--></th>
+    <td><!--{html_checkboxes name=operator_list options=$userOperatores selected=$roomClass._operatorst}--></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /></th>
+  </tr>
+</table>
+</form>

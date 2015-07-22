@@ -1,0 +1,137 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript">
+//KE.init({id:'title',imageUploadJson : '<!--{$url.UploadImg_Bulletin}-->',afterCreate:function(id){KE.util.focus(id)}});
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#title").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"公告标题不能为空,请确认"});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"公告内容不能为空,请确认"});
+	$("#interval").formValidator({onshow:"请输入时间间隔",oncorrect:"输入正确"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"时间间隔不正确"});
+})
+function fontStyle(color,b,em){
+	var font1='<font color="'+color+'">';
+	var font2='</font>';
+	var b1='<b>';
+	var b2='</b>';
+	var em1='<em>';
+	var em2='</em>';
+	if(!color){
+		font1 = font2 = '';
+	}
+	if(!b){
+		b1 = b2 = '';
+	}
+	if(!em){
+		em1 = em2 = '';
+	}
+	var obj = $('#title');
+	obj.val(obj.val()+font1+b1+em1+'请输入文字'+em2+b2+font2);
+	view()
+}
+function linkAdd(){
+	var obj = $('#title');
+	obj.val(obj.val()+'<a href="event:请输入地址">请输入内容</a>');
+	view()
+}
+function view(){
+	$('#view').html($('#title').val());
+}
+
+</script>
+<fieldset>
+<legend>修改数值</legend>
+<form action="" method="post" id="form">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<input type="hidden" name="id" value="<!--{$selected.id|default:"0"}-->" />
+    <!--{*<a href="javascript:void(0)" onclick="KE.create('title')">加载编辑器</a>*}-->
+	<!--{*<a href="javascript:void(0)" onclick="KE.remove('title')">卸载编辑器</a>*}-->
+    <table width="98%" border="0" cellpadding="3">
+
+      
+      <tr>
+        <th scope="row">修改类型</th>
+        <td>
+        	玩家<input class="radio" type="radio" value="1" name="type" checked="checked">
+        	&nbsp;宠物<input class="radio" type="radio" value="2" name="type">
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">玩家或者宠物的ID</th>
+        <td><input type="text" class="text" name="id"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">玩家昵称</th>
+        <td><input type="text" class="text" name="name"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">帐号</th>
+        <td><input type="text" class="text" name="user_id"/>
+        </td>
+      </tr>
+      
+       <tr>
+        <th scope="row">增加或减少</th>
+        <td>
+       		减少<input class="radio" type="radio" value="0" name="flag" checked="checked">
+        	&nbsp;增加<input class="radio" type="radio" value="1" name="flag">
+        </td>
+      </tr>
+       <tr>
+        <th scope="row">经验值</th>
+        <td><input type="text" class="text" name="exp"/>
+        </td>
+      </tr>
+      
+
+       <tr>
+        <th scope="row">等级</th>
+        <td><input type="text" class="text" name="level"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">邪恶值</th>
+        <td><input type="text" class="text" name="evil"/>
+        </td>
+      </tr>
+      
+       <tr>
+        <th scope="row">场景id</th>
+        <td><input type="text" class="text" name="scene_id"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">x坐标</th>
+        <td><input type="text" class="text" name="pos_x"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="row">y坐标</th>
+        <td><input type="text" class="text" name="pos_y"/>
+        </td>
+      </tr>
+       
+     
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

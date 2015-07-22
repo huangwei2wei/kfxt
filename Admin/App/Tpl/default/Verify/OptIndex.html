@@ -1,0 +1,129 @@
+<fieldset>
+<legend><!--{'SEARCH'|lang}--></legend>
+<form action="" method="get" id="formSearch">
+	<input type="hidden" value="<!--{$__CONTROL__}-->" name="c" />
+    <input type="hidden" value="<!--{$__ACTION__}-->" name="a" />
+	<table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap" scope="row" width="120">游戏</th>
+        <td>
+          <!--{html_radios onclick="$('#formSearch').submit()" options=$myGameType name="game_type_id" selected=$_GET.game_type_id}-->
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">运营商</th>
+        <td>
+        	<!--{html_radios onclick="$('#formSearch').submit()" options=$operators name="operator_id" selected=$_GET.operator_id}-->
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">状态</th>
+        <td><select name="status" id="status">
+          <option value=""><!--{'SEARCH_TABLE_8'|lang}--></option>
+          <!--{html_options options=$verifyStatus}-->
+        </select> 
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">处理等级</th>
+        <td>
+        <select name="level" id="level">
+          <option value=""><!--{'SEARCH_TABLE_12'|lang}--></option>
+          <!--{html_options options=$verifyLevel}-->
+        </select></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'SEARCH_TABLE_13'|lang}--></th>
+        <td><select name="source">
+          <option value=""><!--{'SEARCH_TABLE_14'|lang}--></option>
+          <!--{html_options options=$verifySource selected=$selectedSource}-->
+        </select> / <input type="text" class="text" name="source_detail" value="<!--{$selectedSourceDetail}-->" size="40" /></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'SEARCH_TABLE_15'|lang}-->：</th>
+        <td><input type="text" class="text" name="Id" value="<!--{$selectedId}-->" /> / <input type="text" class="text" name="title" id="title" value="<!--{$selectedTitle}-->" size="40" /></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">玩家ID/账号/呢称</th>
+        <td><input type="text" class="text" id="game_user_id" value="<!--{$selectedGameUserId}-->" name="game_user_id"  /> / <input type="text" class="text" id="game_user_account" name="game_user_account" value="<!--{$selectedGameUserAccount}-->" /> / <input type="text" class="text" id="game_user_nickname" name="game_user_nickname" value="<!--{$selectedGameUserNickName}-->" /></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="<!--{'SUBMIT'|lang:'Common'}-->" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+
+<fieldset>
+<legend><!--{'DATALIST_TITLE'|lang}--></legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col"><!--{'DATALIST_TABLE_1'|lang}--></th>
+        <th scope="col"><!--{'DATALIST_TABLE_2'|lang}--></th>
+        <th scope="col"><!--{'DATALIST_TABLE_3'|lang}--></th>
+        <th scope="col"><!--{'DATALIST_TABLE_4'|lang}--></th>
+        <th scope="col"><!--{'DATALIST_TABLE_5'|lang}--></th>
+        <th scope="col"><!--{'DATALIST_TABLE_6'|lang}--></th>
+        <th scope="col"><!--{'DATALIST_TABLE_7'|lang}--></th>
+        <th scope="col"><!--{'DATALIST_TABLE_8'|lang}--></th>
+        <th scope="col"><!--{'DATALIST_TABLE_9'|lang}--></th>
+        <th scope="col"><!--{'DATALIST_TABLE_10'|lang}--></th>
+        <th scope="col"><!--{'DATALIST_TABLE_11'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td class="list_title" onclick="displayDetail(<!--{$list.Id}-->)"><b>[<!--{$list.word_level}-->]</b><br /><!--{$list.title}--></td>
+        <td><!--{$list.word_game_type_id}--> / <!--{$list.word_operator_id}--> / <!--{$list.word_game_server_id}--> <br />
+        	<a href="javascript:void(0)" onclick="searchForm($(this),'game_user_id')"><!--{$list.game_user_id}--></a> / 
+            <a href="javascript:void(0)" onclick="searchForm($(this),'game_user_account')"><!--{$list.game_user_account}--></a> / 
+            <a href="javascript:void(0)" onclick="searchForm($(this),'game_user_nickname')"><!--{$list.game_user_nickname}--></a> </td>
+        <td><!--{$list.word_type}--></td>
+        <td><!--{$list.word_department_id}--></td>
+        <td>
+          <select onchange="changeStatus($(this))" listId="<!--{$list.Id}-->">
+            <!--{html_options options=$verifyStatus selected=$list.status}-->
+          </select>
+        </td>
+        <td><!--{$list.word_source}--></td>
+        <td title="<!--{$list.source_detail}-->"><!--{$list.source_detail|truncateutf8:30}--></td>
+        <td><!--{$list.work_user_id}--></td>
+        <td><!--{$list.create_time}--></td>
+        <td>
+        	<a href="<!--{$list.url_detail}-->"><!--{'DATALIST_TABLE_12'|lang}--></a>
+            <!--{if $list.work_order_id}--><a href="<!--{$list.url_order_detail}-->"><!--{'DATALIST_TABLE_13'|lang}--></a><!--{/if}-->
+        </td>
+      </tr>
+      <tr>
+      	<td colspan="11" style="display:none;" id="detail_<!--{$list.Id}-->">
+        	<div>
+            	<b><!--{'DATALIST_TABLE_14'|lang}-->：</b><br />
+				<!--{$list.content}-->
+            </div>
+            <hr size="1" />
+            <fieldset style="background:#FFF">
+            	<legend><!--{'DATALIST_TABLE_15'|lang}--></legend>
+                <!--{foreach from=$list.log item=childList}-->
+                <!--{if $childList.type==1}-->
+                <div style="border-bottom:1px dashed #999; padding:3px; margin:3px;">
+                    <div style="color:#666"><!--{$childList.user}--> <!--{'DATALIST_TABLE_16'|lang}-->：&nbsp;[<!--{$childList.time}-->]&nbsp;</div>
+                    <div style="margin-left:10px;"><!--{$childList.description}--></div>
+                </div>
+                <!--{else}-->
+                <div style="border-bottom:1px dashed #999; padding:3px; margin:3px;">
+                    <div style="color:#666"><!--{$childList.user}--> <!--{'DATALIST_TABLE_17'|lang}-->：&nbsp;[<!--{$childList.time}-->]&nbsp;</div>
+                    <div style="margin-left:10px;"><!--{$childList.description}--></div>
+                </div>
+                <!--{/if}-->
+                <!--{foreachelse}-->
+                	<b><!--{'DATALIST_TABLE_18'|lang}--></b>
+                <!--{/foreach}-->
+            </fieldset>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr><th colspan="11"><!--{$noData}--></th></tr>
+      <!--{/foreach}-->
+      <tr><td colspan="11" align="right"><!--{$pageBox}--></td></tr>
+    </table>
+</fieldset>

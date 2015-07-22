@@ -1,0 +1,105 @@
+<style type="text/css">
+ol{
+	margin:0px 0px 0px 22px;
+	padding:0px;
+}
+li{
+	margin-bottom:5px;
+}
+ul{
+	list-style-type:none;
+}
+.selected_username{
+	display:list-item;
+	width:20%;
+	font-weight:bold;
+}
+</style>
+<script language="javascript">
+$(function(){
+	$(".all_select").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(this).parent().find(":checkbox").attr("checked",curCheck);
+	 });
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox").attr("checked",curCheck);
+	 });
+});
+
+function addOption(){
+	$("#option").append('<li><input type="text" class="text" size="60" name="option[]" />&nbsp;<input type="button" class="btn-blue" value="删除此项" onclick="$(this).parent().remove()" /></li>');
+}
+
+function addUser(){
+	var userList=$("#user_list :checkbox[name='users'][checked]");
+	var selectedUsers=$("#selected_users");
+	//selectedUsers.empty();
+	var voteOne=$("#one_vote").val();
+	var voteTwo=$("#two_vote").val();
+	var voteThree=$("#three_vote").val();
+	userList.each(function(){
+		if($("#select_user_li_"+$(this).val()).length==0)
+			selectedUsers.append("<li id='select_user_li_"+$(this).val()+"'><span class='selected_username'>"+$(this).attr("nick_name")+"</span> 第一票：<input type='text' class='text' name='user["+$(this).val()+"][1]' value='"+voteOne+"' /> 第二票：<input type='text' class='text' name='user["+$(this).val()+"][2]' value='"+voteTwo+"' /> 第三票：<input type='text' class='text' name='user["+$(this).val()+"][3]' value='"+voteThree+"' />    <a href='javascript:void(0)' onclick='$(\"#select_user_li_"+$(this).val()+"\").remove()'>删除此项</a></li>");
+	})
+}
+</script>
+<fieldset>
+	<legend>增加投票配置</legend>
+    <form action="" method="post">
+        <table width="100%" border="0" cellpadding="3">
+        <tr>
+            <th scope="row">配置名称</th>
+            <td><input name="conf_name" type="text" class="text" size="60" /></td>
+        </tr>
+        <tr>
+          <th scope="row">说明</th>
+          <td><textarea cols="50" name="description" rows="8"></textarea></td>
+        </tr>
+        <tr>
+            <th scope="row">是否马上公开结果</th>
+            <td><input type="radio" checked value="1" name="is_open" />是 <input value="0" type="radio" name="is_open" />否</td>
+        </tr>
+        <tr>
+            <th scope="row">选项</th>
+            <td><input type="button" class="btn-blue" onClick="addOption()" value="增加选项" /><ol id="option"></ol></td>
+        </tr>
+        <tr>
+            <th scope="row">允许的投票用户</th>
+            <td>
+            	<font color="#FF0000">注：如果票的分会为空将视为没有这一票的投票权。</font>
+                <ul id="selected_users">
+                
+                </ul>
+            </td>
+        </tr>
+        <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+        </tr>
+         </table>
+    </form>
+</fieldset>
+
+<fieldset id="user_list">
+	<legend>投票人用户选择</legend>
+    <input type="button" class="btn-blue" value="添加选中用户" onClick="addUser()" />
+    第一票：<input type="text" class="text" id="one_vote" value="3.08" />
+    第二票：<input type="text" class="text" id="two_vote" value="2.06" />
+    第三票：<input type="text" class="text" id="three_vote" value="1.02" />
+    <br>
+    <input type="checkbox" id="allcheck" /><font size="+1"><b>选择所有用户</b></font>
+    <!--{foreach from=$org item=list}-->
+    <fieldset>
+        <legend><!--{$list.name}--></legend>
+        <!--{if $list.users}-->
+            <input type="checkbox" class="all_select"  /><font><b>选择该组所有用户</b></font>
+            <!--{foreach from=$list.users key=key item=userList}-->
+            <input type="checkbox" name="users" nick_name="<!--{$userList}-->" value="<!--{$key}-->" /> <!--{$userList}--> 
+            <!--{/foreach}-->
+        <!--{else}-->
+            <!--{$noData}-->
+        <!--{/if}-->
+    </fieldset>
+    <!--{/foreach}-->
+    
+</fieldset>

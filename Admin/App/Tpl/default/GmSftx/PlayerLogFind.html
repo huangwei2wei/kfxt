@@ -1,0 +1,160 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<style>
+.AutoNewline {
+    line-height: 150%;
+    overflow: hidden;
+    width: 200px;
+    word-wrap: break-word;
+}
+
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+	function orderseach(){
+		$.ajax({
+			dataType:'json',
+			type: "POST",
+			url: "<!--{$ajaxurl}-->",
+			data:{value:$("#ordertext").val()},
+			success: function(msg){
+				var json = eval(msg);
+				if(0 == json.status){
+					alert(json.info);
+				}
+				else if(1 == json.status){
+					$.each(json.data,
+							function(Id,name){ 
+								$("#ordercontent").append('<tr><th width="500">'+Id+' '+name+'</th><td><input class="btn-blue" type="button" value="<!--{'153FA67A7FB6ADA66A1FCCCABBBFAB72'|lang}-->" onclick="ChooseID('+Id+')"/></td></tr>');
+							}
+					);
+					//$("#ordercontent").after(json.data['']);
+				}
+			}
+		});
+	}
+	
+	function ChooseID(id){
+		$("#cmdID").val(id);
+		$('#ordercontent').html('');
+	}
+</script>
+<fieldset>
+	<legend><!--{'38D5EF83637083F3A4B8F98E59FC88D0'|lang}--></legend>
+	<table width="99%" border="0" cellpadding="3">
+		<tr>
+			<td>
+			<!--{'B530EF92B51FE3B4F4E7F7FDD1362EFE'|lang}-->：<input type="text" id="ordertext" class="text">
+			<input type="button" value="<!--{'BEE912D79EEFB7335988C4997AA9138D'|lang}-->" class="btn-blue" onclick="orderseach()">
+			</td>
+		</tr>
+	</table>
+
+	<table width="99%" border="0" cellpadding="3" id="ordercontent">
+	</table>
+    <table width="99%" border="0" cellpadding="3">
+      <thead>
+      <tr>
+        <td colspan="18">
+        <form action="<!--{$url.GmSftx_UserLog}-->" method="get">
+            <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+            <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+            <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+            <!--{'4C11190ECA9D2AE73B65430075CAC060'|lang}-->:<input type="text" name="cmdID" id="cmdID" value="<!--{$_GET.cmdID}-->" class="text">
+           	<!--{'069A4B89AE4E24F7718E5DF99E80B75D'|lang}-->ID:<input type="text" name="playerId" value="<!--{$_GET.playerId}-->" class="text">
+            <!--{'START_TIME'|lang}-->:<input type="text" name="startTime" class="text" value="<!--{$_GET.startTime}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|date_format:'%Y-%m-%d 00:00:00'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+            <!--{'END_TIME'|lang}-->:<input type="text" name="endTime" class="text" value="<!--{$_GET.endTime}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|date_format:'%Y-%m-%d 23:59:59'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+       		<input type="submit" name="submit" value="<!--{'BEE912D79EEFB7335988C4997AA9138D'|lang}-->" class="btn-blue">
+        </form>
+        </td>
+      </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th><!--{'4C11190ECA9D2AE73B65430075CAC060'|lang}--></th>
+            <th><!--{'069A4B89AE4E24F7718E5DF99E80B75D'|lang}-->UID<br/><!--{'00B1C011DA027AF6EC03DB52B6D9540B'|lang}--></th>
+
+            <th><!--{'60FA49B56A6469EFE8F520924BE19FDB'|lang}--><br/>VIP<!--{'95E0D70D1809D5267C2419EDA58E78CA'|lang}--></th>
+            <th><!--{'SILVER'|lang}--><br/><!--{'GOLD'|lang}--></th>
+
+            <th><!--{'B3499A068C490875BD9FB7F59C231B1D'|lang}--></th>
+            <th><!--{'9EAE784C8E075A00A26C9A2C09921C5A'|lang}--></th>
+            <th><!--{'2E79CAFF4A48242E7FA04B7A32FE74EB'|lang}--></th>
+            <th><!--{'PRESTIGE'|lang}--></th>
+            <th><!--{'MILITARY_ORDERS'|lang}--></th>
+            <th><!--{'822FD0EBB736872C19FF813EBC69B3BE'|lang}--></th>
+            <th><!--{'D478DA4D176B8FED99B4C1FE0B4C6DA3'|lang}--></th>            
+            <th><!--{'2E409B3F292EFE6EA3779B2DE2CE2E97'|lang}--></th>
+            <th><!--{'C18E630C7BC92887BE9250E0E4DD7FCA'|lang}--></th>
+            <th><!--{'0E24B3A4820E3C2C2B16E903C622F7FB'|lang}--></th>
+            <th><!--{'D3C3A7463A0151153188A94D346597E2'|lang}--></th>
+            <th><!--{'908464AAC5F8A22ADAE272FDA66C1FC8'|lang}--></th>
+            <th>蛋</th>
+           	<th>血石，幻石，灵石</th>
+           	<th>合成石</th>
+           	<th>竞技场次数</th>
+           	<th>转盘次数</th>
+           	
+           	<th>令牌</th>
+           	<th>幻化石</th>
+           	
+           	
+            <th><!--{'OPT_TIME'|lang}--><br/>
+                (
+                    <!--{if $BeiJing_time}-->
+                        <!--{'BJT'|lang}-->
+                    <!--{else}-->
+                        <!--{'SERVER_TIME'|lang}-->
+                    <!--{/if}-->
+                )
+            </th>
+            <th><!--{'2F27863E8013382CC2530C21D82A24B1'|lang}--></th>
+            
+          </tr>
+          <!--{foreach from=$dataLiat item=vo}-->
+          <tr>
+            <td><!--{$vo.cmdId}--></td>
+			<td><!--{$vo.playerId}--><br/><!--{$vo.playerName}--></td>
+
+            <td><!--{$vo.playerLevel}--><br/><!--{$vo.viplevel}--></td>
+            <td><!--{$vo.copper}--><br/><!--{$vo.gold}--></td>
+
+            <td><!--{$vo.food}--></td>
+            <td><!--{$vo.forces}--></td>
+            <td><!--{$vo.exploit}--></td>
+            <td><!--{$vo.prestige}--></td>
+			<td><!--{$vo.token}--></td>
+            <td><!--{$vo.imposeNum}--></td>
+            <td><!--{$vo.extra}--></td>
+            <td><!--{$vo.boxList}--></td>
+            <td><!--{$vo.soul}--></td>
+            <td><!--{$vo.breakthrough}--></td>
+            <td><!--{$vo.totalMap}--></td>
+            <td><!--{$vo.spar}--></td>
+            <td><!--{$vo.pack}--></td>
+            <td><!--{$vo.stone}--></td>
+            <td><!--{$vo.mixstone}--></td>
+            <td><!--{$vo.conqueretime}--></td>
+            <td><!--{$vo.fortuneWheeltime}--></td>
+            <td><!--{$vo.evolveStone}--></td>
+            <td><!--{$vo.brand}--></td>
+            <td><!--{$vo.logTime/1000|intval|date_format:'%Y-%m-%d %H:%M:%S'}--></td>
+            <td><div class="AutoNewline"><!--{$vo.optDetail}--></div></td>
+          </tr>
+          <!--{foreachelse}-->
+          <tr>
+            <th colspan="25"><!--{$noData}--></th>
+          </tr>
+          <!--{/foreach}--> 
+          <tr>
+            <th colspan="25" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </tbody>
+
+    </table>
+</fieldset>
+<!--{/if}-->

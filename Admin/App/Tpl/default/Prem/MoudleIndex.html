@@ -1,0 +1,48 @@
+<fieldset>
+  <legend>增加模块</legend>
+  <form action="<!--{$url.Prem_Moudle_add}-->" method="post">
+  <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="row">模块值</th>
+        <td><input type="text" class="text" name="value" /></td>
+      </tr>
+      <tr>
+        <th scope="row">模块名称</th>
+        <td><input type="text" class="text" name="name" /></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+  </table>
+  </form>
+</fieldset>
+
+<fieldset>
+	<legend>模块目录</legend>
+    	<a href="<!--{$url.Prem_MoudleMain_cache}-->">生成缓存</a>
+      <table width="100%" border="0" cellspacing="0" cellpadding="3">
+          <tr>
+            <th scope="col">模块值</th>
+            <th scope="col">模块名称</th>
+            <th scope="col">权限</th>
+            <th scope="col">操作</th>
+          </tr>
+          <!--{foreach from=$dataList item=list}-->
+          <form action="<!--{$list.url_edit}-->" method="post">
+          <tr>
+            <td><input type="hidden" value="<!--{$list.value}-->" name="old_value" /><input type="text" class="text" name="value" value="<!--{$list.value}-->" /></td>
+            <td><input type="text" class="text" name="name" value="<!--{$list.name}-->" /></td>
+            <td><input type="text" class="text" name="act" size="50" value="<!--{$list.act}-->" /></td>
+            <td><input type="submit" class="btn-blue" value="编辑" /> 
+            	<input type="button" class="btn-blue" value="查看控制器方法" onclick="location.href='<!--{$list.url_act}-->'" />
+                <input type="button" class="btn-blue" value="删除" onclick="location.href='<!--{$list.url_del}-->'" />
+            </td>
+          </tr>
+          </form>
+          <!--{foreachelse}-->
+          <tr>
+            <th colspan="4"><!--{$noData}--></th>
+          </tr>
+          <!--{/foreach}-->
+      </table>
+</fieldset>

@@ -1,0 +1,72 @@
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript" type="text/javascript">
+KE.init({id:'answer_s',imageUploadJson : '<!--{$url.uploadImgUrl}-->',afterCreate:function(id){KE.util.focus(id)}});
+KE.init({id:'answer_g',imageUploadJson : '<!--{$url.uploadImgUrl}-->',afterCreate:function(id){KE.util.focus(id)}});
+KE.init({id:'question',imageUploadJson : '<!--{$url.uploadImgUrl}-->',afterCreate:function(id){KE.util.focus(id)}});
+
+var kindList=eval(<!--{$kindList}-->);
+
+$(function(){
+	$("#game_type_id").change();
+	$("#kind_id").val('<!--{$selectedArr.kind_id}-->');
+})
+
+function showKind(gameId){
+	var kindSelect=$("#kind_id");
+	kindSelect.empty();
+	$.each(kindList,function(i,n){
+		if(n.game_type_id==gameId && n.lang_id=='<!--{$_REQUEST.lang}-->')kindSelect.append('<option value='+n.Id+'>'+n.name+'</option>');
+	});
+}
+/*
+$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+$("#game_type_id").formValidator({onshow:"<!--{'86B399F832CAD5107C3982B0DE4530DA'|lang}-->",onfocus:"<!--{'6A82B03922771520861090DA1C2A9F58'|lang}-->",oncorrect:"<!--{'50E2150D45556D8C9E13699D3AB93DF9'|lang}-->"}).inputValidator({min:1,onerror: "<!--{'86B399F832CAD5107C3982B0DE4530DA'|lang}-->!"});
+$("#kind_id").formValidator({onshow:"<!--{'B4967AA58A59955D29EBED54255EE6C5'|lang}-->",onfocus:"<!--{'47513C02FDD4D46824F686472710D70A'|lang}-->",oncorrect:"<!--{'50E2150D45556D8C9E13699D3AB93DF9'|lang}-->"}).inputValidator({min:1,onerror: "<!--{'B4967AA58A59955D29EBED54255EE6C5'|lang}-->!"});
+$("#question").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'417C96255798CE691382FCFE716AF4E2'|lang}-->"},onerror:"<!--{'417C96255798CE691382FCFE716AF4E2'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+*/
+</script>
+<fieldset>
+	<legend><!--{'491411E0AE5D09D5ECA25A2B2F275E3B'|lang}-->FAQ</legend>
+<form action="<!--{$url.Faq_PlayerAdd}-->" id="form" method="post">
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row"><!--{'9D1AF8A250315FB503099EA5C384E1E7'|lang}--></th>
+    <td><select onchange="showKind($(this).val())" id="game_type_id" name="game_type_id"><!--{html_options options=$gameType selected=$selectedArr.game_type_id}--></select><div id="game_type_idTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'D5A57C1C4DC6F04018E0F73B658B35B2'|lang}--></th>
+    <td><select id="kind_id" name="kind_id"><option value=""><!--{'769111969055ADAE0B76FA92124CBBB2'|lang}--></option></select><div id="kind_idTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'83611ABD5F806CB2DB7CB992E91186DD'|lang}--></th>
+    <td><!--{html_radios options=$faqStatus selected=0 name="status"}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'5DC99F6EFE53ADDA80974655B26B8DF8'|lang}--></th>
+    <td>
+    	<a href="javascript:void(0)" onclick="KE.create('question')"><!--{'FC04B2EDCC5D8EB765739EFF3F733A69'|lang}--></a>
+        <a href="javascript:void(0)" onclick="KE.remove('question')"><!--{'916A4D1CD3E92D5F10566BB3F6D0F3D4'|lang}--></a><br />
+    	<textarea name="question" cols="70" rows="6" id="question"></textarea>
+        <div id="questionTip"></div>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'C08A41C4BE1582F12E5DB69330DF48EE'|lang}-->(<!--{'847652D1D88D2C774B992FFF9E113D75'|lang}-->)</th>
+    <td>
+    	<a href="javascript:void(0)" onclick="KE.create('answer_s')"><!--{'FC04B2EDCC5D8EB765739EFF3F733A69'|lang}--></a>
+        <a href="javascript:void(0)" onclick="KE.remove('answer_s')"><!--{'916A4D1CD3E92D5F10566BB3F6D0F3D4'|lang}--></a><br />
+   		<textarea name="answer_s" cols="70" rows="12" id="answer_s"></textarea>
+    </td>
+  </tr>
+  <tr>
+      <th scope="row"><!--{'7671DEBAE7B1334C837F9604E46C4E09'|lang}-->(<!--{'9AD3E16FF3E0C0E8B0E8ED35FB1D1E16'|lang}-->)</th>
+      <td>
+    	<a href="javascript:void(0)" onclick="KE.create('answer_g')"><!--{'FC04B2EDCC5D8EB765739EFF3F733A69'|lang}--></a>
+        <a href="javascript:void(0)" onclick="KE.remove('answer_g')"><!--{'916A4D1CD3E92D5F10566BB3F6D0F3D4'|lang}--></a><br />
+   		<textarea name="answer_g" cols="70" rows="12" id="answer_g"></textarea>
+      </td>
+  </tr>
+  <tr><th colspan="2"><input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /></th></tr>
+</table>
+</form>
+</fieldset>

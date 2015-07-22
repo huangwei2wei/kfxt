@@ -1,0 +1,42 @@
+<fieldset>
+	<legend>FAQ关键字管理</legend>
+    <form action="<!--{$url.Faq_PlayerKindIndex_keywords}-->" method="post">
+    <table width="100%"  cellpadding="3">
+      <tr>
+        <td>商业大亨 [<font color="#999999">关键字请用","隔开</font>] ：<br /><textarea name="bto1" cols="100%" rows="12"><!--{$keywords.0.keywords}--></textarea></td>
+        <td>富人国 [<font color="#999999">关键字请用","隔开</font>]  ：<br /><textarea name="bto2" cols="100%" rows="12"><!--{$keywords.1.keywords}--></textarea></td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="submit" class="btn-blue" value="提交" /></td>
+      </tr>
+    </table><br />
+  </form>
+</fieldset>
+
+<fieldset>
+<legend>Faq分类</legend>
+<table width="50%" border="0" cellpadding="3">
+  <tr id="temp_edit" style="display:none"><th colspan="2"></th></tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr kind="<!--{$list.game_type_id}-->">
+    <td><!--{$list.game_type}--></td>
+    <td><a href="javascript:void(0)" onclick="executeKind($(this))" value="增加[<!--{$list.game_type}-->]分类" url="<!--{$list.url_add}-->">增加</a></td>
+  </tr>
+  <!--{if $list.childList}-->
+    <!--{foreach from=$list.childList item=childList}-->
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<!--{$childList.name}--></td>
+        <td>
+        	<a href="javascript:void(0)" onclick="executeKind($(this))" value="编辑[<!--{$childList.name}-->]分类" name="<!--{$childList.name}-->" url="<!--{$childList.url_edit}-->">修改</a>
+            <a href="<!--{$childList.url_del}-->" onclick="return confirm('确认要删除吗?删除后此分类下的FAQ也将会被删除.')">删除</a>
+        </td>
+    </tr>
+    <!--{/foreach}-->
+  <!--{/if}-->
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="2"><!--{$noData}--></th>
+  </tr>
+  <!--{/foreach}-->
+</table>
+</fieldset>

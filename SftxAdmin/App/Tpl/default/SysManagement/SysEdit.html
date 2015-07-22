@@ -1,0 +1,29 @@
+<center>
+<form method="post" action="<!--{$url.SysManagement_SysSetupEdit}-->">
+<input type="hidden" value="<!--{$list.Id}-->" name="Id" />
+<table width="98%" border="0" cellpadding="3">
+  <tr>
+    <td>Id：</td>
+    <td><!--{$list.Id}--></td>
+  </tr>
+  <tr>
+    <td>唯一标识：</td>
+    <td>
+    	<input type="text" class="text" name="config_name" value="<!--{$list.config_name}-->" />
+    </td>
+  </tr>
+  <tr>
+    <td>配置说明：</td>
+    <td><textarea name="title"><!--{$list.title}--></textarea></td>
+  </tr>
+  <tr>
+    <td>配置值：</td>
+    <td><textarea cols="100" name="config_value" rows="20"><!--{$list.config_value}--></textarea></td>
+  </tr>
+  <tr>
+    <td><input type="submit" class="btn-blue" value="提交" /></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</form>
+</center>

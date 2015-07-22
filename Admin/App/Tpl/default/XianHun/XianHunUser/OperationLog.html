@@ -1,0 +1,264 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+	var type = <!--{$TypeSlt|default:"0"}-->;
+	var typeid = <!--{$selected.typeid|default:"0"}-->;
+	var KeyWordSearchType = <!--{$selected.KeyWordSearchType|default:"0"}-->;
+	var LogId = <!--{$selected.LogId|default:"0"}-->;
+	var sequenceLock = <!--{$selected.sequenceLock|default:"0"}-->;
+	function rootchange(rootid){
+		
+		$('#typeid').html('');
+		$('<option/>').attr('value',0).text('所有子类').appendTo('#typeid');		
+		if(rootid>0){			
+			$.each(type[rootid],
+				function(Id,name){ 
+					$('<option/>').attr('value',Id).text(name).appendTo('#typeid');
+				}
+			);	
+			if(typeid)$("#typeid").val(typeid);
+		}
+		if(rootid == 0){
+			TypeChange(0,0);
+		}
+	}
+	
+	function TypeChange(RootId,TypeId){
+		
+		if(RootId == 0 || TypeId==0){
+			$('#SearchTr').hide();
+		}else{
+			$('#SearchTr').show();
+		}
+		
+		var all = ' x1:<input value="" style="width: 50px;" class="text" name="x1">, x2:<input value="" style="width: 50px;" class="text" name="x2">,  x3:<input value="" style="width: 50px;" class="text" name="x3">,  x4:<input value="" style="width: 50px;" class="text" name="x4">,  x5:<input value="" style="width: 50px;" class="text" name="x5">, x6:<input value="" style="width: 50px;" class="text" name="x6">, x7:<input value="" style="width: 50px;" class="text" name="x7">, x8:<input value="" style="width: 50px;" class="text" name="x8">, x9:<input value="" style="width: 50px;" class="text" name="x9">, x10:<input value="" style="width: 50px;" class="text" name="x10">';
+		if(TypeId==0){
+			$('#SerachTpl').html(all);
+		}else{
+			var url = '<!--{$url.OperationLog_TplSearch}-->';
+			$.ajax({
+				dataType:'json',
+				type: 'GET',
+				data:{RootId:RootId,TypeId:TypeId},
+				url:url,
+				success:function(msg){
+					var json = eval(msg);
+					if(0 == json.status){
+						alert(json.info);
+					}
+					else if(1 == json.status){	
+						$('#SerachTpl').html(json.data);
+					}
+				}
+			});	
+		}
+	}
+	
+	function clearKeyWord(){
+		$(":input[name^='x']").val('');
+	}
+	
+	function findPage(LogId){
+		if($('#playerId').val()>0 || $('#name').val()!='' || $('#account').val()!=''){
+			var url = '<!--{$url.OperationLog_FindPage}-->';
+			var rootid = $('#rootid').val();
+			var typeid = $('#typeid').val();
+			var playerId = $('#playerId').val();		
+			var name = $('#name').val();
+			var account = $('#account').val();	
+			var sequenceLock = $('#sequenceLock').val();
+			$.ajax({
+				dataType:'json',
+				type: 'GET',
+				data:{server_id:selectedServerId,LogId:LogId,rootid:rootid,typeid:typeid,playerId:playerId,name:name,account:account,sequenceLock:sequenceLock},
+				url:url,
+				success:function(msg){
+					var json = eval(msg);
+					if(0 == json.status){
+						alert(json.info);
+					}
+					else if(1 == json.status){						
+						$(":input[name^='x']").val('');
+						if(sequenceLock == 0){
+							$("#rootid").val('0');
+							$("#typeid").val('0');
+						}
+						$('#LogId').val(LogId);
+						$('#LogFrom').append('<input type="hidden" name="page" value="'+json.data+'" />');
+						$('#LogFrom').submit();
+					}
+				}
+			});	
+		}else{
+			alert('定位连续日志前，请先指定玩家！');
+		}
+	}
+	
+	function logTypeSearch(rootid,typeid){
+		$("#rootid").val(rootid);
+		$('#typeid').html('');
+		$('<option/>').attr('value',typeid).text(typeid).appendTo('#typeid');
+		$("#typeid").val(typeid);
+		$('#LogFrom').submit();
+	}
+	
+	$(function(){
+		rootchange($('#rootid').val());
+		if(typeid)$("#typeid").val(typeid);
+		if(KeyWordSearchType)$('#KeyWordSearchType').val(KeyWordSearchType);
+		if(sequenceLock)$('#sequenceLock').val(sequenceLock);
+		if(LogId)$('#LogId_'+LogId).css("color","#F00").css("font-weight","bolder");
+		
+	})
+	
+	function checkSubmit(){
+		if($.trim($('#playerId').val()+$('#name').val()+$('#account').val()) == ''){
+			alert('请填写玩家');
+			return false;
+		}
+		return true;
+	}
+	
+</script>
+<style>
+	.AutoNewline {
+		font-size:12px;
+		line-height:150%;
+		overflow: hidden;
+		width: 350px;
+		word-wrap:break-word;
+		margin-bottom:3px;
+		margin-top:3px;
+	}
+</style>
+
+<fieldset>
+  <legend>身穿装备</legend>
+  
+<form action=""  method="get" id="LogFrom">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+	<input type="hidden" name="c" value="XianHunUser">
+    <input type="hidden" name="a" value="OperationLog">
+	<input type="hidden" name="zp" value="XianHun">
+    <input type="hidden" name="LogId" id="LogId" value="0">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+            <span style="padding-right:20px;">
+                日志类型
+                <select name="rootid" id="rootid" onchange="rootchange($(this).val())">
+                    <!--{html_options options=$RootSlt selected=$selected.rootid}-->
+                </select>
+                <select name="typeid" id="typeid" onchange="TypeChange($('#rootid').val(),$(this).val());">
+                    <option value="0">所有子类</option>
+                </select>
+            </span>
+            
+            
+            操作时间：
+            <input class="text" type="text" name="StartTime" value="<!--{$selected.StartTime}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+            至
+            <input class="text" type="text" name="EndTime" value="<!--{$selected.EndTime}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+        </td>
+      </tr>
+      
+      
+      <tr id="SearchTr">
+        <td>
+            匹配关键字
+            <select name="KeyWordSearchType" id="KeyWordSearchType" style="margin-right:15px;">
+                <option value="0" >完全匹配</option>
+                <option value="3" >模糊匹配</option>
+                <option value="1" >大于</option>
+                <option value="2" >小于</option>                
+            </select>
+            <span id="SerachTpl">
+                <!--{if $selected.typeid > 0}-->
+                    <!--{$TplSearch}-->
+                <!--{else}-->
+                    x1:<input value="" style="width: 50px;" class="text" name="x1">,
+                    x2:<input value="" style="width: 50px;" class="text" name="x2">,
+                    x3:<input value="" style="width: 50px;" class="text" name="x3">,
+                    x4:<input value="" style="width: 50px;" class="text" name="x4">,
+                    x5:<input value="" style="width: 50px;" class="text" name="x5">,
+                    x6:<input value="" style="width: 50px;" class="text" name="x6">,
+                    x7:<input value="" style="width: 50px;" class="text" name="x7">,
+                    x8:<input value="" style="width: 50px;" class="text" name="x8">,
+                    x9:<input value="" style="width: 50px;" class="text" name="x9">,
+                    x10:<input value="" style="width: 50px;" class="text" name="x10">
+                <!--{/if}-->
+            </span>
+            <a href="javascript:void(0)" onclick="clearKeyWord();" style="margin-left:10px;" >[清空]</a>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+            角色Id：<input class="text" type="text" name="playerId" id="playerId" value="<!--{$selected.playerId}-->">
+            角色名：<input class="text" type="text" name="name" id="name" value="<!--{$selected.name}-->">
+            账号：<input class="text" type="text" name="account" id="account" value="<!--{$selected.account}-->">
+            <input class="btn-blue" type="submit" value="查询"  onclick="return checkSubmit();"  name='submitselect'>
+            
+        </td>
+      </tr>
+    </table>    
+    
+    
+    
+    <table width="100%" border="0" cellpadding="3">
+    
+      <tr>
+        <th width="60">
+            <select name="sequenceLock" id="sequenceLock" style="height:22px; font-size:11px;padding:1px;">
+                <option value="0" >日志定位</option>
+                <option value="1" >锁定类型</option>
+            </select>
+        </th>
+        <th>角色Id/角色昵称<br>账号</th>
+        <th>金币<br>银币</th>
+        <th>礼券<br>职业等级</th>
+        <th>当前经验<br>升级经验</th>
+        <th>帮派<br>帮派等级</th>
+        
+        <th>操作时间<br>操作IP</th>
+
+        <th>主类<br>分类</th>
+        <th width="350">详细操作内容</th>
+      </tr>
+    <!--{foreach from=$dataList item=list key=key}--> 
+      <tr class="here_td">
+        <td align="center"><a id="LogId_<!--{$list.id}-->" href="javascript:void(0)" onclick="findPage('<!--{$list.id}-->');" ><!--{$list.id}--></a></td>
+        <td align="center"><!--{$list.playerId}-->/ <!--{$list.name}--><br><!--{$list.username}--></td> 
+        <td align="center"><!--{$list.cash}--><br><!--{$list.coin}--></td>
+        <td align="center"><!--{$list.voucher}--><br><!--{$list.level}--></td>
+        <td align="center"><!--{$list.playerExp}--><br><!--{$list.needExp}--></td>
+        <td align="center"><!--{$list.aname|default:'<font color="#999999">无</font>'}--><br><!--{$list.alevel|default:'0'}--></td>
+
+        <td align="center" style="font-size:10px;"><!--{$list.timestamp}--><br><!--{$list.ip}--></td> 
+
+        <td align="center">
+        	<a style="font-size:11px;" href="javascript:void(0)" onclick="logTypeSearch('<!--{$list.rootid}-->',0);"><!--{$list.rootname}--></a>    
+            <br>
+            <a style="font-size:11px;" href="javascript:void(0)" onclick="logTypeSearch('<!--{$list.rootid}-->','<!--{$list.typeid}-->');"><!--{$list.typename}--></a>            
+        </td> 
+        <td><div class="AutoNewline"><!--{$list.content}--></div></td>  
+      </tr>
+    <!--{foreachelse}-->
+      <tr>
+        <th colspan="14" align="center">查无数据</th>
+      </tr>
+    <!--{/foreach}-->
+    </table>
+</form>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th align="right"><!--{$pageBox}--> </th>
+  </tr>
+</table>
+</fieldset>
+<!--{/if}-->

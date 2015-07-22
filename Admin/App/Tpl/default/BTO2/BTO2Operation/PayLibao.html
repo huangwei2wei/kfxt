@@ -1,0 +1,73 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='Ids[]']").attr("checked",curCheck);
+	 });
+});
+function serverSyn(curBtn){
+	$("#form").attr('action',curBtn.attr("url"));
+	$("#form").submit();
+}
+</script>
+<fieldset>
+<legend><!--{'E79DF958A2C3EBD1D4AAC5D858BABC96'|lang}--></legend>
+<form action="<!--{$url.MasterFRG_PayLibao_del}-->" id="form" method="post" onsubmit="return checksub();">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <td colspan="11">
+    	<a href="<!--{$url.MasterFRG_PayLibao_add}-->"><!--{'CD022CA6074E809107FBFA8EFAD312E8'|lang}--></a>
+        <a href="<!--{$url.MasterFRG_PayLibao_proportion}-->"><!--{'62F1BD73D60E09A5D5826B772A9A2456'|lang}--></a>
+    </td>
+    </tr>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col"><!--{'151E739105EA953B3C0A361F592C1C41'|lang}--></th>
+    <th scope="col"><!--{'3BDD08ADAB6EA90B9164B20A0E4151AC'|lang}--></th>
+    <th scope="col"><!--{'6E66A1D85E3661EB2B14E315B09337C4'|lang}--></th>
+    <th scope="col"><!--{'E05E06ECFEC030C0B920294F028BE985'|lang}--></th>
+    <th scope="col"><!--{'086BF2DFF8AFA5C0549E55B07FDEEFAA'|lang}--></th>
+    <th scope="col"><!--{'42238AAD273702E4267BED0BAEC0CE7D'|lang}--></th>
+    <th scope="col"><!--{'FC92E9352345771B0CEA8487FC6671A9'|lang}--></th>
+    <th scope="col"><!--{'1FA23F4DAA01D5DDFAE6179AA43F0720'|lang}--></th>
+    <th scope="col"><!--{'A53DB51463C2D8EC4AE21144C4579A15'|lang}--></th>
+    <th scope="col"><!--{'B87B77561E776367E6756E11EA652217'|lang}--></th>
+    </tr>
+  <!--{foreach from=$dataList key=key item=list}-->
+  <tr>
+    <td scope="col"><input type="checkbox" value="<!--{$list.Id}-->" name="Id[]" /><!--{$list.Id}--></td>
+    <td scope="col"><a href="<!--{$list.url_edit}-->"><!--{$list.PName}--></a></td>
+    <td scope="col"><!--{$list.PDescribe}--></td>
+    <td scope="col"><!--{$list.Cash}--></td>
+    <td scope="col"><!--{$list.Times}--></td>
+    <td scope="col"><!--{$list.Each}--></td>
+    <td scope="col"><!--{$list.TotalCash}--></td>
+    <td scope="col"><!--{$list.StartTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td scope="col"><!--{$list.Each|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td scope="col"><!--{$list.MsgTitle}--></td>
+    <td scope="col"><!--{$list.MsgContent}--></td>
+    </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="11" scope="col">
+  		<!--{$noData}--> 	
+    </th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <td colspan="11" scope="col">
+  		<!--{'6F92B63DB2645063CF534B90300C13A1'|lang}--><input type="checkbox" onclick="$(':checkbox[name=\'Id[]\']').attr('checked',$(this).attr('checked'))"/>
+        <input type="submit" class="btn-blue" onClick="return confirm('<!--{'187D1FE0248DC951304185D455EC5437'|lang}-->?');" value="<!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}-->" /> 
+        <input type="button" class="btn-blue" url="<!--{$url.OperationFRG_PayLibao_serverSyn}-->" onClick="serverSyn($(this))" value="<!--{'2B169B728C2ABF6191775B3657B61040'|lang}-->" />
+    </td>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

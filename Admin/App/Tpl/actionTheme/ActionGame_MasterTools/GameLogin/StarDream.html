@@ -1,0 +1,115 @@
+<script language="javascript">
+function chageOperator(val){
+	if(val > 0){
+		$('#showForm').show();
+	}else{
+		$('#showForm').hide();
+	}
+	showServerList(val);
+}
+var serverlist = <!--{$serverlist}-->;
+function showServerList(operatorId){
+	if(operatorId>0){
+		$('#serverlist_select').html('');
+		$('#serverlist_select').append('<option value="0"> -<!--{'8BEDCE4E54BA8F7EE7441DD1F021BD5B'|lang}-->- </option>');
+		$.each(serverlist,function(id,val){
+			if(val.operator_id ==operatorId){
+				$('#serverlist_select').append('<option value="'+val.Id+'">'+val.server_name+' => '+val.ordinal+'</option>');
+			}
+		});
+	}
+}
+function serverSelected(server_id){
+	if(server_id>0){
+		$('input[name=ordinal]').val(serverlist[server_id].ordinal);
+	}
+}
+function ordinalInputed(ordinal){
+	if(ordinal>=0){
+		var operator_id = $('select[name=operator_id]').val();
+		$.each(serverlist,function(id,son){
+			if(son.operator_id == operator_id && son.ordinal == ordinal){
+				$('select[name=server_id]').val(son.Id);
+				return false;
+			}
+		});
+	}
+}
+function checkEmpty(){
+	var noEmpty = new Array("cause","ordinal");
+	var explain = new Array("<!--{'2088BDE458445E265704715AA8DACE5A'|lang}-->","<!--{'511941449854423F3C3578821A1E3257'|lang}-->");
+	for (x in noEmpty)
+	{
+		var obj = $('[name='+noEmpty[x]+']');
+		var content = $.trim(obj.val());
+		if(content=='' ){
+			alert(explain[x]+' <!--{'281BADA7259F6BCB836F62AA0B3E8F48'|lang}-->！');
+			obj.focus();
+			return false;
+		}
+	}
+	var ordinal = $('[name=ordinal]').val();
+	if(parseInt(ordinal)>0){
+		
+	}else{
+		alert('<!--{'F0FCEF8DECDA2E96505D890DAF7BB1BC'|lang}-->0');
+		$('[name=ordinal]').focus();
+		return false;
+	}
+	return true;
+}
+$(function(){
+	$('.playerv_alue').hide().first().show();
+});
+function selectPlayer(obj){
+	$('.playerv_alue').hide();$('input[name='+obj.val()+']').parent().show();
+}
+</script>
+<fieldset>
+  <legend><!--{'B435608220E02203DD374D1C9467946E'|lang}--></legend>
+  
+  
+  <form action="" method="post" target="_blank">
+  	
+    <select id="operator" name="operator_id" onChange="chageOperator($(this).val())">
+    	<option value="0"><!--{'09CA502079E062CD7C8425CC483905ED'|lang}--></option>
+        <!--{html_options options=$operatorList}-->
+    </select>
+  <div id="showForm" style="display:none">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col"><!--{'2088BDE458445E265704715AA8DACE5A'|lang}--></th>
+        <td><textarea name="cause" style="width:400px; height:60px;"></textarea></td>
+       </tr>
+      <tr>
+        <th scope="col"><!--{'511941449854423F3C3578821A1E3257'|lang}--></th>
+        <td>
+        	<input type="text" class="text" name="ordinal" onblur="ordinalInputed($(this).val())" />
+        	<select name="server_id" id="serverlist_select" onchange="serverSelected($(this).val())">
+        		<option value="0"> -<!--{'8BEDCE4E54BA8F7EE7441DD1F021BD5B'|lang}-->- </option>
+        	</select>
+            <!--{'F411D0F1F925D9B48D8C1D451BD809B1'|lang}-->：<!--{'9E52DF0A24254C6F5F61C72D53585CCC'|lang}-->，<!--{'9E2A667ABB288217D0DDF18C0AEC195B'|lang}-->
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="col"><!--{'069A4B89AE4E24F7718E5DF99E80B75D'|lang}--></th>
+        <td>
+                <div class="playerv_alue"><!--{'F6685D1959CB7D93BE372469C5BB1E65'|lang}--> <input type="text" class="text" style="width:400px;" name="user" />
+                <select name="userType">
+                <option value="0">玩家ID</option>
+                <option value="1">玩家账号</option>
+                <option value="2">玩家昵称</option>
+                </select>
+                </div>         
+        </td>
+      </tr>
+      
+      <tr>
+        <th scope="col">&nbsp;</th>
+        <td><input class="btn-blue" type="submit" onclick="return checkEmpty();" value="<!--{'402D19E50FFF44C827A4F3B608BD5812'|lang}-->" /></td>
+      </tr>
+    </table>
+    
+  </div>
+</fieldset>

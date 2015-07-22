@@ -1,0 +1,70 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+
+function submitCheck(){
+	if($.trim($('[name=cause]').val())==''){
+		alert('申请原因不能为空');
+		return false;
+	}
+	var itemsList = $('input[name^=itemNum]');
+	var len = itemsList.length;	
+	var value = 0;
+	for(var i=0;i<len;i++){
+		value = parseInt(itemsList[i].value);
+		if(itemsList[i].type=='text' && (!value || value<=0) ){
+			$('#'+itemsList[i].id+'_type').remove();
+			$('#'+itemsList[i].id+'_position').remove();
+			$('#'+itemsList[i].id+'_id').remove();
+			$('#'+itemsList[i].id+'_name').remove();
+			$('#'+itemsList[i].id).remove();
+		}
+	}
+	return true;
+}
+
+</script>
+<fieldset>
+  <legend>搜索</legend>
+  
+<form action=""  method="post">
+	
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="100%" border="0" cellpadding="3">
+    <tr class="">
+      <th>申请原因<font color="red">*</font></th>
+      <td valign="top"><textarea style="width:400px; height:60px;" id="cause" name="cause" class=""></textarea></td>
+    </tr>
+      <tr>
+	      <th>内容</th>
+	      <td>
+	      	玩家类型：
+	            <select name="userType">
+	            	<!--{html_options options=$userType selected=$_POST.userType}-->
+	            </select>
+		            玩家:<input class="text" type="text" name="user" value="<!--{$_POST.user}-->">
+		    Level： <select name="Level">
+	            	<!--{html_options options=$Level selected=$_POST.Level}-->
+	            </select>
+		        <input class="btn-blue" type="submit" value="提交">
+	      </td>
+      </tr>
+      
+    </table>
+</form>
+
+
+</fieldset>
+
+
+
+<!--{/if}-->

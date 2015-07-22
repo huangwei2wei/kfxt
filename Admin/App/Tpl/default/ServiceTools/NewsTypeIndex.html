@@ -1,0 +1,21 @@
+<fieldset>
+	<legend>交接类型 [<a href="<!--{$URL_newsTypeAdd}-->">添加</a>]</legend>
+<table width="500" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">名字</th>
+    <th scope="col">操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.Id}--></td>
+    <td><!--{$list.name}--></td>
+    <td>
+    	[<a onClick="return confirm('确定删除？')" href="<!--{$list.URL_del}-->">删除</a>]
+        [<a href="<!--{$list.URL_edit}-->">编辑</a>]
+    </td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+<div><!--{$pageBox}--></div>
+</fieldset>

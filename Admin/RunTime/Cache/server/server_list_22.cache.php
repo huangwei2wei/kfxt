@@ -1,0 +1,55 @@
+<?php
+return array (
+  1105 => 
+  array (
+    'Id' => '1105',
+    'room_id' => '0',
+    'game_type_id' => '22',
+    'operator_id' => '9',
+    'ordinal' => '0',
+    'marking' => 's1.l.uwan.com',
+    'time_zone' => '0',
+    'timezone' => 'PRC',
+    'server_name' => 'ng',
+    'server_url' => 'http://www.ng.com/',
+    'timer' => '0',
+    'ext' => NULL,
+    'data_url' => NULL,
+    'isCenter' => NULL,
+  ),
+  1097 => 
+  array (
+    'Id' => '1097',
+    'room_id' => '0',
+    'game_type_id' => '22',
+    'operator_id' => '9',
+    'ordinal' => '2',
+    'marking' => 'www.ls.com',
+    'time_zone' => '0',
+    'timezone' => 'PRC',
+    'server_name' => '兴源',
+    'server_url' => 'http://www.ls.com/',
+    'timer' => '0',
+    'ext' => NULL,
+    'data_url' => NULL,
+    'isCenter' => NULL,
+  ),
+  1104 => 
+  array (
+    'Id' => '1104',
+    'room_id' => '0',
+    'game_type_id' => '22',
+    'operator_id' => '9',
+    'ordinal' => '2',
+    'marking' => 'http://s2.app100641016.qqopenapp.com/',
+    'time_zone' => '0',
+    'timezone' => 'PRC',
+    'server_name' => '外网2',
+    'server_url' => 'http://s2.app100641016.qqopenapp.com/',
+    'timer' => '0',
+    'ext' => NULL,
+    'data_url' => NULL,
+    'isCenter' => NULL,
+  ),
+)
+?>

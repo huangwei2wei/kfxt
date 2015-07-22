@@ -1,0 +1,94 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+	$(function(){
+		$('#pageSize').val('<!--{$_GET.pageSize}-->');
+	});
+</script>
+<fieldset>
+  <legend>搜索</legend>
+  
+<form action=""  method="get">
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />  
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+            玩家ID:<input class="text" type="text" name="playerId" value="<!--{$_GET.playerId}-->">
+            玩家账号:<input class="text" type="text" name="playerAccount" value="<!--{$_GET.playerAccount}-->">
+            玩家昵称:<input class="text" type="text" name="playerName" value="<!--{$_GET.playerName}-->">
+            类型:
+            <select name="exchangeType">
+            	<!--{html_options options=$exchangeTypes  selected=$_GET.exchangeType}-->
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            订单号:<input class="text" type="text" name="transactionId" value="<!--{$_GET.transactionId}-->">
+            充值时间:
+			<input class="text" type="text" name="loginBeginTime" value="<!--{$_GET.loginBeginTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+            -
+            <input class="text" type="text" name="loginEndTime" value="<!--{$_GET.loginEndTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+
+            <input class="btn-blue" type="submit" name="sbm" value="查询">
+        </td>
+      </tr>
+    </table>
+</form>
+
+
+</fieldset>
+
+<fieldset>
+  <legend>充值列表 [本页充值总额：<font color="#FF0000"><!--{$pageMoneyTotal}--></font>]</legend>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">玩家ID</th>
+    <th scope="col">账号</th>
+    <th scope="col">昵称</th>
+    <th scope="col">充值金额</th>
+   <th scope="col">当前银两</th>
+    <th scope="col">获得元宝</th>
+    <th scope="col">订单号</th>
+    <th scope="col">充值时间</th>
+    <th scope="col">充值类型</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.playerId}--></td>
+        <td><!--{$list.pname|default:'<font color="#999999">无</font>'}--></td>
+        <td><!--{$list.prolename}--></td>
+        <td><!--{$list.cash|round:2}--></td>
+        <td><!--{$list.recentCoin|round:2}--></td>
+        <td><!--{$list.getCoin|round:2}--></td>
+        <td><!--{$list.transactionId|default:'<font color="#999999">无</font>'}--></td>
+        <td><!--{$list.incomeTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+        <td><!--{$exchangeTypes[$list.exchangeType]}--></td>
+      </tr>
+  <!--{foreachelse}-->
+  	<!--{if $ConnectErrorInfo}-->
+      <tr>
+        <td align="center" colspan="9"><!--{$ConnectErrorInfo}--></td>
+      </tr>
+  	<!--{else}-->
+      <tr>
+        <td align="center" colspan="9">暂无数据</td>
+      </tr>
+  	<!--{/if}-->
+  <!--{/foreach}-->
+  <tr>
+    <th align="right" scope="col" colspan="9"><!--{$pageBox}--></th>
+  </tr>
+</table>
+
+</fieldset>
+<!--{/if}-->

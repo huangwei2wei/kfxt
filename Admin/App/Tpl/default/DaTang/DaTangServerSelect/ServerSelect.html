@@ -1,0 +1,62 @@
+<script language="javascript">
+var gameServerList=eval(<!--{$gameServerList}-->);
+var selectedOperatorId='<!--{$selectedOperatorId}-->';
+var selectedServerId='<!--{$selectedServerId}-->';
+function chageServer(operatorId){
+	var gameServer=$("#gameServer");
+	gameServer.empty();
+	gameServer.append("<option value=''>服务器选择</option>");
+	$.each(gameServerList,function(i,n){
+		if(n.operator_id==operatorId)gameServer.append("<option value='"+n.Id+"'>"+n.server_name+"</option>");
+	});
+}
+
+/**
+ *检测是否能提交
+ */
+function checksub(){
+	if(!$("#server_id").val()){
+		alert("请选选择服务器");
+		return false;
+	}else{
+		return true;
+	}
+}
+
+function chageServerId(serverId){
+	$("#server_id").val(serverId);
+	$("#server_name").html($("#gameServer").find("option:selected").text());
+	location.href=url+"?c=<!--{$__CONTROL__}-->&a=<!--{$__ACTION__}-->&zp=<!--{$__PACKAGE__}-->&server_id="+serverId;
+}
+
+$(function(){
+	var selectedOperator = false;
+	var selectedServer = false;
+	if(selectedOperatorId){
+		$("#operator").val(selectedOperatorId).change();
+		selectedOperator = true;
+	}
+	if(selectedServerId){
+		$("#gameServer").val(selectedServerId);
+		selectedServer = true;
+	}
+	if(selectedOperator == false && selectedServer == false){
+		$("#operator").val($("#operator").find('option').last().val()).change();
+	}
+})
+</script>
+<fieldset>
+	<legend>服务器选择</legend>
+    <select id="operator" onChange="chageServer($(this).val())">
+    	<option value="">请选择运营商</option>
+        <!--{html_options options=$operatorList}-->
+    </select>
+    <select id="gameServer" onChange="chageServerId($(this).val())">
+    	<option value="">请先选择服务器...</option>
+    </select>
+    <span>当前选择服务器：<span id="server_name" style="color:#F00"><!--{if $selectedServername}--><!--{$selectedServername}--><!--{else}-->未选择服务器<!--{/if}--></span></span>
+</fieldset>
+
+<!--{if $errorConn}-->
+<div style="color:#000; border:1px dashed #333; padding:3px; margin:3px; color:#000; font-weight:bold; text-align:center; background:#FFECEC;">连接[<font color="#FF0000"><!--{$selectedServername}--></font>]游戏服务器失败</div>
+<!--{/if}-->

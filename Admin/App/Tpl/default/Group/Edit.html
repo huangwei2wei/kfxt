@@ -1,0 +1,45 @@
+<fieldset>
+	<legend><!--{'EC14B62AA163E8DF9F6A8D72F1A2CCDD'|lang}--></legend>
+    <form action="<!--{$url.WorkOrder_RoomEdit}-->" method="post">
+    <input type="hidden" name="Id" value="<!--{$roomClass.Id}-->" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row"><!--{'229EBECD01769E4919D693BF19F7317E'|lang}--></th>
+        <td><!--{html_radios options=$gameTypes name="game_type_id" selected=$roomClass.game_type_id}--></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'47E97F956E0CAA2B4F0510734808D708'|lang}--></th>
+        <td><!--{html_radios options=$operatorList name="operator_id" selected=$roomClass.operator_id}--></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{"roomname"|lang}--></th>
+        <td><input type="text" class="text" name="name" value="<!--{$roomClass.name}-->" /></td>
+      </tr>
+      <tr>
+        <th scope="row">是否自动回复：</th>
+        <td><input type="radio" name="autoreply[status]" value="1" <!--{if $roomClass.autoreply.status==1}-->checked<!--{/if}-->/>是<input <!--{if $roomClass.autoreply.status!=1}-->checked<!--{/if}--> type="radio" name="autoreply[status]" value="0"  />否</td>
+      </tr>
+      
+      <tr>
+        <th scope="row">回复时段：</th>
+        <td><input type="text" class="text" name="autoreply[start_time]" value="<!--{$roomClass.autoreply.start_time}-->"/>
+        	至
+        <input type="text" class="text" name="autoreply[end_time]" value="<!--{$roomClass.autoreply.end_time}-->"/>(24小时制度，格式以09:00)</td>
+      </tr>
+      
+      <tr>
+        <th scope="row">主题：</th>
+        <td><input type="text" class="text" name="autoreply[title]" value="<!--{$roomClass.autoreply.title}-->"/>
+        	</td>
+      </tr>
+      
+      <tr>
+        <th scope="row">内容：</th>
+        <td><textarea class="" style="height:200px; width:99%;" name="autoreply[content]" ><!--{$roomClass.autoreply.content}--></textarea></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="<!--{'submit'|lang:'Common'}-->" /></th>
+      </tr>
+    </table>
+    </form>
+</fieldset>

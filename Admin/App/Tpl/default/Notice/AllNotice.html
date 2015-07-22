@@ -1,0 +1,100 @@
+<script language="javascript" src="<!--{$__JS__}-->/Libs/jquery.form.js"></script>
+<script language="javascript">
+function onSubmit(){
+	var serverList=$(":checkbox[name='server_ids[]']");
+	$.each(serverList,function(i,n){
+		if(n.checked==true){
+			var curLi=$("#server_"+n.value);
+			$("#form").ajaxSubmit({
+				dataType:'json',
+				data:{server_id:n.value},
+				success:function(dataResult){
+					var fontColor=(dataResult.status==1)?'#00cc00':'#ff0000';
+					curLi.after("<font color='"+fontColor+"'>"+dataResult.msg+"</font>");
+				}
+			});
+		}
+	});
+	
+}
+function serverSyn(curBtn){
+	$("#formdeal").attr('action',curBtn.attr("url"));
+	$("#formdeal").submit();
+}
+</script>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+
+<form action="<!--{$ajax}-->" method='post' id='form'>
+
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<fieldset>
+<legend>抓取公告</legend>
+<input type='button' value='刷新页面' onclick='window.location.reload(); ' class="btn-blue">
+<input type="button" value="抓取公告" onclick="onSubmit()" class="btn-blue"><font color="#FF0000">(如果需要获取最新播放时间，请点击抓取公告)</font>
+ </fieldset>
+</form>
+
+<form action="" method='post'>
+<fieldset>
+ <legend>公告搜索</legend>
+<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+<input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+<input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+<input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+ 开始时间：<input type="text" onfocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" value="<!--{$post.start_time}-->" name="start_time" class="text">
+ 结束时间：<input type="text" onfocus="WdatePicker({startDate:'-%M- 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" value="<!--{$post.end_time}-->" name="end_time" class="text">
+模糊匹配公告内容：<input type="text" size="40" value="<!--{$post.content}-->" class="text" name="content">
+精简显示：<input type="checkbox" name="is_group" value="1">
+<input type="submit" value="提交" class="btn-blue">
+</fieldset>
+</form>
+<form id='formdeal' action="<!--{$url.OperationFRG_NoticeDel}-->" method="post">
+<fieldset>
+	<legend><b>公告列表</b></legend>
+    
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col" nowrap="nowrap">Id</th>
+        <th scope="col" nowrap="nowrap">服务器名</th>
+        <th scope="col">标题</th>
+        <th scope="col">内容</th>
+        <th scope="col" nowrap="nowrap">URL</th>
+        <th scope="col" nowrap="nowrap">开始时间<br />结束时间</th>
+        <th scope="col" nowrap="nowrap">添加时间<br>下一次发送时间</th>
+        <th scope="col" nowrap="nowrap">间隔</th>
+      </tr>
+      <!--{foreach from=$datalist item=list}-->
+      <tr>
+        <td nowrap="nowrap">
+            <!--{$list.id}-->
+            <input type="checkbox" name="ids[]" value="<!--{$list.id}-->" />
+        </td>
+        <td nowrap="nowrap"><!--{$list.server_id}--></td>
+        <td><!--{$list.title}--></td>
+        <td><a href="<!--{$list.url_edit}-->"><!--{$list.content}--></a></td>
+        <td><!--{$list.url}--></td>
+        <td nowrap="nowrap"><!--{$list.start_time}--><br /><!--{$list.end_time}--></td>
+        <td nowrap="nowrap"><!--{$list.create_time}--><br /><font color="#FF0000"><!--{$list.last_send_time}--></font></td>
+        <td nowrap="nowrap"><!--{$list.interval_time}--></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="8"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="8">
+        	<input type="checkbox" onclick="$('input[name=ids[]]').attr('checked',$(this).attr('checked'))">全选
+        	<input type="button" class="btn-blue" value="删除" url='<!--{$del}-->'  onclick="if(confirm('确定要删除吗?'))serverSyn($(this));"/>
+        	<div align="right"><!--{$pageBox}--></div>
+        </td>
+      </tr>
+    </table>
+</fieldset>
+</form>
+
+
+

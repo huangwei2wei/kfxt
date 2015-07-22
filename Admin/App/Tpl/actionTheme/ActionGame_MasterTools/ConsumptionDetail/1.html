@@ -1,0 +1,95 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+	$(function(){
+		$('#pageSize').val('<!--{$_GET.pageSize}-->');
+	});
+</script>
+<fieldset>
+  <legend><!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}--></legend>
+  
+<form action=""  method="get">
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />  
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+            <!--{'069A4B89AE4E24F7718E5DF99E80B75D'|lang}-->ID:<input class="text" type="text" name="playerId" value="<!--{$_GET.playerId}-->">
+            <!--{'F6685D1959CB7D93BE372469C5BB1E65'|lang}-->:<input class="text" type="text" name="playerAccount" value="<!--{$_GET.playerAccount}-->">
+            <!--{'AB581AA0560E5EE2B91A1B2003B15FAA'|lang}-->:<input class="text" type="text" name="playerName" value="<!--{$_GET.playerName}-->">
+            <!--{'226B0912184333C81BABF2F1894EC0C1'|lang}-->:
+            <select name="exchangeType">
+            	<option value="-1"><!--{'A8B0C20416853BDA54120BF19477AD11'|lang}--></option>
+            	<!--{html_options options=$exchangeTypes  selected=$_GET.exchangeType}-->
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <!--{'1E8DC255ABF9F4B8C93D641EF559E6F2'|lang}-->:<input class="text" type="text" name="transactionId" value="<!--{$_GET.transactionId}-->">
+            <!--{'7A036A259B0EAFCB307BBE3A1F811770'|lang}-->:
+			<input class="text" type="text" name="loginBeginTime" value="<!--{$_GET.beginTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+            -
+            <input class="text" type="text" name="loginEndTime" value="<!--{$_GET.endTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+
+            <input class="btn-blue" type="submit" name="sbm" value="<!--{'BEE912D79EEFB7335988C4997AA9138D'|lang}-->">
+        </td>
+      </tr>
+    </table>
+</form>
+
+
+</fieldset>
+
+<fieldset>
+  <legend><!--{'C828C4C4440EA0E8E770F4DC2D5AA44E'|lang}--> [<!--{'BA11B44B93864302ED944EB8E3B77EE3'|lang}-->：<font color="#FF0000"><!--{$pageMoneyTotal}--></font>]</legend>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col"><!--{'069A4B89AE4E24F7718E5DF99E80B75D'|lang}-->ID</th>
+    <th scope="col"><!--{'7035C62FB00576FED9B3A1F2B7D48E6C'|lang}--></th>
+    <th scope="col"><!--{'23EB0E6024B9C5E694C18344887C4FE7'|lang}--></th>
+    <th scope="col"><!--{'1BCB8E4AA06E84801D6582BE8A0988C8'|lang}--></th>
+    <th scope="col"><!--{'03C168E54AD26475002878C02A7E9AB5'|lang}--></th>
+    <th scope="col"><!--{'636E475076762B63237B2E932810A36D'|lang}--></th>
+    <th scope="col"><!--{'1E8DC255ABF9F4B8C93D641EF559E6F2'|lang}--></th>
+    <th scope="col"><!--{'7A036A259B0EAFCB307BBE3A1F811770'|lang}--></th>
+    <th scope="col"><!--{'B854970C3EA642D87C7F6B9C78935CE9'|lang}--></th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.playerId}--></td>
+        <td><!--{$list.accountName|default:'<font color="#999999">no</font>'}--></td>
+        <td><!--{$list.playerName}--></td>
+        <td><!--{$list.money|round:2}--></td>
+        <td><!--{$list.depay|round:2}--></td>
+        <td><!--{$list.gold|round:2}--></td>
+        <td><!--{$list.transactionId|default:'<font color="#999999">no</font>'}--></td>
+        <td><!--{$list.createDate|date_format:'%Y-%m-%d %H:%M:%S'}--></td>
+        <td><!--{$exchangeTypes[$list.exchangeType]}--></td>
+      </tr>
+  <!--{foreachelse}-->
+  	<!--{if $ConnectErrorInfo}-->
+      <tr>
+        <td align="center" colspan="9"><!--{$ConnectErrorInfo}--></td>
+      </tr>
+  	<!--{else}-->
+      <tr>
+        <td align="center" colspan="9"><!--{'21EFD88B67A39834582AD99AABB9DC60'|lang}--></td>
+      </tr>
+  	<!--{/if}-->
+  <!--{/foreach}-->
+  <tr>
+    <th align="right" scope="col" colspan="9"><!--{$pageBox}--></th>
+  </tr>
+</table>
+
+</fieldset>
+<!--{/if}-->

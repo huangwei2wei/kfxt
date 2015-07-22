@@ -1,0 +1,104 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+function userOperate(obj){
+	var url = obj.attr('url');
+	var form = $('#userOptForm');
+	form.attr('action',url);
+	form.submit();
+}
+</script>
+<fieldset>
+  <legend>用户查询</legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    玩家ID:<input class="text" type="text" name="playerId" value="<!--{$_GET.playerId}-->">
+    玩家账号:<input class="text" type="text" name="account" value="<!--{$_GET.account}-->">
+    玩家昵称:<input class="text" type="text" name="playerName" value="<!--{$_GET.playerName}-->">
+    <br>
+    注册时间:
+    <input class="text" type="text" name="registerTimeStart" value="<!--{$_GET.registerTimeStart}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    -
+    <input class="text" type="text" name="registerTimeEnd" value="<!--{$_GET.registerTimeEnd}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    
+    
+    登录时间:
+    <input class="text" type="text" name="loginTimeStart" value="<!--{$_GET.loginTimeStart}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    -
+    <input class="text" type="text" name="loginTimeEnd" value="<!--{$_GET.loginTimeEnd}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    <input class="btn-blue" type="submit" value="查询">
+</form>
+
+<form id="userOptForm" method="post"> 
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>选择</th>
+          <th>用户Id</th>
+          <th>用户IP</th>
+          <th>账号</th>
+          <th>昵称</th>
+          <th>注册时间<br>注册IP</th>
+          <th>最后登录时间</th>
+          <th>帮会<br>帮会等级</th>
+          <th>元宝<br>铜钱</th>
+          <th>角色等级</th>
+          <th>精力</th>
+          <th>操作</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+          <td align="center"><input type="checkbox" name="ids[]" value="<!--{$list->playerId|default:'0'}-->"/></td>
+       	  <td align="center"><!--{$list->playerId|default:'0'}--></td>
+       	  <td align="center"><!--{$list->userIp|default:'0'}--></td>
+          <td align="center"><!--{$list->userAccount|default:'<font color="#999999">无</font>'}--></td>
+          <td align="center"><!--{$list->playerName|default:''}--></td>
+          <td align="center">
+          	<!--{$list->createDateTimeStamp/1000|date_format:"%Y-%m-%d %H:%M:%S"}-->
+            <br>
+            <!--{$list->ip|default:'<font color="#999999">无</font>'}-->
+          </td>
+          
+          <td align="center">
+          	<!--{if $list->lastLogintimeTimeStamp}-->
+            	<!--{$list->lastLogintimeTimeStamp/1000|date_format:"%Y-%m-%d %H:%M:%S"}-->
+            <!--{else}-->
+            	<font color="#999999">无</font>
+            <!--{/if}-->
+          </td>
+          <td align="center"><!--{$list->ingots|default:'<font color="#999999">无</font>'}--></td>
+          <td align="center"><!--{$list->gold|default:'0'}--><br><!--{$list->copper|default:'0'}--></td>
+          <td align="center"><!--{$list->playerLevel|default:'0'}--></td>
+          <td align="center"><!--{$list->token|default:'0'}--></td>
+          <td align="center">[<a href="<!--{$list->URL_Bug|default:'javascript:void(0)'}-->">提BUG</a>]</td>
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="11" align="center"><font color="#FF0000">暂无数据</font></th>
+          </tr>
+		<!--{/foreach}-->
+          <tr>
+            <td colspan="11">
+            	<input type="checkbox" onClick="$('input[name=ids[]]').attr('checked',$(this).attr('checked'))">全选            	
+            	<input type="button" class="btn-blue" value="发邮件" url="<!--{$URL_Opt.sendMsg}-->" onclick="userOperate($(this));" />
+            	<input type="button" class="btn-blue" value="禁言" url="<!--{$URL_Opt.talkUserAdd}-->" onclick="userOperate($(this));" />
+                <input type="button" class="btn-blue" value="封号" url="<!--{$URL_Opt.resUserAdd}-->" onclick="userOperate($(this));" />                
+                <input type="button" class="btn-blue" value="全服封OpenId" url="<!--{$URL_Opt.lockUser}-->" onclick="userOperate($(this));" />
+            </td>
+          </tr>
+          <tr>
+            <th colspan="11" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+</form>
+</fieldset>
+<!--{/if}-->

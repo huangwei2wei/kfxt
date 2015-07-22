@@ -1,0 +1,93 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+	<legend>搜索列表</legend> 
+  <form action="" method="get">
+    <input type="hidden" name="c" value="ProgramTask" />
+    <input type="hidden" name="a" value="Index" />
+    <input type="hidden" name="zp" value="Program" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="row">负责人</th>
+        <td><select name="accept_user_id"><option value="">请选择</option><!--{html_options options=$users selected=$selected.accept_user_id}--></select></td>
+      </tr>
+      <tr>
+        <th scope="row">任务分配时间</th>
+        <td>        
+        <input type="text" class="text" name="start_time" value="<!--{$selected.start_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.start_time}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        -
+		<input type="text" class="text" name="end_time" value="<!--{$selected.end_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.end_time}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">优质等级</th>
+        <td><select name="efficiency_level"><option value="">请选择</option><!--{html_options options=$efficiencyLevel selected=$selected.efficiency_level}--></select></td>
+      </tr>
+      <tr>
+        <th scope="row">完成效率</th>
+        <td><select name="finish_speed"><option value="">请选择</option><!--{html_options options=$finishSpeed selected=$selected.finish_speed}--></select></td>
+      </tr>
+      <tr>
+        <th scope="row">难度系数</th>
+        <td><input type="text" class="text" name="difficulty" value="<!--{$selected.difficulty}-->" /></td>
+      </tr>
+      <tr>
+        <th scope="row">任务编号</th>
+        <td><input type="text" class="text" name="Id" value="<!--{$selected.Id}-->" /></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" value="提交" class="btn-blue" /></th>
+      </tr>
+    </table>
+	</form>
+</fieldset>
+<fieldset>
+	<legend>任务列表</legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap" scope="col">Id</th>
+        <th nowrap="nowrap" scope="col">分配人<br />
+        负责人</th>
+        <th nowrap="nowrap" scope="col">难度系数</th>
+        <th scope="col">任务描述</th>
+        <th nowrap="nowrap" scope="col">预计完成小时<br />
+        实际完成小时</th>
+        <th nowrap="nowrap" scope="col">分配时间</th>
+        <th nowrap="nowrap" scope="col">开始时间<br />
+        结束时间</th>
+        <th nowrap="nowrap" scope="col">质量评分<br />质量</th>
+        <th scope="col">工作效率<br />
+		廷时原因</th>
+        <th nowrap="nowrap" scope="col">效率得分<br />
+          BUG得分</th>
+        <th nowrap="nowrap" scope="col">当前状态</th>
+        <th nowrap="nowrap" scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td nowrap="nowrap"><!--{$list.Id}--></td>
+        <td nowrap="nowrap"><!--{$list.word_assign_user_id}--><br /><!--{$list.word_accept_user_id}--></td>
+        <td nowrap="nowrap"><!--{$list.difficulty}--></td>
+        <td title="<!--{$list.task_content}-->"><!--{$list.task_content}--></td>
+        <td nowrap="nowrap"><!--{$list.precast_hour}-->小时<br /><!--{if $list.actual_hour!=''}--><!--{$list.actual_hour}-->小时<!--{/if}--></td>
+        <td nowrap="nowrap"><!--{$list.assign_time}--></td>
+        <td nowrap="nowrap"><!--{$list.start_time}--><br /><!--{$list.end_time}--></td>
+        <td nowrap="nowrap"><!--{$list.efficiency_scorce}--><br /><!--{$list.word_efficiency_level}--></td>
+        <td title="<!--{$list.timeout_cause}-->"><!--{$list.finish_speed}--><br /><!--{$list.timeout_cause}--></td>
+        <td nowrap="nowrap"><!--{$list.quality_scorce}--><br /><!--{$list.bug_scorce}--></td>
+        <td nowrap="nowrap"><!--{$list.cur_status}--></td>
+        <td nowrap="nowrap">
+        	<!--{if $list.url_accept}--><a href="<!--{$list.url_accept}-->">接收任务</a><!--{/if}-->
+            <!--{if $list.url_finish}--><a href="<!--{$list.url_finish}-->">完成任务</a><!--{/if}-->
+            <!--{if $list.url_audit}--><a href="<!--{$list.url_audit}-->">审核任务</a><!--{/if}-->
+          <a href="<!--{$list.url_edit}-->">修改任务</a>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="12" nowrap="nowrap"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+	<div align="right"><!--{$pageBox}--></div>
+</fieldset>

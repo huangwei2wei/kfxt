@@ -1,0 +1,31 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+
+</script>
+<fieldset>
+<legend>道具包列表 <a href="<!--{$URL_itemsPackageAdd}-->">增加</a></legend>
+<form method="post" action="">
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">礼包ID</th>
+    <td><!--{$_GET.type}--></td>
+  </tr>
+  <tr>
+    <th scope="row">生成数量</th>
+    <td><input type="text" class="text" name="num" value=""></td>
+  </tr>
+  <tr>
+    <th scope="row">有效期天数</th>
+    <td><input type="text" class="text" name="day" value="0"> 0 表示没有过期时间</td>
+  </tr>
+  <tr>
+    <th scope="row">&nbsp;</th>
+    <td><input type="submit" class="btn-blue" value="提交"></td>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,29 @@
+<script language="javascript">
+function executeKind(gameType){
+	tempEdit=$("#temp_edit");
+	name=gameType.attr("name")?gameType.attr("name"):'';
+	url=gameType.attr("url");
+	tempEdit.empty();
+	tempEdit.html("<th colspan='2'>"+gameType.attr("value")+" <input type='text' class='text' id='tempText' value='"+name+"' />&nbsp;<input type='button' class='btn-blue' onclick='ajaxGet($(\"#tempText\").val(),\""+url+"\")' value='确定' /></th>");
+	tempEdit.css("display","table-row");
+}
+
+function ajaxGet(text,url){
+	$.ajax({
+		url:url,
+		async:false,
+		cache:false,
+		data:{data:text},
+		dataType:"json",
+		success:function(data){
+			if(data.status!=1){
+				alert("处理失败!");
+			}
+			tempEdit=$("#temp_edit");
+			tempEdit.css("display","none");
+		},
+		type:"GET"
+	});
+	location.reload();
+}
+</script>

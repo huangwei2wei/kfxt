@@ -1,0 +1,94 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+	$(function(){
+		$('#pageSize').val('<!--{$_GET.pageSize}-->');
+	});
+</script>
+<fieldset>
+  <legend>搜索</legend>
+  
+<form action=""  method="get">
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />  
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+        账号类型:<select name="type">
+            	<option value="1" label="玩家ID">玩家ID</option>
+				<option value="2" label="玩家账号">玩家账号</option>
+				<option value="3" label="玩家昵称">玩家昵称</option>
+       </select>
+            	玩家:<input class="text" type="text" name="player" value="<!--{$_GET.player}-->">
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+            时间:
+			<input class="text" type="text" name="beginTime" value="<!--{$_GET.beginTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+            -
+            <input class="text" type="text" name="endTime" value="<!--{$_GET.endTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+            <input class="btn-blue" type="submit" name="sbm" value="查询">
+        </td>
+      </tr>
+    </table>
+</form>
+
+
+</fieldset>
+
+<fieldset>
+  <legend>充值列表 [本页充值总额：<font color="#FF0000"><!--{$pageMoneyTotal}--></font>]</legend>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+  	<th scope="col">系统编号</th>
+    <th scope="col">角色id</th>
+    <th scope="col">消费类型</th>
+    <th scope="col">金币</th>
+    <th scope="col">商城积分</th>
+    <th scope="col">绑定金币</th>
+    <th scope="col">获得道具id</th>
+    <th scope="col"> 获得数量</th>
+    <th scope="col">消费类型</th>
+    <th scope="col">记录时间</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+      <tr>
+      	<td><!--{$list.id}--></td>
+        <td><!--{$list.playerId}--></td>
+        <td><!--{$list.stype}--></td>
+        <td><!--{$list.gold}--></td>
+        <td><!--{$list.vipScore}--></td>
+        <td><!--{$list.goldTicke}--></td>
+        <td><!--{$list.goodsId}--></td>
+        <td><!--{$list.num}--></td>
+        <td><!--{$list.eventId}--></td>
+        <td><!--{$list.addTime|date_format:'%Y-%m-%d %H:%M:%S'}--></td>
+      </tr>
+  <!--{foreachelse}-->
+  	<!--{if $ConnectErrorInfo}-->
+      <tr>
+        <td align="center" colspan="9"><!--{$ConnectErrorInfo}--></td>
+      </tr>
+  	<!--{else}-->
+      <tr>
+        <td align="center" colspan="9">暂无数据</td>
+      </tr>
+  	<!--{/if}-->
+  <!--{/foreach}-->
+  <tr>
+    <th align="right" scope="col" colspan="9"><!--{$pageBox}--></th>
+  </tr>
+</table>
+
+</fieldset>
+<!--{/if}-->

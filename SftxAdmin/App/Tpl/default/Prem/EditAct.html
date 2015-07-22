@@ -1,0 +1,16 @@
+<form action="<!--{$url.Prem_EditAct}-->" method="post">
+<input type="hidden" value="<!--{$id}-->" name="Id" />
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">方法名</th>
+    <td><input type="text" class="text" name="value" value="<!--{$data.value}-->" /></td>
+  </tr>
+  <tr>
+    <th scope="row">角色</th>
+    <td><input type="text" class="text" name="allow" value="<!--{$data.allow}-->" /></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+  </tr>
+</table>
+</form>

@@ -1,0 +1,157 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='playerId[]']").attr("checked",curCheck);
+	 });
+});
+function del(){
+	if(confirm('确定要删除吗?')){
+		$('#DelFrom').submit();
+	}
+}
+
+
+function getDetail(obj){
+	var kid = obj.attr('kid');
+	if($('#detail'+kid).html() == ''){		
+		$.ajax({
+			dataType:'json',	
+			type: 'GET',
+			url: obj.attr('url'),
+			success:function(msg){
+				var json = eval(msg);				
+				if(1 == json.status){				
+					if(json.data.length>0){
+						$.each(json.data,
+							function(Id,subobj){ 
+								$('#detail'+kid).append('<div style="margin:5px;">'+subobj.info+'</div><hr>');
+							}
+						);	
+					}else{
+						$('#detail'+kid).append('<div color="margin:5px;">无操作记录</div>');
+					}				
+				}
+				else if(0 == json.status){
+					alert(json.info);
+				}else{
+					alert('unknow error');
+				}
+			}
+		});
+	}
+}
+
+function viewDetail(obj){
+	var kid = obj.attr('kid');
+	
+	var trDetail = $('#trDetail'+kid);
+	if(trDetail.css("display")=="none"){
+		getDetail(obj);
+		trDetail.show();		
+	}else{
+		trDetail.hide();
+	}	
+}
+
+
+function hindParent(obj){
+	obj.parent().parent().parent().hide();
+}
+
+</script>
+<fieldset>
+	<legend>搜索</legend>
+    <form action="" method="GET">
+    	<input type="hidden" name="c" value="XianHunUser" />
+        <input type="hidden" name="a" value="ForbiddenChat" />
+        <input type="hidden" name="zp" value="XianHun" />
+        <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->" />
+		角色ID：<input type="text" class="text" name="playerId" id="playerId" value="<!--{$selected.playerId}-->" />
+        角色名：<input type="text" class="text" name="nickname" id="nickname" value="<!--{$selected.nickname}-->" />
+        用户名：<input type="text" class="text" name="username" id="username" value="<!--{$selected.username}-->" />
+        <input type="submit" value="搜索" class="btn-blue" />
+    </form>
+</fieldset>
+<fieldset>
+<legend>禁言列表</legend>
+<form action="<!--{$url.OperationLog_ForbiddenChatDel}-->" method="post" id="DelFrom" onsubmit="return checksub();">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <td colspan="11">
+    	<a href="<!--{$UrlForbiddenChatAdd}-->">增加禁言</a>
+    </td>
+    </tr>
+  <tr>
+    <th scope="col">操作</th>
+    <th scope="col">角色ID</th>
+    <th scope="col">角色名</th>
+    <th scope="col">用户名</th>    
+    <th scope="col">金币</th>    
+    <th scope="col">银两</th>
+    <th scope="col">注册时间</th>
+    <th scope="col">禁言开始时间</th>
+    <th scope="col">禁言结束时间</th>
+    <th scope="col">状态</th>
+    <th scope="col">操作</th>
+    
+  </tr>
+  <!--{foreach from=$dataList key=key item=list}-->
+  <tr>
+    <td scope="col"><input type="checkbox" value="<!--{$list.playerId}-->" name="playerId[]" /></td>
+    <td scope="col"><!--{$list.playerId}--></td>
+    <td scope="col"><!--{$list.userName}--></td>
+    <td scope="col"><!--{$list.nickName}--></td>
+    <td scope="col"><!--{$list.cash}--></td>
+    <td scope="col"><!--{$list.coin}--></td>
+    <td scope="col"><!--{$list.regTime}--></td>    
+    <td scope="col"><!--{$list.banChatStartTime}--></td>
+    <td scope="col"><!--{$list.banChatEndTime}--></td>
+    <td scope="col"> 
+    	<!--{if $list.banChatStatus==1}-->
+       		封号中
+        <!--{elseif $list.banChatStatus==2}-->
+       		强制解除
+        <!--{elseif $list.banChatStatus==3}-->
+        	自动解除
+        <!--{else}-->
+        	<!--{$list.banChatStatus}-->
+        <!--{/if}-->
+    </td>
+    <td scope="col"><a url="<!--{$list.URL_TimeEnd}-->" href="javascript:void(0);" onclick="viewDetail($(this));" kid="<!--{$list.playerId}-->">查看详细</a></td>
+  </tr>
+ <tr style="display:none;" id="trDetail<!--{$list.playerId}-->">
+  	<td colspan="11" style="padding-left:20px;"> 
+		<div id="detail<!--{$list.playerId}-->"></div>
+	</td>
+  </tr>
+  
+  <!--{foreachelse}-->
+        <!--{if $ConnectErrorInfo}-->
+            <tr>
+                <th colspan="11" scope="col">
+                    <!--{$ConnectErrorInfo}--> 	
+                </th>
+            </tr>
+        <!--{else}-->
+            <tr>
+                <th colspan="11" scope="col">
+                    <!--{$noData}--> 	
+                </th>
+            </tr>
+        <!--{/if}-->
+  <!--{/foreach}-->
+  <tr>
+    <td colspan="11" scope="col">
+  		选择所有<input type="checkbox" id="allcheck" /><input type="button" class="btn-blue" onClick="del()" value="解除" />  	
+    </td>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

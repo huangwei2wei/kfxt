@@ -1,0 +1,77 @@
+<script language="javascript">
+$(function(){
+	$("form :radio").click(function(){$("form").submit();});
+})
+</script>
+<fieldset>
+	<legend>用户搜索</legend>
+  <form action="" method="get">
+      <input type="hidden" value="User" name="c"  />
+        <input type="hidden" value="Index" name="a" />
+   	  <table width="100%" border="0" cellspacing="2" cellpadding="2">
+        <tr>
+          <th scope="row">部门选择</th>
+          <td><!--{html_radios options=$selectDepartmentList name="department_id" selected=$selectedDepartmentId}--></td>
+        </tr>
+        <tr>
+          <th scope="row">组别选择</th>
+          <td><!--{html_radios options=$selectOrgList name="org_id" selected=$selectedOrgId}--></td>
+        </tr>
+        <tr>
+          <th scope="row">搜索选项</th>
+          <td>
+            账号：<input type="text" class="text" name="user_name" value="<!--{$selectedUserName}-->" />
+            姓名搜索：<input type="text" class="text" name="nick_name" value="<!--{$selectedNickName}-->" />
+            <input type="submit" class="btn-blue" value="提交" />
+          </td>
+        </tr>
+      </table>
+    </form>
+</fieldset>
+
+<fieldset>
+	<legend>用户列表</legend>
+    <a href="<!--{$url.User_Add}-->">Add</a>
+    <a href="<!--{$url.User_CreateCache}-->">CreateCache</a>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">账号</th>
+        <th scope="col">客服序号</th>
+        <th scope="col">姓名</th>
+        <th scope="col">部门</th>
+        <th scope="col">组别</th>
+        <th scope="col">职位(角色)</th>
+        <th scope="col">添加时间</th>
+        <th scope="col">更新时间</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td><!--{$list.user_name}--></td>
+        <td><!--{$list.service_id}--></td>
+        <td><!--{$list.nick_name}--></td>
+        <td><!--{$list.word_department}--></td>
+        <td><!--{$list.word_org_id}--></td>
+        <td><!--{$list.word_roles}--></td>
+        <td><!--{$list.date_created}--></td>
+        <td><!--{$list.date_updated}--></td>
+        <td>
+            <a href="<!--{$list.url_operator_manage}-->">设置运营商优先级别</a>
+            <a href="<!--{$list.url_edit}-->">编辑</a>
+            <a onclick="return confirm('确定要删除吗?')" href="<!--{$list.url_del}-->">删除</a>
+            <a onclick="return confirm('确定要初始化吗?')" href="<!--{$list.url_Initialize}-->">初始化</a>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="10"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <th colspan="10" align="right"><!--{$pageBox}--></th>
+      </tr>
+    </table>
+</fieldset>
+

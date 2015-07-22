@@ -1,0 +1,82 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+
+<fieldset>
+	<legend><!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}--></legend>
+    <form action=""  method="get" onsubmit="return checksub();">
+        <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+        <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+        <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+        <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+        <select name="Query[Items]" id="Items">    
+			<!--{html_options options=$items selected=$selectedArr.Items}-->
+        </select>
+        <input type="text" class="text" name="Query[start]" value="<!--{$selectedArr.start|htmlspecialchars}-->" />
+        <select name="Query[TypeItems]" id="TypeItems">
+			<!--{html_options options=$typeItem selected=$selectedArr.TypeItems}-->
+        </select>
+        <!--{'AE20C0110BCD50DB01104AB65F58AD4F'|lang}-->        
+        <input type="text" class="text" name="Query[StartTime]" value="<!--{$selectedArr.StartTime}-->" onFocus="WdatePicker({startDate:'<!--{$selectedArr.StartTime}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        -
+		<input type="text" class="text" name="Query[EndTime]" value="<!--{$selectedArr.EndTime}-->" onFocus="WdatePicker({startDate:'<!--{$selectedArr.EndTime}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        <select name="PageSize">
+			<!--{html_options options=$selectPage selected=$selectedArr.PageSize}-->
+        </select>
+        <!--{'1E8DC255ABF9F4B8C93D641EF559E6F2'|lang}-->：<input type="text" name="Query[PayNo]" value="<!--{$selectedArr.PayNo|htmlspecialchars}-->" class="text" />
+        <!--{'F04F1C508B598B28F9A4211B07927948'|lang}-->：<input type="text" name="Query[CardNo]" id="CardNo" value="<!--{$selectedArr.CardNo|htmlspecialchars}-->" class="text" />
+        <input type="submit" name="submit" id="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->">
+    </form>
+</fieldset>
+
+<fieldset>
+	<legend><!--{'41192B3D62C7F96C759CAA83B33467E4'|lang}-->   [<!--{'62385D8F479AD3B30F5222605BFD8579'|lang}-->：<font color="#FF0000"><!--{$totalCash}--></font>]  </legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th>ID</th>
+        <th><!--{'069A4B89AE4E24F7718E5DF99E80B75D'|lang}-->ID</th>
+        <th><!--{'CBF7B2A04C9736C24ED29B1649D32F6D'|lang}--></th>
+        <th><!--{'1E8DC255ABF9F4B8C93D641EF559E6F2'|lang}--></th>
+        <th><!--{'4CF24ABA16658A855F07D171731226F6'|lang}--></th>
+        <th><!--{'7A036A259B0EAFCB307BBE3A1F811770'|lang}--></th>
+        <th><!--{'03C168E54AD26475002878C02A7E9AB5'|lang}--></th>
+        <th><!--{'F865F0E98A1B42F3BDDC486598D1D0C5'|lang}--></th>
+        <th><!--{'8A8109EA0E1A40B65C57A90C57621C15'|lang}--></th>
+        <th><!--{'7AE943C1B665AAA2064EF0EC668A389E'|lang}--></th>
+        <th><!--{'B854970C3EA642D87C7F6B9C78935CE9'|lang}--></th>
+        <th><!--{'CDC2EE64FC3E1EE461D8744C9665BDA2'|lang}--></th>
+      </tr>
+      <form action="" id="form" method="post">
+      
+      <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+      <!--{foreach from=$dataList item=vo}-->
+      <tr>
+        <td><!--{$vo.Id}--></td>
+        <td><!--{$vo.UserId}--></td>
+        <td><!--{$vo.UserName}--></td>
+        <td><!--{$vo.TransactionId}--></td>
+        <td><!--{$vo.Cash}--></td>
+        <td><!--{$vo.IncomeTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+        <td><!--{$vo.GDepay}--></td>
+        <td><!--{$vo.GetGold}--></td>
+        <td><!--{$vo.RecentGold}--></td>
+        <td><!--{$vo.AddCoin}--></td>
+        <td><!--{$vo.ExchangeType}--></td>
+        <td><!--{$vo.GoldCard}--></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="12"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}--> 
+      </form>
+      <tr>
+        <th colspan="12" align="right"><!--{$pageBox}--></th>
+      </tr>
+    </table>
+</fieldset>
+<!--{/if}-->

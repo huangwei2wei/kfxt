@@ -1,0 +1,177 @@
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+KE.init({id:'content',imageUploadJson : '<!--{$url.UploadImg_Bulletin}-->',afterCreate:function(id){KE.util.focus(id)}});
+
+var gameTypes = <!--{$gameTypes}-->;
+var operators = <!--{$operators}-->;
+var servers = <!--{$servers}-->;
+$(document).ready(function(){
+						   
+	$(function(){
+		$(".all_select").click(function() {
+			var curCheck=$(this).attr("checked");
+			$(this).parent().find(":checkbox").attr("checked",curCheck);
+		 });
+		$("#allcheck").click(function() {
+			var curCheck=$(this).attr("checked");
+			$(":checkbox").attr("checked",curCheck);
+		 });
+	});
+	$('<option/>').attr('value',0).text('全部').appendTo('#game_type_id');
+	$.each(servers,
+		function(Id,name){ 
+			if(gameTypes[Id] != undefined){
+				if(Id==$('#game_type_id_slt').val()){
+					$('<option/>').attr('value',Id).text(gameTypes[Id]).attr('selected',true).appendTo('#game_type_id');
+				}else{
+					$('<option/>').attr('value',Id).text(gameTypes[Id]).appendTo('#game_type_id');
+				}
+			}
+		}
+	);
+
+	gameChange($('#game_type_id').val());
+	
+
+});
+function gameChange(game_id){
+	
+	$('#operator_id').html('');
+	$('<option/>').attr('value',0).text('全部').appendTo('#operator_id');
+	if(game_id>0){
+		$.each(servers[game_id],
+			function(Id,name){ 
+				if(Id==$('#operator_id_slt').val()){
+					$('<option/>').attr('value',Id).text(operators[Id]).attr('selected',true).appendTo('#operator_id');
+				}
+				else{
+					$('<option/>').attr('value',Id).text(operators[Id]).appendTo('#operator_id');
+				}
+			}
+		);	
+	}
+	optChange(game_id,$('#operator_id').val());
+}
+
+function optChange(game_id,operator_id){
+	
+	$('#server_id').html('');
+	$('<option/>').attr('value',0).text('全服').appendTo('#server_id');
+	if(game_id>0 && operator_id>0){
+		$.each(servers[game_id][operator_id],
+			function(Id,name){ 
+				if(Id==$('#server_id_slt').val()){
+					$('<option/>').attr('value',Id).text(name).attr('selected',true).appendTo('#server_id');
+				}
+				else{
+					$('<option/>').attr('value',Id).text(name).appendTo('#server_id');
+				}
+				
+			}
+		);	
+	}
+
+}
+
+
+</script>
+<fieldset>
+<legend>增加问题记录</legend>
+<form action="" method="get">
+	<input type="hidden" name="c" value="GameOperateLog" />
+    <input type="hidden" name="a" value="Index" />
+	<input type="hidden" id="game_type_id_slt" value="<!--{$selected.game_type_id|default:'0'}-->" />
+    <input type="hidden" id="operator_id_slt" value="<!--{$selected.operator_id|default:'0'}-->"/>
+    <input type="hidden" id="server_id_slt" value="<!--{$selected.server_id|default:'0'}-->"/>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th nowrap scope="row">游戏类型</th>
+        <td>
+        	<select name="game_type_id" id="game_type_id" onChange="gameChange($(this).val());"></select>
+        </td>
+      </tr>
+      
+      <tr>
+        <th nowrap scope="row">服务器</th>
+        <td>
+        	<select name="operator_id" id="operator_id" onChange="optChange($('#game_type_id').val(),$(this).val())"></select>
+        	<select name="server_id" id="server_id"><!--{html_options options=$serverTypes selected=$selected.server_id}--></select>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap scope="row">操作类型</th>
+        <td>
+        	<!--{html_options name="GameOperateType" options=$GameOperateType selected=$selected.GameOperateType}-->
+        </td>
+      </tr>
+      <tr>
+        <th nowrap scope="row">玩家ID</th>
+        <td>
+        	<input type="text" class="text" name="UserId" value="<!--{$selected.UserId|default:'0'}-->" />
+        </td>
+      </tr>
+      <tr>
+        <th nowrap scope="row">操作人</th>
+        <td>
+        	<!--{html_options name="user" options=$user selected=$selected.user}-->
+        </td>
+      </tr>      
+      <tr>
+        <th nowrap scope="row">时间范围</th>
+        <td>
+        	<input type="text" class="text" name="start_time" value="<!--{$selected.start_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.start_time}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+            - 
+        	<input type="text" class="text" name="end_time" value="<!--{$selected.end_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.start_time}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+        </td>
+      </tr>
+      <tr>
+        <th nowrap scope="row">搜索</th>
+        <td><input class="text" type="text" name="keywork" value="<!--{$_GET.keywork}-->"/></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" value="提交" class="btn-blue" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+
+<fieldset>
+<legend>后台操作查询</legend>
+<table width="100%" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <th scope="col">Id</th>
+
+    <th scope="col">服务器</th>
+    <th scope="col">操作类型</th>
+    <th scope="col">操作人</th>
+    <th scope="col">玩家Id</th>
+    <th scope="col">操作时间</th>    
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr >
+    <td align="center"><!--{$list.Id}--></td>
+    <td align="center"><!--{$list.game_operator_server}--></td>
+    <td align="center"><!--{$list.operate_type}--></td>
+    <td align="center"><!--{$list.user}--></td>
+    <td align="center"><!--{$list.game_user_id}--></td>
+    <td align="center"><!--{$list.create_time}--></td>
+  </tr>
+  <tr>
+    <td colspan="6" style=" padding: 5px 15px 15px;">
+    	<!--{$list.AddString}-->
+    </td>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <td align="right" colspan="6"><!--{$pageBox}--></td>
+  </tr> 
+</table>
+
+
+</fieldset>
+
+
+
+
+

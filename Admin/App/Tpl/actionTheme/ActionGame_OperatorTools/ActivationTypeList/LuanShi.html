@@ -1,0 +1,29 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+  <legend>公告查询 [<a href="<!--{$URL_Add}-->">添加</a>]</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">类型ID </th>
+        <th scope="col">类型名称</th>
+        <th scope="col">礼包内容</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$cardTypes item=list}-->
+      <tr>
+        <td><!--{$list.id}--></td>
+        <td><!--{$list.typeName}--></td>
+        <td><!--{$list.awards}--></td>
+        <td>
+        	<!--[<a onclick="return confirm('确定删除？');" href="<!--{$list.URL_del}-->">删除</a>]
+        	[<a href='<!--{$list.URL_edit}-->'>编辑</a>]-->
+        </td>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+<div style="text-align:right"><!--{$pageBox}--></div>
+</fieldset>
+<!--{/if}-->

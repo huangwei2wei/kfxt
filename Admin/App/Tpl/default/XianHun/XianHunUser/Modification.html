@@ -1,0 +1,169 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='playerId[]']").attr("checked",curCheck);
+	 });
+});
+function del(){
+	if(confirm('确定要删除吗?')){
+		$('#DelFrom').submit();
+	}
+}
+function getDetail(obj){
+	var kid = obj.attr('kid');
+	if($('#detail'+kid).html() == ''){		
+		$.ajax({
+			dataType:'json',	
+			type: 'GET',
+			url: obj.attr('url'),
+			success:function(msg){
+				var json = eval(msg);				
+				if(1 == json.status){				
+					if(json.data.length>0){
+						$.each(json.data,
+							function(Id,subobj){ 
+								$('#detail'+kid).append('<div style="margin:5px;">'+subobj.info+'</div><hr>');
+							}
+						);	
+					}else{
+						$('#detail'+kid).append('<div color="margin:5px;">无操作记录</div>');
+					}				
+				}
+				else if(0 == json.status){
+					alert(json.info);
+				}else{
+					alert('unknow error');
+				}
+			}
+		});
+	}
+}
+
+function viewDetail(obj){
+	var kid = obj.attr('kid');
+	
+	var trDetail = $('#trDetail'+kid);
+	if(trDetail.css("display")=="none"){
+		getDetail(obj);
+		trDetail.show();		
+	}else{
+		trDetail.hide();
+	}	
+}
+
+function hindParent(obj){
+	obj.parent().parent().parent().hide();
+}
+
+function buttonsub(obj){
+	document.getElementById(obj).value	=	$('#cause').val();
+	if(document.getElementById(obj).value	==	""){
+		window.alert("原因不能为空");
+		return false;
+	}
+	document.getElementById(obj+"form").submit();
+}
+
+</script>
+<fieldset>
+<legend>申请原因</legend>
+
+<table>
+		<tr>
+			<th width='200'>申请原因：</th>
+			<td><textarea id="cause" rows="7" cols="50"></textarea></td>
+			<td></td>
+		</tr>
+		</table>
+</fieldset>
+<fieldset>
+<legend>玩家</legend>
+    <form action="" method="GET">
+    <input type="hidden" name="c" value="XianHunUser" />
+        <input type="hidden" name="a" value="Modification" />
+        <input type="hidden" name="zp" value="XianHun" />
+    	<table>
+		<tr>
+			<th width='200'>角色ID：</th>
+			<td><input type="text" class="text" name="playerId" id="playerId" value="<!--{$playerId}-->" /></td>
+			<td><input type="submit" value="确认" class="btn-blue" /></td>
+		</tr>
+		</table>
+    </form>
+</fieldset>
+<!--{if $modifdisplay}-->
+<fieldset>
+<legend>修改内容</legend>
+<form action="" method="post" id='setSingleInstanceCountform'>
+	<input type="hidden" name="actionfunction" value="setSingleInstanceCount" />
+	<input type="hidden" name="cause" id='setSingleInstanceCount' />
+	<table>
+		<tr>
+			<th width='200'>增加某人每天单人副本次数:</th>
+			<td><input type="text" class='text' name='addcount'></input></td>
+			<td><input type="button" value="确认" class="btn-blue" onclick='buttonsub("setSingleInstanceCount")' /></td>
+		</tr>
+	</table>
+</form>
+
+<form action="" method="post" id='setMultiInstanceCountform'>
+	<input type="hidden" name="actionfunction" value="setMultiInstanceCount" />
+	<input type="hidden" name="cause" id='setMultiInstanceCount' />
+	<table>
+		<tr>
+			<th width='200'>增加某人每天多人副本次数:</th>
+			<td><input type="text" class='text' name='addcount'></input></td>
+			<td><input type="button" value="确认" class="btn-blue" onclick='buttonsub("setMultiInstanceCount")' /></td>
+		</tr>
+	</table>
+</form>
+
+<form action="" method="post"  id='setInstanceProgressform'>
+	<input type="hidden" name="actionfunction" value="setInstanceProgress" />
+	<input type="hidden" name="cause" id='setInstanceProgress' />
+	<table>
+		<tr>
+			<th colspan='3'>设置用户某个副本的进度 </th>
+		</tr>
+		<tr>
+			<th width='200'>副本id:</th>
+			<td><input type="text" class='text' name='instanceId'></input></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th width='200'>层数:</th>
+			<td><input type="text" class='text' name='progressNum'></input></td>
+			<td><input type="button" value="确认" class="btn-blue" onclick='buttonsub("setInstanceProgress")' /></td>
+		</tr>
+	</table>
+</form>
+
+<form action="" method="post" id='setForgeLevelform'>
+	<input type="hidden" name="actionfunction" value="setForgeLevel" />
+	<input type="hidden" name="cause" id='setForgeLevel' />
+	<table>
+		<tr>
+			<th colspan='3'>设置某道具的强化等级</th>
+		</tr>
+		<tr>
+			<th width='200'>道具id:</th>
+			<td><input type="text" class='text' name='itemId'></input></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th width='200'>等级:</th>
+			<td><input type="text" class='text' name='level'></input></td>
+			<td><input type="button" value="确认" class="btn-blue" onclick='buttonsub("setForgeLevel")' /></td>
+		</tr>
+	</table>
+</form>
+
+
+</fieldset>
+<!--{/if}-->
+<!--{/if}-->

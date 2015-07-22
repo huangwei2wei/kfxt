@@ -1,0 +1,105 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">
+function checkuserid(){
+	var ids = document.getElementById("user").value;
+	if($.trim(ids)!==''){
+		$.ajax({
+			type: 'get',
+			url: "<!--{$checkurl}-->&ids="+ids,
+			success:function(data, textStatus){	
+				var myObject = eval('('+data+')');
+				if($.trim(myObject.noExist) != ''){
+					window.alert('不存在:'+myObject.noExist);
+				}else{
+					alert('所填玩家正常');
+				}
+			}
+		});	
+	}else{
+		alert('请填写玩家再检查');
+	}
+}
+</script>
+<fieldset>
+	<legend>修改资源 [<a href="<!--{$URL_updateRewardConfig}-->">参数配置</a>]</legend>
+<form action="" method="post">
+    <table width="98%" border="0" cellpadding="3">
+      <tr>
+      	<td>
+        	操作原因：<br/>
+            <textarea style="width:550px; height:80px;" name="cause"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <div>用户类型:
+            <select name="usertype">
+                <option value="1">用户ID</option>
+                <option value="2">用户名</option>
+            </select>
+            </div>
+            <div style=" padding:5px;padding-left:10px; "><textarea style="width:550px; height:80px;" name="user" id='user'></textarea></div>
+            <div style=" padding-left:10px;">请用","隔开用户<input type="button" value="检查用户是否存在" onclick='checkuserid()' class="btn-blue"/></div>
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+            金币类型:
+            <select name="goldtype">
+                <option value="1">系统金币</option>
+                <option value="2">用户金币</option>
+            </select>
+            金币数:<input type="text" class="text" name="gold" value="">
+           
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <!--{foreach from=$dataConfig item=cname key=field name=foo}-->
+        		<!--{$cname}-->:<input type="text" class="text" name="<!--{$field}-->" value="">   
+                <!--{if $smarty.foreach.foo.index % 4 ==3}-->
+                <br>
+        		<!--{/if}-->
+        	<!--{/foreach}-->
+        </td>
+      </tr>
+      <tr>
+      	<td>
+        	道具ID:<input type="text" style="width:600px;" class="text" name="goodsId" value="">
+            要发id=5的道具一个，id=6的道具3个，应该这样填写：5,6,6,6 
+        </td>
+      </tr>
+      <tr>
+        <td>
+        	<div style="padding:2px;">            
+                是否发送邮件:
+                <select name="isSentMail">
+                	<option value="0">不发送</option>
+                    <option value="1">发送</option>                    
+                </select>
+            </div>
+            <div style="padding:2px;">
+            	邮件标题:<input type="text" style="width:500px;" class="text" name="title" value="">
+            </div>
+            <div style="padding:2px; height:80px;">
+            	邮件内容:
+                <textarea name="contents" style="width:500px; height:80px;"></textarea>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+            <input type="submit" value="提交" class="btn-blue">
+        </td>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

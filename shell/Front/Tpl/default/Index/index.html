@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>优玩网 - 客服中心</title>
+<include file="../common/libs"/>
+<script src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/js/click.js"></script>
+<script>
+function search(){
+	$v=$('#keyword').val();
+	if($v==''){
+		alert('请输入关键词！');
+		return false;
+	}
+	$gtype=$('#game_type_id').val();
+	
+	window.location.href='/index.php?s=/Faq/search/game_type_id/'+$gtype+'/keyword/'+$v;
+}
+</script>
+
+</head>
+
+<body id="coords">
+
+<div id="bg"><div id="bgtainer">
+	<div id="bgtai">
+        <include file="../common/head"/>
+		<div class="conner">
+			<div class="Personaleft">
+            	<div class="servicepic">
+					<h3><img src="/Public/front/default/images/pic_02.jpg" /></h3>
+					<p><b>客服中心</b></p><p>欢迎您来到优玩客服！</p>
+				</div>
+				<div style="padding-bottom:15px;"><img src="/Public/front/default/images/button_11.gif" /></div>
+				<div class="peesonanav">
+					<ul>
+						<li><a href="/index.php?s=/Question/index">我要提问</a></li>
+						<li><a href="/index.php?s=/Faq/Index">常见问题</a></li>
+						<li><a href="/index.php?s=/Notice/">服务指引</a></li>
+						<li><a href="/index.php?s=/Notice/pay">充值指南</a></li>
+                        <li><a href="/index.php?s=/Notice/addicted">防沉迷系统</a></li>
+					</ul>
+				</div>
+				<div style="padding:15px 0;"><img src="/Public/front/default/images/button_11.gif" /></div>
+				<include file="../common/left"/>
+			</div>
+			<div class="personaquan">
+				<div class="servicegame" style="border-bottom:1px #d4d9eb solid">
+					<h2><img src="/Public/front/default/images/button_70.gif" /></h2>
+					<p><b>优玩网账号服务</b></p>
+					<p>提供优玩网账号咨询与解决方案，密保等多种问题。</p>
+					<p><a href="http://service.uwan.com/index.php?s=/Question/index"><img src="/Public/front/default/images/button_74.gif" /></a></p>
+				</div>
+				<div class="servicegame" style="border-bottom:1px #d4d9eb solid">
+					<h2><img src="/Public/front/default/images/button_71.gif" /></h2>
+					<p><b>自助服务</b></p>
+					<p>提供用户自行解决方案，让用户更快速解决各种问题。</p>
+					<p><a href="/index.php?s=/SelfService/index"><img src="/Public/front/default/images/button_74.gif" /></a></p>
+				</div>
+				<div class="servicegame">
+					<h2><img src="/Public/front/default/images/button_73.gif" /></h2>
+					<p><b>富人国</b></p>
+					<p>关于富人国游戏内各种问题咨询与解决方案。</p>
+					<p><a href="/index.php?s=/Question/index/game_type_id/2/"><img src="/Public/front/default/images/button_74.gif" /></a></p>
+				</div>
+				<div class="servicegame">
+					<h2><img src="/Public/front/default/images/button_72.gif" /></h2>
+					<p><b>商业大亨</b></p>
+					<p>关于商业大亨游戏内各种问题咨询与解决方案。</p>
+					<p><a href="/index.php?s=/Question/index/game_type_id/1/"><img src="/Public/front/default/images/button_74.gif" /></a></p>
+				</div>
+				<div class="servicetit">热门问题</div>
+				<div class="serviceli">
+					<ul>
+				
+                         <volist name="listBto" id="vo">
+                          <li><span>{$games[$vo[game_type_id]]['name']}</span><a title="{$vo.question|strip_tags}" href="{:U("/Faq/show/game_type_id/$vo[game_type_id]/Id/$vo[Id]")}">{$vo.question|strip_tags|mb_substr=0,20,'utf-8'}</a></li>
+                          </volist>
+
+					</ul>
+					<ul>
+						
+                         <volist name="listBto2" id="vo">
+                          	<li><span>{$games[$vo[game_type_id]]['name']}</span><a title="{$vo.question|strip_tags}" href="{:U("/Faq/show/game_type_id/$vo[game_type_id]/Id/$vo[Id]")}">{$vo.question|strip_tags|mb_substr=0,20,'utf-8'}</a></li>
+                         </volist>
+                         
+					</ul>
+				</div>
+				<div class="servicetit">常用功能</div>
+				<div class="serviceimg">
+					<ul>
+						<li><img src="/Public/front/default/images/icon_08.gif" /><p><a href="/index.php?s=/SelfService/index">自助服务</a></p></li>
+						<li><img src="/Public/front/default/images/icon_02.gif" /><p><a href="http://www.uwan.com/UserCenter/Indulged.php">防沉迷申请</a></p></li>
+						<li><img src="/Public/front/default/images/icon_03.gif" /><p><a href="http://www.uwan.com/UserCenter/default.php">找回密码</a></p></li>
+						<li><img src="/Public/front/default/images/icon_04.gif" /><p><a href="/index.php?s=/Notice/shouze">优网玩客服守则</a></p></li>
+						<li><img src="/Public/front/default/images/icon_05.gif" /><p><a href="http://www.uwan.com/UserCenter/AdvancedPs.php">密码保护</a></p></li>
+						<li><img src="/Public/front/default/images/icon_06.gif" /><p><a href="/index.php?s=/Question/index">建议提交</a></p></li>
+						<li><img src="/Public/front/default/images/icon_07.gif" /><p><a href="/index.php?s=/Notice/guide">账号防盗手册</a></p></li>
+                        <li><img src="/Public/front/default/images/icon_01.gif" /><p><a href="http://www.uwan.com/jianhu/index.htm">家长监护体系</a></p></li>
+					</ul>
+				</div>
+			</div>
+								</div>
+		<div class="connerbo"></div>
+						
+	</div>
+	<include file="../common/footer"/>
+</div>
+</body>
+
+</html>

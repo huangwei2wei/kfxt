@@ -1,0 +1,155 @@
+<!--{if !$display}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+	function selectAll2(curEvent){
+	    var curCheck=curEvent.attr("checked");
+        $("#form :checkbox").attr("checked",curCheck);
+    }
+	function serverSync(curBtn){
+	    $("#form").attr('action',curBtn.attr("url"));
+	    $("#form").submit();
+    }
+	function onSubmit(){
+		var serverList=$(":checkbox[name='server_ids[]']");
+		$.each(serverList,function(i,n){
+			if(n.checked==true){
+				var curLi=$("#server_"+n.value);
+				var ValueSys=$("#sysnValue");
+				$("#form").ajaxSubmit({
+					dataType:'json',
+					data:{server:n.value,sysnValue:ValueSys.val()},
+					success:function(dataResult){
+						var fontColor=(dataResult.status==1)?'#00cc00':'#ff0000';
+						curLi.after("<font color='"+fontColor+"'>"+dataResult.msg+"</font>");
+					}
+				});
+			}
+		});
+		
+	}
+</script>
+
+<!--{if $docation}-->
+ <form action="<!--{$ajax}-->" method='post' id='form'>
+  <!--{if $tplServerSelect}-->
+      <!--{include file=$tplServerSelect}-->
+  <!--{/if}-->
+  <input type="hidden" value="<!--{$sysnValue}-->" id="sysnValue" />
+   </form>
+   <fieldset>
+  <legend> [商品]</legend>
+  <table width="100%">
+      <tr>
+      <!--{foreach from=$Column item=c}-->
+       <th><!--{$c}--></th>
+     	<!--{/foreach}-->
+      </tr>
+      
+<!--{foreach from=$dataList item=list}-->
+      <tr>
+      <!--{foreach from=$Column item=c}-->	
+        <td align="center">
+	  <!--{$list.$c}-->
+	  <!--{foreach from=$type item=t key=k}-->
+	  
+		  <!--{if $t==$c}-->
+		  <input type="hidden" name="data[<!--{$list.SellID}-->][<!--{$k}-->]" value="<!--{$list.$c|htmlspecialchars}-->" />
+		  <!--{/if}-->
+	  <!--{/foreach}-->
+  </td>
+     	<!--{/foreach}-->        	
+      </tr>
+      <!--{foreachelse}-->
+        <tr>
+          <th colspan="15" align="center">
+              <!--{if $_GET.submit}-->
+               查无数据
+              <!--{else}-->
+              <font color="#FF0000">请使用"查询"按钮</font>
+              <!--{/if}-->
+          </th>
+        </tr>
+<!--{/foreach}-->
+        <tr>
+          <td colspan="15">
+		      <input type="button" name="submit" class="btn-blue" onClick="onSubmit()" value="同步操作" />
+              <input type="hidden" name="fromPlayerList" value="1" />        
+          </td>
+        </tr>
+        <tr>
+          <th colspan="<!--{$len}-->" align="right"><!--{$pageBox}--></th>
+        </tr>
+    </table>
+
+   </fieldset>
+<!--{else if}-->
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<fieldset>
+  <legend>[商品同步：<!--{$dataListcount}-->条数据]<a href='<!--{$update}-->'>[商品礼包]</a><font color="red">[同步前要同步缓存保持最新数据]</font></legend>
+      <form id="form" action=""  method="post">
+	  <table width="100%">
+        <tr>
+		<th>选择</th>
+        <!--{foreach from=$Column item=c}-->
+         <th><!--{$c}--></th>
+       	<!--{/foreach}-->
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+		<td><input type="checkbox" name="data[<!--{$list.SellID}-->]" value="<!--{$list.SellID}-->" /></td>
+        <!--{foreach from=$Column item=c}-->	
+          <td align="center">
+			  <!--{$list.$c}-->
+		  </td>
+       	<!--{/foreach}-->        	
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="15" align="center">
+                <!--{if $_GET.submit}-->
+                 查无数据
+                <!--{else}-->
+                <font color="#FF0000">请使用"查询"按钮</font>
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/foreach}-->
+          <tr>
+            <td colspan="15">
+			    <input type="hidden" name="Page" value="<!--{$_GET.page}-->">
+				<input type="hidden" name="WorldID" value="<!--{$_GET.WorldID}-->">
+            	<input type="checkbox" id="allcheck" onClick="selectAll2($(this))" /><!--{'66EEACD93A7C1BDA93906FE908AD11A0'|lang}-->
+				<input type="submit" class="btn-blue" url="<!--{$url.OperatorTools_ShopProduce_serverSync}-->&page=<!--{$_GET.page}-->" onClick="serverSync($(this))" value="同步到其他服" />
+				<input type="submit" class="btn-blue" url="<!--{$syncDel}-->" onClick="serverSync($(this))" value="同步删除" />
+                <input type="hidden" name="fromPlayerList" value="1" />        
+            </td>
+          </tr>
+          <tr>
+            <th colspan="<!--{$len}-->" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+	  </form>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->
+<!--{/if}-->

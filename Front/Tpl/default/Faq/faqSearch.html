@@ -1,0 +1,18 @@
+<div class="serviceso">
+    <dl>
+        <dt>
+            <input id="faqkeyword" type="text" value="{$keyword|default=''}" />
+        </dt>
+        <dd>
+            <a id="search_button" href="javascript:void(0);" onclick="searchFaq({$gameTypeId});">
+            	<img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/button_78.gif" />
+            </a>
+        </dd>
+    </dl>
+    <p>
+    热点关键字: 
+    <volist name="keywords" id="vo">
+    	<a href="javascript:void(0)" onclick="$('#faqkeyword').val($(this).html());$('#search_button').click()" style="color:#fb8e00">{$vo}</a> 　 
+    </volist>
+    </p>
+</div>

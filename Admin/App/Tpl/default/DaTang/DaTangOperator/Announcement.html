@@ -1,0 +1,95 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+  <legend>公告搜索</legend>
+<form action="" method="get"> 
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+        标题:
+        <input class="text" type="text" name="title" value="<!--{$selected.title}-->">
+        内容:
+        <input class="text" type="text" name="content" value="<!--{$selected.content}-->">
+        <input class="btn-blue" type="submit" value="搜索">
+        </td>
+      </tr>
+    </table>
+
+</form>
+  
+  
+</fieldset>
+
+
+<fieldset>
+  <legend>公告</legend>
+  
+  
+  
+<form action="<!--{$URL_AnnouncementDel}-->" method="post" id="form1">
+  
+      <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td colspan="9"><a href="<!--{$URL_AnnouncementAdd}-->">增加系统公告</a></td>
+      </tr>
+      <tr>
+        <th scope="col">选择</th>
+        <th scope="col">Id</th>
+        <th scope="col">标题</th>
+        <th scope="col">内容</th>
+        <th scope="col">url</th>
+        <th scope="col">时间间隔(分钟)</th>
+        <th scope="col">开始时间</th>
+        <th scope="col">结束时间</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td align="center">
+            <input type="checkbox" name="ids[]" value="<!--{$list.id}-->">
+        </td>
+        <td align="center"><!--{$list.id}--></td>
+        <td align="center"><!--{$list.title}--></td>
+        <td align="center"><!--{$list.context}--></td>
+        <td align="center"><a target="_blank" href="<!--{$list.url}-->" title="<!--{$list.url}-->"><!--{$list.url|truncate:50:"...":true}--></a></td>
+        <td align="center"><!--{$list.interval}--></td>
+        <td align="center"><!--{$list.startTime}--></td>
+        <td align="center"><!--{$list.endTime}--></td>
+		<td align='center'>[<a href='<!--{$list.URL_Del}-->'>删除</a>][<a href='<!--{$list.URL_Edit}-->'>编辑</a>]</td>
+      </tr>
+      <!--{foreachelse}-->
+        <!--{if $ConnectErrorInfo}-->
+          <tr>
+            <td colspan="9"><!--{$ConnectErrorInfo}--></td>
+          </tr>
+        <!--{else}-->
+          <tr>
+            <td colspan="9" align="center">暂无数据</td>
+          </tr>
+        <!--{/if}-->
+      <!--{/foreach}-->
+  <tr>
+    <td colspan="9">
+        全选
+        <input type="checkbox" onClick="$('input[name=ids[]]').attr('checked',$(this).attr('checked'))">
+        <input class="btn-blue" type="button" value="删除" onClick="if(confirm('确定删除?'))$('#form1').submit();">
+    </td>
+  </tr>
+    </table>
+</form>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <td align="right"><!--{$pageBox}--></td>
+  </tr>
+</table>
+
+
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,120 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/jquery.form.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script >
+var operatorList = <!--{$gameOperator}-->;//游戏对应的运营商
+var gameOperatorSelected = <!--{$selected.game_operator_id|default:'""'}-->;//选中的运营商
+$(document).ready(function(){
+	$("input[name='game_type_id[]']").click(function(){
+		show_operator(true);
+	});
+	show_operator();
+});
+//显示运营商
+function show_operator(ischecked){
+	 var game_operator = new Object();// undefined
+	 var show_operators = $("#show_operators");
+	 show_operators.empty();
+ 	 $("input[name='game_type_id[]']:checked").each(function(){
+		 	 var gameId = $(this).attr('value');
+			 var operators = operatorList[gameId];
+			 for(o in operators){
+				 if(game_operator[o] == undefined){
+					 game_operator[o] = operators[o];
+				 }
+			 }
+	 });
+	 for(i in game_operator){
+		 var checked = '';
+		 if($.inArray(i,gameOperatorSelected) >=0 || ischecked){
+			 checked = 'checked="checked"';
+		 }
+		 var str = '<label><input type="checkbox" '+checked+'class="check_operator" value="'+i+'" name="game_operator_id[]">'+game_operator[i]+'</label>';
+		 show_operators.append(str);
+	 }
+}
+
+function checkAll(obj,cls_name){
+	var cls_arr = cls_name.split(",");
+	$.each(cls_arr,function(i){
+			 $('.'+cls_arr[i]).attr('checked',obj.checked);
+		  }
+	);
+	show_operator(true);
+}
+</script>
+<fieldset>
+	<legend>搜索列表</legend>
+    <form action="" method="post">
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap" scope="row">时间范围</th>
+        <td>
+       	 <input type="text" class="text" name="start_time" value="<!--{$selected.start_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.start_time}-->',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"/>
+             - 
+            <input type="text" class="text" name="end_time" value="<!--{$selected.end_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.end_time}-->',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"/>
+        </td>
+      </tr>
+      
+      <tr>
+        <th nowrap="nowrap" scope="row">游戏类型<br /> <input type="checkbox" class="gameType" onclick="checkAll(this,'check_game,check_operator')"  />全选</th><!--{*客服流程修改，原来onclick="checkAll(this,'check_game,check_game_operator,check_game_operator_all')*}-->
+        <td id="gameType">
+          <!--{html_checkboxes onclick="operatorVisibility($(this));" class="check_game" options=$gameTypes name=game_type_id selected=$selected.game_type_id}-->
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">回复区 <br /> <input type="checkbox" class="gameType" onclick="checkAll(this,'room_list')"  />全选</th>
+        <td id="roomList"><!--{html_checkboxes class="room_list" options=$roomList name=roomList selected=$selected.roomList}--></td>
+      </tr>
+
+
+
+      <tr id="game_operator_<!--{$key}-->" class="game_operator" >
+        <th nowrap="nowrap" scope="row">游戏运营商<br /> <input type="checkbox"  class="check_game_operator_all" onclick="allCheckBox('game_operator_<!--{$key}-->',$(this))"  />全选</th>
+        <td id='show_operators'></td>
+      </tr>
+      
+
+      <tr>
+        <th nowrap="nowrap" scope="row">VIP等级<br /> <input type="checkbox" onclick="allCheckBox('vipLevel',$(this))" />全选</th>
+        <td id="vipLevel"><!--{html_checkboxes options=$vipIndex name="vip_level" selected=$selected.vip_level}--></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" value="提交" class="btn-blue" /></th>
+      </tr>
+    </table>
+	</form>
+</fieldset>
+<!--{if $display}-->
+<fieldset>
+	<legend>满意度调察</legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col">游戏名称</th>
+        <th scope="col">处理总量</th>
+        <th scope="col">已评价量</th>
+        <th scope="col">未评价量</th>
+        <th scope="col">好评量</th>
+        <th scope="col">中评量</th>
+        <th scope="col">服务差评量</th>
+        <th scope="col">游戏差评量</th>
+        <th scope="col">服务好评度</th>
+        <th scope="col">评价度</th>
+      </tr>
+      <!--{foreach from=$dataList key=key item=list}-->
+      <tr>
+        <td><!--{if $key=='total'}--><!--{$key}--><!--{else}--><!--{$gameTypes.$key}--><!--{/if}--></td>
+        <td><!--{$list.total|intval}--></td>
+        <td><!--{$list.is_ev|intval}--></td>
+        <td><!--{$list.not_ev|intval}--></td>
+        <td><!--{$list.1|intval}--></td>
+        <td><!--{$list.2|intval}--></td>
+        <td><!--{$list.3|intval}--></td>
+        <td><!--{$list.32|intval}--></td>
+        <td><!--{$list.1|percent:$list.1+$list.2+$list.3}--></td>
+        <td><!--{$list.is_ev|percent:$list.total}--></td>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+</fieldset>
+<!--{/if}-->

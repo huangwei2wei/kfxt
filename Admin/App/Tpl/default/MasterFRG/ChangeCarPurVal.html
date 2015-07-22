@@ -1,0 +1,74 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+	function go2showPurVal(){
+		$('#showPurVal').val(1);
+		document.forms['CarChange'].submit();
+	}
+</script>
+<style >
+	.hh{ margin:3px;}
+</style>
+<fieldset>
+<legend>收回炼狱值  </legend>
+	<form name="CarChange" action="" method="post">
+    <input type="hidden" value="0" id="showPurVal" name="showPurVal" />
+    <div class="hh">
+    	玩家ID<input class="text" type="text" name="UserId" value="<!--{$UserId}-->">
+		玩家当前炼狱值:<font color="#FF0000"><!--{$OldPurVal|default:'无数据'}--></font>
+		玩家更改后炼狱值:<font color="#FF0000"><!--{$NewPurVal|default:'无数据'}--></font>
+		<input type="button" class="btn-blue" onclick="go2showPurVal()" value="显示玩家炼狱值">
+        
+    </div>
+    <div class="hh">
+        操作(1为加,0为减,2为查询)<input class="text" type="text" name="CarState" value="<!--{$_POST.CarState}-->">
+        数值<input class="text" type="text" name="PurVal" value="<!--{$_POST.PurVal|default:'0'}-->">
+        开始时间<input class="text" type="text" name="TimePoint" value="<!--{$_POST.TimePoint}-->"  onFocus="WdatePicker({startDate:'<!--{$smarty.now|date_format:'%Y-%m-%d 00:00:00'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+        结束时间<input class="text" type="text" name="EndTimePoint" value="<!--{$_POST.EndTimePoint}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|date_format:'%Y-%m-%d 23:59:59'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    </div>
+    <div class="hh">
+		事件表列号(1-5)<input class="text" type="text" name="index" value="<!--{$_POST.index|default:'1'}-->">
+        排除ID号(,隔开)<input class="text" type="text" name="NotIds" value="<!--{$_POST.NotIds}-->">
+		页号<input class="text" type="text" name="Page" value="<!--{$_POST.Page|default:'1'}-->">
+        <input type="submit" class="btn-blue" value="提交" />
+    </div>
+    </form>
+<div style=" float:left;padding-left:15px; width:1000px;">
+<div style="float:left;margin-top:0px;width:600px;">
+    <table width="100%" border="0" cellpadding="3">
+        <tr>
+            <th scope="col">玩家ID</th>
+            <th scope="col">时间</th>
+            <th scope="col">内容</th>
+        </tr>
+    	<!--{foreach from=$PurValLog item=list}-->
+        <tr>
+            <td><!--{$list.UserId}--></td>
+            <td><!--{$list.ActionTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+            <td><!--{$list.Params}--></td>
+        </tr>
+        <!--{/foreach}-->
+    </table>
+</div>
+<div style="float:right;margin-top:0px;width:350px;">
+    <table width="100%" border="0" cellpadding="3">
+        <tr>
+            <th scope="col">玩家ID</th>
+            <th scope="col">多出来的炼狱值</th>
+        </tr>
+        <!--{foreach from=$UserMore item=val key=key}-->
+        <tr>
+            <td><!--{$key}--></td>
+            <td><!--{$val}--></td>
+        </tr>
+        <!--{/foreach}-->
+    </table>
+</div>
+</div>
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,60 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+  <legend>用户查询</legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+	<input type="hidden" name="c" value="XianHunUser">
+    <input type="hidden" name="a" value="UserQuery">
+	<input type="hidden" name="zp" value="XianHun">
+    昵称：<input class="text" type="text" name="nickname" value="<!--{$select.nickname}-->">
+    <input class="btn-blue" type="submit" value="查询">
+</form>
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>玩家Id</th>
+          <th>账号</th>
+          <th>昵称</th>
+          <th>最后在线时间</th>
+          <th>最后离线时间</th>
+          <th>金币</th>
+          <th>银两</th>
+          <th>等级</th>
+          <th>经验值</th>
+          <th>性别</th>
+          <th>详情</th>
+        </tr>
+        
+		<!--{if $dataList}-->
+        <tr>
+       	  <td align="center"><!--{$dataList.userId}--></td>
+          <td align="center"><!--{$dataList.username}--></td>
+          <td align="center"><!--{$dataList.nickname}--></td>
+          <td align="center"><!--{$dataList.loginTime/1000|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+          <td align="center"><!--{$dataList.offlineTime/1000|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+          <td align="center"><!--{$dataList.coin}--></td>
+          <td align="center"><!--{$dataList.cash}--></td>
+          <td align="center"><!--{$dataList.level}--></td>
+          <td align="center"><!--{$dataList.exp}--></td>
+          <td align="center"><!--{if $dataList.sex==1}-->男<!--{else}-->女<!--{/if}--></td>
+          <td align="center"><a href="<!--{$dataList.UserDetailUrl}-->">[详细]</a></td>
+        </tr>
+        <!--{elseif $ConnectErrorInfo}-->
+          <tr>
+            <th colspan="11" align="center"><font color="#FF0000"><!--{$ConnectErrorInfo}--></font></th>
+          </tr>
+		<!--{else}-->
+        <tr>
+          <th colspan="11"><!--{$noData}--></th>
+        </tr>
+        <!--{/if}-->
+      </table>
+
+</fieldset>
+<!--{/if}-->

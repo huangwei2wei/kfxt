@@ -1,0 +1,44 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"服务器ID不存在",oncorrect:"请重新输入服务器ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"服务器数值不正确"});
+	$("#cause").formValidator({onshow:"请输入操作原因",oncorrect:"操作原因正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入操作原因"},onerror:"操作原因不能为空"});
+})
+</script>
+<fieldset>
+	<legend>IP修改  [<font color="#0000FF">此操作无须审核</font>]</legend>
+	<form action="<!--{$URL_lockIPDone}-->" method="post" id="form" >
+	<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="row">操作原因</th>
+        <td><textarea name="cause" id="cause" style="width:400px; height:80px;"></textarea><div id="causeTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row">IP</th>
+        <td>
+        	<textarea name="param" style="width:400px; height:200px;"><!--{$param}--></textarea>
+        	<font color="#FF0000">IP,一行一个。</font>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">封停时间</th>
+        <td>
+      <input type="text" class="text" name="endTime" value="<!--{$smarty.now|strtotime:'+1 day'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|strtotime:'+1 day'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+
+        </td>
+      </tr>
+      
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+    </form>
+</fieldset>
+<!--{/if}-->

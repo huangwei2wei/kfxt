@@ -1,0 +1,51 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+  <legend>商品</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">商品ID</th>
+        <th scope="col">商品名称</th>
+        <th scope="col">火热特卖商品</th>
+        <th scope="col"> 时装商品</th>
+        <th scope="col">坐骑商品</th>
+        <th scope="col"> 礼券专区</th>
+        <th scope="col"> VIP专区</th>
+        <th scope="col"> 神秘商品</th>
+        <th scope="col">  需要金币数</th>
+        <th scope="col">  需要礼券数</th>
+        <th scope="col">  商品数量</th>
+        <th scope="col"> 是否为抢购</th>
+        <th scope="col"> 排序</th>
+        <th scope="col"> 是否禁用</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.id}--></td>
+        <td><!--{$list.goodsName}--></td>
+        <td><!--{$list.hot}--></td>
+        <td><!--{$list.fashion}--></td>
+        <td><!--{$list.horse}--></td>
+        <td><!--{$list.gift}--></td>
+        <td><!--{$list.vip}--></td>
+        <td><!--{$list.mystical}--></td>
+        <td><!--{$list.userIngot}--></td>
+        <td><!--{$list.sysIngot}--></td>
+        <td><!--{$list.num}--></td>
+        <td><!--{$list.purchase}--></td>
+        <td><!--{$list.sequence}--></td>
+        <td><!--{$list.forbid}--></td>
+        <td>
+        	<!-- [<a onclick="return confirm('确定删除？');" href="<!--{$list.URL_del}-->">删除</a>] -->
+        	[<a href='<!--{$list.URL_edit}-->'>编辑</a>]
+        </td>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+<div style="text-align:right"><!--{$pageBox}--></div>
+</fieldset>
+<!--{/if}-->

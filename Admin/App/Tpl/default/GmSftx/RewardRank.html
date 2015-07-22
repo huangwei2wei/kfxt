@@ -1,0 +1,53 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<fieldset>
+<legend>搜索</legend>
+
+<form action="" method="get">
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$_GET.server_id}-->" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+        用户Id:<input type="text" class="text" name="playerId" value="<!--{$_GET.playerId}-->">
+        活动Id:<input type="text" class="text" name="activityId" value="<!--{$_GET.activityId}-->">
+        奖励Id:<input type="text" class="text" name="rewardId" value="<!--{$_GET.rewardId}-->">
+        <input type="submit" class="btn-blue" value="搜索">
+        </td>
+      </tr>
+    </table>
+</form>
+</fieldset>
+
+<fieldset>
+<legend>结果</legend>
+
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">用户Id</th>
+    <th scope="col">活动Id</th>
+    <th scope="col">奖励Id</th>
+    <th scope="col">年份</th>
+    <th scope="col">分数</th>
+    <th scope="col">是否领取</th>
+    <th scope="col">领奖时间</th>
+  </tr>
+  <!--{foreach from=$data item=list}-->
+  <tr>
+    <td scope="col" align='center'><!--{$list.playerId}--></td>
+    <td scope="col" align='center'><!--{$list.activityId}--></td>
+    <td scope="col" align='center'><!--{$list.rewardId}--></td>
+    
+    <td scope="col" align='center'><!--{$list.year}--></td>
+    <td scope="col" align='center'><!--{$list.mark}--></td>
+    
+    <td scope="col" align='center'><!--{$list.isReceive}--></td>
+    <td scope="col" align='center'><!--{$list.time}--></td>
+  </tr>
+  <!--{/foreach}-->
+
+</fieldset>
+

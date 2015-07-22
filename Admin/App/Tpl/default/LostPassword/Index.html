@@ -1,0 +1,123 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+function getQuery(formName){
+	var str ="";
+	var forms = document.forms;
+	for(var j = 0;j<forms.length;j++){
+		if(forms[j].name==formName){
+			var form = forms[j];
+			for(var i = 0; i<form.length;i++){
+				var element = form[i];
+				if(element.name !=""){
+					str += element.name+"="+element.value+"&";
+				}
+			}
+			break;
+		}
+	}
+	if(str.length>0){
+		str = str.substring(0,str.length-1);
+	}
+	return str;
+}
+
+
+function changeStatus(Id,status){
+	$.ajax({
+		dataType:'json',	
+		type: 'GET',
+		url: 'admin.php?c=LostPassword&a=ChangeStatus&Id='+Id+'&status='+status,
+		success:function(msg){
+			var json = eval(msg);
+			if(0 == json.status){
+				alert(json.info);
+			}
+			else if(1 == json.status){
+				alert('更改成功！');
+			}
+		}
+	});
+}
+
+
+</script>
+<style type="text/css">
+
+
+</style>
+<fieldset>
+	<legend>搜索条件</legend>
+<form action="" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td>状态</td>
+    <td><!--{html_radios options=$status name=status selected=$selected.status}--></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="搜索" class="btn-blue"></td>
+  </tr>
+</table>
+</form>
+   
+</fieldset>
+
+<fieldset>
+	<legend>密码遗失表单列表</legend>
+<table width="100%" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">游戏</th>
+    <th scope="col">服务器</th>
+    <th scope="col">账号</th>
+    <th scope="col">昵称</th>
+    <th scope="col">地区</th>
+    <th scope="col">初始密码</th>
+    <th scope="col">以往密码</th>
+    <th scope="col">充值类型</th>
+    <th scope="col">身份绑定</th>
+    <th scope="col">证件号</th>
+    <th scope="col">持有人</th>
+    <th scope="col">email</th>
+    <th scope="col">电话</th>
+    <th scope="col">提交时间</th>
+    <th scope="col">IP</th>
+    <th scope="col">状态</th>
+  </tr>
+  <!--{foreach from=$dataList key=key item=list}-->
+  <tr>
+    <td><!--{$list.Id}--></td>
+    <td><!--{$gameTypes[$list.game_type_id]}--></td>
+    <td><!--{$serverList[$list.server_id]}--></td>
+    <td><!--{$list.user_account}--></td>
+    <td><!--{$list.user_nickname}--></td>
+    <td><!--{$list.account_area}--></td>
+    <td><!--{$list.start_password}--></td>
+    <td><!--{$list.often_passsword}--></td>
+    <td><!--{$chargeType[$list.charge_type]}--></td>
+    <td><!--{if $list.host==1}-->是<!--{else}-->否<!--{/if}--></td>
+    <td><!--{$list.host_number}--></td>
+    <td><!--{$list.host_username}--></td>
+    <td><!--{$list.email}--></td>
+    <td><!--{$list.telphone}--></td>
+    <td><!--{$list.create_time|date_format:'%Y-%m-%d %H:%M:%S'}--></td>
+    <td><!--{$list.ip}--></td>
+    <td>
+        <select onChange="changeStatus('<!--{$list.Id}-->',$(this).val())">
+        	<!--{html_options options=$statusSelect selected=$list.status }-->
+        </select>
+    </td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+<!--{$pageBox}-->
+
+    
+    
+   	
+</fieldset>
+<!--{if $display}-->
+
+
+<!--{/if}-->

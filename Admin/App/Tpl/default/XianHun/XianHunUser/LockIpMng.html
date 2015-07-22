@@ -1,0 +1,46 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#cause").formValidator({onshow:"请输入操作原因",oncorrect:"操作原因正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入操作原因"},onerror:"操作原因不能为空"});
+	$("#server_id").formValidator({onshow:"服务器ID不存在",oncorrect:"请重新输入服务器ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"服务器数值不正确"});
+	$("#UserId").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"用户ID不能为空,请确认"});
+})
+
+</script>
+<fieldset>
+	<legend>IP锁定管理  [<font color="#0000FF">此操作无须审核</font>]</legend>
+<form action="" method="post" id="form" >
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="98%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">操作原因</th>
+        <td><textarea name="cause" id="cause" cols="60" rows="5"></textarea><div id="causeTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row">请填写IP，用逗号(&quot;,&quot;)隔开</th>
+        <td>
+        	<textarea name="ips" id="ips" cols="60" rows="8"><!--{$ips}--></textarea>
+        	<div id="UserIdTip"></div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">操作方式</th>
+        <td>
+        	<input type="radio" name="OperateType" checked="checked" value="0" onclick="$('#submit').val('添加IP锁定')" /> 添加
+            <input type="radio" name="OperateType" value="1" onclick="$('#submit').val('删除IP锁定')" /> 删除
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" id="submit" value="添加IP锁定" onclick="return confirm($(this).val()+'?');" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

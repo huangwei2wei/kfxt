@@ -1,0 +1,79 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<fieldset>
+	<legend>开服停服</legend>
+	<script language="javascript">
+    $(function(){
+        $("#isAllUser").change(function(){
+        	  if( $(this).attr('value') == '1'){
+        		  $("#showuser").hide();
+        	  }else{
+        		  $("#showuser").show();
+        	  }
+        });
+    })
+
+	function onSubmit(){
+    		var $title = $('#title').attr('value');
+    		var $content = $('#content').attr('value');
+    		var $isAllUser = $("#isAllUser").attr('value');
+    		if($(":checkbox[name='server_ids[]']:checked").attr('value') == undefined){
+    			alert('请选择服务器！'); return false;
+    		}
+    		if($title == ''){
+    			alert('标题不能空！'); return false;
+    		}
+    		if($content == ''){
+    			alert('内容不能空！'); return false;
+    		}
+
+       		if($isAllUser == 0){
+       			if($("#player").attr('value') == ''){
+       				alert('请填写用户！'); return false;
+       			}
+       		}
+    		$('.returnTip').remove();	//去掉旧提示
+    		$(":checkbox[name='server_ids[]']:checked").each(function(i,n){
+    				var curLi=$("#server_"+n.value);
+    				$("#form").ajaxSubmit({
+    					dataType:'json',
+    					async : false,    // 设置同步
+    					data:{server_id:n.value},
+    					success:function(data){
+    						var fontColor=(data.status==1)?'#00cc00':'#ff0000';
+    						curLi.append("<font class='returnTip' color='"+fontColor+"'> "+data.info+"</font>");
+    					}
+    				});
+    		});
+    	}
+    </script>
+    <form id="form" action="" method="post">
+    
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">操作原因</th>
+        <td>
+            <textarea name="cause" id="cause" style="width:400px; height:60px;"></textarea>
+        </td>
+      </tr>
+
+
+      <tr>
+        <th nowrap="nowrap" scope="row">是否开服</th>
+        <td> 
+			<label>
+				<input type="radio" value="1" name="isOpen" checked="checked">开服
+				<input type="radio" value="2" name="isOpen">停服
+			</label>
+        </td>
+      </tr>
+      
+
+      <tr>
+        <th colspan="2" scope="row"><input type="button" onclick="onSubmit();return false;" class="btn-blue" name="sbm" value="立即发送" /></th>
+      </tr>
+    </table>
+    </form>
+    </fieldset>

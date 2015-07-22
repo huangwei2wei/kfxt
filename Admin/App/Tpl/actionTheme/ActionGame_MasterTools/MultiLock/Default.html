@@ -1,0 +1,100 @@
+<script language="javascript" src="<!--{$__JS__}-->/Libs/jquery.form.js"></script>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'752F8926DB21639D9F8ECDC7BF1D7159'|lang}-->"},onerror:"<!--{'91841ACDB1A5E16DBBAADA2FDC1D7B0E'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+	$("#cause").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'752F8926DB21639D9F8ECDC7BF1D7159'|lang}-->"},onerror:"<!--{'BAFB212845FAB2DF62858B900DB19858'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+})
+
+function onSubmit(){
+	var optType = getOptType();
+	if(!optType){
+		alert('<!--{'63C665CBB1D80F1FBC53B17BBF6EDB28'|lang}-->');
+		return false;
+	}
+	var sendUrl = $.trim($('form').attr('action'));
+	if(sendUrl == ''){
+		alert('<!--{'C702D327454EF2D448E932BB15EC99F8'|lang}-->');
+		return false;
+	}
+	var serverList=$(":checkbox[name='server_ids[]']");
+	$('.returnTip').remove();	//<!--{'24663B07626C269FA9ABC9ED728A5DB0'|lang}-->
+	$.each(serverList,function(i,n){
+		if(n.checked==true){
+			var curLi=$("#server_"+n.value);
+			$("#form").ajaxSubmit({
+				dataType:'json',
+				data:{server_id:n.value},
+				success:function(dataResult){
+					var fontColor=(dataResult.status==1)?'#00cc00':'#ff0000';
+					curLi.append("<font class='returnTip' color='"+fontColor+"'> "+dataResult.info+"</font>");
+				}
+			});
+		}
+	});
+	
+}
+function getOptType(){
+	var optType = 0;
+	var optTypeRadios = $('input[name=optType]');
+	for(var i=0;i<optTypeRadios.length;i++){
+		if(optTypeRadios[i].checked == true){
+			optType = optTypeRadios[i].value;
+			break;
+		}		
+	}
+	return optType;
+}
+</script>
+
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<fieldset>
+<legend><!--{'92C936BA5BE726DB4932EF72D8AAFE01'|lang}-->/<!--{'B52D146AD25DADE8935B72B252EED425'|lang}--></legend>
+<form action="" method="post" id="form">
+    <table width="100%" border="0" cellpadding="3">
+    	<tr>
+        <th scope="row"><!--{'41DFB0BF6167CA035B93CAF3E06D6C95'|lang}-->：</th>
+        <td><textarea name="cause" style="width:500px; height:80px;" id="cause"></textarea><div id="causeTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'7035C62FB00576FED9B3A1F2B7D48E6C'|lang}-->：</th>
+        <td>
+        	<textarea name="players" style="width:500px; height:80px;" id="content"></textarea>
+        	<font color='red'>&nbsp;&nbsp;<!--{'0DE67B95D7D1AAA9F07D87CEC3F895B7'|lang}-->&quot;<!--{$separator|default:','}-->&quot;<!--{'3B355929E0E82808A9850421DB753F3C'|lang}--></font>
+            <input type="hidden" name="playerType" value="<!--{$playerType}-->" />
+            <input type="hidden" name="separator" value="<!--{$separator}-->" />
+        </td>
+      </tr>
+      <tr>
+      <tr>
+        <th scope="row"><!--{'DE9CC3DD82B5BD967D494BE3B39CF21E'|lang}-->：</th>
+        <td>
+        	<!--{foreach from=$optType item=val key=key}-->
+            	<label>
+                    <input type="radio" name="optType" onclick="$('#form').attr('action','<!--{$url.$key}-->')" value="<!--{$key}-->" >
+                    <!--{$val}-->
+                </label>
+            <!--{/foreach}-->
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'C9A4986A2A17A30BCFE79451C3A9A03E'|lang}-->：</th>
+        <td>
+        	<input type="text" class="text" name="endTime" value="<!--{$smarty.now|strtotime:'+1 day'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|strtotime:'+1 day'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        	<!--{'4C82AEABE39C801738069F81294C24B0'|lang}-->： <font color="#FF0000"><!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}--></font>
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" onclick="onSubmit();return false;" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+
+

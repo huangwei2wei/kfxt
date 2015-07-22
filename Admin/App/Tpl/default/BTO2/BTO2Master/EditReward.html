@@ -1,0 +1,118 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<style type="text/css">
+.addline{
+	padding:3px;
+}
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:100%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/default/frg.js"></script>
+<script language="javascript">
+
+<!--{if $readOnly}-->
+var readOnly=<!--{$readOnly}-->;
+<!--{/if}-->
+
+<!--{if $objData}-->
+var objData=eval(<!--{$objData}-->);
+<!--{/if}-->
+
+<!--{if $toolData}-->
+var toolData=eval(<!--{$toolData}-->);
+<!--{/if}-->
+
+<!--{if $effData}-->
+var effData=eval(<!--{$effData}-->);
+<!--{/if}-->
+
+
+var condInputNum=<!--{$num.cond}-->;
+var effectInputNum=<!--{$num.effect}-->;
+var toolInputNum=<!--{$num.tool}-->;
+
+$(function(){
+	if(typeof(readOnly)!='undefined')$("form input,form textarea,form select").attr("disabled","disabled");
+})
+</script>
+<fieldset>
+<legend><!--{'345D447D5FD85787218851AFD2995114'|lang}--></legend>
+
+<div id="showItem"></div>
+
+<form action="" method="post" onsubmit="return checksub();" >
+<input type="hidden" name="Id" value="<!--{$data.Id}-->" />
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row"><!--{'44023FE545CA633C0ED238AD953979B3'|lang}--></th>
+    <td><input type="text" class="text" name="Title" value="<!--{$data.Title|htmlspecialchars}-->" size="80" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'A53DB51463C2D8EC4AE21144C4579A15'|lang}--></th>
+    <td><input type="text" class="text" value="<!--{$data.MsgTitle|htmlspecialchars}-->" name="MsgTitle" size="80" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'B87B77561E776367E6756E11EA652217'|lang}--></th>
+    <td><textarea name="MsgContent" rows="6" cols="50"><!--{$data.MsgContent}--></textarea></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'0DE30C4E103060D3481CF22B4195481A'|lang}--></th>
+    <td>
+    	<input type="text" class="text" name="SendTime" value="<!--{$data.SendTime|date_format:'%Y-%m-%d %H:%M:%S'}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/> 
+        <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}-->
+        <input type="text" class="text" name="EndTime" value="<!--{$data.EndTime|date_format:'%Y-%m-%d %H:%M:%S'}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        <!--{'4C82AEABE39C801738069F81294C24B0'|lang}-->：<font color="#FF0000"><!--{$systemTime|date_format:"%Y-%m-%d %H:%M:%S"}--></font>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'C0214A5B64D4ADC993C5DDC58FEA4826'|lang}--></th>
+    <td><!--{html_radios options=$everyDayRadio selected=$data.EveryDay name="EveryDay"}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'664B9B5DAEA434BBF3C63574392CF287'|lang}--></th>
+    <td><input type="button" class="btn-blue" onclick="addGetCond($(this))" value="<!--{'53547608D8563C352DD64D33CA4E4C98'|lang}-->" />
+    	<!--{foreach from=$chageCond item=list}-->
+        <!--{$list.html}-->
+        <!--{/foreach}-->
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'46C52C767383B0A4246F5149E7E585FE'|lang}--></th>
+    <td><input type="button" class="btn-blue" onclick="addEffect($(this))" value="<!--{'9617335C840B393D4E12F66620C06240'|lang}-->" />
+    	<!--{foreach from=$chageEffect item=list}-->
+        <!--{$list.html}-->
+        <!--{/foreach}-->
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'62C341F9C880236471E35B60EE816B3B'|lang}--></th>
+    <td><input type="button" class="btn-blue" onclick="addTool($(this))" value="<!--{'BF9E805569213C27D1CE1C611B8B964E'|lang}-->" />
+      <!--{foreach from=$chageTool item=list}-->
+      <!--{$list.html}-->
+      <!--{/foreach}-->
+      </td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">
+      <input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" />
+      </th>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

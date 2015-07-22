@@ -1,0 +1,64 @@
+<script language="javascript" src="<!--{$__JS__}-->/Libs/jquery.form.js"></script>
+<script language="javascript">
+function onSubmit(){
+	
+	var serverList=$(":checkbox[name='server_ids[]']");
+	$.each(serverList,function(i,n){
+		if(n.checked==true){
+			var curLi=$("#server_"+n.value);
+			$("#form").ajaxSubmit({
+				dataType:'json',
+				data:{server_id:n.value},
+				success:function(dataResult){
+					var fontColor=(dataResult.status==1)?'#00cc00':'#ff0000';
+					curLi.after("<font color='"+fontColor+"'>"+dataResult.msg+"</font>");
+				}
+			});
+		}
+	});
+	
+}
+</script>
+<form action="" method="post" id="form">
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#title").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"公告标题不能为空,请确认"});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"公告内容不能为空,请确认"});
+})
+</script>
+<fieldset>
+<legend>新增游戏公告</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">标题</th>
+        <td><input type="text" class="text" name="title" id="title" /><div id="titleTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row">内容</th>
+        <td><textarea name="content" cols="40" rows="8" id="content"></textarea><div id="contentTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row">金币（人民币）</th>
+        <td><input type="text" class="text" name="cash" id="cash" /></td>
+      </tr>
+      <tr>
+        <th scope="row">游戏币（银两）</th>
+        <td><input type="text" class="text" name="gold" id="gold" /></td>
+      </tr>
+      <tr>
+        <th scope="row">物品id和数量</th>
+        <td><input type="text" class="text" name="itemAndNums" id="itemAndNums" />格式{100001:1,100002:2}</td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" onclick="onSubmit();return false;" value="提交" /></th>
+      </tr>
+    </table>
+</fieldset>
+</form>
+

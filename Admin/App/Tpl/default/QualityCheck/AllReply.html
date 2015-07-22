@@ -1,0 +1,94 @@
+<fieldset>
+	<legend>任务选择</legend>
+        <form action="<!--{$url.QualityCheck_MyQualityTask}-->" method="get">
+        <input type="hidden" value="<!--{$__CONTROL__}-->" name="c" />
+        <input type="hidden" value="<!--{$__ACTION__}-->" name="a" />
+        <table width="100%" border="0" cellpadding="3">
+          <tr>
+            <th scope="row"> 质检类型</th>
+            <td><!--{html_radios options=$qualityOptions selected=$selectedQualityOption name="quality_option"}--></td>
+          </tr>
+          <tr>
+            <th scope="row">申诉状态</th>
+            <td><!--{html_radios options=$statusOptions selected=$selectedStatusOption name="status_option"}--></td>
+          </tr>
+          <tr>
+            <th scope="row">申诉人</th>
+            <td>
+            	<select name="complain_user_id">
+                	<option value="">请选择...</option>
+                    <!--{html_options options=$user selected=$selected.complain_user_id}-->
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">质检人</th>
+            <td>
+            	<select name="quality_user_id">
+                	<option value="">请选择...</option>
+                    <!--{html_options options=$user selected=$selected.quality_user_id}-->
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">时间范围</th>
+            <td>        	
+            <input type="text" class="text" name="start_time" value="<!--{$selected.start_time}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+            至
+            <input type="text" class="text" name="end_time" value="<!--{$selected.end_time}-->" onFocus="WdatePicker({startDate:'%y-%M-30 23:59:59',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" colspan="2"><input type="submit" class="btn-blue" value="提交" /></th>
+          </tr>
+        </table>
+        </form>
+</fieldset>
+
+<fieldset>
+  <legend>所有质检结果</legend>
+  <table width="100%" border="0" cellpadding="3" style="table-layout:auto;">
+      <tr>
+        <th nowrap="nowrap" scope="col">Id</th>
+        <th nowrap="nowrap" scope="col">回复人</th>
+        <th nowrap="nowrap" scope="col">质检选项</th>
+        <th nowrap="nowrap" scope="col">质检内容</th>
+        <th nowrap="nowrap" scope="col">质检时间</th>
+        <th nowrap="nowrap" scope="col">申诉内容</th>
+        <th nowrap="nowrap" scope="col">申诉时间</th>
+        <th nowrap="nowrap" scope="col">处理回复</th>
+        <th nowrap="nowrap" scope="col">处理时间</th>
+        <th nowrap="nowrap" scope="col">申诉状态</th>
+        <th nowrap="nowrap" scope="col">分数</th>
+        <th nowrap="nowrap" scope="col">质检人</th>
+        <th nowrap="nowrap" scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td nowrap="nowrap"><!--{$list.Id}--></td>
+        <td nowrap="nowrap"><!--{$list.word_reply_user_id}--></td>
+        <td nowrap="nowrap"><!--{$list.word_option_id}--></td>
+        <td title="<!--{$list.quality_content}-->"><!--{$list.quality_content|truncateutf8:50}--></td>
+        <td nowrap="nowrap"><!--{$list.quality_time}--></td>
+        <td title="<!--{$list.complain_content}-->"><!--{$list.complain_content|truncateutf8:50}--></td>
+        <td nowrap="nowrap"><!--{$list.complain_time}--></td>
+        <td style="word-wrap:break-word;"><!--{$list.reply_content}--></td>
+        <td nowrap="nowrap"><!--{$list.reply_time}--></td>
+        <td nowrap="nowrap"><!--{$list.word_status}--></td>
+        <td nowrap="nowrap"><!--{$list.scores}--></td>
+        <td nowrap="nowrap"><!--{$list.word_quality_user_id}--></td>
+        <td nowrap="nowrap">
+            <a href="<!--{$list.url_detail}-->">察看详细</a>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="13"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <th colspan="13" align="right"><!--{$pageBox}--></th>
+      </tr>
+    </table>
+
+</fieldset>

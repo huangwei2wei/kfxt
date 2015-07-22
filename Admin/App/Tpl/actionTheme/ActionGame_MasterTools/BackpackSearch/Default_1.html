@@ -1,0 +1,109 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+
+function submitCheck(){
+	if($.trim($('[name=cause]').val())==''){
+		alert('申请原因不能为空');
+		return false;
+	}
+	var itemsList = $('input[name^=itemNum]');
+	var len = itemsList.length;	
+	var value = 0;
+	for(var i=0;i<len;i++){
+		value = parseInt(itemsList[i].value);
+		if(itemsList[i].type=='text' && (!value || value<=0) ){
+			$('#'+itemsList[i].id+'_type').remove();
+			$('#'+itemsList[i].id+'_position').remove();
+			$('#'+itemsList[i].id+'_id').remove();
+			$('#'+itemsList[i].id+'_name').remove();
+			$('#'+itemsList[i].id).remove();
+		}
+	}
+	return true;
+}
+
+</script>
+<fieldset>
+  <legend>搜索</legend>
+  
+<form action=""  method="get">
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+            玩家：<input class="text" type="text" name="User" value="<!--{$GET.User}-->">
+            <label><input type="radio" name="userType" checked="checked" value="0" />ID</label>
+            <label><input type="radio" name="userType" value="2" />昵称</label>
+            <label><input type="radio" name="userType" value="1" />账号</label>
+            <input class="btn-blue" type="submit" value="查询">
+        </td>
+      </tr>
+      
+    </table>
+</form>
+
+
+</fieldset>
+<fieldset>
+  <legend>
+	背包查询
+    <!--{if $playerSelect.0 ==1}-->玩家ID:<!--{elseif $playerSelect.0 ==2}-->玩家账号:<!--{elseif $playerSelect.0 ==3}-->玩家昵称:<!--{/if}-->
+    <font color="#FF0000"><!--{$playerSelect.1|default:''}--></font>
+  </legend>
+<form action="<!--{$submitUrl}-->" method="post">
+	<input type="hidden" class="text" value="1" name="apply">
+	<input type="hidden" name="Users" value="<!--{$GET.User}-->">
+    <input type="hidden" name="userType" value="<!--{$GET.userType}-->">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+       <!--{foreach from=$Column item=c key = ck}-->
+        <th scope="col"><!--{$c}--></th>
+       <!--{/foreach}-->
+       <!--{if $Column}-->
+      	 <th scope="col">扣除数量:</th>
+       <!--{/if}-->
+      </tr>
+            <!--{foreach from=$List item=list key = k}-->
+              <tr>
+              <!--{foreach from=$Column item=c key = ck}-->
+                <td scope="col"><!--{$list.$ck}--></td>
+               <!--{/foreach}-->
+               <td scope="col">
+                 	<input type="hidden" name="itemName[<!--{$list.pid}-->]" value="<!--{$list.name}-->"> 
+			   		<input type="hidden" name="itemType[<!--{$list.pid}-->]" value="<!--{$list.typeId}-->">
+               		<input type="text" name="itemNum[<!--{$list.pid}-->]" value="">
+               		<input type="hidden" name="is_reduce[<!--{$list.pid}-->]" value="1">
+               </td>
+              </tr>
+            <!--{/foreach}-->
+            <!--{if $Column}-->
+    		<tr>
+    		<td>
+    			原因:<textarea rows="5" cols="50" name='cause' id='cause'></textarea>
+    			<input type="submit" name="submit" value="提交">
+    		</td>
+    		</tr>
+    		<!--{/if}-->
+    		<tr>
+            <th colspan="7" align="right"><!--{$pageBox}--></th>
+          </tr>
+    </table>
+    
+</form>
+</fieldset>
+
+
+<!--{/if}-->

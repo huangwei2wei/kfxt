@@ -1,0 +1,126 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+var playerLogTypes=<!--{$SubLogType}-->;
+
+function rootchange(chRootId){
+	$('#typeid').html('');
+	$('<option/>').attr('value',0).text('-所有子类-').appendTo('#typeid');
+		
+	if(chRootId>0){
+		$.each(playerLogTypes[chRootId]['subTypeList'], function(i, item){      
+      		 $('<option/>').attr('value',i).text(item).appendTo('#typeid');
+　　		});
+	}
+}
+<!--{if $GET.rootid}-->
+$(function(){
+	rootchange(<!--{$GET.rootid}-->);
+	$('#typeid').val(<!--{$GET.typeid}-->);
+});
+<!--{/if}-->
+</script>
+<style>
+	.AutoNewline {
+		font-size:12px;
+		line-height:150%;
+		overflow: hidden;
+		width: 400px;
+		word-wrap:break-word;
+		margin-bottom:2px;
+		margin-top:2px;
+	}
+</style>
+
+<fieldset>
+  <legend><!--{'38D5EF83637083F3A4B8F98E59FC88D0'|lang}--> <a href="<!--{$URL_LogTypeUpdate}-->"><!--{'B3279A44B553B72F55A8D036D7991707'|lang}--></a></legend>
+  
+<form action=""  method="get" id="LogFrom">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="LogId" id="LogId" value="0">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+        	玩家:<input type="text" name="user" id="user" value="<!--{$GET.user}-->">
+            <input type="radio" value="0" name="userType" <!--{if $GET.userType==0}-->checked<!--{/if}-->>玩家ID
+            <input type="radio" value="1" name="userType" <!--{if $GET.userType==1}-->checked<!--{/if}-->>玩家账号
+            <input type="radio" value="2" name="userType" <!--{if $GET.userType==2}-->checked<!--{/if}-->>玩家昵称
+
+            <span style="padding-right:20px;">
+                日志类型
+                <select name="rootid" id="rootid" onchange="rootchange($(this).val())">
+                	<option value="0">-<!--{html_options options=$RootType selected=$GET.rootid}-->-</option>
+                </select>
+                <select name="typeid" id="typeid" >
+                    <option value="0">-<!--{'091E369AC93019DB80A1C1A5BAB03FCF'|lang}-->-</option>
+                </select>
+            </span>
+            
+            
+            开始时间:
+            <input class="text" type="text" name="beginTime" value='<!--{$GET.beginTime|date_format:"%Y-%m-%d %H:%M:%S"}-->' onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+            结束时间:
+            <input class="text" type="text" name="endTime" value='<!--{$GET.endTime|date_format:"%Y-%m-%d %H:%M:%S"}-->' onFocus="WdatePicker({startDate:'%y-%M-01 23:59:59',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+        	<input class="btn-blue" type="submit" onclick="return checkSubmit();" name="submit" value="查询" >
+        </td>
+      </tr>
+    </table>    
+    
+    <div>
+    	<!--{if $playerAccount}--><!--{'F6685D1959CB7D93BE372469C5BB1E65'|lang}-->:<font color="#FF0000"><!--{$playerAccount}--></font>,<!--{/if}-->
+    	<!--{if $playerName}--><!--{'AB581AA0560E5EE2B91A1B2003B15FAA'|lang}-->:<font color="#FF0000"><!--{$playerName}--></font><!--{/if}-->
+    </div>
+    
+    <table width="100%" border="0" cellpadding="3">
+    
+      <tr>
+        <th>ID</th>
+        <th>用户ID/账号/昵称</th>
+        <th>操作时间</th>
+        <th>金币</th>
+        <th>银币</th>
+        <th>礼券</th>
+        <th width="400">内容</th>
+      </tr>
+    <!--{foreach from=$dataList item=list key=key}--> 
+      <tr class="here_td">
+        <td align="center"><!--{$list.id}--></td>
+        <td align="center"><!--{$list.userId}--><br/><!--{$list.UserName}--><br/><!--{$list.NickName}--></td>
+        <td align="center"><!--{$list.addtime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+        <td align="center"><!--{$list.gold|default:'0'}--></td>
+        <td align="center"><!--{$list.sliver|default:'0'}--></td>
+		<td align="center"><!--{$list.liquan|default:'0'}--></td>
+        <td align="center"><!--{$list.vtext|default:''}--></td> 
+      </tr>
+    <!--{foreachelse}-->
+      <tr>
+      	<th colspan="8" align="center">
+            <!--{if $GET.submit}-->
+            <!--{'48E07E7DEAE53593B6FB5F4315CF0D1F'|lang}-->
+            <!--{else}-->
+            点击查询
+            <!--{/if}-->
+        </th>
+      </tr>
+    <!--{/foreach}-->
+    </table>
+</form>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th align="right"><!--{$pageBox}--> </th>
+  </tr>
+</table>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

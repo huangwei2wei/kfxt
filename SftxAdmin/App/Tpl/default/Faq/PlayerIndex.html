@@ -1,0 +1,20 @@
+<fieldset id="main">
+	<legend>FAQ管理</legend>
+	<div id="kind">
+    	[<a href="<!--{$url.Faq_PlayerKindIndex}-->">FAQ分类,关键字管理</a>]
+        [<a href="<!--{$url.Faq_PlayerIndex_ratio}-->">FAQ点击率管理</a>]
+    <br />
+    	<select onchange="displayTree($(this).val())">
+        	<option value="">请选择游戏</option>
+        	<!--{html_options options=$gameTypeKind}-->
+        </select>
+    	<ul id="tree_view">
+        </ul>
+    </div>
+    
+    <div id="content">
+    </div>
+    <div style="clear:both"></div>
+</fieldset>
+
+

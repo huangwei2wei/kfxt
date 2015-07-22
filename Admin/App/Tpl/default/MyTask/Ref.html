@@ -1,0 +1,35 @@
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th><!--{'TPL_TABLE_TITLE_1'|lang}--></th>
+    <th><!--{'TPL_TABLE_TITLE_2'|lang}--></th>
+    <th><!--{'TPL_TABLE_TITLE_3'|lang}--></th>
+    <th><!--{'TPL_TABLE_TITLE_4'|lang}--></th>
+    <th><!--{'TPL_TABLE_TITLE_5'|lang}--></th>
+    <th><!--{'TPL_TABLE_TITLE_6'|lang}--></th>
+    <th><!--{'TPL_TABLE_TITLE_7'|lang}--></th>
+    <th><!--{'TPL_TABLE_TITLE_8'|lang}--></th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.Id}--></td>
+    <td align="center" nowrap="nowrap"><font style="font-size:14px; font-family:'微软雅黑';"><!--{$list.word_status}--></font></td>
+    <td class="order_title" url="<!--{$list.url_dialog}-->" dialogId="detail_<!--{$list.Id}-->" title="<!--{$list.title}-->">
+         <font style="font-size:14px; font-family:'微软雅黑';"><!--{$list.title|truncateutf8:20}--></font> 	[<!--{$list.word_ev}-->] <font color="#999999"><!--{$list.word_ev_desc}--></font><br />
+         <!--{$list.create_time}-->
+         <!--{if $list.time_out_true}--><font color="#FF8080"><!--{'IS_TIMEOUT'|lang}--></font><!--{else}--><span id="show_time_<!--{$list.Id}-->"></span><!--{/if}-->
+    </td>
+    <td>
+        <!--{$list.word_game_type}--> / <!--{$list.word_operator_id}--> /	<!--{$list.word_game_server_id}--> / <font color="#666666">VIP:</font> <b><!--{$list.vip_level}--></b><br />
+        <font color="#666666"><!--{'ACCOUNT'|lang}-->：</font><!--{$list.user_account}-->，<font color="#666666"><!--{'VUSERNAME'|lang}-->：</font><a href="javascript:void(0)" onclick="searchForm($(this))"><!--{$list.user_nickname}--></a>，<font color="#666666"><!--{'PAY_NUM'|lang}-->：</font><!--{$list.money}-->
+    </td>
+    <td><!--{$list.word_source}--><br /><!--{$list.word_question_type}--></td>
+    <td><!--{$list.question_num}--> / <!--{$list.answer_num}--></td>
+    <td><!--{$list.word_owner_user_id}--></td>
+    <td>
+        <a href="<!--{$list.url_detail}-->"><!--{'ORDER_DETAIL'|lang}--></a>
+    </td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr><th colspan="10"><!--{$noData}--></th></tr>
+  <!--{/foreach}-->
+</table>

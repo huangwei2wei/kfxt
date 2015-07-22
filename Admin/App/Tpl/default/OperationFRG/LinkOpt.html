@@ -1,0 +1,48 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript">
+
+
+</script>
+<fieldset>
+  <legend><!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}--></legend>
+  <form action="" method="post">
+  <input type="hidden" name="Id" value="<!--{$selected.Id}-->">
+     <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th width="100" scope="row"><!--{'BA08216F13DD1742157412386EEE1225'|lang}--></th>
+        <td>
+        	<!--{html_radios name="game_type_id" options=$gameTypes selected=$selected.game_type_id}-->
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'F82BEDDCD7005F7F0ECA4C96999A865B'|lang}--></th>
+        <td>
+        	<!--{html_radios name="operator_id" options=$operators selected=$selected.operator_id}-->
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'226B0912184333C81BABF2F1894EC0C1'|lang}--></th>
+        <td>
+           <!--{html_radios name="link_type" options=$linkType selected=$selected.link_type}-->
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'32C65D8D7431E76029678EC7BB73A5AB'|lang}--></th>
+        <td>
+           <input class="text" type="text" size="80" name="title" value="<!--{$selected.title}-->">
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'BFE68D5844F8E54602760E18F45954F7'|lang}--></th>
+        <td>
+          <input class="text" type="text" size="80" name="href" value="<!--{$selected.href}-->">
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">&nbsp;</th>
+        <td>
+          <input type="submit" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" class="btn-blue">
+        </td>
+      </tr>
+    </table>
+	</form>

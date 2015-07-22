@@ -1,0 +1,43 @@
+<script language="javascript">
+$(function(){
+	view({$Think.get.viewId});
+	$('#menu_pay').addClass('d');
+})
+function view(divId){
+	if(!divId)divId=1;
+	$(".list").hide();
+	$(".left_con dd").removeClass("ttbg");
+	$("#cont"+divId).show();
+	$("#menu_"+divId).addClass("ttbg");
+}
+</script>
+<div class="right_tit">充值指南</div>
+<div class="right_con">
+    <!--{/*目录导航*/}-->
+    <include file="../Notice/payMenu" />
+                    
+    <div class="servicetit"><h2>网上银行充值指南</h2></div>
+    
+    <div class="right5">
+        <ul>
+            <!--分类-->
+            <volist name="types" id="vo">
+            <li>[ <a href="{:U("Faq/bankList/game_type_id/$gameTypeId/typeid/$vo[Id]")}">{$vo.name}</a> ]</li>
+            </volist>
+            <!--分类结束-->
+        </ul>
+    </div>
+    <div class="servicerli">
+        
+        <!--列表-->
+        <ul>
+            <foreach name="faqList" item="vo">
+            <li><a href="{:U("/Faq/bankShow/game_type_id/$gameTypeId/Id/$vo[Id]")}">{$vo.question|stripcslashes}</a></li>
+            </foreach>
+        </ul>
+        <!--列表结束-->
+    </div>
+    <div class="pagination"> {$page}  </div>
+</div>
+<div class="right_bo"></div>
+<div style="clear: both"></div>

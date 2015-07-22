@@ -1,0 +1,43 @@
+<fieldset>
+	<legend>搜索列表</legend>
+</fieldset>
+<fieldset>
+	<legend>问卷列表</legend>
+    <a href="<!--{$url.Askform_Add}-->">添加新问卷</a>
+    <!--ID,标题，开始时间，结束时间，状态，发布人，参与调查人数-->
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th>Id</th>
+        <th>标题</th>
+        <th>开始时间</th>
+        <th>结束时间</th>
+        <th>状态</th>
+        <th>发布人</th>
+        <th>参与调查人数</th>
+        <th>操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td><!--{$list.title}--></td>
+        <td><!--{$list.start_time}--></td>
+        <td><!--{$list.end_time}--></td> 
+        <td><!--{$list.word_status}--></td>
+        <td><!--{$list.word_user_id}--></td>
+        <td><!--{$list.attend_count}--></td>
+        <td>
+        	<a href="<!--{$list.url_addoption}-->">增加子项</a>
+            <a href="<!--{$list.url_show}-->">显示调察结果</a>
+            <a onclick="return confirm('确定要删除吗?')" href="<!--{$list.url_del}-->">删除</a>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="8"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}--> 
+     <tr>
+     	<th colspan="8" align="right"><!--{$pageBox}--></th>
+     </tr>
+    </table>
+</fieldset>

@@ -1,0 +1,142 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+
+	function LookForDetail(iEventId){
+			$.ajax( {
+				type : "post",
+				url : "<!--{$ajax}-->",
+				data :"iEventId="+iEventId,
+				success : function(dataResult) {
+					$("#rMsg").html(dataResult);
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					
+				}
+			});
+	}
+</script>
+
+
+<fieldset>
+  <legend>条件<a href="<!--{$cache}-->">[更新缓存]</a></legend>
+  <form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+                分     类:<select name="iDoingEvent" onchange="rootchange($(this).val())">
+                
+                <option value="999" <!--{if $MiDoingEvent==999}-->selected="selected"<!--{/if}-->>全部</option>
+                <!--{foreach from=$iDoingEvent key=k item=t}-->
+                	<option value="<!--{$k}-->" <!--{if $k==$MiDoingEvent}-->selected="selected"<!--{/if}-->><!--{$t.cn}--></option>
+                <!--{/foreach}-->
+                </select>
+            <br>
+            道    具:<input class="text" type="text" name="itemName" value="<!--{$_GET.itemName}-->"><br>
+   玩     家:<input class="text" type="text" name="player" value="<!--{$_GET.player}-->">
+   				<label><input type="radio" name="playerType" checked="checked" value="1" />角色ID</label>
+<br>时     间:<input class="text" type="text" name="beginTime" value="<!--{$_GET.beginTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    -
+    <input class="text" type="text" name="endTime" value="<!--{$_GET.endTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    
+     <br/> 事      件:<input class="text" type="text" name="iEventId" value="<!--{$_GET.iEventId}-->"><br>
+    <input class="btn-blue" type="submit" name="sbm" value="查询">
+</form>
+</fieldset>
+<fieldset>
+  <legend>详细内容</legend>
+  <div id="rMsg"></div>
+</fieldset>
+<fieldset>
+  <legend>日志查询</legend>
+  
+
+
+<form action="" id="playerIdsForm" method="post">
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+        	<th>操作类型</th>
+          <th>事件ID</th>
+          <th>角色ID</th>
+          <th>操作时间</th>
+          <th>道具名称</th>
+       	  <th>物品数量</th>
+          <th>是否绑定</th>
+          
+          <th>是否到期</th>
+          <th>是否到耐久时间</th>
+          <th>是否到流失时间</th>
+          <th>时间耐久度</th>
+          <th>强化等级</th>
+          <th>历史强化最高等级</th>
+          <th>装备强化次数</th>
+          <th>装备晋级次数</th>
+          <th>属性</th>
+          <th>详细查询</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+       	  <td align="center"><!--{$list.iDoingEvent}--></td>
+       	  <td align="center"><!--{$list.iEventId}--></td>
+          <td align="center"><!--{$list.iRoleId}--></td>
+          <td align="center"><!--{$list.dtEventTime}--></td>
+          <td align="center"><!--{$list.iItemID}--></td>
+          <td align="center"><!--{$list.iNumber}--></td>
+          <td align="center"><!--{$list.iIsBinded}--></td>
+          
+          <td align="center"><!--{$list.iIsMaturity}--></td>
+          <td align="center"><!--{$list.iIsDurable}--></td>
+          <td align="center"><!--{$list.iIsLoss}--></td>
+          <td align="center"><!--{$list.iTimeDurable}--></td>
+          <td align="center"><!--{$list.iImproveLevel}--></td>
+          <td align="center"><!--{$list.iImproveLevelMax}--></td>
+          <td align="center"><!--{$list.iImproveCount}--></td>
+          <td align="center"><!--{$list.iUpgradeCount}--></td>
+          <td align="center" width="130"><!--{$list.Attach}--></td>
+          <td align="center"><a href="javascript:LookForDetail('<!--{$list.iEventId}-->');">[详细查询]</a></td>
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="15" align="center">
+                <!--{if $_GET.submit}-->
+                查无数据
+                <!--{else}-->
+                <font color="#FF0000">请使用"查询"按钮</font>
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/foreach}-->
+          <tr>
+            <th colspan="17" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+</form>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->
+<script language="javascript">
+	rootLoad();
+</script>

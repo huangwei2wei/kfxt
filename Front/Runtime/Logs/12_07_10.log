@@ -1,0 +1,32 @@
+[ 2012-07-10T16:06:34+08:00 ] SQL:  RunTime:0.003632s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-07-10T16:06:34+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-07-10T16:06:34+08:00 ] SQL:  RunTime:0.007546s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-07-10T16:06:34+08:00 ] SQL:  RunTime:0.000624s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-07-10T16:06:34+08:00 ] SQL:  RunTime:0.002364s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-07-10T16:06:34+08:00 ] SQL:  RunTime:0.002016s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-07-10T16:06:34+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-07-10T16:06:34+08:00 ] SQL:  RunTime:0.321164s SQL = SELECT * FROM `cndw_player_faq` WHERE ( `lang_id` = 1 ) AND ( (`status` >= 0) AND (`status` <= 1)  ) AND ( `game_type_id` IN (1,2,6,7,9,8,10,21) ) ORDER BY ratio desc LIMIT 20 
+[ 2012-07-10T16:06:34+08:00 ] SQL:  RunTime:0.041648s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-07-10T16:06:34+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-07-10T16:06:36+08:00 ] SQL:  RunTime:0.002294s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-07-10T16:06:36+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-07-10T16:06:36+08:00 ] SQL:  RunTime:0.000635s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-07-10T16:06:36+08:00 ] SQL:  RunTime:0.000609s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-07-10T16:06:36+08:00 ] SQL:  RunTime:0.001673s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-07-10T16:06:36+08:00 ] SQL:  RunTime:0.001766s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-07-10T16:06:36+08:00 ] SQL:  RunTime:0.022253s SQL = SELECT * FROM `cndw_question_types`
+[ 2012-07-10T16:06:36+08:00 ] NOTIC: [8] Undefined index:  game_type_id QuestionAction.class.php 第 56 行.
+[ 2012-07-10T16:06:36+08:00 ] NOTIC: [8] Undefined index:  q_type QuestionAction.class.php 第 57 行.
+[ 2012-07-10T16:06:36+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-07-10T16:06:36+08:00 ] NOTIC: [8] Undefined variable: selectedGameTypeId 972c8cf98e4871a830fafeb7278fd4ae.php 第 120 行.
+[ 2012-07-10T16:06:36+08:00 ] NOTIC: [8] Undefined variable: selectedQType 972c8cf98e4871a830fafeb7278fd4ae.php 第 121 行.
+[ 2012-07-10T16:06:53+08:00 ] NOTIC: [8] Undefined index:  dovo_UserName BaseAction.class.php 第 13 行.
+[ 2012-07-10T16:06:53+08:00 ] SQL:  RunTime:0.001879s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-07-10T16:06:53+08:00 ] SQL:  RunTime:0.001709s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-07-10T16:06:53+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-07-10T16:06:53+08:00 ] SQL:  RunTime:0.011836s SQL = SELECT * FROM `cndw_player_faq` WHERE ( `lang_id` = 1 ) AND ( (`status` >= 0) AND (`status` <= 1)  ) AND ( `game_type_id` IN (1,2,6,7,9,8,10,21) ) ORDER BY ratio desc LIMIT 20 
+[ 2012-07-10T16:06:53+08:00 ] SQL:  RunTime:0.001681s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-07-10T16:06:53+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-07-10T16:06:53+08:00 ] NOTIC: [8] Undefined variable: username 972c8cf98e4871a830fafeb7278fd4ae.php 第 39 行.
+[ 2012-07-10T16:06:53+08:00 ] NOTIC: [8] Undefined variable: waitCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 86 行.
+[ 2012-07-10T16:06:53+08:00 ] NOTIC: [8] Undefined variable: haveCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 87 行.

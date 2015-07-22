@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>提交问题 - 优玩网</title>
+
+<include file="../common/libs"/>
+<script>
+var selectedGameTypeId='{$selectedGameTypeId}';
+var selectedQType='{$selectedQType}';
+$(function(){
+	$('#menu_question').addClass('d');
+	$('#game_type').val('');
+	$('#question_type').val('');
+	Validation('myform');
+	if(selectedGameTypeId){
+		$("#game_type").val(selectedGameTypeId).change();
+		if(selectedQType)$("#question_type").val(selectedQType);
+	}
+});	
+
+ 
+var sendTimes=0;
+var curDate=new Date();
+function showDoFaq(event){
+	setTimeout(function(){if(new Date()-curDate>240)loadLikeFaq();curDate=new Date();} , 250);
+}
+
+function checkGameType(){
+	if($('#game_type').val()==''){
+		alert('请先选择游戏');
+		$('#game_type').focus();
+	}
+}
+</script>
+</head>
+<body>
+<include file="../common/head"/>
+<div id="contai">
+	<include file="../common/menu"/>
+	<!--left-->
+	<include file="left"/>
+	<div class="neiright" >
+		<div class="tiontit"><b>当前位置：</b><a href="/index.php">客服中心</a> > <a href="{:U('Question/index')}">提交问题</a></div>
+		<div class="list">
+			<form name="myform" id="myform"  enctype="multipart/form-data" action="{:U('Question/save')}" method="post">
+			<dl><dt><span>*</span>游戏产品：</dt>
+			<dd>
+                <select name="game_type" id="game_type" onchange="loadQuestionTypes(this.value);" class="required" msg="游戏产品">
+                    <option selected="selected" value="">　　请选择游戏　　</option>
+                    <volist name="game_type" id="game">
+                    <option value="{$game.Id}">　　{$game.name}　　</option>
+                    </volist>
+                </select>
+            </dd>
+			</dl>
+			<dl><dt><span>*</span>提问类型：</dt>
+			<dd>
+			<select name="question_type" id="question_type" onchange="chooseQuestionType(this.value);" class="required" msg="问题类型"  onfocus="checkGameType();">
+			<option selected="selected" value="">　　请选择问题类型　　</option>
+			</select></dd>
+			</dl>
+			<dl><dt><span>*</span>问题标题：</dt><dd>
+				<input type="text" class="input_01 required" name="title" id="title" onkeyup="showDoFaq(event)" msg="问题标题"/>
+                    <span class="intcon" style="display:none;" id="likefaq">
+                        <P><span><a href="{:U('Faq/ls')}">>>更多</a></span>
+                        <b>您是否碰到以下问题了？ </b></P>
+                        <P id="likefaq_ls">
+                        </P>
+                    </span>
+			</dd></dl>		
+			<span id="dt_layer"  ></span>
+			<dl ><dt><span>*</span>详细描述：</dt><dd><textarea name="content" class="required" msg="详细描述"></textarea></dd></dl>
+            <dl><dt>上传截图：</dt><dd id="upfile_list">  
+            <input type="file" style="width: 212px; height:22px;" name="file_upload[]" />　<a href="javascript:addUpFile()" style="font-size:12px">增加</a><br />
+            
+            </dd></dl>
+			<dl><dt></dt><dd>
+			<input type="image" src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/input_03.gif" style="width:auto;height:auto;padding:0"/>　　<input type="image" src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/input_06.gif" style="width:auto;height:auto;padding:0"/></dd></dl> 
+			</form> 
+<div class="listp">
+    <b>客服电话专线：</b>400-888-4818<br>
+    <b>客服传真专线：</b>020-38741065<br>
+    <b>投诉邮箱：</b><a href="mailto:BTOcustomerservice@cndw.com">BTOcustomerservice@cndw.com</a>
+</div>
+      </div>
+		<div class="neibottom"></div>		
+	</div>
+<include file="../common/footer"/>
+</div>
+<script>
+var questionTypes=eval('<php>echo json_encode($questionTypes)</php>');
+</script>
+<div style="display:none">
+<script src=" http://s11.cnzz.com/stat.php?id=2558818&web_id=2558818" language="JavaScript"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<form action="<!--{$URL_ajaxSyn}-->" method="post" id="form">
+<fieldset>
+	<legend><b><!--{$serverName}--></b></legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col"><!--{'32C65D8D7431E76029678EC7BB73A5AB'|lang}--></th>
+        <th scope="col"><!--{'0CBB00EF851BEDCCECD020619CF7817E'|lang}--></th>
+        <th scope="col"><!--{'3BDD08ADAB6EA90B9164B20A0E4151AC'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList key=key item=list}-->
+      <tr>
+        <td>
+        	<input type="hidden" name="data[<!--{$key}-->][OrderId]" value="<!--{$list.OrderId}-->" />
+        	<input type="hidden" name="data[<!--{$key}-->][IsShow]" value="<!--{$list.IsShow}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][Img]" value="<!--{$list.Img}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][Identifier]" value="<!--{$list.Identifier|htmlspecialchars}-->" />
+			<input type="hidden" name="data[<!--{$key}-->][IsOpen]" value="<!--{$list.IsOpen}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][Title]" value="<!--{$list.Title|htmlspecialchars}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][Content]" value="<!--{$list.Content|htmlspecialchars}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][AwardDesc]" value="<!--{$list.AwardDesc|htmlspecialchars}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][StartTime]" value="<!--{$list.StartTime}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][EndTime]" value="<!--{$list.EndTime}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][CheckType]" value="<!--{$list.CheckType}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][AwardIds]" value="<!--{$list.AwardIds}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][Awards]" value="<!--{$list.Awards|htmlspecialchars}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][Status]" value="<!--{$list.Status}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][MsgTitle]" value="<!--{$list.MsgTitle|htmlspecialchars}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][MsgContent]" value="<!--{$list.MsgContent|htmlspecialchars}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][GetCond]" value="<!--{$list.GetCond|htmlspecialchars}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][ActivityLink]" value="<!--{$list.ActivityLink}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][ExtFields1]" value="<!--{$list.ExtFields1|htmlspecialchars}-->" />
+        	<!--{$list.Title}-->
+        </td>
+        <td><!--{$list.Content}--></td>
+        <td><!--{$list.AwardDesc}--></td>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+          <td colspan="3" align="center">
+          	<input type="radio" name="UniIdentifier" checked="checked" value="0" />有相同类型直接覆盖
+          	<input type="radio" name="UniIdentifier" value="1" />有相同类型不同步
+            <input type="radio" name="UniIdentifier" value="2" />有相同类型也新增
+            <input type="radio" name="UniIdentifier" value="3" />先删除后添加
+            <br/>
+          	<input type="button" name="sbm" onclick="submitData();return false;" class="btn-blue" value="<!--{'17A5565D05ABB505E0B8164C80F618B1'|lang}-->" />
+          </td>
+      </tr>
+    </table>
+</fieldset>
+</form>
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->

@@ -1,0 +1,188 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+	function queryAccount(obj,val){
+		    $.ajax({
+			    dataType:'json',	
+			    type: 'GET',
+			    url: obj.attr('url')+"&doaction=queryAccount",
+			    success:function(content){
+				   	$("#queryAcount").text(content.data);
+			    }
+		    });
+    }
+	function queryRole(obj,val){
+		    $.ajax({
+			    dataType:'json',	
+			    type: 'GET',
+			    url: obj.attr('url')+"&doaction=queryRole",
+			    success:function(content){				
+				   	$("#queryRole").text(content.data);
+			    }
+		    });
+
+    }
+	function queryDelRole(obj,val){
+		    $.ajax({
+			    dataType:'json',	
+			    type: 'GET',
+			    url: obj.attr('url')+"&doaction=queryDelRole",
+			    success:function(content){
+				   	   $("#queryDelRole").text(content.data);
+			    }
+		    });
+
+    }
+</script>
+
+<fieldset>
+  <legend>在线数量查询</legend>
+  
+
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>在线帐号</th>
+          <th>总共玩家</th>
+          <th>WorldID</th>
+        </tr>
+         <!--{foreach from=$state item=list}-->
+        <tr>
+          <td><!--{$list.AccountCount}--></td>
+          <td><!--{$list.PlayerCount}--></td>
+          <td><!--{$list.WorldID}--></td>
+        </tr>
+        <!--{/foreach}-->
+      </table>
+
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->
+
+
+<fieldset>
+  <legend>帐号、角色、删除角色数量</legend>
+	  <form  action="" method="post">
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th colspan="2">注册帐号的数量</th>
+          <th colspan="2">角色的数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+          <th colspan="2">已删除角色的数量</th>
+        </tr>
+        <tr>
+          <td><div id="queryAcount" ><font color="red">未查询</font></div></td>
+		  <td align="center">
+				<input type="button" class="btn-blue" url="<!--{$ajaxMutilUrl}-->" name="query_1" value="查询" onclick="queryAccount($(this));"/>
+		  </td>
+          <td><div id="queryRole" ><font color="red">未查询</font></div></td>
+		  <td align="center">
+		       <input type="button" class="btn-blue" url="<!--{$ajaxUrl}-->" name="query_2" value="查询" onclick="queryRole($(this));"/>
+		  </td>
+          <td><div id="queryDelRole"><font color="red">未查询</font></div></td>
+		  <td align="center">
+		       <input type="button" class="btn-blue" url="<!--{$ajaxUrl}-->" name="query_3" value="查询" onclick="queryDelRole($(this));"/>
+		  </td>
+        </tr>
+      </table>
+	  </form>
+</fieldset>
+
+
+<fieldset>
+  <legend>在线数量限制查询</legend>
+  
+<form action="" method="post" id="form">
+<input type="hidden" name="updataType"  value="1"/>
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>最大在线数量</th>
+          <th>在线超时时间</th>
+        </tr>
+        <tr>
+          <td><!--{$OnlineConfig.uOnlineMax}-->&nbsp;&nbsp;<input type="text" class="text" name="OnlineMax"/></td>
+          <td><!--{$OnlineConfig.uOnlineTimeout}-->&nbsp;&nbsp;<input type="text" class="text" name="OnlineTimeout"/></td>
+        </tr>
+        </tr>
+
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+      </table>
+</form>
+</fieldset>
+
+<fieldset>
+  <legend>游戏开关配置</legend>
+  <form action="" method="post" id="form">
+<input type="hidden" name="updataType"  value="2"/>
+客户端GM指令<input type="checkbox" value="1" name="ClientGM" <!--{if $GameConfig.ClientGM==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+
+防沉迷<input type="checkbox" value="1" name="Adult" <!--{if $GameConfig.Adult==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+
+商城<input type="checkbox" value="1" name="Store" <!--{if $GameConfig.Store==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+
+组队<input type="checkbox" value="1" name="Team" <!--{if $GameConfig.Team==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+
+帮会<input type="checkbox" value="1" name="Faction" <!--{if $GameConfig.Faction==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+
+交易<input type="checkbox" value="1" name="Trade" <!--{if $GameConfig.Trade==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+
+挂售<input type="checkbox" value="1" name="Sale" <!--{if $GameConfig.Sale==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+
+神树<input type="checkbox" value="1" name="LifeTree" <!--{if $GameConfig.LifeTree==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+
+好友<input type="checkbox" value="1" name="Friend" <!--{if $GameConfig.Friend==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+
+坐骑<input type="checkbox" value="1" name="Mount" <!--{if $GameConfig.Mount==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+
+宝石<input type="checkbox" value="1" name="Precious" <!--{if $GameConfig.Precious==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+
+强化<input type="checkbox" value="1" name="Improve" <!--{if $GameConfig.Improve==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+
+先天道法<input type="checkbox" value="1" name="Potential" <!--{if $GameConfig.Potential==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+
+军团商店<input type="checkbox" value="1" name="FactionShop" <!--{if $GameConfig.FactionShop==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+
+加速齿轮检测<input type="checkbox" value="1" name="SpeededUPCheck" <!--{if $GameConfig.SpeededUPCheck==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+
+武将(缠绵、升级、出战)<input type="checkbox" value="1" name="General" <!--{if $GameConfig.General==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+
+国战(查询与触发)<input type="checkbox" value="1" name="City" <!--{if $GameConfig.City==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+
+遁甲(升级)<input type="checkbox" value="1" name="Fighters" <!--{if $GameConfig.Fighters==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+
+弓箭(升级)<input type="checkbox" value="1" name="Bow" <!--{if $GameConfig.Bow==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+
+骑战兵器(升级)<input type="checkbox" value="1" name="RidingWeapon" <!--{if $GameConfig.RidingWeapon==1}-->checked=""<!--{/if}-->>&nbsp;&nbsp;
+      <br>
+       <br>
+<input type="submit" class="btn-blue" value="提交" />
+
+  </form>
+</fieldset>
+<fieldset>
+  <legend>热加载游戏数据</legend>
+  
+<form action="" method="post" id="form">
+<input type="hidden" name="updataType"  value="3"/>
+<input type="submit" class="btn-blue" value="热加载游" />
+</form>
+</fieldset>

@@ -1,0 +1,35 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<style>
+	ul{
+		margin:0px;
+		padding:0px;
+		list-style:none;
+	}
+	li{
+		width:200px;
+		display:inline-block;
+	}
+	.red { color:#F00}
+</style>
+<fieldset>
+	<legend><!--{$legend}--></legend>
+    <!--{foreach from=$dataList item=list key=key}-->
+    	
+        <div style=" font-weight:bolder"><!--{$lang.$key}--></div>	<!--分类-->    	
+        <div style="padding:5px;">
+        	<ul>
+        	<!--{foreach from=$list item=subList key=subkey}-->
+            	<li>
+                    <!--{$lang.$subkey}-->
+                    <font class="red"><!--{$subList}--></font>
+                    <input type="text" class="text" style="width:70px;">
+                </li>
+            <!--{/foreach}-->
+            </ul>
+        </div>
+    <!--{/foreach}-->
+    
+    
+</fieldset>

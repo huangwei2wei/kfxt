@@ -1,0 +1,29 @@
+<form action="" method="post">
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<fieldset>
+	<legend><b><!--{'C25A9590B3AF100BB4BC9C658F67BBAB'|lang}--></b></legend>
+    <table width="98%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row"><!--{'2088BDE458445E265704715AA8DACE5A'|lang}--></th>
+        <td><textarea name="cause" id="cause" cols="60" rows="10"></textarea><div id="causeTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'A3B90317CF9CC8B1DA4F6554985A82CF'|lang}--><font style="color:#F00"><!--{'CBF7B2A04C9736C24ED29B1649D32F6D'|lang}--></font><br/><!--{'8E2077AED29801496D10A6F24B0B0DA7'|lang}-->(&quot;,&quot;)<!--{'666AA082EE6CC6494A690CF5D5614393'|lang}--></th>
+        <td><textarea name="Data[Value]" id="UserId" cols="60" rows="8"><!--{$users}--></textarea><div id="UserIdTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'FA8E38967B7CFBBB43A0EB1B642E071C'|lang}--></th>
+        <td><input type="text" class="text" name="Data[EndTime]" value="<!--{$smarty.now|strtotime:'+1 day'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|strtotime:'+1 day'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /></th>
+      </tr>
+    </table>
+
+</fieldset>
+
+
+</form>

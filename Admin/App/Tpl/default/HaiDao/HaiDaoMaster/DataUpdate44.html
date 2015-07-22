@@ -1,0 +1,41 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+
+<fieldset>
+<legend>增加挑战次数</legend>
+<form action="" method="post" id="form">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <table border="0" cellpadding="3">
+      <tr>
+      	<th scope="row" colspan="2">增加一次迷雾海域挑战次数</th>
+      </tr>
+      <tr>
+        <th scope="row">玩家ID</th>
+        <td><input type="text" class="text" name="UserId"/></td>
+      </tr>
+      <tr>
+        <th scope="row">剩余单人海域站次数</th>
+        <td><input type="text" class="text" name="SingleCrossNum"/></td>
+      </tr>
+      <tr>
+        <th scope="row">剩余多人海域站次数</th>
+        <td><input type="text" class="text" name="MulCrossNum"/></td>
+      </tr>
+      <tr class="">
+		<th scope="row">操作原因</th>
+		<td>
+		<textarea id="cause" class="" rows="10" cols="60" name="cause"></textarea>
+		</td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" class="btn-blue" value='确认'/></td>
+		</tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

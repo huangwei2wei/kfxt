@@ -1,0 +1,62 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='Ids[]']").attr("checked",curCheck);
+	 });
+	$("#Items").change();
+});
+
+function jumpUrl(url){
+	if(confirm('确定要执行吗?')){
+		form=$("#form");
+		form.attr("action",url);
+		form.submit();
+	}
+}
+</script>
+<fieldset>
+  <legend>活动管理</legend>
+  	<a href="<!--{$url.MasterFRG_Activity_Add}-->">增加活动</a>
+    <form action="" id="form" method="post">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th>Id</th>
+        <th>活动标题</th>
+        <th>标识</th>
+        <th>接收条件</th>
+        <th>开放时间</th>
+        <th>最大次数</th>
+      </tr>
+      <!--{foreach from=$dataList item=vo}-->
+      <tr>
+        <td><input type="checkbox" name="Ids[]" value="<!--{$vo.Id}-->" /><!--{$vo.Id}--></td>
+        <td><a href="<!--{$vo.url_edit}-->"><!--{$vo.Title}--></a></td>
+        <td><!--{$vo.Identifier}--></td>
+        <td><!--{$vo.AcceptDesc}--></td>
+        <td><!--{$vo.OpenTime}--></td>
+        <td><!--{$vo.MaxNum}--></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="6"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}--> 
+      <tr>
+        <td><input type="checkbox" onclick="$('#form :checkbox').attr('checked',$(this).attr('checked'))" /> 全选</td>
+        <td colspan="5"><input type="button" class="btn-blue" onclick="jumpUrl('<!--{$url.MasterFRG_Activity_Del}-->')" value="删除" /></td>
+      </tr>
+      <tr>
+        <th colspan="6" align="right"><!--{$pageBox}--></th>
+      </tr>
+    </table>
+    </form>
+</fieldset>
+<!--{/if}-->

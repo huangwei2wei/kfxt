@@ -1,0 +1,148 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='playerId[]']").attr("checked",curCheck);
+	 });
+});
+function del(){
+	if(confirm('确定要删除吗?')){
+		$('#DelFrom').submit();
+	}
+}
+
+function getDetail(obj){
+	var kid = obj.attr('kid');
+	if($('#detail'+kid).html() == ''){		
+		$.ajax({
+			dataType:'json',	
+			type: 'GET',
+			url: obj.attr('url'),
+			success:function(msg){
+				var json = eval(msg);				
+				if(1 == json.status){				
+					if(json.data.length>0){
+						$.each(json.data,
+							function(Id,subobj){ 
+								$('#detail'+kid).append('<div style="margin:5px;">'+subobj.info+'</div><hr>');
+							}
+						);	
+					}else{
+						$('#detail'+kid).append('<div color="margin:5px;">无操作记录</div>');
+					}				
+				}
+				else if(0 == json.status){
+					alert(json.info);
+				}else{
+					alert('unknow error');
+				}
+			}
+		});
+	}
+}
+
+function viewDetail(obj){
+	var kid = obj.attr('kid');
+	
+	var trDetail = $('#trDetail'+kid);
+	if(trDetail.css("display")=="none"){
+		getDetail(obj);
+		trDetail.show();		
+	}else{
+		trDetail.hide();
+	}	
+}
+
+//function viewDetail(obj){
+//	var info = obj.parent().parent().next();
+//	if(info.html() == ''){
+//		info.html('<td colspan="10" style="background:#CCCCCC;padding:15px;padding-top:5px;" ><div style="padding-bottom:5px;"><a href="javascript:void(0);" onclick="hindParent($(this))">关闭</a></div><div>加载中...</div></td>');
+//		$.ajax({
+//			dataType:'text',	
+//			type: 'GET',
+//			url: obj.attr('url'),
+//			success:function(content){
+//				
+//				info.html('<td colspan="10" style="background:#CCCCCC;padding:15px;padding-top:5px;" ><div style="padding-bottom:5px;"><a href="javascript:void(0);" onclick="hindParent($(this))">关闭</a></div><div>'+content+'</div></td>');
+//			}
+//		});
+//	}
+//	info.show();
+//}
+
+function hindParent(obj){
+	obj.parent().parent().parent().hide();
+}
+
+</script>
+
+<legend>封号列表</legend>
+
+<form action="<!--{$url.OperationLog_LockUserDel}-->" method="post" id="DelFrom" onsubmit="return checksub();">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <td colspan="10">
+    	<a href="<!--{$UrlLockUserAdd}-->">增加封号 </a>|<a href="<!--{$UrlLockUserAddForSY}-->">手游版增加封号 </a>
+    </td>
+    </tr>
+  <tr>
+    <th scope="col">选择</th>
+    <th scope="col">Id</th>
+    <th scope="col">玩家Id</th>
+    <th scope="col">服务器名称</th>
+    <th scope="col">OpenId</th>
+    
+    <th scope="col">状态</th>
+    <th scope="col">操作</th>
+    
+  </tr>
+  <!--{foreach from=$dataList key=key item=list}-->
+  <tr>
+    <td scope="col"><input type="checkbox" value="<!--{$list->id}-->" name="playerId[]" /></td>
+    <td scope="col"><!--{$list->id}--></td>
+    <td scope="col"><!--{$list->playerId}--></td>
+    <td scope="col"><!--{$list->serverName}--></td>
+    <td scope="col"><!--{$list->openId}--></td>
+    <td scope="col"><!--{if $list->status=='1'}-->封号中<!--{else}-->解封<!--{/if}--></td>
+    <td scope="col">
+    	[ <a onclick="return(confirm('确定强制解封？'));" href="<!--{$list->URL_TimeEnd}-->">解除</a> ]
+       <!-- [ <a url="<!--{$list->URL_Detail}-->" href="javascript:void(0);" kid="<!--{$list->id}-->" onclick="viewDetail($(this));">查看详细</a> ] -->
+    </td>
+  </tr>
+  <tr style="display:none;" id="trDetail<!--{$list->id}-->">
+  	<td colspan="11" style="padding-left:20px;">
+        <div id="detail<!--{$list->id}-->"></div>
+    </td>
+  </tr>
+  <!--{foreachelse}-->
+        <!--{if $ConnectErrorInfo}-->
+            <tr>
+                <th colspan="10" scope="col">
+                    <!--{$ConnectErrorInfo}--> 	
+                </th>
+            </tr>
+        <!--{else}-->
+            <tr>
+                <th colspan="10" scope="col">
+                    <!--{$noData}--> 	
+                </th>
+            </tr>
+        <!--{/if}-->
+  <!--{/foreach}-->
+  <tr>
+    <!-- td colspan="10" scope="col">
+  		选择所有<input type="checkbox" id="allcheck" /><input type="button" class="btn-blue" onClick="del()" value="解除" />  	
+    </td-->
+  </tr>
+</table>
+</form>
+<div style="float:right">
+	<!--{$pageBox}-->
+</div>
+</fieldset>
+<!--{/if}-->

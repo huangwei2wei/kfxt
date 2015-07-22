@@ -1,0 +1,48 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+
+<fieldset>
+  <legend>公告查询 [<a href="<!--{$URL_noticeAdd}-->">添加</a>]</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">内容</th>
+        <th scope="col">开始时间</th>
+        <th scope="col">结束时间</th>
+        <th scope="col">相隔(秒)</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <form action="<!--{$list.URL_edit}-->" method="post" id='form_<!--{$list.NoticeID}-->'>
+      <tr>
+      	<input type="hidden" value='<!--{$list.NoticeID}-->' name='NoticeID'></input>
+      	<input type="hidden" value='<!--{$list.Content}-->' name='Content'></input>
+      	<input type="hidden" value='<!--{$list.beginTime}-->' name='beginTime'></input>
+      	<input type="hidden" value='<!--{$list.endTime}-->' name='endTime'></input>
+      	<input type="hidden" value='<!--{$list.Delay}-->' name='Delay'></input>
+
+        <td><!--{$list.NoticeID}--></td>
+        <td><!--{$list.Content}--></td>
+        <td align="center"><!--{$list.beginTime}--></td>
+        <td align="center"><!--{$list.endTime}--></td>
+        <td><!--{$list.Delay}--></td>
+      
+        <td>
+        	[<a onclick="return confirm('确定删除？');" href="<!--{$list.URL_del}-->">删除</a>]
+        	[<a href='javascript:document.getElementById("form_<!--{$list.NoticeID}-->").submit();'>编辑</a>]
+        </td>
+      
+      </tr>
+      </form>
+      
+      <!--{/foreach}-->
+      <tr>
+            <th colspan="6" align="right"><!--{$pageBox}--></th>
+          </tr>
+    </table>
+
+</fieldset>
+<!--{/if}-->

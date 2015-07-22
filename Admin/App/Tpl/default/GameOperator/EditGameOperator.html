@@ -1,0 +1,93 @@
+<script language="javascript">
+	function gameChange(gameId){
+		$.ajax({
+			dataType:'json',	
+			type: 'GET',
+			data:{game_id:gameId},
+			url: '<!--{$url.GameOperator_OperatorExtParam}-->',
+			success:function(json){
+				if(0 == json.status){
+					alert(json.info);
+				}
+				else if(1 == json.status){
+					$('#td_extParam').html('');
+					var i = 0;
+					$.each(json.data,
+						function(Id,input){ 
+							i++;
+							if($.trim(input[2]) == ''){
+								input[2] == 'text';
+							}
+							$('#td_extParam').append('<div style="margin:5px;">'+input[1]+':<input type="'+input[2]+'" class="text" style="width:400px;" name="ext['+input[0]+']" value="'+input[3]+'" ></div>');
+						}
+					);
+					if(i==0){
+						$('#td_extParam').html('无');
+					}
+				}
+			}
+		});		
+	}
+	
+</script>
+
+<fieldset>
+	<legend>增加游戏的运营商</legend>
+    <form action="" id="search" method="post">
+        <table width="100%" border="0" cellpadding="3">
+          <tr>
+            <th scope="row" nowrap>游戏</th>
+            <td>
+            <!--{if $isAdd}-->
+            	<!--{html_radios name="game_type" options=$gameTypeList onclick="gameChange($(this).val());" separator="&nbsp;"}-->
+            <!--{else}-->
+            	<!--{$dataObject.game_type}-->
+            <!--{/if}-->
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" nowrap>运营商</th>
+            <td>
+            <!--{if $isAdd}-->
+            	<!--{html_radios name="operator_id" options=$operatorList separator="&nbsp;"}-->
+            <!--{else}-->
+            	<!--{$dataObject.operator_id}-->
+            <!--{/if}-->
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" nowrap>URL</th>
+            <td>
+                <input type="text" class="text" style="width:400px;" name="url" value="<!--{$dataObject.url|default:''}-->">
+                
+                例如 http://s<font color="#FF0000">{$var}</font>.app27805.qqopenapp.com/sljadm/
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" nowrap>超时时间</th>
+            <td>
+                <input type="text" class="text" style="width:400px;" name="vip_timeout" value="<!--{$dataObject.vip_timeout|default:''}-->"> VIP超时限定(普通,1-6级 用","隔开)
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" nowrap>充值分段</th>
+            <td>
+                <input type="text" class="text" style="width:400px;" name="vip_pay" value="<!--{$dataObject.vip_pay|default:''}-->"> VIP等级设定[充值量](普通,1-6级 用","隔开)
+            </td>
+          </tr>
+          <tr id="tr_extParam">
+          	<th scope="row" nowrap>附加参数</th>
+          	<td id="td_extParam">
+            <!--{foreach from=$inputData item=input}-->
+            	<div style="margin:5px;"><!--{$input.1}-->:<input type="<!--{$input.2}-->" class="text" style="width:400px;" name="ext[<!--{$input.0}-->]" value="<!--{$dataObject.ext[$input.0]}-->" ></div>
+            <!--{foreachelse}-->
+            	无
+            <!--{/foreach}-->            	
+            </td>
+          </tr>
+          <tr>
+            <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+          </tr>
+        </table>
+	</form>
+</fieldset>

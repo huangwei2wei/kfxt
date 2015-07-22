@@ -1,0 +1,70 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+  <legend>搜索</legend>
+<form id="form" action=""  method="get">
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+    	玩家id:
+        <input name="playerId" value="<!--{$_GET.playerId}-->" type="text" class="text"/>
+        玩家账号:
+        <input name="pname" value="<!--{$_GET.pname}-->" type="text" class="text"/>
+        玩家昵称:
+        <input name="prolename" value="<!--{$_GET.prolename}-->" type="text" class="text"/>
+            <input class="btn-blue" type="submit" name="sbm" value="查询" />
+            </td>
+      </tr>
+    </table>
+</form>
+
+
+</fieldset>
+
+<fieldset>
+  <legend>商城消费。<!--{if $realCostSum}-->本页首付Q点 ：<!--{$realCostSum}--><!--{/if}--></legend>
+<table width="100%" border="0" cellpadding="3">
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">玩家id</th>
+        <th scope="col">账号</th>
+        <th scope="col">昵称</th>
+        <th scope="col">道具</th>
+        <th scope="col">数量</th>
+        <th scope="col">实付q点</th>
+        <th scope="col">消费q点</th>
+        <th scope="col">消费总q点</th>
+        <th scope="col">皇权</th>
+        <th scope="col">时间</th>
+    </tr>
+    <!--{foreach from=$dataList item=list}-->
+    <tr>
+        <td><!--{$list.id}--></td>
+        <td><!--{$list.playerId}--></td>
+        <td><!--{$list.pname}--></td>
+        <td><!--{$list.prolename}--></td>
+        <td><!--{$list.toolMallName}--></td>
+        <td><!--{$list.num}--></td>
+        <td><!--{$list.realCost}--></td>
+        <td><!--{$list.cost}--></td>
+        <td><!--{$list.costTotal}--></td>
+        <td><!--{$list.vipOld}--></td>
+        <td><!--{$list.logTime|date_format:'%Y-%m-%d %H:%M:%S'}--></td>
+    </tr>  
+    <!--{foreachelse}-->
+        <tr>
+          <td align="center" colspan="10">暂无数据</td>
+        </tr>
+    <!--{/foreach}-->
+</table>
+<div><!--{$pageBox}--></div>
+</fieldset>
+<!--{/if}-->

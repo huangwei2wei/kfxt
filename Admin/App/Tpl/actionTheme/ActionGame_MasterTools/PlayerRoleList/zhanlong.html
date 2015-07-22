@@ -1,0 +1,129 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+	function seach(){
+		$.ajax( {
+			type : "post",
+			url : "<!--{$ajax}-->",
+			data :"Level="+$("#Level").val()+"&CreateTime="+$("#CreateTime").val(),
+			success : function(dataResult) {
+				$("#accountCount").html(dataResult);
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				
+			}
+		});
+	}
+</script>
+
+<fieldset>
+  <legend>数量查询[结果：<span id="accountCount"></span>]</legend>
+
+  等级:<input class="text" type="text" name="Level" id="Level">
+ 创建时间：<input class="text" type="text" name="CreateTime" id="CreateTime" value="<!--{$_GET.CreateTime}-->" onFocus="WdatePicker({startDate:'<!--{$dataList.Start_time|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+  <input class="btn-blue" type="button" name="sbm" value="查询" onclick="seach()">
+
+  
+</fieldset>
+
+
+<fieldset>
+  <legend>用户查询</legend>
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+  排序：角色ID正序<input class="radio" type="radio" value="0" name="Order" <!--{if $Order==0}-->checked="checked"<!--{/if}-->>
+       &nbsp;等级逆序<input class="radio" type="radio" value="1" name="Order" <!--{if $Order==1}-->checked="checked"<!--{/if}-->>
+      	&nbsp;消费额逆序<input class="radio" type="radio" value="2" name="Order" <!--{if $Order==2}-->checked="checked"<!--{/if}-->>
+      	&nbsp;战斗力逆序<input class="radio" type="radio" value="3" name="Order" <!--{if $Order==3}-->checked="checked"<!--{/if}-->>
+        	<br>
+   区ID:<input class="text" type="text" name="WorldID" value="<!--{$_WorldID}-->">
+   帐号ID:<input class="text" type="text" name="AccountID" value="<!--{$_GET.AccountID}-->">
+    帐号名:<input class="text" type="text" name="AccountName" value="<!--{$_GET.AccountName}-->">
+角色ID:<input class="text" type="text" name="PlayerID" value="<!--{$_GET.PlayerID}-->">
+角色昵称:<input class="text" type="text" name="PlayerName" value="<!--{$_GET.PlayerName}-->">
+<br>
+创建时间:<input class="text" type="text" name="CreateTime" value="<!--{$_GET.CreateTime}-->" onFocus="WdatePicker({startDate:'<!--{$dataList.Start_time|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+在线时长:<input class="text" type="text" name="OnlineTime" value="<!--{$_GET.OnlineTime}-->">
+    <input class="btn-blue" type="submit" name="sbm" value="查询">
+</form>
+
+<form action="" id="playerIdsForm" method="post">
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>区ID</th>
+          <th>帐号ID</th>
+          <th>帐号名</th>
+          <th>角色ID</th>
+          <th>角色名</th>
+          <th>等级<br>职业</th>
+          <th>所在场景ID</th>
+          <th>经验</th>
+          <th>消费额</th>
+          <th>铜钱</th>
+          <th>元宝</th>
+          <th>绑定元宝</th>
+          <th>元力</th>
+          <th>战斗力</th>
+          <th>在线时长</th>
+          <th>创建时间</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+       	  <td align="center"><!--{$list.WorldID}--></td>
+          <td align="center"><!--{$list.AccountID}--></td>
+          <td align="center"><!--{$list.AccountName}--></td>
+          <td align="center"><!--{$list.PlayerID}--></td>
+          <td align="center"><!--{$list.PlayerName}--></td>
+          <td align="center"><!--{$list.Level}--><br><!--{$list.Job}--></td>
+          <td align="center"><!--{$list.SceneID}--></td>
+          <td align="center"><!--{$list.Experience}--></td>
+          <td align="center"><!--{$list.Consume}--></td>
+          <td align="center"><!--{$list.MoneyGame}--></td>
+          <td align="center"><!--{$list.MoneyCash}--></td>
+          <td align="center"><!--{$list.MoneyCashBind}--></td>
+          <td align="center"><!--{$list.YuanLi}--></td>
+          <td align="center"><!--{$list.FightPower}--></td>
+          <td align="center"><!--{$list.OnlineTime}--></td>
+          <td align="center"><!--{$list.CreateTime|date_format:"%Y-%m-%d %H:%M:%S"|default:'--'}--></td>
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="15" align="center">
+                <!--{if $_GET.submit}-->
+                查无数据
+                <!--{else}-->
+                <font color="#FF0000">请使用"查询"按钮</font>
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/foreach}-->
+          <tr>
+            <th colspan="15" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+</form>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

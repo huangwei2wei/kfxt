@@ -1,0 +1,24 @@
+<div class="right_tit">常见问题</div>
+<div class="right_con">
+	<!--{/*常见问题 的游戏列表*/}-->
+	<include file="../Faq/gameList"/>
+    
+	<!--{/*某游戏的问题类型*/}-->
+	<include file="../Faq/faqTypes"/>
+    
+	<!--{/*FAQ搜索栏*/}-->
+	<include file="../Faq/faqSearch"/>
+
+    <div class="servicerli">
+        <ul>
+            <foreach name="faqList" item="vo">
+                <li><a href="{:U("/Faq/show/game_type_id/$gameTypeId/Id/$vo[Id]")}">{$vo.question|stripcslashes}</a></li>
+            </foreach>
+        </ul>
+    </div>
+    
+    <div class="pagination">
+        {$page}
+    </div>
+</div>
+<div class="right_bo"></div>

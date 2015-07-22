@@ -1,0 +1,344 @@
+[ 2012-10-16T13:54:53+08:00 ] NOTIC: [8] Undefined index:  dovo_UserName BaseAction.class.php 第 13 行.
+[ 2012-10-16T13:54:53+08:00 ] SQL:  RunTime:0.008600s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-10-16T13:54:53+08:00 ] SQL:  RunTime:0.013964s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T13:54:53+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T13:54:53+08:00 ] SQL:  RunTime:0.203832s SQL = SELECT * FROM `cndw_player_faq` WHERE ( `lang_id` = 1 ) AND ( (`status` >= 0) AND (`status` <= 1)  ) AND ( `game_type_id` IN (1,2,6,7,9,8,10,24,1008) ) ORDER BY ratio desc LIMIT 20 
+[ 2012-10-16T13:54:53+08:00 ] SQL:  RunTime:0.012939s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T13:54:53+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T13:54:53+08:00 ] NOTIC: [8] Undefined variable: username 972c8cf98e4871a830fafeb7278fd4ae.php 第 39 行.
+[ 2012-10-16T13:54:53+08:00 ] NOTIC: [8] Undefined variable: waitCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 86 行.
+[ 2012-10-16T13:54:53+08:00 ] NOTIC: [8] Undefined variable: haveCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 87 行.
+[ 2012-10-16T13:55:02+08:00 ] NOTIC: [8] Undefined index:  dovo_UserName BaseAction.class.php 第 13 行.
+[ 2012-10-16T13:55:02+08:00 ] SQL:  RunTime:0.002536s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-10-16T13:55:02+08:00 ] SQL:  RunTime:0.002010s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T13:55:02+08:00 ] SQL:  RunTime:0.001926s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T13:55:02+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T13:55:02+08:00 ] NOTIC: [8] Undefined variable: username 972c8cf98e4871a830fafeb7278fd4ae.php 第 39 行.
+[ 2012-10-16T13:55:02+08:00 ] NOTIC: [8] Undefined variable: waitCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 86 行.
+[ 2012-10-16T13:55:02+08:00 ] NOTIC: [8] Undefined variable: haveCount 972c8cf98e4871a830fafeb7278fd4ae.php 第 87 行.
+[ 2012-10-16T13:55:29+08:00 ] SQL:  RunTime:0.002610s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T13:55:29+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T13:55:29+08:00 ] SQL:  RunTime:0.000322s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T13:55:29+08:00 ] SQL:  RunTime:0.000197s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T13:55:29+08:00 ] SQL:  RunTime:0.002008s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-10-16T13:55:29+08:00 ] SQL:  RunTime:0.002291s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T13:55:29+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T13:55:29+08:00 ] SQL:  RunTime:0.010645s SQL = SELECT * FROM `cndw_player_faq` WHERE ( `lang_id` = 1 ) AND ( (`status` >= 0) AND (`status` <= 1)  ) AND ( `game_type_id` IN (1,2,6,7,9,8,10,24,1008) ) ORDER BY ratio desc LIMIT 20 
+[ 2012-10-16T13:55:29+08:00 ] SQL:  RunTime:0.001794s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T13:55:29+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T13:55:32+08:00 ] SQL:  RunTime:0.002711s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T13:55:32+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T13:55:32+08:00 ] SQL:  RunTime:0.000433s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T13:55:32+08:00 ] SQL:  RunTime:0.000275s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T13:55:32+08:00 ] SQL:  RunTime:0.001944s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T13:55:32+08:00 ] SQL:  RunTime:0.002221s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T13:55:32+08:00 ] SQL:  RunTime:0.015962s SQL = SELECT * FROM `cndw_question_types`
+[ 2012-10-16T13:55:32+08:00 ] NOTIC: [8] Undefined index:  game_type_id QuestionAction.class.php 第 56 行.
+[ 2012-10-16T13:55:32+08:00 ] NOTIC: [8] Undefined index:  q_type QuestionAction.class.php 第 57 行.
+[ 2012-10-16T13:55:32+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T13:55:32+08:00 ] NOTIC: [8] Undefined variable: selectedGameTypeId 972c8cf98e4871a830fafeb7278fd4ae.php 第 120 行.
+[ 2012-10-16T13:55:32+08:00 ] NOTIC: [8] Undefined variable: selectedQType 972c8cf98e4871a830fafeb7278fd4ae.php 第 121 行.
+[ 2012-10-16T13:55:56+08:00 ] SQL:  RunTime:0.002653s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T13:55:56+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T13:55:56+08:00 ] SQL:  RunTime:0.000617s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T13:55:56+08:00 ] SQL:  RunTime:0.000296s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T13:55:56+08:00 ] SQL:  RunTime:0.002111s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T13:55:56+08:00 ] SQL:  RunTime:0.002753s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T13:55:56+08:00 ] NOTIC: [8] Undefined index:  game_type_id QuestionAction.class.php 第 56 行.
+[ 2012-10-16T13:55:56+08:00 ] NOTIC: [8] Undefined index:  q_type QuestionAction.class.php 第 57 行.
+[ 2012-10-16T13:55:56+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T13:55:56+08:00 ] NOTIC: [8] Undefined variable: selectedGameTypeId 972c8cf98e4871a830fafeb7278fd4ae.php 第 120 行.
+[ 2012-10-16T13:55:56+08:00 ] NOTIC: [8] Undefined variable: selectedQType 972c8cf98e4871a830fafeb7278fd4ae.php 第 121 行.
+[ 2012-10-16T13:56:22+08:00 ] SQL:  RunTime:0.002741s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T13:56:22+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T13:56:22+08:00 ] SQL:  RunTime:0.000462s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T13:56:22+08:00 ] SQL:  RunTime:0.000312s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T13:56:22+08:00 ] SQL:  RunTime:0.001915s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T13:56:22+08:00 ] SQL:  RunTime:0.002332s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T13:56:22+08:00 ] NOTIC: [8] Undefined index:  game_type_id QuestionAction.class.php 第 56 行.
+[ 2012-10-16T13:56:22+08:00 ] NOTIC: [8] Undefined index:  q_type QuestionAction.class.php 第 57 行.
+[ 2012-10-16T13:56:22+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T13:56:22+08:00 ] NOTIC: [8] Undefined variable: selectedGameTypeId 972c8cf98e4871a830fafeb7278fd4ae.php 第 120 行.
+[ 2012-10-16T13:56:22+08:00 ] NOTIC: [8] Undefined variable: selectedQType 972c8cf98e4871a830fafeb7278fd4ae.php 第 121 行.
+[ 2012-10-16T13:56:23+08:00 ] SQL:  RunTime:0.003063s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T13:56:23+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T13:56:23+08:00 ] SQL:  RunTime:0.000410s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T13:56:23+08:00 ] SQL:  RunTime:0.000305s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T13:56:23+08:00 ] SQL:  RunTime:0.002238s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T13:56:23+08:00 ] SQL:  RunTime:0.002200s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T13:56:23+08:00 ] NOTIC: [8] Undefined index:  game_type_id QuestionAction.class.php 第 56 行.
+[ 2012-10-16T13:56:23+08:00 ] NOTIC: [8] Undefined index:  q_type QuestionAction.class.php 第 57 行.
+[ 2012-10-16T13:56:23+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T13:56:23+08:00 ] NOTIC: [8] Undefined variable: selectedGameTypeId 972c8cf98e4871a830fafeb7278fd4ae.php 第 120 行.
+[ 2012-10-16T13:56:23+08:00 ] NOTIC: [8] Undefined variable: selectedQType 972c8cf98e4871a830fafeb7278fd4ae.php 第 121 行.
+[ 2012-10-16T13:57:42+08:00 ] SQL:  RunTime:0.002301s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T13:57:42+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T13:57:42+08:00 ] SQL:  RunTime:0.000361s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T13:57:42+08:00 ] SQL:  RunTime:0.000198s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T13:57:42+08:00 ] SQL:  RunTime:0.001652s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T13:57:42+08:00 ] SQL:  RunTime:0.002655s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T13:57:42+08:00 ] NOTIC: [8] Undefined index:  game_type_id QuestionAction.class.php 第 56 行.
+[ 2012-10-16T13:57:42+08:00 ] NOTIC: [8] Undefined index:  q_type QuestionAction.class.php 第 57 行.
+[ 2012-10-16T13:57:42+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Model\QuestionTypesModel.class.php:38) ~runtime.php 第 2 行.
+[ 2012-10-16T13:57:42+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Model\QuestionTypesModel.class.php:38) ~runtime.php 第 2 行.
+[ 2012-10-16T13:57:42+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T13:57:42+08:00 ] NOTIC: [8] Undefined variable: selectedGameTypeId 972c8cf98e4871a830fafeb7278fd4ae.php 第 120 行.
+[ 2012-10-16T13:57:42+08:00 ] NOTIC: [8] Undefined variable: selectedQType 972c8cf98e4871a830fafeb7278fd4ae.php 第 121 行.
+[ 2012-10-16T14:00:44+08:00 ] SQL:  RunTime:0.010645s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T14:00:44+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T14:00:44+08:00 ] SQL:  RunTime:0.000378s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T14:00:44+08:00 ] SQL:  RunTime:0.000412s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T14:00:44+08:00 ] SQL:  RunTime:0.002236s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T14:00:44+08:00 ] SQL:  RunTime:0.001739s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T14:00:44+08:00 ] NOTIC: [8] Undefined index:  game_type_id QuestionAction.class.php 第 56 行.
+[ 2012-10-16T14:00:44+08:00 ] NOTIC: [8] Undefined index:  q_type QuestionAction.class.php 第 57 行.
+[ 2012-10-16T14:00:44+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Model\QuestionTypesModel.class.php:24) ~runtime.php 第 2 行.
+[ 2012-10-16T14:00:44+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Model\QuestionTypesModel.class.php:24) ~runtime.php 第 2 行.
+[ 2012-10-16T14:00:44+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T14:00:44+08:00 ] NOTIC: [8] Undefined variable: selectedGameTypeId 972c8cf98e4871a830fafeb7278fd4ae.php 第 120 行.
+[ 2012-10-16T14:00:44+08:00 ] NOTIC: [8] Undefined variable: selectedQType 972c8cf98e4871a830fafeb7278fd4ae.php 第 121 行.
+[ 2012-10-16T14:02:35+08:00 ] SQL:  RunTime:0.002595s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T14:02:35+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T14:02:35+08:00 ] SQL:  RunTime:0.000307s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T14:02:35+08:00 ] SQL:  RunTime:0.000193s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T14:02:35+08:00 ] SQL:  RunTime:0.001672s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T14:02:35+08:00 ] SQL:  RunTime:0.001792s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T14:02:35+08:00 ] NOTIC: [8] Undefined index:  game_type_id QuestionAction.class.php 第 56 行.
+[ 2012-10-16T14:02:35+08:00 ] NOTIC: [8] Undefined index:  q_type QuestionAction.class.php 第 57 行.
+[ 2012-10-16T14:02:35+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T14:02:35+08:00 ] NOTIC: [8] Undefined variable: selectedGameTypeId 972c8cf98e4871a830fafeb7278fd4ae.php 第 120 行.
+[ 2012-10-16T14:02:35+08:00 ] NOTIC: [8] Undefined variable: selectedQType 972c8cf98e4871a830fafeb7278fd4ae.php 第 121 行.
+[ 2012-10-16T14:03:04+08:00 ] SQL:  RunTime:0.003120s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T14:03:04+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T14:03:04+08:00 ] SQL:  RunTime:0.000419s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T14:03:04+08:00 ] SQL:  RunTime:0.000403s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T14:03:04+08:00 ] SQL:  RunTime:0.001998s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T14:03:04+08:00 ] SQL:  RunTime:0.002677s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T14:03:04+08:00 ] SQL:  RunTime:0.000955s SQL = SELECT * FROM `cndw_question_types`
+[ 2012-10-16T14:03:04+08:00 ] NOTIC: [8] Undefined index:  game_type_id QuestionAction.class.php 第 56 行.
+[ 2012-10-16T14:03:04+08:00 ] NOTIC: [8] Undefined index:  q_type QuestionAction.class.php 第 57 行.
+[ 2012-10-16T14:03:04+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T14:03:04+08:00 ] NOTIC: [8] Undefined variable: selectedGameTypeId 972c8cf98e4871a830fafeb7278fd4ae.php 第 120 行.
+[ 2012-10-16T14:03:04+08:00 ] NOTIC: [8] Undefined variable: selectedQType 972c8cf98e4871a830fafeb7278fd4ae.php 第 121 行.
+[ 2012-10-16T14:03:25+08:00 ] SQL:  RunTime:0.002803s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T14:03:25+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T14:03:25+08:00 ] SQL:  RunTime:0.000517s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T14:03:25+08:00 ] SQL:  RunTime:0.000348s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T14:03:25+08:00 ] SQL:  RunTime:0.002810s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T14:03:25+08:00 ] SQL:  RunTime:0.003319s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T14:03:25+08:00 ] NOTIC: [8] Undefined variable: types QuestionTypesModel.class.php 第 24 行.
+[ 2012-10-16T14:03:25+08:00 ] SQL:  RunTime:0.000896s SQL = SELECT * FROM `cndw_question_types`
+[ 2012-10-16T14:03:25+08:00 ] NOTIC: [8] Undefined index:  game_type_id QuestionAction.class.php 第 56 行.
+[ 2012-10-16T14:03:25+08:00 ] NOTIC: [8] Undefined index:  q_type QuestionAction.class.php 第 57 行.
+[ 2012-10-16T14:03:25+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T14:03:25+08:00 ] NOTIC: [8] Undefined variable: selectedGameTypeId 972c8cf98e4871a830fafeb7278fd4ae.php 第 120 行.
+[ 2012-10-16T14:03:25+08:00 ] NOTIC: [8] Undefined variable: selectedQType 972c8cf98e4871a830fafeb7278fd4ae.php 第 121 行.
+[ 2012-10-16T14:05:22+08:00 ] SQL:  RunTime:0.002986s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T14:05:22+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T14:05:22+08:00 ] SQL:  RunTime:0.000432s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T14:05:22+08:00 ] SQL:  RunTime:0.000543s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T14:05:22+08:00 ] SQL:  RunTime:0.002162s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T14:05:22+08:00 ] SQL:  RunTime:0.001830s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T14:05:22+08:00 ] SQL:  RunTime:0.000371s SQL = SELECT * FROM `cndw_question_types`
+[ 2012-10-16T14:05:22+08:00 ] NOTIC: [8] Undefined index:  game_type_id QuestionAction.class.php 第 56 行.
+[ 2012-10-16T14:05:22+08:00 ] NOTIC: [8] Undefined index:  q_type QuestionAction.class.php 第 57 行.
+[ 2012-10-16T14:05:23+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T14:05:23+08:00 ] NOTIC: [8] Undefined variable: selectedGameTypeId 972c8cf98e4871a830fafeb7278fd4ae.php 第 120 行.
+[ 2012-10-16T14:05:23+08:00 ] NOTIC: [8] Undefined variable: selectedQType 972c8cf98e4871a830fafeb7278fd4ae.php 第 121 行.
+[ 2012-10-16T14:05:28+08:00 ] SQL:  RunTime:0.004141s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T14:05:28+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T14:05:28+08:00 ] SQL:  RunTime:0.000319s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T14:05:28+08:00 ] SQL:  RunTime:0.000214s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T14:05:28+08:00 ] SQL:  RunTime:0.001795s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T14:05:28+08:00 ] SQL:  RunTime:0.002669s SQL = SHOW COLUMNS FROM cndw_gameser_list
+[ 2012-10-16T14:05:28+08:00 ] SQL:  RunTime:0.000810s SQL = SELECT * FROM `cndw_gameser_list` WHERE game_type_id=2 and operator_id=9 and marking !='' and server_url !='' 
+[ 2012-10-16T14:05:28+08:00 ] SQL:  RunTime:0.002556s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] Invalid argument supplied for foreach() ServerSelect.class.php 第 94 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2048] Only variables should be passed by reference ServerSelect.class.php 第 64 行.
+[ 2012-10-16T14:05:31+08:00 ] NOTIC: [2] array_key_exists() [<a href='function.array-key-exists'>function.array-key-exists</a>]: The second argument should be either an array or an object ServerSelect.class.php 第 68 行.
+[ 2012-10-16T14:07:22+08:00 ] SQL:  RunTime:0.003056s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T14:07:22+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T14:07:22+08:00 ] SQL:  RunTime:0.000416s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T14:07:22+08:00 ] SQL:  RunTime:0.000333s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T14:07:22+08:00 ] SQL:  RunTime:0.002032s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T14:07:22+08:00 ] SQL:  RunTime:0.002204s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T14:07:22+08:00 ] SQL:  RunTime:0.002598s SQL = SELECT * FROM `cndw_question_types`
+[ 2012-10-16T14:07:22+08:00 ] NOTIC: [8] Undefined index:  game_type_id QuestionAction.class.php 第 56 行.
+[ 2012-10-16T14:07:22+08:00 ] NOTIC: [8] Undefined index:  q_type QuestionAction.class.php 第 57 行.
+[ 2012-10-16T14:07:22+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Model\QuestionTypesModel.class.php:38) ~runtime.php 第 2 行.
+[ 2012-10-16T14:07:22+08:00 ] NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\kfxt\Front\Lib\Model\QuestionTypesModel.class.php:38) ~runtime.php 第 2 行.
+[ 2012-10-16T14:07:22+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T14:07:22+08:00 ] NOTIC: [8] Undefined variable: selectedGameTypeId 972c8cf98e4871a830fafeb7278fd4ae.php 第 120 行.
+[ 2012-10-16T14:07:22+08:00 ] NOTIC: [8] Undefined variable: selectedQType 972c8cf98e4871a830fafeb7278fd4ae.php 第 121 行.
+[ 2012-10-16T14:21:51+08:00 ] SQL:  RunTime:0.017722s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T14:21:51+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T14:21:51+08:00 ] SQL:  RunTime:0.000321s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T14:21:51+08:00 ] SQL:  RunTime:0.000195s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T14:21:51+08:00 ] SQL:  RunTime:0.002048s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T14:21:51+08:00 ] SQL:  RunTime:0.002077s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T14:21:51+08:00 ] NOTIC: [8] Undefined index:  game_type_id QuestionAction.class.php 第 56 行.
+[ 2012-10-16T14:21:51+08:00 ] NOTIC: [8] Undefined index:  q_type QuestionAction.class.php 第 57 行.
+[ 2012-10-16T14:21:51+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T14:21:51+08:00 ] NOTIC: [8] Undefined variable: selectedGameTypeId 972c8cf98e4871a830fafeb7278fd4ae.php 第 120 行.
+[ 2012-10-16T14:21:51+08:00 ] NOTIC: [8] Undefined variable: selectedQType 972c8cf98e4871a830fafeb7278fd4ae.php 第 121 行.
+[ 2012-10-16T14:49:36+08:00 ] SQL:  RunTime:0.003423s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T14:49:36+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T14:49:36+08:00 ] SQL:  RunTime:0.000352s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T14:49:36+08:00 ] SQL:  RunTime:0.000205s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T14:49:36+08:00 ] SQL:  RunTime:0.002337s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-10-16T14:49:36+08:00 ] SQL:  RunTime:0.002251s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T14:49:36+08:00 ] SQL:  RunTime:0.002257s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T14:49:36+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T14:49:39+08:00 ] SQL:  RunTime:0.010154s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T14:49:39+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T14:49:39+08:00 ] SQL:  RunTime:0.000302s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T14:49:39+08:00 ] SQL:  RunTime:0.000307s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T14:49:39+08:00 ] SQL:  RunTime:0.002101s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T14:49:39+08:00 ] SQL:  RunTime:0.001883s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T14:49:39+08:00 ] NOTIC: [8] Undefined index:  game_type_id QuestionAction.class.php 第 56 行.
+[ 2012-10-16T14:49:39+08:00 ] NOTIC: [8] Undefined index:  q_type QuestionAction.class.php 第 57 行.
+[ 2012-10-16T14:49:39+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T14:49:39+08:00 ] NOTIC: [8] Undefined variable: selectedGameTypeId 972c8cf98e4871a830fafeb7278fd4ae.php 第 120 行.
+[ 2012-10-16T14:49:39+08:00 ] NOTIC: [8] Undefined variable: selectedQType 972c8cf98e4871a830fafeb7278fd4ae.php 第 121 行.
+[ 2012-10-16T15:30:19+08:00 ] SQL:  RunTime:0.004523s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T15:30:19+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T15:30:19+08:00 ] SQL:  RunTime:0.000520s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T15:30:19+08:00 ] SQL:  RunTime:0.000476s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T15:30:19+08:00 ] SQL:  RunTime:0.002228s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T15:30:19+08:00 ] SQL:  RunTime:0.001981s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T15:30:19+08:00 ] NOTIC: [8] Undefined index:  game_type_id QuestionAction.class.php 第 56 行.
+[ 2012-10-16T15:30:19+08:00 ] NOTIC: [8] Undefined index:  q_type QuestionAction.class.php 第 57 行.
+[ 2012-10-16T15:30:19+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T15:30:19+08:00 ] NOTIC: [8] Undefined variable: selectedGameTypeId 972c8cf98e4871a830fafeb7278fd4ae.php 第 120 行.
+[ 2012-10-16T15:30:19+08:00 ] NOTIC: [8] Undefined variable: selectedQType 972c8cf98e4871a830fafeb7278fd4ae.php 第 121 行.
+[ 2012-10-16T15:30:28+08:00 ] SQL:  RunTime:0.003730s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T15:30:28+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T15:30:28+08:00 ] SQL:  RunTime:0.000443s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T15:30:28+08:00 ] SQL:  RunTime:0.000442s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T15:30:28+08:00 ] SQL:  RunTime:0.003009s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-10-16T15:30:28+08:00 ] SQL:  RunTime:0.002048s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T15:30:28+08:00 ] SQL:  RunTime:0.002482s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T15:30:28+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T15:30:46+08:00 ] SQL:  RunTime:0.002666s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T15:30:46+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T15:30:46+08:00 ] SQL:  RunTime:0.000507s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T15:30:46+08:00 ] SQL:  RunTime:0.000285s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T15:30:46+08:00 ] SQL:  RunTime:0.002953s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-10-16T15:30:46+08:00 ] SQL:  RunTime:0.002388s SQL = SHOW COLUMNS FROM cndw_question_types
+[ 2012-10-16T15:30:46+08:00 ] SQL:  RunTime:0.002827s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T15:30:47+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T15:30:49+08:00 ] SQL:  RunTime:0.001933s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T15:30:49+08:00 ] SQL:  RunTime:0.003692s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T15:30:49+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T15:30:49+08:00 ] SQL:  RunTime:0.001307s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T15:30:49+08:00 ] SQL:  RunTime:0.000633s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T15:30:49+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-10-16T15:30:49+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-10-16T15:30:49+08:00 ] SQL:  RunTime:0.002557s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-10-16T15:30:49+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 51 行.
+[ 2012-10-16T15:30:50+08:00 ] SQL:  RunTime:0.018693s SQL = SELECT * FROM `cndw_player_faq` WHERE ( `game_type_id` = 20 ) AND ( `lang_id` = 1 ) ORDER BY ratio desc LIMIT 10 
+[ 2012-10-16T15:30:50+08:00 ] SQL:  RunTime:0.000376s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_player_faq` WHERE ( `game_type_id` = 20 ) AND ( `lang_id` = 1 ) LIMIT 1 
+[ 2012-10-16T15:30:50+08:00 ] SQL:  RunTime:0.007800s SQL = SHOW COLUMNS FROM cndw_player_kind_faq
+[ 2012-10-16T15:30:50+08:00 ] SQL:  RunTime:0.011006s SQL = SELECT * FROM `cndw_player_kind_faq` WHERE game_type_id=20 and lang_id=1 ORDER BY sort_id asc
+[ 2012-10-16T15:30:50+08:00 ] SQL:  RunTime:0.017601s SQL = SHOW COLUMNS FROM cndw_player_faq_keywords
+[ 2012-10-16T15:30:50+08:00 ] SQL:  RunTime:0.000374s SQL = SELECT * FROM `cndw_player_faq_keywords`
+[ 2012-10-16T15:30:50+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T15:30:50+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-10-16T15:30:50+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.
+[ 2012-10-16T15:30:53+08:00 ] SQL:  RunTime:0.001866s SQL = SHOW COLUMNS FROM cndw_sysconfig
+[ 2012-10-16T15:30:53+08:00 ] SQL:  RunTime:0.002371s SQL = SHOW COLUMNS FROM cndw_work_order
+[ 2012-10-16T15:30:53+08:00 ] NOTIC: [8] Array to string conversion Db.class.php 第 517 行.
+[ 2012-10-16T15:30:53+08:00 ] SQL:  RunTime:0.000302s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( (`status` >= 1) AND (`status` <= 2)  ) LIMIT 1 
+[ 2012-10-16T15:30:53+08:00 ] SQL:  RunTime:0.000194s SQL = SELECT COUNT(*) AS tp_count FROM `cndw_work_order` WHERE ( `user_account` = '291518452@qq.com' ) AND ( `operator_id` = 9 ) AND ( `source` = 1 ) AND ( `status` = 3 ) LIMIT 1 
+[ 2012-10-16T15:30:53+08:00 ] NOTIC: [8] Undefined index:  typeid FaqAction.class.php 第 40 行.
+[ 2012-10-16T15:30:53+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 47 行.
+[ 2012-10-16T15:30:53+08:00 ] SQL:  RunTime:0.002138s SQL = SHOW COLUMNS FROM cndw_player_faq
+[ 2012-10-16T15:30:53+08:00 ] NOTIC: [8] Undefined index:  p FaqAction.class.php 第 51 行.
+[ 2012-10-16T15:30:53+08:00 ] SQL:  RunTime:0.000318s SQL = SELECT * FROM `cndw_player_faq` WHERE ( `game_type_id` = 20 ) AND ( `lang_id` = 1 ) ORDER BY ratio desc LIMIT 10 
+[ 2012-10-16T15:30:53+08:00 ] SQL:  RunTime:0.002005s SQL = SHOW COLUMNS FROM cndw_player_kind_faq
+[ 2012-10-16T15:30:53+08:00 ] SQL:  RunTime:0.000255s SQL = SELECT * FROM `cndw_player_kind_faq` WHERE game_type_id=20 and lang_id=1 ORDER BY sort_id asc
+[ 2012-10-16T15:30:53+08:00 ] NOTIC: [8] Undefined variable: _page_title 972c8cf98e4871a830fafeb7278fd4ae.php 第 5 行.
+[ 2012-10-16T15:30:53+08:00 ] NOTIC: [2] constant() [<a href='function.constant'>function.constant</a>]: Couldn't find constant 每7个换行* 972c8cf98e4871a830fafeb7278fd4ae.php 第 125 行.
+[ 2012-10-16T15:30:53+08:00 ] NOTIC: [8] Undefined variable: keyword 972c8cf98e4871a830fafeb7278fd4ae.php 第 143 行.

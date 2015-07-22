@@ -1,0 +1,41 @@
+<fieldset>
+<legend>充值卡号</legend>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <td colspan="7">
+    	<a href="<!--{$url.MasterFRG_PayCard_add}-->">生成卡号</a>
+    </td>
+    </tr>
+    <tr>
+      <th scope="col">Id</th>
+    <th scope="col">金额</th>
+    <th scope="col">卡号</th>
+    <th scope="col">生成时间</th>
+    <th scope="col">卡号类型</th>
+    <th scope="col">状态</th>
+    <th scope="col">使用账号 / IP / 时间</th>
+    </tr>
+  <!--{foreach from=$dataList key=key item=list}-->
+  <tr>
+    <td scope="col"><!--{$list.Id}--></td>
+    <td scope="col"><!--{$list.amount}--></td>
+    <td scope="col"><!--{$list.card}--></td>
+    <td scope="col"><!--{$list.create_time|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td scope="col"><!--{$list.word_type}--></td>
+    <td scope="col"><!--{$list.word_is_use}--></td>
+    <td scope="col"><!--{$list.user_name}--> / <!--{$list.user_ip}--> / <!--{$list.use_time|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="7" scope="col">
+  		<!--{$noData}--> 	
+    </th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <td align="right" colspan="7" scope="col">
+  		<!--{$pageBox}--> 	
+    </td>
+  </tr>
+  </table>
+</fieldset>

@@ -1,0 +1,107 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+</script>
+
+<fieldset>
+  <legend><!--{'41192B3D62C7F96C759CAA83B33467E4'|lang}--></legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <!--{'069A4B89AE4E24F7718E5DF99E80B75D'|lang}-->ID:<input class="text" type="text" name="playerId" value="<!--{$_GET.playerId}-->">
+    <!--{'F6685D1959CB7D93BE372469C5BB1E65'|lang}-->:<input class="text" type="text" name="accountName" value="<!--{$_GET.accountName}-->">
+    <!--{'AB581AA0560E5EE2B91A1B2003B15FAA'|lang}-->:<input class="text" type="text" name="playerName" value="<!--{$_GET.playerName}-->">
+    <br>
+    <!--{'87D5EB8F8845C7472BACF9FD969D560C'|lang}-->:
+    <input class="text" type="text" name="regBeginTime" value="<!--{$_GET.regBeginTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    -
+    <input class="text" type="text" name="regEndTime" value="<!--{$_GET.regEndTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    
+    
+    <!--{'9FCA7C455FBFCAB7CACD994C7933FF70'|lang}-->:
+    <input class="text" type="text" name="loginBeginTime" value="<!--{$_GET.loginBeginTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    -
+    <input class="text" type="text" name="loginEndTime" value="<!--{$_GET.loginEndTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    <input class="btn-blue" type="submit" name="sbm" value="<!--{'BEE912D79EEFB7335988C4997AA9138D'|lang}-->">
+</form>
+
+<form action="" id="playerIdsForm" method="post">
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th><!--{'153FA67A7FB6ADA66A1FCCCABBBFAB72'|lang}--></th>
+          <th><!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->Id</th>
+          <th><!--{'7035C62FB00576FED9B3A1F2B7D48E6C'|lang}--><br><!--{'23EB0E6024B9C5E694C18344887C4FE7'|lang}--></th>
+          <th><!--{'82104FD1E0D8B9790B9F57BC702CBF1D'|lang}--></th>
+          <th><!--{'77E0CA7A67BFA6FC3143B21A711255A0'|lang}--></th>
+          <th><!--{'609C2380B214A2BFC444A140CC8AB316'|lang}--></th>
+          <th><!--{'95E0D70D1809D5267C2419EDA58E78CA'|lang}--><br><!--{'7379C919057DB28226BD1AC6AB903984'|lang}--></th>
+          <th><!--{'87D5EB8F8845C7472BACF9FD969D560C'|lang}--><br><!--{'BB51919A0A978E988E118F61ACE1FFCA'|lang}--></th>
+          <th><!--{'7D3F013E944F8C625DE2A62CF6E68FC8'|lang}--><br><!--{'51D46C8AA0B1DD5A627AC9563BD87445'|lang}--></th>
+          <th><!--{'E154FE156F0848C16EBB4C127C3A7F07'|lang}--><br><!--{'B22E4658B1D4C7FE33B2272F91A3A118'|lang}--></th>
+          <th>VIP<!--{'95E0D70D1809D5267C2419EDA58E78CA'|lang}--><br><!--{'19FB21791F0A542CB96108B67370F352'|lang}-->IP</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+          <td align="center"><input type="checkbox" name="playerIds[]" value="<!--{$list.playerId|default:'0'}-->"/></td>
+       	  <td align="center"><!--{$list.playerId|default:'0'}--></td>
+          <td align="center"><!--{$list.accountName|default:'<font color="#999999">no</font>'}--><br><!--{$list.playerName|default:'<font color="#999999">no</font>'}--></td>
+          <td align="center"><!--{$list.gold|default:'0'}--></td>
+          <td align="center"><!--{$list.goldTicke|default:'0'}--></td>
+          <td align="center"><!--{$list.asset|default:'0'}--></td>
+          <td align="center"><!--{$list.level}--><br><!--{$list.vocationId}--></td>
+          <td align="center"><!--{$list.regTime|date_format:"%Y-%m-%d %H:%M:%S"|default:'--'}--><br><!--{$list.onLineTime/86400|round:2|default:0}--><!--{'249ABA763258BBE488AF3E79A381D265'|lang}--></td>
+          <td align="center"><!--{$list.lastLogin|date_format:"%Y-%m-%d %H:%M:%S"|default:'--'}--><br><!--{$list.offLineTime|date_format:"%Y-%m-%d %H:%M:%S"|default:'--'}--></td>
+          <td align="center"><!--{$list.knightLevel|default:'0'}--><br><!--{$list.knightExpired|date_format:"%Y-%m-%d %H:%M:%S"|default:'--'}--></td>
+          <td align="center"><!--{$list.vipLevel|default:'0'}--><br><!--{$list.lastIp|default:'--'}--></td>
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="11" align="center">
+                <!--{if $_GET.submit}-->
+                <!--{'48E07E7DEAE53593B6FB5F4315CF0D1F'|lang}-->
+                <!--{else}-->
+                <font color="#FF0000"><!--{'F98214970C09E9F6FB18AD06420B8402'|lang}-->"<!--{'BEE912D79EEFB7335988C4997AA9138D'|lang}-->"<!--{'FA966345577BA81AF19408F203DB968F'|lang}--></font>
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/foreach}-->
+          <tr>
+            <td colspan="11">
+            	<input type="checkbox" onClick="$('input[name=playerIds[]]').attr('checked',$(this).attr('checked'))"><!--{'66EEACD93A7C1BDA93906FE908AD11A0'|lang}-->
+                <input type="hidden" name="fromPlayerList" value="1" />            	
+            	<input type="button" class="btn-blue" value="<!--{'19355589C808CB30FFDCBB2E1ED69BEC'|lang}-->" onclick="jumpUrl('<!--{$ShortcutUrl.SendMail}-->');" />
+            	<input type="button" class="btn-blue" value="<!--{'35AEFE3F7451C72980185F0655FD5EB7'|lang}-->" onclick="jumpUrl('<!--{$ShortcutUrl.SilenceAdd}-->');" />
+                <input type="button" class="btn-blue" value="<!--{'B52D146AD25DADE8935B72B252EED425'|lang}-->" onclick="jumpUrl('<!--{$ShortcutUrl.LockAccountAdd}-->');" />
+                <input type="button" class="btn-blue" value="<!--{'8F705D758E5AD992242C8D25EAA8D0DA'|lang}-->" onclick="jumpUrl('<!--{$ShortcutUrl.PointDel}-->');" />
+            </td>
+          </tr>
+          <tr>
+            <th colspan="11" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+</form>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

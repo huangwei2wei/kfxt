@@ -1,0 +1,36 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+
+</script>
+<center>
+<form action="" method="post">
+<table width="99%" border="0" cellpadding="3">
+  <tr>
+    <th>问卷名称</th>
+    <td><input type="text" class="text" name="title" /></td>
+  </tr>
+  <tr>
+    <th>简介</th>
+    <td><textarea cols="40" name="description" rows="6" ></textarea></td>
+  </tr>
+  <tr>
+    <th>开始时间</th>
+    <td><input type="text" class="text" name="start_time" value="" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/></td>
+  </tr>
+  <tr>
+    <th>结束时间</th>
+    <td><input type="text" class="text" name="end_time" value="" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/></td>
+  </tr>
+  <tr>
+    <th>是否可用</th>
+    <td><!--{html_radios options=$askStatus name="status"}--></td>
+  </tr>
+  <tr>
+    <th colspan="2">
+    	<input type="submit" class="btn-blue" value="提交" />
+    </th>
+  </tr>
+</table>
+</form>
+</center>

@@ -1,0 +1,127 @@
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+KE.init({id:'content',imageUploadJson : '<!--{$url.UploadImg_Bulletin}-->',afterCreate:function(id){KE.util.focus(id)}});
+
+var gameTypes = <!--{$gameTypes}-->;
+var operators = <!--{$operators}-->;
+var servers = <!--{$servers}-->;
+var questionType = <!--{$questionType}-->;
+$(document).ready(function(){
+	$.each(servers,
+		function(Id,name){ 
+			if(gameTypes[Id] !=''){
+				if(Id==$('#game_type_id_slt').val()){
+					$('<option/>').attr('value',Id).text(gameTypes[Id]).attr('selected',true).appendTo('#game_type_id');
+				}
+				else{
+					$('<option/>').attr('value',Id).text(gameTypes[Id]).appendTo('#game_type_id');
+				}
+			}
+			
+		}
+	);
+	gameChange($('#game_type_id').val());
+	
+
+});
+function gameChange(game_id){
+
+	makeQuestionType(game_id);
+	
+	$('#operator_id').html('');
+	
+	$.each(servers[game_id],
+		function(Id,name){ 
+			if(Id==$('#operator_id_slt').val()){
+				$('<option/>').attr('value',Id).text(operators[Id]).attr('selected',true).appendTo('#operator_id');
+			}
+			else{
+				$('<option/>').attr('value',Id).text(operators[Id]).appendTo('#operator_id');
+			}
+		}
+	);
+	
+	optChange(game_id,$('#operator_id').val());
+	
+}
+
+function optChange(game_id,operator_id){
+	$('#server_id').html('');
+	
+	$.each(servers[game_id][operator_id],
+		function(Id,name){ 
+			if(Id==$('#server_id_slt').val()){
+				$('<option/>').attr('value',Id).text(name).attr('selected',true).appendTo('#server_id');
+			}
+			else{
+				$('<option/>').attr('value',Id).text(name).appendTo('#server_id');
+			}
+			
+		}
+	);
+}
+
+function makeQuestionType(game_id){
+	$('#questionType').html('');
+	$.each(questionType[game_id],
+		function(Id,name){ 
+			if(Id==$('#questionType_slt').val()){
+				$('<option/>').attr('value',Id).text(name).attr('selected',true).appendTo('#questionType');
+			}
+			else{
+				$('<option/>').attr('value',Id).text(name).appendTo('#questionType');
+			}
+		}
+	);
+}
+
+
+</script>
+<fieldset>
+<legend>手动录入</legend>
+<form action="" method="post" enctype="multipart/form-data">
+	<input type="hidden" id="game_type_id_slt" value="<!--{$selected.game_type_id|default:'0'}-->" />
+    <input type="hidden" id="operator_id_slt" value="<!--{$selected.operator_id|default:'0'}-->"/>
+    <input type="hidden" id="server_id_slt" value="<!--{$selected.server_id|default:'0'}-->"/>
+    <input type="hidden" id="questionType_slt" value="<!--{$selected.questionType|default:'0'}-->"/>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th nowrap scope="row" width="200">游戏/运营商/服务器</th>
+        <td>
+        	<select name="game_type_id" id="game_type_id" onChange="gameChange($(this).val());"></select>
+            <select name="operator_id" id="operator_id" onChange="optChange($('#game_type_id').val(),$(this).val())"></select>
+        	<select name="server_id" id="server_id"></select>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap scope="row" width="200">问题类别</th>
+        <td>
+        	<select name="questionType" id="questionType"></select>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap scope="row" width="200">玩家资料</th>
+        <td>
+        	玩家ID:
+            <input type="text" name="UserId" class="text" />
+        </td>
+      </tr>
+      <tr>
+        <th nowrap scope="row" width="200">玩家问题描述</th>
+        <td>
+        	<div style="width:450px;">
+            	标题:<input type="text" name="title" value="" class="text" style="width:400px;"/>
+            </div>
+            <div style="width:450px;">
+            	<textarea name="content" style="height:200px; width:99%;"></textarea>
+            </div>
+        </td>
+      </tr>
+        <th colspan="2" scope="row"><input type="submit" value="提交" class="btn-blue" /></th>
+      </tr>
+    </table>
+    
+    
+</form>
+</fieldset>

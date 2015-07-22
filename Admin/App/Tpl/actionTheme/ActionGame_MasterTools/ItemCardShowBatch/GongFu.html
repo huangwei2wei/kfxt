@@ -1,0 +1,30 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+	<legend>
+         <!--{'258E03DACCAFBB0EFDAA4A9D79EB0E97'|lang}-->
+    </legend>
+<table width="500" border="0" cellpadding="3">
+  <tr>
+    <th scope="col"><!--{'9BC7F8EABA93AD47294F7DD971A66182'|lang}-->ID</th>
+    <th scope="col"><!--{'B09F4CA805E29FB623110C695FE24951'|lang}--></th>
+    <th scope="col"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td align="center"><!--{$list.classId}--></td>
+    <td align="center"><!--{$list.batchId}--></td>
+    <td align="center">
+    	[<a href="<!--{$list.URL_itemCardList|default:'javascript:void(0)'}-->"><!--{'625FF3692A75FD09C5B2FAD68A04AACC'|lang}--></a>]
+        [<a target="_blank" href="<!--{$list.URL_itemCardDownLoad|default:'javascript:void(0)'}-->"><!--{'15049F26DDEB5EDF4922B0E3DF6A2675'|lang}--></a>]
+    </td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+	
+</fieldset>
+
+<!--{/if}-->

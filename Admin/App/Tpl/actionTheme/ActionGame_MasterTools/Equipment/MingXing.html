@@ -1,0 +1,164 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+//function upgradeInput(obj){
+//	var equipmentId = obj.attr('equipmentId');
+//	var str = $('#upgradeInputTemplet').html() ;
+//	str = str.replace('__EQUIPMENTID__',equipmentId);
+//	obj.after(str);
+//	obj.remove();
+//}
+
+function delDone(obj){
+	var url = '<!--{$URL_EquipmentDel}-->';
+	var equipmentId = obj.attr('equipmentId');
+	var equipmentName = obj.attr('equipmentName');
+	var cause = $('#cause').val();
+	if($.trim(cause)==''){
+		alert('操作原因必须');
+		return false;
+	}
+	$.ajax({
+		dataType:'json',	
+		type: 'POST',
+		data:{
+				nickName:'<!--{$_GET.nickName}-->',
+				openId:'<!--{$_GET.openId}-->',
+				equipmentId:equipmentId,
+				equipmentName:equipmentName,
+				cause:cause
+			},
+		url: url,
+		success:function(returnData){
+			if(returnData.status==1){
+				obj.after('<font color="#00FF00">已提交申请</font>');
+				obj.remove();
+			}else{
+				alert(returnData.info);
+			}
+		}
+	});
+}
+
+function upgradeDone(obj){
+	var url = '<!--{$URL_EquipmentUpgrade}-->';
+	var equipmentId = obj.attr('equipmentId');
+	var equipmentName = obj.attr('equipmentName');
+	var equipmentOldLevel = obj.attr('equipmentOldLevel');
+	var sLevel = obj.prev().val();
+	var cause = $('#cause').val();
+	if($.trim(cause)==''){
+		alert('操作原因必须');
+		return false;
+	}
+	if(sLevel<=0){
+		alert('请填写正确等级');
+		return false;
+	}
+	$.ajax({
+		dataType:'json',	
+		type: 'POST',
+		data:{
+				nickName:'<!--{$_GET.nickName}-->',
+				openId:'<!--{$_GET.openId}-->',
+				equipmentId:equipmentId,
+				sLevel:sLevel,
+				equipmentName:equipmentName,
+				equipmentOldLevel:equipmentOldLevel,
+				cause:cause
+			},
+		url: url,
+		success:function(returnData){
+			if(returnData.status==1){
+				//alert(returnData.info);return false;
+				obj = obj.parent();
+				obj.after('<font color="#00FF00">已提交申请</font>');
+				obj.remove();
+			}else{
+				alert(returnData.info);
+			}
+		}
+	});
+}
+
+</script>
+<fieldset>
+  <legend>搜索</legend>
+<form id="form" action=""  method="get">
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+        	昵称:<input type="text" class="text" name="nickName" value="<!--{$_GET.nickName}-->" />
+            openId:<input type="text" style="width:300px;" class="text" name="openId" value="<!--{$_GET.openId}-->" />
+            
+            艺人Id:<input type="text" class="text" name="actorId" value="<!--{$_GET.actorId}-->" />
+            装备状态:
+            <select name="type">
+            	<option value="">-请选择-</option>
+            	<!--{html_options options=$wearType selected=$_GET.type}-->
+            </select>
+            <input class="btn-blue" type="submit" name="sbm" value="查询">
+        </td>
+      </tr>
+    </table>
+</form>
+
+
+</fieldset>
+
+<fieldset>
+  <legend>玩家信息</legend>
+  <div>操作原因:<textarea id="cause" style="width:500px; height:30px;"></textarea></div>
+<table width="100%" border="0" cellpadding="3">
+  	
+    <tr>
+        <th scope="col">装备id</th>
+        <th scope="col">名称</th>
+        <th scope="col">品质</th>
+        <th scope="col">孔数</th>
+        <th scope="col">强化等级</th>
+        <th scope="col">等级</th>
+        <th scope="col">可穿戴职业</th>
+        <th scope="col">装备镶嵌宝石列表</th>
+        <th scope="col">装备中的签名列表</th>
+        <th scope="col">操作申请</th>
+    </tr>
+    <!--{foreach from=$dataList item=list}-->
+    <tr>
+        <td><!--{$list.equipmentId}--></td>
+        <td><!--{$list.name|urldecode}--></td>
+        <td><!--{$list.quality}--></td>
+        <td><!--{$list.holeNum}--></td>
+        <td><!--{$list.sLevel}--></td>
+        <td><!--{$list.level}--></td>
+        <td><!--{$list.job}--></td>
+        <td><!--{', '|implode:$list.gemData|urldecode}--></td>
+        <td><!--{', '|implode:$list.signData|urldecode}--></td>
+        <td>
+        	<a href="javascript:void(0);" equipmentName="<!--{$list.name|urldecode}-->" equipmentId="<!--{$list.equipmentId}-->" style="margin-right:20px;" onclick="delDone($(this));">[删除]</a>
+            <span>
+                强化至级别 
+                <input class="text" style="width:30px;" type="text" name="sLevel" value="" /> 
+                <input type="button" class="btn-blue" value="提交" equipmentName="<!--{$list.name|urldecode}-->" equipmentOldLevel="<!--{$list.sLevel}-->" equipmentId="<!--{$list.equipmentId}-->" onclick="upgradeDone($(this));" />
+            </span>
+        </td>
+    </tr>  
+    <!--{foreachelse}-->
+        <tr>
+          <td align="center" colspan="10">暂无数据</td>
+        </tr>
+    <!--{/foreach}-->
+</table>
+
+<div><!--{$pageBox}--></div>
+
+</fieldset>
+<!--{/if}-->

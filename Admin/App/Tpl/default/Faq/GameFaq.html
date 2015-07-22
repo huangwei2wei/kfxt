@@ -1,0 +1,80 @@
+<script language="javascript" src="<!--{$__JS__}-->/Libs/jquery-treeview/jquery.treeview.min.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/Libs/jquery-treeview/jquery.treeview.async.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/Libs/jquery-treeview/jquery.cookie.js"></script>
+<link rel="stylesheet" href="<!--{$__JS__}-->/Libs/jquery-treeview/jquery.treeview.css" />
+<style type="text/css">
+#kind{
+	float:left; background:#FFF; padding:4px; margin:4px;
+}
+
+#content{
+	background:#FFF; margin-left:5px; float:left; width:80%;
+}
+#content div{
+	border:1px dashed #999; padding:4px; margin:4px; background:#FFF;
+}
+#main{
+	background:#FFF;
+}
+</style>
+<script language="javascript">
+
+function displayFaq(id){
+	if(!id)return false;
+	var content=$("#content");
+	$.getJSON(url,
+			  {kindId:id,c:'Faq',a:'GameFaq',doaction:'viewfaq'},
+			  function(data){
+				content.empty();
+			  	$.each(data,function(i,n){
+					i++;
+					content.append('<div> <font color="#FF0000">'+i+'</font> [<a href="'+n.url_edit+'"><!--{'95B351C86267F3AEDF89520959BCE689'|lang}--></a>] [<a href="javascript:void(0)" url="'+n.url_del+'" onclick="delFaq($(this))" "><!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}--></a>]<br /><b><!--{'5DC99F6EFE53ADDA80974655B26B8DF8'|lang}-->：</b><span>'+n.question+'</span><br /><b><!--{'C08A41C4BE1582F12E5DB69330DF48EE'|lang}-->：</b><span>'+n.answer+'</span><br /></div>');
+				})
+			  }
+	);
+}
+function displayTree(id){
+	if(!id)return false;
+	var tree=$("#tree_view");
+	tree.empty();
+	tree.treeview({url:"<!--{$url.Faq_GameFaq_kindtree}-->&Id="+id});
+}
+
+function delFaq(faqResult){
+	if(confirm("<!--{'001A0A55A9E7B0E016D9FA0A58D9DA71'|lang}-->？")){
+		var url=faqResult.attr("url");
+		$.getJSON(
+			url,
+			function(data){
+				if(data.status==1){
+					faqResult.parent("div").remove();
+				}else{
+					alert("<!--{'ACF0664A54DC58D9D0377BB56E162092'|lang}-->");
+				}
+			}
+		);
+		
+	}
+}
+</script>
+
+<fieldset id="main">
+	<legend>FAQ<!--{'08B55FEA3C93AC86C02F7668ED2CE8CF'|lang}--></legend>
+	<div id="kind">
+    	[<a href="<!--{$url.Faq_GameFaq_kindindex}-->">FAQ<!--{'D0771A42BBC49A6941F59913FCDA35E3'|lang}-->,<!--{'25F7637FBDC500F09BCA5B5FB7E0768A'|lang}--></a>]
+        [<a href="<!--{$url.Faq_GameFaq_ratio}-->">FAQ<!--{'571787F3EDA995D0330FBBBA2770CD73'|lang}--></a>]
+    <br />
+    	<select onchange="displayTree($(this).val())">
+        	<option value=""><!--{'164F5A91A1EC9774B6C021C98E827F12'|lang}--></option>
+        	<!--{html_options options=$gameTypeKind}-->
+        </select>
+    	<ul id="tree_view">
+        </ul>
+    </div>
+    
+    <div id="content">
+    </div>
+    <div style="clear:both"></div>
+</fieldset>
+
+

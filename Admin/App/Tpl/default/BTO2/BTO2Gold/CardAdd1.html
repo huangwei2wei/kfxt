@@ -1,0 +1,69 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#cause").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'600D541EAD7B49AABED63097A8042355'|lang}-->"},onerror:"<!--{'E85E13CC2A5C76D4E44E62F70E1F1BED'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+	$("#batch_num").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'0E62C98BE650CB9DF088FEAE7091E939'|lang}-->"},onerror:"<!--{'066E93D6423FE057D364E22BDE9A61B2'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+	$("#gold").formValidator({onshow:"<!--{'DE66A286057D4E3F1EE2D9BCCBD48CE5'|lang}-->",oncorrect:"<!--{'4E1F4650D7FBEC72C615440948C993D9'|lang}-->"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'13DC97190FA9E9DFBB4387307EB8074A'|lang}-->"});
+	$("#num").formValidator({onshow:"<!--{'DE66A286057D4E3F1EE2D9BCCBD48CE5'|lang}-->",oncorrect:"<!--{'2A3363F94BA487B1B15B4D3CBD4A4F5C'|lang}-->"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'13DC97190FA9E9DFBB4387307EB8074A'|lang}-->"});
+})
+</script>
+
+<fieldset>
+	<legend><!--{'C6E57A2A1902D0ADA82B97A2EA7CF70D'|lang}--></legend>
+    <center>
+    	<input type="button" value="<!--{'689B9E290C671A03FFAACDD02DC54D40'|lang}-->" class="btn-red" onclick="location.href='<!--{$url.FrgGold_CardAdd.1}-->'" />
+        <input type="button" value="<!--{'B22E16987AC3E6AC0784ADAC0819AEBA'|lang}-->" class="btn-blue" onclick="location.href='<!--{$url.FrgGold_CardAdd.2}-->'" />
+        <input type="button" value="<!--{'8D70F6FBA8D6219480B76EA42EC53D1A'|lang}-->" class="btn-blue" onclick="location.href='<!--{$url.FrgGold_CardAdd.3}-->'" />
+        <input type="button" value="<!--{'E213ADE36306A254BA27A9539A5ECB44'|lang}-->" class="btn-blue" onclick="location.href='<!--{$url.FrgGold_CardAdd.4}-->'" />
+        <input type="button" value="<!--{'D92095B602AE858E651E661D0C5A64E4'|lang}-->" class="btn-blue" onclick="location.href='<!--{$url.FrgGold_CardAdd.5}-->'" />
+    </center>
+</fieldset>
+
+<fieldset>
+  <legend><!--{'1811A1AEA1ACFB503B075D8B37EC1893'|lang}--> [<font color="#FF0000"><!--{'2757E2028923715A0F623FBE4BD3431E'|lang}--></font>]</legend>
+  	<form method="post" id="form" action="">
+    <input type="hidden" value="1" name="card_type" />
+    <table width="100%"  cellpadding="3">
+      <tr>
+        <th scope="row"><!--{'C5AE2E7BD2CB8F79F3DD66FA7212B58B'|lang}--></th>
+        <td><textarea name="cause" id="cause" cols="50" rows="6"></textarea><div id="causeTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'72A92A679BA78E4B754EBAF9C42D9DC7'|lang}--></th>
+        <td><select name="operator_id"><!--{html_options options=$operatorList}--></select></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'B09F4CA805E29FB623110C695FE24951'|lang}-->(<!--{'E3C21C15B98B3B64F1C4EC2BBCE13081'|lang}-->MD5)</th>
+        <td><input type="text" class="text" name="batch_num" id="batch_num" size="60" /><div id="batch_numTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'6A4181483CE58CBC44A36BF1AD2DEA50'|lang}--></th>
+        <td><input name="gold" type="text" class="text" id="gold" value="10" /><div id="goldTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'3922A4BBE9EDAB2ABA6DCBA5154B483A'|lang}--></th>
+        <td><input name="num" type="text" class="text" id="num" value="1" /><div id="numTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'ADF8C2E2A80BE27A856F110244AC09C1'|lang}--></th>
+        <td>
+        	<input type="radio" value="1" name="is_time" onclick="$('#time').show()" /><!--{'0A60AC8F02CCD2CF723F927284877851'|lang}-->
+            <input type="radio" value="0" name="is_time" onclick="$('#time').hide()" checked="checked" /><!--{'C9744F45E76D885AE1C74D4F4A934B2E'|lang}-->
+        </td>
+      </tr>
+      <tr id="time" style="display:none">
+        <th scope="row"><!--{'A05D35B6C31BF91C931AE8950335EA30'|lang}--></th>
+        <td>
+            <input type="text" class="text" name="start_time" value="<!--{$smarty.now|strtotime:'+1 hours'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/> 
+            <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}-->
+            <input type="text" class="text" name="end_time" value="<!--{$smarty.now|strtotime:'+1 day'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|strtotime:'+1 day'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input class="btn-blue" type="submit" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /></th>
+      </tr>
+    </table>
+    </form>
+</fieldset>

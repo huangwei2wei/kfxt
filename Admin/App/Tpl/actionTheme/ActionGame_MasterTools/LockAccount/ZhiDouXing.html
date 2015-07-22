@@ -1,0 +1,53 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+	
+	
+</script>
+<fieldset>
+	<legend>
+   		封号记录 
+        [<a href="<!--{$URL_lockAccountAdd}-->">增加封号</a>]
+    </legend>
+	
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">账号</th>
+    <th scope="col">玩家昵称</th>
+    <th scope="col">操作原因</th>
+    <th scope="col">状态</th>
+    <th scope="col">结束时间</th>
+    <th scope="col">操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.game_user_id}--></td>
+    <td><!--{$list.game_user_account|default:'<font color="#999999">无记录</font>'}--></td>
+    <td><!--{$list.remark}--></td>
+    <td><!--{$list.status}--></td>
+    <td>
+    	<!--{if $list.sub_type==0}-->
+    		封号至 <!--{$list.endTime|default:'<font color="#999999">无记录</font>'}-->
+        <!--{elseif $list.sub_type==1}-->
+        	解除封号
+        <!--{else}-->
+            <!--{$list.sub_type}-->
+        <!--{/if}-->
+    </td>
+    <td>
+    	<!--{if $list.sub_type != 1}-->
+        [<a onclick="return confirm('确定解除？')" href="<!--{$list.URL_del}-->">解除</a>]
+        <!--{/if}-->
+    </td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+
+    <div style="float:right"><!--{$pageBox}--></div>
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,56 @@
+<script language="javascript">
+function executeKind(gameType){
+	tempEdit=$("#temp_edit");
+	name=gameType.attr("name")?gameType.attr("name"):'';
+	url=gameType.attr("url");
+	tempEdit.empty();
+	tempEdit.html("<th colspan='2'>"+gameType.attr("value")+" <input type='text' class='text' id='tempText' value='"+name+"' />&nbsp;<input type='button' class='btn-blue' onclick='ajaxGet($(\"#tempText\").val(),\""+url+"\")' value='<!--{'38CF16F2204FFAB8A6E0187070558721'|lang}-->' /></th>");
+	tempEdit.css("display","table-row");
+}
+
+function ajaxGet(text,url){
+	$.ajax({
+		url:url,
+		async:false,
+		cache:false,
+		data:{data:text},
+		dataType:"json",
+		success:function(data){
+			if(data.status!=1){
+				alert("<!--{'1012E09849AB0225E5564B8DAA183FCA'|lang}-->!");
+			}
+			tempEdit=$("#temp_edit");
+			tempEdit.css("display","none");
+		},
+		type:"GET"
+	});
+	location.reload();
+}
+</script>
+<fieldset>
+  <legend>Faq<!--{'D0771A42BBC49A6941F59913FCDA35E3'|lang}--></legend>
+<table width="50%" border="0" cellpadding="3">
+  <tr id="temp_edit" style="display:none"><th colspan="2"></th></tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr kind="<!--{$list.game_type_id}-->">
+    <td><!--{$list.game_type}--></td>
+    <td><a href="javascript:void(0)" onclick="executeKind($(this))" value="<!--{'491411E0AE5D09D5ECA25A2B2F275E3B'|lang}-->[<!--{$list.game_type}-->]<!--{'D0771A42BBC49A6941F59913FCDA35E3'|lang}-->" url="<!--{$list.url_add}-->"><!--{'491411E0AE5D09D5ECA25A2B2F275E3B'|lang}--></a></td>
+  </tr>
+  <!--{if $list.childList}-->
+    <!--{foreach from=$list.childList item=childList}-->
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<!--{$childList.name}--></td>
+        <td>
+        	<a href="javascript:void(0)" onclick="executeKind($(this))" value="<!--{'95B351C86267F3AEDF89520959BCE689'|lang}-->[<!--{$childList.name}-->]<!--{'D0771A42BBC49A6941F59913FCDA35E3'|lang}-->" name="<!--{$childList.name}-->" url="<!--{$childList.url_edit}-->"><!--{'8347A927C09A4EC2FE473B0A93F667D0'|lang}--></a>
+            <a href="<!--{$childList.url_del}-->" onclick="return confirm('<!--{'1EC2BAC9FC62EF254017322FFC5D5847'|lang}-->?<!--{'E6C0B8550A7B30E2B588FAD4BEA94071'|lang}-->FAQ<!--{'92ED48F899D8D2EF7BBA8FC59407FC64'|lang}-->.')"><!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}--></a>
+        </td>
+    </tr>
+    <!--{/foreach}-->
+  <!--{/if}-->
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="2"><!--{$noData}--></th>
+  </tr>
+  <!--{/foreach}-->
+</table>
+</fieldset>

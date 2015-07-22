@@ -1,0 +1,220 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<style type="text/css">
+div td{
+	text-align:center;
+}
+</style>
+<fieldset>
+	<legend>搜索列表</legend>
+    <form action="" method="post">
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap" scope="row">时间范围</th>
+        <td>
+       	 <input type="text" class="text" name="start_time" value="<!--{$selected.start_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.start_time}-->',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"/>
+             - 
+            <input type="text" class="text" name="end_time" value="<!--{$selected.end_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.end_time}-->',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"/>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">游戏类型 <br /> <input type="checkbox" onclick="allCheckBox('gameType',$(this))"  />全选</th>
+        <td id="gameType"><!--{html_checkboxes options=$gameTypes name="game_type_id" selected=$selected.game_type_id}--></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">回复区 <br /> <input type="checkbox" onclick="allCheckBox('roomList',$(this))"  />全选</th>
+        <td id="roomList"><!--{html_checkboxes options=$roomList name=roomList selected=$selected.roomList}--></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">运营商 <br /> <input type="checkbox" onclick="allCheckBox('operator',$(this))" />全选</th>
+        <td id="operator"><!--{html_checkboxes options=$operatorList name="operator_id" selected=$selected.operator_id}--></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" value="提交" class="btn-blue" /></th>
+      </tr>
+    </table>
+	</form>
+</fieldset>
+<!--{if $display}-->
+<div>
+<fieldset>
+  <legend>系统周受理情况</legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th rowspan="2" scope="col">&nbsp;</th>
+        <th colspan="2" scope="col">星期一</th>
+        <th colspan="2" scope="col">星期二</th>
+        <th colspan="2" scope="col">星期三</th>
+        <th colspan="2" scope="col">星期四</th>
+        <th colspan="2" scope="col">星期五</th>
+        <th colspan="2" scope="col">星期六</th>
+        <th colspan="2" scope="col">星期天</th>
+        <th colspan="2" scope="col">周汇总</th>
+        <th rowspan="2" scope="col">服务受理率</th>
+      </tr>
+      <tr>
+        <th>进单量</th>
+        <th>处理量</th>
+        <th>进单量</th>
+        <th>处理量</th>
+        <th>进单量</th>
+        <th>处理量</th>
+        <th>进单量</th>
+        <th>处理量</th>
+        <th>进单量</th>
+        <th>处理量</th>
+        <th>进单量</th>
+        <th>处理量</th>
+        <th>进单量</th>
+        <th>处理量</th>
+        <th>进单量</th>
+        <th>处理量</th>
+      </tr>
+      <!--{foreach from=$dataList.order_num item=list key=key}-->
+      <tr>
+        <td><!--{if $key=='total'}--><!--{$key}--><!--{else}--><!--{$gameTypes.$key}--><!--{/if}--></td>
+        <td><!--{$list.1|intval}--></td>
+        <td><!--{$dataList.execute_num.$key.1|intval}--></td>
+        <td><!--{$list.2|intval}--></td>
+        <td><!--{$dataList.execute_num.$key.2|intval}--></td>
+        <td><!--{$list.3|intval}--></td>
+        <td><!--{$dataList.execute_num.$key.3|intval}--></td>
+        <td><!--{$list.4|intval}--></td>
+        <td><!--{$dataList.execute_num.$key.4|intval}--></td>
+        <td><!--{$list.5|intval}--></td>
+        <td><!--{$dataList.execute_num.$key.5|intval}--></td>
+        <td><!--{$list.6|intval}--></td>
+        <td><!--{$dataList.execute_num.$key.6|intval}--></td>
+        <td><!--{$list.0|intval}--></td>
+        <td><!--{$dataList.execute_num.$key.0|intval}--></td>
+        <td><!--{$list.total|intval}--></td>
+        <td><!--{$dataList.execute_num.$key.total|intval}--></td>
+        <td><!--{$dataList.execute_num.$key.total|percent:$list.total}--></td>
+      </tr>
+      <!--{/foreach}-->      
+    </table>
+</fieldset>
+
+<fieldset>
+  <legend>VIP受理情况统计</legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th rowspan="2" scope="col">VIP等级</th>
+        <th colspan="2" scope="col">星期一</th>
+        <th colspan="2" scope="col">星期二</th>
+        <th colspan="2" scope="col">星期三</th>
+        <th colspan="2" scope="col">星期四</th>
+        <th colspan="2" scope="col">星期五</th>
+        <th colspan="2" scope="col">星期六</th>
+        <th colspan="2" scope="col">星期天</th>
+        <th colspan="2" scope="col">周汇总</th>
+        <th rowspan="2" scope="col">服务受理率</th>
+      </tr>
+      <tr>
+        <th>进单量</th>
+        <th>处理量</th>
+        <th>进单量</th>
+        <th>处理量</th>
+        <th>进单量</th>
+        <th>处理量</th>
+        <th>进单量</th>
+        <th>处理量</th>
+        <th>进单量</th>
+        <th>处理量</th>
+        <th>进单量</th>
+        <th>处理量</th>
+        <th>进单量</th>
+        <th>处理量</th>
+        <th>进单量</th>
+        <th>处理量</th>
+      </tr>
+      <!--{foreach from=$dataList.vip_order_num key=key item=list}-->
+      <tr>
+        <td><!--{$key}--></td>
+        <td><!--{$list.1|intval}--></td>
+        <td><!--{$dataList.vip_execute_num.$key.1|intval}--></td>
+        <td><!--{$list.2|intval}--></td>
+        <td><!--{$dataList.vip_execute_num.$key.2|intval}--></td>
+        <td><!--{$list.3|intval}--></td>
+        <td><!--{$dataList.vip_execute_num.$key.3|intval}--></td>
+        <td><!--{$list.4|intval}--></td>
+        <td><!--{$dataList.vip_execute_num.$key.4|intval}--></td>
+        <td><!--{$list.5|intval}--></td>
+        <td><!--{$dataList.vip_execute_num.$key.5|intval}--></td>
+        <td><!--{$list.6|intval}--></td>
+        <td><!--{$dataList.vip_execute_num.$key.6|intval}--></td>
+        <td><!--{$list.0|intval}--></td>
+        <td><!--{$dataList.vip_execute_num.$key.0|intval}--></td>
+        <td><!--{$list.total|intval}--></td>
+        <td><!--{$dataList.vip_execute_num.$key.total|intval}--></td>
+        <td><!--{$dataList.vip_execute_num.$key.total|percent:$list.total}--></td>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+</fieldset>
+
+<fieldset>
+  <legend>玩家各小时进单量</legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col">&nbsp;</th>
+        <th scope="col">00</th>
+        <th scope="col">01</th>
+        <th scope="col">02</th>
+        <th scope="col">03</th>
+        <th scope="col">04</th>
+        <th scope="col">05</th>
+        <th scope="col">06</th>
+        <th scope="col">07</th>
+        <th scope="col">08</th>
+        <th scope="col">09</th>
+        <th scope="col">10</th>
+        <th scope="col">11</th>
+        <th scope="col">12</th>
+        <th scope="col">13</th>
+        <th scope="col">14</th>
+        <th scope="col">15</th>
+        <th scope="col">16</th>
+        <th scope="col">17</th>
+        <th scope="col">18</th>
+        <th scope="col">19</th>
+        <th scope="col">20</th>
+        <th scope="col">21</th>
+        <th scope="col">22</th>
+        <th scope="col">23</th>
+        <th scope="col">total</th>
+      </tr>
+      <!--{foreach from=$dataList.time_num key=key item=list}-->
+      <tr>
+        <th scope="row"><!--{if $key=='total'}--><!--{$key}--><!--{else}--><!--{$gameTypes.$key}--><!--{/if}--></th>
+        <td><!--{$list.00|intval}--></td>
+        <td><!--{$list.01|intval}--></td>
+        <td><!--{$list.02|intval}--></td>
+        <td><!--{$list.03|intval}--></td>
+        <td><!--{$list.04|intval}--></td>
+        <td><!--{$list.05|intval}--></td>
+        <td><!--{$list.06|intval}--></td>
+        <td><!--{$list.07|intval}--></td>
+        <td><!--{$list.08|intval}--></td>
+        <td><!--{$list.09|intval}--></td>
+        <td><!--{$list.10|intval}--></td>
+        <td><!--{$list.11|intval}--></td>
+        <td><!--{$list.12|intval}--></td>
+        <td><!--{$list.13|intval}--></td>
+        <td><!--{$list.14|intval}--></td>
+        <td><!--{$list.15|intval}--></td>
+        <td><!--{$list.16|intval}--></td>
+        <td><!--{$list.17|intval}--></td>
+        <td><!--{$list.18|intval}--></td>
+        <td><!--{$list.19|intval}--></td>
+        <td><!--{$list.20|intval}--></td>
+        <td><!--{$list.21|intval}--></td>
+        <td><!--{$list.22|intval}--></td>
+        <td><!--{$list.23|intval}--></td>
+        <td><!--{$list.total|intval}--></td>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+</fieldset>
+</div>
+<!--{/if}-->

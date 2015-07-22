@@ -1,0 +1,62 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='Ids[]']").attr("checked",curCheck);
+	 });
+});
+function del(){
+	if(confirm('确定要删除吗?')){
+		$('form').submit();
+	}
+}
+
+</script>
+<fieldset>
+<legend>批量发放道具列表</legend>
+<form action="<!--{$url.MasterFRG_DelReward}-->" method="post" onsubmit="return checksub();">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <td colspan="6">
+    	<a href="<!--{$url.MasterFRG_AddReward}-->">增加奖励列表</a>
+    </td>
+    </tr>
+  <tr>
+    <th scope="col">操作</th>
+    <th scope="col">ID</th>
+    <th scope="col">描述</th>
+    <th scope="col">发送时间</th>
+    <th scope="col">添加时间</th>
+    <th scope="col">领取人数</th>
+    </tr>
+  <!--{foreach from=$dataList key=key item=list}-->
+  <tr>
+    <td scope="col"><input type="checkbox" value="<!--{$list.Id}-->" name="Ids[]" /></td>
+    <td scope="col"><!--{$list.Id}--></td>
+    <td scope="col"><a href="<!--{$list.url_edit}-->"><!--{$list.Title}--></a></td>
+    <td scope="col"><!--{$list.SendTime|date_format:"%Y-%m-%d %H:%M:%S"}--> 至 <!--{$list.EndTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td scope="col"><!--{$list.AddTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td scope="col"><!--{$list.GetNum}--></td>
+    </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="6" scope="col">
+  		<!--{$noData}--> 	
+    </th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <td colspan="6" scope="col">
+  		选择所有<input type="checkbox" id="allcheck" /><input type="button" class="btn-blue" onClick="del()" value="删除" />  	
+    </td>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

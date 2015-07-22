@@ -1,0 +1,113 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+	var playerLogTypes = <!--{$type}-->;
+	var rootid =<!--{$_GET.object_id|default:"0"}-->;
+	var typeid = <!--{$_GET.event_id|default:"0"}-->;
+	
+	$(function(){
+		
+	});
+	
+	function rootLoad(){
+		$.each(playerLogTypes,
+			function(Id,subRoot){
+				$('<option/>').attr('value',Id).text(subRoot.rootTypeName).appendTo('#rootid');
+			}
+		);
+		if(rootid){
+			$('#rootid').val(rootid);
+			rootchange(rootid);
+		}
+	}
+	
+	function rootchange(chRootId){
+		$('#typeid').html('');
+		$('<option/>').attr('value',0).text('-<!--{'091E369AC93019DB80A1C1A5BAB03FCF'|lang}-->-').appendTo('#typeid');		
+		if(chRootId>0){
+			$.each(playerLogTypes[chRootId]['subTypeList'],
+				function(Id,subType){
+					$('<option/>').attr('value',Id).text(subType.subTypeName).appendTo('#typeid');
+				}
+			);	
+			if(typeid)$("#typeid").val(typeid);
+		}
+	}
+
+	function checkSubmit(){
+		if($.trim($('#playerId').val()+$('#account').val()+$('#name').val()) =='' ){
+			alert('<!--{'63E215E83C4BE09E0FD4516C2FF33A0B'|lang}-->');
+			return false;
+		}
+		return true;
+	}
+</script>
+
+<fieldset>
+  <legend>日志查询</legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    玩家:
+    <input class="text" type="text" name="user" value="<!--{$_GET.user}-->">
+     <label><input type="radio" name="userType" checked="checked" value="1" />玩家ID</label>
+                <label><input type="radio" name="userType" value="2" />账号</label>
+                <label><input type="radio" name="userType" value="3" />昵称</label>
+    <input class="btn-blue" type="submit" name="sbm" value="查询">
+</form>
+
+<form action="" id="playerIdsForm" method="post">
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>玩家ID</th>
+          <th>账号</th>
+          <th>玩家充值元宝</th>
+          <th>订单号</th>
+          <th>平台</th>
+          <th>充值时间</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+       
+       	  <td align="center"><!--{$list.char_id}--></td>
+          <td align="center"><!--{$list.user_id}--></td>
+          <td align="center"><!--{$list.user_gold}--></td>
+          <td align="center"><!--{$list.billno}--></td>
+          <td align="center"><!--{$list.platform}--></td>
+          <td align="center"><!--{$list.create_time}--></td>
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="16" align="center">
+                <!--{if $_GET.submit}-->
+                查无数据
+                <!--{else}-->
+                <font color="#FF0000">请使用"查询"按钮</font>
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/foreach}-->
+         
+          <tr>
+            <th colspan="16" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+</form>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<script language="javascript">
+	rootLoad();
+</script>
+<!--{/if}-->

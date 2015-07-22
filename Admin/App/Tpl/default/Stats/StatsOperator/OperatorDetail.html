@@ -1,0 +1,148 @@
+<style type="text/css">
+table{
+	margin:0px;
+	padding:0px;
+}
+td{
+	margin:0px;
+	padding:0px;
+}
+ul{
+	margin:0px;
+	padding:0px;
+}
+li{
+	display:inline;
+	list-style-type:square;
+	margin:3px;
+}
+</style>
+<fieldset>
+	<legend>详细统计 [<a href="javascript:void(0)" onclick="$('#detail').fadeOut();">关闭</a>]</legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap" scope="row">统计日期</th>
+        <td><b><!--{$tableTitle.time.start|date_format:"%Y-%m-%d %H:%M:%S"}--></b> 至 <b><!--{$tableTitle.time.end|date_format:"%Y-%m-%d %H:%M:%S"}--></b></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">问题类型</th>
+        <td>
+        	<ul>
+        	<!--{foreach from=$tableTitle.game_type item=list key=key}-->
+			<li><!--{$list}-->：<b><!--{$dataList.game_type_num.$key|intval}--></b></li>
+            <!--{/foreach}-->
+            </ul>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">游戏类型</th>
+        <td>
+        	<ul>
+        	<!--{foreach from=$tableTitle.question_type item=list key=key}-->
+			<li><!--{$list}-->：<b><!--{$dataList.question_type_num.$key|intval}--></b></li>
+            <!--{/foreach}-->
+            </ul>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">运营商</th>
+        <td>
+        	<ul>
+        	<!--{foreach from=$tableTitle.operator item=list key=key}-->
+			<li><!--{$list}-->：<b><!--{$dataList.operator_num.$key|intval}--></b></li>
+            <!--{/foreach}-->
+            </ul>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row"> 工单来源</th>
+        <td>
+        	<ul>
+        	<!--{foreach from=$tableTitle.work_order_source item=list key=key}-->
+			<li><!--{$list}-->：<b><!--{$dataList.source_num.$key|intval}--></b></li>
+            <!--{/foreach}-->
+            </ul>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">VIP等级</th>
+        <td>
+        	<ul>
+        	<!--{foreach from=$tableTitle.vip_level item=list key=key}-->
+			<li><!--{$list}-->：<b><!--{$dataList.vip_level_num.$key|intval}--></b></li>
+            <!--{/foreach}-->
+            </ul>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">评价</th>
+        <td>
+        	<ul>
+        	<!--{foreach from=$tableTitle.evaluation item=list key=key}-->
+			<li><!--{$list}-->：<b><!--{if $key|isInt}--><!--{$dataList.evaluation_num.$key|intval}--><!--{else}--><!--{$dataList.evaluation_num.$key|floatval}--><!--{/if}--></b></li>
+            <!--{/foreach}-->
+            </ul>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">差评选项</th>
+        <td>
+        	<ul>
+            	<!--{foreach from=$tableTitle.bad_ev item=list key=key}-->
+                <li><!--{$list}-->：<b><!--{$dataList.evaluation_desc_num.$key|intval}--></b></li>
+                <!--{/foreach}-->
+            </ul>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">被质检回复</th>
+        <td>
+        	<ul>
+        	<!--{foreach from=$tableTitle.reply_quality item=list key=key}-->
+			<li><!--{$list}-->：<b><!--{$dataList.reply_quality_num.$key|intval}--></b></li>
+            <!--{/foreach}-->
+            </ul>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">超时回复</th>
+        <td>
+        	<ul>
+        	<!--{foreach from=$tableTitle.reply_timeout item=list key=key}-->
+			<li><!--{$list}-->：<b><!--{$dataList.reply_timeout_num.$key|intval}--></b></li>
+            <!--{/foreach}-->
+            </ul>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">质检选项</th>
+        <td>
+        	<ul>
+        	<!--{foreach from=$tableTitle.quality_options item=list key=key}-->
+			<li><!--{$list}-->：<b><!--{$dataList.quality_option_num.$key|intval}--></b></li>
+            <!--{/foreach}-->
+            </ul>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">质检状态</th>
+        <td>
+        	<ul>
+        	<!--{foreach from=$tableTitle.quality_status item=list key=key}-->
+			<li><!--{$list}-->：<b><!--{$dataList.quality_status_num.$key|intval}--></b></li>
+            <!--{/foreach}-->
+            </ul>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">加/减分</th>
+        <td>
+        	<ul>
+        	<!--{foreach from=$tableTitle.quality_scores item=list key=key}-->
+			<li><!--{$list}-->：<b><!--{$dataList.quality_scores.$key|intval}--></b></li>
+            <!--{/foreach}-->
+            </ul>
+        </td>
+      </tr>
+    </table>
+</fieldset>

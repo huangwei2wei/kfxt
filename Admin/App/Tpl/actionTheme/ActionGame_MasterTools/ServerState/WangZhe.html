@@ -1,0 +1,53 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+<legend><!--{'DC77F8A9FE92D3310E0595B28EA437DC'|lang}--></legend>
+	<table width="100%" border="0" cellspacing="0" cellpadding="3">
+	  <tr>
+    <th scope="row">人物属性</th>
+    <td>
+    <form action=""  method="get" id='form'>
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+   时间:
+    <input class="text" type="text" name="startTime" value="<!--{$_GET.startTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    -
+    <input class="text" type="text" name="endTime" value="<!--{$_GET.endTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    <input class="btn-blue"  type="submit" name="sbm" value="查询">
+    </form>
+    </td>
+  </tr>
+	
+      <tr>
+        <th colspan="7" scope="col"><!--{$onlineUserNum}--></th>
+      </tr>
+      <tr>
+        <th scope="col">任务ID</th>
+        <th scope="col">环节</th>
+        <th scope="col">完成数</th>
+        <th scope="col">停滞数</th>
+        <th scope="col">停滞率</th>
+        <th scope="col">占角色比例</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list->taskId}--></td>
+        <td><!--{$list->taskName}--></td>
+        <td><!--{$list->num}--></td>
+        <td><!--{$list->stopNum}--></td>
+        <td><!--{$list->stopRate}--></td>
+        <td><!--{$list->roleRate}--></td>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+</fieldset>
+<!--{/if}-->

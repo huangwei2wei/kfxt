@@ -1,0 +1,23 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+<legend>灭掉玩家开启收藏</legend>
+	<form action="" method="post">
+
+    <div style="margin:10px; color:#F00;">
+    	修改数值填充方法,例子：比如有玩家现有统计某数据的数值为800，其中200为非正常数据，其他为正常，则“修改数值”处填写600.
+        <br>
+        如果疑问请联系技术人员。
+    </div>
+    <div>
+    	玩家ID<input class="text" type="text" name="UserId" value="">
+        收藏号<input class="text" type="text" name="Cid" value="">
+        修改数值<input class="text" type="text" name="Value" value="0">
+        <input class="btn-blue" type="submit" value="灭掉">
+    </div>
+    </form>
+</fieldset>
+<!--{/if}-->

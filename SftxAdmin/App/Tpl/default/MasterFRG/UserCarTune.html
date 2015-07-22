@@ -1,0 +1,106 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<!--{include file="MasterFRG/UserModifyHref.html"}-->
+<!--{if $display}-->
+<script language="javascript">
+var read='<!--{$read}-->';
+
+$(function(){
+	$(":radio").click(function(){
+		var value=$(this).val();
+		$(".search_option").attr("disabled","disabled");
+		$("#"+value).removeAttr("disabled");
+	});
+	if(read){
+		$("input").attr("disabled","disabled");
+		$("select").attr("disabled","disabled");
+		$("textarea").attr("readonly","readonly");
+	}
+});
+
+</script>
+
+<fieldset>
+	<legend>座驾数值修改(如未作特别说明，均填写相应增减值) [<font color="#FF0000">此操作须要审核</font>]</legend>
+  <form action="" method="post" onsubmit="return checksub();">
+	<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+	<input type="hidden" value="<!--{$uo->UserId}-->" name="userid" />
+    <table width="100%" border="0" cellpadding="3">
+      <!--{if $errMsg}--><caption><font color="#FF0000"><!--{$errMsg}--></font></caption><!--{/if}-->
+      <thead>
+          <tr>
+            <th colspan="6">
+                <input type="radio" id="ids" name="userflag" value="txtids" /><label for="ids">用户Id <font color="#FF0000"><!--{$uo->UserId}--></font></label>
+                <input type="text" class="search_option" id="txtids" name="txtids" size="22" value="" disabled>        
+                
+                <input type="radio" id="names" name="userflag" value="txtnames" /><label for="names">用户名 <font color="#FF0000"><!--{$uo->UserName}--></font></label>
+                <input type="text" class="search_option" id="txtnames" name="txtnames" size="22" value="" disabled>        
+                
+                <input type="radio" id="vnames" name="userflag" value="txtvnames" /><label for="vnames">角色名称 <font color="#FF0000"><!--{$uo->VUserName}--></font></label>
+                <input type="text" class="search_option" id="txtvnames" name="txtvnames" size="22" value="" disabled>        
+                
+                <input type="submit" class="btn-blue" name="search_user" value="搜索" />
+            </th>
+          </tr>
+      </thead>
+      
+      <!--{if $detailTrue}-->
+      <tbody>
+          <tr>
+            <th>申请理由</th>
+            <td colspan="5"><textarea name="cause" cols="50" rows="8"><!--{$auditData.cause}--></textarea></td>
+          </tr>
+          <tr>
+            <th>经验值 <font color="#FF0000"><!--{$car->Experience}--></font></th>
+            <td><input type="text" class="text" name="Car[Experience]" value="<!--{$postData.Car.Experience}-->" /></td>
+            <th>平稳度 <font color="#FF0000"><!--{$car->Stable}--></font></th>
+            <td><input type="text" class="text" name="Car[Stable]" value="<!--{$postData.Car.Stable}-->" /></td>
+            <th>舒适度 <font color="#FF0000"><!--{$car->Cozy}--></font></th>
+            <td><input type="text" class="text" name="Car[Cozy]" value="<!--{$postData.Car.Cozy}-->" /></td>
+          </tr>
+          <tr>
+            <th>安全性 <font color="#FF0000"><!--{$car->Safety}--></font></th>
+            <td><input type="text" class="text" name="Car[Safety]" value="<!--{$postData.Car.Safety}-->" /></td>
+            <th>生命值 <font color="#FF0000"><!--{$car->Life}--></font></th>
+            <td><input type="text" class="text" name="Car[Life]" value="<!--{$postData.Car.Life}-->" /></td>
+            <th>攻击值 <font color="#FF0000"><!--{$car->Attack}--></font></th>
+            <td><input type="text" class="text" name="Car[Attack]" value="<!--{$postData.Car.Attack}-->" /></td>
+          </tr>
+          <tr>
+            <th>防御值 <font color="#FF0000"><!--{$car->Defence}--></font></th>
+            <td><input type="text" class="text" name="Car[Defence]" value="<!--{$postData.Car.Defence}-->" /></td>
+            <th>命中值 <font color="#FF0000"><!--{$car->HitValue}--></font></th>
+            <td><input type="text" class="text" name="Car[HitValue]" value="<!--{$postData.Car.HitValue}-->" /></td>
+            <th>暴击值 <font color="#FF0000"><!--{$car->precise}--></font></th>
+            <td><input type="text" class="text" name="Car[precise]" value="<!--{$postData.Car.precise}-->" /></td>
+          </tr>
+          <tr>
+            <th>闪避值 <font color="#FF0000"><!--{$car->Quickly}--></font></th>
+            <td><input type="text" class="text" name="Car[Quickly]" value="<!--{$postData.Car.Quickly}-->" /></td>
+            <th>&nbsp;</th>
+            <td>&nbsp;</td>
+            <th>&nbsp;</th>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th colspan="6"><input type="submit" class="btn-blue" name="user_edit" value="更改数据" /></th>
+          </tr>
+      </tbody>
+      <!--{/if}-->
+    </table>
+	</form>
+    
+    <!--{if $detailTrue}-->
+    <!--
+    <form action="" method="post">
+    	<input type="hidden" value="<!--{$uo->UserId}-->" name="userid" />
+        增加道具：
+    	<select name="ToolId"><!--{html_options options=$selectTools}--></select>
+        <input type="text" class="text" name="Num">
+        <input type="submit" class="btn-blue" name="addtool" value="保存" />
+    </form>
+    -->
+    <!--{/if}-->
+</fieldset>
+<!--{/if}-->

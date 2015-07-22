@@ -1,0 +1,105 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+
+<style>
+.AutoNewline {
+    font-size: 12px;
+    line-height: 150%;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    overflow: hidden;
+    width: 400px;
+    word-wrap: break-word;
+}
+</style>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({
+		formid:"getFunction_form",
+		onerror:function(){return false;},
+		onsuccess:function(){
+			if($(":checkbox[name='server_ids[]']:checked").attr('value') == undefined){
+				alert('请选择服务器！'); return false;
+			}
+			$('.returnTip').remove();	//去掉旧提示
+			$(":checkbox[name='server_ids[]']:checked").each(function(i,n){
+					var curLi=$("#server_"+n.value);
+					$("#getFunction_form").ajaxSubmit({
+						dataType:'json',
+						async : false,    // 设置同步
+						data:{server_id:n.value},
+						success:function(data){
+							if(data.status==1){
+								curLi.append("<font class='returnTip' color='#ff0000'>状态:"+data.isClose+"</font>");
+							}else{
+								curLi.append("<font class='returnTip' color='#ff0000'> "+data.info+"</font>");
+							}
+							
+						}
+					});
+			});
+			return false;
+		},
+	});
+	$("#id").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"不能为空,请确认"});
+	
+	///修改
+	$("form#updateFunction_form").submit(function(e){
+		var id = $("#id").attr('value');
+		if(id == ''){
+			alert('请填写协议号！'); return false;
+		}
+		
+		if($(":checkbox[name='server_ids[]']:checked").attr('value') == undefined){
+			alert('请选择服务器！'); return false;
+		}
+		$('.returnTip').remove();	//去掉旧提示
+		$(":checkbox[name='server_ids[]']:checked").each(function(i,n){
+				var curLi=$("#server_"+n.value);
+				$("#updateFunction_form").ajaxSubmit({
+					dataType:'json',
+					async : false,    // 设置同步
+					data:{server_id:n.value,id:id},
+					success:function(data){
+						var fontColor=(data.status==1)?'#00cc00':'#ff0000';
+						curLi.append("<font class='returnTip' color='"+fontColor+"'> "+data.info+"</font>");
+					}
+				});
+		});
+		return false;
+	});
+});
+
+
+</script>
+
+
+<fieldset>
+<form action="" method="get" id='getFunction_form'>
+	<input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="do" value="getFunction" />
+   	 协议号:<input class="text" type="text" name="id" id='id' value="<!--{$_GET.id}-->"/>
+   	<input class="btn-blue" type="submit" name="submit" value="查询" />
+   	<div id="idTip"></div>
+</form>
+<br><br><br>
+
+<form action="" method="get" id='updateFunction_form'>
+	<input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+  	<input type="hidden" name="do" value="updateFunction" />
+    <input type="hidden" type="text" name="id" value="<!--{$_GET.id}-->"/>
+           协议状态:<input class="text" type="text" name="isClose" id='isClose' value="<!--{$_GET.isClose}-->"/>
+    <input class="btn-blue" type="submit" name="submit" value="修改" />
+</form>
+
+
+
+</fieldset>

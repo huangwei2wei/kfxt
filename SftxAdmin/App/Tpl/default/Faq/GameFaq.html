@@ -1,0 +1,80 @@
+<script language="javascript" src="<!--{$__JS__}-->/Libs/jquery-treeview/jquery.treeview.min.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/Libs/jquery-treeview/jquery.treeview.async.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/Libs/jquery-treeview/jquery.cookie.js"></script>
+<link rel="stylesheet" href="<!--{$__JS__}-->/Libs/jquery-treeview/jquery.treeview.css" />
+<style type="text/css">
+#kind{
+	float:left; background:#FFF; padding:4px; margin:4px;
+}
+
+#content{
+	background:#FFF; margin-left:5px; float:left; width:80%;
+}
+#content div{
+	border:1px dashed #999; padding:4px; margin:4px; background:#FFF;
+}
+#main{
+	background:#FFF;
+}
+</style>
+<script language="javascript">
+
+function displayFaq(id){
+	if(!id)return false;
+	var content=$("#content");
+	$.getJSON(url,
+			  {kindId:id,c:'Faq',a:'GameFaq',doaction:'viewfaq'},
+			  function(data){
+				content.empty();
+			  	$.each(data,function(i,n){
+					i++;
+					content.append('<div> <font color="#FF0000">'+i+'</font> [<a href="'+n.url_edit+'">编辑</a>] [<a href="javascript:void(0)" url="'+n.url_del+'" onclick="delFaq($(this))" ">删除</a>]<br /><b>问题：</b><span>'+n.question+'</span><br /><b>回答：</b><span>'+n.answer+'</span><br /></div>');
+				})
+			  }
+	);
+}
+function displayTree(id){
+	if(!id)return false;
+	var tree=$("#tree_view");
+	tree.empty();
+	tree.treeview({url:"<!--{$url.Faq_GameFaq_kindtree}-->&Id="+id});
+}
+
+function delFaq(faqResult){
+	if(confirm("确证要删除吗？")){
+		var url=faqResult.attr("url");
+		$.getJSON(
+			url,
+			function(data){
+				if(data.status==1){
+					faqResult.parent("div").remove();
+				}else{
+					alert("删除失败");
+				}
+			}
+		);
+		
+	}
+}
+</script>
+
+<fieldset id="main">
+	<legend>FAQ管理</legend>
+	<div id="kind">
+    	[<a href="<!--{$url.Faq_GameFaq_kindindex}-->">FAQ分类,关键字管理</a>]
+        [<a href="<!--{$url.Faq_GameFaq_ratio}-->">FAQ点击率管理</a>]
+    <br />
+    	<select onchange="displayTree($(this).val())">
+        	<option value="">请选择游戏</option>
+        	<!--{html_options options=$gameTypeKind}-->
+        </select>
+    	<ul id="tree_view">
+        </ul>
+    </div>
+    
+    <div id="content">
+    </div>
+    <div style="clear:both"></div>
+</fieldset>
+
+

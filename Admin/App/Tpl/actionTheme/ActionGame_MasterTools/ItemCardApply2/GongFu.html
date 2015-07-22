@@ -1,0 +1,244 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+	<legend>
+    <!--{'670E7A07AEBD9EFA02AF70FFFCAAA5DA'|lang}-->
+    [<a href="<!--{$URL_itemCard}-->"><!--{'3445B0BF2BC17EEDF1BC0C1C9378CD67'|lang}--></a>]
+    [<a href="<!--{$URL_itemReceiveConditions}-->"><!--{'7D1260683E2D146DCB2A0BBB97AFC469'|lang}--></a>]
+    [<a href="<!--{$URL_itemUpdate}-->"><!--{'DAC41D170111FF273FA9135E410B23CD'|lang}--></a>]
+    </legend>
+
+<style>
+	.itemInput{width:35px;height:16px;border: 1px solid red;}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+//<!--{'B9DA394BE0ADF6505EBA651C144ED1EA'|lang}-->
+function makeInput(obj){
+	var itemId = obj.attr('itemId');
+	var itemName = obj.attr('itemName');
+	var str = '';
+	if(obj.attr('checked')){
+		str = '<input type="text" value="" class="itemInput" name="itemNum['+itemId+']" onblur="itemCollectAdd(\''+itemId+'\',\''+itemName+'\',$(this).val())" >';
+		str +='<input type="hidden" name="itemName['+itemId+']" value="'+itemName+'">'; 
+		$('#input_'+itemId).html(str);
+		$('#input_'+itemId).children().focus();
+	}else{
+		$('#input_'+itemId).html('');
+	}
+}
+//<!--{'BF52AB3C54240DF0E94B208B21905277'|lang}-->
+function itemCollectAdd(itemId,itemName,num){
+	if(itemId =='' || $.trim(num)=='')return false;
+	var itemsCollectId = 'itemsCollect'+itemId;
+	$('#'+itemsCollectId).remove();
+	num = parseInt(num);
+	if(num && num>0){
+		var str = '<div id="'+itemsCollectId+'" >'+itemName+'('+num+') <a href="javascript:itemCollectDel('+itemId+')"><!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}--></a></div>';
+		$('#itemsCollect').append(str);
+	}else{
+		$('input[name=itemNum['+itemId+']]').val('');
+	}
+}
+//<!--{'58187AF9BC6142FE074FE3798CF73DC3'|lang}-->
+function itemCollectDel(itemId){
+	if(itemId =='')return false;		
+	$('#checkboxItem'+itemId).attr('checked',false);
+	$('#input_'+itemId).html('');
+	$('#itemsCollect'+itemId).remove();
+}
+//<!--{'88B2312628EEC0909E13BD7ACC4785F4'|lang}-->
+function showemail(isShow){
+	var disabledValue = false;	//<!--{'31F0CFFD466C256BD250F7D1B56549B5'|lang}-->
+	var backgroundValue = "";	//<!--{'31F0CFFD466C256BD250F7D1B56549B5'|lang}-->
+	if(!isShow){
+		disabledValue = true;			//<!--{'5A7392A0D78BDDE002D8DF9F362707C3'|lang}-->
+		backgroundValue = "#F1EFF1";	//<!--{'5A7392A0D78BDDE002D8DF9F362707C3'|lang}-->
+	}
+	$('#mailTitle').attr('disabled',disabledValue).css('background',backgroundValue);
+	$('#mailContent').attr('disabled',disabledValue).css('background',backgroundValue);
+}
+function checkPlayer(playerId){
+	if($.trim(playerId)==''){
+		return;
+	}
+	$.ajax({
+		dataType:'json',	
+		type: 'GET',
+		data:{playerId:playerId},
+		url: '<!--{$URL_playerLookup}-->',
+		success:function(jsonData){
+			if(0 == jsonData.status){
+				alert(jsonData.info);
+			}
+			else if(1 == jsonData.status){
+				
+				if(jsonData.data.dataList && jsonData.data.dataList[0].playerId == playerId){
+					$('#playerInfo').html('<font color="#FF0000">'+jsonData.data.dataList[0].playerName+'</font>');
+				}else{
+					$('#playerInfo').html('<font color="#999999"><!--{'338056712A07BC4FBB57350B5029F2D3'|lang}--></font>');
+				}
+			}
+		}
+	});
+}
+function addTimePic(obj,i,field){
+	var id = i+field;
+	obj.after('<img onclick="WdatePicker({el:\''+id+'\'})" src="<!--{$__JS__}-->/Libs/My97DatePicker/skin/datePicker.gif" width="16" height="22" align="absmiddle">');
+	obj.after('<input type="hidden" class="text" name="conditions['+i+'][isTime]" value="1" />');
+	obj.remove();
+}
+
+$(function(){
+	var i=1;
+	$('#receiveConditions').find('a').click(function(){
+		$('#receiveConditions').hide();
+		var name = $(this).html();
+		var field = $(this).attr('field');
+		var strAdd = '<div style="margin:2px;" >[<a href="javascript:void(0);" onclick="$(this).parent().remove()"><!--{'86048B4FEA8C1CBDFDD4DB53BD281626'|lang}--></a>] <font style=" display:inline-block; margin-right:10px;">'+name+'</font><select name="conditions['+i+'][relation]">';
+		strAdd += '<option value="1"><!--{'2791DCA39C83FB25E5B52F0FB3CD22A7'|lang}--></option><option value="2"><!--{'F09DC0D1D60A3F24E8329E202D877A9D'|lang}--></option><option value="0"><!--{'4C35BF2E48800539107DC69BFFFFEB04'|lang}--></option></select> ';
+		strAdd += '<input type="hidden" class="text" name="conditions['+i+'][name]" value="'+name+'" />';
+		strAdd += '<input type="hidden" class="text" name="conditions['+i+'][field]" value="'+field+'" />';
+		strAdd += '</select><input type="text" class="text" id="'+i+field+'" name="conditions['+i+'][value]" value="" /> ';
+		strAdd += '<a href="javascript:void(0);" onclick="addTimePic($(this),\''+i+'\',\''+field+'\')" ><!--{'62D8AF7EBECBBE784E98500591176420'|lang}--></a> ';
+		strAdd += '</div>';
+		$('#addedConditions').prepend(strAdd);
+		i++;
+	});
+})
+</script>
+<form action="" method="post">
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row"><!--{'8F3DABBA3E274B9BA2A54B627A500001'|lang}--></th>
+    <td><input type="radio" checked="checked" value="100" name="type">
+<!--{'1D8F60497BE9B4153F505925478B4204'|lang}--></td>
+  </tr>
+  <!--  
+  <tr>
+    <th scope="row"><!--{'EAFEE7795742DB35611A977B8CEE179F'|lang}--></th>
+    <td>
+    	<input type="checkbox" name="repeat" value="1" <!--{if $editData.repeat}-->checked<!--{/if}-->/> <font color="#FF0000"><!--{'C9E24A2B7156D3876F3C2F412E79D7E5'|lang}--></font>
+    </td>
+  </tr>
+  -->
+  <tr>
+    <th scope="row"><!--{'3A449712D84E755DE2B1E87004A4101B'|lang}--></th>
+    <td><!--{html_radios options=$keyType name="keyType" selected=$editData.keyType|default:$selected.keyType}--></td>
+  </tr>
+
+  <tr>
+    <th scope="row"><!--{'854E1D4F9A2019E8B50DBEE5E22CEAC5'|lang}--></th>
+    <td><label>
+<input type="radio" checked="checked" value="2" name="bindType">
+<!--{'81463B2FCFA4E5B7A894CCA4F2846AB1'|lang}-->
+</label></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'069A4B89AE4E24F7718E5DF99E80B75D'|lang}-->ID</th>
+    <td>
+    	<input class="text" type="text" name="playerId" value="<!--{$editData.playerId}-->" onblur="checkPlayer($(this).val());">
+        <span id="playerInfo"></span>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"> <!--{'F4F76AD4FCD0E14CD14F8AFBCC95FA6E'|lang}--> </th>
+    <td>
+        <input type="radio" id="isSendMail_0" value="0" name="isSendMail" checked="checked" onchange="showemail(false)"><!--{'A26FC09FCC779F8804BA57229685DF37'|lang}-->
+        <input type="radio" id="isSendMail_1" value="1" name="isSendMail" onchange="showemail(true)"><!--{'D99D53EA0A5E4D62D7132A369E391E66'|lang}-->
+
+        <div class="pd"><!--{'00F7F1404D8CC8314C41EDB4D4F6685E'|lang}-->:<input name="mailTitle" id="mailTitle" type="text" class="text" style="width:400px; background:#F1EFF1" value="<!--{$editData.mailTitle}-->" disabled="disabled" /></div>
+        <div class="pd">
+            <span style="vertical-align:top"><!--{'42516993D82605002CA3BFECD66EEABE'|lang}-->:</span><textarea disabled="disabled" id="mailContent" name="mailContent" style="width:400px; height:60px; background:#F1EFF1" ><!--{if $editData.mailContent}--><!--{$editData.mailContent}--><!--{else}--><!--{'349CB33E41500067FD24370357DF5FB1'|lang}-->：
+<!--{'F070AA69F8D73650DA15A0F9D0878A41'|lang}-->，<!--{'C67CFF45C8DF56E122E4CCB11C3A7303'|lang}-->，<!--{'8F2C56C2D6A5299536792C346A82998F'|lang}-->，<!--{'63E3F0CD724975104839CE8893AD8642'|lang}-->。<!--{/if}--></textarea>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'CEC27A5778A843B89AD2A4B1877D9555'|lang}--></th>
+    <td>
+    <!--{'592794B9B7889C7511DB6999F548AD6F'|lang}-->:<input name="name" type="text" class="text" value="<!--{$editData.name}-->" ><font color="red">*</font>
+    <!--{'E99DFDF4B3B6FD82AED2D0C1D5619D58'|lang}-->:<input name="counts" type="text" class="text" value="<!--{$editData.counts|default:"1"}-->"><font color="red">*</font>
+    <!--{'1FA23F4DAA01D5DDFAE6179AA43F0720'|lang}-->:<input name="expiration" type="text" class="text" value="" onFocus="WdatePicker({startDate:'<!--{$smarty.now|strtotime:'+1 month'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'664B9B5DAEA434BBF3C63574392CF287'|lang}--></th>
+    <td>
+       	<input type="button" class="btn-blue" value="<!--{'664B9B5DAEA434BBF3C63574392CF287'|lang}--> <!--{'E2EDDE5ADBDF33F6DCE59A299CBF5FAD'|lang}-->/<!--{'DEF9E98B60E3BFC493BCD7693E702096'|lang}-->"  onclick="$('#receiveConditions').toggle();" />
+        <div id="receiveConditions" style="display:none; margin:5px;">
+        	<hr />
+            <!--{foreach from=$itemReceiveConditions key=conditionField item=conditionName}-->
+            	[<a href="javascript:void(0);" field="<!--{$conditionField}-->"><!--{$conditionName}--></a>]
+            <!--{/foreach}-->
+            <hr />
+        </div>
+        <div id="addedConditions"></div>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'CB2D71207A1B9A35B1453B9673AEC756'|lang}--></th>
+    <td>
+       	<!--{'82104FD1E0D8B9790B9F57BC702CBF1D'|lang}--><!--{html_options options=$exchangeTypeApply name="exchangeType" selected=$selected.exchangeTypeApply}-->
+        :<input type="text" class="text" name="goldValue" value="">
+        ,
+    	<!--{'609C2380B214A2BFC444A140CC8AB316'|lang}-->:<input type="text" class="text" name="assetValue" value="" />
+        ,
+    	<!--{'77E0CA7A67BFA6FC3143B21A711255A0'|lang}-->:<input type="text" class="text" name="goldTickeValue" value="">
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'DE24BFB740EF7421E00B7346EA704E3E'|lang}--></th>
+    <td>
+        <table width="100%" border="0" cellpadding="3">
+          <tr>
+          <!--{foreach from=$items item=list key=typeId name=foo}-->              
+            <td><!--{$itemType.$typeId}-->
+                <div style="background:white;margin:6px;font-size:14px;border:1px dashed silver;padding:5px;width:250px;">
+                    <div style="overflow:auto;height:200px; width:250px;text-align:left;">
+                        <!--{foreach from=$list item=itemName key=itemId}--> 
+                            <div style="font-size:13px; margin-top:4px;">
+                                <!--{$itemName}-->
+                                <input type="checkbox" onclick="makeInput($(this));" id="checkboxItem<!--{$itemId}-->" itemId="<!--{$itemId}-->" itemName="<!--{$itemName}-->">
+                                <span id="input_<!--{$itemId}-->"></span>
+                            </div>
+                        <!--{/foreach}--> 
+                    </div>
+                </div>
+            </td>
+            <!--{if $smarty.foreach.foo.index%3==2}--> 
+                </tr><tr>
+            <!--{/if}-->
+          <!--{/foreach}--> 
+
+          </tr>
+        </table>
+    
+    </td>
+  </tr>
+  
+  <tr>
+      <th><!--{'59341C0B9589076A3D9B61D716B6B88D'|lang}--></th>
+      <td  valign="top">
+        <div id="itemsCollect"></div>
+      </td>
+  </tr>
+  <!--{if !$editData}--> 
+  <tr>
+      <th><!--{'6A465839F4BA361C548CBFA80C06A339'|lang}--><font color="red">*</font></th>
+      <td  valign="top"><textarea name="cause" id="cause" style="width:400px; height:60px;"></textarea></td>
+    </tr>
+  <tr>
+  <!--{/if}-->
+    <td>&nbsp;</td>
+    <td><input class="btn-blue" type="submit" value="<!--{'0830B48D62C64C2D0F877B1743D4CC6B'|lang}-->" ></td>
+  </tr>
+</table>
+</form>
+
+</fieldset>
+<!--{/if}-->

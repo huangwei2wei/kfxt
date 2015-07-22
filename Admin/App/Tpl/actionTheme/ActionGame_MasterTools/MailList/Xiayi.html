@@ -1,0 +1,95 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}			
+</script>
+
+<fieldset>
+  <legend>邮件列表[<a href="<!--{$SendMailUrl}-->">发送邮件</a>]</legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+   游戏玩家: <input class="text" type="text" name="user" value="<!--{$_GET.user}-->">
+   <label><input type="radio" name="userType" value="1"/>玩家ID</label>
+   <label><input type="radio" name="userType" value="2"/>账号</label>
+   <label><input type="radio" name="userType" value="3" checked="checked"/>昵称</label><br>
+   邮件类型：<label><input type="radio" name="is_send" value="0" checked="checked">接受的邮件</label>
+   <label><input type="radio" name="is_send" value="1">发送的邮件</label>
+    <input class="btn-blue" type="submit" name="sbm" value="查询">
+</form>
+
+<form action="" id="playerIdsForm" method="post">
+      <table width="100%" border="0" cellpadding="3">
+   		<tr>
+          <th>发送者</th>
+          <th>接收者</th>
+          <th>标题</th>
+          <th>内容</th>
+          <th>已经阅读</th>
+          <th>系统邮件</th>
+          <th>铜钱</th>
+          <th>元宝</th>
+          <th>带附件</th>
+          <th>附件内容</th>
+          <th>生成时间</th>
+          <th>销毁时间</th>
+        </tr>
+       
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+       	  <td align="center"><!--{$list.send_name}--></td>
+       	  <td align="center"><!--{$list.recv_name}--></td>
+       	  <td align="center"><!--{$list.title}--></td>
+       	  <td align="center"><!--{$list.content}--></td>
+       	  <td align="center"><!--{$list.isread}--></td>
+       	  <td align="center"><!--{$list.sys_type}--></td>
+       	  <td align="center"><!--{$list.gold}--></td>
+       	  <td align="center"><!--{$list.jade}--></td>
+       	  <td align="center"><!--{$list.type}--></td>
+       	  <td align="center">
+       	  		<!--{foreach from=$list.item_list item=item}-->
+       	  			<span><span><!--{$item.number}-->个<!--{$item.name}--><br>
+       	  		<!--{/foreach}-->
+       	  </td>
+       	  <td align="center"><!--{$list.create_time|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+       	  <td align="center"><!--{$list.delete_time|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="15" align="center">
+                <!--{if $_GET.submit}-->
+                查无数据
+                <!--{else}-->
+                <font color="#FF0000">请使用"查询"按钮</font>
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/foreach}-->
+          <tr>
+            <th colspan="15" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+</form>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

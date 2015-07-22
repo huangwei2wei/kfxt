@@ -1,0 +1,90 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+	<legend>道具卡查询</legend>
+    <form action="" method="post">
+    	<div>
+        	卡密:
+        	<input class="text" style="width:300px;" type="text" name="secretKey" value="<!--{$_POST.secretKey}-->" />
+            <input class="btn-blue" type="submit" value="查询" />
+        </div>
+    </form>
+    
+  <div>
+<table width="500" border="0" cellpadding="3">
+  <tr>
+    <th scope="row" width="100">属性</th>
+    <th scope="row">值</th>
+  </tr>
+  <tr>
+    <th scope="row">卡密</th>
+    <td><!--{$cardInfo.secreKey}--></td>
+  </tr>
+  <tr>
+    <th scope="row">所属礼包</th>
+    <td><!--{$cardInfo.className}--></td>
+  </tr>
+  <tr>
+    <th scope="row">礼包类型</th>
+    <td><!--{if $cardInfo.type == 1}--><font color="#FF0000">标准礼包</font><!--{elseif $cardInfo.type == 2}--><font color="#999999">共享礼包</font><!--{/if}--></td>
+  </tr>
+  <tr>
+    <th scope="row">礼包ID</th>
+    <td><!--{$cardInfo.classId}--></td>
+  </tr>
+  <tr>
+    <th scope="row">生成数量</th>
+    <td><!--{$cardInfo.counts}--></td>
+  </tr>
+  <tr>
+    <th scope="row">绑定玩家Id</th>
+    <td><!--{$cardInfo.playerId|default:'<font color="#999999">无</font>'}--></td>
+  </tr>
+  <tr>
+    <th scope="row">绑定玩家昵称</th>
+    <td><!--{$cardInfo.NickName|default:'<font color="#999999">无</font>'}--></td>
+  </tr>
+    <tr>
+    <th scope="row">绑定玩家用户名</th>
+    <td><!--{$cardInfo.UserName|default:'<font color="#999999">无</font>'}--></td>
+  </tr>
+  
+  <tr>
+    <th scope="row">绑定类型</th>
+    <td><!--{if $cardInfo.bindType == 0}--> 不绑定<!--{elseif $cardInfo.bindType == 1}-->绑定本服 <!--{elseif $cardInfo.bindType == 2}-->绑定玩家<!--{/if}--></td>
+  </tr>
+  <tr>
+    <th scope="row">是否领取</th>
+    <td><!--{if $cardInfo.isUse==0}-->否<!--{elseif $cardInfo.isUse == 1}-->是<!--{/if}--></td>
+  </tr>
+    <tr>
+    <th scope="row">领取时间</th>
+    <td><!--{$cardInfo.useTime}--></td>
+  </tr>
+  <tr>
+    <th scope="row">银两</th>
+    <td><!--{$cardInfo.points.assetValue}--></td>
+  </tr>
+  <tr>
+    <th scope="row">元宝</th>
+    <td><!--{$cardInfo.points.goldValue}--></td>
+  </tr>
+  <tr>
+    <th scope="row">银票</th>
+    <td><!--{$cardInfo.points.goldTickeValue}--></td>
+  </tr>
+  <tr>
+    <th scope="row">道具</th>
+    <td><!--{$cardInfo.itemInfo}--></td>
+  </tr>
+</table>
+
+  
+  
+  </div>  
+    
+</fieldset>
+<!--{/if}-->

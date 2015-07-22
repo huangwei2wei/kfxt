@@ -1,0 +1,159 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+var playerLogTypes = <!--{$playerLogTypes}-->;
+var rootid =<!--{$_GET.rootid|default:"0"}-->;
+var typeid = <!--{$_GET.typeid|default:"0"}-->;
+
+$(function(){
+	
+});
+
+function rootLoad(){
+	$.each(playerLogTypes,
+		function(Id,subRoot){
+			$('<option/>').attr('value',Id).text(subRoot.rootTypeName).appendTo('#rootid');
+		}
+	);
+	if(rootid){
+		$('#rootid').val(rootid);
+		rootchange(rootid);
+	}
+}
+
+function rootchange(chRootId){
+	$('#typeid').html('');
+	$('<option/>').attr('value',0).text('-所有子类-').appendTo('#typeid');		
+	if(chRootId>0){
+		$.each(playerLogTypes[chRootId]['subTypeList'],
+			function(Id,subType){
+				$('<option/>').attr('value',Id).text(subType.subTypeName).appendTo('#typeid');
+			}
+		);	
+		if(typeid)$("#typeid").val(typeid);
+	}
+}
+</script>
+<style>
+	.AutoNewline {
+		font-size:12px;
+		line-height:150%;
+		overflow: hidden;
+		width: 400px;
+		word-wrap:break-word;
+		margin-bottom:2px;
+		margin-top:2px;
+	}
+</style>
+
+<fieldset>
+  <legend><!--{'38D5EF83637083F3A4B8F98E59FC88D0'|lang}--> <a href="<!--{$URL_LogTypeUpdate}-->"><!--{'B3279A44B553B72F55A8D036D7991707'|lang}--></a></legend>
+  
+<form action=""  method="get" id="LogFrom">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="LogId" id="LogId" value="0">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+            <span style="padding-right:20px;">
+                <!--{'12918823E5D499370B67691981B095EA'|lang}-->
+                <select name="rootid" id="rootid" onchange="rootchange($(this).val())">
+                	<option value="0">-<!--{'9A7B52FC8659F1786907FE93EFA85BF7'|lang}-->-</option>
+                </select>
+                <select name="typeid" id="typeid" >
+                    <option value="0">-<!--{'091E369AC93019DB80A1C1A5BAB03FCF'|lang}-->-</option>
+                </select>
+            </span>
+            
+            
+            <!--{'7E951D56D99D790EC4383BFB7B187DDD'|lang}-->：
+            <input class="text" type="text" name="StartTime" value="<!--{$_GET.StartTime}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+            <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}-->
+            <input class="text" type="text" name="EndTime" value="<!--{$_GET.EndTime}-->" onFocus="WdatePicker({startDate:'%y-%M-01 23:59:59',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+            IP:<input class="text" type="text" name="ip" id="ip" value="<!--{$_GET.ip|default:''}-->">
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <!--{'069A4B89AE4E24F7718E5DF99E80B75D'|lang}-->ID：<input type="text" class="text" name="playerId" id="playerId" value="<!--{$_GET.playerId|default:''}-->">
+        	<!--{'7035C62FB00576FED9B3A1F2B7D48E6C'|lang}-->：<input class="text" type="text" name="account" id="account" value="<!--{$_GET.account|default:''}-->">
+            <!--{'577C73C20A347C709FBEAA11306916C0'|lang}-->：<input class="text" type="text" name="name" id="name" value="<!--{$_GET.name|default:''}-->">
+            <!--{'CFB5F18C43753AD5329348D626BD3739'|lang}-->：<input class="text" type="text" name="keywords" id="keywords" value="<!--{$_GET.keywords|default:''}-->">
+            <input class="btn-blue" type="submit" onclick="return checkSubmit();" name="submit" value="<!--{'BEE912D79EEFB7335988C4997AA9138D'|lang}-->" >
+            
+        </td>
+      </tr>
+    </table>    
+    
+    <div>
+    	<!--{if $playerAccount}--><!--{'F6685D1959CB7D93BE372469C5BB1E65'|lang}-->:<font color="#FF0000"><!--{$playerAccount}--></font>,<!--{/if}-->
+    	<!--{if $playerName}--><!--{'AB581AA0560E5EE2B91A1B2003B15FAA'|lang}-->:<font color="#FF0000"><!--{$playerName}--></font><!--{/if}-->
+    </div>
+    
+    <table width="100%" border="0" cellpadding="3">
+    
+      <tr>
+        <th>ID</th>
+        <th><!--{'464F3D4EA36EDA2F87D65F7B2F4564CF'|lang}-->Id</th>
+        <th>gold<br>asset</th>
+        <th>exp</th>
+        <th><!--{'95E0D70D1809D5267C2419EDA58E78CA'|lang}--></th>
+        <th><!--{'77E0CA7A67BFA6FC3143B21A711255A0'|lang}--></th>
+        <th><!--{'7E951D56D99D790EC4383BFB7B187DDD'|lang}--><br><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}-->IP</th>
+
+        <th><!--{'4C4631B0A6CA021E1929DC26758CF90F'|lang}--><br><!--{'D0771A42BBC49A6941F59913FCDA35E3'|lang}--></th>
+        <th width="400"><!--{'2E2F703146311CB82F2F6826C242CE71'|lang}--></th>
+      </tr>
+    <!--{foreach from=$dataList item=list key=key}--> 
+    
+      <tr class="here_td">
+        <td align="center"><!--{$list.id}--></td>
+        <td align="center"><!--{$list.playerId}--></td>
+        <td align="center"><!--{$list.gold}--><br><!--{$list.asset}--></td>
+        <td align="center"><!--{$list.exp}--></td>
+        <td align="center"><!--{$list.level}--></td>
+		<td align="center"><!--{$list.goldTicke}--></td>
+        <td align="center" style="font-size:10px;"><!--{$list.addTime|default:'<font color="#999999"></font>'}--><br><!--{$list.ip|default:'<font color="#999999"></font>'}--></td> 
+
+        <td align="center">
+        	<a style="font-size:11px;" href="javascript:void(0)" onclick="logTypeSearch('<!--{$list.objectId}-->',0);"><!--{$list.rootType}--></a>    
+            <br>
+            <a style="font-size:11px;" href="javascript:void(0)" onclick="logTypeSearch('<!--{$list.eventId}-->','<!--{$list.objectId}-->');"><!--{$list.subType}--></a>            
+        </td> 
+        <td><div class="AutoNewline"><!--{$list.params}--></div></td>  
+      </tr>
+    <!--{foreachelse}-->
+      <tr>
+      	<th colspan="8" align="center">
+            <!--{if $_GET.submit}-->
+            <!--{'48E07E7DEAE53593B6FB5F4315CF0D1F'|lang}-->
+            <!--{else}-->
+            <font color="#FF0000"><!--{'F98214970C09E9F6FB18AD06420B8402'|lang}-->"<!--{'BEE912D79EEFB7335988C4997AA9138D'|lang}-->"<!--{'FA966345577BA81AF19408F203DB968F'|lang}--></font>
+            <!--{/if}-->
+        </th>
+      </tr>
+    <!--{/foreach}-->
+    </table>
+</form>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th align="right"><!--{$pageBox}--> </th>
+  </tr>
+</table>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<script language="javascript">
+	rootLoad();
+</script>
+<!--{/if}-->

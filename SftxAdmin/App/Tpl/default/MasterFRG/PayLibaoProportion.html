@@ -1,0 +1,52 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"num",onerror:function(){return false;}});
+	$("#ArrayCount").formValidator({onshow:"请输入数量",oncorrect:"输入正确"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"数字不正确"});
+})
+</script>
+<fieldset>
+<legend>数量设置</legend>
+    <form action="<!--{$url.MasterFRG_PayLibao_proportion}-->" method="post">
+        <input type="hidden" id="num" name="subaction" value="set_count" />
+        <!--无用常量-->
+        <input type="hidden" name="Id" value="<!--{$num.Id}-->" />
+        <input type="hidden" name="VarTitle" value="<!--{$num.VarTitle}-->" />
+        <input type="hidden" name="VarDesc" value="<!--{$num.VarDesc}-->" />
+        <input type="hidden" name="DataType" value="<!--{$num.DataType}-->" />
+        <input type="hidden" name="VarCat" value="<!--{$num.CatId}-->" />
+        <input type="hidden" name="FormType" value="<!--{$num.FormType}-->" />
+        <input type="hidden" name="FormValue" value="<!--{$num.FormValue}-->" />
+        <input type="hidden" name="Disabled" value="<!--{$num.Disabled}-->" />
+        <!--无用常量-->
+        <input type="text" name="ArrayCount" id="ArrayCount" value="<!--{$num.ArrayCount}-->" class="text"><span id="ArrayCountTip"></span>
+        <input type="submit" class="btn-blue" value="提交" />
+    </form>
+</fieldset>
+
+<fieldset>
+<legend>充值套餐比例</legend>
+<form action="<!--{$url.MasterFRG_PayLibao_proportion}-->" method="post">
+<input type="hidden" value="2" name="Setting[DepositRatio]">
+<table width="100%" cellpadding="3">
+  <!--{foreach from=$payProportion key=key item=list}-->
+  <tr>
+    <th scope="row">充值量：
+      <input type="text" class="text" value="<!--{$key}-->" name="DepositRatio__key[]" /></th>
+    <td>赠送量:
+      <input type="text" class="text" value="<!--{$list}-->" name="DepositRatio__value[]" /></td>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <th colspan="2" scope="row">
+    	<input type="submit" class="btn-blue" value="提交" />
+    </th>
+    </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

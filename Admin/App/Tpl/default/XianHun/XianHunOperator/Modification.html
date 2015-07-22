@@ -1,0 +1,150 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='playerId[]']").attr("checked",curCheck);
+	 });
+});
+function del(){
+	if(confirm('确定要删除吗?')){
+		$('#DelFrom').submit();
+	}
+}
+function getDetail(obj){
+	var kid = obj.attr('kid');
+	if($('#detail'+kid).html() == ''){		
+		$.ajax({
+			dataType:'json',	
+			type: 'GET',
+			url: obj.attr('url'),
+			success:function(msg){
+				var json = eval(msg);				
+				if(1 == json.status){				
+					if(json.data.length>0){
+						$.each(json.data,
+							function(Id,subobj){ 
+								$('#detail'+kid).append('<div style="margin:5px;">'+subobj.info+'</div><hr>');
+							}
+						);	
+					}else{
+						$('#detail'+kid).append('<div color="margin:5px;">无操作记录</div>');
+					}				
+				}
+				else if(0 == json.status){
+					alert(json.info);
+				}else{
+					alert('unknow error');
+				}
+			}
+		});
+	}
+}
+
+function viewDetail(obj){
+	var kid = obj.attr('kid');
+	
+	var trDetail = $('#trDetail'+kid);
+	if(trDetail.css("display")=="none"){
+		getDetail(obj);
+		trDetail.show();		
+	}else{
+		trDetail.hide();
+	}	
+}
+
+function hindParent(obj){
+	obj.parent().parent().parent().hide();
+}
+
+function buttonsub(obj){
+	document.getElementById(obj).value	=	$('#cause').val();
+	if(document.getElementById(obj).value	==	""){
+		window.alert("原因不能为空");
+		return false;
+	}
+	$("[name='server_ids[]'][checked]:checked").each(function(){ 
+		
+		if($(this).attr("checked")==true){
+			var a = $("#"+obj+"form");
+			a.append("<input type='hidden' name='server_id[]' value='"+$(this).val()+"'/>"); 
+		} 
+		 
+	});
+	document.getElementById(obj+"form").submit();
+}
+
+</script>
+<fieldset>
+	<legend>整理修改</legend>
+<form action="" method="post" id='setInstanceCountform'>
+	<input type="hidden" name="actionfunction" value="setInstanceCount" />
+	<input type="hidden" name="cause" id='setInstanceCount' />
+	<input type="hidden" name="operator_id" id='setInstanceCount' />
+	<table style="float: left;">
+		<tr>
+			<th colspan='3'>设置某个副本每天次数 </th>
+		</tr>
+		
+		<tr>
+			<th width='200'>副本ID:</th>
+			<td><input type="text" class='text' name='fbid'></input></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th width='200'>次数:</th>
+			<td><input type="text" class='text' name='addcount'></input></td>
+			<td><input type="button" value="确认" class="btn-blue" onclick='buttonsub("setInstanceCount")' /></td>
+		</tr>
+	</table>
+	<table >
+		<tr>
+			<td>
+			1 琅嬛福地,3 骷髅洞,5 诛仙阵，<br>
+			6 秦始皇陵,7 轩辕冢,8 太湖禁地,<br>
+			9 蝙蝠岭,10 五岳门,11 盘古禁地,<br>
+			12 水泽之乡,13 隐居之地,14 狐仙洞,<br>
+			15 石八阵,16 天神阁,17 真武观,18 水晶宫,
+			</td>
+			<td></td>
+		</tr>
+	</table>
+
+</form>
+	<form action="" method="post" id='addSingleInstanceCountform'>
+	<input type="hidden" name="actionfunction" value="addSingleInstanceCount" />
+	<input type="hidden" name="cause" id='addSingleInstanceCount'/>
+	<table>
+		<tr>
+			<th width='200'>增加所有人每天单人副本次数:</th>
+			<td><input type="text" class='text' name='addcount'></input></td>
+			<td><input type="button" value="确认" class="btn-blue" onclick='buttonsub("addSingleInstanceCount")' /></td>
+		</tr>
+	</table>
+	</form>
+	
+	<form action="" method="post" id='addMultiInstanceCountform'>
+	<input type="hidden" name="actionfunction" value="addMultiInstanceCount" />
+	<input type="hidden" name="cause" id='addMultiInstanceCount' />
+	<table>
+		<tr>
+			<th width='200'>增加所有人每天多人副本次数:</th>
+			<td><input type="text" class='text' name='addcount'></input></td>
+			<td><input type="button" value="确认" class="btn-blue" onclick='buttonsub("addMultiInstanceCount")' /></td>
+		</tr>
+	</table>
+	</form>
+</fieldset>
+<fieldset>
+<legend>申请原因</legend>
+
+<table>
+		<tr>
+			<th width='200'>申请原因：</th>
+			<td><textarea id="cause" rows="7" cols="50"></textarea></td>
+			<td></td>
+		</tr>
+		</table>
+</fieldset>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$askVo.title} - 优玩网 - 客服中心</title>
+<include file="../common/libs"/>
+</head>
+
+<body>
+<div id="bg">
+<div id="bgtainer">
+	<div id="bgtai">
+		<include file="../common/head"/>
+        
+        
+	<div class="muencon">
+			<!--<h2>{$askform.title}</h2>-->
+		<p>
+	感谢您对此次调查的支持，我们非常重视您提供的宝贵意见！</p>
+	<p><input type="button" value="返回客服中心首页" name="gohis" onclick="window.location.href='{:U('index/index')}'"/></p>
+	
+		
+		<p style="text-align:center"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/input_03.gif" onclick="myform.submit();"/></p>
+	</div>
+
+
+        </div>
+     </div>
+	<include file="../common/footer"/>	
+</div>
+</body>
+
+</html>

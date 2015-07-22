@@ -1,0 +1,23 @@
+<fieldset>
+	<legend>编辑角色</legend>
+<form method="post" action="<!--{$url.User_RolesEdit}-->">
+<input type="hidden" value="<!--{$data.Id}-->" name="Id" />
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">角色标识(唯一)</th>
+    <td><input type="text" class="text" name="role_value" readonly="readonly" value="<!--{$data.role_value}-->" /></td>
+  </tr>
+  <tr>
+    <th scope="row">角色名</th>
+    <td><input type="text" class="text" name="role_name" value="<!--{$data.role_name}-->" /></td>
+  </tr>
+  <tr>
+    <th scope="row"> 描述</th>
+    <td><textarea name="description" cols="40" rows="5"><!--{$data.description}--></textarea></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+    </tr>
+</table>
+</form>
+</fieldset>

@@ -1,0 +1,64 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='UserId[]']").attr("checked",curCheck);
+	 });
+});
+function del(){
+	if(confirm('确定要删除吗?')){
+		$('form').submit();
+	}
+}
+
+</script>
+<fieldset>
+<legend>封号列表</legend>
+<form action="<!--{$url.MasterFRG_DelLockUsers}-->" method="post" onsubmit="return checksub();">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <td colspan="7">
+    	<a href="<!--{$url.MasterFRG_AddLockUsers}-->">增加封号用户</a>
+    </td>
+    </tr>
+  <tr>
+    <th scope="col">操作</th>
+    <th scope="col">用户ID</th>
+    <th scope="col">用户名</th>
+    <th scope="col">角色名</th>
+    <th scope="col">金币</th>
+    <th scope="col">注册时间</th>
+    <th scope="col">封号结束时间</th>
+  </tr>
+  <!--{foreach from=$dataList key=key item=list}-->
+  <tr>
+    <td scope="col"><input type="checkbox" value="<!--{$list.UserId}-->" name="UserId[]" /></td>
+    <td scope="col"><!--{$list.UserId}--></td>
+    <td scope="col"><!--{$list.UserName}--></td>
+    <td scope="col"><!--{$list.VUserName}--></td>
+    <td scope="col"><!--{$list.Gold}--></td>
+    <td scope="col"><!--{$list.RegTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td scope="col"><!--{$list.LockTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="7" scope="col">
+  		<!--{$noData}--> 	
+    </th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <td colspan="7" scope="col">
+  		选择所有<input type="checkbox" id="allcheck" /><input type="button" class="btn-blue" onClick="del()" value="删除" />  	
+    </td>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

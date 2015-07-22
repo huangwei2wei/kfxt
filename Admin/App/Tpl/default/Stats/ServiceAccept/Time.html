@@ -1,0 +1,57 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+	<legend>搜索列表</legend>
+    <form action="" method="post">
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap" scope="row">时间范围</th>
+        <td>
+       	 <input type="text" class="text" name="start_time" value="<!--{$selected.start_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.start_time}-->',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"/>
+             - 
+            <input type="text" class="text" name="end_time" value="<!--{$selected.end_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.end_time}-->',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"/>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">游戏类型<br /> <input type="checkbox" onclick="allCheckBox('gameType',$(this))"  />全选</th>
+        <td id="gameType"><!--{html_checkboxes options=$gameTypes name="game_type_id" selected=$selected.game_type_id}--></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">回复区<br /> <input type="checkbox" onclick="allCheckBox('roomList',$(this))"  />全选</th></th>
+        <td id="roomList"><!--{html_checkboxes options=$roomList name=roomList selected=$selected.roomList}--></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">运营商<br /> <input type="checkbox" onclick="allCheckBox('operator',$(this))" />全选</th>
+        <td id="operator"><!--{html_checkboxes options=$operatorList name="operator_id" selected=$selected.operator_id}--></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">VIP等级<br /> <input type="checkbox" onclick="allCheckBox('vipLevel',$(this))" />全选</th>
+        <td id="vipLevel"><!--{html_checkboxes options=$vipIndex name="vip_level" selected=$selected.vip_level}--></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" value="提交" class="btn-blue" /></th>
+      </tr>
+    </table>
+	</form>
+</fieldset>
+<!--{if $display}-->
+<fieldset>
+	<legend>工单处理时长统计</legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col">游戏名称</th>
+        <th scope="col">总进单量</th>
+        <th scope="col">总耗时</th>
+        <th scope="col">平均处理时长</th>
+      </tr>
+      <!--{foreach from=$dataList.order_num key=key item=list}-->
+      <tr>
+        <td><!--{if $key=='total'}--><!--{$key}--><!--{else}--><!--{$gameTypes.$key}--><!--{/if}--></td>
+        <td><!--{$list}--></td>
+        <td><!--{$dataList.use_up_time.$key}--> 分钟</td>
+        <td><!--{$dataList.avg_up_time.$key}--> 分钟</td>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,158 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+	<legend>统计搜索</legend>
+    <form action="" method="post">
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap" scope="row">选择月份</th>
+        <td><input type="text" class="text" name="time" value="<!--{$selected.time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.time}-->',dateFmt:'yyyy-MM',alwaysUseStartDate:true})"/></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">用户选择</th>
+        <td>
+        	<!--{foreach from=$projects item=project}-->
+            	<fieldset>
+                	<legend><!--{$project.name}--> [负责人：<b><!--{$project.word_principal_user_id}--></b>]</legend>
+                    <!--{foreach from=$project.users item=user}-->
+                    	<input type="radio" name="user_id"  <!--{if $selected.user_id==$user.Id}-->checked="checked"<!--{/if}--> value="<!--{$user.Id}-->" /><!--{$user.nick_name}-->
+                    <!--{/foreach}-->
+                </fieldset>
+            <!--{/foreach}-->
+        </td>
+      </tr>
+      <tr>
+        <th height="27" colspan="2" nowrap="nowrap" scope="row"><input type="submit" value="提交" class="btn-blue" /></th>
+      </tr>
+    </table>
+	</form>
+</fieldset>
+<!--{if $display}-->
+<fieldset>
+  <legend>评分历史记录</legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col">评分月份</th>
+        <th scope="col">工作效率得分</th>
+        <th scope="col">工作质量得分</th>
+        <th scope="col">创新意识得分</th>
+        <th scope="col">主动性得分</th>
+        <th scope="col">总得分</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$history item=list}-->
+      <form method="post" action="<!--{$url.Program_EditMonthMarks}-->">
+      <input type="hidden" name="Id" value="<!--{$list.Id}-->" />
+      <tr>
+        <td><!--{$list.time}--></td>
+        <td><input type="text" class="text" name="qulaity_scorce"  value="<!--{$list.qulaity_scorce}-->" /></td>
+        <td><input type="text" class="text" name="efficiency_scorce"  value="<!--{$list.efficiency_scorce}-->" /></td>
+        <td><input type="text" class="text" name="active_scorce"  value="<!--{$list.active_scorce}-->" /></td>
+        <td><input type="text" class="text" name="innovation_scorce"  value="<!--{$list.innovation_scorce}-->" /></td>
+        <td><!--{$list.total_scorce}--></td>
+        <td><input type="submit" class="btn-blue" value="更改分数" /></td>
+      </tr>
+      </form>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="7"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+
+</fieldset>
+
+<fieldset>
+	<legend>统计查询</legend>
+    <form action="<!--{$url.ProgramStats_MonthAssignMarks}-->" method="post">
+    <input type="hidden" name="user_id" value="<!--{$_POST.user_id}-->" />
+    <input type="hidden" name="time" value="<!--{$_POST.time}-->" />
+	<table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap" scope="row">任务数</th>
+        <td><!--{$userStatsData.task_num|intval}--></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">任务质量</th>
+        <td>
+        	<!--{foreach from=$efficiencyList key=key item=list}-->
+                <!--{$list}--> ： <!--{$userStatsData.efficiency.$key|intval}--> . 
+            <!--{/foreach}-->
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">完成效率</th>
+        <td>
+        	<!--{foreach from=$finishSpeedList key=key item=list}-->
+                <!--{$list}--> ： <!--{$userStatsData.task_finish.$key|intval}--> . 
+            <!--{/foreach}-->
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">质量月统计得分</th>
+        <td><!--{$userStatsData.efficiency_scorce|intval}--></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row">效率月统计得分</th>
+        <td><!--{$userStatsData.quality_scorce|intval}--></td>
+      </tr>
+      <!--{if $isStats!=true}-->
+      <tr>
+        <th nowrap="nowrap" scope="row">月考核得分</th>
+        <td>
+        	效率得分<b>40%</b>：<input type="text" class="text" readonly="readonly" name="quality_scorce" value="<!--{$userStatsData.quality_scorce|intval}-->" /> + 
+        	质量得分<b>40%</b>：<input type="text" class="text" readonly="readonly" name="efficiency_scorce" value="<!--{$userStatsData.efficiency_scorce|intval}-->" /> + 
+            主动性得分<b>10%</b>：<input type="text" class="text" name="active_scorce" value="0" /> + 
+            创新意识<b>10%</b>：<input type="text" class="text" name="innovation_scorce" value="0" /> 
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" nowrap="nowrap" scope="row"><input type="submit" value="提交得分" class="btn-blue" /></th>
+      </tr>
+      <!--{else}-->
+      <tr>
+        <th colspan="2" nowrap="nowrap" scope="row"><font color="#FF0000">当月已经评过分了</font></th>
+      </tr>
+      <!--{/if}-->
+    </table>
+    </form>
+</fieldset>
+
+<fieldset>
+  <legend>月统计任务列表</legend>
+	<table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap" scope="col">Id</th>
+        <th nowrap="nowrap" scope="col">难度系数</th>
+        <th scope="col">任务描述</th>
+        <th nowrap="nowrap" scope="col">预计完成小时<br />
+        实际完成小时</th>
+        <th nowrap="nowrap" scope="col">分配时间</th>
+        <th nowrap="nowrap" scope="col">开始时间<br />
+        结束时间</th>
+        <th nowrap="nowrap" scope="col">质量评分<br />质量</th>
+        <th scope="col">工作效率<br />
+		廷时原因</th>
+        <th nowrap="nowrap" scope="col">效率得分<br />
+          BUG得分</th>
+      </tr>
+      <!--{foreach from=$userStatsData.task_list item=list}-->
+      <tr>
+        <td nowrap="nowrap"><!--{$list.Id}--></td>
+        <td nowrap="nowrap"><!--{$list.difficulty}--></td>
+        <td title="<!--{$list.task_content}-->"><!--{$list.task_content}--></td>
+        <td nowrap="nowrap"><!--{$list.precast_hour}-->小时<br /><!--{if $list.actual_hour!=''}--><!--{$list.actual_hour}-->小时<!--{/if}--></td>
+        <td nowrap="nowrap"><!--{$list.assign_time}--></td>
+        <td nowrap="nowrap"><!--{$list.start_time}--><br /><!--{$list.end_time}--></td>
+        <td nowrap="nowrap"><!--{$list.efficiency_scorce}--><br /><!--{$list.word_efficiency_level}--></td>
+        <td title="<!--{$list.timeout_cause}-->"><!--{$list.finish_speed}--><br /><!--{$list.timeout_cause}--></td>
+        <td nowrap="nowrap"><!--{$list.quality_scorce}--><br /><!--{$list.bug_scorce}--></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="9" nowrap="nowrap"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+</fieldset>
+<!--{/if}-->

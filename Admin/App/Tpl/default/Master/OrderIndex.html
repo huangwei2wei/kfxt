@@ -1,0 +1,83 @@
+<script language="javascript">
+var assignUrl='<!--{$url.Master_OrderQueue_assign}-->';
+function assignOrder(userId,workOrderId,queueId){
+	window.location.href=assignUrl+"&userId="+userId+"&workOrderId="+workOrderId+"&Id="+queueId;
+}
+</script>
+<fieldset>
+	<legend>未完成的工单数</legend>
+    <form action="<!--{$url.Master_OrderQueue_setnum}-->" method="post">
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col">普通：<input type="text" class="text" name="vip_0" value="<!--{$orderNum.0}-->" /></th>
+        <th scope="col">VIP1：<input type="text" class="text" name="vip_1" value="<!--{$orderNum.1}-->" /></th>
+        <th scope="col">VIP2：<input type="text" class="text" name="vip_2" value="<!--{$orderNum.2}-->" /></th>
+        <th scope="col">VIP3：<input type="text" class="text" name="vip_3" value="<!--{$orderNum.3}-->" /></th>
+        <th scope="col">VIP4：<input type="text" class="text" name="vip_4" value="<!--{$orderNum.4}-->" /></th>
+        <th scope="col">VIP5：<input type="text" class="text" name="vip_5" value="<!--{$orderNum.5}-->" /></th>
+        <th scope="col">VIP6：<input type="text" class="text" name="vip_6" value="<!--{$orderNum.6}-->" /></th>
+      </tr>
+      <tr>
+        <th colspan="7" scope="col"><input type="submit" value="提交" class="btn-blue" /></th>
+      </tr>
+    </table>
+	</form>
+</fieldset>
+<fieldset>
+	<legend>当前在线用户</legend>
+    <!--{foreach from=$onlineUsers item=list}-->
+    <!--{$list}--> [<font color="#00cc00">在线</font>] .  
+    <!--{/foreach}-->
+</fieldset>
+
+<fieldset>
+	<legend>工单队列列表</legend>
+    <a href="<!--{$url.Master_OrderQueue_clear}-->">清空工单队列</a>
+    <form action="<!--{$url.Master_OrderQueue_del}-->" method="post">
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">工单ID</th>
+        <th scope="col">游戏类型</th>
+        <th scope="col">运营商</th>
+        <th scope="col">VIP等级</th>
+        <th scope="col">所属房间</th>
+        <th scope="col">加入时间</th>
+        <th scope="col">操作</th>
+        <th scope="col">手动分配</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><input type="checkbox" value="<!--{$list.Id}-->" name="Id[]" /></td>
+        <td><!--{$list.work_order_id}--></td>
+        <td><!--{$list.game_type_id}--></td>
+        <td><!--{$list.operator_id}--></td>
+        <td><!--{$list.vip_level}--></td>
+        <td><!--{$list.room_id}--></td>
+        <td><!--{$list.create_time}--></td>
+        <td>
+        	<a href="<!--{$list.order_detail}-->">察看工单</a>
+            
+
+        </td>
+        <td>			
+        	<!--{if $list.add_users}-->            
+            分配给：
+            	<select onChange="assignOrder($(this).val(),<!--{$list.work_order_id}-->,<!--{$list.Id}-->)">
+              	<option value="">选选择</option>
+                <!--{foreach from=$list.add_users item=userClass}-->
+                	<option value="<!--{$userClass._id}-->"><!--{$userClass._nickName}-->[<!--{$userClass->getOrderNum()}-->]</option>
+                <!--{/foreach}-->
+                </select>
+            <!--{else}-->
+            回复区 [<font color="#FF0000"><!--{$list.room_id}--></font>] 没有用户
+            <!--{/if}-->
+         </td>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="9">选择所有<input type="checkbox" onClick="$(':checkbox[name=\'Id[]\']').attr('checked',$(this).attr('checked'));" /><input type="submit" class="btn-blue" value="删除" /></td>
+      </tr>
+    </table>
+    </form>
+</fieldset>

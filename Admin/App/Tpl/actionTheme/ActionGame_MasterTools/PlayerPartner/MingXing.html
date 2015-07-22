@@ -1,0 +1,81 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+  <legend>搜索</legend>
+  
+<form action=""  method="get">
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+            昵称:<input class="text" type="text" name="nickName" value="<!--{$_GET.nickName}-->">
+            
+            openId:<input style="width:300px;" class="text" type="text" name="openId" value="<!--{$_GET.openId}-->">
+            <input class="btn-blue" type="submit" name="sbm" value="查询">
+            </td>
+      </tr>
+
+    </table>
+</form>
+
+
+</fieldset>
+
+<fieldset>
+  <legend>玩家信息</legend>
+<table width="100%" border="0" cellpadding="3">
+  	
+    <tr>
+        <th scope="col">伙伴id</th>
+        <th scope="col">伙伴昵称</th>
+        <th scope="col">伙伴模板Id</th>
+        <th scope="col">伙伴职业</th>
+        <th scope="col">伙伴等级</th>
+        <th scope="col">伙伴类型</th>
+        <th scope="col">操作</th>
+    </tr>
+    <!--{foreach from=$dataList item=list}-->
+    <tr>
+        <td><!--{$list.id}--></td>
+        <td><!--{$list.nickName|urldecode}--></td>
+        <td><!--{$list.actorTempId}--></td>
+        <td>
+            <!--{switch var=$list.profession}-->
+                <!--{case value=1}-->舞者<!--{/case}-->
+                <!--{case value=2}-->演员<!--{/case}-->
+                <!--{case value=3}-->歌手<!--{/case}-->
+                <!--{default}--><!--{$list.profession}-->
+            <!--{/switch}-->
+        </td>
+        <td><!--{$list.level}--></td>
+        <td>
+            <!--{switch var=$list.actorType}-->
+                <!--{case value=0}-->普通<!--{/case}-->
+                <!--{case value=1}-->精英<!--{/case}-->
+                <!--{case value=2}-->超级<!--{/case}-->
+                <!--{case value=3}-->限时伙伴<!--{/case}-->
+                <!--{case value=3}-->刷新伙伴<!--{/case}-->
+                <!--{default}--><!--{$list.actorType}-->
+            <!--{/switch}-->
+        </td>
+        <td><a href="<!--{$list.URL_playerPartnerInfo}-->">伙伴属性</a></td>
+    </tr>  
+    <!--{foreachelse}-->
+        <tr>
+          <td align="center" colspan="7">暂无数据</td>
+        </tr>
+    <!--{/foreach}-->
+</table>
+
+
+</fieldset>
+<!--{/if}-->

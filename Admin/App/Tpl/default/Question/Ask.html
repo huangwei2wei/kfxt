@@ -1,0 +1,42 @@
+<center>
+<form action="<!--{$url.Question_Add}-->" method="post">
+<input type="hidden" name="game_type" value="<!--{$gameType}-->" />
+<input type="hidden" name="question_type" value="<!--{$questionType}-->" />
+<input type="hidden" name="title" value="<!--{$title}-->" />
+    <table width="30%" border="0" cellpadding="3">
+      <tr>
+        <th>产品类型：</th>
+        <td><!--{$word_gameType}--></td>
+      </tr>
+      <tr>
+        <th>问题类型：</th>
+        <td><!--{$questionTitle}--></td>
+      </tr>
+      <tr>
+        <th>问题标题：</th>
+        <td><!--{$title}--></td>
+      </tr>
+    </table>
+    
+    <table width="50%" border="0" cellpadding="3">
+    <!--{foreach from=$questionHtml item=htmlList}-->
+      <tr>
+        <th align="left"><!--{$htmlList.title}--></th>
+        <td>
+        	<!--{$htmlList.label}-->
+			<!--{$htmlList.description}-->
+        </td>
+      </tr>
+    <!--{/foreach}-->
+    <tr>
+        <th align="left"><em>*</em>详细内容</th>
+        <td><textarea name="description" cols="40" rows="5"></textarea></td>
+      </tr>
+    <tr>
+    	<td colspan="2">
+        	<input type="submit" class="btn-blue" value="提交" />
+        </td>
+    </tr>
+    </table>
+</form>
+</center>

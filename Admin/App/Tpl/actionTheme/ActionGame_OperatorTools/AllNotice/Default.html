@@ -1,0 +1,100 @@
+<script language="javascript" src="<!--{$__JS__}-->/Libs/jquery.form.js"></script>
+<script language="javascript">
+function onSubmit(){
+	var serverList=$(":checkbox[name='server_ids[]']");
+	$.each(serverList,function(i,n){
+		if(n.checked==true){
+			var curLi=$("#server_"+n.value);
+			$("#form").ajaxSubmit({
+				dataType:'json',
+				data:{server_id:n.value},
+				success:function(dataResult){
+					var fontColor=(dataResult.status==1)?'#00cc00':'#ff0000';
+					curLi.after("<font color='"+fontColor+"'>"+dataResult.msg+"</font>");
+				}
+			});
+		}
+	});
+	
+}
+function serverSyn(curBtn){
+	$("#formdeal").attr('action',curBtn.attr("url"));
+	$("#formdeal").submit();
+}
+</script>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+
+<form action="<!--{$ajax}-->" method='post' id='form'>
+
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<fieldset>
+<legend><!--{'E3C2C3FB9E77CB8E357C716DA889F660'|lang}--></legend>
+<input type='button' value='<!--{'39E107B7C4AA580F913CCBEBC00F7534'|lang}-->' onclick='window.location.reload(); ' class="btn-blue">
+<input type="button" value="<!--{'E3C2C3FB9E77CB8E357C716DA889F660'|lang}-->" onclick="onSubmit()" class="btn-blue"><font color="#FF0000">(<!--{'233E6EC5D56AD3449FBFE96F93FC3FB0'|lang}-->，<!--{'61329126B1CE4BF9A3B5F4F8A6C99729'|lang}-->)</font>
+ </fieldset>
+</form>
+
+<form action="" method='post'>
+<fieldset>
+ <legend><!--{'F659CED7C361932F7BCF1C2F2C39F669'|lang}--></legend>
+<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+<input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+<input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+<input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+ <!--{'592C59589144DDC68D05D528DA17DCDC'|lang}-->：<input type="text" onfocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" value="<!--{$post.start_time}-->" name="start_time" class="text">
+ <!--{'F782779E8B5D709462C8E71E0D9019F2'|lang}-->：<input type="text" onfocus="WdatePicker({startDate:'-%M- 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" value="<!--{$post.end_time}-->" name="end_time" class="text">
+<!--{'26789BD6B3CCF401A00BA81C1DCC61AF'|lang}-->：<input type="text" size="40" value="<!--{$post.content}-->" class="text" name="content">
+<!--{'567FD606BDCCA9B91E2A3FD844C41C6C'|lang}-->：<input type="checkbox" name="is_group" value="1">
+<input type="submit" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" class="btn-blue">
+</fieldset>
+</form>
+<form id='formdeal' action="<!--{$url.OperationFRG_NoticeDel}-->" method="post">
+<fieldset>
+	<legend><b><!--{'FD1FF1E1D700884C1D88DEC5CA794087'|lang}--></b></legend>
+    
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col" nowrap="nowrap">Id</th>
+        <th scope="col" nowrap="nowrap"><!--{'B425713F0D82F61D992F068D136B71FA'|lang}--></th>
+        <th scope="col"><!--{'32C65D8D7431E76029678EC7BB73A5AB'|lang}--></th>
+        <th scope="col"><!--{'2D711B09BD0DB0AD240CC83B30DD8014'|lang}--></th>
+        <th scope="col" nowrap="nowrap">URL</th>
+        <th scope="col" nowrap="nowrap"><!--{'592C59589144DDC68D05D528DA17DCDC'|lang}--><br /><!--{'F782779E8B5D709462C8E71E0D9019F2'|lang}--></th>
+        <th scope="col" nowrap="nowrap"><!--{'FFC7ED1CD5288FF735A3C4A059125354'|lang}--><br><!--{'752FBDE16DE0D50BF3390F2F8C5C8CA0'|lang}--></th>
+        <th scope="col" nowrap="nowrap"><!--{'E2AB2FB659C67136C69D104DCBFDCE5E'|lang}--></th>
+      </tr>
+      <!--{foreach from=$datalist item=list}-->
+      <tr>
+        <td nowrap="nowrap">
+            <!--{$list.id}-->
+            <input type="checkbox" name="ids[]" value="<!--{$list.id}-->" />
+        </td>
+        <td nowrap="nowrap"><!--{$list.server_id}--></td>
+        <td><!--{$list.title}--></td>
+        <td><a href="<!--{$list.url_edit}-->"><!--{$list.content}--></a></td>
+        <td><!--{$list.url}--></td>
+        <td nowrap="nowrap"><!--{$list.start_time}--><br /><!--{$list.end_time}--></td>
+        <td nowrap="nowrap"><!--{$list.create_time}--><br /><font color="#FF0000"><!--{$list.last_send_time}--></font></td>
+        <td nowrap="nowrap"><!--{$list.interval_time}--></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="8"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="8">
+        	<input type="checkbox" onclick="$('input[name=ids[]]').attr('checked',$(this).attr('checked'))"><!--{'66EEACD93A7C1BDA93906FE908AD11A0'|lang}-->
+        	<input type="button" class="btn-blue" value="<!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}-->" url='<!--{$del}-->'  onclick="if(confirm('<!--{'187D1FE0248DC951304185D455EC5437'|lang}-->?'))serverSyn($(this));"/>
+        	<div align="right"><!--{$pageBox}--></div>
+        </td>
+      </tr>
+    </table>
+</fieldset>
+</form>
+
+
+

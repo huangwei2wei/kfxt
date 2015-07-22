@@ -1,0 +1,99 @@
+<script language="javascript">
+<!--{foreach from=$dataList item=list}-->
+var server_<!--{$list.Id}-->=1;
+<!--{/foreach}-->
+function setServer(serverId,doaction,status){
+	$.getJSON(
+		url,
+		{c:'GameSerList',a:'Server',doaction:doaction,server_id:serverId},
+		function(data){
+			if(data.status==1){
+				if(doaction=='online'){
+					$("#view_online_"+serverId).html("<font color='#00CC00'><b>"+data.data+"</b></font>");
+				}else{
+					$('#step'+status+'_'+serverId).show();
+					alert(data.msg);
+				}
+			}else{
+				if(doaction=='online'){
+					$("#view_online_"+serverId).html("<font color='#FF0000'>服务器错误</font>");
+				}else{
+					alert("服务器错误");
+				}
+			}
+		}
+	);
+}
+</script>
+<fieldset>
+	<legend>搜索</legend>
+  <form action="" method="get" id="search">
+   	  <input type="hidden" name="c" value="GameSerList" />
+      <input type="hidden" name="a" value="Server" />
+      <table width="100%" border="0" cellspacing="0" cellpadding="3">
+        <tr>
+          <th scope="row">游戏类型</th>
+          <td><!--{html_radios options=$gameTypeList name="game_type_id" onclick="$('#search').submit()" selected=$selectedGameTypeId}--></td>
+        </tr>
+        <tr>
+          <th scope="row">运营商</th>
+          <td><!--{html_radios options=$operatorList name="operator_id" onclick="$('#search').submit()" selected=$selectedOperatorId}--></td>
+        </tr>
+          <tr>
+            <th scope="row">服务器名</th>
+            <td><input type="text" class="text" name="server_name" value="<!--{$selectedServerName}-->" /> <input type="submit" class="btn-blue" value="提交" /></td>
+          </tr>
+      </table>
+    </form>
+</fieldset>
+<fieldset>
+  <legend>服务器列表</legend>
+<a href="<!--{$url.GameSerList_CreateCache}-->">生成缓存</a>
+<a href="<!--{$url.GameSerList_Add}-->">添加服务器列表</a>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th>Id</th>
+    <th>所属游戏</th>
+    <th>运营商</th>
+    <th>游戏服务器名</th>
+    <th>标识</th>
+    <th>服务器地址</th>
+    <th>登录游戏</th>
+    <th>在线人数</th>
+    <th>操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.Id}--></td>
+    <td><!--{$list.word_game_type}--></td>
+    <td><!--{$list.word_operator_name}--></td>
+    <td><!--{$list.server_name}--></td>
+    <td><!--{$list.marking}--></td>
+    <td><!--{$list.server_url|truncate:30}--></td>
+    <td>
+    	<!--{if $list.game_type_id==2}-->
+        <form target="_blank" action="<!--{$list.server_url}-->php/interface.php?m=User&c=Login&a=login&__hj_dt=HtmlTemplate" method="post">
+            <input type="hidden" name="Time" id="Time" value="<!--{$smarty.now}-->" />      
+            <input type="hidden" name="GameId" id="GameId" value="1" />     
+            <input type="hidden" name="ServerId" id="ServerId" value="1" />     
+            <input type="hidden" name="domainid" id="domainid" value="1" />  
+        	<input type="text" class="text" name="Uname" />
+            <input type="submit" class="btn-blue" value="登录" />
+        </form>
+        <!--{/if}-->
+    </td>
+    <td id="view_online_<!--{$list.Id}-->"><input type="button" class="btn-blue" onclick="setServer(<!--{$list.Id}-->,'online')" value="显示在线人数" /></td>
+    <td>
+    	<input id="step1_<!--{$list.Id}-->" type="button" class="btn-blue" onclick="if(confirm('确定要操作吗?'))setServer(<!--{$list.Id}-->,'stopServer',2)" value="停服通知" />
+        <input id="step2_<!--{$list.Id}-->" style="display:none" type="button" class="btn-red" onclick="if(confirm('确定要操作吗?'))setServer(<!--{$list.Id}-->,'downline',3)" value="强制下线" />
+        <input id="step3_<!--{$list.Id}-->" style="display:none" type="button" class="btn-green" onclick="if(confirm('确定要操作吗?'))setServer(<!--{$list.Id}-->,'startServer')" value="启动服务" />
+    	<a href="<!--{$list.url_edit}-->">编辑</a>
+        <a href="<!--{$list.url_del}-->">删除</a>
+    </td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr><th colspan="9"><!--{$noData}--></th></tr>
+  <!--{/foreach}-->
+  <tr><td colspan="9" align="right"><!--{$pageBox}--></td></tr>
+</table>
+</fieldset>

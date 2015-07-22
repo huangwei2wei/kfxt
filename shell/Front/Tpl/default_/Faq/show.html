@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>优玩网 - 常见问题 - {$faq.question}</title>
+<include file="../common/libs"/>
+<script src="__PUBLIC__/common/js/libs/jquery.form.js" language="javascript"></script>
+<style type="text/css">
+.faq_table{
+	border-collapse:collapse;
+	border:1px solid #e56600;
+}
+.faq_table td{
+	border:1px solid #e56600;
+	color:#333;
+}
+</style>
+<script>
+function displaySelect(){
+	$("#cause").css("display","");
+}
+function checkOther(value){
+	if(value==5){
+		$("#cause").after("<input type='text' id='opinion' name='content' />");	
+	}else{
+		$("#opinion").remove();
+	}
+}
+function processJson(data){
+	if(data.msg==1){
+		$('#tion_03_1').css("display","none");
+		if($('#faq_info').attr('checked')==true){
+			//有用
+			$("#tion_03_2").css("display","");
+		}else{
+			$("#tion_03_3").css("display","");
+		}
+		
+		
+	}
+}
+
+$(function(){
+	$("#faqOpinionForm").ajaxForm({
+		dataType:'json',
+		success:processJson
+	});
+	$('#menu_faq').addClass('d');
+});
+</script>
+</head>
+
+<body>
+<include file="../common/head"/>
+<div id="contai">
+	<include file="../common/menu"/>
+	<include file="left_t"/>
+	<div class="neiright">
+		<div class="tiontit"><span>
+        <select onchange="window.location.href='{:U('Faq/ls/game_type_id/')}'+this.value;">
+		<volist name="faqKind" id="vo">
+		  <option  value="{$vo.Id}" <if condition="$vo.Id eq $gameTypeId">selected="selected"</if>>{$vo.name}</option>
+		 </volist> 
+		</select>
+        </span><b>当前位置：</b><a href="/index.php">客服中心</a> > <a href="{:U('Faq/index')}">常见问题</a></div>
+       
+		<div class="list">
+        	<p>
+            热点关键字:
+                <volist name="keywords" id="vo">
+                    <a href="javascript:void(0)" onclick="$('#faqkeyword').val($(this).html());$('#search_button').click()" style="color:#fb8e00">{$vo}</a> 　 
+                </volist>
+            </p>
+			<div class="tion_01"><input type="text" class="bau" name="keyword" id="faqkeyword" value="{$keyword}" /><input type="image" id="search_button" src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/input_01.gif" onclick="searchFaq({$gameTypeId});"/>
+			</div>
+			<div class="tion_02">
+				<dl><dt>问题标题：</dt><dd>{$faq.question|stripcslashes}</dd></dl>
+				<dl><dt>解决方法：</dt><dd>{$faq.answer_s|stripcslashes}</dd></dl>
+			</div>
+			<div class="tion_03" id="tion_03_1">
+            <form action="{:U('Faq/opinion')}" id="faqOpinionForm" method="post">
+            <input type="hidden" value="{$Id}" name="player_faq_id" />
+				<h2>以上信息是否能为您解决问题？</h2>
+				<p>
+                    <input name="faq_info" id="faq_info" type="radio" value="1" onclick="$('#cause').css('display','none')" checked = "true" />是　
+                    <input onclick="displaySelect()" name="faq_info" type="radio" value="0"  />否
+                    <input type="hidden" name="game_type_id" value="{$Think.get.game_type_id}" />
+					<select style="display:none;" id="cause" name="faq_opinion" onchange="checkOther($(this).val())">
+                    <foreach name="faqOpinion" item="vo" key="k">
+                    	<option value="{$k}">{$vo}</option>
+                    </foreach>
+                    </select>
+                </p>
+				<p><input type="image" src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/input_14.gif" /></p>
+            </form>
+			</div>
+			<div class="tion_03" id="tion_03_2" style="display:none;">
+				<h2 style="padding:20px 0; font-weight:normal; color:#666">感谢您对我们工作的支持！</h2>
+			</div>
+			<div class="tion_03" id="tion_03_3" style="display:none;">
+				<h2 style="text-align:center;padding:20px 0;">非常感谢您对于我们工作的评价，您还可以通过 <a href="{:U('Question/index')}">提交问题</a> 给我们客服，以获得满意的答案。 </h2>
+			</div>
+			<div class="tion_04">
+				<h2 style="text-align:left">相关问题:</h2>
+				<ul>
+                	<foreach name="relatedFaq" item="list">
+                    <li><a href="{:U("/Faq/show/game_type_id/$gameTypeId/Id/$list[Id]")}">{$list.question|stripcslashes}</a></li>
+                    </foreach>
+				</ul>
+			</div>
+
+					</div>
+		<div class="neibottom"></div>
+	</div>
+<include file="../common/footer"/>
+</div> 
+</body>
+
+</html>

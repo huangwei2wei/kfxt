@@ -1,0 +1,19 @@
+<fieldset>
+	<legend>部门编辑</legend>
+    <form method="post" action="<!--{$url.User_DepartmentEdit}-->">
+    <input type="hidden" value="<!--{$data.Id}-->" name="Id" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">部门名称</th>
+        <td><input type="text" class="text" name="name" value="<!--{$data.name}-->" /></td>
+      </tr>
+      <tr>
+        <th scope="row">描述</th>
+        <td><textarea name="description" cols="40" rows="5"><!--{$data.description}--></textarea></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+        </tr>
+    </table>
+    </form>
+</fieldset>

@@ -1,0 +1,43 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#cause").formValidator({onshow:"<!--{'CED19C3DA8C1B8CCFF50C0F2A50473B3'|lang}-->",oncorrect:"<!--{'707472EF069EFD2EF24F82164BC61C70'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'CED19C3DA8C1B8CCFF50C0F2A50473B3'|lang}-->"},onerror:"<!--{'855F36FA7498C388CF6FF6A0DD6B3143'|lang}-->"});
+	$("#server_id").formValidator({onshow:"<!--{'C566CA59602C7C5C0D3FE5E18ADE447D'|lang}-->ID<!--{'D7D11654A707D7E7B661C90295E58B20'|lang}-->",oncorrect:"<!--{'124D617A6875038C81E03DEC5E2501F4'|lang}-->ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'BA2DD64CC4F6DDF27CB1526EFB449E2D'|lang}-->"});
+	$("#UserId").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'752F8926DB21639D9F8ECDC7BF1D7159'|lang}-->"},onerror:"<!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->ID<!--{'281BADA7259F6BCB836F62AA0B3E8F48'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+})
+</script>
+<fieldset>
+<legend><!--{'82C15B89BE813ADD2F089486FF16056A'|lang}--> [<font color="#0000FF"><!--{'ED4EBD5BB7CFCAD8BEDE3C87F8C6AA65'|lang}--></font>]</legend>
+<form action="" method="post" id="form" >
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row"><!--{'2088BDE458445E265704715AA8DACE5A'|lang}--></th>
+        <td><textarea name="cause" id="cause" cols="60" rows="10"></textarea><div id="causeTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->ID，<!--{'8E2077AED29801496D10A6F24B0B0DA7'|lang}-->(&quot;,&quot;)<!--{'666AA082EE6CC6494A690CF5D5614393'|lang}--></th>
+        <td><textarea name="Data[Value]" id="UserId" cols="60" rows="8"><!--{$users}--></textarea><input type="radio" name="ReceiveType" checked="checked" value="0" /> <!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->ID <input type="radio" name="ReceiveType" value="1" /><!--{'819767ADA1805B0F0117F10967B94D4D'|lang}--> <input type="radio" name="ReceiveType" value="2" />昵称<div id="UserIdTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'5CA690A3ABEF258AACA747B45488105D'|lang}--></th>
+        <td><input type="text" class="text" name="Data[StartTime]" value="<!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'A671B01D033BD95E1ECF08B960749299'|lang}--></th>
+        <td><input type="text" class="text" name="Data[EndTime]" value="<!--{$smarty.now|strtotime:'+1 hour'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|strtotime:'+1 hour'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" name="submit" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,19 @@
+<fieldset>
+	<legend>用户运营商设置</legend>
+    <form action="" method="post">
+    	用户账号：<input type="text" name="user_name" class="text" value="<!--{$_POST.user_name|default:''}-->" />
+        <input type="submit" class="btn-blue" value="提交" />
+    </form>
+    <div style="margin:10px;">
+    <!--{if $_POST}-->
+    	<!--{if $userInfo}-->
+       	 	ID：<!--{$userInfo.Id}-->，
+        	账号：<!--{$userInfo.user_name}-->，
+    		名字：<!--{$userInfo.nick_name}-->
+            <a style="margin-left:10px;" href="<!--{$userInfo.URL_managerOperator}-->">编辑</a>
+        <!--{else}-->
+            <font color="#FF0000">查无数据</font>
+        <!--{/if}-->
+    <!--{/if}-->
+    </div>
+</fieldset>

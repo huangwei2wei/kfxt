@@ -1,0 +1,104 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+
+<fieldset>
+  <legend>添加信息</legend>
+  
+  
+  <form action="" method="post">
+  <input type="hidden" name="Id" value="<!--{$dataList.Id|default:0}-->">
+<table width="100%" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td valign="top">
+    <fieldset>
+      <legend>合作方信息</legend>
+      
+        <table width="100%" border="0" cellspacing="0" cellpadding="3">
+          <tr>
+            <th scope="row">游戏选择</th>
+            <td>
+            	<select name="game_type_id">
+                	<!--{html_options options=$game_type_id selected=$data.game_type_id}-->
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">合作方</th>
+            <td>
+                <select name="operator_id">
+                	<!--{html_options options=$operator_id selected=$data.operator_id}-->
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">合作方标识</th>
+            <td><input class="text" type="text" name="marking" value="<!--{$data.marking}-->"></td>
+          </tr>
+          <tr>
+            <th scope="row">公司名称</th>
+            <td><input class="text" type="text" name="company_name" value="<!--{$data.company_name}-->"></td>
+          </tr>
+          <tr>
+            <th scope="row">客服</th>
+            <td>
+                <select name="cs_supply">
+                	<!--{html_options options=$cs_supply selected=$data.cs_supply}-->
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">服务器</th>
+            <td>
+                <select name="server_supply">
+                	<!--{html_options options=$server_supply selected=$data.server_supply}-->
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">合作方Q群</th>
+            <td><input class="text" type="text" name="qq_group" value="<!--{$data.company_name}-->"></td>
+          </tr>
+          <tr>
+            <th scope="row">官网地址</th>
+            <td><input class="text" style="width:99%" type="text" name="website_url" value="<!--{$data.website_url}-->"></td>
+          </tr>
+          <tr>
+            <th scope="row">论坛地址</th>
+            <td><input class="text" style="width:99%" type="text" name="forum_url" value="<!--{$data.forum_url}-->"></td>
+          </tr>
+          <tr>
+            <th scope="row">资料站地址</th>
+            <td><input class="text" style="width:99%" type="text" name="datum_url" value="<!--{$data.datum_url}-->"></td>
+          </tr>
+        </table>
+
+    </fieldset>
+    </td>
+    <td valign="top">
+    
+    <fieldset>
+      <legend>我方信息</legend>
+        <table width="100%" border="0" cellspacing="0" cellpadding="3">
+          <tr>
+            <th scope="row">负责人</th>
+            <td><input class="text" type="text" name="principal" value="<!--{$data.principal}-->"></td>
+          </tr>
+          <tr>
+            <th scope="row">联系方式</th>
+            <td><input class="text" type="text" name="coupling" value="<!--{$data.coupling}-->"></td>
+          </tr>
+        </table>
+
+    </fieldset>
+    
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><input class="btn-blue" type="submit" value="提交"></td>
+  </tr>
+</table>
+
+</form>
+
+
+
+</fieldset>

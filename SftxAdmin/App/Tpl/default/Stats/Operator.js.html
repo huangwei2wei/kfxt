@@ -1,0 +1,18 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+var gameOperatorIndex=eval(<!--{$gameOperatorIndex}-->);
+function displayOperator(gameTypeId){
+	var operator=$("#operatorList");
+	operator.empty();
+	$.each(gameOperatorIndex,function(i,n){
+		if(n.game_type_id==gameTypeId){
+			operator.append('<input type="checkbox" checked="chedked" name=operator_id[] value='+n.operator_id+' />'+n.word_operator_id+'&nbsp;');
+		}
+	});
+}
+
+$(function(){
+	
+});
+</script>

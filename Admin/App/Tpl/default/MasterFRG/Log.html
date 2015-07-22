@@ -1,0 +1,63 @@
+<style type="text/css">
+ul{
+	margin:0px;
+	padding:0px;
+	list-style-type:none;
+}
+li{
+	margin:1px;
+	padding:0px 0px 0px 10px;
+}
+</style>
+<fieldset>
+  <legend><!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}--></legend>
+  	<form id="search" action="" method="get">
+    <input type="hidden" name="c" value="MasterFRG" />
+    <input type="hidden" name="a" value="Log" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="row"><!--{'226B0912184333C81BABF2F1894EC0C1'|lang}--></th>
+        <td><!--{html_radios options=$type onclick="$('#search').submit()" name="type" selected=$selectedType}--></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'F9AC4B2AA6B51D9578551CD06316D81A'|lang}--></th>
+        <td><select name="user_id" onChange="$('#search').submit()"><option value=""><!--{'708C9D6D2AD108AB2C560530810DEAE9'|lang}--></option><!--{html_options options=$users selected=$selectedUserId}--></select></td>
+      </tr>
+    </table>
+    </form>
+</fieldset>
+
+<fieldset>
+	<legend><!--{'3712972D84ADF48ACBD6AD24B4D75AD0'|lang}--></legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col"><!--{'226B0912184333C81BABF2F1894EC0C1'|lang}--></th>
+        <th scope="col"><!--{'F9AC4B2AA6B51D9578551CD06316D81A'|lang}--></th>
+        <th scope="col"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}-->IP</th>
+        <th scope="col"><!--{'7E951D56D99D790EC4383BFB7B187DDD'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td><!--{$list.word_type}--></td>
+        <td><!--{$list.word_user_id}--></td>
+        <td><!--{$list.ip}--></td>
+        <td><!--{$list.create_time}--></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+        <div><b><!--{'41DFB0BF6167CA035B93CAF3E06D6C95'|lang}-->：</b><!--{$list.cause|nl2br}--></div>
+        <div><b><!--{'2377C578EB383FFD73F9D98AEC266E8D'|lang}-->：</b><!--{$list.description|nl2br}--></div>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="5"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="5" align="right"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+</fieldset>

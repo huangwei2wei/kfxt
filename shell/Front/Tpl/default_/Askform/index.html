@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>问卷调查</title>
+<include file="../common/libs"/>
+</head>
+
+<body>
+<include file="../common/head"/>
+<div id="contai">
+	<include file="../common/menu"/>
+	
+	<div class="contit"><span><b>当前位置：</b><a href="/index.php">客服中心</a> > <a href="#">问卷调查</a></span>问卷调查</div>
+	<div class="muencon">
+		<ul>
+		<volist name="list" id="vo" key="i">
+		<li>{$i+($p*10)},&nbsp;<a href="{:U("Askform/detail/id/$vo[Id]")}">{$vo.title}</a></li>
+		</volist>
+		</ul>
+		<p style="text-align:right; width: 869px;">{$show}</p>
+		
+	</div>
+	<img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/title_11.gif" />	
+	<include file="../common/footer"/>
+</div>
+
+</body>
+
+</html>

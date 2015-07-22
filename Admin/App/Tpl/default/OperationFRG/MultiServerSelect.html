@@ -1,0 +1,102 @@
+<script language="javascript" src="<!--{$__JS__}-->/Libs/jquery.form.js"></script>
+<script language="javascript">
+var optSer = <!--{$optSer}-->;
+function submitData(){
+	var serverList=$(":checkbox[name='server_ids[]']").filter(function(){return $(this).attr('checked');}).slice(0,10);	//提取有勾选的前10个服
+	if(serverList.length > 0){
+		$.each(serverList,function(i,n){
+			$(this).attr('checked',false);
+			var curLi=$("#server_"+n.value);
+			$("#form").ajaxSubmit({
+				dataType:'json',
+				data:{server_id:n.value},
+				success:function(dataResult){
+					//var fontColor=(dataResult.status==1)?'#00cc00':'#ff0000';
+					curLi.after(' '+dataResult.info);
+				}
+			});
+		});
+		setTimeout("submitData()",2000);	//间隔2秒之后再批量并发一次
+	}
+}
+
+function showServer(obj){
+	operatorId=obj.val();
+	operatorName = obj.parent().text();
+	var str = '';
+	if(operatorId>0){
+		if(obj.attr('checked')){
+			if(optSer[operatorId]){
+				$.each(optSer[operatorId],
+					function(Id,server_name){ 
+						str +='<label id="server_'+Id+'"><input type="checkbox" value="'+Id+'" name="server_ids[]">'+server_name+'</label> ';
+					}
+				);
+				str = $('#TPL_operatorAdd').html().replace('$REPLACE_serverList',str);
+				str = str.replace('$REPLACE_operatorName',operatorName);
+				str = str.replace('$REPLACE_operatorId',operatorId);
+				$('#optSer').append(str);
+			}
+		}else{
+			$('#optSer_'+operatorId).remove();
+		}
+	}
+
+}
+//服务器 全选/全不选
+function selectAllServer(isChecked){
+	$('#optSer').find('input').attr('checked',isChecked);
+}
+//服务器反选
+function selectInverse(){
+	$('#optSer').find('input').each(
+		function(){
+			$(this).attr('checked',!$(this).attr('checked'));
+		}							
+	);
+}
+//运营商 全选/全不选
+function selectAllOpt(isChecked,rangeId){
+	var obj = $('#'+rangeId).find('input');
+	//obj.attr('checked',isChecked);
+	//obj.click();
+	obj.each(function(){
+		if($(this).attr('checked') != isChecked){
+			$(this).attr('checked',isChecked);
+			showServer($(this));
+		}
+	});
+}
+</script>
+<style>
+	.operatorGroup label{display: inline-block;width: 100px;}
+</style>
+<fieldset>
+	<legend>选择运营商</legend>
+    <!--{foreach from=$operatorGroup key=k item=operatorList}-->
+    <fieldset class="operatorGroup">
+		<legend>全选<input type="checkbox" onClick="selectAllOpt($(this).attr('checked'),'operatorGroup_<!--{$k}-->')"></legend>
+    	<div style="color:#360" id="operatorGroup_<!--{$k}-->">
+        	<!--{html_checkboxes options=$operatorList separator=" " onclick="showServer($(this))"}-->
+        </div>
+    </fieldset>
+    <!--{/foreach}-->
+</fieldset>
+<fieldset>
+	<legend>
+    	<font color="#FF0000">选择服务器</font>
+    	[<label>全选<input type="checkbox" onClick="selectAllServer($(this).attr('checked'));"></label>]
+        [<label onClick="selectInverse();">反选</label>]
+    </legend>
+    <div id="optSer"></div>
+</fieldset>
+
+<div id="TPL_operatorAdd" style="display:none">
+    <div style="margin:5px;" id="optSer_$REPLACE_operatorId">
+        <div style="font-weight:bold">$REPLACE_operatorName</div>
+        <div>
+            $REPLACE_serverList
+        </div>
+        <hr>
+    </div>
+</div>

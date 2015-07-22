@@ -1,0 +1,23 @@
+﻿<div id="uwan_top">
+	<div id="top">
+		<div class="uwna_logo"><a href="http://www.uwan.com"><img src="http://www.uwan.com/images/tpl0904/top/images/uwan_logo.gif" /></a></div>
+		<div class="uwan_right">
+			<div class="uwan_hader">
+			<if  condition= "$username"  > 
+			<span><b><a href="http://www.uwan.com/UserCenter/index.php">{$username}</a></b> 欢迎您!</span>[<a href="http://www.uwan.com/UserCenter/Logout.php"> 退出 </a>|<a  style="cursor:pointer" onclick="addfavorite('http://www.uwan.com/', '优玩网'); return(false);"> 收藏 </a>]                      	
+			<else/>				
+ <span><a href="http://www.uwan.com/UserCenter/Login.php" class="hederlon">登录</a><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/uwan_x.gif"/>|<a href="http://www.uwan.com/UserCenter/GetAccount.php">注册</a>|<a  style="cursor:pointer" onclick="addfavorite('http://www.uwan.com/', '优玩网'); return(false);">收藏</a></span>
+			</if>
+			</div>
+            <div class="uwan_nav">
+				<ul>
+					<li><a href="http://www.uwan.com/index.php">首页</a></li>
+					<li><a href="http://www.uwan.com/UserCenter/index.php">用户中心</a></li>
+					<li><a href="https://www.uwan.com/InpourCenter/index.php">充值中心</a></li>
+					<li class="uwan_d"><a href="/index.php">客服中心</a></li>
+					<li style="background:0"><a href="http://www.uwan.com/bbs.php" target="_blank">游戏论坛</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

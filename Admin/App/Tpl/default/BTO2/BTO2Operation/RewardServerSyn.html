@@ -1,0 +1,42 @@
+<form action="" method="post">
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<fieldset>
+	<legend><b><!--{$serverName}--></b></legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col">标题</th>
+        <th scope="col">发放时间</th>
+        <th scope="col">每日发放</th>
+      </tr>
+      <!--{foreach from=$dataList key=key item=list}-->
+      <tr>
+        <td>
+        	<input type="hidden" name="data[<!--{$key}-->][Title]" value="<!--{$list.Title}-->" />
+        	<input type="hidden" name="data[<!--{$key}-->][SendTime]" value="<!--{$list.SendTime}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][EndTime]" value="<!--{$list.EndTime}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][SendMsg]" value="<!--{$list.SendMsg}-->" />
+			<input type="hidden" name="data[<!--{$key}-->][MsgTitle]" value="<!--{$list.MsgTitle}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][MsgContent]" value="<!--{$list.MsgContent}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][EveryDay]" value="<!--{$list.EveryDay}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][LastSendTime]" value="<!--{$list.LastSendTime}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][ActivityId]" value="<!--{$list.ActivityId}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][post_data]" value='<!--{$list.post_data}-->' />
+        	<!--{$list.Title}-->
+        </td>
+        <td><!--{$list.SendTime}--> 至 <!--{$list.EndTime }--></td>
+        <td><!--{if $list.EveryDay == 1}-->是<!--{else}-->否<!--{/if}--></td>
+      </tr>
+      <!--{/foreach}-->
+      <tr><td colspan="3" valign="top">
+      		同步原因：<br>
+            <textarea name="cause" style="width:400px; height:60px;"></textarea>
+      </td></tr>
+      <tr><td colspan="3" align="center"><input type="submit" class="btn-blue" name="submit" value="同步" /></td></tr>
+    </table>
+</fieldset>
+
+
+</form>

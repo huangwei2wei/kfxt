@@ -1,0 +1,196 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<!--{if $display}-->
+<script language="javascript">
+
+function ajaxGet(k){
+	var sn = $('#sn'+k);
+	if(sn.html()==''){
+		$.ajax({
+			dataType:'json',	
+			type: 'GET',
+			url: $('#a_sn'+k).attr('url'),
+			success:function(msg){
+				var json = eval(msg);
+				if(1 == json.status){
+					var str = '';
+					$.each(json.data,function(key,val){
+						str +=val+'<br>';
+					});
+					if(str==''){
+						str = '<font color="#999999">无</font>';
+					}
+					str = '<td colspan="11" style="padding-left:20px;"><b>卡密</b>:<br>'+str+'</td>';
+					sn.html(str);
+				}else{
+					alert(json.info);
+				}
+			}
+		});	
+	}	
+}
+
+function showSerialNumber(k){
+	var sn = $('#sn'+k);
+	if(sn.css("display")=="none"){
+		ajaxGet(k);
+		sn.show();
+	}else{
+		sn.hide();
+	}
+}
+
+function showGoods(k){
+	var goods = $('#goods'+k);
+	if(goods.css("display")=="none"){
+		goods.show();
+	}else{
+		goods.hide();
+	}
+}
+
+function getApllyInfo(k){
+	var applyInfo = $('#applyInfo'+k);
+	if(applyInfo.html()==''){
+		$.ajax({
+			dataType:'json',	
+			type: 'GET',
+			url: $('#apply'+k).attr('url'),
+			success:function(msg){
+				var json = eval(msg);
+				if(1 == json.status){
+					var str = '';
+					str += '申请人：'+json.data.apply_user_id+'('+json.data.create_time+')'; 
+					str += '，审核人：'+json.data.audit_user_id+'('+json.data.send_time+')'; 
+					applyInfo.html('<td colspan="11" style="padding-left:20px;"><b>审核详情</b>:<br>'+str+'</td>');
+				}else{
+					alert(json.info);
+				}
+			}
+		});	
+	}
+}
+
+function showApllyInfo(k){
+	var applyInfo = $('#applyInfo'+k);
+	if(applyInfo.css("display")=="none"){
+		getApllyInfo(k);
+		applyInfo.show();
+	}else{
+		applyInfo.hide();
+	}
+}
+
+function showAll(k){
+	var sn = $('#sn'+k);
+	var goods = $('#goods'+k);
+	var applyInfo = $('#applyInfo'+k);
+	if(sn.css("display")=="none" || goods.css("display")=="none"){
+		sn.show();
+		goods.show();
+		applyInfo.show();
+		ajaxGet(k);
+		getApllyInfo(k);
+	}else{
+		sn.hide();
+		goods.hide();
+		applyInfo.hide();
+	}
+}
+</script>
+<style>
+.goods li{
+	display:inline-block;
+	width:130px;
+}
+.dianshu { display:inline-block; margin-right:20px;}
+.red {
+	color:#F00
+	}
+</style>
+<fieldset>
+<legend>
+    礼包列表
+    [<a href="<!--{$URL_ApplyGiftCard}-->">申请礼包</a>]
+    [<a href="<!--{$URL_AddGiftCard}-->">创建礼包</a>]
+    [<a href="<!--{$URL_SnQuery}-->">卡密查询</a>]
+	[<a href="<!--{$URL_ReCache}-->">刷新道具和服务器</a>]
+</legend>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+  	<th scope="col">礼包标识</th>
+    <th scope="col">礼包名称</th>
+    <th scope="col">套餐名称</th>
+    <th scope="col">操作</th>
+  </tr>
+  <!--{foreach from=$dataList key=k item=list}-->
+  <tr>
+  	<td align="center"><!--{$list->mark}--></td>
+    <td style=" font-weight:bolder; background:#9CF" ><!--{$list->name}--></td>
+    <td align="center"><!--{$list->contentName|default:'<font color="#999999">无</font>'}--></td>
+    <td>
+    	[<a href="javascript:void(0);" onclick="showGoods('<!--{$k}-->');">详细信息</a>]
+    	<!--{if $list->quan==1}-->[<a href="javascript:void(0);" onclick="showSerialNumber('<!--{$k}-->');" id="a_sn<!--{$k}-->" url="<!--{$list->URL_SerialNumber}-->" >查看卡密</a>]<!--{/if}-->
+    	[<a href="javascript:void(0);" onclick="showApllyInfo('<!--{$k}-->');" id="apply<!--{$k}-->" url="<!--{$list->URL_ApplyInfo}-->">审核详情</a>]
+    	<!--{if $list->quan==1}-->[<a href="<!--{$server_url}--><!--{$list->mark}-->">下载卡密</a>]<!--{/if}-->
+    </td>
+  </tr>
+  <tr style="display:none;" id="goods<!--{$k}-->">
+  	<td class="goods" colspan="11" style="padding-left:20px;">
+     	<b>服务器:</b><br>
+        	<div style="padding-left:10px;">
+                <!--{foreach from=$list->ServerArr item=server}-->
+                    <li><!--{$server}--></li>
+                <!--{foreachelse}-->
+                    <font color="#999999">无</font>
+                <!--{/foreach}-->
+            </div>
+        <b>点数:</b>
+        	<div style="padding-left:10px;">
+                <span class="dianshu">金币(<span class="red"><!--{$list->gold|intval}--></span>)</span>
+                <span class="dianshu">银币(<span class="red"><!--{$list->copper|intval}--></span>)</span>
+                <span class="dianshu">活跃积分(<span class="red"><!--{$list->activePoints|intval}--></span>)</span>
+           		<span class="dianshu">还原丹(<span class="red"><!--{$list->huanYuanDan|intval}--></span>)</span>
+                <span class="dianshu">修为(<span class="red"><!--{$list->exploit|intval}--></span>)</span>
+                <span class="dianshu">威望(<span class="red"><!--{$list->prestige|intval}--></span>)</span>
+                <span class="dianshu">精力(<span class="red"><!--{$list->token|intval}--></span>)</span>
+                <span class="dianshu">血量(<span class="red"><!--{$list->forces|intval}--></span>)</span>
+                <span class="dianshu">喇叭(<span class="red"><!--{$list->trumpet|intval}--></span>)</span>
+                <span class="dianshu">天山雪莲(<span class="red"><!--{$list->pwnuNum|intval}--></span>)</span>
+                
+                <span class="dianshu">初级药水(<span class="red"><!--{$list->potion_1|intval}--></span>)</span>
+                <span class="dianshu">中级药水(<span class="red"><!--{$list->potion_2|intval}--></span>)</span>
+                <span class="dianshu">高级药水(<span class="red"><!--{$list->potion_3|intval}--></span>)</span>
+                <span class="dianshu">上级药水(<span class="red"><!--{$list->potion_4|intval}--></span>)</span>
+                <span class="dianshu">顶级药水(<span class="red"><!--{$list->potion_5|intval}--></span>)</span>
+                <span class="dianshu">打孔器(<span class="red"><!--{$list->puncher|intval}--></span>)</span>
+                <span class="dianshu">摘除器(<span class="red"><!--{$list->extirpator|intval}--></span>)</span>
+                <span class="dianshu">晶石(<span class="red"><!--{$list->spar|intval}--></span>)</span>
+            </div>
+    	<b>道具:</b><br>
+        	<div style="padding-left:10px;">
+                <!--{foreach from=$list->goods item=good}-->
+                    <span class="dianshu"><!--{$good.0}-->(<span class="red"><!--{$good.1}--></span>)</span>
+                <!--{foreachelse}-->
+                    <font color="#999999">无</font>
+                <!--{/foreach}-->
+            </div>
+    </td>
+  </tr>
+  <tr style="display:none;" id="sn<!--{$k}-->"></tr>
+  <tr style="display:none;" id="applyInfo<!--{$k}-->"></tr>
+  <!--{/foreach}-->
+  <tr>
+  	<td colspan="11" align="right"><!--{$pageBox}--></td>
+  </tr>
+</table>
+
+
+
+</fieldset>
+    
+    
+
+
+<!--{/if}-->

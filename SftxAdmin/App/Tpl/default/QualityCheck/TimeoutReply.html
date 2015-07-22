@@ -1,0 +1,34 @@
+<fieldset>
+  <legend>我被质检过的回复</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">回复人</th>
+        <th scope="col">是否质检过</th>
+        <th scope="col">回复内容</th>
+        <th scope="col">回复时间</th>
+        <th scope="col">限制时间</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td><!--{$list.word_reply_name}--></td>
+        <td><!--{$list.word_is_quality}--></td>
+        <td><!--{$list.content|truncateutf8:30}--></td>
+        <td><!--{$list.create_time}--></td>
+        <td><!--{$list.last_reply_time}--></td>
+        <td>
+            <a href="<!--{$list.url_detail}-->">察看详细</a>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="7"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="7" align="right"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+</fieldset>

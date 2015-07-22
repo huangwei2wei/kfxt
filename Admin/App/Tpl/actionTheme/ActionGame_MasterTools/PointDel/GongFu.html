@@ -1,0 +1,93 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script>
+	function checkedPlayer(){
+		var player = $('input[name=players]').val();
+		if($.trim(player) == ''){
+			alert('<!--{'B69B2BFB68B37AE18F2331FC70E582B0'|lang}-->');
+			return false;
+		}
+		var postData = {};
+		if($('#playerType1').attr('checked')){
+			postData = {playerId:player};
+		}
+		else if($('#playerType2').attr('checked')){
+			postData = {playerName:player};
+		}
+		else if($('#playerType3').attr('checked')){
+			postData = {accountName:player};
+		}
+		$.ajax({
+			dataType:'json',	
+			type: 'GET',
+			data:postData,
+			url: '<!--{$URL_playerQuery}-->',
+			success:function(jsonData){
+				if(1 == jsonData.status){
+					var playerInfo = jsonData['data']['dataList'];
+					var playerName = '';
+					var asset = '';
+					var gold = '';
+					var goldTicke = '';
+					if(playerInfo){
+						playerName = playerInfo[0]['playerName'];
+						asset = playerInfo[0]['asset'];
+						gold = playerInfo[0]['gold'];
+						goldTicke = playerInfo[0]['goldTicke'];
+					}else{
+						alert('<!--{'BA58B9967C3DC3B87E8C7EF10D1B7B92'|lang}-->');
+					}
+					$('#playerNameInfo').html(playerName);
+					$('#assetInfo').html(asset);
+					$('#goldInfo').html(gold);
+					$('#goldTicketInfo').html(goldTicke);
+				}
+				else{
+					alert(jsonData.info);
+				}
+			}
+		});
+	}
+</script>
+<fieldset>
+	<legend><!--{'5C82BBE40DF1197A287610F9A4227B81'|lang}--></legend>
+	<form action=""  method="post">
+        <table width="600" border="0" cellpadding="3">
+          <tr>
+            <th scope="row" width="80"><!--{'069A4B89AE4E24F7718E5DF99E80B75D'|lang}-->ID</th>
+            <td>
+            	<div>
+                    <label><input type="radio" id="playerType1" name="playerType" checked="checked" value="1" /><!--{'069A4B89AE4E24F7718E5DF99E80B75D'|lang}-->ID</label>
+                    <label><input type="radio" id="playerType2" name="playerType" value="2" /><!--{'7035C62FB00576FED9B3A1F2B7D48E6C'|lang}--></label>
+                    <label><input type="radio" id="playerType3" name="playerType" value="3" /><!--{'23EB0E6024B9C5E694C18344887C4FE7'|lang}--></label>
+                </div>
+                <div style="margin-top:5px;">
+                    <input type="text" class="text" style="width:300px;" name="players" value="<!--{$players|default:''}-->" />
+                    <input type="button" class="btn-blue" value="<!--{'4328677C29493531E3469538CED9C541'|lang}-->" onclick="checkedPlayer();" />
+                	<span id="playerNameInfo" style="color:#F00"></span>
+                </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><!--{'A59C190B19758E577ADCAA244ED53706'|lang}--></th>
+            <td> - <input type="text" class="text" name="asset" value="" /> <span id="assetInfo" style="color:#F00"></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><!--{'22962E31B7F0C2B3BB7C4E7444C904B3'|lang}--></th>
+            <td> - <input type="text" class="text" name="gold" value="" /> <span id="goldInfo" style="color:#F00"></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><!--{'C5E03794DA38DEC31D05CB002BF700BE'|lang}--></th>
+            <td> - <input type="text" class="text" name="goldTicket" value="" /> <span id="goldTicketInfo" style="color:#F00"></span></td>
+          </tr>
+          <tr>
+            <th scope="row">&nbsp;</th>
+            <td><input type="submit" class="btn-blue" name="sbm" value="<!--{'327094A9DDDF9E37726CAFACEB9A77B0'|lang}-->" /></td>
+          </tr>
+        </table>
+    </form>
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,71 @@
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript" type="text/javascript">
+KE.init({id:'answer_s',imageUploadJson : '<!--{$url.uploadImgUrl}-->',afterCreate:function(id){KE.util.focus(id)}});
+KE.init({id:'answer_g',imageUploadJson : '<!--{$url.uploadImgUrl}-->',afterCreate:function(id){KE.util.focus(id)}});
+KE.init({id:'question',imageUploadJson : '<!--{$url.uploadImgUrl}-->',afterCreate:function(id){KE.util.focus(id)}});
+
+var kindList=eval(<!--{$kindList}-->);
+var disabled='<!--{$_GET.disabled}-->';
+
+$(function(){
+	$("#game_type_id").change();
+	$("#kind_id").val("<!--{$faqList.kind_id}-->");
+	if(disabled){
+		$("input").attr("disabled","disabled");
+		$("select").attr("disabled","disabled");
+		$("textarea").attr("disabled","disabled");
+	}
+})
+
+function showKind(gameId){
+	var kindSelect=$("#kind_id");
+	kindSelect.empty();
+	$.each(kindList,function(i,n){
+		if(n.game_type_id==gameId && n.lang_id=='<!--{$_REQUEST.lang}-->')kindSelect.append('<option value='+n.Id+'>'+n.name+'</option>');
+	});
+}
+
+</script>
+<fieldset>
+<form action="<!--{$url.Faq_PlayerEdit}-->" method="post">
+<input type="hidden" value="<!--{$id}-->" name="Id" />
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row"><!--{'9D1AF8A250315FB503099EA5C384E1E7'|lang}--></th>
+    <td><select onchange="showKind($(this).val())" id="game_type_id" name="game_type_id"><!--{html_options selected=$faqList.game_type_id options=$gameType}--></select><div id="game_type_idTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'D5A57C1C4DC6F04018E0F73B658B35B2'|lang}--></th>
+    <td><select id="kind_id" name="kind_id"><option value=""><!--{'769111969055ADAE0B76FA92124CBBB2'|lang}--></option></select><div id="kind_idTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'83611ABD5F806CB2DB7CB992E91186DD'|lang}--></th>
+    <td><!--{html_radios options=$faqStatus selected=$faqList.status name="status"}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'5DC99F6EFE53ADDA80974655B26B8DF8'|lang}--></th>
+    <td>
+    	<a href="javascript:void(0)" onclick="KE.create('question')"><!--{'FC04B2EDCC5D8EB765739EFF3F733A69'|lang}--></a>
+        <a href="javascript:void(0)" onclick="KE.remove('question')"><!--{'916A4D1CD3E92D5F10566BB3F6D0F3D4'|lang}--></a><br />
+    	<textarea name="question" cols="70" rows="6" id="question"><!--{$faqList.question}--></textarea>
+    </td>
+  </tr>
+    <th scope="row"><!--{'7671DEBAE7B1334C837F9604E46C4E09'|lang}-->(<!--{'847652D1D88D2C774B992FFF9E113D75'|lang}-->)</th>
+    <td>
+    	<a href="javascript:void(0)" onclick="KE.create('answer_s')"><!--{'FC04B2EDCC5D8EB765739EFF3F733A69'|lang}--></a>
+        <a href="javascript:void(0)" onclick="KE.remove('answer_s')"><!--{'916A4D1CD3E92D5F10566BB3F6D0F3D4'|lang}--></a><br />
+   		<textarea name="answer_s" cols="70" rows="12" id="answer_s"><!--{$faqList.answer_s}--></textarea>
+    </td>
+  </tr>  
+  <tr>
+      <th scope="row"><!--{'7671DEBAE7B1334C837F9604E46C4E09'|lang}-->(<!--{'9AD3E16FF3E0C0E8B0E8ED35FB1D1E16'|lang}-->)</th>
+      <td>
+    	<a href="javascript:void(0)" onclick="KE.create('answer_g')"><!--{'FC04B2EDCC5D8EB765739EFF3F733A69'|lang}--></a>
+        <a href="javascript:void(0)" onclick="KE.remove('answer_g')"><!--{'916A4D1CD3E92D5F10566BB3F6D0F3D4'|lang}--></a><br />
+   		<textarea name="answer_g" cols="70" rows="12" id="answer_g"><!--{$faqList.answer_g}--></textarea>
+      </td>
+  </tr>
+  <tr><th colspan="2"><input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /></th></tr>
+</table>
+</form>
+</table>

@@ -1,0 +1,101 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+.addline{
+	padding:3px;
+}
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:100%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+</style>
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+<!--{if $cardList}-->
+var cardList=eval(<!--{$cardList}-->);
+<!--{/if}-->
+function showCard(){
+	if(typeof(cardList)=='undefined'){
+		alert('<!--{'D36D4B41C4555CFFDFD9A83F77673E35'|lang}-->');
+		return false;
+	}
+	var showDiv=$("#showItem");
+	showDiv.empty();
+	$.each(cardList,function(i,n){
+		showDiv.append('<a href="javascript:void(0)" onclick="addValue('+n.Id+',\''+n.CardName+'\')">'+n.CardName+'</a>');
+	});
+	showDiv.show();
+}
+
+function addValue(id,cardName){
+	$("#showItem").hide();
+	$("#type_id").val(id);
+	$("#type_name").val(cardName)
+}
+
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"<!--{'C566CA59602C7C5C0D3FE5E18ADE447D'|lang}-->ID<!--{'D7D11654A707D7E7B661C90295E58B20'|lang}-->",oncorrect:"<!--{'124D617A6875038C81E03DEC5E2501F4'|lang}-->ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'BA2DD64CC4F6DDF27CB1526EFB449E2D'|lang}-->"});
+	$("#type_name").formValidator({onshow:"<!--{'C5F9C4C08D3A833DE76811F97B03CA13'|lang}-->",oncorrect:"<!--{'37E8E1BB29F82BB5DF7AA381681EC6FE'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'C5F9C4C08D3A833DE76811F97B03CA13'|lang}-->"},onerror:"<!--{'C5F9C4C08D3A833DE76811F97B03CA13'|lang}-->"});
+	$("#cause").formValidator({onshow:"<!--{'A73F63486CB97A8D6C136D7DC82F11D2'|lang}-->",oncorrect:"<!--{'FD75CEECBD2676048590A1695702F29A'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'A73F63486CB97A8D6C136D7DC82F11D2'|lang}-->"},onerror:"<!--{'E85E13CC2A5C76D4E44E62F70E1F1BED'|lang}-->"});
+	$("#number").formValidator({onshow:"<!--{'FA787294E05B33309F6D236A31FD61DD'|lang}-->",oncorrect:"<!--{'8471557076609F7B9B0018E996B6BE30'|lang}-->"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'2B05EBFB57EF4CC5AA07B39DFA2DA381'|lang}-->"});
+})
+</script>
+<fieldset>
+<legend><!--{'1A2F0E48B0B0FF341B48195D6D3981D9'|lang}--> [<font color="#FF0000"><!--{'541018CC8BD963A5718F321903B9D907'|lang}--></font>]</legend>
+<div id="showItem"></div>
+<form action="" method="post" id="form">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="98%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row"><!--{'C5AE2E7BD2CB8F79F3DD66FA7212B58B'|lang}--></th>
+        <td><textarea name="cause" id="cause" cols="50" rows="8"></textarea><div id="causeTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'8F3DABBA3E274B9BA2A54B627A500001'|lang}--></th>
+        <td><input type="hidden" name="TypeId" value="<!--{$selectedLibao.Id}-->" id="type_id" /><input type="text" class="text" id="type_name" name="TypeName" readonly value="<!--{$selectedLibao.card_name}-->" onClick="showCard()" /><div id="type_nameTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'6201D5EE1290419CDEA5FA877947B776'|lang}--></th>
+        <td>
+        	<select name="cardbyte"><option value="10">10<!--{'CF10DCB8D79B54A98B79B8C1F40A3EAA'|lang}--></option><option value="32">32<!--{'CF10DCB8D79B54A98B79B8C1F40A3EAA'|lang}--></option></select>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'BE05DFB594A5C99F387B7DD9DE6E63DF'|lang}--></th>
+        <td><input type="text" class="text" name="Number" id="number" /><div id="numberTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'ADF8C2E2A80BE27A856F110244AC09C1'|lang}--></th>
+        <td>
+        	<input type="radio" value="1" name="TimeLimit" onClick="$('#view_time').show()" /><!--{'0A60AC8F02CCD2CF723F927284877851'|lang}-->
+            <input type="radio" value="0" checked name="TimeLimit" onClick="$('#view_time').hide()" /><!--{'C9744F45E76D885AE1C74D4F4A934B2E'|lang}-->
+        </td>
+      </tr>
+      <tr id="view_time" style="display:none">
+        <th scope="row"><!--{'19FCB9EB2594059036DFEDE5F4EC53E8'|lang}--></th>
+        <td>
+        	<input type="text" class="text" name="StartTime" value="<!--{$systemTime|date_format:'%Y-%m-%d %H:%M:%S'}-->" onFocus="WdatePicker({startDate:'<!--{$systemTime|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+            <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}-->
+            <input type="text" class="text" name="EndTime" value="<!--{$systemTime|strtotime:'+1 day'}-->" onFocus="WdatePicker({startDate:'<!--{$systemTime|strtotime:'+1 day'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+             <!--{'4C82AEABE39C801738069F81294C24B0'|lang}-->：<font color="#FF0000"><!--{$systemTime|date_format:"%Y-%m-%d %H:%M:%S"}--></font>
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

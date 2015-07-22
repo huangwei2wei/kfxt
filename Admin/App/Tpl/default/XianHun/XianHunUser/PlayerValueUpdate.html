@@ -1,0 +1,57 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<script>
+$(document).ready(function(){
+	if( !$('#gameServer').val() ){
+		$('fieldset[ppp*=fp]').hide();
+	}
+});
+</script>
+<br>
+<fieldset ppp="fp1">
+<legend>天神阁次数修改</legend>
+<form action="" method="POST">
+<table width="100%" border="0" cellpadding="3">
+<tr><td>玩家Id：</td><td><input type="text" value="" name="sub1_playerId"></td></tr>
+<tr><td>次数</td><td><input type="text" value="" name="sub1_count"></td></tr>
+<tr><td></td><td><input type="submit" value="确定" name="sub1"></td></tr>
+</table>
+</form>
+</fieldset>
+
+<br>
+<fieldset ppp="fp2">
+<legend>真武观buff奖励</legend>
+<form action="" method="POST">
+<table width="100%" border="0" cellpadding="3">
+<tr><td>玩家Id：</td><td><input type="text" value="" name="sub2_playerId"></td></tr>
+<tr><td></td><td><input type="submit" value="确定" name="sub2"></td></tr>
+</table>
+</form>
+</fieldset>
+
+<br>
+<fieldset ppp="fp2">
+<legend>修改人物等级经验值</legend>
+<form action="" method="POST">
+<table width="100%" border="0" cellpadding="3">
+<tr><td>玩家Id：</td><td><input type="text" value="" name="sub3_playerId"></td></tr>
+<tr><td>等级</td><td><input type="text" value="" name="sub3_level"></td></tr>
+<tr><td>当前经验</td><td><input type="text" value="" name="sub3_exp"></td></tr>
+<tr><td></td><td><input type="submit" value="确定" name="sub3"></td></tr>
+</table>
+</form>
+</fieldset>
+
+<br>
+<fieldset ppp="fp2">
+<legend>修改闯天关次数</legend>
+<form action="" method="POST">
+<table width="100%" border="0" cellpadding="3">
+<tr><td>玩家Id：</td><td><input type="text" value="" name="sub4_playerId"></td></tr>
+<tr><td>次数</td><td><input type="text" value="" name="sub4_count"></td></tr>
+<tr><td></td><td><input type="submit" value="确定" name="sub4"></td></tr>
+</table>
+</form>
+</fieldset>

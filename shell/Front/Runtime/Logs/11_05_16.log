@@ -1,0 +1,5 @@
+[ 2011-05-16T04:22:38+08:00 ] ERR: (ThinkException) 无法加载模块notice
+[ 2011-05-16T04:22:39+08:00 ] ERR: (ThinkException) 无法加载模块question
+[ 2011-05-16T04:22:39+08:00 ] ERR: (ThinkException) 无法加载模块question
+[ 2011-05-16T11:47:05+08:00 ] ERR: (ThinkException) 无法加载模块index.php
+[ 2011-05-16T11:47:17+08:00 ] ERR: (ThinkException) 非法操作admin

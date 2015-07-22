@@ -1,0 +1,12 @@
+<script language="javascript">
+var questionList=eval(<!--{$questionList}-->);
+function changeGame(id){
+	$("#question_type").empty();
+	$("#question_type").append("<option value=''>请选择问题类型</option>");
+	$.each(questionList,function(i,n){
+		if(n.game_type_id==id){
+			$("#question_type").append("<option value='"+n.Id+"'>"+n.title+"</option>");
+		}
+	});
+}
+</script>

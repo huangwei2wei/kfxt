@@ -1,0 +1,142 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='UserId[]']").attr("checked",curCheck);
+	 });
+	$("#Items").change();
+});
+
+function chageSearch(curVal){
+		var searchSpan=$("#search");
+		searchSpan.empty();
+		switch(curVal){
+			case '1':{
+			}
+			case '2':{
+			}
+			case '4':{
+				searchSpan.append('<input type="text" class="text" name="Query[start]" onFocus="WdatePicker({startDate:\'%y-%M-01 00:00:00\',dateFmt:\'yyyy-MM-dd HH:mm:ss\',alwaysUseStartDate:true})" id="start" value="<!--{$selectedQuery.start}-->"> <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}--> <input type="text" class="text" name="Query[end]" onFocus="WdatePicker({startDate:\'%y-%M-01 00:00:00\',dateFmt:\'yyyy-MM-dd HH:mm:ss\',alwaysUseStartDate:true})" id="end" value="<!--{$selectedQuery.end}-->" >');
+				break;
+			}
+			case '3':{
+			}
+			case '5':{
+			}
+			case '6':{
+				searchSpan.append('<input type="text" class="text" name="Query[start]" id="start" value="<!--{$selectedQuery.start}-->"> <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}--> <input type="text" class="text" name="Query[end]" id="end" value="<!--{$selectedQuery.end}-->" >');
+				break;
+			}
+			case '7':{
+			}
+			case '8':{
+			}
+			case '9':{
+				searchSpan.append('<input type="text" class="text" name="Query[start]" id="start" value="<!--{$selectedQuery.start}-->">');
+				break;
+			}
+			default :{
+				searchSpan.append('<input type="text" class="text" name="Query[start]" id="start" value="<!--{$selectedQuery.start}-->"> <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}--> <input type="text" class="text" name="Query[end]" id="end" value="<!--{$selectedQuery.end}-->" >');
+			}
+		}
+}
+
+function jumpUrl(url){
+	form=$("#form");
+	form.attr("action",url);
+	form.submit();
+}
+</script>
+<fieldset>
+	<legend><!--{'41192B3D62C7F96C759CAA83B33467E4'|lang}--></legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td colspan="10">
+        <form action=""  method="get" onsubmit="return checksub();">
+            <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+            <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+            <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+            <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+            <select name="Query[Items]" id="Items" onchange="chageSearch($(this).val())">
+            	<!--{html_options options=$select selected=$selectedQuery.Items}-->
+            </select>
+            <span id="search">
+            </span>
+            <select name="PageSize"><!--{html_options options=$selectPage selected=$selectedPageSize}--></select>
+            <input type="submit" class="btn-blue" name="submit" id="submit" value="<!--{'DC5D07A1867B1C0B57153AFE054D0332'|lang}-->">
+        </form>    
+        </td>
+        </tr>
+      <tr>
+        <th><!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->Id</th>
+        <th><!--{'819767ADA1805B0F0117F10967B94D4D'|lang}--><br />
+        <!--{'10A6F1219A3A36CE2D7A9ED0F2D096A0'|lang}--></th>
+        <th><!--{'D4B097041DF68C34677C2AAECF9AD30D'|lang}--></th>
+        <th><!--{'87D5EB8F8845C7472BACF9FD969D560C'|lang}--><br />
+        <!--{'FE0E8BF76839940DAC08C7941E6F98F2'|lang}-->IP</th>
+        <th><!--{'39B4F204F42A1AE0DD2E051C28EDEBDB'|lang}--><br />
+        <!--{'9BD393599C63202E333EC1AED1310A23'|lang}--></th>
+        <th><!--{'19FB21791F0A542CB96108B67370F352'|lang}-->IP<br />
+        <!--{'6EBD096E01556DC56976872408A10D43'|lang}--></th>
+        <th><!--{'COUPON'|lang}-->/<!--{'7402599BC6350C095FB3CA545D950480'|lang}--><br />
+        <!--{'B60352BC4F7673301121F5F981791A88'|lang}-->G<!--{'C7A023E86EAD7544061EE23EA1C42476'|lang}--></th>
+        <th><!--{'FFBECA59C8FECDA83E6693DE44C3BDFE'|lang}--><br /><!--{'D603F12BF2E9E85A92372CEB05EAB589'|lang}--></th>
+        <th><!--{'53BEE9738BAF628CE84F2BE0CDC1A685'|lang}--><br />
+        <!--{'89E2F2D51281CB3F8C95245E5DBC34F2'|lang}--></th>
+        <th><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+      </tr>
+      <form action="" id="form" method="post">
+      <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+      <!--{foreach from=$dataList item=vo}-->
+      <tr>
+        <td><input type="checkbox" name="UserId[]" value="<!--{$vo.UserId}-->" /><!--{$vo.UserId}--></td>
+        <td align="center"><!--{$vo.UserName}--><br /><!--{$vo.VUserName}--></td>
+        <td align="center"><!--{$vo.CompanyName}--></td>
+        <td align="center"><!--{$vo.RegTime|date_format:"%Y-%m-%d %H:%M:%S"}--><br /><!--{$vo.RegIp}--></td>
+        <td align="center"><!--{$vo.LoginTime|date_format:"%Y-%m-%d %H:%M:%S"}--><br /><!--{$vo.LastUpdate|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+        <td align="center"><!--{$vo.LoginIp}--><br /><!--{$vo.LoginDays}--></td>
+        <td align="center"><!--{$vo.LiQuan}-->&nbsp;/&nbsp;<!--{$vo.Gold}--><br /><!--{$vo.Assets|intval}--></td>
+        <td align="center"><!--{$vo.Chop}--><br /><!--{$vo.MarketCurrency}--></td>
+        <td align="center"><!--{$vo.LoginDays}--><br /><!--{$vo.OnLineLong}--></td>
+        <td>
+          [<a href="<!--{$vo.url_ask}-->"><!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->bug</a>]
+          [<a href="<!--{$vo.url_send_msg}-->"><!--{'4712ED91DE920E92E9F63D494BF2CA79'|lang}--></a>]
+          [<a href="<!--{$vo.url_event_list}-->"><!--{'C4D962D6E57B42A21033605DAF027C9F'|lang}--></a>]
+          <br />
+          [<a href="<!--{$vo.url_emp}-->"><!--{'D04E78E99CB56DA4FC3190072DE53041'|lang}--></a>]
+          [<a href="<!--{$vo.url_shop}-->"><!--{'A4D703F4EF0FF46986D7EF07E0675A67'|lang}--></a>]
+          [<a href="<!--{$vo.url_tools}-->"><!--{'D33AD542C7B95FD6ED283E1CEC5434D1'|lang}--></a>]
+          [<a href="<!--{$vo.url_msg}-->"><!--{'B23AB7168D9D44CBB541B0BC385181DE'|lang}--></a>]
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="10"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}--> 
+      <tr>
+      	<td><input type="checkbox" id="allcheck" /><!--{'66EEACD93A7C1BDA93906FE908AD11A0'|lang}--></td>
+        <td colspan="9">
+        	<input type="button" class="btn-blue" value="<!--{'3C815104727AB041CB326CCB743C567E'|lang}-->" onclick="jumpUrl('<!--{$url.MasterFRG_RewardBefore}-->')" />
+            <input type="button" class="btn-blue" value="<!--{'CB13F48558F1F105DBB1EDFD737EA2B1'|lang}-->" onclick="jumpUrl('<!--{$url.MasterFRG_KickUser}-->')" />
+            <input type="button" class="btn-blue" value="<!--{'94E7055B3760258F797D2B8EB2511EE9'|lang}-->" onclick="jumpUrl('<!--{$url.MasterFRG_SendMail}-->')" />
+            <input type="button" class="btn-blue" value="<!--{'35AEFE3F7451C72980185F0655FD5EB7'|lang}-->" onclick="jumpUrl('<!--{$url.MasterFRG_AddDonttalk}-->')" />
+            <input type="button" class="btn-blue" value="<!--{'B52D146AD25DADE8935B72B252EED425'|lang}-->" onclick="jumpUrl('<!--{$url.MasterFRG_AddLockUsers}-->')" />
+            <input type="button" class="btn-blue" value="<!--{'9CBA6C1BABD658291A4E4AA84F835446'|lang}-->" onclick="jumpUrl('<!--{$url.MasterFRG_Drillmaster_Add}-->')" />
+            <!--{'5254CDD0B11C19BE3C52C983305EB651'|lang}-->： <b><!--{$companyNum}--></b>
+        </td>
+      </tr>
+      </form>
+      <tr>
+        <th colspan="10" align="right"><!--{$pageBox}--></th>
+      </tr>
+    </table>
+</fieldset>
+<!--{/if}-->

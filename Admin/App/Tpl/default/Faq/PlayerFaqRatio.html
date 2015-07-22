@@ -1,0 +1,68 @@
+<style type="text/css">
+div{
+	margin:5px;
+	border-bottom:1px solid #999;
+}
+</style>
+<fieldset>
+	<legend><!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}--></legend>
+    <form id="search" action="" method="get">
+    	<input type="hidden" name="c" value="Faq" />
+        <input type="hidden" name="a" value="PlayerIndex" />
+        <table width="100%" border="0" cellspacing="0" cellpadding="3">
+          <tr>
+            <th scope="row" nowrap="nowrap"><!--{'498CA9F72EDDB38DEA714E436A0AC57B'|lang}--></th>
+            <td><!--{html_radios options=$game_type name="game_type_id" selected=$selectedGameTypeId onclick="$('#search').submit()"}--></td>
+          </tr>
+          <tr>
+            <th scope="row" nowrap="nowrap">FAQ<!--{'3FEA7CA76CDECE641436D7AB0D02AB1B'|lang}--></th>
+            <td><!--{html_radios options=$faqStatus name="status" selected=$selectedFaqStatus onclick="$('#search').submit()"}--></td>
+          </tr>
+          <!--{if $selectedGameTypeId}-->
+          <tr>
+            <th scope="row" nowrap="nowrap">FAQ<!--{'D0771A42BBC49A6941F59913FCDA35E3'|lang}--></th>
+            <td><!--{html_radios options=$kindList name="kind_id" selected=$selectedkindId onclick="$('#search').submit()"}--></td>
+          </tr>
+          <!--{/if}-->
+        </table>
+    </form>
+</fieldset>
+
+<fieldset>
+  <legend><!--{'3712972D84ADF48ACBD6AD24B4D75AD0'|lang}--></legend>
+    <table width="100%" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col"><!--{'9D1AF8A250315FB503099EA5C384E1E7'|lang}--></th>
+        <th scope="col"><!--{'5DC99F6EFE53ADDA80974655B26B8DF8'|lang}--></th>
+        <th scope="col"><!--{'E6867BB9AD72BB75F199258E1B553CB0'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td><!--{$list.word_game_type_id}--></td>
+        <td title="<!--{$list.question}-->"><!--{$list.question|truncateutf8:30}--></td>
+        <td>
+        	<form action="<!--{$url.Faq_PlayerIndex_ratioedit}-->" method="post">
+            	<input type="hidden" name="Id" value="<!--{$list.Id}-->" />
+                <input type="text" class="text" name="ratio" value="<!--{$list.ratio}-->">
+                <input type="submit" class="btn-blue" value="<!--{'8347A927C09A4EC2FE473B0A93F667D0'|lang}-->" />
+            </form>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+        	<div><b><!--{'847652D1D88D2C774B992FFF9E113D75'|lang}-->：</b><!--{$list.answer_s}--></div>
+            <div><b><!--{'9AD3E16FF3E0C0E8B0E8ED35FB1D1E16'|lang}-->：</b><!--{$list.answer_g}--></div>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="4"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td align="right" colspan="4"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+</fieldset>

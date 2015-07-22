@@ -1,0 +1,60 @@
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	
+</script>
+
+<fieldset>
+  <legend>充值统计</legend>
+  
+<form action=""  method="get">
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+
+    开始时间:
+    <input class="text" type="text" name="regBeginTime" value='<!--{$_GET.regBeginTime|date_format:"%Y-%m-%d %H:%M:%S"}-->' onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    结束时间
+    <input class="text" type="text" name="regEndTime" value='<!--{$_GET.regEndTime|date_format:"%Y-%m-%d %H:%M:%S"}-->' onFocus="WdatePicker({startDate:'%y-%M-01 23:59:59',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    <input class="btn-blue" type="submit" name="sbm" value="查询">
+</form>
+
+<form action="" id="playerIdsForm" method="post">
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>服</th>
+          <th>每天每服总收入值</th>
+          <th>每天每服平台老玩家收入</th>
+          <th>注册人数</th>
+        </tr>
+        
+		<!--{foreach from=$datalist key=key item=list}-->
+        <tr>
+          <td align="center"><!--{$key}--></td>
+       	  <td align="center"><!--{$list.get_perserverpay.sm|default:'0'}--></td>
+       	  <td align="center"><!--{$list.get_oldserverpay.sm|default:'0'}--></td>
+       	  <td align="center"><!--{$list.get_serverreg.sm|default:'0'}--></td>
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="4" align="center">
+                <!--{if $_GET.submit}-->
+                <!--{'48E07E7DEAE53593B6FB5F4315CF0D1F'|lang}-->
+                <!--{else}-->
+                暂无数据
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/foreach}-->
+          <tr>
+            <th colspan="4" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+</form>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

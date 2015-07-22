@@ -1,0 +1,91 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function showdetail(){
+		$('#playerIdsForm').hide();
+		
+		var strAdd='';
+		$('#playerIdsForm table tr:eq(0) th').each(function(i){
+			inputstr = '<input type="text" value="'+$('#playerIdsForm table tr:eq(1) th')+'">';
+			strAdd +='<tr><td>'+$(this).html()+'</td><td><input type="text" value="" ></td></tr>';
+		});
+		
+		$('#user_detail table').prepend(strAdd);
+	}
+</script>
+
+<fieldset>
+  <legend>用户查询</legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    帮会ID:<input class="text" type="text" name="guild_id" value="<!--{$_GET.guild_id}-->">
+    帮会昵称:<input class="text" type="text" name="guild_nm" value="<!--{$_GET.guild_nm}-->">
+    <input class="btn-blue" type="submit" name="sbm" value="查询">
+</form>
+
+<!--{if $data}-->
+<form action="" method="POST" id="user_detail">
+<table width="100%" border="0" cellpadding="3">
+<tr><th>属性</th><th>原始值</th><th>修改后的值(*的属性不能改)</th></tr>
+<tr><td>帮派ID</td><td><!--{$data.guild_id}--></td><td>
+<input type="hidden" name="upstr_guild_id" value="帮派ID">
+<input type="text" name="update_guild_id" value="<!--{$data.guild_id}-->" readonly>*</td></tr>
+<tr><td>帮派名称</td><td><!--{$data.guild_nm}--></td><td>
+<input type="hidden" name="upstr_guild_nm" value="帮派名称">
+<input type="text" name="update_guild_nm" value="<!--{$data.guild_nm}-->" readonly>*</td></tr>
+<tr><td>帮主id</td><td><!--{$data.master_id}--></td><td>
+<input type="hidden" name="upstr_master_id" value="帮主id">
+<input type="text" name="update_master_id" value="<!--{$data.master_id}-->" readonly>*</td></tr>
+<tr><td>帮派等级</td><td><!--{$data.level}--></td><td>
+<input type="hidden" name="upstr_level" value="帮派等级">
+<input type="text" name="update_level" value="<!--{$data.level}-->" disabled></td></tr>
+<tr><td>帮派经验</td><td><!--{$data.experience}--></td><td>
+<input type="hidden" name="upstr_experience" value="帮派经验">
+<input type="text" name="update_experience" value="<!--{$data.experience}-->" disabled></td></tr>
+<tr><td>帮派基金</td><td><!--{$data.fund}--></td><td>
+<input type="hidden" name="upstr_fund" value="帮派基金">
+<input type="text" name="update_fund" value="<!--{$data.fund}-->" disabled></td></tr>
+<tr><td>帮派积分</td><td><!--{$data.integral}--></td><td>
+<input type="hidden" name="upstr_integral" value="帮派积分">
+<input type="text" name="update_integral" value="<!--{$data.integral}-->" disabled></td></tr>
+<tr><td>帮派资源</td><td><!--{$data.resource}--></td><td>
+<input type="hidden" name="upstr_resource" value="帮派资源">
+<input type="text" name="update_resource" value="<!--{$data.resource}-->" disabled></td></tr>
+<tr><td>帮派人数</td><td><!--{$data.member_num}--></td><td>
+<input type="hidden" name="upstr_member_num" value="帮派人数">
+<input type="text" name="update_member_num" value="<!--{$data.member_num}-->" readonly>*</td></tr>
+<tr><td>帮派建筑</td><td><!--{$data.building}--></td><td>
+<input type="hidden" name="upstr_building" value="帮派建筑">
+<input type="text" name="update_building" value="<!--{$data.building}-->" disabled></td></tr>
+<tr><td>帮派是否已经删除</td><td><!--{$data.is_delete}--></td><td>
+<input type="hidden" name="upstr_is_delete" value="帮派是否已经删除">
+<input type="text" name="update_is_delete" value="<!--{$data.is_delete}-->" readonly>*</td></tr>
+<tr><td>帮派申请时间</td><td><!--{$data.apply_time}--></td><td>
+<input type="hidden" name="upstr_apply_time" value="帮派申请时间">
+<input type="text" name="update_apply_time" value="<!--{$data.apply_time}-->" readonly>*</td></tr>
+<tr><td>胜利时间</td><td><!--{$data.battle_win_time}--></td><td>
+<input type="hidden" name="upstr_battle_win_time" value="胜利时间">
+<input type="text" name="update_battle_win_time" value="<!--{$data.battle_win_time}-->" readonly>*</td></tr>
+<tr><td>奖励时间</td><td><!--{$data.prize_time}--></td><td>
+<input type="hidden" name="upstr_prize_time" value="奖励时间">
+<input type="text" name="update_prize_time" value="<!--{$data.prize_time}-->" readonly>*</td></tr>
+<tr><td><input type="button" value="修改" onclick="$('#user_detail input').each(function(){$(this).attr('disabled',false)})"><input type="submit" name="submit" value="保存" disabled><td><td></td><td></td></tr>
+</table>
+</form>
+
+<!--{/if}-->
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

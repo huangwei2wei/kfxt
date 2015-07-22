@@ -1,0 +1,46 @@
+<style type="text/css">
+<!--
+table{margin:2px;border-collapse: collapse; border:0px; font-family:"微软雅黑",Verdana, Geneva, sans-serif; font-size:12px;}
+td{border:1px solid #93C9FF; padding:1px; margin:2px;}
+-->
+</style>
+<table width="100%" border="0" cellpadding="3">
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">申请类型</th>
+        <th scope="col">申请人 / IP</th>
+        <th scope="col">服务器</th>
+        <th scope="col">审核人 || 拒绝人 / IP</th>
+        <th scope="col">申请时间</th>
+        <th scope="col">状态</th>
+        <th scope="col">审核  || 拒绝时间</th>
+      </tr>
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td class="td_move" onclick="$('#detail_<!--{$list.Id}-->').toggle()"><!--{$list.word_type}--></td>
+        <td><!--{$list.word_apply_user_id}--> / <!--{$list.apply_ip}--></td>
+        <td><!--{$list.word_server_id}--></td>
+        <td><!--{$list.word_audit_user_id}--> / <!--{$list.audit_ip}--></td>
+        <td><!--{$list.create_time}--></td>
+        <td><!--{$list.word_is_send}--></td>
+        <td><!--{$list.send_time}--></td>
+      </tr>
+      <tr>
+      	<td colspan="8">申请理由：<br>
+			<!--{$list.cause|nl2br}-->
+            
+            <!--{if $list.is_send==1}-->
+            <!--如果审核将显示审核的内容-->
+            <hr size="1" />
+            审核发送状态：<br />
+				<!--{$list.send_result}-->
+            <!--{/if}-->
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <td colspan="8"><!--{$noData}--></td>
+      </tr>
+      <!--{/foreach}-->
+    </table>

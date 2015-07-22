@@ -1,0 +1,58 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+
+<fieldset>
+	<legend><!--{'F4F76AD4FCD0E14CD14F8AFBCC95FA6E'|lang}--></legend>
+	<script language="javascript">
+    $(function(){
+        $.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+        $("#server_id").formValidator({onshow:"<!--{'C566CA59602C7C5C0D3FE5E18ADE447D'|lang}-->ID<!--{'D7D11654A707D7E7B661C90295E58B20'|lang}-->",oncorrect:"<!--{'124D617A6875038C81E03DEC5E2501F4'|lang}-->ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'BA2DD64CC4F6DDF27CB1526EFB449E2D'|lang}-->"});
+        $("#cause").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'752F8926DB21639D9F8ECDC7BF1D7159'|lang}-->"},onerror:"<!--{'855F36FA7498C388CF6FF6A0DD6B3143'|lang}-->"});
+        $("#MsgTitle").formValidator({onshow:"<!--{'EA63C4DC8F4020500FC0DBFBDB16D404'|lang}-->",oncorrect:"<!--{'5D04FE17DEB779C0EE90DC533FCDD2C1'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'EA63C4DC8F4020500FC0DBFBDB16D404'|lang}-->"},onerror:"<!--{'1DF7810C9F146426FCC2D187BB87D738'|lang}-->"});
+        $("#MsgContent").formValidator({onshow:"<!--{'FA967BD016F6A501D1D651D4F42642A1'|lang}-->",oncorrect:"<!--{'51CD9E88214F5135626C0CFB95CDEFF4'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'FA967BD016F6A501D1D651D4F42642A1'|lang}-->"},onerror:"<!--{'48E93DB8F2E59D91DB5EE7B439AFD9CE'|lang}-->"});
+        $("#users").formValidator({onshow:"<!--{'1952027BDDA8E0106DBADDE43CA86F4D'|lang}-->ID,<!--{'2F7919916A82FDCC3FECDDC266B9D57B'|lang}-->','<!--{'F3BD3B485F83DD0327F19576EC0BC134'|lang}-->",oncorrect:"<!--{'315F61935B8933FF105D5FA610D202C3'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'1952027BDDA8E0106DBADDE43CA86F4D'|lang}-->ID"},onerror:"<!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->ID<!--{'281BADA7259F6BCB836F62AA0B3E8F48'|lang}-->"});
+    })
+    </script>
+    <form id="form" action="" method="post">
+    <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row"><!--{'2088BDE458445E265704715AA8DACE5A'|lang}--></th>
+        <td>
+            <textarea name="cause" id="cause" style="width:400px; height:60px;"></textarea>
+            <div id="causeTip"></div>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'A53DB51463C2D8EC4AE21144C4579A15'|lang}--></th>
+        <td><input name="title" id="MsgTitle" type="text" class="text" style="width:400px;"/><div id="MsgTitleTip"></div></td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'B87B77561E776367E6756E11EA652217'|lang}--></th>
+        <td><textarea name="content" id="MsgContent" style="width:400px; height:80px;"></textarea><div id="MsgContentTip"></div></td>
+      </tr>
+      <!--{if !$_GET.lock}-->
+      <tr>
+        <th nowrap="nowrap" scope="row"><!--{'C67DADA4A1A6B2CD747F6777D64CC7E7'|lang}--><br/>(<!--{'D032C46935BDA9DE97AD416319EB02D2'|lang}-->&quot;,&quot;<!--{'F3BD3B485F83DD0327F19576EC0BC134'|lang}-->)</th>
+        <td>
+        	<div>
+            <!--{html_radios options=$playerTypes name="userType" selected=$userTypeSelect|default:3}-->
+            </div>
+        	<textarea name="users" id="users" style="width:400px; height:100px;"><!--{$users}--></textarea>
+        	<div id="usersTip"></div>
+        </td>
+      </tr>
+      <!--{/if}-->
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" name="sbm" value="<!--{'1176C5B5B255C95320D0FA9AFA835824'|lang}-->" /></th>
+      </tr>
+    </table>
+    </form>
+    </fieldset>
+<!--{/if}-->
+
+
+

@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>优玩网 - 充值指南</title>
+<include file="../common/libs"/>
+</head>
+<script language="javascript">
+$(function(){
+	view({$Think.get.viewId});
+	$('#menu_pay').addClass('d');
+})
+function view(divId){
+	if(!divId)divId=1;
+	$(".list").hide();
+	$(".left_con dd").removeClass("ttbg");
+	$("#cont"+divId).show();
+	$("#menu_"+divId).addClass("ttbg");
+}
+</script>
+</head>
+
+<body>
+<div id="bgtainer">
+	<div id="bgtai">
+		<include file="../common/head"/>
+		<div class="conner">
+			<div class="Personaleft">
+				<div class="servicepic">
+					<h3><img src="/Public/front/default/images/pic_02.jpg" /></h3>
+					<p><b>客服中心</b></p><p>欢迎您来到优玩客服！</p>
+				</div>
+				<div style="padding-bottom:15px;"><img src="/Public/front/default/images/button_11.gif" /></div>
+				<div class="peesonanav">
+					<ul>
+						<li><a href="/index.php?s=/Question/index">我要提问</a></li>
+						<li><a href="/index.php?s=/Faq/Index">常见问题</a></li>
+						<li><a href="/index.php?s=/Notice/">服务指引</a></li>
+						<li class="d"><a href="/index.php?s=/Notice/pay">充值指南</a></li>
+                        <li><a href="/index.php?s=/Notice/addicted">防沉迷系统</a></li>
+					</ul>
+				</div>
+				<div style="padding:15px 0;"><img src="/Public/front/default/images/button_11.gif" /></div>
+				<include file="../common/left"/>
+			</div>
+			<div class="personaquan">
+				<div class="pquantitle"><span><a href="javascript:history.go(-1);">返回上一页</a></span>充值指南</div>
+					<div class="servicehaed">
+						<ul>
+							<li id="menu_1"><a href="{:U('/Notice/pay/viewId/1')}">如何在优玩平台充值？</a></li>
+                            <li id="menu_12"><a href="{:U('/Notice/pay/viewId/12')}">什么是优玩币？</a></li>
+                            <li id="menu_2"><a href="{:U('/Notice/pay/viewId/2')}">充值常见问题FAQ</a></li>
+                            <li id="menu_3" class="ttbg"><a href="{:U('Faq/bankList')}">网上银行充值指南</a></li>
+                            <li id="menu_4"><a href="{:U('/Notice/pay/viewId/4')}">短信充值帮助</a></li>
+                            <li id="menu_5"><a href="{:U('/Notice/pay/viewId/5')}">电信卡充值帮助</a></li>
+                            <li id="menu_6"><a href="{:U('/Notice/pay/viewId/6')}">联通卡充值帮助</a></li>
+                            <li id="menu_7"><a href="{:U('/Notice/pay/viewId/7')}">神州卡充值帮助</a></li>
+                            <li id="menu_8"><a href="{:U('/Notice/pay/viewId/8')}">固话（V币）充值帮助</a></li>
+                            <li id="menu_9"><a href="{:U('/Notice/pay/viewId/9')}">盛大卡充值帮助</a></li>
+                            <li id="menu_10"><a href="{:U('/Notice/pay/viewId/10')}">骏网卡充值帮助</a></li>
+                            <li id="menu_11"><a href="{:U('/Notice/pay/viewId/11')}">征途卡充值帮助</a></li>
+						</ul>						
+					</div>
+					<div class="servicetit">网上银行充值指南</div>
+						<div class="serviceyin">
+							<ul>
+								<!--分类-->
+                                <volist name="types" id="vo">
+                                <li>[ <a href="{:U("Faq/bankList/game_type_id/$gameTypeId/typeid/$vo[Id]")}">{$vo.name}</a> ]</li>
+                                </volist>
+                                <!--分类结束-->
+							</ul>
+						</div>
+					<div class="servicerli">
+						
+                        <!--列表-->
+                        <ul>
+                            <foreach name="faqList" item="vo">
+                            <li><a href="{:U("/Faq/bankShow/game_type_id/$gameTypeId/Id/$vo[Id]")}">{$vo.question|stripcslashes}</a></li>
+                            </foreach>
+                        </ul>
+                        <!--列表结束-->
+					</div>
+					<div class="link"> {$page}  </div>
+							</div>
+								</div>
+		<div class="connerbo"></div>
+						
+	</div>
+	<include file="../common/footer"/>	
+</div>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+/*$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"<!--{'SERVER_ID_Not_EXIST'|lang}-->",oncorrect:"<!--{'PLEASE_INPUT_SERVER_ID_AGAIN'|lang}-->"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'SERVER_ERROR'|lang}-->"});
+	$("#UserId").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'BOTH_SIDES_CAN_INCLUDE_BLANK'|lang}-->"},onerror:"<!--{'SERVER_ERROR'|lang}-->"});
+})**/
+
+$(function(){
+	$("#submit").click(function(){
+		/**var server_id = $("#server_id").attr('value');
+		if(server_id==''){
+			alert("请选择服务器！");
+			return false;
+		}**/
+		
+		$("#form").ajaxSubmit({
+			dataType:'json',
+			async : false,    // 设置同步
+			data:{},
+			success:function(data){
+				$("#show_smg").html(data);
+				return false;
+			}
+		});
+		
+		
+	})
+	
+
+})
+
+
+
+</script>
+<fieldset>
+<legend><!--{'ADD_DONTTALK_USER'|lang}--></legend>
+<form action="" method="post" id="form" >
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="98%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">用户id：</th>
+        <td><input type="text" id='uid' name='uid' class="text" value="<!--{$_POST.uid}-->"/><span id="show_smg"></span></td>
+      </tr>
+      <tr>
+        <th scope="row">平台：</th>
+        <td>苹果<input type="radio" name='platformKey' value='1' checked="checked" /> 安卓<input type="radio" name='platformKey' value='2'/> </td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input id='submit' type="button" class="btn-blue" name="submit" value="<!--{'SUBMIT'|lang}-->" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>

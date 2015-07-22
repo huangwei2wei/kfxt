@@ -1,0 +1,50 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+</script>
+<fieldset>
+  <legend>封锁IP列表<a href="<!--{$Add_Url}-->">[添加]</a></legend>
+      <table width="100%">
+        <tr>
+		<th>ID</th>
+		<th>IP</th>
+		<th>结束时间</th>
+       	<th>操作</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+        	<td align="center"><!--{$list.Id}--></td>
+			<td align="center"><!--{$list.IP}--></td>
+			<td align="center"><!--{$list.EndTime}--></td>
+       		<td align="center"><a href="<!--{$Del_Url}-->&IP=<!--{$list.IP}-->">[删除]</a></td>
+        </tr>
+        <!--{/foreach}-->
+
+          <tr>
+            <th colspan="3" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

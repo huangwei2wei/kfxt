@@ -1,0 +1,18 @@
+<table width="100%" border="0" cellpadding="3">
+<!--{foreach from=$dataList key=key item=list}-->
+<tr>
+    <td>
+    	<!--{'13F7745F1C4F6C0FE0335BA69D87F53E'|lang}-->：<!--{$list.create_time}--><br/>
+       <!--{$list.info}-->
+    </td>
+</tr>
+<!--{foreachelse}-->
+<tr>
+    <td >
+    	<!--{'B9DB8476EED8A10C4B6A4510F1838DA8'|lang}-->。<!--{'484A262F3AB732249F9E52B4F86257B1'|lang}-->：<br/>
+        1、<!--{'E206523EC3D652848DA659465EAB9E70'|lang}-->。<br/>
+        2、<!--{'C92B14BC70A67E3D4C1B899083709612'|lang}-->，<!--{'2275165003346CE2429878A8853430B0'|lang}-->。
+    </td>
+</tr>
+<!--{/foreach}-->
+</table>

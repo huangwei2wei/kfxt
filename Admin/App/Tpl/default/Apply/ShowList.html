@@ -1,0 +1,171 @@
+<style type="text/css">
+ul{
+	margin:0px;
+	padding:0px;
+}
+ul li{
+	margin:3px;
+	list-style-type: none;
+	display:inline;
+}
+.isSend_0{color:#F00; font-weight:bold}
+.isSend_1{color:#060; font-weight:bold}
+.isSend_2{color:#666; font-weight:bold}
+.AutoNewline {
+    line-height: 150%;
+    overflow: hidden;
+    width:1000px;
+    word-wrap: break-word;
+}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='Id[]']").attr("checked",curCheck);
+	 });
+	$("#search :radio").click(function(){$("#search").submit();});
+})
+function formSubmit(curBtn){
+	if(confirm('确定要执行吗?')){
+		url=curBtn.attr("url");
+		$("#form").attr("action",url);
+		$("#form").submit();
+	}
+}
+</script>
+<fieldset>
+	<legend>搜索</legend>
+  <form action="" id="search" method="get">
+   	  <input type="hidden" value="<!--{$__CONTROL__}-->" name="c" />
+      <input type="hidden" value="<!--{$__ACTION__}-->" name="a" />
+      <table width="100%" border="0" cellpadding="3">
+      	<!--{if $_GET.selectgame == false}-->
+        <tr>
+          <th  nowrap="nowrap" scope="row">游戏</th>
+          <td><!--{html_radios options=$game_type selected=$_GET.game_type name="game_type"}--></td>
+        </tr>
+        <!--{/if}-->
+        <tr>
+          <th nowrap="nowrap" scope="row">运营商</th>
+          <td><!--{html_radios options=$operator_id selected=$_GET.operator_id name="operator_id"}--></td>
+        </tr>
+        <tr>
+          <th nowrap="nowrap" scope="row">类型</th>
+          <td><!--{html_radios options=$type selected=$_GET.type name="type"}--></td>
+        </tr>
+        <tr>
+          <th nowrap="nowrap" scope="row">状态</th>
+          <td><!--{html_radios options=$is_send selected=$_GET.is_send name="is_send"}--></td>
+        </tr>
+        <tr>
+          <th nowrap="nowrap" rowspan="2" scope="row">搜索</th>
+          <td>
+          	申请时间:
+            <input type="text" class="text" name="create_time_start" value="<!--{$_GET.create_time_start}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" />
+             - 
+             <input type="text" class="text" name="create_time_end" value="<!--{$_GET.create_time_end}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 23:59:59',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" />
+            申请IP:
+            <input type="text" class="text" name="apply_ip" value="<!--{$_GET.apply_ip}-->" />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+          	申请的玩家类型
+            <select name="player_type">
+            	<!--{html_options options=$player_type selected=$_GET.player_type }-->
+            </select>          	
+            <input class="text" type="text" name="player_info" value="<!--{$_GET.player_info}-->" />
+          	申请人
+            <select onchange="$('#search').submit()" name="apply_user_id">
+            	<!--{html_options options=$users selected=$_GET.apply_user_id}-->
+            </select>
+            审核人
+              <select onchange="$('#search').submit()" name="audit_user_id">
+              	<!--{html_options options=$users selected=$_GET.audit_user_id}-->
+         	  </select>
+          <input type="submit" class="btn-blue" value="提交" /> 
+          
+         </td>
+        </tr>
+      </table>
+    </form>
+</fieldset>
+<fieldset>
+	<legend>列表 [<a href="<!--{$url.URL_MyCsApply}-->">我的申请</a>] [<a href="<!--{$url.URL_MyCsAudit}-->">我已审核</a>]</legend>
+    <table width="100%" border="0" cellpadding="3">
+    <form action="" method="post" id="form">
+       <tr>
+     	<td><input type="checkbox" onclick='$(":checkbox[name=Id[]]").attr("checked",$(this).attr("checked"));' />全选</td>
+        <td colspan="11">
+        	<!--input type="button" class="btn-blue" onclick="formSubmit($(this))" url="<!--{$url.OperationFRG_AuditDel}-->" value="删除未审核" /-->
+        	<input type="button" class="btn-blue" onclick="formSubmit($(this))" url="<!--{$url.accept}-->" value="审核" />
+            <input type="button" class="btn-blue" onclick="formSubmit($(this))" url="<!--{$url.reject}-->" value="拒绝" />
+        </td>
+      </tr>
+      <tr>
+        <th nowrap="nowrap" scope="col">Id</th>
+        <th nowrap="nowrap" scope="col">返回标识</th>
+        <th nowrap="nowrap" scope="col">申请类型</th>
+        <th nowrap="nowrap" scope="col">游戏</th>
+        <th nowrap="nowrap" scope="col">运营商</th>
+        <th nowrap="nowrap" scope="col">服务器</th>        
+        <th nowrap="nowrap" scope="col">申请人/IP</th>
+        <th nowrap="nowrap" scope="col">申请时间</th>
+        <th nowrap="nowrap" scope="col">审核人/IP</th>
+        <th nowrap="nowrap" scope="col">审核时间</th>
+        <th nowrap="nowrap" scope="col">状态</th>
+        <th nowrap="nowrap" scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td nowrap="nowrap" align="center"><!--{if $list.is_send==0}--><input type="checkbox" name="Id[]" value="<!--{$list.Id}-->" /><!--{/if}--><!--{$list.Id}--></td>
+        <td nowrap="nowrap" align="center"><!--{if $list.result_mark}--><!--{$list.result_mark}--><!--{else}--><font color="#666666">无</font><!--{/if}--></td>
+        <td nowrap="nowrap" class="td_move" onclick="$('#detail_<!--{$list.Id}-->').toggle()"><!--{$list.type}--></td>
+        <td nowrap="nowrap"><!--{$list.game_type}--></td>
+        <td nowrap="nowrap"><!--{$list.operator_id}--></td>
+        <td nowrap="nowrap"><!--{$list.server_id}--></td>
+        <td nowrap="nowrap"><!--{$list.apply_user_id}--> <font color="#999999">/</font><!--{$list.apply_ip|default:'<font color="#999999">无</font>'}--></td>
+        <td nowrap="nowrap"><!--{$list.create_time|default:'<font color="#999999">无</font>'}--></td>
+        <td nowrap="nowrap"><!--{$list.audit_user_id|default:'<font color="#999999">无</font>'}--> <font color="#999999">/</font><!--{$list.audit_ip|default:'<font color="#999999">无</font>'}--></td>
+        <td nowrap="nowrap"><!--{$list.send_time|default:'<font color="#999999">无</font>'}--></td>
+        <td nowrap="nowrap"><span class='isSend_<!--{$list.is_send}-->' ><!--{$list.is_send_info}--></span></td>
+        <td nowrap="nowrap"><!--{if $list.url_view}--><a href="<!--{$list.url_view}-->">察看详情</a><!--{/if}--></td>
+      </tr>
+      <tr>
+      	<td colspan="12" style=" line-height:150%; padding-left:10px; padding-bottom:15px;<!--{if $list.is_send != 0}-->display:none;<!--{/if}-->" id="detail_<!--{$list.Id}-->">
+			<div class="AutoNewline">
+            <!--{$list.apply_info|nl2br}-->
+            
+            <!--{if $list.is_send==1}-->
+            <!--如果审核将显示审核的内容-->
+            <hr size="1" />
+            审核发送状态：<br />
+				<!--{$list.send_result}-->
+            <!--{/if}-->
+            </div>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <td colspan="12"><!--{$noData}--></td>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+     	<td><input type="checkbox" id="allcheck" />全选</td>
+        <td colspan="11">
+        	<!--input type="button" class="btn-blue" onclick="formSubmit($(this))" url="<!--{$url.OperationFRG_AuditDel}-->" value="删除未审核" /-->
+        	<input type="button" class="btn-blue" onclick="formSubmit($(this))" url="<!--{$url.accept}-->" value="审核" />
+            <input type="button" class="btn-blue" onclick="formSubmit($(this))" url="<!--{$url.reject}-->" value="拒绝" />
+        </td>
+      </tr>
+      </form>
+      <tr>
+        <td colspan="12" align="right"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+    
+</fieldset>

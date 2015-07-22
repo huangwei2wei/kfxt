@@ -1,0 +1,76 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"服务器ID不存在",oncorrect:"请重新输入服务器ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"服务器数值不正确"});
+	$("#name").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"卡密名称不能为空,请确认"});
+	$("#numbers").formValidator({onshow:"请输入生成数量",oncorrect:"输入正确"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"生成数量不正确"});
+	$("#gold").formValidator({onshow:"请输入金币数量",oncorrect:"输入正确"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"金币数量不正确"});
+	$("#good").formValidator({onshow:"请输入粮食数量",oncorrect:"输入正确"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"粮食数量不正确"});
+	$("#copper").formValidator({onshow:"请输入银币数量",oncorrect:"输入正确"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"银币数量不正确"});
+	$("#forces").formValidator({onshow:"请输入兵力数量",oncorrect:"输入正确"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"兵力数量不正确"});
+	$("#exploit").formValidator({onshow:"请输入军功数量",oncorrect:"输入正确"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"军功数量不正确"});
+	$("#prestige").formValidator({onshow:"请输入威望",oncorrect:"输入正确"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"威望不正确"});
+	$("#token").formValidator({onshow:"请输入军令",oncorrect:"输入正确"}).regexValidator({regexp:"num1",datatype:"enum",onerror:"军令不正确"});
+})
+</script>
+<fieldset>
+<legend>卡密数值设定
+</legend><form action="" method="post" id="form" >
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td>卡密名称：<input type="text" name="name" id="name" class="text" /><div id="nameTip"></div></td>
+    <td>有效时间：
+      <input type="text" class="text" name="beginTime" value="<!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+       - 
+      <input type="text" class="text" name="endTime" value="<!--{$smarty.now|strtotime:'+1 week'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|strtotime:'+1 week'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+    </td>
+    <td>生成数量：
+      <input name="numbers" type="text" class="text" id="numbers" value="0" /><div id="numbersTip"></div></td>
+  </tr>
+  <tr>
+    <td>
+      <select name="goldType">
+      	<option value="4">GM充入金币</option>
+        <option value="5">GM套餐金币</option>
+        <option value="6">智能金币（活动在这里）</option>
+      </select>
+      <input name="gold" type="text" class="text" id="gold" value="0" /><div id="goldTip"></div></td>
+    <td>粮食：
+      <input name="good" type="text" class="text" id="good" value="0" /><div id="goodTip"></div></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>银币：
+      <input name="copper" type="text" class="text" id="copper" value="0" /><div id="copperTip"></div></td>
+    <td>兵力：
+      <input name="forces" type="text" class="text" id="forces" value="0" /><div id="forcesTip"></div></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>军功：
+      <input name="exploit" type="text" class="text" id="exploit" value="0" /><div id="exploitTip"></div></td>
+    <td>威望：
+      <input name="prestige" type="text" class="text" id="prestige" value="0" /><div id="prestigeTip"></div></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>军令：
+      <input name="token" type="text" class="text" id="token" value="0" /><div id="tokenTip"></div></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3"><input type="submit" class="btn-blue" name="submit" value="提交" /></td>
+    </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,83 @@
+﻿<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+	<legend><!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}--></legend>
+    <form action="" method="get" id="search">
+    <input type="hidden" name="c" value="Faq" />
+    <input type="hidden" name="a" value="Player" />
+    <input type="hidden" name="doaction" value="ev_manage" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th nowrap scope="row"><!--{'BA08216F13DD1742157412386EEE1225'|lang}--></th>
+        <td><!--{html_radios options=$gameTypes selected=$selected.game_type_id name="game_type_id" onclick="$('#search').submit()"}--></td>
+      </tr>
+      <tr>
+        <th nowrap scope="row">语言</th>
+        <td><!--{html_radios options=$lang name="lang" selected=$selected.lang onclick="$('#search').submit()"}--></td>
+      </tr>
+      <tr>
+        <th nowrap scope="row"><!--{'26CA20B161C33362D88EB0BA0BC90751'|lang}--></th>
+        <td><!--{html_radios options=$source selected=$selected.source name="source" onclick="$('#search').submit()"}--></td>
+      </tr>
+      <tr>
+        <th nowrap scope="row"><!--{'C21E5C093C1B3307193CA142B7DF2FE9'|lang}--></th>
+        <td><!--{html_radios options=$whether selected=$selected.whether  name="whether" onclick="$('#search').submit()"}--></td>
+      </tr>
+      <!--{if $selected.whether!='' && $selected.whether=='0'}-->
+      <tr>
+        <th nowrap scope="row"><!--{'4BA8D5A03FD7C1AEC5AABE8C503CF3EE'|lang}--></th>
+        <td><!--{html_radios options=$faqOpinion selected=$selected.faq_opinion name="faq_opinion" onclick="$('#search').submit()"}--></td>
+      </tr>
+      <!--{/if}-->
+      <tr>
+        <th nowrap scope="row"><!--{'CD649F76D42355E6AEF72227F9152FEB'|lang}--></th>
+        <td>
+      <input name="start_time" type="text" id="start_time" class="text" onFocus="WdatePicker({startDate:'<!--{$selected.time.start}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" value="<!--{$selected.time.start}-->"/>
+      <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}-->
+      <input name="end_time" type="text" id="end_time" class="text" onFocus="WdatePicker({startDate:'<!--{$selected.time.end}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" value="<!--{$selected.time.end}-->"/>
+        </td>
+      </tr>
+      <tr>
+        <th nowrap scope="row">FaqId</th>
+        <td><input type="text" name="faq_id" class="text" value="<!--{$selected.faq_id}-->" /> <input class="btn-blue" type="submit" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /></td>
+      </tr>
+    </table>
+    </form>
+</fieldset>
+<fieldset>
+	<legend><!--{'3712972D84ADF48ACBD6AD24B4D75AD0'|lang}--></legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">FAQ<!--{'32C65D8D7431E76029678EC7BB73A5AB'|lang}--></th>
+        <th scope="col"><!--{'9D1AF8A250315FB503099EA5C384E1E7'|lang}--></th>
+        <th scope="col"><!--{'D0771A42BBC49A6941F59913FCDA35E3'|lang}--></th>
+        <th scope="col"><!--{'1AC3833D535E0BBEFDCBCB3624D85812'|lang}--></th>
+        <th scope="col"><!--{'C21E5C093C1B3307193CA142B7DF2FE9'|lang}--></th>
+        <th scope="col"><!--{'4BA8D5A03FD7C1AEC5AABE8C503CF3EE'|lang}--></th>
+        <th scope="col"><!--{'98EFC709E80C2A171EBB9AF3F1C7F088'|lang}--></th>
+        <th scope="col"><!--{'1F0A3A1C759E4FA35C9946308299A892'|lang}--></th>
+        
+      </tr>
+    <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td scope="col"><!--{$list.Id}--></td>
+        <td scope="col"><!--{$list.question|default:'<font color="#999999">已删除</font>'}--></td>
+        <td scope="col"><!--{$list.word_game_type_id}--></td>
+        <td scope="col"><!--{$list.word_kind_id}--></td>
+        <td scope="col"><!--{$list.word_lang_id}--></td>
+        <td scope="col"><!--{$list.word_faq_whether}--></td>
+        <td scope="col"><!--{$list.opinion}--></td>
+        <td scope="col"><!--{$list.date_create}--></td>
+        <td scope="col"><a href="<!--{$list.url_detail}-->"><!--{'505B1569C9188754D082D9EFCA35D204'|lang}-->FAQ<!--{'1F0A3A1C759E4FA35C9946308299A892'|lang}--></a></td>
+      </tr>
+    <!--{foreachelse}-->
+      <tr>
+        <th colspan="9"><!--{$noData}--></th>
+      </tr>
+    <!--{/foreach}-->
+      <tr>
+        <td align="right" colspan="9"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+</fieldset>

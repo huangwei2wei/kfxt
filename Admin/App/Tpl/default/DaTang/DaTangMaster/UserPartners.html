@@ -1,0 +1,92 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script type='text/javascript'>
+function buttonsub(){
+	$(".testclass").attr("value",$('#cause').val());
+} 
+</script>
+<fieldset>
+<legend>增加挑战次数</legend>
+
+
+    <table border="0" cellpadding="3">
+      <tr>
+      	<th scope="row" colspan="3">修改玩家的属性</th>
+      </tr>
+      <form action="" method="get" id="form">
+      <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+      <input type="hidden" name="zp" value="DaTang"/>
+      <input type="hidden" name="a" value="UserPartners"/>
+      <input type="hidden" name="c" value="DaTangMaster"/>
+      <tr>
+        <th scope="row">玩家ID</th>
+        <td colspan="2">
+        
+        <input type="text" class="text" name="UserId" value='<!--{$UserId}-->'/>
+<!--<label>
+<input class="radio" type="radio" value="0" name="user_type" checked="checked">
+Id
+</label>
+<label>
+<input class="radio" type="radio" value="1" name="user_type">
+用户名
+</label>
+<label>
+<input class="radio" type="radio" value="2" name="user_type">
+昵称
+</label>-->
+
+        <input type="submit" class="btn-blue" value='确认'/>
+        
+        </td>
+      </tr>
+      </form>
+      <!--{if $userinfo_display}-->
+      <tr>
+      <tr class="">
+		<th scope="row">操作原因</th>
+		<td colspan="2">
+		<textarea id="cause" class="" rows="10" cols="60" name="cause" onchange='buttonsub()'></textarea>
+		</td>
+		</tr>
+        <td colspan="3">
+      <!--{foreach from=$item key=key item=list}-->
+        	<table width='100%'>
+        	<form action="<!--{$actionurl}-->" method="post">
+        	<input type="hidden" name="cause" value="" class='testclass'/>
+        	<input type="hidden" name="userId" value="<!--{$UserId}-->"/>
+        		<!--{foreach from=$list key=keyson item=listson}-->
+        		<tr>
+        		<!--{if $listson.tag==1}-->
+        			<th colspan="3">
+        				<!--{$listson.name}-->:<!--{$listson.value}-->
+        				<input type="hidden" name="<!--{$keyson}-->" value="<!--{$listson.value}-->"/>
+        			</th>
+        		<!--{else}-->
+        			<td><!--{$listson.name}-->:</td>
+        			<td><!--{$listson.value}--></td>
+        			<td><input type='text' name='<!--{$keyson}-->' class='text' /></td>
+        		<!--{/if}-->
+        		</tr>
+        		<!--{/foreach}-->
+        		<tr>
+        			<td colspan="3"><input type="submit" class="btn-blue" value='确认' onclick='buttonsub()'/></td>
+        		</tr>
+        	</form>
+        	</table>
+        	
+        <br><br>
+      <!--{/foreach}-->
+      	</td>
+      </tr>
+      
+		<!--{/if}-->
+    </table>
+
+</fieldset>
+<!--{/if}-->

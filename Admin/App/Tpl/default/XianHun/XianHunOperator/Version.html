@@ -1,0 +1,32 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+
+
+
+<fieldset>
+  <legend>公告</legend>
+  
+ <form method="post" action=""> 
+      <table width="50%" border="0" cellpadding="3" >
+      
+      <tr>
+        <th scope="col">版本号为</th>
+        <th scope="col">修改</th>
+      </tr>
+      <tr>
+      	<td><!--{$Version}--></td>
+      	<td>
+      	
+      		<input type="text" name="Version" id="Version" class="text"/>
+      		<input type="submit" class="btn-blue"  value="修改" />
+      	</td>
+      </tr>
+    </table>
+</form>
+
+
+</fieldset>
+<!--{/if}-->

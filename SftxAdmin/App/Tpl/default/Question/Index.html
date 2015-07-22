@@ -1,0 +1,27 @@
+<center>
+<form action="<!--{$url.Question_Ask}-->" method="post" id="question">
+<table width="30%" border="0" cellpadding="3">
+  <tr>
+    <th>产品类型：</th>
+    <td>
+    	<!--{html_radios name="game_type" options=$gameTypeList onclick="changeGame($(this).val())"}-->
+    </td>
+  </tr>
+  <tr>
+    <th>问题类型：</th>
+    <td>
+    	<select name="question_type" id="question_type">
+        	<option value="">请选择游戏类型</option>
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <th>问题标题：</th>
+    <td><input type="text" class="text" name="title" /></td>
+  </tr>
+  <tr>
+    <td colspan="2"><input type="submit" class="btn-blue" value="提交" /></td>
+    </tr>
+</table>
+</form>
+</center>

@@ -1,0 +1,131 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<style type="text/css">
+.addline{
+	padding:3px;
+}
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:100%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+#reward input{
+	background:#FFF;
+	border-bottom:1px solid #CCC;
+	border-right:1px solid #CCC;
+	border-top:1px solid #666;
+	border-left:1px solid #666;
+	}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/default/frg.js"></script>
+<script language="javascript">
+
+<!--{if $objData}-->
+var objData=eval(<!--{$objData}-->);
+<!--{/if}-->
+
+<!--{if $toolData}-->
+var toolData=eval(<!--{$toolData}-->);
+<!--{/if}-->
+
+<!--{if $effData}-->
+var effData=eval(<!--{$effData}-->);
+<!--{/if}-->
+
+
+var condInputNum=1;
+var effectInputNum=1;
+var toolInputNum=1;
+
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"<!--{'C566CA59602C7C5C0D3FE5E18ADE447D'|lang}-->ID<!--{'D7D11654A707D7E7B661C90295E58B20'|lang}-->",oncorrect:"<!--{'124D617A6875038C81E03DEC5E2501F4'|lang}-->ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'BA2DD64CC4F6DDF27CB1526EFB449E2D'|lang}-->"});
+	$("#Title").formValidator({onshow:"<!--{'FD0B68B28FAE1EC061195E662CF65F04'|lang}-->",oncorrect:"<!--{'D9113574D227D62353185BC9F33CB783'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'FD0B68B28FAE1EC061195E662CF65F04'|lang}-->"},onerror:"<!--{'C6A83E762104AEF0EA15892D5C9B31D1'|lang}-->"});
+	$("#MsgContent").formValidator({onshow:"<!--{'FA967BD016F6A501D1D651D4F42642A1'|lang}-->",oncorrect:"<!--{'51CD9E88214F5135626C0CFB95CDEFF4'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'FA967BD016F6A501D1D651D4F42642A1'|lang}-->"},onerror:"<!--{'48E93DB8F2E59D91DB5EE7B439AFD9CE'|lang}-->"});
+	$("#AwardDesc").formValidator({onshow:"<!--{'1E57510A82AD4A2D3863B5803D5E9E9F'|lang}-->",oncorrect:"<!--{'592A1514885D941CDD358F91B54E30FF'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'A11CC7A65B27F3993D58438D275F3447'|lang}-->"},onerror:"<!--{'4FB2667AF2025422770FBFAB26D3CA67'|lang}-->"});
+})
+
+</script>
+<fieldset>
+<legend><!--{'471855DDACC691B45EE0645C2183465C'|lang}--> [<font color="#0000FF"><!--{'ED4EBD5BB7CFCAD8BEDE3C87F8C6AA65'|lang}--></font>]</legend>
+
+<form id="form" action="" method="post" >
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row"><!--{'902A3DD676DF1D56EA8D5DAB69C15A2B'|lang}--></th>
+    <td><input type="text" class="text" name="Activity[Title]" id="Title" size="80" /><div id="TitleTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'C360E994DBCFFDF31E86D2D8875370E1'|lang}--></th>
+    <td><input type="text" class="text" name="Activity[OrderId]" id="Title" size="80" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'13955E03D40587B0147A40BD84574BE0'|lang}--></th>
+    <td>
+    	<select name="Activity[Identifier]">
+        	<option value=""><!--{'708C9D6D2AD108AB2C560530810DEAE9'|lang}-->...</option>
+        	<!--{foreach from=$types key=key item=list}-->
+            <option value="<!--{$key}-->"><!--{$list.Name}--></option>
+            <!--{/foreach}-->
+        </select>
+    </td>
+  </tr>
+  
+  <tr>
+    <th scope="row"><!--{'6648AAE2D70C707B46C67E202343510F'|lang}-->：</th>
+    <td><input type="text" class="text" name="Activity[Img]" id="Activity[Img]" value="" /><div id="Activity[Img]Tip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'AE57B19F893F64784C70BD2AEA0D9899'|lang}--></th>
+    <td><input type="radio" name="Activity[IsShow]" value="1" checked="checked" /><!--{'0A60AC8F02CCD2CF723F927284877851'|lang}--> <input type="radio" name="Activity[IsShow]" value="0" /><!--{'C9744F45E76D885AE1C74D4F4A934B2E'|lang}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'5022B711F2719F34D89734D2AD556145'|lang}--></th>
+    <td><input type="radio" name="Activity[IsOpen]" value="1" checked="checked" /><!--{'0A60AC8F02CCD2CF723F927284877851'|lang}--> <input type="radio" name="Activity[IsOpen]" value="0" /><!--{'C9744F45E76D885AE1C74D4F4A934B2E'|lang}--></td>
+  </tr>
+
+  <tr>
+    <th scope="row"><!--{'0CBB00EF851BEDCCECD020619CF7817E'|lang}--></th>
+    <td><textarea name="Activity[Content]" id="MsgContent" rows="6" cols="50"></textarea>
+      <!--{'EBF8E2135BC8F72C001BE491F051F478'|lang}-->：{Var} <!--{'1395D94DDE08B653A7EEE26CC832D2E7'|lang}-->，{Award} <!--{'3F94850884BD597B1C6F7A067D9AC5E6'|lang}-->
+<div id="MsgContentTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'44023FE545CA633C0ED238AD953979B3'|lang}--></th>
+    <td><textarea name="Activity[AwardDesc]" id="AwardDesc" rows="6" cols="50"></textarea><div id="AwardDescTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'C799F50DCF47A8351AB58361EBB8BB94'|lang}--></th>
+    <td>
+      <input type="text" class="text" name="Activity[StartTime]" value="<!--{$smarty.now|strtotime:'+1 hours'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/> 
+      <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}-->
+      <input type="text" class="text" name="Activity[EndTime]" value="<!--{$smarty.now|strtotime:'+1 day'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|strtotime:'+1 day'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+      </td>
+  </tr>
+  <tr>
+    <th scope="row">活动链接</th>
+    <td>
+		<input type="text" class="text" name="Activity[ActivityLink]" id="Activity[ActivityLink]" value="" />
+    </td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">
+      <input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" />
+      </th>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

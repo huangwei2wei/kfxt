@@ -1,0 +1,36 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"<!--{'SERVER_ID_Not_EXIST'|lang}-->",oncorrect:"<!--{'PLEASE_INPUT_SERVER_ID_AGAIN'|lang}-->"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'SERVER_ERROR'|lang}-->"});
+	$("#MsgTitle").formValidator({onshow:"<!--{'PLEASE_ENTER_MESSAGE_TITLE'|lang}-->",oncorrect:"<!--{'MESSAGE_TITLE_CORRECT'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'PLEASE_ENTER_MESSAGE_TITLE'|lang}-->"},onerror:"<!--{'MESSAGE_TITLE_NEED'|lang}-->"});
+	$("#MsgContent").formValidator({onshow:"<!--{'PLEASE_ENTER_MESSAGE_CONTENT'|lang}-->",oncorrect:"<!--{'MESSAGE_CONTENT_CORRECT'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'PLEASE_ENTER_MESSAGE_CONTENT'|lang}-->"},onerror:"<!--{'MESSAGE_CONTENT_NEED'|lang}-->"});
+	$("#UserIds").formValidator({onshow:"<!--{'USER_ID_SPLITE'|lang}-->",oncorrect:"<!--{'CORRECT_ENTER'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'PLEASE_ENTER_USER_ID'|lang}-->"},onerror:"<!--{'USER_ID_CAN_BE_NULL'|lang}-->"});
+})
+</script>
+<form id="form" action="" method="post">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row"><!--{'MESSAGE_TITLE'|lang}--></th>
+    <td><input name="title" id="MsgTitle" type="text" class="text" size="60" /><div id="MsgTitleTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'MESSAGE_CONTENT'|lang}--></th>
+    <td><textarea name="content" id="MsgContent" cols="60" rows="10"></textarea><div id="MsgContentTip"></div></td>
+  </tr>
+  <tr  <!--{if $_GET.lock}-->style="display:none"<!--{/if}-->>
+    <th scope="row"><!--{'SENT_TO_THE_FOLLOWING_USERS'|lang}--></th>
+    <td><textarea name="userIds" id="UserIds" cols="60" rows="10"><!--{$users}--></textarea><div id="UserIdsTip"></div></td>
+  </tr>
+ 
+  <tr>
+    <th colspan="2" scope="row"><input type="submit" class="btn-blue" name="submit" value="<!--{'SEND_NOW'|lang}-->" /></th>
+  </tr>
+</table>
+</form>
+<!--{/if}-->

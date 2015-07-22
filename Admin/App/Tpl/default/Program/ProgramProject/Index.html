@@ -1,0 +1,42 @@
+<fieldset>
+	<legend>项目列表</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">项目名称</th>
+        <th scope="col">负责人</th>
+        <th scope="col">详细内容</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td><!--{$list.name}--></td>
+        <td><!--{$list.word_principal_user_id }--></td>
+        <td title="<!--{$list.detail}-->"><!--{$list.detail|truncateutf8:"20"}--></td>
+        <td>
+        	<a href="<!--{$list.url_edit}-->">修改</a>
+            <a href="<!--{$list.url_del}-->">删除</a>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+			<fieldset>
+            	<legend>[<!--{$list.name}-->] 项目成员</legend>
+                <!--{foreach from=$list.users item=user}-->
+                    <span><!--{$user.nick_name}--></span> .
+                <!--{foreachelse}-->
+                    <a rel="">暂无成员</a>
+                <!--{/foreach}-->  
+            </fieldset>      
+        </td>
+        <td></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="5"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+
+</fieldset>

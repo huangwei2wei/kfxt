@@ -1,0 +1,49 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+	<legend>活动配置</legend>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">活动id</th>
+    <th scope="col">活动名称</th>
+    <th scope="col">开始时间</th>
+    <th scope="col">结束时间</th>
+    <th scope="col">活动时间段</th>
+    <th scope="col">活动介绍</th>
+    <th scope="col">活动奖励</th>
+    <th scope="col">是否开启</th>
+    <th scope="col">参数</th>
+    <th scope="col">积分</th>
+    <th scope="col">限制积分</th>
+    <th scope="col">操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.id}--></td>
+    <td><!--{$list.name}--></td>
+    <td><!--{$list.beginTime}--></td>
+    <td><!--{$list.endTime}--></td>
+    <td><!--{$list.section}--></td>
+    <td><!--{$list.intro}--></td>
+    <td><!--{$list.award}--></td>
+    <td>
+        <!--{switch var=$list.activation}-->
+            <!--{case value=1}-->开启<!--{/case}-->
+            <!--{case value=2}-->关闭<!--{/case}-->
+            <!--{default}--><!--{$list.activation}-->
+        <!--{/switch}-->
+    </td>
+    <td><!--{$list.params}--></td>
+    <td><!--{$list.score}--></td>
+    <td><!--{$list.limitScore}--></td>
+    <td><a href="<!--{$list.URL_edit}-->">编辑</a></td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+
+    
+</fieldset>
+<!--{/if}-->

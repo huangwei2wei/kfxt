@@ -1,0 +1,56 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+
+<fieldset>
+  <legend>搜索</legend>
+  <form id="search" action="" method="get">
+    <input type="hidden" name="c" value="ShareToCs" />
+    <input type="hidden" name="a" value="ShareInfo" />
+    <input type="hidden" name="zp" value="LianYun" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th width="100" scope="col">游戏</th>
+        <td ><!--{html_radios options=$game_type_id name="game_type_id" selected=$selected.game_type_id onclick="$('#search').submit()"}--></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+        	标题:<input class="text" type="text" name="title" value="<!--{$selected.title}-->">
+            内容:<input class="text" type="text" name="content" value="<!--{$selected.content}-->">
+            <input class="btn-blue" type="submit" value="搜索" />
+        </td>
+      </tr>
+    </table>
+   </form>
+</fieldset>
+
+<fieldset>
+	<legend>合作方详细信息</legend>
+	<a href="<!--{$url.share_info_add}-->" >添加信息</a>
+<table width="100%" border="0" cellspacing="0" cellpadding="3">
+<!--{foreach from=$dataList item=list}-->
+  <tr style="color:#FFF">
+    <th scope="col" style=" font-size:15px; font-weight:bold;" align="left"><!--{$list.title}--></th>
+    <th scope="col" style=" font-size:14px">游戏:<b><!--{$list.game_type_id}--></b></th>
+    <th scope="col" style=" font-size:14px">添加时间:<!--{$list.create_time}--></th>
+  </tr>
+  <tr>
+      <tr>
+        <td colspan="3">
+        	<div style="padding:5px; color:#999">
+        	[<!--{$list.user_id}--> 最后编辑于<!--{$list.update_time}-->]
+        	<a href="<!--{$list.url_edit}-->">编辑</a>
+            <a onclick="return confirm('确定删除？');" href="<!--{$list.url_del}-->">删除 </a>
+            </div>
+            <div style="padding:15px;"><!--{$list.content}--></div>
+        </td>
+      </tr>
+<!--{foreachelse}-->
+  <tr>
+    <th colspan="3" align="center"><!--{$noData}--></th>
+  </tr>
+<!--{/foreach}-->
+  <tr>
+    <th colspan="3" align="right"><!--{$pageBox}--></th>
+  </tr>
+</table>
+
+</fieldset>

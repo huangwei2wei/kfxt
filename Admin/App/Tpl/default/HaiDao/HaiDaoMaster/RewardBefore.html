@@ -1,0 +1,101 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<style type="text/css">
+.addline{
+	padding:3px;
+}
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:100%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/default/frg.js"></script>
+<script language="javascript">
+
+<!--{if $toolData}-->
+var toolData=eval(<!--{$toolData}-->);
+<!--{/if}-->
+
+<!--{if $effData}-->
+var effData=eval(<!--{$effData}-->);
+<!--{/if}-->
+
+<!--{if $outfitData}-->
+var outfitData=eval(<!--{$outfitData}-->);
+<!--{/if}-->
+
+var effectInputNum=1;
+var toolInputNum=1;
+var outfitDataNum=1;
+
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"<!--{'C566CA59602C7C5C0D3FE5E18ADE447D'|lang}-->ID<!--{'D7D11654A707D7E7B661C90295E58B20'|lang}-->",oncorrect:"<!--{'124D617A6875038C81E03DEC5E2501F4'|lang}-->ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'BA2DD64CC4F6DDF27CB1526EFB449E2D'|lang}-->"});
+	$("#cause").formValidator({onshow:"<!--{'A73F63486CB97A8D6C136D7DC82F11D2'|lang}-->",oncorrect:"<!--{'FD75CEECBD2676048590A1695702F29A'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'A73F63486CB97A8D6C136D7DC82F11D2'|lang}-->"},onerror:"<!--{'E85E13CC2A5C76D4E44E62F70E1F1BED'|lang}-->"});
+	$("#UserIds").formValidator({onshow:"<!--{'1952027BDDA8E0106DBADDE43CA86F4D'|lang}-->ID,<!--{'2F7919916A82FDCC3FECDDC266B9D57B'|lang}-->','<!--{'F3BD3B485F83DD0327F19576EC0BC134'|lang}-->",oncorrect:"<!--{'315F61935B8933FF105D5FA610D202C3'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'1952027BDDA8E0106DBADDE43CA86F4D'|lang}-->ID"},onerror:"<!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->ID<!--{'281BADA7259F6BCB836F62AA0B3E8F48'|lang}-->"});
+	$("#MsgTitle").formValidator({onshow:"<!--{'EA63C4DC8F4020500FC0DBFBDB16D404'|lang}-->",oncorrect:"<!--{'5D04FE17DEB779C0EE90DC533FCDD2C1'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'EA63C4DC8F4020500FC0DBFBDB16D404'|lang}-->"},onerror:"<!--{'1DF7810C9F146426FCC2D187BB87D738'|lang}-->"});
+	$("#MsgContent").formValidator({onshow:"<!--{'FA967BD016F6A501D1D651D4F42642A1'|lang}-->",oncorrect:"<!--{'51CD9E88214F5135626C0CFB95CDEFF4'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'FA967BD016F6A501D1D651D4F42642A1'|lang}-->"},onerror:"<!--{'48E93DB8F2E59D91DB5EE7B439AFD9CE'|lang}-->"});
+})
+</script>
+<fieldset>
+<legend><!--{'345D447D5FD85787218851AFD2995114'|lang}--> [<font color="#FF0000"><!--{'541018CC8BD963A5718F321903B9D907'|lang}--></font>]</legend>
+
+<div id="showItem"></div>
+
+<form action="" method="post" id="form" >
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row"><!--{'C5AE2E7BD2CB8F79F3DD66FA7212B58B'|lang}--></th>
+    <td><textarea name="cause" cols="50" id="cause" rows="8"></textarea><div id="causeTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'A53DB51463C2D8EC4AE21144C4579A15'|lang}--></th>
+    <td><input type="text" class="text" name="MsgTitle" id="MsgTitle" size="80" value="" /><div id="MsgTitleTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'B87B77561E776367E6756E11EA652217'|lang}--></th>
+    <td><textarea name="MsgContent" id="MsgContent" rows="6" cols="50"></textarea><div id="MsgContentTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'C67DADA4A1A6B2CD747F6777D64CC7E7'|lang}--><br>
+      (<!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->ID<!--{'3712972D84ADF48ACBD6AD24B4D75AD0'|lang}-->,<!--{'2F7919916A82FDCC3FECDDC266B9D57B'|lang}-->&quot;,&quot;<!--{'666AA082EE6CC6494A690CF5D5614393'|lang}-->)</th>
+    <td><textarea name="UserIds" id="UserIds" cols="50" rows="8"><!--{$changeUsers}--></textarea>
+      <input type="radio" name="ReceiveType" checked="checked" value="0" /><!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->ID  
+      <input type="radio" name="ReceiveType" value="1" /><!--{'819767ADA1805B0F0117F10967B94D4D'|lang}--> 
+      <input type="radio" name="ReceiveType" value="2" /><!--{'B928A342787D4AA74AE7351F152B11A9'|lang}--> 
+      <div id="UserIdsTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'46C52C767383B0A4246F5149E7E585FE'|lang}--></th>
+    <td><input type="button" class="btn-blue" onclick="addEffect($(this))" value="<!--{'9617335C840B393D4E12F66620C06240'|lang}-->" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'62C341F9C880236471E35B60EE816B3B'|lang}--></th>
+    <td><input type="button" class="btn-blue" onclick="addTool($(this))" value="<!--{'BF9E805569213C27D1CE1C611B8B964E'|lang}-->" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'6D1DBD7967C78AD24B0F8E048EDAE339'|lang}--></th>
+    <td><input type="button" class="btn-blue" onclick="addOutfitData($(this))" value="<!--{'362D1FC1BB6AE3C9B1274B3E8C7A0BFC'|lang}-->" /></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">
+      <input type="submit" class="btn-blue" name="submit" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" />
+      </th>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

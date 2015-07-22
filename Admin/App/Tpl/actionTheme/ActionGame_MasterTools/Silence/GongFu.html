@@ -1,0 +1,57 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+	
+	
+</script>
+<fieldset>
+	<legend>
+   		<!--{'6667B6E72A6D93771C2C5ED565B99C25'|lang}--> 
+        [<a href="<!--{$URL_silenceLocalLog}-->"><!--{'EF3F818ACFFC4298DAC9B9B1C4116D54'|lang}--></a>]
+    	[<a href="<!--{$URL_silenceInGame}-->"><!--{'AA217DACDD4C9C35A8CEFF9AA26B3247'|lang}--></a>]
+        [<a href="<!--{$URL_silenceAdd}-->"><!--{'28B57E4AE4F55C07BDD4E5318AF955A9'|lang}--></a>]
+    </legend>
+	
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col"><!--{'069A4B89AE4E24F7718E5DF99E80B75D'|lang}-->ID</th>
+    <th scope="col"><!--{'7035C62FB00576FED9B3A1F2B7D48E6C'|lang}--></th>
+    <th scope="col"><!--{'23EB0E6024B9C5E694C18344887C4FE7'|lang}--></th>
+    <th scope="col"><!--{'F3FFB05BC6AED5B4335EFCC5979919C3'|lang}--></th>
+    <th scope="col"><!--{'F9AC4B2AA6B51D9578551CD06316D81A'|lang}--></th>
+    <th scope="col"><!--{'7E951D56D99D790EC4383BFB7B187DDD'|lang}--></th>
+    <th scope="col"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.game_user_id}--></td>
+    <td><!--{$list.game_user_account|default:'<font color="#999999">no</font>'}--></td>
+    <td><!--{$list.game_user_nickname|default:'<font color="#999999">no</font>'}--></td>
+    <td>
+    	<!--{if $list.sub_type==0}-->
+    		<!--{'2FEFD60314BD434D86B63966A9E3CF42'|lang}--> <!--{$list.endTime|default:'<font color="#999999">no</font>'}-->
+        <!--{elseif $list.sub_type==1}-->
+        	<!--{'BCEFCB977EA3CF0E5911F8A682955D92'|lang}-->
+        <!--{else}-->
+            <!--{$list.sub_type}-->
+        <!--{/if}-->
+    </td>
+    <td><!--{$list.user_id|default:'<font color="#999999">no</font>'}--></td>
+    <td><!--{$list.create_time|default:'<font color="#999999">no</font>'}--></td>
+    <td>
+    	<!--{if $list.sub_type != 1}-->
+        [<a onclick="return confirm('<!--{'061EE328C0FF5CC9AD0C60129563D982'|lang}-->？')" href="<!--{$list.URL_del}-->"><!--{'2D92531B433D44BFF47526F78E700034'|lang}--></a>]
+        <!--{/if}-->
+    </td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+
+    <div style="float:right"><!--{$pageBox}--></div>
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,66 @@
+<script language="javascript">
+$(function(){
+	$("#search :radio").click(function(){$("#search").submit();});
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='ids[]']").attr("checked",curCheck);
+	 });
+})
+</script>
+<fieldset>
+  <legend>搜索列表</legend>
+    <form id="search" action="" method="get">
+    <input type="hidden" name="c" value="User" />
+    <input type="hidden" name="a" value="MailIndex" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">消息类型</th>
+        <td><!--{html_radios options=$selectMailType selected=$selectedMailType name="mail_type"}--></td>
+      </tr>
+      <tr>
+        <th scope="row">是否阅读</th>
+        <td>
+        	<!--{html_radios options=$selectRead selected=$selectedRead name="read"}-->
+        </td>
+      </tr>
+    </table>
+	</form>
+</fieldset>
+<fieldset>
+  <legend>消息列表</legend>
+    <form onsubmit="return confirm('确定要删除吗?')" action="<!--{$url.User_MailDel}-->" method="post">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">是否阅读</th>
+        <th scope="col">消息类别</th>
+        <th scope="col">标题</th>
+        <th scope="col">发送时间</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td>
+        	<!--{if $list.is_read}-->
+            <input type="checkbox" name="ids[]" value="<!--{$list.Id}-->" />
+            <!--{/if}-->
+            <!--{$list.Id}-->
+        </td>
+        <td><a href="javascript:void(0)" is_read="<!--{$list.is_read}-->" onclick="readMail($(this))" cur_id="<!--{$list.Id}-->" url="<!--{$list.href}-->"><!--{$list.word_is_read}--></a></td>
+        <td><!--{$list.word_type}--></td>
+        <td><a href="javascript:void(0)" is_read="<!--{$list.is_read}-->" onclick="readMail($(this))" cur_id="<!--{$list.Id}-->" url="<!--{$list.href}-->"><!--{$list.title}--></a></td>
+        <td><!--{$list.create_time}--></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="5"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+      	<td colspan="5">全选<input type="checkbox" id="allcheck" /> <input type="submit" class="btn-blue" value="删除选中消息" /></td>
+      </tr>
+      <tr>
+        <td align="right" colspan="5"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+    </form>
+</fieldset>

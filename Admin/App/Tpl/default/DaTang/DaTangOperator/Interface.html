@@ -1,0 +1,27 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<fieldset>
+	<legend>接口配置</legend>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col" style="width:10%">配置id</th>
+    <th scope="col" style="width:10%">配置类型</th>
+    <th scope="col" style="width:70%">配置内容</th>
+    <th scope="col" style="width:10%">操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td style="width:10%"><!--{$list.id}--></td>
+    <td style="width:10%"><!--{$list.type}--></td>
+    <td style="width:70%"><!--{$list.content}--></td>
+    <td style="width:10%"><a href="<!--{$list.URL_edit}-->">编辑</a></td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+
+    
+</fieldset>
+<!--{/if}-->

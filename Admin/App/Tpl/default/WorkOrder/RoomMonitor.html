@@ -1,0 +1,56 @@
+<div>
+	<!--<!--{'6F20D18C0C2E0DEE94D9EF0537C6965E'|lang}-->-->
+    <fieldset>
+    	<legend><!--{'16A006ED3416E6D7FE5EF82B38332190'|lang}--></legend>
+        <div align="left">
+        	<!--{'D3250976434FA9AF2391C097ADA8E6AA'|lang}-->：
+            <!--{'E0DB25CFEFE0068147E36C0B1E88336B'|lang}-->：<!--{$roomClass._roomName}-->
+            <a href="<!--{$url.WorkOrder_KickAllUser}-->"><!--{'97121E81EFDE77DBE6B9BEC3298F5DDB'|lang}--></a>
+            <form action="<!--{$url.WorkOrder_RoomOnOff}-->" method="post">
+                <input type="checkbox" name="entrance" value="1" <!--{if $roomClass._entrance}-->checked="checked"<!--{/if}--> /><!--{'0B234C99D679C164A8C61F201B26858E'|lang}-->
+                <input type="checkbox" name="exit" value="1" <!--{if $roomClass._exit}-->checked="checked"<!--{/if}--> /><!--{'B7AC6B0A29BC7DF83330460718B7D5CE'|lang}-->
+                <input type="checkbox" name="workOrderStatus" value="1" <!--{if $roomClass._workOrderStatus}-->checked="checked"<!--{/if}--> /><!--{'19C3ECE939262FBA73BAD7F77569F800'|lang}-->
+                <input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" />
+            </form>
+        </div>
+	</fieldset>
+    <!--<!--{'6F20D18C0C2E0DEE94D9EF0537C6965E'|lang}-->-->
+    
+    <!--<!--{'45D7557F5A8BA71C9E07B1F8D9E1E846'|lang}-->-->
+    <fieldset>
+    	<legend><!--{'CE311315A7EF57421AA1E8A50EFEFD5D'|lang}--></legend>
+    	<table width="100%" border="0" cellpadding="3">
+          <tr>
+            <th scope="col"><!--{'819767ADA1805B0F0117F10967B94D4D'|lang}-->/<!--{'60D0458AC6EBEF0FFF1331AF196B3C82'|lang}--></th>
+            <th scope="col"><!--{'6B97E371B890DEE77C0D21F9530CB5B7'|lang}--></th>
+            <th scope="col"><!--{'D8BD9B46A5B62596C9278A7CB7CC0DCB'|lang}-->/<!--{'1EDFF073D48E05B9E79BB7516DA23A6E'|lang}-->/<!--{'6231A20EDAC3C66B463B7267472F88F6'|lang}--></th>
+            <th scope="col"><!--{'03B44682363260D915B60114F6AC37CE'|lang}--></th>
+            <th scope="col"><!--{'433C391D9EB1C70DD5C705B0A1F63F5C'|lang}-->/<!--{'A7888CAA5AFDEA69AA832C4B225EA0CB'|lang}--></th>
+            <th scope="col"><!--{'5FCF037054B9580A41186248A8E4AC4E'|lang}--></th>
+            <th scope="col"><!--{'B4157D17F133B3B1B9E626F830ED9DA3'|lang}--></th>
+            <th scope="col"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+          </tr>
+          <!--{foreach from=$dataList item=list}-->
+          <tr>
+            <td><!--{$list._userName}-->/<!--{$list._nickName}--></td>
+            <td><!--{$list.online}--></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>
+            	<a href="#"><!--{'409AFD938FEEAA76A17D81F3B65BB128'|lang}--></a>
+                <a href="#"><!--{'1EEC2D89472E9C22D723DF5892AFD7AA'|lang}--></a>
+                <a href="#"><!--{'D1840B4D19821FA8D8BDFE4EE55389DB'|lang}--></a>
+            </td>
+          </tr>
+          <!--{foreachelse}-->
+          <tr>
+            <th colspan="8"><!--{$noData}--></th>
+          </tr>
+          <!--{/foreach}-->
+        </table>
+    </fieldset>
+    <!--<!--{'45D7557F5A8BA71C9E07B1F8D9E1E846'|lang}-->-->
+</div>

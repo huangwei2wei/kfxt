@@ -1,0 +1,96 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='UserId[]']").attr("checked",curCheck);
+	 });
+	$("#Items").change();
+});
+
+function jumpUrl(url){
+	form=$("#form");
+	form.attr("action",url);
+	form.submit();
+}
+</script>
+<fieldset>
+	<legend><!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}--></legend>
+    <form action="" method="get">
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="doaction" value="message" />
+    <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <td colspan="4">
+            <select name="Query[TypeItems2]"><!--{html_options options=$selectTypeItem2 selected=$selectedArr.TypeItems2}--></select>
+            <select name="Query[Items]"><!--{html_options options=$selectItems selected=$selectedArr.Items}--></select>
+            <input type="text" name="Query[start]" class="text" value="<!--{$selectedArr.start|htmlspecialchars}-->" />
+            <select name="Query[TypeItems]"><!--{html_options options=$selectTypeItem selected=$selectedArr.TypeItems}--></select>
+            <!--{'4FF1E74E43A3586339251494117185AD'|lang}-->：
+            <input type="text" class="text" name="Query[StartTime]" value="<!--{$selectedArr.StartTime}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/> - 
+			<input type="text" class="text" name="Query[EndTime]" value="<!--{$selectedArr.EndTime}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+            <select name="PageSize"><!--{html_options options=$selectPage selected=$selectedArr.PageSize}--></select>
+        </td>
+      </tr>
+      <tr>
+        <th><!--{'32C65D8D7431E76029678EC7BB73A5AB'|lang}-->：</th>
+        <td><input type="text" name="Query[title]" size="50" value="<!--{$selectedArr.title|htmlspecialchars}-->" class="text" /></td>
+        <th><!--{'2D711B09BD0DB0AD240CC83B30DD8014'|lang}-->：</th>
+        <td><input type="text" name="Query[content]" size="50" value="<!--{$selectedArr.content|htmlspecialchars}-->" class="text" /> <input class="btn-blue" type="submit" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /></td>
+      </tr>
+    </table>
+    </form>
+</fieldset>
+
+<fieldset>
+	<legend><!--{'1DC2CCE5D4F46A91FDC467973741A9B4'|lang}--></legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap">ID</th>
+        <th nowrap="nowrap"><!--{'413DC937042E44E48F67C222A12489CD'|lang}--></th>
+        <th nowrap="nowrap"><!--{'88340EADC24F69A435DA5624BDE14AEA'|lang}--></th>
+        <th nowrap="nowrap"><!--{'32C65D8D7431E76029678EC7BB73A5AB'|lang}--></th>
+        <th nowrap="nowrap"><!--{'2D711B09BD0DB0AD240CC83B30DD8014'|lang}--></th>
+        <th nowrap="nowrap"><!--{'3FEA7CA76CDECE641436D7AB0D02AB1B'|lang}--></th>
+        <th nowrap="nowrap"><!--{'63B34D090839B9666723B00B758AFD3B'|lang}--></th>
+        <th nowrap="nowrap"><!--{'904D882D571B5C32A280378BF04366B2'|lang}--></th>
+        <th nowrap="nowrap"><!--{'AFAEEFA99B9CAA4D673E9C3F6CC01093'|lang}--></th>
+        <th nowrap="nowrap"><!--{'413DC937042E44E48F67C222A12489CD'|lang}-->UID</th>
+        <th nowrap="nowrap"><!--{'88340EADC24F69A435DA5624BDE14AEA'|lang}-->UID</th>
+        <th nowrap="nowrap"><!--{'2925BDD713E22DB77FC80E1F67639DAF'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=vo}-->
+      <tr>
+        <td nowrap="nowrap"><!--{$vo.Id}--></td>
+        <td nowrap="nowrap"><!--{$vo.sender}--></td>
+        <td nowrap="nowrap"><!--{$vo.incept}--></td>
+        <td><!--{$vo.title}--></td>
+        <td><!--{$vo.content}--></td>
+        <td nowrap="nowrap"><!--{$vo.flag}--></td>
+        <td nowrap="nowrap"><!--{$vo.sendtime}--></td>
+        <td nowrap="nowrap"><!--{$vo.delr}--></td>
+        <td nowrap="nowrap"><!--{$vo.dels}--></td>
+        <td nowrap="nowrap"><!--{$vo.senderid}--></td>
+        <td nowrap="nowrap"><!--{$vo.inceptid}--></td>
+        <td nowrap="nowrap"><!--{$vo.IsEvaluated}--></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="12"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}--> 
+      <tr>
+        <th colspan="12" align="right"><!--{$pageBox}--></th>
+      </tr>
+    </table>
+    </form>
+</fieldset>
+<!--{/if}-->

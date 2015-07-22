@@ -1,0 +1,42 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#title").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'752F8926DB21639D9F8ECDC7BF1D7159'|lang}-->"},onerror:"<!--{'1C556BF4A724BF1B83C6FC64D44DE0B2'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'752F8926DB21639D9F8ECDC7BF1D7159'|lang}-->"},onerror:"<!--{'81B8114F80F252C34993100C3BD6F046'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+	$("#interval").formValidator({onshow:"<!--{'62DF1C363CC3B9F23706E4504BC0EC25'|lang}-->",oncorrect:"<!--{'315F61935B8933FF105D5FA610D202C3'|lang}-->"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'49D109F09975997457A4623EEE9A558F'|lang}-->"});
+})
+</script>
+<fieldset>
+<legend>纹章、图腾</legend>
+<form action="" method="get" id="form">
+<input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+<input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+<input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table>
+	<tr>
+		<th>输入玩家Id</th>
+		<td><input type="text" class="text" name="playerid" value='<!--{$GET.playerid}-->' /></td>
+		<td><input type="submit" class="btn-blue" value="Submit" /></td>
+
+	</tr>
+		<!--{if $Msg}-->
+		<tr>
+		<td colspan="3">发送结果：<font color='red'><!--{$Msg}--></font></td>
+		</tr>
+		<!--{/if}-->
+</table>
+
+</form>
+</fieldset>
+<!--{/if}-->

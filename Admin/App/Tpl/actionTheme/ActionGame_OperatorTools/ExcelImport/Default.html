@@ -1,0 +1,72 @@
+
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
+<script language="javascript">
+//KE.init({id:'title',imageUploadJson : '<!--{$url.UploadImg_Bulletin}-->',afterCreate:function(id){KE.util.focus(id)}});
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#title").formValidator().inputValidator({min:1,max:140,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"公告标题不能为空,不能超过70个中文,请确认"});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"公告内容不能为空,请确认"});
+	$("#interval").formValidator({onshow:"请输入时间间隔",oncorrect:"输入正确"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"时间间隔不正确"});
+})
+function fontStyle(color,b,em){
+	var font1='<font color="'+color+'">';
+	var font2='</font>';
+	var b1='<b>';
+	var b2='</b>';
+	var em1='<em>';
+	var em2='</em>';
+	if(!color){
+		font1 = font2 = '';
+	}
+	if(!b){
+		b1 = b2 = '';
+	}
+	if(!em){
+		em1 = em2 = '';
+	}
+	var obj = $('#title');
+	obj.val(obj.val()+font1+b1+em1+'请输入文字'+em2+b2+font2);
+	view()
+}
+function linkAdd(){
+	var obj = $('#title');
+	obj.val(obj.val()+'<a href="event:请输入地址">请输入内容</a>');
+	view()
+}
+function view(){
+	$('#view').html($('#title').val());
+}
+function viewTitle(){
+	alert("注意：你选择了送给全服所有人！（客服人员禁止使用）");
+}
+
+function addattribute(){
+	var select = "<select name='attribute[]'>";
+	<!--{foreach from=$attribute item=list}-->
+		select+="<option value='<!--{$list.Key}-->'><!--{$list.Note}--></option>"
+	<!--{/foreach}-->
+		select+="</select>";
+		select+="&nbsp;&nbsp;<input class='text' type='text' style='width:50px;' name='attribute_mun[]'  /><br>";
+	$('#addattribute').append(select);	
+}
+
+function clearaddattribute(){
+	$('#addattribute').html("");
+}
+</script>
+<fieldset>
+<legend>Excel生成本地缓存</legend>
+<table border="0" cellpadding="3">
+
+</table>
+<form id="reply" enctype="multipart/form-data" method="post" action="<!--{$batch_url}-->">
+缓存文件名：<input type="text" name="FileName" class="text"/>
+Excel:<input type="file" style="margin:5px;" value="" name="Excel"><br/>
+<input type="submit" class="btn-blue" value="提交" />
+</form>
+</fieldset>

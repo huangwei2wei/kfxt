@@ -1,0 +1,57 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+	<legend>搜索列表</legend>
+    <form action="" method="post">
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="row">日期</th>
+        <td>
+        统计：<input type="text" class="text" name="start_date" value="<!--{$_POST.start_date}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/> 至
+        	 <input type="text" class="text" name="end_date" value="<!--{$_POST.end_date}-->" onFocus="WdatePicker({startDate:'%y-%M-30 23:59:59',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">审核人</th>
+        <td><select name="audit_user_id"><option value="">请选择...</option><!--{html_options options=$users selected=$_POST.audit_user_id}--></select> <input type="submit" class="btn-blue" value="提交" /></td>
+      </tr>
+    </table>
+    </form>
+</fieldset>
+
+<!--{if $displayTrue}-->
+<fieldset>
+	<legend>统计列表</legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col">日期</th>
+        <th scope="col">汇总</th>
+        <th scope="col"><!--{$auditType.1}--></th>
+        <th scope="col"><!--{$auditType.2}--></th>
+        <th scope="col"><!--{$auditType.3}--></th>
+        <th scope="col"><!--{$auditType.4}--></th>
+        <th scope="col"><!--{$auditType.5}--></th>
+        <th scope="col"><!--{$auditType.6}--></th>
+      </tr>
+      	<!--{foreach from=$dataList item=list key=key}-->
+      <tr>
+      
+           <td align="center"><!--{$key}--></td>
+           <td align="center"><!--{$list.total}--></td>
+           <td align="center"><!--{$list.1}--></td>
+           <td align="center"><!--{$list.2}--></td>
+           <td align="center"><!--{$list.3}--></td>
+           <td align="center"><!--{$list.4}--></td>
+           <td align="center"><!--{$list.5}--></td>
+           <td align="center"><!--{$list.6}--></td>
+        
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="8" scope="col"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      
+    </table>
+</fieldset>
+<!--{/if}-->

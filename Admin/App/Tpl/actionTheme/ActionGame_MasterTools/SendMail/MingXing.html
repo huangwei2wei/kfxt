@@ -1,0 +1,148 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+function addprop(propid,propname){
+	$('#proptd').append('<tr><td><input type="hidden" name="propid[]" value="'+propid+'"/></td><td>'+propname+':</td><td>数量<input type="text" value="0" class="text" name="propmun[]"/></td></tr>');
+}
+	function onSubmitplayer(obj){	
+		$.ajax({
+			dataType:'json',	
+			type: 'GET',
+			url: obj.attr('url')+"&typeid="+document.getElementById("type").value,
+			success:function(msg){
+				var json = eval(msg);				
+				if(1 == json.status){	
+					if(json.data.list.length>0){
+						$("#detail").html("");
+						$.each(json.data.list,
+								function(Id,subobj){ 
+									$('#detail').append('道具ID：'+subobj.templateId+' / 名称：'+subobj.name+'/ 物品品质:'+subobj.quality+'  <input type="button" value="添加" onclick="addprop(\''+subobj.templateId+'\',\''+subobj.name+'\')" class="btn-blue"><br/>');
+								}
+							);	
+					}else{
+						$('#detail').append('<div color="margin:5px;">无记录</div>');
+					}					
+				}
+				else if(0 == json.status){
+					alert(json.info);
+				}else{
+					alert('unknow error');
+				}
+			}
+		});
+	}
+
+	
+</script>
+<fieldset><legend>发送邮件</legend> <script language="javascript">
+    $(function(){
+        $.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+        $("#server_id").formValidator({onshow:"服务器ID不存在",oncorrect:"请重新输入服务器ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"服务器数值不正确"});
+        $("#cause").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"操作原因不能为空"});
+        $("#MsgTitle").formValidator({onshow:"请输入消息标题",oncorrect:"消息标题正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入消息标题"},onerror:"消息标题不能为空"});
+        $("#MsgContent").formValidator({onshow:"请输入消息内容",oncorrect:"消息内容正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入消息内容"},onerror:"消息内容不能为空"});
+        $("#users").formValidator({onshow:"请输入用户ID,用','号隔开",oncorrect:"输入正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入用户ID"},onerror:"用户ID不能为空"});
+    })
+    </script>
+<form id="form" action="" method="post" style='float: left'>
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="50%" border="0" cellpadding="3" style='float: left'>
+	<tr>
+		<th scope="row">操作原因</th>
+		<td><textarea name="cause" id="cause"
+			style="width: 400px; height: 60px;"></textarea>
+		<div id="causeTip"></div>
+		</td>
+	</tr>
+	<tr>
+		<th nowrap="nowrap" scope="row">消息标题</th>
+		<td><input name="titlemsg" id="MsgTitle" type="text" class="text" style="width: 400px;" />
+		<div id="MsgTitleTip"></div>
+		</td>
+	</tr>
+	<tr>
+		<th nowrap="nowrap" scope="row">消息内容</th>
+		<td><textarea name="content" id="MsgContent"
+			style="width: 400px; height: 80px;"></textarea>
+		<div id="MsgContentTip"></div>
+		</td>
+	</tr>
+	<!--{if !$_GET.lock}-->
+	<tr>
+		<th nowrap="nowrap" scope="row">发送给以下用户<br />
+		(用户之间用&quot;,&quot;号隔开)</th>
+		<td>
+		<div><!--{html_radios options=$playerTypes name="userType" selected=$userTypeSelect|default:3}-->
+		</div>
+		<textarea name="users" id="users" style="width: 400px; height: 100px;"><!--{$users}--></textarea>
+		<div id="usersTip"></div>
+		</td>
+	</tr>
+	<!--{/if}-->
+
+	<tr>
+		<th nowrap="nowrap" scope="row">是否发送道具</th>
+		<td>否<input class="radio" type="radio" value="0" name="isSendProp" checked="checked"> 是<input class="radio" type="radio" value="1" name="isSendProp"></textarea>
+		</td>
+	</tr>
+	<tr>
+		<th nowrap="nowrap" scope="row">赠送银币</th>
+		<td>
+			<input name="silverCoin" type="text" class="text"/>
+		</td>
+	</tr>
+	<tr>
+		<th nowrap="vouchers" scope="row">赠送礼券</th>
+		<td>
+			<input name="title" type="text" class="text"/>
+		</td>
+	</tr>
+	<tr>
+		<th nowrap="nowrap" scope="row">赠送金币</th>
+		<td>
+			<input name="goldCoin" type="text" class="text"/>
+		</td>
+	</tr>
+	<tr>
+		<th nowrap="nowrap" scope="row">发送道具</th>
+		<td>
+			<table id='proptd'>
+
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<th colspan="2" scope="row"><input type="submit" class="btn-blue"
+			name="sbm" value="立即发送" /></th>
+	</tr>
+
+
+</table>
+</form>
+<table width="35%" border="0" cellpadding="3" style='float: left'>
+	<tr>
+		<th nowrap="nowrap" scope="row">道具查询工具</th>
+		<td><select id="type">
+			<!--{foreach from=$type key=key item=list}-->
+			<option value="<!--{$key}-->"><!--{$list}--></option>
+			<!--{/foreach}-->
+		</select> <input class="btn-blue" type="button"
+			onclick="onSubmitplayer($(this))" value="查询" url="<!--{$ajax_url}-->"></td>
+	</tr>
+	<tr>
+		<td colspan='2' scope="row">
+		<div
+			style="overflow: auto; height: 400px; width: 100%; text-align: left;"
+			id="detail">
+		<div>
+		</td>
+	</tr>
+</table>
+</fieldset>
+<!--{/if}-->
+
+
+

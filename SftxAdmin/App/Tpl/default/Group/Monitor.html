@@ -1,0 +1,56 @@
+<div>
+	<!--房间的状态-->
+    <fieldset>
+    	<legend>房间管理</legend>
+        <div align="left">
+            房间名：<!--{$roomClass._roomName}-->
+            <a href="<!--{$url.WorkOrder_KickAllUser}-->">清除所有房间内的用户</a>
+            <form action="<!--{$url.WorkOrder_RoomOnOff}-->" method="post">
+                <input type="checkbox" name="entrance" value="1" <!--{if $roomClass._entrance}-->checked="checked"<!--{/if}--> />是否打开房间入口
+                <input type="checkbox" name="exit" value="1" <!--{if $roomClass._exit}-->checked="checked"<!--{/if}--> />是否打开房间出口<br />
+                <!--开始时间：<!--{html_select_time1 use_24_hours=true display_seconds=false prefix=start selected_time=$roomClass._roomStartEndTime.start}-->	- 结束时间：<!--{html_select_time1 use_24_hours=true display_seconds=false prefix=end selected_time=$roomClass._roomStartEndTime.end}-->-->
+                <input type="submit" class="btn-blue" value="提交" />
+            </form>
+        </div>
+	</fieldset>
+    <!--房间的状态-->
+    
+    <fieldset>
+    <legend>房间接收的服务器列表</legend>
+    <!--{foreach from=$serverList item=list}-->
+    <div><!--{$list.full_name}--></div>
+    <!--{/foreach}-->
+    </fieldset>
+    
+    <!--房间内的用户-->
+    <fieldset>
+    	<legend>房间用户</legend>
+    	<table width="100%" border="0" cellpadding="3">
+          <tr>
+            <td colspan="4" >总工单数：<!--{$roomClass._orderNum.total|intval}--> 待处理工单数：<!--{$roomClass._orderNum.incomplete|intval}--></td>
+          </tr>
+          <tr>
+            <th scope="col">用户名/姓名</th>
+            <th scope="col">是否在线</th>
+            <th scope="col">总回复量/当天回复量</th>
+            <th scope="col">操作</th>
+          </tr>
+          <!--{foreach from=$dataList item=list}-->
+          <tr>
+            <td><!--{$list._fullName}--></td>
+            <td><!--{$list.online}--></td>
+            <td><!--{$list->getReplyNum('total')}--> / <!--{$list->getReplyNum()}--></td>
+            <td>
+                <a href="<!--{$list.url_edit_operator}-->">修改用户运营商</a>
+                <a href="<!--{$list.url_kill_user}-->">踢出房间</a>
+            </td>
+          </tr>
+          <!--{foreachelse}-->
+          <tr>
+            <th colspan="4"><!--{$noData}--></th>
+          </tr>
+          <!--{/foreach}-->
+        </table>
+    </fieldset>
+    <!--房间内的用户-->
+</div>

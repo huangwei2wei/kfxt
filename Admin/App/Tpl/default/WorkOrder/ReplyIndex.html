@@ -1,0 +1,84 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<style type="text/css">
+.operator label{
+	display:inline-block;
+	width:100px;
+}
+</style>
+<fieldset>
+	<legend><!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}--></legend>
+    <form action="" method="get" id="search">
+    	<input type="hidden" name="c" value="WorkOrder" />
+        <input type="hidden" name="a" value="ReplyIndex" />
+        <table width="100%" border="0" cellpadding="3" >
+          <tr>
+            <th nowrap scope="row"><!--{'0A450BB5D2BF8ACD22499627BBB629DF'|lang}--></th>
+            <td><!--{html_radios options=$gameTypes selected=$selected.game_type_id name="game_type_id" onclick="$('#search').submit()"}--></td>
+          </tr>
+         
+          <tr>
+            <th nowrap scope="row" ><!--{'F82BEDDCD7005F7F0ECA4C96999A865B'|lang}--></th>
+            <td class="operator"><!--{html_radios options=$operatorList selected=$selected.operator_id name="operator_id" onclick="$('#search').submit()"}--></td>
+          </tr>
+          <!--
+          <tr>
+            <th nowrap scope="row"><!--{'E944C7C9017A815650CE6B78F81685E7'|lang}--></th>
+            <td><!--{html_radios options=$timeOutArr selected=$selected.is_timeout name="is_timeout" onclick="$('#search').submit()"}--></td>
+          </tr>-->
+          <tr>
+            <th nowrap scope="row"><!--{'730CC4174B8E42D288E6955B27ECB779'|lang}--></th>
+            <td>
+            	<select name="user_id" >
+                	<option value=""><!--{'708C9D6D2AD108AB2C560530810DEAE9'|lang}-->...</option>
+                    <!--{html_options options=$users selected=$selected.user_id}-->
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <th nowrap scope="row"><!--{'CD649F76D42355E6AEF72227F9152FEB'|lang}--></th>
+            <td>
+            <input type="text" class="text" name="start_time" value="<!--{$selected.start_time}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+            <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}-->
+            <input type="text" class="text" name="end_time" value="<!--{$selected.end_time}-->" onFocus="WdatePicker({startDate:'%y-%M-30 23:59:59',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+            <input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" />
+            </td>
+          </tr>
+        </table>
+
+    </form>
+</fieldset>
+<fieldset>
+  <legend><!--{'B18A93D53F011D1D43FBF50A30CDB582'|lang}--></legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap" scope="col">Id</th>
+        <th nowrap="nowrap" scope="col"><!--{'9D1AF8A250315FB503099EA5C384E1E7'|lang}--></th>
+        <th nowrap="nowrap" scope="col"><!--{'F82BEDDCD7005F7F0ECA4C96999A865B'|lang}--></th>
+        <th nowrap="nowrap" scope="col"><!--{'730CC4174B8E42D288E6955B27ECB779'|lang}--></th>
+        <th scope="col"><!--{'FAB08D356001E2C8A759D4FFDB6FE7BB'|lang}--></th>
+        <th nowrap="nowrap" scope="col"><!--{'BA74D11A8593C587CB2C5F4B08D3E861'|lang}--></th>
+        <th nowrap="nowrap" scope="col"><!--{'2B6BC0F293F5CA01B006206C2535CCBC'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td nowrap="nowrap"><!--{$list.Id}--></td>
+        <td nowrap="nowrap"><!--{$list.word_game_type_id}--></td>
+        <td nowrap="nowrap"><!--{$list.word_operator_id}--></td>
+        <td nowrap="nowrap"><!--{$list.word_user_id}--></td>
+        <td title="<!--{$list.content}-->"><!--{$list.content|truncateutf8:30}--></td>
+        <td nowrap="nowrap"><!--{$list.create_time}--></td>
+        <td nowrap="nowrap">
+            <a href="<!--{$list.url_detail}-->"><!--{'EDA81C17F0E5F64C0CB65720052F0E99'|lang}--></a>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="7"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="7" align="right"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+</fieldset>

@@ -1,0 +1,22 @@
+<fieldset>
+	<legend>增加项目组</legend>
+    <form action="" method="post">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">项目名称</th>
+        <td><input type="text" name="name" class="text" /></td>
+      </tr>
+      <tr>
+        <th scope="row">项目负责人</th>
+        <td><select name="principal_user_id"><!--{html_options options=$users}--></select></td>
+      </tr>
+      <tr>
+        <th scope="row">项目内容</th>
+        <td><textarea name="detail" cols="50" rows="8"></textarea></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+	</form>
+</fieldset>

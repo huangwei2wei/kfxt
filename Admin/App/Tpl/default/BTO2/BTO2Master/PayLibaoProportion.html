@@ -1,0 +1,52 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"num",onerror:function(){return false;}});
+	$("#ArrayCount").formValidator({onshow:"<!--{'FA787294E05B33309F6D236A31FD61DD'|lang}-->",oncorrect:"<!--{'315F61935B8933FF105D5FA610D202C3'|lang}-->"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'13DC97190FA9E9DFBB4387307EB8074A'|lang}-->"});
+})
+</script>
+<fieldset>
+<legend><!--{'10205CB60BC5666F69BCEC16F586D155'|lang}--></legend>
+    <form action="<!--{$url.MasterFRG_PayLibao_proportion}-->" method="post">
+        <input type="hidden" id="num" name="subaction" value="set_count" />
+        <!--<!--{'6332517228AAFA360516C69A28FA525A'|lang}-->-->
+        <input type="hidden" name="Id" value="<!--{$num.Id}-->" />
+        <input type="hidden" name="VarTitle" value="<!--{$num.VarTitle}-->" />
+        <input type="hidden" name="VarDesc" value="<!--{$num.VarDesc}-->" />
+        <input type="hidden" name="DataType" value="<!--{$num.DataType}-->" />
+        <input type="hidden" name="VarCat" value="<!--{$num.CatId}-->" />
+        <input type="hidden" name="FormType" value="<!--{$num.FormType}-->" />
+        <input type="hidden" name="FormValue" value="<!--{$num.FormValue}-->" />
+        <input type="hidden" name="Disabled" value="<!--{$num.Disabled}-->" />
+        <!--<!--{'6332517228AAFA360516C69A28FA525A'|lang}-->-->
+        <input type="text" name="ArrayCount" id="ArrayCount" value="<!--{$num.ArrayCount}-->" class="text"><span id="ArrayCountTip"></span>
+        <input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" />
+    </form>
+</fieldset>
+
+<fieldset>
+<legend><!--{'62F1BD73D60E09A5D5826B772A9A2456'|lang}--></legend>
+<form action="<!--{$url.MasterFRG_PayLibao_proportion}-->" method="post">
+<input type="hidden" value="2" name="Setting[DepositRatio]">
+<table width="100%" cellpadding="3">
+  <!--{foreach from=$payProportion key=key item=list}-->
+  <tr>
+    <th scope="row"><!--{'E7867F285D4C647A8B67951234868761'|lang}-->：
+      <input type="text" class="text" value="<!--{$key}-->" name="DepositRatio__key[]" /></th>
+    <td><!--{'B7B54D1A5488B559C994AC435B9F42DC'|lang}-->:
+      <input type="text" class="text" value="<!--{$list}-->" name="DepositRatio__value[]" /></td>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <th colspan="2" scope="row">
+    	<input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" />
+    </th>
+    </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

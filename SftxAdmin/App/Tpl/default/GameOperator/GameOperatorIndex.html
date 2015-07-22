@@ -1,0 +1,50 @@
+<a href="<!--{$url.GameOperator_CreateCacheGameOperator}-->">创建缓存</a>
+<fieldset>
+	<legend>增加索引</legend>
+    <form action="<!--{$url.GameOperator_AddGameOperator}-->" method="post">
+    <table width="60%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">游戏</th>
+        <td><!--{html_radios name="game_type" options=$gameTypeList separator="&nbsp;"}--></td>
+      </tr>
+      <tr>
+        <th scope="row">运营商</th>
+        <td><!--{html_checkboxes name="operator_ids" options=$operatorList separator="&nbsp;"}--></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+        </tr>
+    </table>
+	</form>
+</fieldset>
+
+<fieldset>
+<legend>列表</legend>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th>Id</th>
+    <th>游戏类型</th>
+    <th>运营商</th>
+    <th>VIP超时限定(普通,1-6级)</th>
+    <th>VIP充值量设定(普通,1-6级)</th>
+    <th>操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.Id}--></td>
+    <td><!--{$list.word_game_type_id}--></td>
+    <td><!--{$list.word_operator_id}--></td>
+    <td><!--{$list.vip_setup.vip_timeout}--></td>
+    <td><!--{$list.vip_setup.vip_pay}--></td>
+    <td>
+    	<a href="<!--{$list.url_setup}-->" >设置</a>
+        <a href="<!--{$list.url_del}-->" >删除</a>
+    </td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr>
+  	<th colspan="6"><!--{$noData}--></th>
+  </tr>
+  <!--{/foreach}--> 
+</table>
+</fieldset>

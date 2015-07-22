@@ -1,0 +1,69 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+function del(){
+	if(confirm('<!--{'DEL_CONFIRM'|lang}-->?')){
+		$('form').submit();
+	}
+}
+</script>
+<fieldset>
+
+<legend><!--{'NOTICE_LIST'|lang}--></legend>
+<form id="form" action="<!--{$url.GmSftx_PublicNotice_Del}-->" method="post" onsubmit="return checksub();">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <td colspan="9"><a href="<!--{$url.GmSftx_PublicNotice_Add}-->"><!--{'ADD_SYS_NOTICE'|lang}--></a></td>
+    </tr>
+  <tr>
+    <th scope="col" nowrap="nowrap">S</th>
+    <th scope="col" nowrap="nowrap"><!--{'NOTICE_ID'|lang}--></th>
+    <th scope="col"><!--{'NOTICE_TITLE'|lang}--></th>
+    <th scope="col"><!--{'NOTICE_CONTENT'|lang}--></th>
+    <th scope="col"><!--{'URL'|lang}--></th>
+    <th scope="col" nowrap="nowrap">
+    <!--{'TIME'|lang}-->
+    (
+    	<!--{if $BeiJing_time}-->
+        	<!--{'BJT'|lang}-->
+        <!--{else}-->
+        	<!--{'SERVER_TIME'|lang}-->
+        <!--{/if}-->
+    )
+    </th>
+    <th scope="col" nowrap="nowrap"><!--{'INTERVAL'|lang}--></th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td scope="col" nowrap="nowrap"><input type="checkbox" value="<!--{$list.id}-->" name="idList[]" /></td>
+    <td scope="col" nowrap="nowrap"><!--{$list.id}--></td>
+    <td scope="col"><!--{$list.title}--></td>
+    <td scope="col"><!--{$list.content}--></td>
+    <td scope="col"><!--{$list.url}--></td>
+    <td scope="col" nowrap="nowrap">
+    	<!--{'START_TIME'|lang}-->:<font style="font-weight:bold"><!--{$list.begin|date_format:"%Y-%m-%d %H:%M:%S"}--></font><br/>
+        <!--{'END_TIME'|lang}-->:<font style="font-weight:bold"><!--{$list.end|date_format:"%Y-%m-%d %H:%M:%S"}--></font><br/>
+        <!--{'CREATE_TIME'|lang}-->:<font style="font-weight:bold"><!--{$list.createAt|date_format:"%Y-%m-%d %H:%M:%S"}--></font>
+    </td>
+    <td scope="col" nowrap="nowrap"><!--{$list.intervals}--></td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="9" scope="col">
+  		<!--{$noData}--> 	
+    </th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <td colspan="9" scope="col">
+  		<!--{'SELECT_ALL'|lang}--><input type="checkbox" onclick="$('#form :checkbox').attr('checked',$(this).attr('checked'))" /><input type="button" class="btn-blue" onClick="if(confirm('<!--{'DEL_CONFIRM'|lang}-->?'))$('#form').submit();" value="<!--{'DELETE'|lang}-->" />  	
+    </td>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

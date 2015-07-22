@@ -1,0 +1,64 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+</script>
+<fieldset>
+  <legend>道具查询</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td colspan="7">
+        <form action=""  method="get" onsubmit="return checksub();">
+        	<input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+            <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+            <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+            物品Id:
+            <input type="text" class="text" name="goodsId" value="<!--{$selected.goodsId}-->" />
+            用户Id:
+            <input type="text" class="text" name="playerId" value="<!--{$selected.playerId}-->" />
+            详细Id:
+            <input type="text" class="text" name="detailId" value="<!--{$selected.detailId}-->" />
+			<input type="submit" class="btn-blue" value="查找">
+        </form>    
+        </td>
+        </tr>
+     	 <tr>
+            <th>物品编号</th>
+            <th>用户ID</th>
+            <th>详细编号</th>
+            <th>旧等级</th>
+            <th>新等级</th>
+            <th>数量</th>
+            <th>时间</th>
+          </tr>
+          <!--{foreach from=$dataList item=vo}-->
+          <tr>
+            <td><!--{$vo.goodsId}--></td>
+            <td><!--{$vo.playerId}--></td>
+            <td><!--{$vo.detailId}--></td>
+            <td><!--{$vo.oldLevel}--></td>
+            <td><!--{$vo.newLevel}--></td>
+            <td><!--{$vo.count}--></td>
+            <td><!--{$vo.generalTime/1000|date_format:'%Y-%m-%d %H:%M:%S'}--></td>
+          </tr>
+          <!--{foreachelse}-->
+          	<!--{if $error}-->
+               <tr>
+                <td colspan="7"><!--{$error}--></td>
+              </tr>
+            <!--{else}-->
+              <tr>
+                <th colspan="7"><!--{$noData}--></th>
+              </tr>
+            <!--{/if}-->
+
+          <!--{/foreach}--> 
+          <tr>
+            <th colspan="7" align="right"><!--{$pageBox}--></th>
+          </tr>
+    </table>
+</fieldset>
+<!--{/if}-->

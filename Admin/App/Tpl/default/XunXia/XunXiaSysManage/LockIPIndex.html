@@ -1,0 +1,121 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+function del(){
+	if(confirm('确定要删除吗?')){
+		$('form').submit();
+	}
+}
+
+function delOne(id){
+	$('input[name=idList[]]').remove();
+	$('form').append('<input type="hidden" name="idList[0]" value="'+id+'" />');
+	$('form').submit();
+}
+
+function getDetail(obj){
+	var kid = obj.attr('kid');
+	if($('#detail'+kid).html() == ''){		
+		$.ajax({
+			dataType:'json',	
+			type: 'GET',
+			url: obj.attr('url'),
+			success:function(msg){
+				var json = eval(msg);				
+				if(1 == json.status){				
+					if(json.data.length>0){
+						$.each(json.data,
+							function(Id,subobj){ 
+								$('#detail'+kid).append('<div style="margin:5px;">'+subobj.info+'</div><hr>');
+							}
+						);	
+					}else{
+						$('#detail'+kid).append('<div color="margin:5px;">无操作记录</div>');
+					}				
+				}
+				else if(0 == json.status){
+					alert(json.info);
+				}else{
+					alert('unknow error');
+				}
+			}
+		});
+	}
+}
+
+function viewDetail(obj){
+	var kid = obj.attr('kid');
+	
+	var trDetail = $('#trDetail'+kid);
+	if(trDetail.css("display")=="none"){
+		getDetail(obj);
+		trDetail.show();		
+	}else{
+		trDetail.hide();
+	}	
+}
+
+
+</script>
+<fieldset>
+<legend>IP锁定</legend>
+<a href="<!--{$URL_LockIPAdd}-->">添加IP锁定</a>
+<form action="" method="post">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<input type="hidden" name="doaction" value="del"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">选择</th>
+    <th scope="col">用户ID</th>
+    <th scope="col">被封IP</th>
+    <th scope="col">封锁开始时间</th>
+    <th scope="col">封锁结束时间</th>
+    <th scope="col">状态</th>
+    <th scope="col">操作</th>
+    </tr>
+  <!--{foreach from=$dataList key=key item=list}-->
+  <tr>
+    <td scope="col"><input type="checkbox" value="<!--{$list->id}-->" name="idList[]" /></td>
+    <td scope="col"><!--{$list->uid|default:'<font color="#999999">无</font>'}--></td>
+    <td scope="col"><!--{$list->ip|default:'<font color="#999999">无</font>'}--></td>
+    <td scope="col"><!--{$list->beginAt/1000|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td scope="col"><!--{$list->endAt/1000|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td scope="col">
+    	<!--{if $list->status ==0}-->
+        	强制解封
+        <!--{elseif $list->status ==1}-->
+        	封锁中
+        <!--{elseif $list->status ==2}-->
+        	自动解封
+        <!--{/if}-->
+    </td>
+    <td scope="col">
+    	[<a href="javascript:void(0);" onclick="if(confirm('确定解除？')){delOne('<!--{$list->id}-->');}else{return false;}">解除</a>]
+		[<a url="<!--{$list->URL_TimeEnd}-->" href="javascript:void(0);" onclick="viewDetail($(this));" kid="<!--{$list->id}-->">查看详细</a>]
+    </td>
+  </tr>
+  <tr style="display:none;" id="trDetail<!--{$list->id}-->">
+  	<td colspan="7" style="padding-left:20px;">
+        <div id="detail<!--{$list->id}-->"></div>
+    </td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="7" scope="col">
+  		<!--{$noData}--> 	
+    </th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <td colspan="7" scope="col">
+  		全选<input type="checkbox" onclick="$(':checkbox[name=\'idList[]\']').attr('checked',$(this).attr('checked'))" /><input type="button" class="btn-blue" onClick="del()" value="解除" />  	
+    </td>
+  </tr>
+</table>
+</form>
+<div align="right"><!--{$pageBox}--></div>
+</fieldset>
+<!--{/if}-->

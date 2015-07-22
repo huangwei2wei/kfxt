@@ -1,0 +1,33 @@
+<form action="" method="post">
+<!--{if $newtplServerSelect}-->
+<!--{include file=$newtplServerSelect}-->
+<!--{/if}-->
+
+<fieldset>
+	<legend><b><!--{$serverName}--></b></legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col"><!--{'32C65D8D7431E76029678EC7BB73A5AB'|lang}--></th>
+        <th scope="col"><!--{'FA86F1A57D6F758A93CB33B59C015654'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList key=key item=list}-->
+      <tr>
+        <td>
+        	<input type="hidden" name="data[<!--{$key}-->][Title]" value="<!--{$list.Title|htmlspecialchars}-->" />
+			<input type="hidden" name="data[<!--{$key}-->][Content]" value="<!--{$list.Content|htmlspecialchars}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][Start_time]" value="<!--{$list.Start_time}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][End_time]" value="<!--{$list.End_time}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][Recent_time]" value="<!--{$list.Recent_time}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][Interval]" value="<!--{$list.Interval}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][Link]" value="<!--{$list.Link}-->" />
+        	<!--{$list.Title}-->
+        </td>
+        <td><!--{$list.Content}--></td>
+      </tr>
+      <!--{/foreach}-->
+      <tr><td colspan="2" align="center"><input type="submit" name="submit" class="btn-blue" value="<!--{'FA6672CEDC62A18EC4A2222A92A50B68'|lang}-->" /></td></tr>
+    </table>
+</fieldset>
+
+
+</form>

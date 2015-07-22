@@ -1,0 +1,114 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+function chageSearch(curVal){
+		var searchSpan=$("#search");
+		searchSpan.empty();
+		switch(curVal){
+			case '2': 
+			case '1':{
+				searchSpan.append('<input type="text" class="text" name="dataMin" value="<!--{$selectedArr.dataMin}-->">');
+				break;
+			}
+			case '7':{
+				searchSpan.append('<input type="text" class="text" name="dataMin" onFocus="WdatePicker({startDate:\'\',dateFmt:\'yyyy-MM-dd HH:mm:ss\',alwaysUseStartDate:true})" value="<!--{$selectedArr.dataMin}-->"> <!--{'TO'|lang}--> <input type="text" class="text" name="dataMax" onFocus="WdatePicker({startDate:\'\',dateFmt:\'yyyy-MM-dd HH:mm:ss\',alwaysUseStartDate:true})" value="<!--{$selectedArr.dataMax}-->" >');
+				break;
+			}
+			default :{
+				searchSpan.append('<input type="text" class="text" name="dataMin" value="<!--{$selectedArr.dataMin}-->"> <!--{'TO'|lang}--> <input type="text" class="text" name="dataMax" id="end" value="<!--{$selectedArr.dataMax}-->" >');
+			}
+		}
+}
+
+function jumpUrl(url){
+	form=$("#form");
+	form.attr("action",url);
+	form.submit();
+}
+
+$(function(){
+	$("#search_select").change()
+})
+</script>
+<fieldset>
+  <legend><!--{'USER_QUERY'|lang}--></legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td colspan="11">
+        <form action=""  method="get" onsubmit="return checksub();">
+        	<input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+            <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+            <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+            <select name="type" id="search_select" onchange="chageSearch($(this).val())">
+            	<!--{html_options options=$optionList.optionList selected=$selectedArr.type}-->
+            </select>
+            <span id="search">
+            </span>
+            <select name="pageSize"><!--{html_options options=$optionList.pagesizeList selected=$selectedArr.pageSize}--></select>
+            <input type="submit" class="btn-blue" name="submit" value="<!--{'SEARCH'|lang}-->">
+        </form>    
+        </td>
+        </tr>
+      <tr>
+        <th><!--{'USER_ID'|lang}--></th>
+        <th><!--{'NICK_NAME'|lang}--></th>
+        <th><!--{'LEVEL'|lang}--></th>
+        <th><!--{'SILVER'|lang}--></th>
+        <th><!--{'SYS_GOLE'|lang}--></th>
+        <th><!--{'USER_GOLD'|lang}--></th>
+        <th><!--{'PRESTIGE'|lang}--></th>
+        <th><!--{'MILITARY_ORDERS'|lang}--></th>
+        <th><!--{'MILITARY_MEDALS'|lang}--></th>
+        <th><!--{'FOOD'|lang}--></th>
+        <!--{if $PermissionUserDel}-->
+        	<th><!--{'OPERATE'|lang}--></th>
+        <!--{/if}-->
+      </tr>
+      <form action="" id="form" method="post">
+      <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+      <!--{foreach from=$dataList item=vo}-->
+      <tr>
+        <td><input type="checkbox" name="idList[]" value="<!--{$vo.id}-->" /><!--{$vo.id}--></td>
+        <td align="center"><!--{$vo.name}--></td>
+        <td align="center"><!--{$vo.level}--></td>
+        <td align="center"><!--{$vo.copper}--></td>
+        <td align="center"><!--{$vo.sysGold}--></td>
+        <td align="center"><!--{$vo.userGold}--></td>
+        <td align="center"><!--{$vo.prestige}--></td>
+        <td align="center"><!--{$vo.token}--></td>
+        <td><!--{$vo.exploit}--></td>
+        <td><!--{$vo.food}--></td>
+        <!--{if $PermissionUserDel}-->
+            <td>
+                <a onclick="return confirm('<!--{'DEL_CONFIRM'|lang}-->');" href="<!--{$vo.URL_del|default:"javascript:void(0)"}-->"><!--{'DELETE'|lang}--></a>
+            </td>
+        <!--{/if}-->
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="11"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}--> 
+      <tr>
+      	<td><input type="checkbox" onclick="$(':checkbox[name=\'idList[]\']').attr('checked',$(this).attr('checked'))" /><!--{'SELECT_ALL_2'|lang}--></td>
+        <td colspan="11">
+        	<!--input type="button" class="btn-blue" value="发送奖励" onclick="jumpUrl('<!--{$url.MasterFRG_RewardBefore}-->')" /-->
+            <!--input type="button" class="btn-blue" value="踢人" onclick="jumpUrl('<!--{$url.MasterFRG_KickUser}-->')" /-->
+            <input type="button" class="btn-blue" value="<!--{'SEND_MESSAGE'|lang}-->" onclick="jumpUrl('<!--{$url.GmSftx_SendMsg}-->')" />
+            <input type="button" class="btn-blue" value="<!--{'DONTTALK'|lang}-->" onclick="jumpUrl('<!--{$url.GmSftx_Donttalk_Add}-->')" />
+            <input type="button" class="btn-blue" value="<!--{'LOCK_USER'|lang}-->" onclick="jumpUrl('<!--{$url.GmSftx_LockUser_Add}-->')" />
+            <!--input type="button" class="btn-blue" value="增加教官" onclick="jumpUrl('<!--{$url.MasterFRG_Drillmaster_Add}-->')" /-->
+        </td>
+      </tr>
+      </form>
+      <tr>
+        <th colspan="10" align="right"><!--{$pageBox}--></th>
+      </tr>
+    </table>
+</fieldset>
+<!--{/if}-->

@@ -1,0 +1,121 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/Libs/jquery.form.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/default/common.js"></script>
+<script language="javascript">
+var gameOperatorIndex=eval(<!--{$gameOperatorIndex}-->);
+function displayOperator(gameTypeId){
+	var operator=$("#operatorList");
+	operator.empty();
+	$.each(gameOperatorIndex,function(i,n){
+		if(n.game_type_id==gameTypeId){
+			operator.append('<input type="checkbox" checked="chedked" name=operator_id[] value='+n.operator_id+' />'+n.word_operator_id+'&nbsp;');
+		}
+	});
+}
+
+function viewDetail(key){
+	var detailDiv=$("#detail");
+	detailDiv.hide();
+	var searchForm=$("#search");
+	searchForm.attr("action","<!--{$url.StatsOperator_HourDetail}-->");
+	$("#detail_key").val(key);
+	searchForm.ajaxSubmit({
+		success: function(data){
+			detailDiv.html(data);
+			detailDiv.show();
+		}
+	});
+	searchForm.attr("action","<!--{$url.StatsOperator_Hour}-->");
+}
+
+</script>
+<fieldset>
+<legend>统计搜索</legend>
+<form id="search" action="<!--{$url.StatsOperator_Hour}-->" method="post">
+<input type="hidden" name="detail_key" id="detail_key" value="" />
+<table width="98%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row">日期</th>
+    <td>
+        统计：<input type="text" class="text" name="start_date" value="<!--{$selectedTime.start_date}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/> 至
+        	 <input type="text" class="text" name="end_date" value="<!--{$selectedTime.end_date}-->" onFocus="WdatePicker({startDate:'%y-%M-30 23:59:59',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+    </td>
+  </tr>
+  <tr>
+    <th width="15%" scope="row">游戏类型</th>
+    <td id="gameTypeList"><!--{html_radios name="game_type_id" selected=$selectedGameTypeId onclick="displayOperator($(this).val())" options=$gameTypeList separator="&nbsp;"}--></td>
+  </tr>
+  <tr>
+    <th width="20%" scope="row">运营商&nbsp;&nbsp;<input type="checkbox" onclick="allCheckBox('operatorList',$(this))"  /></th>
+    <td id="operatorList">
+    	<!--{html_checkboxes name="operator_id" options=$selectedOperatorList selected=$selectedOperatorIds}-->
+    </td>
+    
+  </tr>
+  <tr>
+    <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="统计" /></th>
+  </tr>
+</table>
+</form>
+</fieldset>
+
+<!--{if $displayTrue}-->
+<div id="detail"></div>
+<fieldset>
+<legend>统计列表</legend>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">统计日期</th>
+    <th colspan="7" scope="col">工单量</th>
+    <th colspan="3" scope="col">回复量</th>
+    <th colspan="5" scope="col">质检状态</th>
+    <th colspan="2">BUGLIST</th>
+    <th rowspan="2" scope="col">操作</th>
+  </tr>
+  <tr>
+    <th scope="col">日期</th>
+    <th scope="col">总量</th>
+    <th scope="col">已查证</th>
+    <th scope="col">未评价</th>
+    <th scope="col">好评</th>
+    <th scope="col">中评</th>
+    <th scope="col">服务差评</th>
+    <th scope="col">游戏差评</th>
+    <th scope="col">总量</th>
+    <th scope="col">超时</th>
+    <th scope="col">未超时</th>
+    <th scope="col">已质检</th>
+    <th scope="col">加分(数量)</th>
+    <th scope="col">减分(数量)</th>
+    <th scope="col">加分</th>
+    <th scope="col">减分</th>
+    <th>提交</th>
+    <th>跟进</th>
+    </tr>
+  <!--{foreach from=$total key=key item=list}-->
+  <tr>
+    <th align="center"><!--{$key}--></th>
+    <td align="center"><!--{$list.total|intval}--></td>
+    <td align="center"><!--{$list.verify|intval}--></td>
+    <td align="center"><!--{$list.ev.0|intval}--></td>
+    <td align="center"><!--{$list.ev.1|intval}--></td>
+    <td align="center"><!--{$list.ev.2|intval}--></td>
+    <td align="center"><!--{$list.ev.3|intval}--></td>
+    <td align="center"><!--{$list.ev.32|intval}--></td>
+    <td align="center"><!--{$list.reply_total|intval}--></td>
+    <td align="center"><!--{$list.timeout_num|intval}--></td>
+    <td align="center"><!--{$list.no_timeout_num|intval}--></td>
+    <td align="center"><!--{$list.qulity|intval}--></td>
+    <td align="center"><!--{$list.deduction_num|intval}--></td>
+    <td align="center"><!--{$list.bonus_num|intval}--></td>
+    <td align="center"><!--{$list.deduction|intval}--></td>
+    <td align="center"><!--{$list.bonus|intval}--></td>
+    <td align="center"><!--{$list.submit|intval}--></td>
+    <td align="center"><!--{$list.finish|intval}--></td>
+    <td align="center"><a href="javascript:viewDetail('<!--{$key}-->')">详细内容</a></td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+</fieldset>
+<!--{/if}-->

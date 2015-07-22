@@ -1,0 +1,66 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+
+<!--{/if}-->
+<!--{if $display}-->
+<!--{foreach from=$URL_doaction item=urlList key=urlkey}-->
+	[<a href="<!--{$urlList}-->" <!--{if $doaction==$urlkey}-->style='color:#000000;'<!--{/if}-->><!--{$lang.$urlkey}--></a>]
+<!--{/foreach}-->
+<!--{/if}-->
+<!--{if $display && $_GET.doaction}-->
+<style>
+	ul{
+		margin:0px;
+		padding:0px;
+		list-style:none;
+	}
+	li{
+		width:200px;
+		display:inline-block;
+	}
+	.red { color:#F00}
+</style>
+
+<fieldset>
+	<legend><!--{$legend}--></legend>
+    <form method="get" action="">
+    	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+        <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+        <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+        <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+        <input type="hidden" name="doaction" value="<!--{$_GET.doaction}-->" />
+        <table width="98%" border="0" cellpadding="3">
+          <tr>
+            <td>
+                玩家ID:<input class="text" type="text" name="playerId" value="<!--{$_GET.playerId}-->" />
+                <input class="btn-blue" type="submit" name="submit" value="查询" />
+            </td>
+          </tr>
+        </table>
+	</form>
+    
+    <!--{if $player}-->
+    <form method="post" action="">
+    <!--{foreach from=$dataList item=list key=key}-->
+    	<input type="hidden" name="playerId" value="<!--{$player.playerId}-->" />
+        <div style=" font-weight:bolder"><!--{$lang.$key}--></div>	<!--分类-->    	
+        <div style="padding:5px;">
+        	<ul>
+        	<!--{foreach from=$list item=subList key=subkey}-->
+            	<li>
+                    <!--{$lang.$subkey}-->
+                    <font class="red"><!--{$subList}--></font>
+                    <input type="text" name="<!--{$subkey}-->" class="text" style="width:70px;">
+                </li>
+            <!--{/foreach}-->
+            </ul>
+        </div>
+    <!--{/foreach}-->
+    	<div>
+    		<textarea name="cause" id="cause" cols="60" rows="10"></textarea>
+    	</div>
+    	<input class="btn-blue" type="submit" value="提交" />
+    </form>
+    <!--{/if}-->
+</fieldset>
+<!--{/if}-->

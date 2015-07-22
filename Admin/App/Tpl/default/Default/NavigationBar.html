@@ -1,0 +1,14 @@
+<fieldset style="padding:2px">
+	<legend><!--{$L_NaviBar}--></legend>
+<table width="100%" border="0" cellpadding="2" style="margin:0px;" >
+  <tr>
+    <th width="25%" scope="row">[<a href="javascript:void(0)" onclick="history.go(-1)"><!--{$L_GoBack}--></a>]&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<!--{$L_MyLocation}-->:</th>
+    <td align="left">
+    	<!--{$nav.lv1}-->&nbsp;&nbsp;&nbsp;>>&nbsp;&nbsp;&nbsp;<!--{$nav.lv2}-->
+        <!--{if $nav.lv3}-->
+        &nbsp;&nbsp;&nbsp;>>&nbsp;&nbsp;&nbsp;<!--{$nav.lv3}-->
+        <!--{/if}-->	
+    </td>
+  </tr>
+</table>
+</fieldset>

@@ -1,0 +1,37 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+
+</script>
+<fieldset>
+<legend>道具包列表 <a href="<!--{$URL_itemsPackageAdd}-->">增加</a></legend>
+
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">礼包名</th>
+    <th scope="col">道具列表</th>
+    <th scope="col">图片地址</th>
+    <th scope="col">操作</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.type}--></td>
+    <td><!--{$list.des}--></td>
+    <td><!--{$list.items}--></td>
+    <td><!--{$list.img|default:''}--></td>
+    <td>
+    	[<a href="<!--{$list.URL_edit|default:'javascript:void(0);'}-->">编辑</a>]
+    	[<a href="<!--{$list.URL_cardAdd|default:'javascript:void(0);'}-->">创建卡号</a>]
+        [<a href="<!--{$list.URL_cardView|default:'javascript:void(0);'}-->">查看卡号</a>]
+    </td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+<!--{if $ConnectErrorInfo}-->
+<div><!--{$ConnectErrorInfo}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

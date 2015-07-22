@@ -1,0 +1,213 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<!--{include file="MasterFRG/UserModifyHref.html"}-->
+<!--{if $display}-->
+
+<script language="javascript">
+<!--{if $detailTrue}-->
+var detailTrue=true;
+<!--{/if}-->
+
+var read='<!--{$read}-->';
+
+var selectSysGoodsLevel=eval(<!--{$selectSysGoodsLevel}-->);
+
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"<!--{'C566CA59602C7C5C0D3FE5E18ADE447D'|lang}-->ID<!--{'D7D11654A707D7E7B661C90295E58B20'|lang}-->",oncorrect:"<!--{'124D617A6875038C81E03DEC5E2501F4'|lang}-->ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'BA2DD64CC4F6DDF27CB1526EFB449E2D'|lang}-->"});
+	$("#cause").formValidator({onshow:"<!--{'A73F63486CB97A8D6C136D7DC82F11D2'|lang}-->",oncorrect:"<!--{'FD75CEECBD2676048590A1695702F29A'|lang}-->"}).inputValidator({min:1,empty:{leftempty:true,rightempty:true,emptyerror:"<!--{'A73F63486CB97A8D6C136D7DC82F11D2'|lang}-->"},onerror:"<!--{'E85E13CC2A5C76D4E44E62F70E1F1BED'|lang}-->"});  	   
+		   
+	$(":radio").click(function(){
+		var value=$(this).val();
+		$(".search_option").attr("disabled","disabled");
+		$("#"+value).removeAttr("disabled");
+	});
+	if(read){//<!--{'73FB678BF7867662C28E087763F2AC8A'|lang}-->
+		$("#SkillMaster1_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:<!--{$postData.factory.SkillMaster1}-->");
+		$("#SkillMaster2_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:<!--{$postData.factory.SkillMaster2}-->");
+		$("#SkillMaster4_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:<!--{$postData.factory.SkillMaster4}-->");
+		$("#SkillMaster8_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:<!--{$postData.factory.SkillMaster8}-->");
+		$("#SkillMaster16_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:<!--{$postData.factory.SkillMaster16}-->");
+		$("#PurchaseMaster1_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:<!--{$postData.factory.PurchaseMaster1}-->");
+		$("#PurchaseMaster2_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:<!--{$postData.factory.PurchaseMaster2}-->");
+		$("#PurchaseMaster4_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:<!--{$postData.factory.PurchaseMaster4}-->");
+		$("#PurchaseMaster8_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:<!--{$postData.factory.PurchaseMaster8}-->");
+		$("#PurchaseMaster16_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:<!--{$postData.factory.PurchaseMaster16}-->");
+		$("#DeviceLevel_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:"+$("#DeviceLevel option[value='<!--{$postData.factory.DeviceLevel}-->']").text());
+		$("#StoreLevel_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:"+$("#StoreLevel option[value='<!--{$postData.factory.StoreLevel}-->']").text());
+		$("#MiningSkill_text").html("<!--{'10DD246A7622487F9E30673C1C00C392'|lang}-->:<!--{$postData.factory.MiningSkill}-->");
+		$("#MeterialsIndustryType").val('<!--{$postData.MeterialsIndustryType}-->').change();
+		$("#MeterialsLevel").val('<!--{$postData.MeterialsLevel}-->');
+		$("#selfproducing").val('<!--{$postData.selfproducing}-->');
+		$("#fromoutside").val('<!--{$postData.fromoutside}-->');
+		$("input").attr("disabled","disabled");
+		$("select").attr("disabled","disabled");
+		$("textarea").attr("readonly","readonly");
+	}
+});
+
+
+function selectGoods(industryType){
+	var curSelect=selectSysGoodsLevel[industryType];
+	var MeterialsLevel=$("#MeterialsLevel");
+	MeterialsLevel.empty();
+	MeterialsLevel.append('<option value="0" selected="selected"><!--{'708C9D6D2AD108AB2C560530810DEAE9'|lang}--></option>');
+	$.each(curSelect,function(i,n){
+		MeterialsLevel.append('<option value="'+i+'">'+n+'</option>');
+	});
+}
+</script>
+
+<fieldset>
+  <legend><!--{'E1C9A4C6A2C900B3FD792E34E23BEF4D'|lang}-->(<!--{'B6D8D85297CB90865DD58007F1A94CF5'|lang}-->，<!--{'AEDDAE071CE7A1EC8033E74B85B2A074'|lang}-->)  [<font color="#FF0000"><!--{'541018CC8BD963A5718F321903B9D907'|lang}--></font>]</legend>
+    <form action="" method="post" id="form">
+    <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" value="<!--{$fo->UserId}-->" name="userid" id="userid">
+    <input type="hidden" value="<!--{$fo->Id}-->" name="factoryid" id="factoryid">
+    <input type="hidden" value="<!--{$fo->IsCreatedFactory}-->" name="iscreated" id="iscreated">
+    <table width="100%" border="0" cellpadding="3">
+    <!--{if $errMsg}--><caption><font color="#FF0000"><!--{$errMsg}--></font></caption><!--{/if}-->
+    <thead>
+    <tr>
+    	<th colspan="5">
+        	<input type="radio" id="ids" name="userflag" value="txtids" /><label for="ids"><!--{'1FD02A90C38333BADC226309FEA6FECB'|lang}-->Id <font color="#FF0000"><!--{$uo->UserId}--></font></label>
+            <input type="text" class="search_option" id="txtids" name="txtids" size="22" value="" disabled>        
+            
+            <input type="radio" id="names" name="userflag" value="txtnames" /><label for="names"><!--{'819767ADA1805B0F0117F10967B94D4D'|lang}--> <font color="#FF0000"><!--{$uo->UserName}--></font></label>
+			<input type="text" class="search_option" id="txtnames" name="txtnames" size="22" value="" disabled>        
+            
+            <input type="radio" id="vnames" name="userflag" value="txtvnames" /><label for="vnames"><!--{'10A6F1219A3A36CE2D7A9ED0F2D096A0'|lang}--> <font color="#FF0000"><!--{$uo->VUserName}--></font></label>
+            <input type="text" class="search_option" id="txtvnames" name="txtvnames" size="22" value="" disabled>        
+            
+            <input type="submit" class="btn-blue" name="search_user" value="<!--{'E5F71FC31E7246DD6CCC5539570471B0'|lang}-->" />
+        </th>
+    </tr>
+    </thead>
+    <!--{if $detailTrue}-->
+    <tbody>
+    <tr>
+      <th><!--{'C5AE2E7BD2CB8F79F3DD66FA7212B58B'|lang}--></th>
+      <td colspan="4"><textarea name="cause" id="cause" cols="50" rows="8"><!--{$auditData.cause|htmlspecialchars}--></textarea><div id="causeTip"></div></td>
+      </tr>
+    <tr>
+        <th><!--{'BD784A8D11EA6BE8D75A0D9D489F37DB'|lang}-->： </th>
+        <td><font color="#FF0000"><!--{$fo->Name}--></font></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <th><!--{'14FE4605FA063A530879D7D2CB82DAAB'|lang}-->(<!--{'FC4AAA8AD1FC80B5E68CF00FD75C8FF8'|lang}-->)</th>
+        <td>
+        	<input name="factory[MiningSkill]" value="<!--{$fo->MiningSkill}-->" disabled="disabled" type="text" class="text" />
+            <font color="#0000FF" id="MiningSkill_text"></font>
+        </td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <th><!--{'04887FADB4119629493F22BBB5A1F798'|lang}--></th>
+        <td><select id="MeterialsIndustryType" name="MeterialsIndustryType" onchange="selectGoods($(this).val())">
+                <option value="0" selected="selected"><!--{'708C9D6D2AD108AB2C560530810DEAE9'|lang}--></option>
+                <!--{html_options options=$selectSysIndustries}-->
+       	    </select>
+        </td>
+        <th><!--{'7F0EA125F80F6AFFFF7959D7CB8ED95C'|lang}--></th>
+        <td><select id="MeterialsLevel" name="MeterialsLevel">
+            	<option value="0" selected="selected"><!--{'708C9D6D2AD108AB2C560530810DEAE9'|lang}--></option>
+        	</select>
+        </td>
+        <td>
+        	<input id="selfproducing" name="selfproducing" value="" type="text" class="text"><!--{'6B1079E5DE6E11D3CD00E5C3CC32300C'|lang}-->【<!--{'36DAEBE0374D2544976E94E09908DC40'|lang}-->】<br>
+			<input id="fromoutside" name="fromoutside" value="" type="text" class="text"><!--{'CA849440577C2C3FD4AF8326AC84F294'|lang}-->【<!--{'36DAEBE0374D2544976E94E09908DC40'|lang}-->】
+        </td>
+    </tr>
+    <tr>
+        <th><!--{'4581CCA047AE0DBC2CAED9EC81823175'|lang}--></th>
+        <td>
+        	<select id="DeviceLevel" name="factory[DeviceLevel]" disabled="disabled" >
+				<!--{html_options options=$selectSysDeviceLevel}-->
+        	</select>
+            <font color="#0000FF" id="DeviceLevel_text"></font>
+        </td>
+        <th><!--{'D2704BC3DF9FA6CCABA7C24D6DC7F5E9'|lang}--></th>
+        <td colspan="2">
+            <select id="StoreLevel" name="factory[StoreLevel]" disabled="disabled" >
+				<!--{html_options options=$selectSysStoreLevel}-->
+            </select>
+            <font color="#0000FF" id="StoreLevel_text"></font>
+        </td>
+      </tr>
+    <tr>
+        <th><!--{'F1CFF211F5F4A97C243DF53D4654B58A'|lang}-->(<!--{'FC4AAA8AD1FC80B5E68CF00FD75C8FF8'|lang}-->)</th>
+        <td colspan="4">
+        	<!--{'2A0AD6FF433EC78E9A3CC4C667A3C5BE'|lang}-->
+            <input name="factory[SkillMaster1]" type="text" class="text" disabled="disabled" value="<!--{$fo->SkillMaster1}-->" size="10">
+            <font color="#0000FF" id="SkillMaster1_text"></font>
+            <!--{'47D68CD0F4C3E91A86D23AFE8AFCCFB8'|lang}-->
+          	<input name="factory[SkillMaster2]" type="text" class="text" disabled="disabled" value="<!--{$fo->SkillMaster2}-->" size="10">
+            <font color="#0000FF" id="SkillMaster2_text"></font>
+            <!--{'9ACF9C6F117A4C2D02DE30294EC29DA9'|lang}-->
+         	<input name="factory[SkillMaster4]"  type="text" class="text" disabled="disabled" value="<!--{$fo->SkillMaster4}-->" size="10">
+            <font color="#0000FF" id="SkillMaster4_text"></font>
+            <!--{'0C5BD351CCA528B455961DADE923DE9B'|lang}-->
+          	<input name="factory[SkillMaster8]"  type="text" class="text" disabled="disabled" value="<!--{$fo->SkillMaster8}-->" size="10">
+            <font color="#0000FF" id="SkillMaster8_text"></font>
+            <!--{'B0A65B92F0FDD4C87A0F58B2EAC10111'|lang}-->
+            <input name="factory[SkillMaster16]" type="text" class="text" disabled="disabled" value="<!--{$fo->SkillMaster16}-->" size="10">
+            <font color="#0000FF" id="SkillMaster16_text"></font>
+		</td>
+      </tr>
+    <tr>
+        <th><!--{'C0E78045ED2AF15E0113817B3EF978A5'|lang}-->(<!--{'FC4AAA8AD1FC80B5E68CF00FD75C8FF8'|lang}-->)</th>
+        <td colspan="4">
+        	<!--{'2A0AD6FF433EC78E9A3CC4C667A3C5BE'|lang}-->
+            <input name="factory[PurchaseMaster1]" type="text" class="text" disabled="disabled" value="<!--{$fo->PurchaseMaster1}-->" size="10">
+            <font color="#0000FF" id="PurchaseMaster1_text"></font>
+            <!--{'47D68CD0F4C3E91A86D23AFE8AFCCFB8'|lang}-->
+          	<input name="factory[PurchaseMaster2]" type="text" class="text" disabled="disabled" value="<!--{$fo->PurchaseMaster2}-->" size="10">
+            <font color="#0000FF" id="PurchaseMaster2_text"></font>
+            <!--{'9ACF9C6F117A4C2D02DE30294EC29DA9'|lang}-->
+          	<input name="factory[PurchaseMaster4]" type="text" class="text" disabled="disabled" value="<!--{$fo->PurchaseMaster4}-->" size="10">
+            <font color="#0000FF" id="PurchaseMaster4_text"></font>
+            <!--{'0C5BD351CCA528B455961DADE923DE9B'|lang}-->
+          	<input name="factory[PurchaseMaster8]"  type="text" class="text" disabled="disabled" value="<!--{$fo->PurchaseMaster8}-->" size="10">
+            <font color="#0000FF" id="PurchaseMaster8_text"></font>
+            <!--{'B0A65B92F0FDD4C87A0F58B2EAC10111'|lang}-->
+            <input name="factory[PurchaseMaster16]" type="text" class="text" disabled="disabled" value="<!--{$fo->PurchaseMaster16}-->" size="10">
+            <font color="#0000FF" id="PurchaseMaster16_text"></font>
+		</td>
+      </tr>
+    <tr>
+        <th><!--{'965DC4430E4C7948ECF9E91A1A121BE5'|lang}--></th>
+        <td colspan="4">
+        	<!--{'CC5915877CDDA095A3E75C5FCE9D606A'|lang}--> <font color="#FF0000"><!--{$fo->MeterialsRoom1}--></font>
+            <input name="factory[MeterialsRoom1]" type="text" class="text" disabled="disabled" value="<!--{$postData.factory.MeterialsRoom1|intval}-->" size="10">
+			
+            <!--{'303C18C25A90BF08ED58D5287A17EDCC'|lang}--> <font color="#FF0000"><!--{$fo->MeterialsRoom2}--></font>
+			<input name="factory[MeterialsRoom2]" type="text" class="text" disabled="disabled" value="<!--{$postData.factory.MeterialsRoom2|intval}-->" size="10">
+            
+			<!--{'D7BF2F0CA48D06725268F198E71ACA29'|lang}--> <font color="#FF0000"><!--{$fo->MeterialsRoom4}--></font>
+			<input name="factory[MeterialsRoom4]" type="text" class="text" disabled="disabled" value="<!--{$postData.factory.MeterialsRoom4|intval}-->" size="10">
+            
+			<!--{'F7A056291B0A426F4A5C2E4ABBB82733'|lang}--> <font color="#FF0000"><!--{$fo->MeterialsRoom8}--></font>
+			<input name="factory[MeterialsRoom8]" type="text" class="text" disabled="disabled" value="<!--{$postData.factory.MeterialsRoom8|intval}-->" size="10">
+            
+            <!--{'FBCB34191CA8B610FAE10CE440BCB85D'|lang}--> <font color="#FF0000"><!--{$fo->MeterialsRoom16}--></font>
+          <input name="factory[MeterialsRoom16]" type="text" class="text" disabled="disabled" value="<!--{$postData.factory.MeterialsRoom16|intval}-->" size="10">
+         </td>
+      </tr>
+    <tr>
+        <th colspan="5">
+        	<input type="button" class="btn-blue" value="<!--{'AC47841EEE23981877B71ABDCC589572'|lang}-->" onclick="$('tbody input,select').removeAttr('disabled');"  />
+        	<input type="submit" class="btn-blue" value="<!--{'D371CA4DE9F25FDE279099F7EA4ED87C'|lang}-->" name="user_edit" /> 
+        </th>
+      </tr>
+      </tbody>
+    <!--{/if}-->
+    </table>
+	</form>
+</fieldset>
+<!--{/if}-->

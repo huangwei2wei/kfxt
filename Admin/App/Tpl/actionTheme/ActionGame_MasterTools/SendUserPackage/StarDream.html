@@ -1,0 +1,183 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<style>
+	.itemInput{width:35px;height:16px;border: 1px solid red;}
+</style>
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+	$(function(){
+		$('#pageSize').val('<!--{$_GET.pageSize}-->');
+	});
+</script>
+<script language="javascript">
+
+//创建道具数量填写表单
+function makeInput(obj){
+	var itemId = obj.attr('item_Id');
+	var itemName = obj.attr('itemName');
+	var str = '';
+	if(obj.attr('checked')){
+		str = '<input type="text" value="" class="itemInput" name="itemNum['+itemId+']" onblur="itemCollectAdd(\''+itemId+'\',\''+itemName+'\',$(this).val())" >';
+		str +='<input type="hidden" name="itemName['+itemId+']" value="'+itemName+'">'; 
+		str +='<label><input type="checkbox" value="1" name="itembind['+itemId+']">绑定</label>'; 
+		$('#input_'+itemId).html(str);
+		$('#input_'+itemId).children().focus();
+	}else{
+		$('#input_'+itemId).html('');
+	}
+}
+
+function itemCollectAdd(itemId,itemName,num){
+	if(itemId =='' || $.trim(num)=='')return false;
+	var itemsCollectId = 'itemsCollect'+itemId;
+	$('#'+itemsCollectId).remove();
+	num = parseInt(num);
+	if(num && num>0){
+		var str = '<div id="'+itemsCollectId+'" >'+itemName+'('+num+') <a href="javascript:itemCollectDel('+itemId+')">删除</a></div>';
+		$('#itemsCollect').append(str);
+	}else{
+		$('input[name=itemNum['+itemId+']]').val('');
+	}
+}
+function itemCollectDel(itemId){
+	if(itemId =='')return false;		
+	$('#checkboxItem'+itemId).attr('checked',false);
+	$('#input_'+itemId).html('');
+	$('#itemsCollect'+itemId).remove();
+}
+
+var toollist = <!--{$toollist}-->;
+function showDetail(obj){
+	if($('#toollist').html()) return;
+	var str = '<div>';
+	for(var i in toollist){
+		if(i%5==0) str+="<br>";
+		str += '<span><a href="javascript:void();" onclick="addinput('+i+')">'+toollist[i].name+'</a></span>';
+	}
+	str += '</div>';
+	$('#toollist').append(str);
+}
+function addinput(i){
+	var ined = false;
+	$('input[name="toolname[]"]').each(function(index1){
+		if($(this).attr('value')=='' && !ined){
+			$(this).attr('value',toollist[i].name);
+			$('input[name="itemIds[]"]').each(function(index2){
+				if(index1 == index2){
+					$(this).attr('value',toollist[i].itemId);
+				}
+			});
+			ined = true;
+		}
+	});
+}
+var tlistnum=0;
+function addToolInput(){
+	$('#addToolList').append('<div id="list'+tlistnum+'">道具名:<input type="text" value="" name="toolname[]" onclick="showDetail($(this));" readonly> 数量:<input type="text" value="1" name="toolnum[]"><input type="button" value="删除本行" class="btn-blue" onclick="$(\'#list'+tlistnum+'\').remove()"><input type="hidden" name="itemIds[]" value=""></div>');
+	tlistnum += 1;
+}
+
+
+</script>
+<fieldset>
+  <legend>搜索</legend>
+  
+<form action="<!--{$submitUrl}-->"  method="post" id="form">
+<table width="100%" border="0" cellpadding="2">
+   <tr>
+   <td width="50%">
+   		<table width="100%" border="0" cellpadding="2">			
+		    	<!--{if $connectError }-->
+			<tr>
+				<th colspan="2" style="color:red"><!--{$connectError}--></th>
+			</tr>
+			<!--{/if}-->
+			
+		    	<tr>
+		      	<th>原因:</th>
+		        <td>
+		           <textarea rows="5" cols="50" name='cause' id='cause'></textarea>
+		           <div id="titleTip" ></div>
+		        </td>
+		      </tr>
+		      <tr>
+		      	<th>玩家ID:</th>
+		        <td>
+		        	<label>
+		<input type="radio" checked="checked" value="0" name="userType">
+		玩家ID
+		</label>
+		<label>
+		<input type="radio" value="1" name="userType">
+		玩家账号
+		</label>
+		<label>
+		<input type="radio" value="2" name="userType">
+		玩家昵称
+		</label><br/>
+		           <textarea rows="5" cols="50" name='user'></textarea>
+		           <div id="contentTip">玩家ID用","号隔开</div>
+		        </td>
+		      </tr>
+			 <tr>
+		      	<th>邮件标题</th>
+		      		<td  valign="top"><input type="text" value="" name="title"></td>
+		  		</tr>
+			<tr>
+		    <tr>
+		      	<th>邮件内容</th>
+		      		<td  valign="top"> <textarea rows="5" cols="50" name='content'></textarea></td>
+		  		</tr>
+			<tr>
+		      <tr>
+		      	<th>发送金币</th>
+		      		<td  valign="top"><input type="text" value="" name="goldCoin"></td>
+		  		</tr>
+			<tr>
+			<tr>
+		      	<th>发送银币</th>
+		      		<td  valign="top"><input type="text" value="" name="silverCoin"></td>
+		  		</tr>
+			<tr>
+			<tr>
+		      	<th>发送礼券</th>
+		      		<td  valign="top"><input type="text" value="" name="vouchers"></td>
+		  		</tr>
+			<tr>  
+		    <tr>
+		      	<th>发送道具</th>
+		      		<td  valign="top" id="addToolList"><input class="btn-blue" type="button" value="添加道具" onclick="addToolInput();">
+		      		</td>
+		  		</tr>
+			<tr>
+			<tr>
+		      	<th>发送装备</th>
+		      		<td  valign="top" id="addToolList"><input class="btn-blue" type="button" value="添加装备" onclick="addToolInput();">
+		      		</td>
+		  		</tr>
+			<tr>
+				<th colspan="2"><input class="btn-blue" type="submit" value="提交"></th>
+			</tr>
+		    </table>	
+   </td>
+   
+   <td width="50%">
+   		<table width="100%" border="0" cellpadding="1">
+   		<tr><td id="toollist" width="100%"></td></tr>
+   		</table>
+   </td>
+   </tr>
+   </table>
+</form>
+
+
+</fieldset>
+
+<!--{/if}-->

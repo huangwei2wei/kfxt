@@ -1,0 +1,85 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<style type="text/css">
+ul{
+	padding:0px;
+	margin:0px;
+}
+ul{
+	list-style:square;
+}
+</style>
+<fieldset>
+	<legend>搜索</legend>
+    <form action="" method="get">
+    <input type="hidden" name="c" value="Log" />
+    <input type="hidden" name="a" value="Log" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="row">用户名</th>
+        <td><select name="user_id"><option value="">请选择</option><!--{html_options options=$users selected=$selected.user_id}--></select></td>
+      </tr>
+      <tr>
+        <th scope="row">时间范围</th>
+        <td>
+        	<input type="text" class="text" name="start_time" value="<!--{$selected.start_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.start_time|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" />
+             - 
+        	<input type="text" class="text" name="end_time" value="<!--{$selected.end_time}-->" onFocus="WdatePicker({startDate:'<!--{$selected.end_time|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" />
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">CONTROL</th>
+        <td><input type="text" class="text" name="control" value="<!--{$selected.control}-->" /></td>
+      </tr>
+      <tr>
+        <th scope="row">ACTION</th>
+        <td><input type="text" class="text" name="action" value="<!--{$selected.action}-->" /></td>
+      </tr>
+      <tr>
+        <th scope="row">DoAction</th>
+        <td><input type="text" class="text" name="doaction" value="<!--{$selected.doaction}-->" /></td>
+      </tr>
+      <tr>
+        <th scope="row">有无操作详细</th>
+        <td>
+        	<!--{html_radios options=$selectDetal selected=$selected.detail name="detail"}-->
+        	<input type="submit" class="btn-blue" value="提交" />
+        </td>
+      </tr>
+    </table>
+    </form>
+</fieldset>
+<fieldset>
+	<legend>列表</legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">操作者</th>
+        <th scope="col">操作时间</th>
+        <th scope="col">操作IP</th>
+        <th scope="col">控制器</th>
+        <th scope="col">动作</th>
+        <th scope="col">子动作</th>
+        <th scope="col">操作详细</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td><!--{$list.word_user_id}--></td>
+        <td><!--{$list.time}--></td>
+        <td><!--{$list.ip}--></td>
+        <td><!--{$list.control}--></td>
+        <td><!--{$list.action}--></td>
+        <td><!--{$list.doaction}--></td>
+        <td><!--{$list.msg}--></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="8"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="8" align="right"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+</fieldset>

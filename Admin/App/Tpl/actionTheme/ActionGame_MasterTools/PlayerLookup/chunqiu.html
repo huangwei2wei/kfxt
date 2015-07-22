@@ -1,0 +1,99 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" >
+	function jumpUrl(url){
+		var playerIdsForm = $('#playerIdsForm');
+		if(url == ''){
+			alert('empty url');
+			return false;
+		}else{
+			playerIdsForm.attr('action',url);
+			playerIdsForm.submit();
+		}
+	}
+</script>
+
+<fieldset>
+  <legend>用户查询</legend>
+  
+<form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    玩家ID:<input class="text" type="text" name="playerId" value="<!--{$_GET.playerId}-->">
+    玩家账号:<input class="text" type="text" name="accountName" value="<!--{$_GET.accountName}-->">
+    玩家昵称:<input class="text" type="text" name="playerName" value="<!--{$_GET.playerName}-->">
+    <br>
+    注册时间:
+    <input class="text" type="text" name="regBeginTime" value="<!--{$_GET.regBeginTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    -
+    <input class="text" type="text" name="regEndTime" value="<!--{$_GET.regEndTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    
+    
+    登录时间:
+    <input class="text" type="text" name="loginBeginTime" value="<!--{$_GET.loginBeginTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    -
+    <input class="text" type="text" name="loginEndTime" value="<!--{$_GET.loginEndTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+    <input class="btn-blue" type="submit" name="sbm" value="查询">
+</form>
+
+<form action="" id="playerIdsForm" method="post">
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>用户Id</th>
+          <th>账号<br>昵称</th>
+          <th>铜钱</th>
+          <th>绑定铜钱</th>
+          <th>元宝</th>
+          <th>绑定元宝</th>
+          <th>正营</th>
+          <th>等级<br>职业</th>
+          <th>注册时间</th>
+          <th>上次登录时间</th>
+          <th>VIP等级</th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+        <tr>
+       
+       	  <td align="center"><!--{$list.char_id|default:'0'}--></td>
+          <td align="center"><!--{$list.user_id|default:'<font color="#999999">无</font>'}--><br><!--{$list.char_name|default:'<font color="#999999">无</font>'}--></td>
+          <td align="center"><!--{$list.gold|default:'0'}--></td>
+          <td align="center"><!--{$list.gift_gold|default:'0'}--></td>
+          <td align="center"><!--{$list.jade|default:'0'}--></td>
+          <td align="center"><!--{$list.gift_jade|default:'0'}--></td>
+          <td align="center"><!--{$list.asset|default:'0'}--></td>
+          <td align="center"><!--{$list.level}--><br><!--{$list.career}--></td>
+          <td align="center"><!--{$list.register_time|date_format:"%Y-%m-%d %H:%M:%S"|default:'--'}--></td>
+          <td align="center"><!--{$list.login_time|date_format:"%Y-%m-%d %H:%M:%S"|default:'--'}--></td>
+          <td align="center"><!--{$list.vip_info.vipLevel|default:'0'}--></td>
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="11" align="center">
+                <!--{if $_GET.submit}-->
+                查无数据
+                <!--{else}-->
+                <font color="#FF0000">请使用"查询"按钮</font>
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/foreach}-->
+         
+          <tr>
+            <th colspan="11" align="right"><!--{$pageBox}--></th>
+          </tr>
+      </table>
+</form>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

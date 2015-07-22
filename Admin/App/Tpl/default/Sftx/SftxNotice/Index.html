@@ -1,0 +1,61 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+function del(){
+	if(confirm('确定要删除吗?')){
+		$('form').submit();
+	}
+}
+</script>
+<fieldset>
+
+<legend>公告列表</legend>
+<form id="form" action="<!--{$url.SftxNotice_Del}-->" method="post" onsubmit="return checksub();">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <td colspan="9"><a href="<!--{$url.SftxNotice_Add}-->">增加系统公告</a></td>
+    </tr>
+  <tr>
+    <th scope="col" nowrap="nowrap">操作</th>
+    <th scope="col" nowrap="nowrap">公告Id</th>
+    <th scope="col">公告标题</th>
+    <th scope="col">公告内容</th>
+    <th scope="col">URL地址</th>
+    <th scope="col" nowrap="nowrap">开始时间</th>
+    <th scope="col" nowrap="nowrap">结束时间</th>
+    <th scope="col" nowrap="nowrap">创建时间</th>
+    <th scope="col" nowrap="nowrap">时间间隔</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td scope="col" nowrap="nowrap"><input type="checkbox" value="<!--{$list.id}-->" name="idList[]" /></td>
+    <td scope="col" nowrap="nowrap"><!--{$list.id}--></td>
+    <td scope="col"><!--{$list.title}--></td>
+    <td scope="col"><!--{$list.content}--></td>
+    <td scope="col"><!--{$list.url}--></td>
+    <td scope="col" nowrap="nowrap"><!--{$list.begin|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td scope="col" nowrap="nowrap"><!--{$list.end|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td scope="col" nowrap="nowrap"><!--{$list.createAt|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td scope="col" nowrap="nowrap"><!--{$list.intervals}--></td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr>
+    <th colspan="9" scope="col">
+  		<!--{$noData}--> 	
+    </th>
+  </tr>
+  <!--{/foreach}-->
+  <tr>
+    <td colspan="9" scope="col">
+  		选择所有<input type="checkbox" onclick="$('#form :checkbox').attr('checked',$(this).attr('checked'))" /><input type="button" class="btn-blue" onClick="if(confirm('确定要删除吗?'))$('#form').submit();" value="删除" />  	
+    </td>
+  </tr>
+</table>
+<div style="text-align:right"><!--{$pageBox}--></div>
+</form>
+</fieldset>
+<!--{/if}-->

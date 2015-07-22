@@ -1,0 +1,213 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<style>
+	.itemInput{width:35px;height:16px;border: 1px solid red;}
+</style>
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+	$(function(){
+		$('#pageSize').val('<!--{$_GET.pageSize}-->');
+	});
+</script>
+<script language="javascript">
+
+
+//创建道具数量填写表单
+function makeInput(obj){
+	var itemId = obj.attr('itemId');
+	var itemName = obj.attr('itemName');
+	var str = '';
+	if(obj.attr('checked')){
+		str = '<input type="text" value="" class="itemInput" name="itemNum['+itemId+']" onblur="itemCollectAdd(\''+itemId+'\',\''+itemName+'\',$(this).val())" >';
+		str +='<input type="hidden" name="itemName['+itemId+']" value="'+itemName+'">'; 
+		str +='<label><input type="checkbox" value="1" name="itembind['+itemId+']">绑定</label>'; 
+		$('#input_'+itemId).html(str);
+		$('#input_'+itemId).children().focus();
+	}else{
+		$('#input_'+itemId).html('');
+	}
+}
+
+function itemCollectAdd(itemId,itemName,num){
+	if(itemId =='' || $.trim(num)=='')return false;
+	var itemsCollectId = 'itemsCollect'+itemId;
+	$('#'+itemsCollectId).remove();
+	num = parseInt(num);
+	if(num && num>0){
+		var str = '<div id="'+itemsCollectId+'" >'+itemName+'('+num+') <a href="javascript:itemCollectDel('+itemId+')">删除</a></div>';
+		$('#itemsCollect').append(str);
+	}else{
+		$('input[name=itemNum['+itemId+']]').val('');
+	}
+}
+function itemCollectDel(itemId){
+	if(itemId =='')return false;		
+	$('#checkboxItem'+itemId).attr('checked',false);
+	$('#input_'+itemId).html('');
+	$('#itemsCollect'+itemId).remove();
+}
+
+function showName(isShow){
+	var disabledValue = false;	//<!--{'31F0CFFD466C256BD250F7D1B56549B5'|lang}-->
+	var backgroundValue = "";	//<!--{'31F0CFFD466C256BD250F7D1B56549B5'|lang}-->
+	if(!isShow){
+		disabledValue = true;			//<!--{'5A7392A0D78BDDE002D8DF9F362707C3'|lang}-->
+		backgroundValue = "#F1EFF1";	//<!--{'5A7392A0D78BDDE002D8DF9F362707C3'|lang}-->
+	}
+	$('#char_nm').attr('disabled',disabledValue).css('background',backgroundValue);
+}
+</script>
+<fieldset>
+  <legend>搜索<a href="<!--{$updatecache}-->">[更新道具属性]</a></legend>
+  
+<form action="<!--{$submitUrl}-->"  method="post" id="form">
+    <table width="100%" border="0" cellpadding="3">
+    	<tr>
+      	<th>原因:</th>
+        <td>
+           <textarea rows="5" cols="50" name='cause' id='cause'></textarea>
+           <div id="titleTip" ></div>
+        </td>
+      </tr>
+      <tr>
+      	<th>礼包名称:</th>
+        <td>
+           	<input class="text" type="text" value="" name="gift_name">
+        </td>
+      </tr>
+      <tr>
+      	<th>描述:</th>
+        <td>
+           <textarea rows="5" cols="50" name='desc' ></textarea>
+        </td>
+      </tr>
+      <tr>
+      	<th>类型:</th>
+        <td>
+           	<label><input type="radio" checked="checked" value="0" name="type">补偿礼包</label>
+			<label><input type="radio" value="1" name="type">媒体礼包</label>
+        </td>
+      </tr>
+      
+      <tr>
+      	<th>是否可以重复使用:</th>
+        <td>
+           	<label><input type="radio" checked="checked" value="0" name="reuse">否</label>
+			<label><input type="radio" value="1" name="reuse">是</label>
+        </td>
+      </tr>
+      <tr>
+      	<th>是否通服:</th>
+        <td>
+           	<label><input type="radio" checked="checked" value="0" name="is_common">否</label>
+			<label><input type="radio" value="1" name="is_common">是</label>
+        </td>
+      </tr>
+      <tr>
+      	<th>是否绑定玩家:</th>
+        <td>
+           	<label><input type="radio" checked="checked" value="0" onchange="showName(false)" name="bind">不绑定（全服可用）</label>
+			<label><input type="radio" value="1" name="bind" onchange="showName(true)">绑定本服</label>
+			<label><input type="radio" value="2" name="bind" onchange="showName(true)">绑定玩家</label>
+        </td>
+      </tr>
+      
+      <tr>
+      	<th>玩家ID:</th>
+        <td>
+           <textarea rows="5" cols="50" name='char_id' id='char_id' disabled="disabled" style="background:#F1EFF1"></textarea>
+           <div id="contentTip">玩家ID用","号隔开</div>
+        </td>
+      </tr>
+
+	<tr>
+      	<th>卡密长度:</th>
+        <td>
+           	<label><input type="radio" checked="checked" value="0" name="card">36位</label>
+			<label><input type="radio" value="1" name="card" >10位</label>
+        </td>
+      </tr>
+	
+	<tr>
+      	<th>是否发送邮件:</th>
+        <td>
+           	<label><input type="radio" checked="checked" value="0" name="is_mail">否</label>
+			<label><input type="radio" value="1" name="is_mail" >是</label>
+        </td>
+      </tr>
+      
+      <tr>
+      	<th>卡密数量:</th>
+        <td>
+           	<input class="text" type="text" value="" name="card_count">
+        </td>
+      </tr>
+      <tr>
+      	<th>同类卡，玩家最多可使用次数:</th>
+        <td>
+           	<input class="text" type="text" value="" name="max_reward_count">
+        </td>
+      </tr>
+      
+
+	<tr>
+      	<th>过期时间:</th>
+        <td>
+           	<input class="text" type="text" onfocus="WdatePicker({startDate:'2012-11-10 14:37:54',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" value="" name="end_time">
+        </td>
+      </tr>
+
+      <tr>
+      	<th></th>
+        <td>
+           <table width="100%" border="0" cellpadding="3">
+          <tr>
+          <!--{foreach from=$items item=list key=typeId name=foo}-->
+          	<!--{if $list}-->              
+            <td><!--{$typeId}-->
+                <div style="background:white;margin:6px;font-size:14px;border:1px dashed silver;padding:5px;width:250px;">
+                    <div style="overflow:auto;height:200px; width:250px;text-align:left;">
+                        <!--{foreach from=$list item=itemName key=itemId}--> 
+                            <div style="font-size:13px; margin-top:4px;">
+                                <!--{$itemName.name}-->
+                                <input type="checkbox" onclick="makeInput($(this));" id="checkboxItem<!--{$itemName.item_id}-->" itemId="<!--{$itemName.item_id}-->" itemName="<!--{$itemName.name}-->">
+                                <span id="input_<!--{$itemName.item_id}-->"></span>
+                            </div>
+                        <!--{/foreach}--> 
+                    </div>
+                </div>
+            </td>
+	            <!--{if $smarty.foreach.foo.index%3==2}--> 
+	                </tr><tr>
+	            <!--{/if}-->
+            <!--{/if}-->
+          <!--{/foreach}--> 
+
+          </tr>
+          
+        </table>
+         </td>   
+      </tr>
+      <tr>
+      <th>道具汇总</th>
+      <td  valign="top">
+        <div id="itemsCollect"></div>
+      </td>
+  </tr>
+	<tr>
+		<th colspan="2"><input class="btn-blue" type="submit" value="提交"></th>
+	</tr>
+    </table>
+</form>
+
+
+</fieldset>
+
+<!--{/if}-->

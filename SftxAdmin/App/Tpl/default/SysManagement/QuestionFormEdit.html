@@ -1,0 +1,35 @@
+<fieldset><legend>问题表单编辑 [<!--{$title}-->]</legend>
+<form action="<!--{$url.SysManagement_QuestionFormEdit}-->" method="post">
+<input type="hidden" name="Id" value="<!--{$Id}-->" />
+<input type="hidden" name="key" value="<!--{$key}-->" />
+<table width="50%" border="0" cellpadding="3" id="text">
+	<tr>
+	  <th scope="row">控件类型</th>
+	  <td><!--{$data.word_type}--></td>
+    </tr>
+	<tr>
+		<th scope="row">控件name值</th>
+		<td><input type="text" class="text" name="name" value="<!--{$data.name}-->" /></td>
+	</tr>
+	<tr>
+		<th scope="row">控件名称说明</th>
+		<td><input type="text" class="text" name="title" value="<!--{$data.title}-->" /></td>
+	</tr>
+	<tr>
+		<th scope="row">控件描述</th>
+		<td><input type="text" class="text" name="description" value="<!--{$data.description}-->" /></td>
+	</tr>
+	<tr>
+		<th scope="row">是否必填</th>
+		<td><input type="checkbox" name="required" value="1" <!--{if $data.required}-->checked="checked"<!--{/if}--> /></td>
+	</tr>
+    <!--{if $data.type=="select"}-->
+	<tr>
+		<th scope="row">下拉选择框(请用","号隔开每个选项.)</th>
+		<td><input type="text" class="text" name="options" value="<!--{$data.word_options}-->" /></td>
+	</tr>
+    <!--{/if}-->
+    <tr><th colspan="2"><input type="submit" class="btn-blue" value="提交"  /></th></tr>
+</table>
+</form>
+</fieldset>

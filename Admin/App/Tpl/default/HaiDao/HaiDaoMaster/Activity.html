@@ -1,0 +1,59 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$("#allcheck").click(function() {
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='Ids[]']").attr("checked",curCheck);
+	 });
+	$("#Items").change();
+});
+
+function jumpUrl(url){
+	if(confirm('<!--{'4CEC2A2B2D19F8C1705FB195B1CE60F8'|lang}-->?')){
+		form=$("#form");
+		form.attr("action",url);
+		form.submit();
+	}
+}
+</script>
+<fieldset>
+  <legend><!--{'D285A2BB78EAF4BF3677B3551EFD3B77'|lang}--></legend>
+  	<a href="<!--{$url.MasterFRG_Activity_Add}-->"><!--{'997FDCB8589FFD53A452FF261888E1CE'|lang}--></a>
+    <form action="" id="form" method="post">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th>Id</th>
+        <th><!--{'902A3DD676DF1D56EA8D5DAB69C15A2B'|lang}--></th>
+        <th><!--{'45235F6C8FA2F6BBB0D5B69742EB1076'|lang}--></th>
+        <th><!--{'ACF9E02D063ABC0012C817DC0DE800BD'|lang}--></th>
+        <th><!--{'0C56E353EFE9F054EBA32D9BCCA68E20'|lang}--></th>
+        <th><!--{'767C769619F0807BE60F12EF820B6717'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList item=vo}-->
+      <tr>
+        <td><input type="checkbox" name="Ids[]" value="<!--{$vo.Id}-->" /><!--{$vo.Id}--></td>
+        <td><a href="<!--{$vo.url_edit}-->"><!--{$vo.Title}--></a></td>
+        <td><!--{$vo.Identifier}--></td>
+        <td><!--{$vo.AcceptDesc}--></td>
+        <td><!--{$vo.OpenTime}--></td>
+        <td><!--{$vo.MaxNum}--></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="6"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}--> 
+      <tr>
+        <td><input type="checkbox" onclick="$('#form :checkbox').attr('checked',$(this).attr('checked'))" /> <!--{'66EEACD93A7C1BDA93906FE908AD11A0'|lang}--></td>
+        <td colspan="5"><input type="button" class="btn-blue" onclick="jumpUrl('<!--{$url.MasterFRG_Activity_Del}-->')" value="<!--{'2F4AADDDE33C9B93C36FD2503F3D122B'|lang}-->" /></td>
+      </tr>
+    </table>
+    </form>
+</fieldset>
+<!--{/if}-->

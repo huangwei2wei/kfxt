@@ -1,0 +1,114 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<style type="text/css">
+.addline{
+	padding:3px;
+}
+#showItem{
+	display:none;
+	border:1px dashed #09F;
+	padding:3px;
+	margin:3px;
+	width:100%;
+}
+#showItem a{
+	padding:4px;
+	display:inline-block;
+}
+</style>
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="<!--{$__JS__}-->/default/frg.js"></script>
+<script language="javascript">
+
+<!--{if $objData}-->
+var objData=eval(<!--{$objData}-->);
+<!--{/if}-->
+
+<!--{if $toolData}-->
+var toolData=eval(<!--{$toolData}-->);
+<!--{/if}-->
+
+<!--{if $effData}-->
+var effData=eval(<!--{$effData}-->);
+<!--{/if}-->
+
+
+var condInputNum=1;
+var effectInputNum=1;
+var toolInputNum=1;
+
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#server_id").formValidator({onshow:"<!--{'C566CA59602C7C5C0D3FE5E18ADE447D'|lang}-->ID<!--{'D7D11654A707D7E7B661C90295E58B20'|lang}-->",oncorrect:"<!--{'124D617A6875038C81E03DEC5E2501F4'|lang}-->ID"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'BA2DD64CC4F6DDF27CB1526EFB449E2D'|lang}-->"});
+	$("#cause").formValidator({onshow:"<!--{'A73F63486CB97A8D6C136D7DC82F11D2'|lang}-->",oncorrect:"<!--{'FD75CEECBD2676048590A1695702F29A'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'A73F63486CB97A8D6C136D7DC82F11D2'|lang}-->"},onerror:"<!--{'E85E13CC2A5C76D4E44E62F70E1F1BED'|lang}-->"});
+	$("#Title").formValidator({onshow:"<!--{'FD0B68B28FAE1EC061195E662CF65F04'|lang}-->",oncorrect:"<!--{'D9113574D227D62353185BC9F33CB783'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'FD0B68B28FAE1EC061195E662CF65F04'|lang}-->"},onerror:"<!--{'C6A83E762104AEF0EA15892D5C9B31D1'|lang}-->"});
+	$("#MsgTitle").formValidator({onshow:"<!--{'EA63C4DC8F4020500FC0DBFBDB16D404'|lang}-->",oncorrect:"<!--{'5D04FE17DEB779C0EE90DC533FCDD2C1'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'EA63C4DC8F4020500FC0DBFBDB16D404'|lang}-->"},onerror:"<!--{'1DF7810C9F146426FCC2D187BB87D738'|lang}-->"});
+	$("#MsgContent").formValidator({onshow:"<!--{'FA967BD016F6A501D1D651D4F42642A1'|lang}-->",oncorrect:"<!--{'51CD9E88214F5135626C0CFB95CDEFF4'|lang}-->"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'FA967BD016F6A501D1D651D4F42642A1'|lang}-->"},onerror:"<!--{'48E93DB8F2E59D91DB5EE7B439AFD9CE'|lang}-->"});
+})
+
+</script>
+<fieldset>
+<legend><!--{'345D447D5FD85787218851AFD2995114'|lang}--> [<font color="#FF0000"><!--{'541018CC8BD963A5718F321903B9D907'|lang}--></font>]</legend>
+
+<div id="showItem"></div>
+
+<form id="form" action="" method="post" >
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row"><!--{'C5AE2E7BD2CB8F79F3DD66FA7212B58B'|lang}--></th>
+    <td><textarea name="cause" id="cause" cols="50" rows="8"></textarea><div id="causeTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'7E4CA6EEFB1F353E5AA2573570D70354'|lang}--></th>
+    <td><input type="text" class="text" name="Title" id="Title" size="80" /><div id="TitleTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'A53DB51463C2D8EC4AE21144C4579A15'|lang}--></th>
+    <td><input type="text" class="text" name="MsgTitle" size="80" id="MsgTitle" value="" /><div id="MsgTitleTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'B87B77561E776367E6756E11EA652217'|lang}--></th>
+    <td><textarea name="MsgContent" id="MsgContent" rows="6" cols="50"></textarea><div id="MsgContentTip"></div></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'0DE30C4E103060D3481CF22B4195481A'|lang}--></th>
+    <td>
+    	<input type="text" class="text" name="SendTime" value="<!--{$systemTime|strtotime:'+1 hours'}-->" onFocus="WdatePicker({startDate:'<!--{$systemTime|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/> 
+        <!--{'981CBE312B52B35B48065B9B44BA00E5'|lang}-->
+        <input type="text" class="text" name="EndTime" value="<!--{$systemTime|strtotime:'+1 day'}-->" onFocus="WdatePicker({startDate:'<!--{$systemTime|strtotime:'+1 day'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        <!--{'4C82AEABE39C801738069F81294C24B0'|lang}-->：<font color="#FF0000"><!--{$systemTime|date_format:"%Y-%m-%d %H:%M:%S"}--></font>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'C0214A5B64D4ADC993C5DDC58FEA4826'|lang}--></th>
+    <td>
+        <input type="radio" name="EveryDay" value="1" /><!--{'0A60AC8F02CCD2CF723F927284877851'|lang}--> 
+        <input type="radio" name="EveryDay" value="0" checked="checked" /><!--{'C9744F45E76D885AE1C74D4F4A934B2E'|lang}-->
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'664B9B5DAEA434BBF3C63574392CF287'|lang}--></th>
+    <td><input type="button" class="btn-blue" onclick="addGetCond($(this))" value="<!--{'53547608D8563C352DD64D33CA4E4C98'|lang}-->" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'46C52C767383B0A4246F5149E7E585FE'|lang}--></th>
+    <td><input type="button" class="btn-blue" onclick="addEffect($(this))" value="<!--{'9617335C840B393D4E12F66620C06240'|lang}-->" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'62C341F9C880236471E35B60EE816B3B'|lang}--></th>
+    <td><input type="button" class="btn-blue" onclick="addTool($(this))" value="<!--{'BF9E805569213C27D1CE1C611B8B964E'|lang}-->" /></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">
+      <input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" />
+      </th>
+  </tr>
+</table>
+</form>
+</fieldset>
+<!--{/if}-->

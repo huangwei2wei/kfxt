@@ -1,0 +1,88 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<style>
+	.itemInput{width:35px;height:16px;border: 1px solid red;}
+</style>
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script>
+	$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#cause").formValidator({onshow:"请输入操作原因",oncorrect:"操作原因正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入操作原因"},onerror:"操作原因不能为空"});
+})
+</script>
+<script language="javascript">
+
+var tlistnum=0;
+function edittoolnum(obj,toolname,canpresent,beforenum,boxId,ItemId){
+	if(obj.attr('checked')==true){
+		obj.parent().append('<span><input type="hidden" name="update_info['+tlistnum+'][toolname]" value="'+toolname+'"><input type="hidden" name="update_info['+tlistnum+'][canpresent]" value="'+canpresent+'"><input type="hidden" name="update_info['+tlistnum+'][beforenum]" value="'+beforenum+'"><input type="hidden" name="update_info['+tlistnum+'][boxId]" value="'+boxId+'"><input type="hidden" name="update_info['+tlistnum+'][ItemId]" value="'+ItemId+'">调整后个数为:<input type="text" name="update_info['+tlistnum+'][afternum]" value="0"></span>');
+		tlistnum += 1;
+	} else {
+		obj.parent().children('span').remove();
+	}
+}
+</script>
+<fieldset>
+  <legend>搜索</legend>
+  
+  <form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    玩家ID:<input class="text" type="text" name="playerId" value="<!--{$_GET.playerId}-->">
+    玩家账号:<input class="text" type="text" name="accountName" value="<!--{$_GET.accountName}-->">
+    玩家昵称:<input class="text" type="text" name="playerName" value="<!--{$_GET.playerName}-->">
+    <input class="btn-blue" type="submit" name="sbm" value="查询">
+</form>
+<form action="" method="post" id="form">
+	<input type="hidden" name="user" value="<!--{$user}-->">
+	<input type="hidden" name="userType" value="<!--{$userType}-->">
+      <table width="100%" border="0" cellpadding="3">
+        <tr>
+          <th>道具名</th>
+          <th>能否赠送</th>
+          <th>道具数</th>
+          <th>调整个数</th>
+          <th>道具Id</th>
+          <th>格子<th>
+        </tr>
+        
+		<!--{foreach from=$dataList item=list}-->
+		<tr>
+          <td align="center"><!--{$list.ItemName|default:''}--></td>
+          <td align="center"><!--{if $list.CanPresent==1}-->能<!--{else}-->否<!--{/if}--></td>
+       	  <td align="center"><!--{$list.ItemNumber|default:'0'}--></td>
+          <td align="left" width="250px"><input type="checkbox" onclick="edittoolnum($(this),'<!--{$list.ItemName}-->',<!--{$list.CanPresent}-->,<!--{$list.ItemNumber}-->,<!--{$list.boxId}-->,<!--{$list.ItemId}-->)"/></td>
+          <td align="center"><!--{$list.ItemId|default:''}--></td>
+          <td align="center"><!--{$list.boxId|default:''}--></td>
+        </tr>
+        <!--{foreachelse}-->
+          <tr>
+            <th colspan="7" align="center">
+                <!--{if $_GET.submit}-->
+                <!--{'48E07E7DEAE53593B6FB5F4315CF0D1F'|lang}-->
+                <!--{else}-->
+                暂无数据
+                <!--{/if}-->
+            </th>
+          </tr>
+		<!--{/foreach}-->
+		<tr><th colspan="7" align="left">调整原因：<textarea  rows="5" cols="50" name="cause" id="cause"></textarea><div id="causeTip"></div>
+		<br>
+		<input type="submit" value="申请调整" class="btn-blue" name="submit"></tr>
+      </table>
+</form>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<!--{/if}-->

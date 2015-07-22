@@ -1,0 +1,55 @@
+<fieldset>
+	<legend>任务审核</legend>
+    <form action="" method="post">
+    <input type="hidden" name="Id" value="<!--{$dataList.Id}-->" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="row">任务详细</th>
+        <td><!--{$dataList.task_content}--></td>
+      </tr>
+      <tr>
+        <th scope="row">编号</th>
+        <td><!--{$dataList.Id}--></td>
+      </tr>
+      <tr>
+        <th scope="row">难度系数</th>
+        <td><!--{$dataList.difficulty}--></td>
+      </tr>
+      <tr>
+        <th scope="row">负责人</th>
+        <td><!--{$dataList.word_accept_user_id}--></td>
+      </tr>
+      <tr>
+        <th scope="row">分配人</th>
+        <td><!--{$dataList.word_assign_user_id}--></td>
+      </tr>
+      <tr>
+        <th scope="row">上级预计完成时间</th>
+        <td><!--{$dataList.precast_hour}--> 小时</td>
+      </tr>
+      <tr>
+        <th scope="row">实际工作量</th>
+        <td><!--{$dataList.actual_hour}--> 小时</td>
+      </tr>
+      <tr>
+        <th scope="row">开始时间 - 结束时间</th>
+        <td><!--{$dataList.start_time}--> - <!--{$dataList.end_time}--></td>
+      </tr>
+      <tr>
+        <th scope="row">效率得分</th>
+        <td><!--{$dataList.quality_scorce}--></td>
+      </tr>
+      <tr>
+        <th scope="row">延时完成原因</th>
+        <td><!--{$dataList.timeout_cause}--></td>
+      </tr>
+      <tr>
+        <th scope="row">BUG评分</th>
+        <td><input type="text" class="text" name="bug_scorce" /></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+    </form>
+</fieldset>

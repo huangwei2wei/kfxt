@@ -1,0 +1,38 @@
+<form action="" method="post">
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<fieldset>
+	<legend><b><!--{$serverName}--></b></legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col"><!--{'C7375AD4A1177F7E286D520D7DF3B1C9'|lang}--></th>
+        <th scope="col"><!--{'F195F63A87BBDE9372609887D36CECC5'|lang}--></th>
+      </tr>
+      <!--{foreach from=$dataList key=key item=list}-->
+      <tr>
+        <td>
+        	<input type="hidden" name="data[<!--{$key}-->][CardName]" value="<!--{$list.CardName|htmlspecialchars}-->" />
+			<input type="hidden" name="data[<!--{$key}-->][CardLimit]" value="<!--{$list.CardLimit|htmlspecialchars}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][CardPrize]" value="<!--{$list.CardPrize|htmlspecialchars}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][CardDescribe]" value="<!--{$list.CardDescribe|htmlspecialchars}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][CardImage]" value="<!--{$list.CardImage}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][Active]" value="<!--{$list.Active}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][DisRepeat]" value="<!--{$list.DisRepeat}-->" />
+            
+            <input type="hidden" name="data[<!--{$key}-->][CardRegular]" value="<!--{$list.CardRegular}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][CardCheckLink]" value="<!--{$list.CardCheckLink}-->" />
+            <input type="hidden" name="data[<!--{$key}-->][CardEName]" value="<!--{$list.CardEName}-->" />
+            
+        	<!--{$list.CardName}-->
+        </td>
+        <td><!--{$list.CardDescribe}--></td>
+      </tr>
+      <!--{/foreach}-->
+      <tr><td colspan="2" align="center"><input type="submit" name="submit" class="btn-blue" value="<!--{'17A5565D05ABB505E0B8164C80F618B1'|lang}-->" /></td></tr>
+    </table>
+</fieldset>
+
+
+</form>

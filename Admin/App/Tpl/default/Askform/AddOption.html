@@ -1,0 +1,96 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+ol{
+	margin:0px 0px 0px 22px;
+	padding:0px;
+}
+ol li{
+	margin-bottom:5px;
+}
+</style>
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+
+function addOption(){
+	$("#option").append('<li><input type="text" class="text" name="option[]" />&nbsp;<input type="button" class="btn-blue" value="删除此项" onclick="$(this).parent().remove()" /></li>');
+}
+</script>
+<fieldset>
+	<legend>问卷详细</legend>
+    <form action="<!--{$url.Askform_Edit}-->" method="post">
+    <input type="hidden" value="<!--{$data.Id}-->" name="Id" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th>问卷名称</th>
+        <td><input name="title" type="text" class="text" value="<!--{$data.title}-->" size="60" /></td>
+      </tr>
+      <tr>
+        <th>简介</th>
+        <td><textarea cols="40" name="description" rows="6"><!--{$data.description}--></textarea></td>
+      </tr>
+      <tr>
+        <th>开始时间</th>
+        <td><input type="text" class="text" name="start_time" value="<!--{$data.start_time}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/></td>
+      </tr>
+      <tr>
+        <th>结束时间</th>
+        <td><input type="text" class="text" name="end_time" value="<!--{$data.end_time}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/></td>
+      </tr>
+      <tr>
+        <th>是否可用</th>
+        <td><!--{html_radios options=$askStatus name="status" selected=$data.status}--></td>
+      </tr>
+      <tr>
+        <th colspan="2">
+            <input type="submit" class="btn-blue" value="提交" />
+        </th>
+      </tr>
+    </table>
+    </form>
+</fieldset>
+
+<fieldset>
+	<legend>增加问卷子选项</legend>
+		<form action="" method="post">
+    	<input type="hidden" value="<!--{$data.Id}-->" name="askform_id" />
+        <table width="100%" border="0" cellpadding="3">
+        <tr>
+            <th scope="row">标题</th>
+            <td><input name="title" type="text" class="text" size="60" /></td>
+        </tr>
+        <tr>
+            <th scope="row">类型</th>
+            <td><input type="radio" checked value="1" name="types" />单选 <input value="2" type="radio" name="types" />多选</td>
+        </tr>
+        <tr>
+            <th scope="row">选项</th>
+            <td><input type="button" class="btn-blue" onClick="addOption()" value="增加选项" /><ol id="option"></ol></td>
+        </tr>
+        <tr>
+            <th scope="row">是否允许其它选项</th>
+            <td><input type="radio" value="1" checked name="allow_other" />允许 <input type="radio" value="0" name="allow_other" />不允许</td>
+        </tr>
+        <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+        </tr>
+         </table>
+    </form>
+</fieldset>
+
+<fieldset>
+	<legend>已有问卷子选项</legend>
+    <!--{foreach from=$dataList item=list}-->
+    	<div style="margin:5px; background:#E1F5FF; border:1px dashed #999; padding:5px;">
+        	<span><!--{$list.title}-->&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<!--{$list.url_del}-->">删除</a></span>
+            <div>
+            <!--{if $list.types==1}-->
+            	<!--{html_radios options=$list.content separator="<br>"}--><!--{if $list.allow_other}--><input type="radio" />其它&nbsp;<input type="text" class="text" /><!--{/if}-->   
+            <!--{else}-->
+            	<!--{html_checkboxes options=$list.content separator="<br>"}--><!--{if $list.allow_other}--><input type="checkbox" />其它&nbsp;<input type="text" class="text" /><!--{/if}--> 
+            <!--{/if}-->     
+            </div>
+        </div>
+    <!--{foreachelse}-->
+    	<!--{$noData}-->
+    <!--{/foreach}-->
+</fieldset>

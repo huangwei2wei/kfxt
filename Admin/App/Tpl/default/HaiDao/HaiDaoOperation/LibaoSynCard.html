@@ -1,0 +1,40 @@
+<form action="" method="post">
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<fieldset>
+	<legend><b><!--{$serverName}--></b></legend>
+    <input type="hidden" name="card_name" value="<!--{$cardName}-->" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th colspan="4" scope="col"><!--{'C7375AD4A1177F7E286D520D7DF3B1C9'|lang}-->：<!--{$cardName}--></th>
+      </tr>
+      <!--{foreach from=$dataList key=key item=list}-->
+      <tr>
+        <th><!--{'8F8ED0E3AB533211CE82DD1E4B1C22BB'|lang}--></th>
+        <td>
+        	<!--{$list.CardNum}--><input type="hidden" name="card[]" value="<!--{$list.CardNum}-->" />
+        </td>
+        <td>
+        	&nbsp;<!--{if $list.StartTime>0}--><!--{'592C59589144DDC68D05D528DA17DCDC'|lang}--> <!--{$list.StartTime|date_format:'%Y-%m-%d %H:%M:%S'}--><!--{/if}-->
+            <input type="hidden" name="StartTime[]" value="<!--{$list.StartTime}-->" />
+        </td>
+        <td>
+        	&nbsp;<!--{if $list.EndTime>0}--><!--{'F782779E8B5D709462C8E71E0D9019F2'|lang}--> <!--{$list.EndTime|date_format:'%Y-%m-%d %H:%M:%S'}--><!--{/if}-->
+            <input type="hidden" name="EndTime[]" value="<!--{$list.EndTime}-->" />
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+      	<th colspan="2"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="4" align="center">
+        	<input type="submit" name="submit" class="btn-blue" value="<!--{'311F388055A8B4C59E144219DA4CD0EE'|lang}-->" /> <font color="#FF0000">(<!--{'F6349C441652F0E053DCDE768D5C3DB8'|lang}-->:<!--{'914348318677E4B6334C6CE3924371F3'|lang}-->,<!--{'2DCE8317E1D9EEB5E677ED80562261C5'|lang}-->)</font>
+        </td>
+      </tr>
+    </table>
+</fieldset>
+</form>

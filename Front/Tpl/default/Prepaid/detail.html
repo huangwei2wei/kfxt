@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>问题明细</title>
+<link rel="stylesheet" type="text/css" href="css/page.css" />
+<include file="../common/libs"/>
+<script>
+$(function(){
+	$('#menu_question').addClass('d');
+});
+</script>
+</head>
+
+<body>
+<include file="../common/head"/>
+<div id="contai">
+	<include file="../common/menu"/>
+	<include file="left"/>
+	<div class="neiright">
+		
+		<div class="tiontit"><span><select>
+		  <option selected="selected">商业大亨</option>
+		  <option>超级明星</option>
+		</select></span><b>当前位置：</b><a href="#">客服中心</a> > <a href="#">结果查询 </a></div>
+		<div class="list">
+			<div class="listhaera"><a href="javascript:history.go(-1);">返回</a></div>		 
+			 <div class="listkan">
+			 <p class="listkann">
+			 <b>问题标题：</b>{$workOrder.title}<br/>
+			<b>问题类型：</b>{$workOrder.question_type_name}<br/>	
+			<b>游戏类型：</b>{$workOrder.game_type_name}<br/>		
+			<if condition="$game_server_name">
+			<b>所在服务器：</b>{$workOrder.game_server_name}
+			</if> 
+			<!--动态表单-->
+			<volist name="workOrder[actionFormArray]" id="form">
+				<b>{$key}：</b>{$form}<br/>
+			</volist>
+			 </p>
+			 	<volist name="list" id="vo">
+			 	<p class="listkann"><b><if condition="$i eq 1">问题描述：<elseif condition="$vo.qa eq 0"/>我：<else/>客服：</if></b><br />
+{$vo.content}</p>
+</volist>	
+		<div id="re_question">  <if condition="$workOrder.evaluation_status != 0">style="display:none;"</if>		
+		<form name="myform" action="{:U('Question/addqa')}" method="post">
+		<input type="hidden" value="{$id}" name="id" />
+			 					<p><b>问题补充：</b><textarea name="content"></textarea></p>	
+				<p style="text-align:center;border:0"><a href="#"><input type="image" src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/input_03.gif" /></a></p>		
+			</form>		
+			</div> 
+			 </div>
+			  
+					  
+      </div>
+		<div class="neibottom"></div> 
+	</div>
+<div style="clear:both"></div>
+<include file="../common/footer"/>
+</div>
+</body>
+
+</html>

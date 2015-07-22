@@ -1,0 +1,35 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#cause").formValidator({onshow:"请输入操作原因",oncorrect:"操作原因正确"}).inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"请输入操作原因"},onerror:"操作原因不能为空"});
+	$("#user_id").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"用户ID不能为空,请确认"});
+})
+</script>
+<form id="form" method="post" action="">
+<fieldset>
+<legend>添加封号用户  [<font color="#0000FF">此操作无须审核</font>]</legend>
+<input type="hidden" name="server_id" id="server_id" value="<!--{$get.server_id}-->"/>
+    <table width="98%" border="0" cellpadding="3">
+    	<tr>
+        <th scope="row">操作原因</th>
+        <td><textarea name="cause" id="cause" cols="60" rows="5"></textarea><div id="causeTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row">封号用户ID:</th>
+        <td>
+        	<input type="text" class="text" name="user_id" id="user_id" />
+        	<div id="UserIdTip"></div>
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+</fieldset>
+</form>
+<!--{/if}-->

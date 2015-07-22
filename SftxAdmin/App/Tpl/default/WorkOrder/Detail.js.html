@@ -1,0 +1,27 @@
+<script language="javascript">
+$(function(){
+	$("#verify").bind('load',function(){
+		$(this).height($(this).contents().find("body").attr('scrollHeight'));						  
+	});
+	$("#change_status").change(function(){
+		var status=$(this).val();
+		if(!status)return false;
+		if(confirm("确定改变状态吗?")){
+			var id=$(this).attr("work_order_id");
+			$.getJSON(
+				url,
+				{Id:id,status:status,c:'WorkOrder',a:'ChangeStatus'},
+				function(data){
+					if(data.status==1){
+						alert(data.msg);
+						location.reload();
+					}else{
+						alert(data.msg);
+					}
+					
+				}
+			);
+		}
+	})
+})
+</script>

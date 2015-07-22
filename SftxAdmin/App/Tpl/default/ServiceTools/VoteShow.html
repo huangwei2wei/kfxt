@@ -1,0 +1,76 @@
+<script language="javascript" src="<!--{$__JS__}-->/Libs/vote/vote.js"></script>
+<fieldset>
+  <legend>投票详情</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">名称</th>
+        <td><!--{$data.title}--></td>
+      </tr>
+      <tr>
+        <th scope="row">说明</th>
+        <td><!--{$data.description}--></td>
+      </tr>
+      <tr>
+        <th scope="row">时间</th>
+        <td><!--{$data.start_time}--> 至 <!--{$data.end_time}--></td>
+      </tr>
+      <tr>
+        <th scope="row">投票</th>
+        <td>
+        	<!--{if $data.my_status == 1}-->
+        	<form action="" method="post">
+            	<input type="hidden" name="Id" value="<!--{$data.Id}-->" />
+                <!--{foreach from=$mySource key=key item=list}-->
+                    <!--{if $list}-->
+                    第<!--{$key}-->票：[<font color="#FF0000"><!--{$list}--></font>]分
+                    <select name="source[<!--{$key}-->]"><!--{html_options options=$data.content}--></select>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <!--{/if}-->
+                <!--{/foreach}-->
+                <input type="submit" class="btn-blue" value="提交" />
+            </form>
+            <!--{/if}-->
+        </td>
+      </tr>
+    </table>
+</fieldset>
+
+<fieldset>
+	<legend>投票结果</legend>
+   
+    <div id="show_vote_result"></div>
+    <table width="100%" border="0" cellpadding="3">
+      <caption>
+        投票详情
+      </caption>
+      <!--{foreach from=$data.content key=key item=list}-->
+      <tr>
+        <th scope="row"><!--{$list}--></th>
+        <td>
+        	<!--{foreach from=$voteLogList item=log}-->
+                <!--{if $log.vote_option_id==$key}-->
+                	<!--{$log.word_user_id}-->：[<font color="#FF0000"><!--{$log.source}--></font>]分&nbsp;&nbsp;
+                <!--{/if}-->
+            <!--{/foreach}-->
+        </td>
+      </tr>
+      <!--{/foreach}-->
+    </table>
+	<!--{if $voteResult}-->
+    <script language="javascript">
+    $(function(){
+        var voteResult=eval(<!--{$voteResult}-->);
+        var bar1 = new bar();
+        bar1.id="show_vote_result";
+        bar1.title='<!--{$data.title}-->';
+        bar1.data=voteResult;
+        bar1.show();
+    });
+    </script>
+    <!--{else}-->
+    <ul>
+        <!--{foreach from=$data.content item=list}-->
+        <li><!--{$list}--></li>
+        <!--{/foreach}-->
+    </ul>
+    <!--{/if}-->
+</fieldset>

@@ -1,0 +1,31 @@
+<center>
+<form method="post" action="<!--{$url.SysManagement_QuestionEdit}-->">
+<input type="hidden" value="<!--{$list.Id}-->" name="Id" />
+<table width="98%" border="0" cellpadding="3">
+  <tr>
+    <td>Id：</td>
+    <td><!--{$list.Id}--></td>
+  </tr>
+  <tr>
+    <td>所属游戏：</td>
+    <td>
+    	<select name="game_type_id">
+        	<!--{html_options options=$gameListSelect selected=$list.game_type_id}-->
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <td>问题名称：</td>
+    <td><input type="text" class="text" name="title" value="<!--{$list.title}-->" /></td>
+  </tr>
+  <tr>
+    <td>问题表单：</td>
+    <td><textarea cols="100" name="form_table" rows="20"><!--{$list.form_table}--></textarea></td>
+  </tr>
+  <tr>
+    <td><input type="submit" class="btn-blue" value="提交" /></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</form>
+</center>

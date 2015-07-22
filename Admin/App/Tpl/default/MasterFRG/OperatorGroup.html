@@ -1,0 +1,34 @@
+
+<fieldset>
+	<legend>运营商分组管理</legend>
+    <!--{foreach from=$operatorGroup key=k item=operatorList}-->
+        <!--{if $k === 'no_group'}-->
+            <fieldset>
+                <legend>未分组</legend>
+                <form action="" method="post">
+                	<input type="hidden" name="doaction" value="add" />
+                    <div>
+                        <!--{html_checkboxes options=$operatorList name="operators" separator=" "}-->
+                    </div>
+                    <input class="btn-blue" type="submit" value="新增分组" />
+                </form>
+            </fieldset>
+        <!--{else}-->
+            <fieldset>
+                <legend><!--{$k}--></legend>
+                <div>
+                    <!--{foreach from=$operatorList item=optName}-->
+                    	<label style="color:#F00"><!--{$optName}--></label> |
+                    <!--{/foreach}-->
+                </div>
+                <form action="" method="post">
+                	<input type="hidden" name="doaction" value="del" />
+                    <input type="hidden" name="operatorId" value="<!--{$k}-->" />
+                    <input class="btn-blue" type="submit" value="删除" />
+                </form>
+                </fieldset>
+         <!--{/if}-->
+    <!--{/foreach}-->
+</fieldset>
+
+

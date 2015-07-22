@@ -1,0 +1,51 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script language="javascript">
+$(function(){
+	$("#operator_id").change(function(){
+		location.href=url+"?c=XunXiaUser&a=GameLogin&zp=XunXia&operator_id="+$(this).val();
+	});
+})
+function check(formId){
+	if($('#cause_'+formId).val()==""){
+		alert('请输入理由');
+		$('#cause_'+formId).focus();
+		return false;
+	}
+	if($('#user_name_'+formId).val()==""){
+		alert('请输入用户名');
+		$('#user_name_'+formId).focus();
+		return false;
+	}
+	return true;
+}
+</script>
+<fieldset>
+	<legend>服务器列表</legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <td>
+        	<form action="" method="post" target="_blank" >
+        		<select name="platform">
+					<option value="qzone">Qzone</option>
+					<option value="pengyou">Pengyou</option>
+					<option value="qqgame">QQGame</option>
+					<option value="3366">3366</option>
+					<option value="qplus">Q+</option>
+					<option value="website">腾讯官网</option>
+					<option value="union-10029-00">爱玩</option>
+				</select>
+            		操作原因：
+            	<input type="text" class="text"  name="cause" size="50" />
+                	玩家账号：
+            	<input type="text" class="text" size="50"  name="user_name"/>
+                <input type="submit" class="btn-blue" value="登录" />
+        	</form>
+        </td>
+      </tr>
+    </table>
+</fieldset>
+<!--{/if}-->

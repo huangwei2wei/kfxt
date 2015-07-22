@@ -1,0 +1,54 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#title").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'752F8926DB21639D9F8ECDC7BF1D7159'|lang}-->"},onerror:"<!--{'1C556BF4A724BF1B83C6FC64D44DE0B2'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"<!--{'752F8926DB21639D9F8ECDC7BF1D7159'|lang}-->"},onerror:"<!--{'81B8114F80F252C34993100C3BD6F046'|lang}-->,<!--{'43D586CD6CF1A512C0BCB85ED9EFDE51'|lang}-->"});
+	$("#interval").formValidator({onshow:"<!--{'62DF1C363CC3B9F23706E4504BC0EC25'|lang}-->",oncorrect:"<!--{'315F61935B8933FF105D5FA610D202C3'|lang}-->"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"<!--{'49D109F09975997457A4623EEE9A558F'|lang}-->"});
+})
+</script>
+<fieldset>
+<legend><!--{'E91B79AF1E95580B397E27A3F6BB4BA0'|lang}--> [<font color="#0000FF"><!--{'ED4EBD5BB7CFCAD8BEDE3C87F8C6AA65'|lang}--></font>]</legend>
+<form action="" method="post" id="form">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+<input type="hidden" name="Id" value="<!--{$dataList.Id|htmlspecialchars}-->" />
+    <table width="98%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row"><!--{'22F454634D216B2787C24A90EFD297AA'|lang}--></th>
+        <td><input type="text" class="text" name="Notice[Title]" value="<!--{$dataList.Title|htmlspecialchars}-->" id="title" /><div id="titleTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'0DFFC10FD1EB0371106F6CEC88009025'|lang}--></th>
+        <td><textarea name="Notice[Content]" cols="40" rows="8" id="content"><!--{$dataList.Content|htmlspecialchars}--></textarea><div id="contentTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'592C59589144DDC68D05D528DA17DCDC'|lang}--></th>
+        <td><input type="text" class="text" name="Notice[Start_time]" value="<!--{$dataList.Start_time|date_format:'%Y-%m-%d %H:%M:%S'}-->" onFocus="WdatePicker({startDate:'<!--{$dataList.Start_time|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        	<!--{'4C82AEABE39C801738069F81294C24B0'|lang}-->： <font color="#FF0000"><!--{$systemTime|date_format:'%Y-%m-%d %H:%M:%S'}--></font>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'F782779E8B5D709462C8E71E0D9019F2'|lang}--></th>
+        <td><input type="text" class="text" name="Notice[End_time]" value="<!--{$dataList.End_time|date_format:'%Y-%m-%d %H:%M:%S'}-->" onFocus="WdatePicker({startDate:'<!--{$dataList.End_time|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/></td>
+      </tr>
+      <tr>
+        <th scope="row"><!--{'E1317F673E37DABE7AFF7C31134898F6'|lang}--></th>
+        <td><input type="text" class="text" name="Notice[Interval]" value="<!--{$dataList.Interval}-->" id="interval" /> <!--{'0C1FEC657F7865DED377B43250A015FC'|lang}--><div id="intervalTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row">URL</th>
+        <td><input type="text" class="text" name="Notice[Link]" size="80" value="<!--{$dataList.Link}-->" /></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="<!--{'939D5345AD4345DBAABE14798F6AC0F1'|lang}-->" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->

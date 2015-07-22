@@ -1,0 +1,40 @@
+<fieldset>
+  <legend>客服FAQ列表</legend>
+  	<div>
+  	<a href="<!--{$url.Faq_ServiceKindAdd}-->">AddKind</a>
+    <a href="#">CreateCache</a>
+    </div>
+    	<fieldset>
+        <legend>Faq分类</legend>
+        <table width="100%" border="0" cellpadding="3">
+		<!--{foreach from=$kindList item=list}-->
+          <tr>
+            <td>[<!--{$list.word_game_type_id}-->]</td>
+            <td><!--{$list.name}--></td>
+            <td><a href="<!--{$list.url_add}-->">增加FAQ问题</a></td>
+            <td><a href="#">编辑</a></td>
+            <td><a href="#">删除</a></td>
+            <td><a href="<!--{$list.url_view_faq}-->">查看FAQ</a></td>
+          </tr>
+        <!--{foreachelse}-->
+        <tr><th colspan="6"><!--{$noData}--></th></tr>
+        <!--{/foreach}-->
+        </table>
+    	</fieldset>
+        
+    	<!--{if $displayFaq==true}-->
+        <fieldset>
+        <legend>FAQ列表</legend>
+    	<div>[<!--{$faqGameType}-->]<!--{$faqKind}--></div>
+    	<!--{foreach from=$faqList item=list}-->
+    	<div style="border:1px dashed #999; padding:4px; margin:4px; width:50%; background:#FFF">
+        	<span>问题：<!--{$list.question}--></span><br />
+            <span>回答：<!--{$list.answer}--></span><br />
+        </div>
+        <!--{foreachelse}-->
+        <div style="border:1px dashed #999; padding:4px; margin:4px; width:50%; background:#FFF">暂无</div>
+        <!--{/foreach}-->
+        </fieldset>
+        <!--{/if}-->
+        
+</fieldset>

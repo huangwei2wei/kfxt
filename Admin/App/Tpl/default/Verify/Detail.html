@@ -1,0 +1,92 @@
+<fieldset>
+<legend><!--{'EDIT_TITLE'|lang}--></legend>
+<form action="<!--{$url.Verify_ReplyDialog}-->" method="post">
+<input type="hidden" value="<!--{$dataList.Id}-->" name="Id" />
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="row"><!--{'EDIT_TABLE_1'|lang}--></th>
+    <td><!--{$dataList.Id}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'EDIT_TABLE_2'|lang}--></th>
+    <td>
+    	<!--{$dataList.word_game_type_id}-->/
+        <!--{$dataList.word_operator_id}-->/
+        <!--{$dataList.word_game_server_id}-->
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'EDIT_TABLE_3'|lang}--></th>
+    <td><select name="department_id"><!--{html_options options=$department selected=$dataList.department_id}--></select></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'EDIT_TABLE_4'|lang}--></th>
+    <td>
+    	<select name="status">
+        	<!--{html_options options=$verifyStatus selected=$dataList.status}-->
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'EDIT_TABLE_5'|lang}--></th>
+    <td><!--{$dataList.word_type}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'EDIT_TABLE_6'|lang}--></th>
+    <td><!--{$dataList.word_level}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'EDIT_TABLE_7'|lang}--></th>
+    <td><!--{$dataList.title}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'EDIT_TABLE_8'|lang}--></th>
+    <td><!--{$dataList.content}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'EDIT_TABLE_9'|lang}--></th>
+    <td><!--{$dataList.work_source}--> <!--{$dataList.source_detail}--></td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'EDIT_TABLE_10'|lang}--></th>
+    <td><!--{'EDIT_TABLE_11'|lang}-->：<!--{$dataList.game_user_id}-->&nbsp;
+    	<!--{'EDIT_TABLE_12'|lang}-->：<!--{$dataList.game_user_account}-->&nbsp;
+        <!--{'EDIT_TABLE_13'|lang}-->：<!--{$dataList.game_nickname}-->
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'EDIT_TABLE_14'|lang}--></th>
+    <td>
+    
+        <fieldset style="background:#FFF">
+            <legend><!--{'EDIT_TABLE_15'|lang}--></legend>
+            <!--{foreach from=$dataList.log item=childList}-->
+            <!--{if $childList.type==1}-->
+            <div style="border-bottom:1px dashed #999; padding:3px; margin:3px;">
+                <div style="color:#666"><!--{$childList.user}--> <!--{'EDIT_TABLE_16'|lang}-->：&nbsp;[<!--{$childList.time}-->]&nbsp;</div>
+                <div style="margin-left:10px;"><!--{$childList.description}--></div>
+            </div>
+            <!--{else}-->
+            <div style="border-bottom:1px dashed #999; padding:3px; margin:3px;">
+                <div style="color:#666"><!--{$childList.user}--> <!--{'EDIT_TABLE_17'|lang}-->：&nbsp;[<!--{$childList.time}-->]&nbsp;</div>
+                <div style="margin-left:10px;"><!--{$childList.description}--></div>
+            </div>
+            <!--{/if}-->
+            <!--{foreachelse}-->
+                <b><!--{'EDIT_TABLE_18'|lang}--></b>
+            <!--{/foreach}-->
+        </fieldset>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><!--{'EDIT_TABLE_19'|lang}--></th>
+    <td>
+		<textarea name="content" cols="50" rows="6"></textarea><br />
+    </td>
+  </tr>
+  <tr>
+    <th scope="row" colspan="2"><input type="submit" class="btn-blue" value="<!--{'SUBMIT'|lang:'Common'}-->"  /></th>
+  </tr>
+</table>
+ </form>
+</fieldset>

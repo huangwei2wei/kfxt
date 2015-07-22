@@ -1,0 +1,43 @@
+<center>
+<form action="<!--{$url.GameSerList_Add}-->" method="post">
+<table width="60%" border="0" cellpadding="3">
+  <tr>
+    <th>游戏类型</th>
+    <td>
+    	<select name="game_type" >
+            <!--{html_options options=$gameTypeList}-->
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <th>运营商</th>
+    <td>
+    	<select name="operator_id">
+        	<!--{html_options options=$operatorList}-->
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <th>服务器名称</th>
+    <td>
+    	<input type="text" class="text" name="server_name" />
+    </td>
+  </tr>
+  <tr>
+    <th>标识</th>
+    <td><input type="text" class="text" name="marking" /></td>
+  </tr>
+  <tr>
+    <th>服务器地址</th>
+    <td><input type="text" class="text" name="server_url"  style="width:300px;" /></td>
+  </tr>
+  <tr>
+    <th>客服回复消息地址</th>
+    <td><input type="text" class="text" name="send_msg_url" style="width:300px;" /></td>
+  </tr>
+  <tr>
+    <th colspan="2"><input type="submit" class="btn-blue" value="提交" /></th>
+  </tr>
+</table>
+</form>
+</center>

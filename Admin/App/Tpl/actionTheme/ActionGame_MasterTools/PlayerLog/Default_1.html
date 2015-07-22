@@ -1,0 +1,94 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+var playerLogTypes = <!--{$playerLogTypes}-->;
+var rootid =<!--{$_GET.rootid|default:"0"}-->;
+var typeid = <!--{$_GET.typeid|default:"0"}-->;
+
+$(function(){
+	
+});
+
+function rootLoad(){
+	$.each(playerLogTypes,
+		function(Id,subRoot){
+			$('<option/>').attr('value',Id).text(subRoot.rootTypeName).appendTo('#rootid');
+		}
+	);
+	if(rootid){
+		$('#rootid').val(rootid);
+		rootchange(rootid);
+	}
+}
+
+function rootchange(chRootId){
+	$('#typeid').html('');
+	$('<option/>').attr('value',0).text('-所有子类-').appendTo('#typeid');	
+	
+	if(chRootId>0){
+		$.each(playerLogTypes[chRootId]['subTypeList'],
+			function(Id,subType){
+				$('<option/>').attr('value',Id).text(subType).appendTo('#typeid');
+			}
+		);	
+		if(typeid)$("#typeid").val(typeid);
+	}
+}
+</script>
+<fieldset>
+  <legend>条件</legend>
+    <form action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+      <span style="padding-right:20px;">
+                日志类型
+                <select name="rootid" id="rootid" onchange="rootchange($(this).val())">
+                	<option value="0">-所有-</option>
+                </select>
+                <select name="typeid" id="typeid" >
+                    <option value="0">-所有子类-</option>
+                </select>
+            </span>
+       玩 家:<input class="text" type="text" name="user" value="<!--{$_GET.user}-->">
+       <label><input type="radio" name="userType" value="0" />玩家ID</label>
+       <label><input type="radio" name="userType" value="1" />账号</label>
+       <label><input type="radio" name="userType" value="2" checked="checked" />昵称</label>
+       <input class="btn-blue" type="submit" name="sbm" value="查询">
+</fieldset>
+<fieldset>
+  <legend>玩家日志</legend>
+    	
+      <table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">用户id</th>
+    <th scope="col">用户名</th>
+    <th scope="col">昵称</th>
+    <th scope="col">生成时间</th>
+    <th scope="col">描述</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.UserID}--></td>
+	<td><!--{$list.UserName}--></td>
+	<td><!--{$list.NickName}--></td>
+	<td><!--{$list.addTime}--></td>
+	<td><!--{$list.description}--></td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+<div style="float:right"><!--{$pageBox}--></div>
+<!--{/if}-->
+<script language="javascript">
+	rootLoad();
+</script>

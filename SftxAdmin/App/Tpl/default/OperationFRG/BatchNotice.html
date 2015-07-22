@@ -1,0 +1,147 @@
+ <form action="" id="form" method="post">
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$(".view_server").one('click',function(){
+		var curHref=$(this);
+		$.getJSON(
+			curHref.attr("url"),
+			function(data){
+				if(data.status==1){
+					curHref.parent().parent().after('<tr id="'+curHref.attr("dialogId")+'"><td colspan="8" style="background:#0080C0; color:#FFF">'+data.data.servers+'</td></tr>');
+				}else{
+					alert('察看服务器失败!');
+				}
+			}
+		);
+	});
+	$(".view_server").click(function(){
+		var id=$(this).attr("dialogId");
+		$("#"+id).toggle();
+	})
+})
+
+function formSubmit(curBtn,subType){
+	var form=$("#form");
+	if(subType=='syn'){//更新
+		form.attr("action",curBtn.attr("url"));
+		form.attr("method","post");
+		form.submit();
+	}else{//搜索
+		form.attr("action",curBtn.attr("url"));
+		form.attr("method","get");
+		form.submit();
+	}
+}
+</script>
+    <fieldset>
+        <legend>公告搜索</legend>
+            <input type="hidden" name="c" value="OperationFRG" />
+            <input type="hidden" name="a" value="BatchNotice" />
+            <input type="hidden" name="operator_id" id="operator_id" />
+            开始时间：<input type="text" class="text" name="start_time" value="<!--{if $selectedStartTime}--><!--{$selectedStartTime}--><!--{else}--><!--{$smarty.now|date_format:'%Y-%m-%d 00:00:00'}--><!--{/if}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+            结束时间：<input type="text" class="text" name="end_time" value="<!--{if $selectedEndTime}--><!--{$selectedEndTime}--><!--{else}--><!--{$weekDay|date_format:'%Y-%m-%d 00:00:00'}--><!--{/if}-->" onFocus="WdatePicker({startDate:'<!--{$weekDay|date_format:'%Y'}-->-%M-<!--{$weekDay|date_format:'%d'}--> 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+            模糊匹配公告内容：<input name="content" type="text" class="text" value="<!--{$selectedContent}-->" size="40" />
+            精简显示：<input type="checkbox" value="1" name="is_group"  <!--{if $selectedGroupBy}-->checked="checked"<!--{/if}--> />
+            <input type="button" class="btn-blue" url="<!--{$url.OperationFRG_BatchNotice}-->" onClick="formSubmit($(this),'search')" value="提交" />
+            <input type="button" class="btn-blue" url="<!--{$url.OperationFRG_SynNotice}-->" onClick="formSubmit($(this),'syn')" value="抓取公告" /><font color="#FF0000">(如果需要获取最新播放时间，请点击抓取公告)</font>
+    </fieldset>
+</form>
+
+
+<fieldset id="list">
+  <legend>公告列表</legend>
+  <form action="<!--{$url.OperationFRG_NoticeDel}-->" method="post" onSubmit="return confirm('确定要删除吗?')">
+  	<!--{if $selectedGroupBy}-->
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col" nowrap="nowrap">Id</th>
+        <th scope="col" nowrap="nowrap">数目</th>
+        <th scope="col">标题</th>
+        <th scope="col">内容</th>
+        <th scope="col" nowrap="nowrap">URL</th>
+        <th scope="col" nowrap="nowrap">开始时间<br />结束时间</th>
+        <th scope="col" nowrap="nowrap">添加时间<br />间隔</th>
+        <th scope="col" nowrap="nowrap">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td nowrap="nowrap">
+            <!--{$list.Id}-->
+            <input type="checkbox" name="title[]" value="<!--{$list.title}-->" />
+        </td>
+        <td nowrap="nowrap"><!--{$list.server_num}--></td>
+        <td><!--{$list.title}--></td>
+        <td title="<!--{$list.content}-->"><a href="<!--{$list.url_edit}-->"><!--{$list.content}--></a></td>
+        <td title="<!--{$list.url}-->"><!--{$list.url}--></td>
+        <td nowrap="nowrap"><!--{$list.start_time}--><br /><!--{$list.end_time}--></td>
+        <td nowrap="nowrap"><!--{$list.create_time}--><br /><font color="#FF0000"><!--{$list.interval_time}--></font></td>
+        <td nowrap="nowrap"><a url="<!--{$list.url_server_detail}-->" href="javascript:void(0)" class="view_server" dialogId="servers_<!--{$list.Id}-->">察看服务器</a></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <td colspan="8"><!--{$noData}--></td>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="8">
+        	<input type="checkbox" id="allcheck">全选 
+        	<input type="submit" class="btn-blue" value="删除" />
+        </td>
+      </tr>
+      <tr>
+        <th align="right" colspan="8"><!--{$pageBox}--></th>
+      </tr>
+    </table>
+    <!--{else}-->
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col" nowrap="nowrap">Id</th>
+        <th scope="col" nowrap="nowrap">服务器</th>
+        <th scope="col">标题</th>
+        <th scope="col">内容</th>
+        <th scope="col" nowrap="nowrap">URL</th>
+        <th scope="col" nowrap="nowrap">开始时间<br />
+        结束时间</th>
+        <th scope="col" nowrap="nowrap">添加时间<br />
+        下一次发送时间</th>
+        <th scope="col" nowrap="nowrap">间隔</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td nowrap="nowrap">
+            <input type="hidden" value="<!--{$list.main_id}-->" name="main_id[<!--{$list.Id}-->]" />
+            <input type="hidden" value="<!--{$list.server_id}-->" name="server_id[<!--{$list.Id}-->]" />
+            <!--{$list.Id}-->
+            <input type="checkbox" name="ids[<!--{$list.Id}-->]" value="<!--{$list.Id}-->" />
+        </td>
+        <td nowrap="nowrap"><!--{$list.word_server_id}--></td>
+        <td><!--{$list.title}--></td>
+        <td title="<!--{$list.content}-->"><!--{$list.content}--></td>
+        <td title="<!--{$list.url}-->"><!--{$list.url}--></td>
+        <td nowrap="nowrap"><!--{$list.start_time}--><br /><!--{$list.end_time}--></td>
+        <td nowrap="nowrap"><!--{$list.create_time}--><br /><!--{$list.last_send_time}--></td>
+        <td nowrap="nowrap"><!--{$list.interval_time}--></td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="8"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="8">
+        	<input type="checkbox" id="allcheck">全选 
+        	<input type="submit" class="btn-blue" value="删除" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" colspan="8"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+    <!--{/if}-->
+  </form>
+</fieldset>

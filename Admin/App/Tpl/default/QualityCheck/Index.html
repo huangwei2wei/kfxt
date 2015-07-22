@@ -1,0 +1,90 @@
+<script language="javascript">
+$(function(){
+	$("#selectAllOperators").click(function(){
+		var curCheck=$(this).attr("checked");
+		$(":checkbox[name='operator_id[]']").attr("checked",curCheck);
+	});
+});
+</script>
+<fieldset>
+	<legend>获取工单</legend>
+    <form action="<!--{$url.QualityCheck_Index}-->" method="post">
+    <table width="100%" border="0" cellpadding="3">
+     <tr>
+          <th nowrap="nowrap" scope="row">组别</th>
+          <td><!--{html_radios options=$orgs onclick="viewUser($(this).val())" name="org" selected=$selectedOrg}--></td>
+     </tr>
+     <tr>
+          <th  nowrap="nowrap" scope="row">质检组</th>
+          <td><div id="userList"><!--{html_checkboxes name="users" options=$selectedUsers selected=$selectedUsersOption}--></div></td>
+     </tr>
+     <tr>
+          <th  nowrap="nowrap" scope="row">游戏</th>
+          <td>
+    <!--{foreach from=$gamelist item=game}-->
+    	<label>
+		<input <!--{if $game.tab}-->checked="checked"<!--{/if}--> value="<!--{$game.Id}-->" type="checkbox" name="gamelist[]"><!--{$game.name}-->
+		</label>
+	<!--{/foreach}-->
+		  </td>
+     </tr>
+     <tr>
+          <th  nowrap="nowrap" scope="row">运营商</th>
+          <td>
+          <!--{html_checkboxes options=$operators selected=$_POST.operator_id name="operator_id"}-->
+          <input type="checkbox" id='selectAllOperators'>全选
+          </td>
+     </tr>
+    </table>
+    
+    选择日期：
+    <input type="text" class="text" name="start_date" value="<!--{$selectedTime.start}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+    至
+    <input type="text" class="text" name="end_date" value="<!--{$selectedTime.end}-->" onFocus="WdatePicker({startDate:'%y-%M-01 23:59:59',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+    抽取数量：<input type="text" class="text"  name="num" value="<!--{$selectedNum|default:10}-->"/>
+    <input type="submit" class="btn-blue" value="获取工单" onclick="return confirm('确定要获取工单吗?')" />
+    </form>
+    <!--{if $addOrderDeatil}-->
+    您获取了<font color="#FF0000"><b><!--{$addOrderDeatil.num}--></b></font>个工单，ID分别为[ <em><!--{$addOrderDeatil.addIds}--></em> ]
+    <!--{/if}-->
+</fieldset>
+
+<fieldset>
+	<legend>工单列表</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th>Id</th>
+        <th>工单状态</th>
+        <th>[工单状态]标题</th>
+        <th>游戏 / 运营商 / 服务器 / VIP等级<br />玩家信息</th>
+        <th>工单来源<br />问题类型</th>
+        <th>提问 / 回复数</th>
+        <th>处理人</th>
+        <th>操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td align="center" nowrap="nowrap"><font style="font-size:14px; font-family:'微软雅黑';"><!--{$list.word_status}--></font></td>
+        <td class="order_title" url="<!--{$list.url_dialog}-->" dialogId="detail_<!--{$list.Id}-->" title="<!--{$list.title}-->">
+        	 <font style="font-size:14px; font-family:'微软雅黑';"><!--{$list.title|truncateutf8:20}--></font> 	[<!--{$list.word_ev}-->] <font color="#999999"><!--{$list.word_ev_desc}--></font><br />
+             <!--{$list.create_time}--> <font color="#00CC00"><!--{$list.lost_time}--></font> <!--{if $list.time_out_true}--><font color="#FF8080">已超时</font><!--{/if}-->
+        </td>
+        <td>
+            <!--{$list.word_game_type}--> / <!--{$list.word_operator_id}--> /	<!--{$list.word_game_server_id}--> / <font color="#666666">VIP:</font> <b><!--{$list.vip_level}--></b><br />
+            <font color="#666666">账号：</font><!--{$list.user_account}-->，<font color="#666666">呢称：</font><!--{$list.user_nickname}-->，<font color="#666666">充值量：</font><!--{$list.money}-->
+        </td>
+        <td><!--{$list.word_source}--><br /><!--{$list.word_question_type}--></td>
+        <td><!--{$list.question_num}--> / <!--{$list.answer_num}--></td>
+        <td><!--{$list.word_owner_user_id}--></td>
+        <td>
+            <a href="<!--{$list.url_detail}-->">工单详情</a>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr><th colspan="10"><!--{$noData}--></th></tr>
+      <!--{/foreach}-->
+      <tr><td align="right" colspan="10"><!--{$pageBox}--></td></tr>
+    </table>
+</fieldset>
+

@@ -1,0 +1,61 @@
+<style type="text/css">
+ul{
+	margin:0px;
+	padding:0px;
+	list-style-type:none;
+}
+li{
+	margin:1px;
+	padding:0px 0px 0px 10px;
+}
+</style>
+<fieldset>
+  <legend>搜索</legend>
+  	<form id="search" action="" method="get">
+    <input type="hidden" name="c" value="MasterFRG" />
+    <input type="hidden" name="a" value="Log" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="row">类型</th>
+        <td><!--{html_radios options=$type onclick="$('#search').submit()" name="type" selected=$selectedType}--></td>
+      </tr>
+      <tr>
+        <th scope="row">操作人</th>
+        <td><select name="user_id" onChange="$('#search').submit()"><option value="">请选择</option><!--{html_options options=$users selected=$selectedUserId}--></select></td>
+      </tr>
+    </table>
+    </form>
+</fieldset>
+
+<fieldset>
+	<legend>列表</legend>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">类型</th>
+        <th scope="col">操作人</th>
+        <th scope="col">操作时间</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td><!--{$list.word_type}--></td>
+        <td><!--{$list.word_user_id}--></td>
+        <td><!--{$list.create_time}--></td>
+      </tr>
+      <tr>
+        <td colspan="4">
+        <div><b>原因：</b><!--{$list.cause|nl2br}--></div>
+        <div><b>详细操作：</b><!--{$list.description|nl2br}--></div>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="4"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="4" align="right"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+</fieldset>

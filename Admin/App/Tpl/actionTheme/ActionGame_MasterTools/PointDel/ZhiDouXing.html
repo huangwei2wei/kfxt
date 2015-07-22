@@ -1,0 +1,93 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<script>
+	function checkedPlayer(){
+		var player = $('input[name=players]').val();
+		if($.trim(player) == ''){
+			alert('玩家为空');
+			return false;
+		}
+		var postData = {};
+		if($('#playerType1').attr('checked')){
+			postData = {playerId:player};
+		}
+		else if($('#playerType2').attr('checked')){
+			postData = {playerName:player};
+		}
+		else if($('#playerType3').attr('checked')){
+			postData = {accountName:player};
+		}
+		$.ajax({
+			dataType:'json',	
+			type: 'GET',
+			data:postData,
+			url: '<!--{$URL_playerQuery}-->',
+			success:function(jsonData){
+				if(1 == jsonData.status){
+					var playerInfo = jsonData['data']['dataList'];
+					var playerName = '';
+					var asset = '';
+					var gold = '';
+					var goldTicke = '';
+					if(playerInfo){
+						playerName = playerInfo[0]['playerName'];
+						asset = playerInfo[0]['asset'];
+						gold = playerInfo[0]['gold'];
+						goldTicke = playerInfo[0]['goldTicke'];
+					}else{
+						alert('查无玩家');
+					}
+					$('#playerNameInfo').html(playerName);
+					$('#assetInfo').html(asset);
+					$('#goldInfo').html(gold);
+					$('#goldTicketInfo').html(goldTicke);
+				}
+				else{
+					alert(jsonData.info);
+				}
+			}
+		});
+	}
+</script>
+<fieldset>
+	<legend>点数扣除</legend>
+	<form action=""  method="post">
+        <table width="600" border="0" cellpadding="3">
+          <tr>
+            <th scope="row" width="80">玩家ID</th>
+            <td>
+            	<div>
+                    <label><input type="radio" id="playerType1" name="playerType" checked="checked" value="1" />玩家ID</label>
+                    <label><input type="radio" id="playerType2" name="playerType" value="2" />账号</label>
+                    <label><input type="radio" id="playerType3" name="playerType" value="3" />昵称</label>
+                </div>
+                <div style="margin-top:5px;">
+                    <input type="text" class="text" style="width:300px;" name="players" value="<!--{$players|default:''}-->" />
+                    <input type="button" class="btn-blue" value="检查" onclick="checkedPlayer();" />
+                	<span id="playerNameInfo" style="color:#F00"></span>
+                </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">扣除银两</th>
+            <td> - <input type="text" class="text" name="asset" value="" /> <span id="assetInfo" style="color:#F00"></span></td>
+          </tr>
+          <tr>
+            <th scope="row">扣除金币</th>
+            <td> - <input type="text" class="text" name="gold" value="" /> <span id="goldInfo" style="color:#F00"></span></td>
+          </tr>
+          <tr>
+            <th scope="row">扣除银票</th>
+            <td> - <input type="text" class="text" name="goldTicket" value="" /> <span id="goldTicketInfo" style="color:#F00"></span></td>
+          </tr>
+          <tr>
+            <th scope="row">&nbsp;</th>
+            <td><input type="submit" class="btn-blue" name="sbm" value="提交扣除" /></td>
+          </tr>
+        </table>
+    </form>
+</fieldset>
+<!--{/if}-->

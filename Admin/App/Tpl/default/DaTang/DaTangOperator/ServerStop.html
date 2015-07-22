@@ -1,0 +1,102 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+	<legend>停服功能</legend>
+	<form action="" method="post">
+		<input type="hidden" name='Whatfunction' value='stopserver'>
+		<input type="button" value="停服" class="btn-blue" id="serverStop"/>
+	</form>
+</fieldset>
+<fieldset>
+	<legend>添加GM账号</legend>
+    <form action="" method="post">
+    <input type="hidden" name='Whatfunction' value='addgm'>
+        <table width="30%" border="0" cellpadding="3">
+          <tr>
+            <th scope="row" width="100">PlayID</th>
+            <td><input class="text" value="" type="text" name="userid"  id='userid'/></td>
+            <td><input type="button" value="添加" class="btn-blue" id='addMGCustomer'/></td>
+          </tr>
+        </table>
+	</form>
+	
+</fieldset>
+
+<fieldset>
+	<legend>删除GM账号</legend>
+    <form action="" method="post">
+    <input type="hidden" name='Whatfunction' value='delgm'>
+        <table width="30%" border="0" cellpadding="3">
+          <tr>
+            <th scope="row" width="100">PlayID</th>
+            <td><input class="text" value="" type="text" name="userid" id='customerId'/></td>
+            <td><input type="button" value="删除" class="btn-blue"  id='dellMGCustomer'/></td>
+          </tr>
+        </table>
+	</form>
+	
+</fieldset>
+<script type="text/javascript">
+var ajax_url = "<!--{$ajaxUrl}-->";
+$("#serverStop").click(function(){
+	$(":checkbox[name='server_ids[]']:checked").each(function(){
+		var server_id = $(this).attr('value');
+		var server = $(this);
+		$.ajax({
+			type: "POST",
+			//async : false,
+			dataType: 'json',
+			url: ajax_url,
+			data:{server_id:server_id,Whatfunction:'stopserver'},
+			success:function(o){ 
+				var fontColor=(o.code==1)?'#00cc00':'#ff0000';
+				server.parent().after("<font color='"+fontColor+"'>"+o.msg+"</font>");
+			}
+		 });
+	});
+});
+
+$("#addMGCustomer").click(function(){
+	var userid = $('#userid').attr('value');
+	$(":checkbox[name='server_ids[]']:checked").each(function(){
+		var server_id = $(this).attr('value');
+		var server = $(this);
+		$.ajax({
+			type: "POST",
+			//async : false,
+			dataType: 'json',
+			url: ajax_url,
+			data:{server_id:server_id,Whatfunction:'addgm',userid:userid},
+			success:function(o){ 
+				var fontColor=(o.code==1)?'#00cc00':'#ff0000';
+				server.parent().after("<font color='"+fontColor+"'>"+o.msg+"</font>");
+			}
+		 });
+	});
+});
+
+$("#dellMGCustomer").click(function(){
+	var userid = $('#customerId').attr('value');
+	$(":checkbox[name='server_ids[]']:checked").each(function(){
+		var server_id = $(this).attr('value');
+		var server = $(this);
+		$.ajax({
+			type: "POST",
+			//async : false,
+			dataType: 'json',
+			url: ajax_url,
+			data:{server_id:server_id,Whatfunction:'delgm',userid:userid},
+			success:function(o){
+				var fontColor=(o.code==1)?'#00cc00':'#ff0000';
+				server.parent().after("<font color='"+fontColor+"'>"+o.msg+"</font>");
+			}
+		 });
+	});
+});
+</script>
+

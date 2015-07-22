@@ -1,0 +1,60 @@
+<script>
+$(function(){
+	var menu_state = eval('{$_GET.ev|isset|intval}');
+	if(menu_state==1){
+		$('#menu_3').addClass('d');
+	}else{
+		$('#menu_2').addClass('d');
+	}
+});	
+</script>
+
+<div class="right_tit">我要提问</div>
+<div class="right_con">
+    	<!--{/*水平目录*/}-->
+    	<include file="../Question/horizontalMenu"/>
+         <div class="chenmi">
+            <form action="{:U('Question/del')}" id="question_from" method="post">
+                <table width="93%" border="0" cellpadding="0" cellspacing="0" >
+                      <tr style="height:36px; font-weight:bold;color:#313c51;background:#eeefef">
+                        <td align="center">选择</td>
+                        <td align="center">游戏类型</td>
+                        <td align="center">标题</td>
+                        <td align="center">评价</td>
+                        <td align="center">时间</td>
+                      </tr>
+                      <!--{/*
+                        <tr style="border-bottom:1px #cdcdcd solid; height:35px; background:url('images/button_63.gif')">
+                            <td align="center"><input type="checkbox" name="checkbox" id="checkbox" /></td>
+                            <td align="center">商业大亨</td>
+                            <td align="center"><b>[登录问题]</b> <a href="#">充100怎么给我10000了？</a></td>
+                            <td align="center">未评价</td>
+                            <td align="center">2011-03-29</td>
+                        </tr>
+                       */}-->
+                       <volist name="list" id="vo">
+                            <tr style="border-bottom:1px #cdcdcd solid; height:35px; background:url('images/button_63.gif')">
+                              <td align="center"><input type="checkbox" name="Id[]" value="{$vo.Id}" /></td>
+                              <td align="center">{$gameTypes[$vo[game_type]][name]}</td>
+                              <td align="center" nowrap="nowrap" ><strong>[{$typeMap[$vo["question_type"]]}]</strong><a href="{:U("Question/detail/id/$vo[Id]")}">{$vo.title|msubstr=###,0,10}</a></td>
+                              <td align="center"><php>echo $vo['evaluation_status']?'已评价':'未评价'</php></td>
+                              <td align="center">{$vo.create_time|date="Y-m-d",###}</td>
+                            </tr>
+                       </volist>
+                      <tr style="height:35px;">
+                        <td colspan="5" align="left"><input type="checkbox" name="checkbox2" id="checkbox2" onclick="$('input[name=Id[]]').attr('checked',$(this).attr('checked'))" />
+                          全选 <input type="submit" name="button" id="button" value="删除" />
+                        </td>
+                      </tr>
+                      <tr style="height:35px;">
+                        <td colspan="5" align="right"><a href="{:U('Question/index')}"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/button_88.gif" /></a></td>
+                      </tr>
+                      <tr style="height:35px;">
+                        <td colspan="5" align="center">{$page}</td>
+                      </tr>
+                 </table>	
+             </form>			
+        </div>
+    <div style="clear:both"></div>
+</div>
+<div class="right_bo"> </div>

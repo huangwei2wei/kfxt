@@ -1,0 +1,189 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<style>
+	.pamp li{
+		width:200px;display:inline-block; 
+	}
+	.here_td td { font-size: 12px;}
+</style>
+<script>
+	
+function showGood(id){
+	var obj = $('#good_'+id);
+	//alert(obj.css("display"));
+	if(obj.css("display") == "none"){
+		obj.show();
+	}else{
+		obj.hide();
+	}
+}
+	
+function delConfirm(){
+	if($.trim($('[name=cause]').val())==''){
+		alert('申请原因不能为空');
+		return false;
+	}
+	var itemsList = $('input[name^=delItems]');
+	var len = itemsList.length;	
+	for(var i=0;i<len;i++){
+		if(itemsList[i].type=='text' && parseInt(itemsList[i].value)<=0){
+			$('#'+itemsList[i].id).remove();
+			$('#'+itemsList[i].id+'Name').remove();
+		}
+	}
+	return true;
+}
+
+</script>
+
+<fieldset>
+  <legend><!--{$legend}--></legend>
+  
+<form id="getData" action=""  method="get">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />  
+    用户Id：<input class="text" type="text" name="userId" value="<!--{$select.userId}-->">
+    账号：<input class="text" type="text" name="username" value="<!--{$select.username}-->">
+    昵称：<input class="text" type="text" name="nickname" value="<!--{$select.nickname}-->">
+    <input class="btn-blue" type="submit" value="查询">
+</form>
+
+<form id="itemsList" action="" method="post">
+<input type="hidden" name="userId" value="<!--{$select.userId}-->"/>
+<input type="hidden" name="username" value="<!--{$select.username}-->"/>
+<input type="hidden" name="nickname" value="<!--{$select.nickname}-->"/>
+<input type="hidden" name="doaciton" value="del"/>
+<table width="100%" border="0" cellpadding="3">
+
+  <tr>
+ 	<th>道具名</th>
+    <th>道具数</th>
+    <th>填写扣除数量</th>
+    <th>道具Id</th>
+    
+    <th>道具描述</th>
+    <th>道具详情</th>
+  </tr>
+<!--{foreach from=$dataList item=list key=key}--> 
+  <tr class="here_td">
+  	<td style="font-weight:bolder"><!--{$key+1}-->: <!--{$list.name}--></td>
+    <td align="center"><!--{$list.count|intval}--></td>
+    <td align="center">
+  	  	<input type="hidden" id="<!--{$key}-->_<!--{$list.itemId}-->_itemName" name="itemsName[<!--{$key}-->_<!--{$list.itemId}-->]" value="<!--{$list.name}-->" />
+    	<input type="text" class="text" id="<!--{$key}-->_<!--{$list.itemId}-->_item" name="delItems[<!--{$key}-->_<!--{$list.itemId}-->]" value="0" />
+    </td>
+    <td align="center"><!--{$list.itemId}--></td>
+    <td align="center"><!--{$list.desc}--></td>
+    <td align="center"><a href="javascript:void(0);" onclick="showGood('<!--{$key}-->');">[道具详情]</a></td>
+  </tr>
+  <tr id="good_<!--{$key}-->" style="display:none">
+    <td colspan="6" >
+    	<div style="padding-left:20px;">
+         <table width="100%" border="0" cellpadding="3" >
+          <tr>
+            <th scope="row" width="100">道具副名字</th>
+            <td><!--{$list.deputyName}--></td>
+          </tr>
+          <tr>
+            <th scope="row">需要人物等级</th>
+            <td><!--{$list.playerLevel}--></td>
+          </tr>
+          <tr>
+            <th scope="row">档次</th>
+            <td><!--{$list.grade}--></td>
+          </tr>
+          <tr>
+            <th scope="row">是否绑定</th>
+            <td><!--{$list.bindable}--></td>
+          </tr>
+          <tr>
+            <th scope="row">威力</th>
+            <td><!--{$list.might}--></td>
+          </tr>
+          <tr>
+            <th scope="row">当前锻造等级</th>
+            <td><!--{$list.forgeLevel}--></td>
+          </tr>
+          <tr>
+            <th scope="row">强化附加</th>
+            <td class="pamp">
+            	<li>免伤率:<!--{$list.forgeExtraValue.forgeLevel}--></li>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">基础属性</th>
+            <td class="pamp">
+           	 <li>物理攻击下限:<!--{$list.baseValues.ppmin}--></li>
+             <li>物理攻击上限:<!--{$list.baseValues.ppmax}--></li>
+             <li>法术攻击下限:<!--{$list.baseValues.spmin}--></li>
+             <li>法术攻击上限:<!--{$list.baseValues.spmax}--></li>
+             <li>物理防御:<!--{$list.baseValues.phydef}--></li>
+             <li>法术防御:<!--{$list.baseValues.magdef}--></li>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">重铸 精炼 属性</th>
+            <td class="pamp">
+                <li>力量:<!--{$list.recastValues.str.0}--></li>
+                <li>敏捷:<!--{$list.recastValues.agi.0}--></li>
+               	<li>智力:<!--{$list.recastValues.int.0}--></li>
+                <li>耐力:<!--{$list.recastValues.sta.0}--></li>
+                <li>命中值:<!--{$list.recastValues.aim.0}--></li>
+                <li>闪避值:<!--{$list.recastValues.av.0}--></li>
+                <li>格挡值:<!--{$list.recastValues.block.0}--></li>
+                <li>穿透值:<!--{$list.recastValues.penet.0}--></li>
+                <li>暴击值:<!--{$list.recastValues.vio.0}--></li>
+                <li>韧性值:<!--{$list.recastValues.tou.0}--></li>
+                <li>物理免伤:<!--{$list.recastValues.phyavo.0}--></li>
+                <li>物伤吸收(免伤率):<!--{$list.recastValues.phyavor.0}--></li>
+                <li>法术免伤:<!--{$list.recastValues.magavo.0}--></li>
+                <li>法伤吸收(免伤率):<!--{$list.recastValues.magavor.0}--></li>
+                <li>血量上限:<!--{$list.recastValues.maxhp.0}--></li>
+                <li>法术上限:<!--{$list.recastValues.maxmp.0}--></li>
+                <li>物理攻击:<!--{$list.recastValues.pp.0}--></li>
+                <li>法术攻击:<!--{$list.recastValues.sp.0}--></li>
+                <li>防御:<!--{$list.recastValues.def.0}--></li>
+                <li>增加所有属性:<!--{$list.recastValues.sais.0}--></li>
+                <li>物理免伤率和法术免伤率:<!--{$list.recastValues.defr.0}--></li>
+                <li>物理免伤率:<!--{$list.recastValues.phydefr.0}--></li>
+                <li>法术免伤率:<!--{$list.recastValues.magdefr.0}--></li>
+                <li>物理攻击最大值:<!--{$list.recastValues.ppmax.0}--></li>
+                <li>物理攻击最小值:<!--{$list.recastValues.ppmin.0}--></li>
+                <li>法术攻击最大值:<!--{$list.recastValues.spmax.0}--></li>
+                <li>法术攻击最小值:<!--{$list.recastValues.spmin.0}--></li>
+                <li>物理和法术攻击:<!--{$list.recastValues.psp.0}--></li>
+                <li>物理和法术攻击最大值:<!--{$list.recastValues.pspmax.0}--></li>
+                <li>物理和法术攻击最小值:<!--{$list.recastValues.pspmin.0}--></li>
+              </td>
+          </tr>
+        </table>
+
+        </div>
+        
+    </td>
+  </tr>
+<!--{foreachelse}-->
+		<!--{if $ConnectErrorInfo}-->
+            <tr>
+            <th colspan="6" align="center"><font color="#FF0000"><!--{$ConnectErrorInfo}--></font></th>
+            </tr>
+        <!--{else}-->
+          <tr>
+            <th colspan="6" align="center">查无数据</th>
+          </tr>
+        <!--{/if}-->
+<!--{/foreach}-->
+</table>
+<div style="margin:10px;">扣除原因:</div>
+<div style="margin:10px;"><textarea name="cause" style="width:500px; height:80px;"></textarea></div>
+<div style="margin:10px;"><input type="submit" class="btn-blue" onclick="return delConfirm();" value="申请扣除" /></div>
+</form>
+
+</fieldset>
+<!--{/if}-->

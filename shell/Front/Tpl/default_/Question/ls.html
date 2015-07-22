@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>优玩网 - 结果查询</title>
+<include file="../common/libs"/>
+<script>
+$(function(){
+	$('#menu_question').addClass('d');
+});
+</script>
+</head>
+<body>
+<include file="../common/head"/>
+<div id="contai">
+	<include file="../common/menu"/>	
+		<!--left-->
+		<include file="left"/>		
+	<div class="neiright">
+		<div class="tiontit"><b>当前位置：</b><a href="/index.php">客服中心</a> > <a href="#">结果查询</a></div>
+		<div class="list">
+        <form action="{:U('Question/del')}" id="question_from" method="post">
+			<div class="listtitle">
+				<table width="640px" border="0" align="center" cellpadding="0" cellspacing="0" >
+					<tr align="center">
+					  <td width="51" height="42" >选择</td>
+					  <td width="121" >游戏类型</td>
+					  <td width="265" nowrap="nowrap">标题</td>
+				    <td width="91" >评价</td>
+						<td width="123">时间</td>
+					</tr>
+                    
+                        <volist name="list" id="vo">
+                        <tr align="center" style="font-size:12px">
+                          <td ><input type="checkbox" name="Id[]" value="{$vo.Id}" /></td>
+                          <td >{$gameTypes[$vo[game_type]][name]}</td>
+                          <td nowrap="nowrap" ><strong>[{$typeMap[$vo["question_type"]]}]</strong><a href="{:U("Question/detail/id/$vo[Id]")}">{$vo.title|msubstr=###,0,10}</a></td>
+                          <td ><php>echo $vo['evaluation_status']?'已评价':'未评价'</php></td>
+                          <td>{$vo.create_time|date="Y-m-d",###}</td>
+                        </tr>
+                        </volist>
+		      </table>
+	    </div>
+		<div class="rda1">
+        	<input type="checkbox" onclick="$(':checkbox[name=\'Id[]\']').attr('checked',$(this).attr('checked'))" style="vertical-align:left" /> 全选
+        	<input type="submit" onclick="if(!confirm('确认删除？'))return false;" value="删除">   
+        </div>	
+		<div class="rda">
+            <a href="{:U('Question/index')}"><img src="__PUBLIC__/{$Think.APP_NAME}/{$Think.CONFIG.DEFAULT_THEME}/images/input_04.gif" style="vertical-align:middle" /></a>
+        </div>	
+        </form>		  
+        </div>
+		<div class="neibottom">{$page}</div>
+	</div>
+<include file="../common/footer"/>
+</div>
+
+</body>
+</html>

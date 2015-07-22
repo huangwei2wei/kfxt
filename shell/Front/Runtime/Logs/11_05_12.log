@@ -1,0 +1,12 @@
+[ 2011-05-12T10:17:26+08:00 ] ERR: (ThinkException) 非法操作index.php?s=
+[ 2011-05-12T10:17:26+08:00 ] ERR: (ThinkException) 非法操作index.php?s=
+[ 2011-05-12T10:17:26+08:00 ] ERR: (ThinkException) 非法操作index.php?s=
+[ 2011-05-12T10:17:26+08:00 ] ERR: (ThinkException) 非法操作index.php?s=
+[ 2011-05-12T10:37:11+08:00 ] ERR: (ThinkException) 非法操作index.php?s=
+[ 2011-05-12T10:37:11+08:00 ] ERR: (ThinkException) Action:https您所请求的方法不存在！
+[ 2011-05-12T23:06:03+08:00 ] ERR: (ThinkException) 非法操作realname\' and char(124)+user+char(124)=0 and \'\'=\'
+[ 2011-05-12T23:06:03+08:00 ] ERR: (ThinkException) 非法操作realname and char(124)+user+char(124)=0
+[ 2011-05-12T23:06:03+08:00 ] ERR: (ThinkException) 非法操作realname\' and char(124)+user+char(124)=0 and \'%\'=\'
+[ 2011-05-12T23:06:03+08:00 ] ERR: (ThinkException) 非法操作realname and 1=1
+[ 2011-05-12T23:06:03+08:00 ] ERR: (ThinkException) 非法操作realname and 1=2
+[ 2011-05-12T23:06:03+08:00 ] ERR: (ThinkException) 非法操作realname\' and 1=1 and \'\'=\'

@@ -1,0 +1,114 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+function chageSearch(curVal){
+		var searchSpan=$("#search");
+		searchSpan.empty();
+		switch(curVal){
+			case '2': //用户名
+			case '1':{//用户ID
+				searchSpan.append('<input type="text" class="text" name="dataMin" value="<!--{$selected.dataMin}-->">');
+				break;
+			}
+			case '3':{	//日期
+				searchSpan.append('<input type="text" class="text" name="dataMin" onFocus="WdatePicker({startDate:\'\',dateFmt:\'yyyy-MM-dd HH:mm:ss\',alwaysUseStartDate:true})" value="<!--{$selected.dataMin}-->"> 至 <input type="text" class="text" name="dataMax" onFocus="WdatePicker({startDate:\'\',dateFmt:\'yyyy-MM-dd HH:mm:ss\',alwaysUseStartDate:true})" value="<!--{$selected.dataMax}-->" >');
+				break;
+			}
+			case '4':{
+				searchSpan.append('用户ID<input type="text" class="text" name="dataMin" value="<!--{$selected.dataMin}-->"> 关键字<input type="text" class="text" name="dataMax" id="end" value="<!--{$selected.dataMax}-->" >');
+				break;
+			}
+			default :{
+				searchSpan.append('<input type="text" class="text" name="dataMin" value="<!--{$selected.dataMin}-->"> 至 <input type="text" class="text" name="dataMax" id="end" value="<!--{$selected.dataMax}-->" >');
+			}
+		}
+}
+$(function(){
+	$("#search_select").val('<!--{$selected.type}-->').change();
+})
+function ajaxlog(id,thisdate){
+	if($.trim(ids)!==''){
+		$.ajax({
+			type: 'get',
+			url: "<!--{$URL_AJAX}-->&id="+id+"&thetime="+thisdate,
+			success:function(data, textStatus){	
+				alert(data);
+				//var myObject = eval('('+data+')');
+				//if($.trim(myObject.noExist) != ''){
+			//		window.alert('不存在:'+myObject.noExist);
+				//}else{
+			//		alert('所填玩家正常');
+				//}
+			}
+		});	
+	}else{
+		alert('请填写玩家再检查');
+	}
+}
+</script>
+
+<fieldset>
+  <legend>用户查询日志</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td colspan="12">
+        <form action=""  method="get" onsubmit="return checksub();">
+      		<input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+        	<input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+            <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+            <input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+            <select name="type" id="search_select" onchange="chageSearch($(this).val())">
+            	<!--{html_options options=$searchType selected=$selected.search_type}-->
+            </select>
+            <span id="search">
+            </span>
+            <input type="submit" class="btn-blue" name="submit" value="查找">
+        </form>    
+        </td>
+        </tr>
+      <tr>
+        <th>用户Id</th>
+        <th>昵称</th>        
+        <th>武学基础等级</th>        
+        <th>元宝</th>
+        <th>铜钱</th>
+        <th>声望</th>
+        <th>精力</th>
+        <th>修为</th>
+        <th>操作IP</th>
+        <th>操作时间</th>
+        <th>详细操作内容</th>
+      </tr>
+      <form action="" id="form" method="post">
+      <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+      <!--{foreach from=$dataList item=vo}-->
+      <tr>
+        <td align="center"><!--{$vo->playerId}--></td>
+        <td align="center"><!--{$vo->playerName}--></td>
+        <td align="center"><!--{$vo->level}--></td>
+        <td align="center"><!--{$vo->gold}--></td>
+        <td align="center"><!--{$vo->copper}--></td>
+        <td align="center"><!--{$vo->prestige}--></td>
+        <td align="center"><!--{$vo->token}--></td>
+        <td align="center"><!--{$vo->exploit}--></td>
+        <td align="center"><!--{$vo->ip}--></td>
+        <td align="center"><!--{$vo->actionTime}--></td>
+        <td align="center"><!--{$vo->operateDesc}--></td>
+        </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="12"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}--> 
+      </form>
+      <tr>
+        <th colspan="12" align="right"><!--{$pageBox}--></th>
+      </tr>
+    </table>
+</fieldset>
+<!--{/if}-->

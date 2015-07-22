@@ -1,0 +1,135 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$(".order_title").hover(function(){$(this).addClass("td_move")},function(){$(this).removeClass("td_move")});
+	$(".order_title").one('click',function(){
+		var curTd=$(this);
+		$.getJSON(
+			$(this).attr("url"),
+			function(data){
+				if(data.status==1){
+					var tmpStr='<div style="padding-top:3px; margin:10px;">详细描述：'+curTd.attr("content")+'</div>';
+					$.each(data.data,function(i,n){
+						if(n.qa==0){
+							tmpStr+='<div style="background:#FFE1E1; border:1px dashed #CCC; padding:10px; padding-top:3px; margin:10px;">'+n.create_time+'&nbsp;<font style="font-weight:bold">玩家提问：</font><br />'+n.content+'</div>';
+						}else{
+							tmpStr+='<div style="background:#D9FFDC; border:1px dashed #CCC; padding:10px; padding-top:3px; margin:10px; margin-left:50px;">';
+							if(n.is_timeout==1)tmpStr+='<font color="#FF0000"><b>已超时</b></font> ';
+							if(n.is_quality!=0){
+								tmpStr+='<a qa_id="'+n.Id+'" href="javascript:void(0)" onclick="showQuality($(this))">察看质检</a>&nbsp;';
+							}else{
+								tmpStr+='<font color="#999999">[未质检]</font>&nbsp;';
+							}
+							
+							tmpStr+=n.word_reply_name+'&nbsp;'+n.create_time+'&nbsp;<font style="font-weight:bold">回复：</font><br />'+n.content+'</div>';
+
+						}
+					});
+					curTd.parent().after("<tr style='background:#FFF' id='"+curTd.attr("dialogId")+"'><td colspan='11'>"+tmpStr+"</td></tr>");
+				}else{
+					curTd.parent().after("<tr style='background:#FFF' id='"+curTd.attr("dialogId")+"'><td colspan='11'><div style='padding-top:3px; margin:10px;'>详细描述："+curTd.attr("content")+"</div></td></tr>");
+				}
+			}
+		);
+	});
+	
+	$(".order_title").click(function(){
+		var id=$(this).attr("dialogId");
+		$("#"+id).toggle();
+	})
+})
+</script>
+<fieldset>
+	<legend>搜索</legend>
+    <form action="" method="get" id="search">
+    <input type="hidden" name="c" value="QualityCheck" />
+    <input type="hidden" name="a" value="DocumentIndex" />
+    <table width="100%" border="0" cellpadding="3">
+	  <tr>
+        <th nowrap>所在组别</th>
+        <td><!--{html_radios options=$orgList selected=$selected.org_id name="org_id" onclick="$('#search').submit()"}--></td>
+      </tr>
+      <tr>
+        <th nowrap>被质检人</th>
+        <td><select name="reply_user_id" onChange="$('#search').submit()"><option value="">请选择...</option><!--{html_options options=$users selected=$selected.reply_user_id}--></select></td>
+      </tr>
+      <tr>
+        <th nowrap>来源</th>
+        <td><!--{html_radios options=$source selected=$selected.source name="source" onclick="$('#search').submit()"}--></td>
+      </tr>
+      <tr>
+        <th nowrap>质检状态</th>
+        <td><!--{html_radios options=$verifyStatus selected=$selected.quality_status name="quality_status" onclick="$('#search').submit()"}--></td>
+      </tr>
+      <tr>
+        <th nowrap>质检人</th>
+        <td><select name="quality_user_id" onChange="$('#search').submit()"><option value="">请选择...</option><!--{html_options options=$users selected=$selected.quality_user_id}--></select></td>
+      </tr>
+      <tr>
+        <th nowrap>分数</th>
+        <td><!--{html_radios options=$socres selected=$selected.socres name="socres" onclick="$('#search').submit()"}--></td>
+      </tr>
+      <tr>
+        <th nowrap>反馈</th>
+        <td><!--{html_radios options=$feedBack selected=$selected.feedback name="feedback" onclick="$('#search').submit()"}--></td>
+      </tr>
+      <tr>
+        <th nowrap>记录人</th>
+        <td><select name="create_user_id" onChange="$('#search').submit()"><option value="">请选择...</option><!--{html_options options=$users selected=$selected.create_user_id}--></select></td>
+      </tr>
+      <tr>
+        <th nowrap>时间范围</th>
+        <td>           
+        	<input type="text" class="text" name="start_time" value="<!--{$selected.start_time}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+            至
+            <input type="text" class="text" name="end_time" value="<!--{$selected.end_time}-->" onFocus="WdatePicker({startDate:'%y-%M-30 23:59:59',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>										        	<input type="submit" class="btn-blue" value="搜索" />
+        </td>
+      </tr>
+    </table>
+    </form>
+</fieldset>
+
+<fieldset>
+	<legend>列表</legend>
+    <a href="<!--{$url.QualityCheck_Document_add}-->">添加归档</a>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">标题</th>
+        <th scope="col">被质检人</th>
+        <th scope="col">所在组别</th>
+        <th scope="col">质检状态</th>
+        <th scope="col">来源</th>
+        <th scope="col">分数</th>
+        <th scope="col">质检人</th>
+        <th scope="col">记录人</th>
+        <th scope="col">记录时间</th>
+        <th scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td><!--{$list.Id}--></td>
+        <td class="order_title" url="<!--{$list.url_dialog}-->" dialogId="detail_<!--{$list.Id}-->" work_order_id="<!--{$list.work_order_id}-->" content="<!--{$list.content}-->" title="<!--{$list.title}-->"><!--{$list.title}--></td>
+        <td><!--{$list.word_reply_user_id}--></td>
+        <td><!--{$list.word_org_id}--></td>
+        <td><!--{$list.word_quality_status}--></td>
+        <td><!--{$list.word_source}--></td>
+        <td><!--{$list.socres}--></td>
+        <td><!--{$list.word_quality_user_id}--></td>
+        <td><!--{$list.word_create_user_id}--></td>
+        <td><!--{$list.create_time}--></td>
+        <td>
+        	<a href="<!--{$list.url_edit}-->">编辑</a>
+            <a onclick="return confirm('确定要删除吗?')" href="<!--{$list.url_del}-->">删除</a>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr><th colspan="11"><!--{$noData}--></th></tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="11" align="right"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+
+</fieldset>

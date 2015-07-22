@@ -1,0 +1,150 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+	var playerLogTypes = <!--{$logType}-->;
+	var rootid =<!--{$_GET.rootid|default:"0"}-->;
+	var typeid = <!--{$_GET.typeid|default:"0"}-->;
+	
+	$(function(){
+		
+	});
+	
+	function rootLoad(){
+		$.each(playerLogTypes,
+			function(Id,subRoot){
+				$('<option/>').attr('value',Id).text(subRoot.rootTypeName).appendTo('#rootid');
+			}
+		);
+		if(rootid){
+			$('#rootid').val(rootid);
+			rootchange(rootid);
+		}
+	}
+	
+	function rootchange(chRootId){
+		$('#typeid').html('');
+		$('<option/>').attr('value',0).text('-所有子类-').appendTo('#typeid');		
+		if(chRootId>0){
+			$.each(playerLogTypes[chRootId]['subTypeList'],
+				function(Id,subType){
+					$('<option/>').attr('value',Id).text(subType.subTypeName).appendTo('#typeid');
+				}
+			);	
+			if(typeid)$("#typeid").val(typeid);
+		}
+	}
+
+	function checkSubmit(){
+		if($.trim($('#playerId').val()+$('#account').val()+$('#name').val()) =='' ){
+			alert('必须填写玩家');
+			return false;
+		}
+		return true;
+	}
+</script>
+<style>
+	.AutoNewline {
+		font-size:12px;
+		line-height:150%;
+		overflow: hidden;
+		width: 400px;
+		word-wrap:break-word;
+		margin-bottom:2px;
+		margin-top:2px;
+	}
+</style>
+
+<fieldset>
+  <legend>玩家操作日志 <!-- <a href="<!--{$URL_LogTypeUpdate}-->">更新日志类型</a> --></legend>
+  
+<form action=""  method="get" id="LogFrom">
+	<input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="LogId" id="LogId" value="0">
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+
+            <span style="padding-right:20px;">
+            
+                日志类型
+                <select name="Category" id="rootid">
+                	<!--{foreach from=$logType item=type key=key}-->
+                	<option value="<!--{$key}-->" <!--{if $key==$_GET.Category}-->selected<!--{/if}-->><!--{$type}--></option>
+                	<!--{/foreach}-->
+                </select>
+            </span>
+            关键字:<input class="text" type="text" name="skey" id="skey" value="<!--{$_GET.skey|default:''}-->">
+
+            操作时间：
+            <input class="text" type="text" name="unixStartTime" value="<!--{$_GET.unixStartTime}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+            至
+            <input class="text" type="text" name="unixEndTime" value="<!--{$_GET.unixEndTime}-->" onFocus="WdatePicker({startDate:'%y-%M-01 23:59:59',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <!--    玩家ID：<input type="text" class="text" name="playerId" id="playerId" value="<!--{$_GET.playerId|default:''}-->">
+        	-->
+        	玩家id：<input class="text" type="text" name="userId" id="account" value="<!--{$_GET.userId|default:''}-->">
+            角色名：<input class="text" type="text" name="nickName" id="name" value="<!--{$_GET.nickName|default:''}-->">
+          openId：<input class="text" type="text" name="openId" id="keyword" value="<!--{$_GET.openId|default:''}-->">
+           
+            <input class="btn-blue" type="submit" onclick="return checkSubmit();" name="submit" value="查询" >
+            
+        </td>
+      </tr>
+    </table>    
+    
+    <div>
+    	<!--{if $playerAccount}-->玩家账号:<font color="#FF0000"><!--{$playerAccount}--></font>,<!--{/if}-->
+    	<!--{if $playerName}-->玩家昵称:<font color="#FF0000"><!--{$playerName}--></font><!--{/if}-->
+    </div>
+    
+    <table width="100%" border="0" cellpadding="3">
+    
+      <tr>
+      <!--{foreach from=$contenttype item=typename key=keyson}--> 
+        <th><!--{$typename}--></th>
+        <!--{/foreach}-->
+      </tr>
+    <!--{foreach from=$dataList item=list key=key}-->
+      <tr class="here_td">
+      <!--{foreach from=$contenttype item=typename key=keyson}--> 
+        <td align="center"><!--{$list.$keyson}--></td>
+      <!--{/foreach}-->
+      </tr>
+    <!--{foreachelse}-->
+      <tr>
+      	<td colspan="10" align="center">
+            <!--{if $_GET.submit}-->
+            查无数据
+            <!--{else}-->
+            <font color="#FF0000">请使用"查询"按钮</font>
+            <!--{/if}-->
+        </td>
+      </tr>
+    <!--{/foreach}-->
+    </table>
+</form>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th align="right"><!--{$pageBox}--> </th>
+  </tr>
+</table>
+<!--{if $connectError}-->
+<div style="color:#F00;"><!--{$connectError}--></div>
+<!--{/if}-->
+</fieldset>
+<script language="javascript">
+	rootLoad();
+</script>
+<!--{/if}-->

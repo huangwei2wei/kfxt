@@ -1,0 +1,72 @@
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+	<legend>搜索</legend>
+    <form action="" method="get" id="search">
+    	<input type="hidden" name="c" value="QualityCheck" />
+        <input type="hidden" name="a" value="TimeoutReply" />
+        <table width="100%" border="0" cellpadding="3" >
+          <tr>
+            <th scope="row">游戏选择</th>
+            <td><!--{html_radios options=$gameTypes selected=$selected.game_type_id name="game_type_id" onclick="$('#search').submit()"}--></td>
+          </tr>
+          <tr>
+            <th scope="row">回复人</th>
+            <td>
+            	<select name="reply_user_id" >
+                	<option value="">请选择...</option>
+                    <!--{foreach from=$users item=list}-->
+                    	<option  <!--{if $selected.reply_user_id==$list.Id}-->selected="selected"<!--{/if}--> value="<!--{$list.Id}-->"><!--{$list.nick_name}--></option>
+                    <!--{/foreach}-->
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">时间范围</th>
+            <td>
+            <input type="text" class="text" name="start_time" value="<!--{$selected.start_time}-->" onFocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+            至
+            <input type="text" class="text" name="end_time" value="<!--{$selected.end_time}-->" onFocus="WdatePicker({startDate:'%y-%M-30 23:59:59',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+            <input type="submit" class="btn-blue" value="提交" />
+            </td>
+          </tr>
+        </table>
+
+    </form>
+</fieldset>
+<fieldset>
+  <legend>我被质检过的回复</legend>
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <th nowrap="nowrap" scope="col">Id</th>
+        <th nowrap="nowrap" scope="col">所属游戏</th>
+        <th nowrap="nowrap" scope="col">回复人</th>
+        <th nowrap="nowrap" scope="col">是否质检过</th>
+        <th scope="col">回复内容</th>
+        <th nowrap="nowrap" scope="col">回复时间</th>
+        <th nowrap="nowrap" scope="col">限制时间</th>
+        <th nowrap="nowrap" scope="col">操作</th>
+      </tr>
+      <!--{foreach from=$dataList item=list}-->
+      <tr>
+        <td nowrap="nowrap"><!--{$list.Id}--></td>
+        <td nowrap="nowrap"><!--{$list.word_game_type_id}--></td>
+        <td nowrap="nowrap"><!--{$list.word_reply_name}--></td>
+        <td nowrap="nowrap"><!--{$list.word_is_quality}--></td>
+        <td title="<!--{$list.content}-->"><!--{$list.content|truncateutf8:30}--></td>
+        <td nowrap="nowrap"><!--{$list.create_time}--></td>
+        <td nowrap="nowrap"><!--{$list.last_reply_time}--></td>
+        <td nowrap="nowrap">
+            <a href="<!--{$list.url_detail}-->">察看详细</a>
+        </td>
+      </tr>
+      <!--{foreachelse}-->
+      <tr>
+        <th colspan="8"><!--{$noData}--></th>
+      </tr>
+      <!--{/foreach}-->
+      <tr>
+        <td colspan="8" align="right"><!--{$pageBox}--></td>
+      </tr>
+    </table>
+</fieldset>

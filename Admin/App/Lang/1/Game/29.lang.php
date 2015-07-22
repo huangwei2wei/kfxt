@@ -1,0 +1,50 @@
+<?php
+return array(
+	'vocationId'=>array(
+		0=>array(
+			'fightForce'=>'无',
+			'forcePosition'=>array(
+				0=>'无',
+			),
+		),
+		1=>array(
+			'fightForce'=>'人',
+			'forcePosition'=>array(
+				0=>'无',
+				1=>'皇帝',
+				2=>'亲王',
+				3=>'大元帅',
+				4=>'将军',
+				5=>'刺史',
+			),
+		),
+		2=>array(
+			'fightForce'=>'仙',
+			'forcePosition'=>array(
+				0=>'无',
+				1=>'仙帝',
+				2=>'仙君',
+				3=>'大罗金仙',
+				4=>'天仙',
+				5=>'散仙',
+			),
+		),
+		3=>array(
+			'fightForce'=>'佛',
+			'forcePosition'=>array(
+				0=>'无',
+				1=>'真佛',
+				2=>'菩萨',
+				3=>'尊者',
+				4=>'金刚',
+				5=>'罗汉',
+			),
+		),
+	),
+	'career'=>array(1=>'菩提洞',2=>'女儿国',3=>'五庄观',4=>'盘丝洞',),
+	'cardType'=>array(1=>'单/多人绑定',2=>'单/多人不绑定',3=>'单服全部用户',4=>'全服卡'),
+	'userType'=>array(0=>'用户ID',1=>'用户账号',2=>'用户呢称 '),
+	'lockUserType'=>array(1=>'封号','2'=>'禁言'),
+	'backpackSearchType'=>array(1=>'全部',2=>'装备',3=>'道具',4=>'宝石',5=>'材料'),
+
+);

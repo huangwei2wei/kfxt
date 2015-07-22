@@ -1,0 +1,113 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+  <legend>搜索</legend>
+  
+<form action=""  method="get">
+    <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+    <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+    <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+    <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+    <input type="hidden" name="__game_id" value="<!--{$__GAMEID__}-->" />
+    <table width="100%" border="0" cellpadding="3">
+      <tr>
+        <td>
+            昵称:<input class="text" type="text" name="nickName" value="<!--{$_GET.nickName}-->">
+            openId:<input style="width:300px;" class="text" type="text" name="openId" value="<!--{$_GET.openId}-->">
+            伙伴Id:<input class="text" type="text" name="actorId" value="<!--{$_GET.actorId}-->">
+            <input class="btn-blue" type="submit" name="sbm" value="查询">
+            </td>
+      </tr>
+
+    </table>
+</form>
+
+
+</fieldset>
+
+<fieldset>
+  <legend>玩家信息</legend>
+<table width="50%" border="0" cellpadding="3">
+  	<!--{if $data}-->
+      <tr>
+        <th align="center" >伙伴id</td>
+        <td><!--{$data.actorId}--></td>
+      </tr>	
+      <tr>
+        <th align="center" >伙伴昵称</td>
+        <td><!--{$data.actorName|urldecode}--></td>
+      </tr>
+      <tr>
+        <th align="center" >伙伴血量</td>
+        <td><!--{$data.blood}--></td>
+      </tr>		
+
+      <tr>
+        <th align="center" >伙伴性别</td>
+        <td>
+        	<!--{switch var=$data.actorSex}-->
+        		<!--{case value=0}-->女<!--{/case}-->
+                <!--{case value=1}-->男<!--{/case}-->
+                <!--{default}--><!--{$data.actorSex}-->
+            <!--{/switch}-->
+		</td>
+      </tr>	
+      
+      <tr>
+        <th align="center" >伙伴经验</td>
+        <td><!--{$data.experience}--></td>
+      </tr>	
+	
+      <tr>
+        <th align="center" >经验上限</td>
+        <td><!--{$data.expLimitUp}--></td>
+      </tr>	
+      <tr>
+        <th align="center" >伙伴血量上限</td>
+        <td><!--{$data.bloodLimitUp}--></td>
+      </tr>	
+      <tr>
+        <th align="center" >伙伴技能等级</td>
+        <td><!--{$data.skillLevel}--></td>
+      </tr>	
+      <tr>
+        <th align="center" >伙伴等级</td>
+        <td><!--{$data.level}--></td>
+      </tr>	
+      
+      <tr>
+        <th align="center" >暴击</td>
+        <td><!--{$data.crit}--></td>
+      </tr>
+      
+      <tr>
+        <th align="center" >命中</td>
+        <td><!--{$data.hit}--></td>
+      </tr>
+      <tr>
+        <th align="center" >闪避</td>
+        <td><!--{$data.dodge}--></td>
+      </tr>
+      <tr>
+        <th align="center" >攻击</td>
+        <td><!--{$data.attack}--></td>
+      </tr>	
+      <tr>
+        <th align="center" >防御</td>
+        <td><!--{$data.defense}--></td>
+      </tr>	
+    
+  	<!--{else}-->
+      <tr>
+        <th align="center" colspan="2">暂无数据</td>
+      </tr>
+  	<!--{/if}-->
+</table>
+
+</fieldset>
+<!--{/if}-->

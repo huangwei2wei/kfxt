@@ -1,0 +1,82 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<fieldset>
+  <legend>搜索 [<a href="<!--{$URL_typeUpdate}-->">更新类型</a>]</legend>
+	<form action="" method="get">
+        <input type="hidden" name="c" value="<!--{$__CONTROL__}-->" />
+        <input type="hidden" name="a" value="<!--{$__ACTION__}-->" />
+        <input type="hidden" name="zp" value="<!--{$__PACKAGE__}-->" />
+        <input type="hidden" name="server_id" value="<!--{$selectedServerId}-->"/>
+        <table width="100%" border="0" cellpadding="3">
+          <tr>
+            <td>
+                玩家ID：<input class="text" name="playerId" value="<!--{$_GET.playerId}-->">,
+                时间：
+                <input class="text" type="text" name="StartTime" value="<!--{$_GET.StartTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+                -
+                <input class="text" type="text" name="EndTime" value="<!--{$_GET.EndTime}-->" onFocus="WdatePicker({startDate:'%y-%M-%d 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})">
+				,
+                类型：
+                <select name="type">
+                	<option value="">-全部-</option>
+                	<!--{html_options options=$type selected=$_GET.type}-->
+                </select>
+                <input class="btn-blue" type="submit" name="sbm" value="查询" />
+            </td>
+          </tr>
+        </table>
+	</form>
+</fieldset> 
+
+<fieldset>
+  <legend>列表</legend>
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">玩家ID</th>
+    <th scope="col">时间</th>
+    <th scope="col">类型</th>
+    <th scope="col">银两增加</th>
+    <th scope="col">券增量</th>
+    <th scope="col">灵石增加</th>
+    <th scope="col">仙晶增加</th>
+    <th scope="col">当前银两</th>
+    <th scope="col">券剩余</th>
+    <th scope="col">当前灵石</th>
+    <th scope="col">当前仙晶</th>
+    <th scope="col">int参数</th>
+    <th scope="col">long参数</th>
+    <th scope="col">使用途径</th>
+  </tr>
+  <!--{foreach from=$dataList item=list}-->
+  <tr>
+    <td><!--{$list.id}--></td>
+    <td><!--{$list.playerId}--></td>
+    <td><!--{$list.timestamp|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+    <td><!--{$type[$list.type]}--></td>
+    <td><!--{$list.deltaCoin}--></td>
+    <td><!--{$list.deltaTicket}--></td>
+    <td><!--{$list.deltaCash}--></td>
+    <td><!--{$list.deltaVoucher}--></td>
+    <td><!--{$list.remainCoin}--></td>
+    <td><!--{$list.remainTicket}--></td>
+    <td><!--{$list.remainCash}--></td>
+    <td><!--{$list.remainVoucher}--></td>
+    <td><!--{$list.int1}--></td>
+    <td><!--{$list.int2}--></td>
+    <td><!--{$list.str1}--></td>
+  </tr>
+  <!--{foreachelse}-->
+  <tr>  
+	<td colspan="16">查无数据</td>
+  </tr>
+  <!--{/foreach}-->
+</table>
+<div><!--{$pageBox}--></div>
+</fieldset> 
+<!--{/if}-->

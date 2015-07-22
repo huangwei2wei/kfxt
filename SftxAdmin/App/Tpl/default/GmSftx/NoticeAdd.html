@@ -1,0 +1,53 @@
+<!--{if $tplServerSelect}-->
+<!--{include file=$tplServerSelect}-->
+<!--{/if}-->
+
+<!--{if $display}-->
+<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"form",onerror:function(){return false;}});
+	$("#title").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"公告标题不能为空,请确认"});
+	$("#content").formValidator().inputValidator({min:1,empty:{leftempty:false,rightempty:false,emptyerror:"两边不能有空格"},onerror:"公告内容不能为空,请确认"});
+	$("#interval").formValidator({onshow:"请输入时间间隔",oncorrect:"输入正确"}).regexValidator({regexp:"intege1",datatype:"enum",onerror:"时间间隔不正确"});
+})
+</script>
+<fieldset>
+<legend>新增游戏公告</legend>
+<form action="" method="post" id="form">
+<input type="hidden" name="server_id" id="server_id" value="<!--{$selectedServerId}-->"/>
+    <table width="98%" border="0" cellpadding="3">
+      <tr>
+        <th scope="row">公告标题</th>
+        <td><input type="text" class="text" name="title" id="title" /><div id="titleTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row">公告内容</th>
+        <td><textarea name="content" cols="40" rows="8" id="content"></textarea><div id="contentTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row">开始时间</th>
+        <td><input type="text" class="text" name="begin" value="<!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/>
+        	当前系统时间： <font color="#FF0000"><!--{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}--></font>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">结束时间</th>
+        <td><input type="text" class="text" name="end" value="<!--{$smarty.now|strtotime:'+1 week'}-->" onFocus="WdatePicker({startDate:'<!--{$smarty.now|strtotime:'+1 week'}-->',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"/></td>
+      </tr>
+      <tr>
+        <th scope="row">时间间隔</th>
+        <td><input type="text" class="text" name="interval" id="interval" /> 分钟<div id="intervalTip"></div></td>
+      </tr>
+      <tr>
+        <th scope="row">URL</th>
+        <td><input type="text" class="text" name="url" size="80" /></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" class="btn-blue" value="提交" /></th>
+      </tr>
+    </table>
+</form>
+</fieldset>
+<!--{/if}-->
