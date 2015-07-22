@@ -49,4 +49,4 @@ define('FRG_SYS_KEY','!@$$DSDGldj*73@sls-(3');					//统一系统KEY
 define('CACHE_TYPE','Eaccelerator');							//配置 File,Memcache,Apc,Eaccelerator等等...
 define('CACHE_PREFIX','kefu');									//缓存key前缀.
 
-define('MasterAccount','zlsky,fox,fanghualong,zhangweidong');						//超级管理员账号,请用","号隔开
+define('MasterAccount','admin,huangwei');						//超级管理员账号,请用","号隔开
