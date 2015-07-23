@@ -29,7 +29,6 @@ abstract class Action_ActionBase extends Base implements SplSubject{
 		if(!is_object($this->_gameObject)){
 			exit('gameObjectError');
 		}
-		$this->_modelLog		=	$this->_getGlobalData('Model_newLog','object');
 		$this->_modelLogDesc 	= 	$this->_getGlobalData('Model_descLog','object');
 		$this->_serverList 		= 	$this->_getGlobalData('server/server_list_'.$gameId);
 		$this->_observers 		= 	new SplObjectStorage ();	//监听对象储存器
@@ -345,56 +344,8 @@ abstract class Action_ActionBase extends Base implements SplSubject{
 		return $data;
 	}
 
-	public function Select($sql,$url,$user="",$pwd="",$is_ac=false){
-		$sql = trim($sql);
-		$utilHttpInterface = $this->_getGlobalData('Util_HttpInterface','object');
-		if(empty($user)){
-			$getData["user"]  	= 	"dataviewer";
-		}else{
-			$getData["user"]	=	$user;
-		}
-		if(empty($pwd)){
-			$getData["pwd"]  	= 	"qq@7%ssAjk3D";
-		}else{
-			$getData["pwd"]		=	$pwd;
-		}
-		if($is_ac){
-			$getData["modify"]  = "1";
-		}
-		$getData["sql"]  = $sql;
-		$getData["link"]  = $url;
-		//		print_r($getData);
-		$dataList = $utilHttpInterface->result("http://121.9.245.117:8090/HbaseCollector/Agency.action",'','',$getData);
-		//		$dataList = $utilHttpInterface->result("http://127.0.0.1:8080/HbaseCollector/Agency.action",'','',$getData);
-		echo $getData["sql"];
-		if(in_array($this->_gameObject->_gameId,$this->_logGame)){
-			$this->_RecordLog(substr($dataList,0,200),"HbaseCollector/Agency.action<br/>GET:".$getData["sql"]);
-		}
-		$dataList = json_decode($dataList,true);
-		$returnData = array();
-		if($dataList["state"]==1){
-			foreach($dataList['data'] as $key => $sub){
-				foreach($sub as $filed =>$val){
-					$returnData[$key][$dataList['Column'][$filed]] = $val;
-				}
-			}
-		}else{
-			echo $dataList["info"];
-			return false;
-		}
-		if($is_ac){
-			return true;
-		}else{
-			return $returnData;
-		}
-	}
 
 	protected function _RecordLog($returnData,$subData){
-		if($this->_requestCount<1){
-			$this->_requestCount++;
-			$this->_modelLog->addLog();
-		}
-
 		$this->_modelLogDesc->addLog($returnData,$subData);
 	}
 

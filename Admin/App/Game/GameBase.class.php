@@ -49,7 +49,7 @@ abstract class Game_GameBase extends Base implements GameInterface{
 	 * 允许直接访问参数
 	 * @param $varName
 	 */
-	protected function __get($varName){
+	public function __get($varName){
 		if(property_exists($this,$varName)){
 			return $this->$varName;
 		}

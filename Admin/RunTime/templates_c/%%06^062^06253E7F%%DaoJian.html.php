@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2013-04-09 17:04:48
+<?php /* Smarty version 2.6.26, created on 2015-07-23 11:03:54
          compiled from ActionGame_MasterTools/BackpackSearch/DaoJian.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'ActionGame_MasterTools/BackpackSearch/DaoJian.html', 48, false),array('modifier', 'default', 'ActionGame_MasterTools/BackpackSearch/DaoJian.html', 64, false),)), $this); ?>
@@ -99,7 +99,7 @@ function submitCheck(){
         <th scope="col">物品ID</th>
         <th scope="col">类型</th>
         <th scope="col">现有数量</th>
-        <th scope="col">扣除数量</th>
+        <th scope="col">修改后数量</th>
       </tr>
         <?php $_from = $this->_tpl_vars['dataList']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['sub']):

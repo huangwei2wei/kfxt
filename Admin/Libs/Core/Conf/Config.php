@@ -40,7 +40,7 @@ define('RBAC_NULL','RBAC_NULL');								//RBAC_NULL 表示该设置没有值
 
 define('TAKE_KEY','cndw_kefu');									//service唯一key
 define('KEY_SPACE','zl85@#cn*dw');								//用户登录加密密钥
-define('PASSPORT_URL','https://pass.dovogame.com/');				//passport网站
+define('PASSPORT_URL','/admin.php?c=Index&a=Index');				//passport网站
 define('FRONT_WORKORDER_TIMEOUT',60*60*20);						//前台工单超时时间,默认2小时.
 define('DEFAULT_FRG_SERVER_ID',11);								//默认富人国做副本服务器ID
 
