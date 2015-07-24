@@ -1,0 +1,5 @@
+
+/usr/local/php-5.6.4/sbin/php-fpm &
+/usr/local/nginx/sbin/nginx &
+
+./configure --prefix=/usr/local/php-5.6.4 --with-iconv-dir=/usr/local --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath  --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization   --enable-mbregex  --enable-fpm --enable-mbstring --with-mcrypt --with-gd --enable-gd-native-ttf  --with-mhash --enable-pcntl --enable-sockets  --with-xmlrpc --enable-zip --enable-soap --without-pear --with-mysql=shared,mysqlnd,mysqli
