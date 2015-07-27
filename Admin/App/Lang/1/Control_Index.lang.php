@@ -1,7 +1,7 @@
 <?php
 return array(
 	'LOGIN_ERRORAUTH'=>'您输入的验证码不正确',
-	'Login_ERRORPWD'=>'您输入的密码不正确,或账号不存在',
+	'LOGIN_ERRORPWD'=>'您输入的密码不正确,或账号不存在',
 
     //<!--{'XXXX'|lang}-->
     'TPL_CONFIRMLOGOUT' => '您确定要退出控制面板吗？',
