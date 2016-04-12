@@ -234,6 +234,7 @@ class Util_Rbac extends Control {
 		Tools::setHeadP3P();
 		$decodePass=Tools::dencrypt($decodePass);
 		setcookie(SESSION_USER_KEY,$decodePass,CURRENT_TIME+60*60*6,'/');
+		
 		$userClass=$this->getUserClass($userName);
 		$userClass->setInfo();
 		$userClass->setUpdateInfo(1);

@@ -181,7 +181,7 @@ abstract class Action_ActionBase extends Base implements SplSubject{
 		$utilHttpInterface = $this->_getGlobalData('Util_HttpInterface','object');
 		$sendUrl = $this->_getUrl(false,$isOperatorId);
 		if(!$sendUrl)return false;
-		
+
 		$data = $utilHttpInterface->result($sendUrl,$UrlAppend,$getData,$postData,$isAjax);
 		if(in_array($this->_gameObject->_gameId,$this->_logGame)){
 			if($this->_gameObject->_gameId==18){
@@ -293,7 +293,7 @@ abstract class Action_ActionBase extends Base implements SplSubject{
 	}
 
 	/**
-	 * 删除监听对象 
+	 * 删除监听对象
 	 * @param SplObserver $observer
 	 */
 	public function detach(SplObserver $observer) {
@@ -305,7 +305,7 @@ abstract class Action_ActionBase extends Base implements SplSubject{
 	}
 
 	/**
-	 * 传送对象 
+	 * 传送对象
 	 */
 	public function notify() {
 		foreach ( $this->_observers as $observer ) {

@@ -2,7 +2,7 @@
 define('MAGIC_QUOTES',get_magic_quotes_gpc());					//是否开始魔术引号
 define('URL_MODE',1);											//URL模式, 1普通模式, 2 PATH_INFO模式
 define('DEFAULT_CONTROL','Index');								//默认调用的控制器
-define('DEFAULT_ACTION','Index');								//默认执行的方法
+define('DEFAULT_ACTION','Login');								//默认执行的方法
 define('DEFAULT_PACKAGE','Default');							//默认模块包
 define('APP_PATH',ROOT_PATH . '/App');							//应用程序目录
 define('LANG_PATH',APP_PATH.'/Lang/'.$_COOKIE['kefu_lang']);	//语言包文件夹,默认简体
@@ -40,7 +40,7 @@ define('RBAC_NULL','RBAC_NULL');								//RBAC_NULL 表示该设置没有值
 
 define('TAKE_KEY','cndw_kefu');									//service唯一key
 define('KEY_SPACE','zl85@#cn*dw');								//用户登录加密密钥
-define('PASSPORT_URL','/admin.php?c=Index&a=Index');				//passport网站
+define('PASSPORT_URL','/admin.php?c=Index&a=login');			//passport网站
 define('FRONT_WORKORDER_TIMEOUT',60*60*20);						//前台工单超时时间,默认2小时.
 define('DEFAULT_FRG_SERVER_ID',11);								//默认富人国做副本服务器ID
 

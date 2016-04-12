@@ -1995,21 +1995,6 @@ return array (
     'position_id' => NULL,
     'full_name' => '乐酷客服10[联合方]',
   ),
-  158 => 
-  array (
-    'Id' => '158',
-    'org_id' => '0',
-    'department_id' => '9',
-    'service_id' => '001',
-    'roles' => 'op_frg_join,cs_join,service_buglist',
-    'user_name' => 'kx001admin',
-    'nick_name' => '开心网运营001',
-    'order_vip_level' => '0,1,2,3,4,5,6',
-    'status' => '1',
-    'project_id' => '0',
-    'position_id' => NULL,
-    'full_name' => '开心网运营001[联合方]',
-  ),
   159 => 
   array (
     'Id' => '159',

@@ -1729,6 +1729,150 @@ return array (
       ),
     ),
   ),
+  86 => 
+  array (
+    'Id' => '86',
+    'game_type_id' => '12',
+    'title' => '充值问题',
+    'title_2' => 'Prepaid phone problem',
+    'form_table' => 
+    array (
+      0 => 
+      array (
+        'type' => 'game_server_list',
+        'required' => true,
+        'name' => 'game_server_id',
+      ),
+    ),
+  ),
+  87 => 
+  array (
+    'Id' => '87',
+    'game_type_id' => '12',
+    'title' => '游戏问题',
+    'title_2' => 'The problem',
+    'form_table' => 
+    array (
+      0 => 
+      array (
+        'type' => 'game_server_list',
+        'required' => true,
+        'name' => 'game_server_id',
+      ),
+    ),
+  ),
+  88 => 
+  array (
+    'Id' => '88',
+    'game_type_id' => '12',
+    'title' => '登录问题',
+    'title_2' => '',
+    'form_table' => 
+    array (
+      0 => 
+      array (
+        'type' => 'game_server_list',
+        'required' => true,
+        'name' => 'game_server_id',
+      ),
+    ),
+  ),
+  89 => 
+  array (
+    'Id' => '89',
+    'game_type_id' => '12',
+    'title' => '系统问题',
+    'title_2' => '',
+    'form_table' => 
+    array (
+      0 => 
+      array (
+        'type' => 'game_server_list',
+        'required' => true,
+        'name' => 'game_server_id',
+      ),
+    ),
+  ),
+  90 => 
+  array (
+    'Id' => '90',
+    'game_type_id' => '12',
+    'title' => '充值问题',
+    'title_2' => '',
+    'form_table' => 
+    array (
+      0 => 
+      array (
+        'type' => 'game_server_list',
+        'required' => true,
+        'name' => 'game_server_id',
+      ),
+    ),
+  ),
+  91 => 
+  array (
+    'Id' => '91',
+    'game_type_id' => '12',
+    'title' => '游戏建议',
+    'title_2' => '',
+    'form_table' => 
+    array (
+      0 => 
+      array (
+        'type' => 'game_server_list',
+        'required' => true,
+        'name' => 'game_server_id',
+      ),
+    ),
+  ),
+  92 => 
+  array (
+    'Id' => '92',
+    'game_type_id' => '12',
+    'title' => 'BUG问题',
+    'title_2' => '',
+    'form_table' => 
+    array (
+      0 => 
+      array (
+        'type' => 'game_server_list',
+        'required' => true,
+        'name' => 'game_server_id',
+      ),
+    ),
+  ),
+  93 => 
+  array (
+    'Id' => '93',
+    'game_type_id' => '12',
+    'title' => '投诉举报',
+    'title_2' => '',
+    'form_table' => 
+    array (
+      0 => 
+      array (
+        'type' => 'game_server_list',
+        'required' => true,
+        'name' => 'game_server_id',
+      ),
+    ),
+  ),
+  94 => 
+  array (
+    'Id' => '94',
+    'game_type_id' => '12',
+    'title' => '账号和密码问题',
+    'title_2' => NULL,
+    'form_table' => false,
+  ),
+  95 => 
+  array (
+    'Id' => '95',
+    'game_type_id' => '12',
+    'title' => '其他问题',
+    'title_2' => NULL,
+    'form_table' => false,
+  ),
   85 => 
   array (
     'Id' => '85',

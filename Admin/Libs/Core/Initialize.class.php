@@ -52,7 +52,7 @@ class Initialize extends Base {
 			case -2 ://未登录
 			case -3 ://账号停用
 			default:{
-				$this->_utilMsg->showMsg('您还未登录,或账号被停用',-2,PASSPORT_URL);
+				$this->_utilMsg->showMsg('您还未登录,或账号被停用!',-2,PASSPORT_URL);
 			}
 		}
 

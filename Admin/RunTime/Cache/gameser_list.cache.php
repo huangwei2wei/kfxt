@@ -16,7 +16,7 @@ return array (
     'ext' => 'a:2:{s:7:"db_user";s:5:"zlsky";s:6:"db_pwd";s:3:"ysr";}',
     'data_url' => '',
     'isCenter' => '0',
-    'full_name' => '平台提问(官网)[寻侠]',
+    'full_name' => '平台提问(官网)[]',
   ),
   206 => 
   array (
@@ -34,7 +34,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '原偷偷玩1服(官网)[商业大亨]',
+    'full_name' => '原偷偷玩1服(官网)[]',
   ),
   207 => 
   array (
@@ -52,7 +52,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '原天线视频1服(官网)[商业大亨]',
+    'full_name' => '原天线视频1服(官网)[]',
   ),
   208 => 
   array (
@@ -70,7 +70,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 飞黄腾达(官网)[商业大亨]',
+    'full_name' => 'S1 飞黄腾达(官网)[]',
   ),
   209 => 
   array (
@@ -88,7 +88,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 奔腾年代(官网)[商业大亨]',
+    'full_name' => 'S2 奔腾年代(官网)[]',
   ),
   210 => 
   array (
@@ -106,7 +106,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 锦绣前程(官网)[商业大亨]',
+    'full_name' => 'S3 锦绣前程(官网)[]',
   ),
   211 => 
   array (
@@ -124,7 +124,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4 淘金之路(官网)[商业大亨]',
+    'full_name' => 'S4 淘金之路(官网)[]',
   ),
   212 => 
   array (
@@ -142,7 +142,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5 富甲天下(官网)[商业大亨]',
+    'full_name' => 'S5 富甲天下(官网)[]',
   ),
   213 => 
   array (
@@ -160,7 +160,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6 胜者为王(官网)[商业大亨]',
+    'full_name' => 'S6 胜者为王(官网)[]',
   ),
   214 => 
   array (
@@ -178,7 +178,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7 宏图霸业(官网)[商业大亨]',
+    'full_name' => 'S7 宏图霸业(官网)[]',
   ),
   215 => 
   array (
@@ -196,7 +196,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S8 龙腾四海(官网)[商业大亨]',
+    'full_name' => 'S8 龙腾四海(官网)[]',
   ),
   216 => 
   array (
@@ -214,7 +214,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S9 叱咤风云(官网)[商业大亨]',
+    'full_name' => 'S9 叱咤风云(官网)[]',
   ),
   217 => 
   array (
@@ -232,7 +232,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S10 传奇人生(官网)[商业大亨]',
+    'full_name' => 'S10 传奇人生(官网)[]',
   ),
   218 => 
   array (
@@ -250,7 +250,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S11 江山无限(官网)[商业大亨]',
+    'full_name' => 'S11 江山无限(官网)[]',
   ),
   219 => 
   array (
@@ -268,7 +268,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S13 名满天下(官网)[商业大亨]',
+    'full_name' => 'S13 名满天下(官网)[]',
   ),
   220 => 
   array (
@@ -286,7 +286,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S14 百事亨通(官网)[商业大亨]',
+    'full_name' => 'S14 百事亨通(官网)[]',
   ),
   221 => 
   array (
@@ -304,7 +304,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S15 大展宏图(官网)[商业大亨]',
+    'full_name' => 'S15 大展宏图(官网)[]',
   ),
   222 => 
   array (
@@ -322,7 +322,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S16 天道酬勤(官网)[商业大亨]',
+    'full_name' => 'S16 天道酬勤(官网)[]',
   ),
   223 => 
   array (
@@ -340,7 +340,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S17 旗开得胜(官网)[商业大亨]',
+    'full_name' => 'S17 旗开得胜(官网)[]',
   ),
   224 => 
   array (
@@ -358,7 +358,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S19 黄金时代(官网)[商业大亨]',
+    'full_name' => 'S19 黄金时代(官网)[]',
   ),
   225 => 
   array (
@@ -376,7 +376,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S20 成名之路(官网)[商业大亨]',
+    'full_name' => 'S20 成名之路(官网)[]',
   ),
   226 => 
   array (
@@ -394,7 +394,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S21 君临天下(官网)[商业大亨]',
+    'full_name' => 'S21 君临天下(官网)[]',
   ),
   227 => 
   array (
@@ -412,7 +412,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S22 壮志凌云(官网)[商业大亨]',
+    'full_name' => 'S22 壮志凌云(官网)[]',
   ),
   228 => 
   array (
@@ -430,7 +430,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S23 万马奔腾(官网)[商业大亨]',
+    'full_name' => 'S23 万马奔腾(官网)[]',
   ),
   229 => 
   array (
@@ -448,7 +448,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S24 猛龙过江(官网)[商业大亨]',
+    'full_name' => 'S24 猛龙过江(官网)[]',
   ),
   230 => 
   array (
@@ -466,7 +466,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S25 谁与争锋(官网)[商业大亨]',
+    'full_name' => 'S25 谁与争锋(官网)[]',
   ),
   231 => 
   array (
@@ -484,7 +484,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S26 千秋霸业(官网)[商业大亨]',
+    'full_name' => 'S26 千秋霸业(官网)[]',
   ),
   232 => 
   array (
@@ -502,7 +502,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S27 唯我独尊(官网)[商业大亨]',
+    'full_name' => 'S27 唯我独尊(官网)[]',
   ),
   233 => 
   array (
@@ -520,7 +520,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S28 浩然正气(官网)[商业大亨]',
+    'full_name' => 'S28 浩然正气(官网)[]',
   ),
   234 => 
   array (
@@ -538,7 +538,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S29 海纳百川(官网)[商业大亨]',
+    'full_name' => 'S29 海纳百川(官网)[]',
   ),
   235 => 
   array (
@@ -556,7 +556,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S30 龙行天下(官网)[商业大亨]',
+    'full_name' => 'S30 龙行天下(官网)[]',
   ),
   236 => 
   array (
@@ -574,7 +574,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S31 笑看风云(官网)[商业大亨]',
+    'full_name' => 'S31 笑看风云(官网)[]',
   ),
   237 => 
   array (
@@ -592,7 +592,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S32 气贯长虹(官网)[商业大亨]',
+    'full_name' => 'S32 气贯长虹(官网)[]',
   ),
   238 => 
   array (
@@ -610,7 +610,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S33 仁者无敌(官网)[商业大亨]',
+    'full_name' => 'S33 仁者无敌(官网)[]',
   ),
   239 => 
   array (
@@ -628,7 +628,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S34 百家争鸣(官网)[商业大亨]',
+    'full_name' => 'S34 百家争鸣(官网)[]',
   ),
   240 => 
   array (
@@ -646,7 +646,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S35 雷霆万钧(官网)[商业大亨]',
+    'full_name' => 'S35 雷霆万钧(官网)[]',
   ),
   241 => 
   array (
@@ -664,7 +664,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S36 九五至尊(官网)[商业大亨]',
+    'full_name' => 'S36 九五至尊(官网)[]',
   ),
   242 => 
   array (
@@ -682,7 +682,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S37 惊天动地(官网)[商业大亨]',
+    'full_name' => 'S37 惊天动地(官网)[]',
   ),
   243 => 
   array (
@@ -700,7 +700,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S38 王者传奇(官网)[商业大亨]',
+    'full_name' => 'S38 王者传奇(官网)[]',
   ),
   244 => 
   array (
@@ -718,7 +718,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S39 驰骋天下(官网)[商业大亨]',
+    'full_name' => 'S39 驰骋天下(官网)[]',
   ),
   245 => 
   array (
@@ -736,7 +736,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S40 龙啸九天(官网)[商业大亨]',
+    'full_name' => 'S40 龙啸九天(官网)[]',
   ),
   246 => 
   array (
@@ -754,7 +754,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S41 横扫千军(官网)[商业大亨]',
+    'full_name' => 'S41 横扫千军(官网)[]',
   ),
   247 => 
   array (
@@ -772,7 +772,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S42 傲视群雄(官网)[商业大亨]',
+    'full_name' => 'S42 傲视群雄(官网)[]',
   ),
   248 => 
   array (
@@ -790,7 +790,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S43 富丽堂皇(官网)[商业大亨]',
+    'full_name' => 'S43 富丽堂皇(官网)[]',
   ),
   249 => 
   array (
@@ -808,7 +808,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S44 五谷丰登(官网)[商业大亨]',
+    'full_name' => 'S44 五谷丰登(官网)[]',
   ),
   250 => 
   array (
@@ -826,7 +826,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S45 纵横天下(官网)[商业大亨]',
+    'full_name' => 'S45 纵横天下(官网)[]',
   ),
   251 => 
   array (
@@ -844,7 +844,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S46 英雄年代(官网)[商业大亨]',
+    'full_name' => 'S46 英雄年代(官网)[]',
   ),
   252 => 
   array (
@@ -862,7 +862,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S47 人定胜天(官网)[商业大亨]',
+    'full_name' => 'S47 人定胜天(官网)[]',
   ),
   253 => 
   array (
@@ -880,7 +880,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S48 威震天下(官网)[商业大亨]',
+    'full_name' => 'S48 威震天下(官网)[]',
   ),
   254 => 
   array (
@@ -898,7 +898,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S49 鹏程万里(官网)[商业大亨]',
+    'full_name' => 'S49 鹏程万里(官网)[]',
   ),
   255 => 
   array (
@@ -916,7 +916,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S50 展翅高飞(官网)[商业大亨]',
+    'full_name' => 'S50 展翅高飞(官网)[]',
   ),
   256 => 
   array (
@@ -934,7 +934,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S51 金碧辉煌(官网)[商业大亨]',
+    'full_name' => 'S51 金碧辉煌(官网)[]',
   ),
   257 => 
   array (
@@ -952,7 +952,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S52 天之骄子(官网)[商业大亨]',
+    'full_name' => 'S52 天之骄子(官网)[]',
   ),
   258 => 
   array (
@@ -970,7 +970,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S53 盖世无双(官网)[商业大亨]',
+    'full_name' => 'S53 盖世无双(官网)[]',
   ),
   259 => 
   array (
@@ -988,7 +988,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S54 登峰造极(官网)[商业大亨]',
+    'full_name' => 'S54 登峰造极(官网)[]',
   ),
   260 => 
   array (
@@ -1006,7 +1006,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S55 海阔天空(官网)[商业大亨]',
+    'full_name' => 'S55 海阔天空(官网)[]',
   ),
   261 => 
   array (
@@ -1024,7 +1024,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S56 豪情万丈(官网)[商业大亨]',
+    'full_name' => 'S56 豪情万丈(官网)[]',
   ),
   262 => 
   array (
@@ -1042,7 +1042,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S57 平步青云(官网)[商业大亨]',
+    'full_name' => 'S57 平步青云(官网)[]',
   ),
   263 => 
   array (
@@ -1060,7 +1060,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S58 世外桃源(官网)[商业大亨]',
+    'full_name' => 'S58 世外桃源(官网)[]',
   ),
   264 => 
   array (
@@ -1078,7 +1078,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S59 大亨年代(官网)[商业大亨]',
+    'full_name' => 'S59 大亨年代(官网)[]',
   ),
   265 => 
   array (
@@ -1096,7 +1096,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S60 卧虎藏龙(官网)[商业大亨]',
+    'full_name' => 'S60 卧虎藏龙(官网)[]',
   ),
   266 => 
   array (
@@ -1114,7 +1114,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S61 天涯海角(官网)[商业大亨]',
+    'full_name' => 'S61 天涯海角(官网)[]',
   ),
   267 => 
   array (
@@ -1132,7 +1132,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S62 呼风唤雨(官网)[商业大亨]',
+    'full_name' => 'S62 呼风唤雨(官网)[]',
   ),
   268 => 
   array (
@@ -1150,7 +1150,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S63 点石成金(官网)[商业大亨]',
+    'full_name' => 'S63 点石成金(官网)[]',
   ),
   269 => 
   array (
@@ -1168,7 +1168,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S64 五湖四海(官网)[商业大亨]',
+    'full_name' => 'S64 五湖四海(官网)[]',
   ),
   270 => 
   array (
@@ -1186,7 +1186,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S65 王者归来(官网)[商业大亨]',
+    'full_name' => 'S65 王者归来(官网)[]',
   ),
   271 => 
   array (
@@ -1204,7 +1204,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S66 百花齐放(官网)[商业大亨]',
+    'full_name' => 'S66 百花齐放(官网)[]',
   ),
   272 => 
   array (
@@ -1222,7 +1222,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S67 千军万马(官网)[商业大亨]',
+    'full_name' => 'S67 千军万马(官网)[]',
   ),
   273 => 
   array (
@@ -1240,7 +1240,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S68 鱼跃龙门(官网)[商业大亨]',
+    'full_name' => 'S68 鱼跃龙门(官网)[]',
   ),
   274 => 
   array (
@@ -1258,7 +1258,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S69 风起云涌(官网)[商业大亨]',
+    'full_name' => 'S69 风起云涌(官网)[]',
   ),
   275 => 
   array (
@@ -1276,7 +1276,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S70 宏图大志(官网)[商业大亨]',
+    'full_name' => 'S70 宏图大志(官网)[]',
   ),
   276 => 
   array (
@@ -1294,7 +1294,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S71 万紫千红(官网)[商业大亨]',
+    'full_name' => 'S71 万紫千红(官网)[]',
   ),
   277 => 
   array (
@@ -1312,7 +1312,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S72 如日中天(官网)[商业大亨]',
+    'full_name' => 'S72 如日中天(官网)[]',
   ),
   278 => 
   array (
@@ -1330,7 +1330,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S73 东成西就(官网)[商业大亨]',
+    'full_name' => 'S73 东成西就(官网)[]',
   ),
   279 => 
   array (
@@ -1348,7 +1348,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S74 龙跃凤鸣(官网)[商业大亨]',
+    'full_name' => 'S74 龙跃凤鸣(官网)[]',
   ),
   280 => 
   array (
@@ -1366,7 +1366,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S75 雄鹰展翅(官网)[商业大亨]',
+    'full_name' => 'S75 雄鹰展翅(官网)[]',
   ),
   281 => 
   array (
@@ -1384,7 +1384,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S76 功成名就(官网)[商业大亨]',
+    'full_name' => 'S76 功成名就(官网)[]',
   ),
   282 => 
   array (
@@ -1402,7 +1402,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S77 风华绝代(官网)[商业大亨]',
+    'full_name' => 'S77 风华绝代(官网)[]',
   ),
   283 => 
   array (
@@ -1420,7 +1420,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S78 惊涛骇浪(官网)[商业大亨]',
+    'full_name' => 'S78 惊涛骇浪(官网)[]',
   ),
   284 => 
   array (
@@ -1438,7 +1438,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S79 傲气长存(官网)[商业大亨]',
+    'full_name' => 'S79 傲气长存(官网)[]',
   ),
   285 => 
   array (
@@ -1456,7 +1456,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S80 纵横驰骋(官网)[商业大亨]',
+    'full_name' => 'S80 纵横驰骋(官网)[]',
   ),
   286 => 
   array (
@@ -1474,7 +1474,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S81 突飞猛进(官网)[商业大亨]',
+    'full_name' => 'S81 突飞猛进(官网)[]',
   ),
   287 => 
   array (
@@ -1492,7 +1492,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S82 出类拔萃(官网)[商业大亨]',
+    'full_name' => 'S82 出类拔萃(官网)[]',
   ),
   288 => 
   array (
@@ -1510,7 +1510,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S83 朝气蓬勃(官网)[商业大亨]',
+    'full_name' => 'S83 朝气蓬勃(官网)[]',
   ),
   289 => 
   array (
@@ -1528,7 +1528,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S84 众望所归(官网)[商业大亨]',
+    'full_name' => 'S84 众望所归(官网)[]',
   ),
   290 => 
   array (
@@ -1546,7 +1546,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S85 如虎添翼(官网)[商业大亨]',
+    'full_name' => 'S85 如虎添翼(官网)[]',
   ),
   291 => 
   array (
@@ -1564,7 +1564,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S86 喜气洋洋(官网)[商业大亨]',
+    'full_name' => 'S86 喜气洋洋(官网)[]',
   ),
   292 => 
   array (
@@ -1582,7 +1582,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S87 财源滚滚(官网)[商业大亨]',
+    'full_name' => 'S87 财源滚滚(官网)[]',
   ),
   293 => 
   array (
@@ -1600,7 +1600,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S88 鸿运当头(官网)[商业大亨]',
+    'full_name' => 'S88 鸿运当头(官网)[]',
   ),
   294 => 
   array (
@@ -1618,7 +1618,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S89 吉祥如意(官网)[商业大亨]',
+    'full_name' => 'S89 吉祥如意(官网)[]',
   ),
   295 => 
   array (
@@ -1636,7 +1636,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S90 龙腾虎跃(官网)[商业大亨]',
+    'full_name' => 'S90 龙腾虎跃(官网)[]',
   ),
   296 => 
   array (
@@ -1654,7 +1654,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S91 虎虎生威(官网)[商业大亨]',
+    'full_name' => 'S91 虎虎生威(官网)[]',
   ),
   297 => 
   array (
@@ -1672,7 +1672,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S92 金玉满堂(官网)[商业大亨]',
+    'full_name' => 'S92 金玉满堂(官网)[]',
   ),
   298 => 
   array (
@@ -1690,7 +1690,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S93 财富显赫(官网)[商业大亨]',
+    'full_name' => 'S93 财富显赫(官网)[]',
   ),
   299 => 
   array (
@@ -1708,7 +1708,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S94 商战风云(官网)[商业大亨]',
+    'full_name' => 'S94 商战风云(官网)[]',
   ),
   300 => 
   array (
@@ -1726,7 +1726,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S95 宏图伟业(官网)[商业大亨]',
+    'full_name' => 'S95 宏图伟业(官网)[]',
   ),
   301 => 
   array (
@@ -1744,7 +1744,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S96 大显神通(官网)[商业大亨]',
+    'full_name' => 'S96 大显神通(官网)[]',
   ),
   302 => 
   array (
@@ -1762,7 +1762,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S97 青云直上(官网)[商业大亨]',
+    'full_name' => 'S97 青云直上(官网)[]',
   ),
   303 => 
   array (
@@ -1780,7 +1780,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S98 风华正茂(官网)[商业大亨]',
+    'full_name' => 'S98 风华正茂(官网)[]',
   ),
   304 => 
   array (
@@ -1798,7 +1798,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S99 意气风发(官网)[商业大亨]',
+    'full_name' => 'S99 意气风发(官网)[]',
   ),
   305 => 
   array (
@@ -1816,7 +1816,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S100 百服庆典(官网)[商业大亨]',
+    'full_name' => 'S100 百服庆典(官网)[]',
   ),
   306 => 
   array (
@@ -1834,7 +1834,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S101 举世无双(官网)[商业大亨]',
+    'full_name' => 'S101 举世无双(官网)[]',
   ),
   307 => 
   array (
@@ -1852,7 +1852,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S102 丰功伟业(官网)[商业大亨]',
+    'full_name' => 'S102 丰功伟业(官网)[]',
   ),
   308 => 
   array (
@@ -1870,7 +1870,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S103 生财有道(官网)[商业大亨]',
+    'full_name' => 'S103 生财有道(官网)[]',
   ),
   309 => 
   array (
@@ -1888,7 +1888,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S104 风生水起(官网)[商业大亨]',
+    'full_name' => 'S104 风生水起(官网)[]',
   ),
   310 => 
   array (
@@ -1906,7 +1906,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S105 扬眉吐气(官网)[商业大亨]',
+    'full_name' => 'S105 扬眉吐气(官网)[]',
   ),
   311 => 
   array (
@@ -1924,7 +1924,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S106 同舟共济(官网)[商业大亨]',
+    'full_name' => 'S106 同舟共济(官网)[]',
   ),
   312 => 
   array (
@@ -1942,7 +1942,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S107 出人头地(官网)[商业大亨]',
+    'full_name' => 'S107 出人头地(官网)[]',
   ),
   313 => 
   array (
@@ -1960,7 +1960,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S108 商业帝国(官网)[商业大亨]',
+    'full_name' => 'S108 商业帝国(官网)[]',
   ),
   314 => 
   array (
@@ -1978,7 +1978,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S109 风云人物(官网)[商业大亨]',
+    'full_name' => 'S109 风云人物(官网)[]',
   ),
   315 => 
   array (
@@ -1996,7 +1996,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S110 声振寰宇(官网)[商业大亨]',
+    'full_name' => 'S110 声振寰宇(官网)[]',
   ),
   316 => 
   array (
@@ -2014,7 +2014,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S111 无所不能(官网)[商业大亨]',
+    'full_name' => 'S111 无所不能(官网)[]',
   ),
   317 => 
   array (
@@ -2032,7 +2032,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S112 料事如神(官网)[商业大亨]',
+    'full_name' => 'S112 料事如神(官网)[]',
   ),
   318 => 
   array (
@@ -2050,7 +2050,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S113 光明磊落(官网)[商业大亨]',
+    'full_name' => 'S113 光明磊落(官网)[]',
   ),
   319 => 
   array (
@@ -2068,7 +2068,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S114 精益求精(官网)[商业大亨]',
+    'full_name' => 'S114 精益求精(官网)[]',
   ),
   320 => 
   array (
@@ -2086,7 +2086,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '合服一区 和气生财(官网)[商业大亨]',
+    'full_name' => '合服一区 和气生财(官网)[]',
   ),
   323 => 
   array (
@@ -2104,7 +2104,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'L1 绿色一服(官网)[商业大亨]',
+    'full_name' => 'L1 绿色一服(官网)[]',
   ),
   324 => 
   array (
@@ -2122,7 +2122,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'L2 绿色二服(官网)[商业大亨]',
+    'full_name' => 'L2 绿色二服(官网)[]',
   ),
   325 => 
   array (
@@ -2140,7 +2140,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'L3 绿色三服(官网)[商业大亨]',
+    'full_name' => 'L3 绿色三服(官网)[]',
   ),
   326 => 
   array (
@@ -2158,7 +2158,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S115 开创未来(官网)[商业大亨]',
+    'full_name' => 'S115 开创未来(官网)[]',
   ),
   327 => 
   array (
@@ -2176,7 +2176,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S116 荣华富贵(官网)[商业大亨]',
+    'full_name' => 'S116 荣华富贵(官网)[]',
   ),
   328 => 
   array (
@@ -2194,7 +2194,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2002昆仑1服(官网)[商业大亨]',
+    'full_name' => 'S2002昆仑1服(官网)[]',
   ),
   329 => 
   array (
@@ -2212,7 +2212,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2003昆仑2服(官网)[商业大亨]',
+    'full_name' => 'S2003昆仑2服(官网)[]',
   ),
   331 => 
   array (
@@ -2230,7 +2230,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 Militia(官网)[三分天下]',
+    'full_name' => 'S1 Militia(官网)[]',
   ),
   333 => 
   array (
@@ -2248,7 +2248,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 Donjerd(官网)[三分天下]',
+    'full_name' => 'S2 Donjerd(官网)[]',
   ),
   335 => 
   array (
@@ -2266,7 +2266,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 测试服(人人网)[富人国]',
+    'full_name' => 'S0 测试服(人人网)[]',
   ),
   336 => 
   array (
@@ -2284,7 +2284,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 流金岁月(人人网)[富人国]',
+    'full_name' => 'S1 流金岁月(人人网)[]',
   ),
   337 => 
   array (
@@ -2302,7 +2302,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '开心001 S0测试服(开心001)[富人国]',
+    'full_name' => '开心001 S0测试服(开心001)[]',
   ),
   338 => 
   array (
@@ -2320,7 +2320,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '360 S0测试服(360安全卫士)[富人国]',
+    'full_name' => '360 S0测试服(360安全卫士)[]',
   ),
   339 => 
   array (
@@ -2338,7 +2338,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '360卫士一区 S1(360安全卫士)[富人国]',
+    'full_name' => '360卫士一区 S1(360安全卫士)[]',
   ),
   340 => 
   array (
@@ -2356,7 +2356,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '360卫士二区 S2(360安全卫士)[富人国]',
+    'full_name' => '360卫士二区 S2(360安全卫士)[]',
   ),
   341 => 
   array (
@@ -2374,7 +2374,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 Gamzon(官网)[三分天下]',
+    'full_name' => 'S3 Gamzon(官网)[]',
   ),
   342 => 
   array (
@@ -2392,7 +2392,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 Western Front(乐酷)[三分天下]',
+    'full_name' => 'S1 Western Front(乐酷)[]',
   ),
   344 => 
   array (
@@ -2410,7 +2410,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1(开心001)[富人国]',
+    'full_name' => 'S1(开心001)[]',
   ),
   345 => 
   array (
@@ -2428,7 +2428,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4 Whattoc(官网)[三分天下]',
+    'full_name' => 'S4 Whattoc(官网)[]',
   ),
   346 => 
   array (
@@ -2446,7 +2446,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '多玩S0 测试服(多玩)[富人国]',
+    'full_name' => '多玩S0 测试服(多玩)[]',
   ),
   347 => 
   array (
@@ -2464,7 +2464,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 富有天下(多玩)[富人国]',
+    'full_name' => 'S1 富有天下(多玩)[]',
   ),
   348 => 
   array (
@@ -2482,7 +2482,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5 Jackluis(官网)[三分天下]',
+    'full_name' => 'S5 Jackluis(官网)[]',
   ),
   349 => 
   array (
@@ -2500,7 +2500,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '商海争霸(长宽)[富人国]',
+    'full_name' => '商海争霸(长宽)[]',
   ),
   350 => 
   array (
@@ -2518,7 +2518,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0长宽 测试服(长宽)[富人国]',
+    'full_name' => 'S0长宽 测试服(长宽)[]',
   ),
   351 => 
   array (
@@ -2536,7 +2536,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2(开心001)[富人国]',
+    'full_name' => 'S2(开心001)[]',
   ),
   352 => 
   array (
@@ -2554,7 +2554,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3(开心001)[富人国]',
+    'full_name' => 'S3(开心001)[]',
   ),
   353 => 
   array (
@@ -2572,7 +2572,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 叱咤风云(139)[商业大亨]',
+    'full_name' => 'S1 叱咤风云(139)[]',
   ),
   354 => 
   array (
@@ -2590,7 +2590,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 一掷千金(开心网)[商业大亨]',
+    'full_name' => 'S1 一掷千金(开心网)[]',
   ),
   355 => 
   array (
@@ -2608,7 +2608,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 珠光宝气(开心网)[商业大亨]',
+    'full_name' => 'S2 珠光宝气(开心网)[]',
   ),
   356 => 
   array (
@@ -2626,7 +2626,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 人中骐骥(开心网)[商业大亨]',
+    'full_name' => 'S3 人中骐骥(开心网)[]',
   ),
   357 => 
   array (
@@ -2644,7 +2644,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4 万里春光(开心网)[商业大亨]',
+    'full_name' => 'S4 万里春光(开心网)[]',
   ),
   358 => 
   array (
@@ -2662,7 +2662,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5 流金岁月(开心网)[商业大亨]',
+    'full_name' => 'S5 流金岁月(开心网)[]',
   ),
   359 => 
   array (
@@ -2680,7 +2680,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6 家财万贯(开心网)[商业大亨]',
+    'full_name' => 'S6 家财万贯(开心网)[]',
   ),
   360 => 
   array (
@@ -2698,7 +2698,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7 金粉世家(开心网)[商业大亨]',
+    'full_name' => 'S7 金粉世家(开心网)[]',
   ),
   361 => 
   array (
@@ -2716,7 +2716,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S8 豪门巨贾(开心网)[商业大亨]',
+    'full_name' => 'S8 豪门巨贾(开心网)[]',
   ),
   362 => 
   array (
@@ -2734,7 +2734,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S9 商业巨子(开心网)[商业大亨]',
+    'full_name' => 'S9 商业巨子(开心网)[]',
   ),
   363 => 
   array (
@@ -2752,7 +2752,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S10 宏图大业(开心网)[商业大亨]',
+    'full_name' => 'S10 宏图大业(开心网)[]',
   ),
   364 => 
   array (
@@ -2770,7 +2770,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S11 天下和合(开心网)[商业大亨]',
+    'full_name' => 'S11 天下和合(开心网)[]',
   ),
   365 => 
   array (
@@ -2788,7 +2788,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S12 纳斯达克(开心网)[商业大亨]',
+    'full_name' => 'S12 纳斯达克(开心网)[]',
   ),
   366 => 
   array (
@@ -2806,7 +2806,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 开心001一服(开心001)[商业大亨]',
+    'full_name' => 'S1 开心001一服(开心001)[]',
   ),
   367 => 
   array (
@@ -2824,7 +2824,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 开心001二服(开心001)[商业大亨]',
+    'full_name' => 'S2 开心001二服(开心001)[]',
   ),
   368 => 
   array (
@@ -2842,7 +2842,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 名士风流(开心001)[商业大亨]',
+    'full_name' => 'S3 名士风流(开心001)[]',
   ),
   369 => 
   array (
@@ -2860,7 +2860,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4 创世天下(开心001)[商业大亨]',
+    'full_name' => 'S4 创世天下(开心001)[]',
   ),
   370 => 
   array (
@@ -2878,7 +2878,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5 豪门巨爵(开心001)[商业大亨]',
+    'full_name' => 'S5 豪门巨爵(开心001)[]',
   ),
   372 => 
   array (
@@ -2896,7 +2896,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6 腰缠万贯(开心001)[商业大亨]',
+    'full_name' => 'S6 腰缠万贯(开心001)[]',
   ),
   373 => 
   array (
@@ -2914,7 +2914,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7 绝代商骄(开心001)[商业大亨]',
+    'full_name' => 'S7 绝代商骄(开心001)[]',
   ),
   374 => 
   array (
@@ -2932,7 +2932,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S8 举世无双(开心001)[商业大亨]',
+    'full_name' => 'S8 举世无双(开心001)[]',
   ),
   375 => 
   array (
@@ -2950,7 +2950,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S9 声名显赫(开心001)[商业大亨]',
+    'full_name' => 'S9 声名显赫(开心001)[]',
   ),
   376 => 
   array (
@@ -2968,7 +2968,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S10 一掷千金(开心001)[商业大亨]',
+    'full_name' => 'S10 一掷千金(开心001)[]',
   ),
   377 => 
   array (
@@ -2986,7 +2986,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S11 龙翔九霄(开心001)[商业大亨]',
+    'full_name' => 'S11 龙翔九霄(开心001)[]',
   ),
   378 => 
   array (
@@ -3004,7 +3004,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S12 鹰扬万里(开心001)[商业大亨]',
+    'full_name' => 'S12 鹰扬万里(开心001)[]',
   ),
   379 => 
   array (
@@ -3022,7 +3022,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S13 商海风云(开心001)[商业大亨]',
+    'full_name' => 'S13 商海风云(开心001)[]',
   ),
   380 => 
   array (
@@ -3040,7 +3040,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S14 名扬四海(开心001)[商业大亨]',
+    'full_name' => 'S14 名扬四海(开心001)[]',
   ),
   381 => 
   array (
@@ -3058,7 +3058,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S15 黄金时代(开心001)[商业大亨]',
+    'full_name' => 'S15 黄金时代(开心001)[]',
   ),
   382 => 
   array (
@@ -3076,7 +3076,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S16 风起云涌(开心001)[商业大亨]',
+    'full_name' => 'S16 风起云涌(开心001)[]',
   ),
   383 => 
   array (
@@ -3094,7 +3094,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S17 王者风范(开心001)[商业大亨]',
+    'full_name' => 'S17 王者风范(开心001)[]',
   ),
   384 => 
   array (
@@ -3112,7 +3112,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S18 万马奔腾(开心001)[商业大亨]',
+    'full_name' => 'S18 万马奔腾(开心001)[]',
   ),
   385 => 
   array (
@@ -3130,7 +3130,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 名闻天下(51com)[商业大亨]',
+    'full_name' => 'S1 名闻天下(51com)[]',
   ),
   386 => 
   array (
@@ -3148,7 +3148,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 蓄势待发(51com)[商业大亨]',
+    'full_name' => 'S2 蓄势待发(51com)[]',
   ),
   387 => 
   array (
@@ -3166,7 +3166,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 富临满门(51com)[商业大亨]',
+    'full_name' => 'S3 富临满门(51com)[]',
   ),
   388 => 
   array (
@@ -3184,7 +3184,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'myspace 华尔街(官网)[商业大亨]',
+    'full_name' => 'myspace 华尔街(官网)[]',
   ),
   389 => 
   array (
@@ -3202,7 +3202,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 龙翔虎跃(百度)[商业大亨]',
+    'full_name' => 'S1 龙翔虎跃(百度)[]',
   ),
   390 => 
   array (
@@ -3220,7 +3220,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 虎啸风生(百度)[商业大亨]',
+    'full_name' => 'S2 虎啸风生(百度)[]',
   ),
   391 => 
   array (
@@ -3238,7 +3238,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 藏龙卧虎(百度)[商业大亨]',
+    'full_name' => 'S3 藏龙卧虎(百度)[]',
   ),
   392 => 
   array (
@@ -3256,7 +3256,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4 云龙风虎(百度)[商业大亨]',
+    'full_name' => 'S4 云龙风虎(百度)[]',
   ),
   393 => 
   array (
@@ -3274,7 +3274,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 's5 生龙活虎(百度)[商业大亨]',
+    'full_name' => 's5 生龙活虎(百度)[]',
   ),
   394 => 
   array (
@@ -3292,7 +3292,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6 如虎生翼(百度)[商业大亨]',
+    'full_name' => 'S6 如虎生翼(百度)[]',
   ),
   395 => 
   array (
@@ -3310,7 +3310,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '双线一区 大展宏图(TOM)[商业大亨]',
+    'full_name' => '双线一区 大展宏图(TOM)[]',
   ),
   396 => 
   array (
@@ -3328,7 +3328,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 TOM2区(TOM)[商业大亨]',
+    'full_name' => 'S2 TOM2区(TOM)[]',
   ),
   397 => 
   array (
@@ -3346,7 +3346,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 成就梦想(TOM)[商业大亨]',
+    'full_name' => 'S3 成就梦想(TOM)[]',
   ),
   398 => 
   array (
@@ -3364,7 +3364,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 起点一区(盛大)[商业大亨]',
+    'full_name' => 'S1 起点一区(盛大)[]',
   ),
   399 => 
   array (
@@ -3382,7 +3382,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 起点二区(盛大)[商业大亨]',
+    'full_name' => 'S2 起点二区(盛大)[]',
   ),
   400 => 
   array (
@@ -3400,7 +3400,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 起点三区(盛大)[商业大亨]',
+    'full_name' => 'S3 起点三区(盛大)[]',
   ),
   401 => 
   array (
@@ -3418,7 +3418,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4 起点四区(盛大)[商业大亨]',
+    'full_name' => 'S4 起点四区(盛大)[]',
   ),
   402 => 
   array (
@@ -3436,7 +3436,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5 起点五区(盛大)[商业大亨]',
+    'full_name' => 'S5 起点五区(盛大)[]',
   ),
   403 => 
   array (
@@ -3454,7 +3454,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6 起点六区(盛大)[商业大亨]',
+    'full_name' => 'S6 起点六区(盛大)[]',
   ),
   404 => 
   array (
@@ -3472,7 +3472,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 红海(太平洋)[商业大亨]',
+    'full_name' => 'S1 红海(太平洋)[]',
   ),
   405 => 
   array (
@@ -3490,7 +3490,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 蓝海(太平洋)[商业大亨]',
+    'full_name' => 'S2 蓝海(太平洋)[]',
   ),
   406 => 
   array (
@@ -3508,7 +3508,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 绿海(太平洋)[商业大亨]',
+    'full_name' => 'S3 绿海(太平洋)[]',
   ),
   407 => 
   array (
@@ -3526,7 +3526,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4 淘金之旅(太平洋)[商业大亨]',
+    'full_name' => 'S4 淘金之旅(太平洋)[]',
   ),
   408 => 
   array (
@@ -3544,7 +3544,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5 星海(太平洋)[商业大亨]',
+    'full_name' => 'S5 星海(太平洋)[]',
   ),
   409 => 
   array (
@@ -3562,7 +3562,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6 财神(太平洋)[商业大亨]',
+    'full_name' => 'S6 财神(太平洋)[]',
   ),
   410 => 
   array (
@@ -3580,7 +3580,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7 虎啸(太平洋)[商业大亨]',
+    'full_name' => 'S7 虎啸(太平洋)[]',
   ),
   411 => 
   array (
@@ -3598,7 +3598,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S8 龙腾(太平洋)[商业大亨]',
+    'full_name' => 'S8 龙腾(太平洋)[]',
   ),
   412 => 
   array (
@@ -3616,7 +3616,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S9 富豪(太平洋)[商业大亨]',
+    'full_name' => 'S9 富豪(太平洋)[]',
   ),
   413 => 
   array (
@@ -3634,7 +3634,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S10 飞跃(太平洋)[商业大亨]',
+    'full_name' => 'S10 飞跃(太平洋)[]',
   ),
   414 => 
   array (
@@ -3652,7 +3652,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S11 财神(太平洋)[商业大亨]',
+    'full_name' => 'S11 财神(太平洋)[]',
   ),
   415 => 
   array (
@@ -3670,7 +3670,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S1 360卫士(360安全卫士)[]',
   ),
   416 => 
   array (
@@ -3688,7 +3688,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S2 360卫士(360安全卫士)[]',
   ),
   417 => 
   array (
@@ -3706,7 +3706,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S3 360卫士(360安全卫士)[]',
   ),
   418 => 
   array (
@@ -3724,7 +3724,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S4 360卫士(360安全卫士)[]',
   ),
   419 => 
   array (
@@ -3742,7 +3742,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S5 360卫士(360安全卫士)[]',
   ),
   420 => 
   array (
@@ -3760,7 +3760,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S6 360卫士(360安全卫士)[]',
   ),
   421 => 
   array (
@@ -3778,7 +3778,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S7 360卫士(360安全卫士)[]',
   ),
   422 => 
   array (
@@ -3796,7 +3796,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S8 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S8 360卫士(360安全卫士)[]',
   ),
   423 => 
   array (
@@ -3814,7 +3814,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S9  360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S9  360卫士(360安全卫士)[]',
   ),
   424 => 
   array (
@@ -3832,7 +3832,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S10 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S10 360卫士(360安全卫士)[]',
   ),
   425 => 
   array (
@@ -3850,7 +3850,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S11 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S11 360卫士(360安全卫士)[]',
   ),
   426 => 
   array (
@@ -3868,7 +3868,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S12 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S12 360卫士(360安全卫士)[]',
   ),
   427 => 
   array (
@@ -3886,7 +3886,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S13 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S13 360卫士(360安全卫士)[]',
   ),
   428 => 
   array (
@@ -3904,7 +3904,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S14 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S14 360卫士(360安全卫士)[]',
   ),
   429 => 
   array (
@@ -3922,7 +3922,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S15 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S15 360卫士(360安全卫士)[]',
   ),
   430 => 
   array (
@@ -3940,7 +3940,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S16 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S16 360卫士(360安全卫士)[]',
   ),
   431 => 
   array (
@@ -3958,7 +3958,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S17 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S17 360卫士(360安全卫士)[]',
   ),
   432 => 
   array (
@@ -3976,7 +3976,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S18 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S18 360卫士(360安全卫士)[]',
   ),
   433 => 
   array (
@@ -3994,7 +3994,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S19 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S19 360卫士(360安全卫士)[]',
   ),
   434 => 
   array (
@@ -4012,7 +4012,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S20 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S20 360卫士(360安全卫士)[]',
   ),
   435 => 
   array (
@@ -4030,7 +4030,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S21 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S21 360卫士(360安全卫士)[]',
   ),
   436 => 
   array (
@@ -4048,7 +4048,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S22 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S22 360卫士(360安全卫士)[]',
   ),
   437 => 
   array (
@@ -4066,7 +4066,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S23 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S23 360卫士(360安全卫士)[]',
   ),
   438 => 
   array (
@@ -4084,7 +4084,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S24 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S24 360卫士(360安全卫士)[]',
   ),
   439 => 
   array (
@@ -4102,7 +4102,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S25 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S25 360卫士(360安全卫士)[]',
   ),
   440 => 
   array (
@@ -4120,7 +4120,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S26 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S26 360卫士(360安全卫士)[]',
   ),
   441 => 
   array (
@@ -4138,7 +4138,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S27 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S27 360卫士(360安全卫士)[]',
   ),
   442 => 
   array (
@@ -4156,7 +4156,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S28 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S28 360卫士(360安全卫士)[]',
   ),
   443 => 
   array (
@@ -4174,7 +4174,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S29 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S29 360卫士(360安全卫士)[]',
   ),
   444 => 
   array (
@@ -4192,7 +4192,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S30 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S30 360卫士(360安全卫士)[]',
   ),
   445 => 
   array (
@@ -4210,7 +4210,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S31 360卫士(360安全卫士)[商业大亨]',
+    'full_name' => 'S31 360卫士(360安全卫士)[]',
   ),
   446 => 
   array (
@@ -4228,7 +4228,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 中关村创业(暴风影音)[商业大亨]',
+    'full_name' => 'S1 中关村创业(暴风影音)[]',
   ),
   447 => 
   array (
@@ -4246,7 +4246,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 决战金融街(暴风影音)[商业大亨]',
+    'full_name' => 'S2 决战金融街(暴风影音)[]',
   ),
   448 => 
   array (
@@ -4264,7 +4264,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 决胜上海滩(暴风影音)[商业大亨]',
+    'full_name' => 'S3 决胜上海滩(暴风影音)[]',
   ),
   449 => 
   array (
@@ -4282,7 +4282,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4 征战华尔街(暴风影音)[商业大亨]',
+    'full_name' => 'S4 征战华尔街(暴风影音)[]',
   ),
   450 => 
   array (
@@ -4300,7 +4300,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5 入驻班霍夫(暴风影音)[商业大亨]',
+    'full_name' => 'S5 入驻班霍夫(暴风影音)[]',
   ),
   451 => 
   array (
@@ -4318,7 +4318,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6 驰骋洛杉矶(暴风影音)[商业大亨]',
+    'full_name' => 'S6 驰骋洛杉矶(暴风影音)[]',
   ),
   452 => 
   array (
@@ -4336,7 +4336,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 名扬天下(名扬)[商业大亨]',
+    'full_name' => 'S1 名扬天下(名扬)[]',
   ),
   453 => 
   array (
@@ -4354,7 +4354,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 绝代商骄(名扬)[商业大亨]',
+    'full_name' => 'S2 绝代商骄(名扬)[]',
   ),
   454 => 
   array (
@@ -4372,7 +4372,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 精英荟萃(PPlive)[商业大亨]',
+    'full_name' => 'S1 精英荟萃(PPlive)[]',
   ),
   455 => 
   array (
@@ -4390,7 +4390,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 一马当先(PPlive)[商业大亨]',
+    'full_name' => 'S2 一马当先(PPlive)[]',
   ),
   456 => 
   array (
@@ -4408,7 +4408,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 帝国大厦(PPlive)[商业大亨]',
+    'full_name' => 'S3 帝国大厦(PPlive)[]',
   ),
   457 => 
   array (
@@ -4426,7 +4426,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4 傲視群雄(PPlive)[商业大亨]',
+    'full_name' => 'S4 傲視群雄(PPlive)[]',
   ),
   458 => 
   array (
@@ -4444,7 +4444,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 财源茂盛(奇聚)[商业大亨]',
+    'full_name' => 'S1 财源茂盛(奇聚)[]',
   ),
   459 => 
   array (
@@ -4462,7 +4462,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 万商云集(奇聚)[商业大亨]',
+    'full_name' => 'S2 万商云集(奇聚)[]',
   ),
   460 => 
   array (
@@ -4480,7 +4480,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 富甲天下(奇聚)[商业大亨]',
+    'full_name' => 'S3 富甲天下(奇聚)[]',
   ),
   461 => 
   array (
@@ -4498,7 +4498,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 搜狐一区(搜狐)[商业大亨]',
+    'full_name' => 'S1 搜狐一区(搜狐)[]',
   ),
   462 => 
   array (
@@ -4516,7 +4516,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S118 名扬四海(官网)[商业大亨]',
+    'full_name' => 'S118 名扬四海(官网)[]',
   ),
   463 => 
   array (
@@ -4534,7 +4534,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S119 气势如虹(官网)[商业大亨]',
+    'full_name' => 'S119 气势如虹(官网)[]',
   ),
   464 => 
   array (
@@ -4552,7 +4552,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S117 决胜千里(官网)[商业大亨]',
+    'full_name' => 'S117 决胜千里(官网)[]',
   ),
   465 => 
   array (
@@ -4570,7 +4570,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 一掷千金(人人网)[商业大亨]',
+    'full_name' => 'S1 一掷千金(人人网)[]',
   ),
   466 => 
   array (
@@ -4588,7 +4588,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 人中骐骥(人人网)[商业大亨]',
+    'full_name' => 'S2 人中骐骥(人人网)[]',
   ),
   467 => 
   array (
@@ -4606,7 +4606,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 大展宏图(人人网)[商业大亨]',
+    'full_name' => 'S3 大展宏图(人人网)[]',
   ),
   468 => 
   array (
@@ -4624,7 +4624,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4金玉满堂(人人网)[商业大亨]',
+    'full_name' => 'S4金玉满堂(人人网)[]',
   ),
   469 => 
   array (
@@ -4642,7 +4642,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5龙腾虎跃(人人网)[商业大亨]',
+    'full_name' => 'S5龙腾虎跃(人人网)[]',
   ),
   470 => 
   array (
@@ -4660,7 +4660,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6富可敌国(人人网)[商业大亨]',
+    'full_name' => 'S6富可敌国(人人网)[]',
   ),
   471 => 
   array (
@@ -4678,7 +4678,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7 锦衣玉食(人人网)[商业大亨]',
+    'full_name' => 'S7 锦衣玉食(人人网)[]',
   ),
   472 => 
   array (
@@ -4696,7 +4696,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S8 珠光宝气(人人网)[商业大亨]',
+    'full_name' => 'S8 珠光宝气(人人网)[]',
   ),
   473 => 
   array (
@@ -4714,7 +4714,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S9 如日中天(人人网)[商业大亨]',
+    'full_name' => 'S9 如日中天(人人网)[]',
   ),
   474 => 
   array (
@@ -4732,7 +4732,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S10 王者归来(人人网)[商业大亨]',
+    'full_name' => 'S10 王者归来(人人网)[]',
   ),
   475 => 
   array (
@@ -4750,7 +4750,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S11 一鸣惊人(人人网)[商业大亨]',
+    'full_name' => 'S11 一鸣惊人(人人网)[]',
   ),
   476 => 
   array (
@@ -4768,7 +4768,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S12 国士无双(人人网)[商业大亨]',
+    'full_name' => 'S12 国士无双(人人网)[]',
   ),
   477 => 
   array (
@@ -4786,7 +4786,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S13 宝马香车(人人网)[商业大亨]',
+    'full_name' => 'S13 宝马香车(人人网)[]',
   ),
   478 => 
   array (
@@ -4804,7 +4804,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S14 大地流金(人人网)[商业大亨]',
+    'full_name' => 'S14 大地流金(人人网)[]',
   ),
   479 => 
   array (
@@ -4822,7 +4822,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S15 海阔天空(人人网)[商业大亨]',
+    'full_name' => 'S15 海阔天空(人人网)[]',
   ),
   480 => 
   array (
@@ -4840,7 +4840,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S16 星光大道(人人网)[商业大亨]',
+    'full_name' => 'S16 星光大道(人人网)[]',
   ),
   481 => 
   array (
@@ -4858,7 +4858,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S17 金色王朝(人人网)[商业大亨]',
+    'full_name' => 'S17 金色王朝(人人网)[]',
   ),
   482 => 
   array (
@@ -4876,7 +4876,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S18 名士风流(人人网)[商业大亨]',
+    'full_name' => 'S18 名士风流(人人网)[]',
   ),
   483 => 
   array (
@@ -4894,7 +4894,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S19 挥金如土(人人网)[商业大亨]',
+    'full_name' => 'S19 挥金如土(人人网)[]',
   ),
   484 => 
   array (
@@ -4912,7 +4912,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S20 金粉世家(人人网)[商业大亨]',
+    'full_name' => 'S20 金粉世家(人人网)[]',
   ),
   485 => 
   array (
@@ -4930,7 +4930,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S21 纵横商海(人人网)[商业大亨]',
+    'full_name' => 'S21 纵横商海(人人网)[]',
   ),
   486 => 
   array (
@@ -4948,7 +4948,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S22 商行天下(人人网)[商业大亨]',
+    'full_name' => 'S22 商行天下(人人网)[]',
   ),
   487 => 
   array (
@@ -4966,7 +4966,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S23 日进斗金(人人网)[商业大亨]',
+    'full_name' => 'S23 日进斗金(人人网)[]',
   ),
   488 => 
   array (
@@ -4984,7 +4984,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S24 财富人生(人人网)[商业大亨]',
+    'full_name' => 'S24 财富人生(人人网)[]',
   ),
   489 => 
   array (
@@ -5002,7 +5002,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S25 遍地黄金(人人网)[商业大亨]',
+    'full_name' => 'S25 遍地黄金(人人网)[]',
   ),
   490 => 
   array (
@@ -5020,7 +5020,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S26 前途似锦(人人网)[商业大亨]',
+    'full_name' => 'S26 前途似锦(人人网)[]',
   ),
   491 => 
   array (
@@ -5038,7 +5038,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S27 发奋图强(人人网)[商业大亨]',
+    'full_name' => 'S27 发奋图强(人人网)[]',
   ),
   492 => 
   array (
@@ -5056,7 +5056,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S28 天道酬勤(人人网)[商业大亨]',
+    'full_name' => 'S28 天道酬勤(人人网)[]',
   ),
   493 => 
   array (
@@ -5074,7 +5074,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S29 传奇人生(人人网)[商业大亨]',
+    'full_name' => 'S29 传奇人生(人人网)[]',
   ),
   494 => 
   array (
@@ -5092,7 +5092,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S30 金榜题名(人人网)[商业大亨]',
+    'full_name' => 'S30 金榜题名(人人网)[]',
   ),
   495 => 
   array (
@@ -5110,7 +5110,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S31 东山再起(人人网)[商业大亨]',
+    'full_name' => 'S31 东山再起(人人网)[]',
   ),
   496 => 
   array (
@@ -5128,7 +5128,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S32 风起云涌(人人网)[商业大亨]',
+    'full_name' => 'S32 风起云涌(人人网)[]',
   ),
   497 => 
   array (
@@ -5146,7 +5146,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S33 黄金帝国(人人网)[商业大亨]',
+    'full_name' => 'S33 黄金帝国(人人网)[]',
   ),
   498 => 
   array (
@@ -5164,7 +5164,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S34 纸醉金迷(人人网)[商业大亨]',
+    'full_name' => 'S34 纸醉金迷(人人网)[]',
   ),
   499 => 
   array (
@@ -5182,7 +5182,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S35 笑傲江湖(人人网)[商业大亨]',
+    'full_name' => 'S35 笑傲江湖(人人网)[]',
   ),
   500 => 
   array (
@@ -5200,7 +5200,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S36 谁与争锋(人人网)[商业大亨]',
+    'full_name' => 'S36 谁与争锋(人人网)[]',
   ),
   501 => 
   array (
@@ -5218,7 +5218,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S37 锋芒毕露(人人网)[商业大亨]',
+    'full_name' => 'S37 锋芒毕露(人人网)[]',
   ),
   502 => 
   array (
@@ -5236,7 +5236,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S38 寸金寸土(人人网)[商业大亨]',
+    'full_name' => 'S38 寸金寸土(人人网)[]',
   ),
   503 => 
   array (
@@ -5254,7 +5254,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S39 荣耀殿堂(人人网)[商业大亨]',
+    'full_name' => 'S39 荣耀殿堂(人人网)[]',
   ),
   504 => 
   array (
@@ -5272,7 +5272,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S40  功成名就(人人网)[商业大亨]',
+    'full_name' => 'S40  功成名就(人人网)[]',
   ),
   505 => 
   array (
@@ -5290,7 +5290,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S41 商海风云(人人网)[商业大亨]',
+    'full_name' => 'S41 商海风云(人人网)[]',
   ),
   506 => 
   array (
@@ -5308,7 +5308,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S42 宏图霸业(人人网)[商业大亨]',
+    'full_name' => 'S42 宏图霸业(人人网)[]',
   ),
   507 => 
   array (
@@ -5326,7 +5326,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S43 鹏程万里(人人网)[商业大亨]',
+    'full_name' => 'S43 鹏程万里(人人网)[]',
   ),
   508 => 
   array (
@@ -5344,7 +5344,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S44 丰功伟业(人人网)[商业大亨]',
+    'full_name' => 'S44 丰功伟业(人人网)[]',
   ),
   509 => 
   array (
@@ -5362,7 +5362,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S45 平步青云(人人网)[商业大亨]',
+    'full_name' => 'S45 平步青云(人人网)[]',
   ),
   510 => 
   array (
@@ -5380,7 +5380,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S46 风华绝代(人人网)[商业大亨]',
+    'full_name' => 'S46 风华绝代(人人网)[]',
   ),
   511 => 
   array (
@@ -5398,7 +5398,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S47 马场大亨(人人网)[商业大亨]',
+    'full_name' => 'S47 马场大亨(人人网)[]',
   ),
   512 => 
   array (
@@ -5416,7 +5416,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '腰缠万贯(56)(官网)[商业大亨]',
+    'full_name' => '腰缠万贯(56)(官网)[]',
   ),
   513 => 
   array (
@@ -5434,7 +5434,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '富可敌国(56)(官网)[商业大亨]',
+    'full_name' => '富可敌国(56)(官网)[]',
   ),
   514 => 
   array (
@@ -5452,7 +5452,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '招财进宝(56)(官网)[商业大亨]',
+    'full_name' => '招财进宝(56)(官网)[]',
   ),
   515 => 
   array (
@@ -5470,7 +5470,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '一掷千金(56)(官网)[商业大亨]',
+    'full_name' => '一掷千金(56)(官网)[]',
   ),
   516 => 
   array (
@@ -5488,7 +5488,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '珠光宝气(56)(官网)[商业大亨]',
+    'full_name' => '珠光宝气(56)(官网)[]',
   ),
   517 => 
   array (
@@ -5506,7 +5506,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '百万富翁(VS)(官网)[商业大亨]',
+    'full_name' => '百万富翁(VS)(官网)[]',
   ),
   518 => 
   array (
@@ -5524,7 +5524,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '一夜暴富(VS)(官网)[商业大亨]',
+    'full_name' => '一夜暴富(VS)(官网)[]',
   ),
   519 => 
   array (
@@ -5542,7 +5542,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '金丰王座(VS)(官网)[商业大亨]',
+    'full_name' => '金丰王座(VS)(官网)[]',
   ),
   520 => 
   array (
@@ -5560,7 +5560,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '绝代商骄(VS)(官网)[商业大亨]',
+    'full_name' => '绝代商骄(VS)(官网)[]',
   ),
   521 => 
   array (
@@ -5578,7 +5578,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '珠光宝气(VS)(官网)[商业大亨]',
+    'full_name' => '珠光宝气(VS)(官网)[]',
   ),
   522 => 
   array (
@@ -5596,7 +5596,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '虎虎生威(VS)(官网)[商业大亨]',
+    'full_name' => '虎虎生威(VS)(官网)[]',
   ),
   523 => 
   array (
@@ -5614,7 +5614,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '商界颠峰(VS)(官网)[商业大亨]',
+    'full_name' => '商界颠峰(VS)(官网)[]',
   ),
   524 => 
   array (
@@ -5632,7 +5632,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '再起风云(VS)(官网)[商业大亨]',
+    'full_name' => '再起风云(VS)(官网)[]',
   ),
   527 => 
   array (
@@ -5650,7 +5650,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 富丽堂皇(多玩)[富人国]',
+    'full_name' => 'S2 富丽堂皇(多玩)[]',
   ),
   528 => 
   array (
@@ -5668,7 +5668,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 富贵荣华(多玩)[富人国]',
+    'full_name' => 'S3 富贵荣华(多玩)[]',
   ),
   529 => 
   array (
@@ -5686,7 +5686,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 测试服(PPS)[富人国]',
+    'full_name' => 'S0 测试服(PPS)[]',
   ),
   530 => 
   array (
@@ -5704,7 +5704,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 生财有道 (PPS)[富人国]',
+    'full_name' => 'S1 生财有道 (PPS)[]',
   ),
   531 => 
   array (
@@ -5722,7 +5722,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6 Roychute(官网)[三分天下]',
+    'full_name' => 'S6 Roychute(官网)[]',
   ),
   532 => 
   array (
@@ -5740,7 +5740,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 测试服(91wan)[富人国]',
+    'full_name' => 'S0 测试服(91wan)[]',
   ),
   533 => 
   array (
@@ -5758,7 +5758,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 富贵殿堂(91wan)[富人国]',
+    'full_name' => 'S1 富贵殿堂(91wan)[]',
   ),
   534 => 
   array (
@@ -5776,7 +5776,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 征战商海(91wan)[富人国]',
+    'full_name' => 'S2 征战商海(91wan)[]',
   ),
   535 => 
   array (
@@ -5794,7 +5794,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 旭日东升(91wan)[富人国]',
+    'full_name' => 'S3 旭日东升(91wan)[]',
   ),
   536 => 
   array (
@@ -5812,7 +5812,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 测试服(6711)[富人国]',
+    'full_name' => 'S0 测试服(6711)[]',
   ),
   537 => 
   array (
@@ -5830,7 +5830,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 富甲天下(6711)[富人国]',
+    'full_name' => 'S1 富甲天下(6711)[]',
   ),
   538 => 
   array (
@@ -5848,7 +5848,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 测试服(4399)[富人国]',
+    'full_name' => 'S0 测试服(4399)[]',
   ),
   539 => 
   array (
@@ -5866,7 +5866,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 赢在八方(4399)[富人国]',
+    'full_name' => 'S1 赢在八方(4399)[]',
   ),
   540 => 
   array (
@@ -5884,7 +5884,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 风云际会(人人网)[富人国]',
+    'full_name' => 'S2 风云际会(人人网)[]',
   ),
   541 => 
   array (
@@ -5902,7 +5902,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 黄金帝国(人人网)[富人国]',
+    'full_name' => 'S3 黄金帝国(人人网)[]',
   ),
   542 => 
   array (
@@ -5920,7 +5920,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4 富贵骄人(多玩)[富人国]',
+    'full_name' => 'S4 富贵骄人(多玩)[]',
   ),
   543 => 
   array (
@@ -5938,7 +5938,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5 富贵利达(多玩)[富人国]',
+    'full_name' => 'S5 富贵利达(多玩)[]',
   ),
   544 => 
   array (
@@ -5956,7 +5956,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 测试服(海外官网)[商业大亨]',
+    'full_name' => 'S0 测试服(海外官网)[]',
   ),
   545 => 
   array (
@@ -5974,7 +5974,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4 开基立业(开心001)[富人国]',
+    'full_name' => 'S4 开基立业(开心001)[]',
   ),
   546 => 
   array (
@@ -5992,7 +5992,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'Ambition(乐酷)[商业大亨]',
+    'full_name' => 'Ambition(乐酷)[]',
   ),
   547 => 
   array (
@@ -6010,7 +6010,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 Wall Street(海外官网)[商业大亨]',
+    'full_name' => 'S1 Wall Street(海外官网)[]',
   ),
   549 => 
   array (
@@ -6028,7 +6028,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S10 Hollywood(海外官网)[商业大亨]',
+    'full_name' => 'S10 Hollywood(海外官网)[]',
   ),
   550 => 
   array (
@@ -6046,7 +6046,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S11 The Centennial(海外官网)[商业大亨]',
+    'full_name' => 'S11 The Centennial(海外官网)[]',
   ),
   551 => 
   array (
@@ -6064,7 +6064,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S12 Monte Carlo(海外官网)[商业大亨]',
+    'full_name' => 'S12 Monte Carlo(海外官网)[]',
   ),
   552 => 
   array (
@@ -6082,7 +6082,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S13 Big Ben(海外官网)[商业大亨]',
+    'full_name' => 'S13 Big Ben(海外官网)[]',
   ),
   553 => 
   array (
@@ -6100,7 +6100,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S14 Buckingham Palace(海外官网)[商业大亨]',
+    'full_name' => 'S14 Buckingham Palace(海外官网)[]',
   ),
   554 => 
   array (
@@ -6118,7 +6118,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S15 The Coliseum(海外官网)[商业大亨]',
+    'full_name' => 'S15 The Coliseum(海外官网)[]',
   ),
   555 => 
   array (
@@ -6136,7 +6136,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S16 The Pantheon(海外官网)[商业大亨]',
+    'full_name' => 'S16 The Pantheon(海外官网)[]',
   ),
   556 => 
   array (
@@ -6154,7 +6154,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S17 The Acropolis(海外官网)[商业大亨]',
+    'full_name' => 'S17 The Acropolis(海外官网)[]',
   ),
   557 => 
   array (
@@ -6172,7 +6172,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S18 Red Square(海外官网)[商业大亨]',
+    'full_name' => 'S18 Red Square(海外官网)[]',
   ),
   558 => 
   array (
@@ -6190,7 +6190,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S19 Champs-Elysees(海外官网)[商业大亨]',
+    'full_name' => 'S19 Champs-Elysees(海外官网)[]',
   ),
   559 => 
   array (
@@ -6208,7 +6208,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 NASDAQ(海外官网)[商业大亨]',
+    'full_name' => 'S2 NASDAQ(海外官网)[]',
   ),
   560 => 
   array (
@@ -6226,7 +6226,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S20 Versailles(海外官网)[商业大亨]',
+    'full_name' => 'S20 Versailles(海外官网)[]',
   ),
   561 => 
   array (
@@ -6244,7 +6244,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S21 Rockefeller(海外官网)[商业大亨]',
+    'full_name' => 'S21 Rockefeller(海外官网)[]',
   ),
   562 => 
   array (
@@ -6262,7 +6262,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S22 Carnegie(海外官网)[商业大亨]',
+    'full_name' => 'S22 Carnegie(海外官网)[]',
   ),
   563 => 
   array (
@@ -6280,7 +6280,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S23 Morgan(海外官网)[商业大亨]',
+    'full_name' => 'S23 Morgan(海外官网)[]',
   ),
   564 => 
   array (
@@ -6298,7 +6298,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S24 Edison(海外官网)[商业大亨]',
+    'full_name' => 'S24 Edison(海外官网)[]',
   ),
   565 => 
   array (
@@ -6316,7 +6316,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S25 Ford(海外官网)[商业大亨]',
+    'full_name' => 'S25 Ford(海外官网)[]',
   ),
   566 => 
   array (
@@ -6334,7 +6334,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S26 Gould(海外官网)[商业大亨]',
+    'full_name' => 'S26 Gould(海外官网)[]',
   ),
   567 => 
   array (
@@ -6352,7 +6352,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S27 Vanderbilt(海外官网)[商业大亨]',
+    'full_name' => 'S27 Vanderbilt(海外官网)[]',
   ),
   568 => 
   array (
@@ -6370,7 +6370,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S28 Mellon(海外官网)[商业大亨]',
+    'full_name' => 'S28 Mellon(海外官网)[]',
   ),
   569 => 
   array (
@@ -6388,7 +6388,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S29 Astor(海外官网)[商业大亨]',
+    'full_name' => 'S29 Astor(海外官网)[]',
   ),
   570 => 
   array (
@@ -6406,7 +6406,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 Beverly Hills(海外官网)[商业大亨]',
+    'full_name' => 'S3 Beverly Hills(海外官网)[]',
   ),
   571 => 
   array (
@@ -6424,7 +6424,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S30 Rothschild(海外官网)[商业大亨]',
+    'full_name' => 'S30 Rothschild(海外官网)[]',
   ),
   572 => 
   array (
@@ -6442,7 +6442,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S31 Gates(海外官网)[商业大亨]',
+    'full_name' => 'S31 Gates(海外官网)[]',
   ),
   573 => 
   array (
@@ -6460,7 +6460,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S32 Branson(海外官网)[商业大亨]',
+    'full_name' => 'S32 Branson(海外官网)[]',
   ),
   574 => 
   array (
@@ -6478,7 +6478,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S33 Mittal(海外官网)[商业大亨]',
+    'full_name' => 'S33 Mittal(海外官网)[]',
   ),
   575 => 
   array (
@@ -6496,7 +6496,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S34 Kamprad(海外官网)[商业大亨]',
+    'full_name' => 'S34 Kamprad(海外官网)[]',
   ),
   576 => 
   array (
@@ -6514,7 +6514,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S35 Jobs(海外官网)[商业大亨]',
+    'full_name' => 'S35 Jobs(海外官网)[]',
   ),
   577 => 
   array (
@@ -6532,7 +6532,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S36 Li Ka-Shing(海外官网)[商业大亨]',
+    'full_name' => 'S36 Li Ka-Shing(海外官网)[]',
   ),
   578 => 
   array (
@@ -6550,7 +6550,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S37 Bloomberg(海外官网)[商业大亨]',
+    'full_name' => 'S37 Bloomberg(海外官网)[]',
   ),
   579 => 
   array (
@@ -6568,7 +6568,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S38 Albrecht(海外官网)[商业大亨]',
+    'full_name' => 'S38 Albrecht(海外官网)[]',
   ),
   580 => 
   array (
@@ -6586,7 +6586,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S39 Buffett(海外官网)[商业大亨]',
+    'full_name' => 'S39 Buffett(海外官网)[]',
   ),
   581 => 
   array (
@@ -6604,7 +6604,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4 Las Vegas(海外官网)[商业大亨]',
+    'full_name' => 'S4 Las Vegas(海外官网)[]',
   ),
   582 => 
   array (
@@ -6622,7 +6622,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S40 Ellison(海外官网)[商业大亨]',
+    'full_name' => 'S40 Ellison(海外官网)[]',
   ),
   583 => 
   array (
@@ -6640,7 +6640,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S41 IBM(海外官网)[商业大亨]',
+    'full_name' => 'S41 IBM(海外官网)[]',
   ),
   584 => 
   array (
@@ -6658,7 +6658,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S42 Cash Cow(海外官网)[商业大亨]',
+    'full_name' => 'S42 Cash Cow(海外官网)[]',
   ),
   585 => 
   array (
@@ -6676,7 +6676,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S43 Walmart(海外官网)[商业大亨]',
+    'full_name' => 'S43 Walmart(海外官网)[]',
   ),
   586 => 
   array (
@@ -6694,7 +6694,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S44 Coca-Cola(海外官网)[商业大亨]',
+    'full_name' => 'S44 Coca-Cola(海外官网)[]',
   ),
   587 => 
   array (
@@ -6712,7 +6712,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S45 Disney(海外官网)[商业大亨]',
+    'full_name' => 'S45 Disney(海外官网)[]',
   ),
   588 => 
   array (
@@ -6730,7 +6730,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S46 Gold Coast(海外官网)[商业大亨]',
+    'full_name' => 'S46 Gold Coast(海外官网)[]',
   ),
   589 => 
   array (
@@ -6748,7 +6748,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S47 Armani(海外官网)[商业大亨]',
+    'full_name' => 'S47 Armani(海外官网)[]',
   ),
   590 => 
   array (
@@ -6766,7 +6766,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5 Times Square(海外官网)[商业大亨]',
+    'full_name' => 'S5 Times Square(海外官网)[]',
   ),
   591 => 
   array (
@@ -6784,7 +6784,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6 Fort Knox(海外官网)[商业大亨]',
+    'full_name' => 'S6 Fort Knox(海外官网)[]',
   ),
   592 => 
   array (
@@ -6802,7 +6802,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7 Silicon Valley(海外官网)[商业大亨]',
+    'full_name' => 'S7 Silicon Valley(海外官网)[]',
   ),
   593 => 
   array (
@@ -6820,7 +6820,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S8 The Hamptons(海外官网)[商业大亨]',
+    'full_name' => 'S8 The Hamptons(海外官网)[]',
   ),
   594 => 
   array (
@@ -6838,7 +6838,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S9 Miami Beach(海外官网)[商业大亨]',
+    'full_name' => 'S9 Miami Beach(海外官网)[]',
   ),
   595 => 
   array (
@@ -6856,7 +6856,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 Manhattan(东南亚)[商业大亨]',
+    'full_name' => 'S1 Manhattan(东南亚)[]',
   ),
   596 => 
   array (
@@ -6874,7 +6874,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 Treasure Island(东南亚)[商业大亨]',
+    'full_name' => 'S2 Treasure Island(东南亚)[]',
   ),
   597 => 
   array (
@@ -6892,7 +6892,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 Winthrop(菲律宾)[商业大亨]',
+    'full_name' => 'S1 Winthrop(菲律宾)[]',
   ),
   598 => 
   array (
@@ -6910,7 +6910,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 Stanford(菲律宾)[商业大亨]',
+    'full_name' => 'S2 Stanford(菲律宾)[]',
   ),
   599 => 
   array (
@@ -6928,7 +6928,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '360卫士三区 S3(360安全卫士)[富人国]',
+    'full_name' => '360卫士三区 S3(360安全卫士)[]',
   ),
   600 => 
   array (
@@ -6946,7 +6946,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 商业奇才(6711)[富人国]',
+    'full_name' => 'S2 商业奇才(6711)[]',
   ),
   601 => 
   array (
@@ -6964,7 +6964,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 华尔西街(95K)[富人国]',
+    'full_name' => 'S1 华尔西街(95K)[]',
   ),
   602 => 
   array (
@@ -6982,7 +6982,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7 Cupecus(官网)[三分天下]',
+    'full_name' => 'S7 Cupecus(官网)[]',
   ),
   603 => 
   array (
@@ -7000,7 +7000,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S48 扬帆破浪(人人网)[商业大亨]',
+    'full_name' => 'S48 扬帆破浪(人人网)[]',
   ),
   604 => 
   array (
@@ -7018,7 +7018,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 测试服(官网)[富人国]',
+    'full_name' => 'S0 测试服(官网)[]',
   ),
   612 => 
   array (
@@ -7036,7 +7036,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 钻石国度(4399)[富人国]',
+    'full_name' => 'S2 钻石国度(4399)[]',
   ),
   613 => 
   array (
@@ -7054,7 +7054,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 风驰电掣(game2)[富人国]',
+    'full_name' => 'S1 风驰电掣(game2)[]',
   ),
   614 => 
   array (
@@ -7072,7 +7072,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S8 Lloybuke(官网)[三分天下]',
+    'full_name' => 'S8 Lloybuke(官网)[]',
   ),
   615 => 
   array (
@@ -7090,7 +7090,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5 黄金帝国(开心001)[富人国]',
+    'full_name' => 'S5 黄金帝国(开心001)[]',
   ),
   616 => 
   array (
@@ -7108,7 +7108,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S9 Luisdgar(官网)[三分天下]',
+    'full_name' => 'S9 Luisdgar(官网)[]',
   ),
   617 => 
   array (
@@ -7126,7 +7126,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1(智明星通)[三分天下]',
+    'full_name' => 'S1(智明星通)[]',
   ),
   618 => 
   array (
@@ -7144,7 +7144,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 金钱诱惑(6711)[富人国]',
+    'full_name' => 'S3 金钱诱惑(6711)[]',
   ),
   619 => 
   array (
@@ -7162,7 +7162,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4 纸醉金迷(人人网)[富人国]',
+    'full_name' => 'S4 纸醉金迷(人人网)[]',
   ),
   620 => 
   array (
@@ -7180,7 +7180,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5 指点江山(人人网)[富人国]',
+    'full_name' => 'S5 指点江山(人人网)[]',
   ),
   621 => 
   array (
@@ -7198,7 +7198,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6 功成名就(人人网)[富人国]',
+    'full_name' => 'S6 功成名就(人人网)[]',
   ),
   622 => 
   array (
@@ -7216,7 +7216,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7 金玉满堂(人人网)[富人国]',
+    'full_name' => 'S7 金玉满堂(人人网)[]',
   ),
   623 => 
   array (
@@ -7234,7 +7234,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 前程似锦(37wan)[富人国]',
+    'full_name' => 'S1 前程似锦(37wan)[]',
   ),
   624 => 
   array (
@@ -7252,7 +7252,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 测试服(官网)[商业大亨]',
+    'full_name' => 'S0 测试服(官网)[]',
   ),
   625 => 
   array (
@@ -7270,7 +7270,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 测试服(56uu)[富人国]',
+    'full_name' => 'S0 测试服(56uu)[]',
   ),
   626 => 
   array (
@@ -7288,7 +7288,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 双线一服(聚游)[富人国]',
+    'full_name' => 'S1 双线一服(聚游)[]',
   ),
   627 => 
   array (
@@ -7306,7 +7306,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2(game2)[富人国]',
+    'full_name' => 'S2(game2)[]',
   ),
   628 => 
   array (
@@ -7324,7 +7324,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3(game2)[富人国]',
+    'full_name' => 'S3(game2)[]',
   ),
   629 => 
   array (
@@ -7342,7 +7342,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4(game2)[富人国]',
+    'full_name' => 'S4(game2)[]',
   ),
   630 => 
   array (
@@ -7360,7 +7360,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5(game2)[富人国]',
+    'full_name' => 'S5(game2)[]',
   ),
   631 => 
   array (
@@ -7378,7 +7378,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 富甲天下(56uu)[富人国]',
+    'full_name' => 'S1 富甲天下(56uu)[]',
   ),
   632 => 
   array (
@@ -7396,7 +7396,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 (56uu)[富人国]',
+    'full_name' => 'S2 (56uu)[]',
   ),
   633 => 
   array (
@@ -7414,7 +7414,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 测试服(game5)[富人国]',
+    'full_name' => 'S0 测试服(game5)[]',
   ),
   634 => 
   array (
@@ -7432,7 +7432,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 极速狂飙(game5)[富人国]',
+    'full_name' => 'S1 极速狂飙(game5)[]',
   ),
   635 => 
   array (
@@ -7450,7 +7450,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6 富商巨贾(多玩)[富人国]',
+    'full_name' => 'S6 富商巨贾(多玩)[]',
   ),
   636 => 
   array (
@@ -7468,7 +7468,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7 富可敌国(多玩)[富人国]',
+    'full_name' => 'S7 富可敌国(多玩)[]',
   ),
   637 => 
   array (
@@ -7486,7 +7486,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '360卫士四区 S4(360安全卫士)[富人国]',
+    'full_name' => '360卫士四区 S4(360安全卫士)[]',
   ),
   638 => 
   array (
@@ -7504,7 +7504,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '360卫士五区 S5(360安全卫士)[富人国]',
+    'full_name' => '360卫士五区 S5(360安全卫士)[]',
   ),
   639 => 
   array (
@@ -7522,7 +7522,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '360卫士六区 S6(360安全卫士)[富人国]',
+    'full_name' => '360卫士六区 S6(360安全卫士)[]',
   ),
   640 => 
   array (
@@ -7540,7 +7540,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '360卫士七区 S7(360安全卫士)[富人国]',
+    'full_name' => '360卫士七区 S7(360安全卫士)[]',
   ),
   641 => 
   array (
@@ -7558,7 +7558,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '360卫士八区 S8(360安全卫士)[富人国]',
+    'full_name' => '360卫士八区 S8(360安全卫士)[]',
   ),
   642 => 
   array (
@@ -7576,7 +7576,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '360卫士九区 S9(360安全卫士)[富人国]',
+    'full_name' => '360卫士九区 S9(360安全卫士)[]',
   ),
   643 => 
   array (
@@ -7594,7 +7594,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '360卫士十区 S10(360安全卫士)[富人国]',
+    'full_name' => '360卫士十区 S10(360安全卫士)[]',
   ),
   644 => 
   array (
@@ -7612,7 +7612,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 万商云集(PPS)[富人国]',
+    'full_name' => 'S2 万商云集(PPS)[]',
   ),
   645 => 
   array (
@@ -7630,7 +7630,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 步步为赢(PPS)[富人国]',
+    'full_name' => 'S3 步步为赢(PPS)[]',
   ),
   646 => 
   array (
@@ -7648,7 +7648,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4 一本万利(PPS)[富人国]',
+    'full_name' => 'S4 一本万利(PPS)[]',
   ),
   647 => 
   array (
@@ -7666,7 +7666,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5 驰骋天下(PPS)[富人国]',
+    'full_name' => 'S5 驰骋天下(PPS)[]',
   ),
   648 => 
   array (
@@ -7684,7 +7684,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6 富甲一方(PPS)[富人国]',
+    'full_name' => 'S6 富甲一方(PPS)[]',
   ),
   649 => 
   array (
@@ -7702,7 +7702,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7 风驰电掣(PPS)[富人国]',
+    'full_name' => 'S7 风驰电掣(PPS)[]',
   ),
   650 => 
   array (
@@ -7720,7 +7720,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S8(PPS)[富人国]',
+    'full_name' => 'S8(PPS)[]',
   ),
   651 => 
   array (
@@ -7738,7 +7738,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S9(PPS)[富人国]',
+    'full_name' => 'S9(PPS)[]',
   ),
   652 => 
   array (
@@ -7756,7 +7756,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S10(PPS)[富人国]',
+    'full_name' => 'S10(PPS)[]',
   ),
   653 => 
   array (
@@ -7774,7 +7774,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0(51wan)[富人国]',
+    'full_name' => 'S0(51wan)[]',
   ),
   654 => 
   array (
@@ -7792,7 +7792,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 一区(51wan)[富人国]',
+    'full_name' => 'S1 一区(51wan)[]',
   ),
   655 => 
   array (
@@ -7810,7 +7810,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2(51wan)[富人国]',
+    'full_name' => 'S2(51wan)[]',
   ),
   656 => 
   array (
@@ -7828,7 +7828,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3(51wan)[富人国]',
+    'full_name' => 'S3(51wan)[]',
   ),
   657 => 
   array (
@@ -7846,7 +7846,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0(盛大)[富人国]',
+    'full_name' => 'S0(盛大)[]',
   ),
   658 => 
   array (
@@ -7864,7 +7864,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1(盛大)[富人国]',
+    'full_name' => 'S1(盛大)[]',
   ),
   659 => 
   array (
@@ -7882,7 +7882,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2(盛大)[富人国]',
+    'full_name' => 'S2(盛大)[]',
   ),
   660 => 
   array (
@@ -7900,7 +7900,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3(盛大)[富人国]',
+    'full_name' => 'S3(盛大)[]',
   ),
   661 => 
   array (
@@ -7918,7 +7918,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4(盛大)[富人国]',
+    'full_name' => 'S4(盛大)[]',
   ),
   662 => 
   array (
@@ -7936,7 +7936,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5(盛大)[富人国]',
+    'full_name' => 'S5(盛大)[]',
   ),
   663 => 
   array (
@@ -7954,7 +7954,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6(盛大)[富人国]',
+    'full_name' => 'S6(盛大)[]',
   ),
   664 => 
   array (
@@ -7972,7 +7972,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7(盛大)[富人国]',
+    'full_name' => 'S7(盛大)[]',
   ),
   665 => 
   array (
@@ -7990,7 +7990,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S8(盛大)[富人国]',
+    'full_name' => 'S8(盛大)[]',
   ),
   666 => 
   array (
@@ -8008,7 +8008,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S9(盛大)[富人国]',
+    'full_name' => 'S9(盛大)[]',
   ),
   667 => 
   array (
@@ -8026,7 +8026,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S8(多玩)[富人国]',
+    'full_name' => 'S8(多玩)[]',
   ),
   668 => 
   array (
@@ -8044,7 +8044,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S9(多玩)[富人国]',
+    'full_name' => 'S9(多玩)[]',
   ),
   669 => 
   array (
@@ -8062,7 +8062,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S10(多玩)[富人国]',
+    'full_name' => 'S10(多玩)[]',
   ),
   670 => 
   array (
@@ -8080,7 +8080,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 黄金海岸(21cn)[富人国]',
+    'full_name' => 'S1 黄金海岸(21cn)[]',
   ),
   671 => 
   array (
@@ -8098,7 +8098,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 世纪都会(21cn)[富人国]',
+    'full_name' => 'S2 世纪都会(21cn)[]',
   ),
   672 => 
   array (
@@ -8116,7 +8116,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3(21cn)[富人国]',
+    'full_name' => 'S3(21cn)[]',
   ),
   673 => 
   array (
@@ -8134,7 +8134,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4(21cn)[富人国]',
+    'full_name' => 'S4(21cn)[]',
   ),
   674 => 
   array (
@@ -8152,7 +8152,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5(21cn)[富人国]',
+    'full_name' => 'S5(21cn)[]',
   ),
   675 => 
   array (
@@ -8170,7 +8170,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6(开心001)[富人国]',
+    'full_name' => 'S6(开心001)[]',
   ),
   676 => 
   array (
@@ -8188,7 +8188,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7(开心001)[富人国]',
+    'full_name' => 'S7(开心001)[]',
   ),
   677 => 
   array (
@@ -8206,7 +8206,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S8(开心001)[富人国]',
+    'full_name' => 'S8(开心001)[]',
   ),
   678 => 
   array (
@@ -8224,7 +8224,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4(51wan)[富人国]',
+    'full_name' => 'S4(51wan)[]',
   ),
   679 => 
   array (
@@ -8242,7 +8242,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 Business Empire(空门)[商业大亨]',
+    'full_name' => 'S1 Business Empire(空门)[]',
   ),
   680 => 
   array (
@@ -8260,7 +8260,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S19 百年大业(开心001)[商业大亨]',
+    'full_name' => 'S19 百年大业(开心001)[]',
   ),
   681 => 
   array (
@@ -8278,7 +8278,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 纵横商海(95K)[富人国]',
+    'full_name' => 'S2 纵横商海(95K)[]',
   ),
   682 => 
   array (
@@ -8296,7 +8296,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5 五区(51wan)[富人国]',
+    'full_name' => 'S5 五区(51wan)[]',
   ),
   683 => 
   array (
@@ -8314,7 +8314,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 飞黄腾达(37wan)[富人国]',
+    'full_name' => 'S2 飞黄腾达(37wan)[]',
   ),
   684 => 
   array (
@@ -8332,7 +8332,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 百度一区(百度)[富人国]',
+    'full_name' => 'S1 百度一区(百度)[]',
   ),
   685 => 
   array (
@@ -8350,7 +8350,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S10 Matton(官网)[三分天下]',
+    'full_name' => 'S10 Matton(官网)[]',
   ),
   686 => 
   array (
@@ -8368,7 +8368,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S48 Google(海外官网)[商业大亨]',
+    'full_name' => 'S48 Google(海外官网)[]',
   ),
   687 => 
   array (
@@ -8386,7 +8386,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 测试服(游戏网)[富人国]',
+    'full_name' => 'S0 测试服(游戏网)[]',
   ),
   689 => 
   array (
@@ -8404,7 +8404,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 's0(官网)[三分天下]',
+    'full_name' => 's0(官网)[]',
   ),
   690 => 
   array (
@@ -8422,7 +8422,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 一掷千金(游戏网)[富人国]',
+    'full_name' => 'S1 一掷千金(游戏网)[]',
   ),
   691 => 
   array (
@@ -8440,7 +8440,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 百度二区(百度)[富人国]',
+    'full_name' => 'S2 百度二区(百度)[]',
   ),
   692 => 
   array (
@@ -8458,7 +8458,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 百度一区(百度)[富人国]',
+    'full_name' => 'S3 百度一区(百度)[]',
   ),
   693 => 
   array (
@@ -8476,7 +8476,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 大展宏图(37wan)[富人国]',
+    'full_name' => 'S3 大展宏图(37wan)[]',
   ),
   694 => 
   array (
@@ -8494,7 +8494,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 测试服(96pk)[富人国]',
+    'full_name' => 'S0 测试服(96pk)[]',
   ),
   695 => 
   array (
@@ -8512,7 +8512,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 驰骋商界(96pk)[富人国]',
+    'full_name' => 'S1 驰骋商界(96pk)[]',
   ),
   696 => 
   array (
@@ -8530,7 +8530,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S11 Monhue(官网)[三分天下]',
+    'full_name' => 'S11 Monhue(官网)[]',
   ),
   697 => 
   array (
@@ -8548,7 +8548,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 Pinefield(空门)[三分天下]',
+    'full_name' => 'S1 Pinefield(空门)[]',
   ),
   698 => 
   array (
@@ -8566,7 +8566,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S49 Cargill(海外官网)[商业大亨]',
+    'full_name' => 'S49 Cargill(海外官网)[]',
   ),
   699 => 
   array (
@@ -8584,7 +8584,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 测试服(要玩)[富人国]',
+    'full_name' => 'S0 测试服(要玩)[]',
   ),
   700 => 
   array (
@@ -8602,7 +8602,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 富人天下(要玩)[富人国]',
+    'full_name' => 'S1 富人天下(要玩)[]',
   ),
   701 => 
   array (
@@ -8620,7 +8620,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1展翅高飞(PPlive)[富人国]',
+    'full_name' => 'S1展翅高飞(PPlive)[]',
   ),
   702 => 
   array (
@@ -8638,7 +8638,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S8 风驰电掣(人人网)[富人国]',
+    'full_name' => 'S8 风驰电掣(人人网)[]',
   ),
   703 => 
   array (
@@ -8656,7 +8656,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S120双线120区 志在必得(官网)[商业大亨]',
+    'full_name' => 'S120双线120区 志在必得(官网)[]',
   ),
   704 => 
   array (
@@ -8674,7 +8674,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4(37wan)[富人国]',
+    'full_name' => 'S4(37wan)[]',
   ),
   705 => 
   array (
@@ -8692,7 +8692,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S12-Ryeshock(官网)[三分天下]',
+    'full_name' => 'S12-Ryeshock(官网)[]',
   ),
   706 => 
   array (
@@ -8710,7 +8710,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 Revelation(乐酷)[三分天下]',
+    'full_name' => 'S2 Revelation(乐酷)[]',
   ),
   707 => 
   array (
@@ -8728,7 +8728,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S13 lubon(官网)[三分天下]',
+    'full_name' => 'S13 lubon(官网)[]',
   ),
   708 => 
   array (
@@ -8746,7 +8746,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S9  富贵袭人(人人网)[富人国]',
+    'full_name' => 'S9  富贵袭人(人人网)[]',
   ),
   709 => 
   array (
@@ -8764,7 +8764,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 Aries(PowerMMO)[三分天下]',
+    'full_name' => 'S1 Aries(PowerMMO)[]',
   ),
   710 => 
   array (
@@ -8782,7 +8782,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2S2商海飞扬(长宽)[富人国]',
+    'full_name' => 'S2S2商海飞扬(长宽)[]',
   ),
   711 => 
   array (
@@ -8800,7 +8800,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 Journey(龙会洲)[三分天下]',
+    'full_name' => 'S1 Journey(龙会洲)[]',
   ),
   713 => 
   array (
@@ -8818,7 +8818,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S10 白手起家(人人网)[富人国]',
+    'full_name' => 'S10 白手起家(人人网)[]',
   ),
   715 => 
   array (
@@ -8836,7 +8836,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1-Norland(千橡)[三分天下]',
+    'full_name' => 'S1-Norland(千橡)[]',
   ),
   716 => 
   array (
@@ -8854,7 +8854,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5S5激流勇进(37wan)[富人国]',
+    'full_name' => 'S5S5激流勇进(37wan)[]',
   ),
   717 => 
   array (
@@ -8872,7 +8872,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2S2服  富贵显荣(游戏网)[富人国]',
+    'full_name' => 'S2S2服  富贵显荣(游戏网)[]',
   ),
   718 => 
   array (
@@ -8890,7 +8890,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S9 如虎添翼(开心001)[富人国]',
+    'full_name' => 'S9 如虎添翼(开心001)[]',
   ),
   720 => 
   array (
@@ -8908,7 +8908,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 寻侠(官网)[寻侠]',
+    'full_name' => 'S0 寻侠(官网)[]',
   ),
   721 => 
   array (
@@ -8926,7 +8926,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 Sacred Wings(艾游)[三分天下]',
+    'full_name' => 'S1 Sacred Wings(艾游)[]',
   ),
   722 => 
   array (
@@ -8944,7 +8944,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S50 Chrysler(海外官网)[商业大亨]',
+    'full_name' => 'S50 Chrysler(海外官网)[]',
   ),
   723 => 
   array (
@@ -8962,7 +8962,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2富甲天下(PPlive)[富人国]',
+    'full_name' => 'S2富甲天下(PPlive)[]',
   ),
   724 => 
   array (
@@ -8980,7 +8980,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S11  秋名山道(人人网)[富人国]',
+    'full_name' => 'S11  秋名山道(人人网)[]',
   ),
   725 => 
   array (
@@ -8998,7 +8998,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 Washington(奇网)[三分天下]',
+    'full_name' => 'S1 Washington(奇网)[]',
   ),
   726 => 
   array (
@@ -9016,7 +9016,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1富可敌国(3977)[富人国]',
+    'full_name' => 'S1富可敌国(3977)[]',
   ),
   727 => 
   array (
@@ -9034,7 +9034,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 New York(FPT)[商业大亨]',
+    'full_name' => 'S1 New York(FPT)[]',
   ),
   729 => 
   array (
@@ -9052,7 +9052,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2(奇网)[三分天下]',
+    'full_name' => 'S2(奇网)[]',
   ),
   730 => 
   array (
@@ -9070,7 +9070,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S14 Allies(官网)[三分天下]',
+    'full_name' => 'S14 Allies(官网)[]',
   ),
   731 => 
   array (
@@ -9088,7 +9088,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 Knight(空门)[三分天下]',
+    'full_name' => 'S2 Knight(空门)[]',
   ),
   732 => 
   array (
@@ -9106,7 +9106,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3S3服  亿万富翁(游戏网)[富人国]',
+    'full_name' => 'S3S3服  亿万富翁(游戏网)[]',
   ),
   735 => 
   array (
@@ -9124,7 +9124,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S10(开心001)[富人国]',
+    'full_name' => 'S10(开心001)[]',
   ),
   736 => 
   array (
@@ -9142,7 +9142,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S10000(空门)[商业大亨]',
+    'full_name' => 'S10000(空门)[]',
   ),
   737 => 
   array (
@@ -9160,7 +9160,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0(sgame)[三分天下]',
+    'full_name' => 'S0(sgame)[]',
   ),
   738 => 
   array (
@@ -9178,7 +9178,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S12  豪门夜宴(人人网)[富人国]',
+    'full_name' => 'S12  豪门夜宴(人人网)[]',
   ),
   739 => 
   array (
@@ -9196,7 +9196,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 富甲一方(手机钱包)[富人国]',
+    'full_name' => 'S1 富甲一方(手机钱包)[]',
   ),
   741 => 
   array (
@@ -9214,7 +9214,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0百度内网中心服(百度)[富人国]',
+    'full_name' => 'S0百度内网中心服(百度)[]',
   ),
   742 => 
   array (
@@ -9232,7 +9232,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1（U966）黄金帝国(官网)[商业大亨]',
+    'full_name' => 'S1（U966）黄金帝国(官网)[]',
   ),
   743 => 
   array (
@@ -9250,7 +9250,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2（U966）钻石人生(官网)[商业大亨]',
+    'full_name' => 'S2（U966）钻石人生(官网)[]',
   ),
   744 => 
   array (
@@ -9268,7 +9268,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3（U966）象牙海岸(官网)[商业大亨]',
+    'full_name' => 'S3（U966）象牙海岸(官网)[]',
   ),
   745 => 
   array (
@@ -9286,7 +9286,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4（U966）水晶之城(官网)[商业大亨]',
+    'full_name' => 'S4（U966）水晶之城(官网)[]',
   ),
   746 => 
   array (
@@ -9304,7 +9304,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5（U966）珠光宝气(官网)[商业大亨]',
+    'full_name' => 'S5（U966）珠光宝气(官网)[]',
   ),
   747 => 
   array (
@@ -9322,7 +9322,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6（U966）翡翠年华(官网)[商业大亨]',
+    'full_name' => 'S6（U966）翡翠年华(官网)[]',
   ),
   748 => 
   array (
@@ -9340,7 +9340,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7（U966）东方明珠(官网)[商业大亨]',
+    'full_name' => 'S7（U966）东方明珠(官网)[]',
   ),
   749 => 
   array (
@@ -9358,7 +9358,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S8（U966）货币战争(官网)[商业大亨]',
+    'full_name' => 'S8（U966）货币战争(官网)[]',
   ),
   750 => 
   array (
@@ -9376,7 +9376,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S9（U966）石油霸权(官网)[商业大亨]',
+    'full_name' => 'S9（U966）石油霸权(官网)[]',
   ),
   751 => 
   array (
@@ -9394,7 +9394,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S10（U966）商海风云(官网)[商业大亨]',
+    'full_name' => 'S10（U966）商海风云(官网)[]',
   ),
   752 => 
   array (
@@ -9412,7 +9412,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3S3富贵吉祥(长宽)[富人国]',
+    'full_name' => 'S3S3富贵吉祥(长宽)[]',
   ),
   754 => 
   array (
@@ -9430,7 +9430,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S51 Oracle(海外官网)[商业大亨]',
+    'full_name' => 'S51 Oracle(海外官网)[]',
   ),
   755 => 
   array (
@@ -9448,7 +9448,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S12 富国裕民(多玩)[富人国]',
+    'full_name' => 'S12 富国裕民(多玩)[]',
   ),
   757 => 
   array (
@@ -9466,7 +9466,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 's0测试(wfsgame)[三分天下]',
+    'full_name' => 's0测试(wfsgame)[]',
   ),
   758 => 
   array (
@@ -9484,7 +9484,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 Jenlon(艾游)[三分天下]',
+    'full_name' => 'S2 Jenlon(艾游)[]',
   ),
   759 => 
   array (
@@ -9502,7 +9502,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 Cherry District(Cherry)[商业大亨]',
+    'full_name' => 'S1 Cherry District(Cherry)[]',
   ),
   762 => 
   array (
@@ -9520,7 +9520,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 Xích Bích(wfsgame)[三分天下]',
+    'full_name' => 'S1 Xích Bích(wfsgame)[]',
   ),
   763 => 
   array (
@@ -9538,7 +9538,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 Trường Bản(wfsgame)[三分天下]',
+    'full_name' => 'S2 Trường Bản(wfsgame)[]',
   ),
   764 => 
   array (
@@ -9556,7 +9556,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 Hoa Dung(wfsgame)[三分天下]',
+    'full_name' => 'S3 Hoa Dung(wfsgame)[]',
   ),
   765 => 
   array (
@@ -9574,7 +9574,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4 Tân Dã(wfsgame)[三分天下]',
+    'full_name' => 'S4 Tân Dã(wfsgame)[]',
   ),
   766 => 
   array (
@@ -9592,7 +9592,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 寻梦(官网)[寻侠]',
+    'full_name' => 'S1 寻梦(官网)[]',
   ),
   767 => 
   array (
@@ -9610,7 +9610,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S15 Empires(官网)[三分天下]',
+    'full_name' => 'S15 Empires(官网)[]',
   ),
   768 => 
   array (
@@ -9628,7 +9628,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6S6千钧一发(37wan)[富人国]',
+    'full_name' => 'S6S6千钧一发(37wan)[]',
   ),
   769 => 
   array (
@@ -9646,7 +9646,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S11 顶天立地(开心001)[富人国]',
+    'full_name' => 'S11 顶天立地(开心001)[]',
   ),
   770 => 
   array (
@@ -9664,7 +9664,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2-Woodston(千橡)[三分天下]',
+    'full_name' => 'S2-Woodston(千橡)[]',
   ),
   771 => 
   array (
@@ -9682,7 +9682,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S13  生死时速(人人网)[富人国]',
+    'full_name' => 'S13  生死时速(人人网)[]',
   ),
   772 => 
   array (
@@ -9700,7 +9700,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4S4服  纳斯达克(游戏网)[富人国]',
+    'full_name' => 'S4S4服  纳斯达克(游戏网)[]',
   ),
   774 => 
   array (
@@ -9718,7 +9718,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0S0中心服(37wan)[富人国]',
+    'full_name' => 'S0S0中心服(37wan)[]',
   ),
   777 => 
   array (
@@ -9736,7 +9736,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6 Di Lăng(wfsgame)[三分天下]',
+    'full_name' => 'S6 Di Lăng(wfsgame)[]',
   ),
   778 => 
   array (
@@ -9754,7 +9754,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S8 Quan Độ(wfsgame)[三分天下]',
+    'full_name' => 'S8 Quan Độ(wfsgame)[]',
   ),
   779 => 
   array (
@@ -9772,7 +9772,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S9 Hào Đình(wfsgame)[三分天下]',
+    'full_name' => 'S9 Hào Đình(wfsgame)[]',
   ),
   780 => 
   array (
@@ -9790,7 +9790,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7S7富甲一方(37wan)[富人国]',
+    'full_name' => 'S7S7富甲一方(37wan)[]',
   ),
   781 => 
   array (
@@ -9808,7 +9808,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 商海豪情(手机钱包)[富人国]',
+    'full_name' => 'S2 商海豪情(手机钱包)[]',
   ),
   782 => 
   array (
@@ -9826,7 +9826,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 一鸣惊人(新浪)[富人国]',
+    'full_name' => 'S1 一鸣惊人(新浪)[]',
   ),
   783 => 
   array (
@@ -9844,7 +9844,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S10 Hợp Phì(wfsgame)[三分天下]',
+    'full_name' => 'S10 Hợp Phì(wfsgame)[]',
   ),
   786 => 
   array (
@@ -9862,7 +9862,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S14  生财有道(人人网)[富人国]',
+    'full_name' => 'S14  生财有道(人人网)[]',
   ),
   787 => 
   array (
@@ -9880,7 +9880,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 测试服(新浪)[富人国]',
+    'full_name' => 'S0 测试服(新浪)[]',
   ),
   788 => 
   array (
@@ -9898,7 +9898,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S11 Bác Vọng(wfsgame)[三分天下]',
+    'full_name' => 'S11 Bác Vọng(wfsgame)[]',
   ),
   789 => 
   array (
@@ -9916,7 +9916,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S12 Hán Trung(wfsgame)[三分天下]',
+    'full_name' => 'S12 Hán Trung(wfsgame)[]',
   ),
   790 => 
   array (
@@ -9934,7 +9934,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S16 Pinefield(官网)[三分天下]',
+    'full_name' => 'S16 Pinefield(官网)[]',
   ),
   791 => 
   array (
@@ -9952,7 +9952,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3-Kening(千橡)[三分天下]',
+    'full_name' => 'S3-Kening(千橡)[]',
   ),
   792 => 
   array (
@@ -9970,7 +9970,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S14 Tương Dương(wfsgame)[三分天下]',
+    'full_name' => 'S14 Tương Dương(wfsgame)[]',
   ),
   794 => 
   array (
@@ -9988,7 +9988,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 风行一区(风行)[富人国]',
+    'full_name' => 'S1 风行一区(风行)[]',
   ),
   795 => 
   array (
@@ -10006,7 +10006,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 测试服(风行)[富人国]',
+    'full_name' => 'S0 测试服(风行)[]',
   ),
   796 => 
   array (
@@ -10024,7 +10024,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 梦想之巅(天涯)[富人国]',
+    'full_name' => 'S1 梦想之巅(天涯)[]',
   ),
   797 => 
   array (
@@ -10042,7 +10042,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 测试服(天涯)[富人国]',
+    'full_name' => 'S0 测试服(天涯)[]',
   ),
   798 => 
   array (
@@ -10060,7 +10060,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S12k12 风驰电掣(开心001)[富人国]',
+    'full_name' => 'S12k12 风驰电掣(开心001)[]',
   ),
   799 => 
   array (
@@ -10078,7 +10078,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2030欲望都市(官网)[商业大亨]',
+    'full_name' => 'S2030欲望都市(官网)[]',
   ),
   800 => 
   array (
@@ -10096,7 +10096,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S15  极品飞车(人人网)[富人国]',
+    'full_name' => 'S15  极品飞车(人人网)[]',
   ),
   802 => 
   array (
@@ -10114,7 +10114,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0昆仑测试(昆仑)[富人国]',
+    'full_name' => 'S0昆仑测试(昆仑)[]',
   ),
   803 => 
   array (
@@ -10132,7 +10132,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1昆仑(昆仑)[富人国]',
+    'full_name' => 'S1昆仑(昆仑)[]',
   ),
   804 => 
   array (
@@ -10150,7 +10150,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 's15 Kí Thành(wfsgame)[三分天下]',
+    'full_name' => 's15 Kí Thành(wfsgame)[]',
   ),
   805 => 
   array (
@@ -10168,7 +10168,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 's16 Hạ Bì(wfsgame)[三分天下]',
+    'full_name' => 's16 Hạ Bì(wfsgame)[]',
   ),
   806 => 
   array (
@@ -10186,7 +10186,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 (电驴)[富人国]',
+    'full_name' => 'S1 (电驴)[]',
   ),
   807 => 
   array (
@@ -10204,7 +10204,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0(电驴)[富人国]',
+    'full_name' => 'S0(电驴)[]',
   ),
   808 => 
   array (
@@ -10222,7 +10222,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3(手机钱包)[富人国]',
+    'full_name' => 'S3(手机钱包)[]',
   ),
   810 => 
   array (
@@ -10240,7 +10240,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S17 Loyan(官网)[三分天下]',
+    'full_name' => 'S17 Loyan(官网)[]',
   ),
   811 => 
   array (
@@ -10258,7 +10258,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S11360卫士十一区(360安全卫士)[富人国]',
+    'full_name' => 'S11360卫士十一区(360安全卫士)[]',
   ),
   812 => 
   array (
@@ -10276,7 +10276,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 激情夏日(新浪)[富人国]',
+    'full_name' => 'S2 激情夏日(新浪)[]',
   ),
   813 => 
   array (
@@ -10294,7 +10294,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S13k13 极速狂飙(开心001)[富人国]',
+    'full_name' => 'S13k13 极速狂飙(开心001)[]',
   ),
   814 => 
   array (
@@ -10312,7 +10312,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 剑指江湖(官网)[寻侠]',
+    'full_name' => 'S2 剑指江湖(官网)[]',
   ),
   815 => 
   array (
@@ -10330,7 +10330,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S18 Tà Cốc(wfsgame)[三分天下]',
+    'full_name' => 'S18 Tà Cốc(wfsgame)[]',
   ),
   816 => 
   array (
@@ -10348,7 +10348,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S16  锦绣荣华(人人网)[富人国]',
+    'full_name' => 'S16  锦绣荣华(人人网)[]',
   ),
   817 => 
   array (
@@ -10366,7 +10366,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0(竞技比赛)[富人国]',
+    'full_name' => 'S0(竞技比赛)[]',
   ),
   818 => 
   array (
@@ -10384,7 +10384,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1(竞技比赛)[富人国]',
+    'full_name' => 'S1(竞技比赛)[]',
   ),
   819 => 
   array (
@@ -10402,7 +10402,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1영웅본색(韩国)[三分天下]',
+    'full_name' => 'S1영웅본색(韩国)[]',
   ),
   820 => 
   array (
@@ -10420,7 +10420,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2영웅불패(韩国)[三分天下]',
+    'full_name' => 'S2영웅불패(韩国)[]',
   ),
   821 => 
   array (
@@ -10438,7 +10438,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5 Hổ Lao(wfsgame)[三分天下]',
+    'full_name' => 'S5 Hổ Lao(wfsgame)[]',
   ),
   822 => 
   array (
@@ -10456,7 +10456,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S52(海外官网)[商业大亨]',
+    'full_name' => 'S52(海外官网)[]',
   ),
   824 => 
   array (
@@ -10474,7 +10474,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2昆仑(昆仑)[富人国]',
+    'full_name' => 'S2昆仑(昆仑)[]',
   ),
   825 => 
   array (
@@ -10492,7 +10492,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S12360卫士十二区(360安全卫士)[富人国]',
+    'full_name' => 'S12360卫士十二区(360安全卫士)[]',
   ),
   829 => 
   array (
@@ -10510,7 +10510,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S19 Nhai Đình(wfsgame)[三分天下]',
+    'full_name' => 'S19 Nhai Đình(wfsgame)[]',
   ),
   830 => 
   array (
@@ -10528,7 +10528,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3昆仑(昆仑)[富人国]',
+    'full_name' => 'S3昆仑(昆仑)[]',
   ),
   831 => 
   array (
@@ -10546,7 +10546,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4昆仑(昆仑)[富人国]',
+    'full_name' => 'S4昆仑(昆仑)[]',
   ),
   832 => 
   array (
@@ -10564,7 +10564,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1(久游)[富人国]',
+    'full_name' => 'S1(久游)[]',
   ),
   833 => 
   array (
@@ -10582,7 +10582,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2(久游)[富人国]',
+    'full_name' => 'S2(久游)[]',
   ),
   834 => 
   array (
@@ -10600,7 +10600,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3(久游)[富人国]',
+    'full_name' => 'S3(久游)[]',
   ),
   835 => 
   array (
@@ -10618,7 +10618,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4(久游)[富人国]',
+    'full_name' => 'S4(久游)[]',
   ),
   836 => 
   array (
@@ -10636,7 +10636,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4S4龙腾四海(长宽)[富人国]',
+    'full_name' => 'S4S4龙腾四海(长宽)[]',
   ),
   838 => 
   array (
@@ -10654,7 +10654,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 华山论剑(官网)[寻侠]',
+    'full_name' => 'S3 华山论剑(官网)[]',
   ),
   839 => 
   array (
@@ -10672,7 +10672,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0(久游)[富人国]',
+    'full_name' => 'S0(久游)[]',
   ),
   840 => 
   array (
@@ -10690,7 +10690,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1-Beowulf(game321)[三分天下]',
+    'full_name' => 'S1-Beowulf(game321)[]',
   ),
   841 => 
   array (
@@ -10708,7 +10708,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 挑战极速(新浪)[富人国]',
+    'full_name' => 'S3 挑战极速(新浪)[]',
   ),
   842 => 
   array (
@@ -10726,7 +10726,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 盛大SDO(盛大旗下sdo)[富人国]',
+    'full_name' => 'S1 盛大SDO(盛大旗下sdo)[]',
   ),
   844 => 
   array (
@@ -10744,7 +10744,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1-Risen(趣游)[三分天下]',
+    'full_name' => 'S1-Risen(趣游)[]',
   ),
   845 => 
   array (
@@ -10762,7 +10762,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0(海外官网)[富人国]',
+    'full_name' => 'S0(海外官网)[]',
   ),
   846 => 
   array (
@@ -10780,7 +10780,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1-RichState(海外官网)[富人国]',
+    'full_name' => 'S1-RichState(海外官网)[]',
   ),
   847 => 
   array (
@@ -10798,7 +10798,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S17 极速快感(人人网)[富人国]',
+    'full_name' => 'S17 极速快感(人人网)[]',
   ),
   851 => 
   array (
@@ -10816,7 +10816,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2风行二区(风行)[富人国]',
+    'full_name' => 'S2风行二区(风行)[]',
   ),
   852 => 
   array (
@@ -10834,7 +10834,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 's20 Vị Thủy(wfsgame)[三分天下]',
+    'full_name' => 's20 Vị Thủy(wfsgame)[]',
   ),
   853 => 
   array (
@@ -10852,7 +10852,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S21 Diên Tân(wfsgame)[三分天下]',
+    'full_name' => 'S21 Diên Tân(wfsgame)[]',
   ),
   854 => 
   array (
@@ -10870,7 +10870,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S13360卫士十三区(360安全卫士)[富人国]',
+    'full_name' => 'S13360卫士十三区(360安全卫士)[]',
   ),
   855 => 
   array (
@@ -10888,7 +10888,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S121 创世传奇(官网)[商业大亨]',
+    'full_name' => 'S121 创世传奇(官网)[]',
   ),
   856 => 
   array (
@@ -10906,7 +10906,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5昆仑(昆仑)[富人国]',
+    'full_name' => 'S5昆仑(昆仑)[]',
   ),
   859 => 
   array (
@@ -10924,7 +10924,7 @@ return array (
     'ext' => 'a:5:{s:7:"db_host";s:15:"119.145.130.191";s:7:"db_name";s:10:"xianhun_s1";s:7:"db_user";s:6:"client";s:6:"db_pwd";s:20:"ji4*H^T7(65(4452)h6=";s:7:"db_port";s:4:"3306";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'xS1 仙魂(官网)[幻世仙征]',
+    'full_name' => 'xS1 仙魂(官网)[]',
   ),
   860 => 
   array (
@@ -10942,7 +10942,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6昆仑(昆仑)[富人国]',
+    'full_name' => 'S6昆仑(昆仑)[]',
   ),
   861 => 
   array (
@@ -10960,7 +10960,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S14k14 烈火战车(开心001)[富人国]',
+    'full_name' => 'S14k14 烈火战车(开心001)[]',
   ),
   862 => 
   array (
@@ -10978,7 +10978,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S11富有四海(多玩)[富人国]',
+    'full_name' => 'S11富有四海(多玩)[]',
   ),
   863 => 
   array (
@@ -10996,7 +10996,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4(手机钱包)[富人国]',
+    'full_name' => 'S4(手机钱包)[]',
   ),
   865 => 
   array (
@@ -11014,7 +11014,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5(手机钱包)[富人国]',
+    'full_name' => 'S5(手机钱包)[]',
   ),
   866 => 
   array (
@@ -11032,7 +11032,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S14360卫士十四区(360安全卫士)[富人国]',
+    'full_name' => 'S14360卫士十四区(360安全卫士)[]',
   ),
   867 => 
   array (
@@ -11050,7 +11050,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4 越野之王(新浪)[富人国]',
+    'full_name' => 'S4 越野之王(新浪)[]',
   ),
   868 => 
   array (
@@ -11068,7 +11068,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 谁与争锋(竞技比赛)[富人国]',
+    'full_name' => 'S2 谁与争锋(竞技比赛)[]',
   ),
   869 => 
   array (
@@ -11086,7 +11086,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3(竞技比赛)[富人国]',
+    'full_name' => 'S3(竞技比赛)[]',
   ),
   870 => 
   array (
@@ -11104,7 +11104,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4(竞技比赛)[富人国]',
+    'full_name' => 'S4(竞技比赛)[]',
   ),
   871 => 
   array (
@@ -11122,7 +11122,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5(竞技比赛)[富人国]',
+    'full_name' => 'S5(竞技比赛)[]',
   ),
   872 => 
   array (
@@ -11140,7 +11140,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S18-Jenlon(官网)[三分天下]',
+    'full_name' => 'S18-Jenlon(官网)[]',
   ),
   874 => 
   array (
@@ -11158,7 +11158,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S53(海外官网)[商业大亨]',
+    'full_name' => 'S53(海外官网)[]',
   ),
   875 => 
   array (
@@ -11176,7 +11176,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'B2English Test(海外官网)[富人国]',
+    'full_name' => 'B2English Test(海外官网)[]',
   ),
   876 => 
   array (
@@ -11194,7 +11194,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'B2封测一服(新浪)[富人国]',
+    'full_name' => 'B2封测一服(新浪)[]',
   ),
   879 => 
   array (
@@ -11212,7 +11212,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S15k15 学富五车(开心001)[富人国]',
+    'full_name' => 'S15k15 学富五车(开心001)[]',
   ),
   880 => 
   array (
@@ -11230,7 +11230,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S15360卫士十五区(360安全卫士)[富人国]',
+    'full_name' => 'S15360卫士十五区(360安全卫士)[]',
   ),
   881 => 
   array (
@@ -11248,7 +11248,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5 极速狂飙(新浪)[富人国]',
+    'full_name' => 'S5 极速狂飙(新浪)[]',
   ),
   882 => 
   array (
@@ -11266,7 +11266,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3(PPlive)[富人国]',
+    'full_name' => 'S3(PPlive)[]',
   ),
   884 => 
   array (
@@ -11284,7 +11284,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 测试服(游戏风云)[富人国]',
+    'full_name' => 'S0 测试服(游戏风云)[]',
   ),
   885 => 
   array (
@@ -11302,7 +11302,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 风云一区(游戏风云)[富人国]',
+    'full_name' => 'S1 风云一区(游戏风云)[]',
   ),
   887 => 
   array (
@@ -11320,7 +11320,7 @@ return array (
     'ext' => 'a:5:{s:7:"db_host";s:15:"119.145.130.168";s:7:"db_name";s:4:"hsxz";s:7:"db_user";s:6:"client";s:6:"db_pwd";s:20:"ji4*H^T7(65(4452)h6=";s:7:"db_port";s:4:"3306";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'xS2 仙魂(官网)[幻世仙征]',
+    'full_name' => 'xS2 仙魂(官网)[]',
   ),
   889 => 
   array (
@@ -11338,7 +11338,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S16360卫士十六区(360安全卫士)[富人国]',
+    'full_name' => 'S16360卫士十六区(360安全卫士)[]',
   ),
   890 => 
   array (
@@ -11356,7 +11356,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S22 Định Quân(wfsgame)[三分天下]',
+    'full_name' => 'S22 Định Quân(wfsgame)[]',
   ),
   891 => 
   array (
@@ -11374,7 +11374,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S23 Ô Sào(wfsgame)[三分天下]',
+    'full_name' => 'S23 Ô Sào(wfsgame)[]',
   ),
   892 => 
   array (
@@ -11392,7 +11392,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 乱世戦魂(日本)[三分天下]',
+    'full_name' => 'S0 乱世戦魂(日本)[]',
   ),
   893 => 
   array (
@@ -11410,7 +11410,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 合作公测服(公测服)[富人国]',
+    'full_name' => 'S0 合作公测服(公测服)[]',
   ),
   894 => 
   array (
@@ -11428,7 +11428,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 测试服(591pk)[富人国]',
+    'full_name' => 'S0 测试服(591pk)[]',
   ),
   895 => 
   array (
@@ -11446,7 +11446,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 大展宏图(591pk)[富人国]',
+    'full_name' => 'S1 大展宏图(591pk)[]',
   ),
   896 => 
   array (
@@ -11464,7 +11464,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 's0 韩服(韩国)[三分天下]',
+    'full_name' => 's0 韩服(韩国)[]',
   ),
   898 => 
   array (
@@ -11482,7 +11482,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '腾讯1服(官网)[寻侠]',
+    'full_name' => '腾讯1服(官网)[]',
   ),
   899 => 
   array (
@@ -11500,7 +11500,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'WF1(好玩Caplay)[三分天下]',
+    'full_name' => 'WF1(好玩Caplay)[]',
   ),
   900 => 
   array (
@@ -11518,7 +11518,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '腾讯中心服(官网)[寻侠]',
+    'full_name' => '腾讯中心服(官网)[]',
   ),
   901 => 
   array (
@@ -11536,7 +11536,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S19-Charidea(官网)[三分天下]',
+    'full_name' => 'S19-Charidea(官网)[]',
   ),
   902 => 
   array (
@@ -11554,7 +11554,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 's25 Hứa Xương(wfsgame)[三分天下]',
+    'full_name' => 's25 Hứa Xương(wfsgame)[]',
   ),
   903 => 
   array (
@@ -11572,7 +11572,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S17360卫士十七区(360安全卫士)[富人国]',
+    'full_name' => 'S17360卫士十七区(360安全卫士)[]',
   ),
   904 => 
   array (
@@ -11590,7 +11590,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7 夢想之巔(昆仑)[富人国]',
+    'full_name' => 'S7 夢想之巔(昆仑)[]',
   ),
   907 => 
   array (
@@ -11608,7 +11608,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6 登峰造极(新浪)[富人国]',
+    'full_name' => 'S6 登峰造极(新浪)[]',
   ),
   908 => 
   array (
@@ -11626,7 +11626,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 's2-Chaos(game321)[三分天下]',
+    'full_name' => 's2-Chaos(game321)[]',
   ),
   909 => 
   array (
@@ -11644,7 +11644,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 Silverstone(海外官网)[富人国]',
+    'full_name' => 'S2 Silverstone(海外官网)[]',
   ),
   910 => 
   array (
@@ -11662,7 +11662,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1-Ferrari(龙会洲)[富人国]',
+    'full_name' => 'S1-Ferrari(龙会洲)[]',
   ),
   911 => 
   array (
@@ -11680,7 +11680,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6 前程似锦(手机钱包)[富人国]',
+    'full_name' => 'S6 前程似锦(手机钱包)[]',
   ),
   912 => 
   array (
@@ -11698,7 +11698,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '官网中心服(官网)[寻侠]',
+    'full_name' => '官网中心服(官网)[]',
   ),
   913 => 
   array (
@@ -11716,7 +11716,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S18360卫士十八区(360安全卫士)[富人国]',
+    'full_name' => 'S18360卫士十八区(360安全卫士)[]',
   ),
   914 => 
   array (
@@ -11734,7 +11734,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 双线二区(电驴)[富人国]',
+    'full_name' => 'S2 双线二区(电驴)[]',
   ),
   915 => 
   array (
@@ -11752,7 +11752,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '192.168.14.138 开发机(官网)[双龙诀]',
+    'full_name' => '192.168.14.138 开发机(官网)[]',
   ),
   916 => 
   array (
@@ -11770,7 +11770,7 @@ return array (
     'ext' => 'a:2:{s:7:"db_user";s:8:"zhaoming";s:6:"db_pwd";s:6:"123456";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '192.168.14.138 测试机(官网)[双龙诀]',
+    'full_name' => '192.168.14.138 测试机(官网)[]',
   ),
   920 => 
   array (
@@ -11788,7 +11788,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S16k16 平步青云(开心001)[富人国]',
+    'full_name' => 'S16k16 平步青云(开心001)[]',
   ),
   921 => 
   array (
@@ -11806,7 +11806,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S26 Bạch Mã(wfsgame)[三分天下]',
+    'full_name' => 'S26 Bạch Mã(wfsgame)[]',
   ),
   922 => 
   array (
@@ -11824,7 +11824,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 's28 Đông Lĩnh(wfsgame)[三分天下]',
+    'full_name' => 's28 Đông Lĩnh(wfsgame)[]',
   ),
   923 => 
   array (
@@ -11842,7 +11842,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2S2  风云二区(游戏风云)[富人国]',
+    'full_name' => 'S2S2  风云二区(游戏风云)[]',
   ),
   925 => 
   array (
@@ -11860,7 +11860,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4-Loyan(千橡)[三分天下]',
+    'full_name' => 'S4-Loyan(千橡)[]',
   ),
   926 => 
   array (
@@ -11878,7 +11878,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2591PK二区(591pk)[富人国]',
+    'full_name' => 'S2591PK二区(591pk)[]',
   ),
   927 => 
   array (
@@ -11896,7 +11896,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 Monaco(海外官网)[富人国]',
+    'full_name' => 'S3 Monaco(海外官网)[]',
   ),
   928 => 
   array (
@@ -11914,7 +11914,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S19360卫士十九区(360安全卫士)[富人国]',
+    'full_name' => 'S19360卫士十九区(360安全卫士)[]',
   ),
   929 => 
   array (
@@ -11932,7 +11932,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7 急速时刻(新浪)[富人国]',
+    'full_name' => 'S7 急速时刻(新浪)[]',
   ),
   930 => 
   array (
@@ -11950,7 +11950,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S13S13富贵殿堂  (多玩)[富人国]',
+    'full_name' => 'S13S13富贵殿堂  (多玩)[]',
   ),
   933 => 
   array (
@@ -11968,7 +11968,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '腾讯寻侠测试服(官网)[寻侠]',
+    'full_name' => '腾讯寻侠测试服(官网)[]',
   ),
   935 => 
   array (
@@ -11986,7 +11986,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3-Freedom(空门)[三分天下]',
+    'full_name' => 'S3-Freedom(空门)[]',
   ),
   936 => 
   array (
@@ -12004,7 +12004,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'BTO Ibibo S1(印度Ibibo)[商业大亨]',
+    'full_name' => 'BTO Ibibo S1(印度Ibibo)[]',
   ),
   937 => 
   array (
@@ -12022,7 +12022,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '(同学网)豪商巨贾(官网)[商业大亨]',
+    'full_name' => '(同学网)豪商巨贾(官网)[]',
   ),
   938 => 
   array (
@@ -12040,7 +12040,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '(远航)白银帝国 (官网)[商业大亨]',
+    'full_name' => '(远航)白银帝国 (官网)[]',
   ),
   939 => 
   array (
@@ -12058,7 +12058,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '(远航)黄金国度(官网)[商业大亨]',
+    'full_name' => '(远航)黄金国度(官网)[]',
   ),
   940 => 
   array (
@@ -12076,7 +12076,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S8(昆仑)[富人国]',
+    'full_name' => 'S8(昆仑)[]',
   ),
   941 => 
   array (
@@ -12094,7 +12094,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S29 Tây Xuyên(wfsgame)[三分天下]',
+    'full_name' => 'S29 Tây Xuyên(wfsgame)[]',
   ),
   942 => 
   array (
@@ -12112,7 +12112,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1-Empire(空门)[富人国]',
+    'full_name' => 'S1-Empire(空门)[]',
   ),
   943 => 
   array (
@@ -12130,7 +12130,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7 钻石国度(手机钱包)[富人国]',
+    'full_name' => 'S7 钻石国度(手机钱包)[]',
   ),
   944 => 
   array (
@@ -12148,7 +12148,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'IP访问测试(官网)[寻侠]',
+    'full_name' => 'IP访问测试(官网)[]',
   ),
   945 => 
   array (
@@ -12166,7 +12166,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '360卫士二十区(360安全卫士)[富人国]',
+    'full_name' => '360卫士二十区(360安全卫士)[]',
   ),
   946 => 
   array (
@@ -12184,7 +12184,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 ผิงเหยียน(Goldensoft)[三分天下]',
+    'full_name' => 'S1 ผิงเหยียน(Goldensoft)[]',
   ),
   949 => 
   array (
@@ -12202,7 +12202,7 @@ return array (
     'ext' => 'a:5:{s:7:"db_host";s:15:"119.145.130.191";s:7:"db_name";s:4:"hsxz";s:7:"db_user";s:6:"client";s:6:"db_pwd";s:20:"ji4*H^T7(65(4452)h6=";s:7:"db_port";s:4:"3306";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 测试(官网)[幻世仙征]',
+    'full_name' => 'S0 测试(官网)[]',
   ),
   950 => 
   array (
@@ -12220,7 +12220,7 @@ return array (
     'ext' => 'a:2:{s:7:"db_user";s:5:"zlsky";s:6:"db_pwd";s:14:"xingyuan667954";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '腾讯2服(官网)[寻侠]',
+    'full_name' => '腾讯2服(官网)[]',
   ),
   951 => 
   array (
@@ -12238,7 +12238,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '腾讯3服(官网)[寻侠]',
+    'full_name' => '腾讯3服(官网)[]',
   ),
   952 => 
   array (
@@ -12256,7 +12256,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '腾讯4服(官网)[寻侠]',
+    'full_name' => '腾讯4服(官网)[]',
   ),
   954 => 
   array (
@@ -12274,7 +12274,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S8 富可敌国(新浪)[富人国]',
+    'full_name' => 'S8 富可敌国(新浪)[]',
   ),
   955 => 
   array (
@@ -12292,7 +12292,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 영웅시대(韩国)[三分天下]',
+    'full_name' => 'S3 영웅시대(韩国)[]',
   ),
   956 => 
   array (
@@ -12310,7 +12310,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 赵明测试服(官网)[双龙诀]',
+    'full_name' => 'S1 赵明测试服(官网)[]',
   ),
   957 => 
   array (
@@ -12328,7 +12328,7 @@ return array (
     'ext' => 'a:2:{s:7:"db_user";s:10:"liuhaiming";s:6:"db_pwd";s:10:"liuhaiming";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0陆荣幸测试(官网)[三分天下]',
+    'full_name' => 'S0陆荣幸测试(官网)[]',
   ),
   958 => 
   array (
@@ -12346,7 +12346,7 @@ return array (
     'ext' => 'a:4:{s:7:"db_host";s:13:"192.168.14.90";s:7:"db_name";s:7:"rpg_dev";s:7:"db_user";s:4:"root";s:7:"db_port";s:4:"3306";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '王成杰服务器(官网)[幻世仙征]',
+    'full_name' => '王成杰服务器(官网)[]',
   ),
   959 => 
   array (
@@ -12364,7 +12364,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '李福中心服(官网)[寻侠]',
+    'full_name' => '李福中心服(官网)[]',
   ),
   960 => 
   array (
@@ -12382,7 +12382,7 @@ return array (
     'ext' => 'a:2:{s:7:"db_user";s:5:"zlsky";s:6:"db_pwd";s:3:"ysr";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '李福测试(官网)[寻侠]',
+    'full_name' => '李福测试(官网)[]',
   ),
   961 => 
   array (
@@ -12400,7 +12400,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '外测www.i2.com(官网)[海岛]',
+    'full_name' => '外测www.i2.com(官网)[]',
   ),
   962 => 
   array (
@@ -12418,7 +12418,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '海明测试服(官网)[三分天下]',
+    'full_name' => '海明测试服(官网)[]',
   ),
   963 => 
   array (
@@ -12436,7 +12436,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 test(官网)[海岛]',
+    'full_name' => 'S0 test(官网)[]',
   ),
   964 => 
   array (
@@ -12454,7 +12454,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 大亨2测试(官网)[大亨2]',
+    'full_name' => 'S0 大亨2测试(官网)[]',
   ),
   965 => 
   array (
@@ -12472,7 +12472,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '本地b2测试(官网)[富人国]',
+    'full_name' => '本地b2测试(官网)[]',
   ),
   966 => 
   array (
@@ -12490,7 +12490,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '腾讯5服(官网)[寻侠]',
+    'full_name' => '腾讯5服(官网)[]',
   ),
   967 => 
   array (
@@ -12508,7 +12508,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 仙魂(官网)(官网)[幻世仙征]',
+    'full_name' => 'S2 仙魂(官网)(官网)[]',
   ),
   968 => 
   array (
@@ -12526,7 +12526,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '本地b测试(官网)[富人国]',
+    'full_name' => '本地b测试(官网)[]',
   ),
   969 => 
   array (
@@ -12544,7 +12544,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '肖本路测试服(官网)[幻世仙征]',
+    'full_name' => '肖本路测试服(官网)[]',
   ),
   970 => 
   array (
@@ -12562,7 +12562,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '小钟测试_s1.bto2.com(官网)[大亨2]',
+    'full_name' => '小钟测试_s1.bto2.com(官网)[]',
   ),
   971 => 
   array (
@@ -12580,7 +12580,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '小钟测试_img1.bto2.com(官网)[大亨2]',
+    'full_name' => '小钟测试_img1.bto2.com(官网)[]',
   ),
   973 => 
   array (
@@ -12598,7 +12598,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 ลั่วหยาง(Goldensoft)[三分天下]',
+    'full_name' => 'S2 ลั่วหยาง(Goldensoft)[]',
   ),
   975 => 
   array (
@@ -12616,7 +12616,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '腾讯7服(官网)[寻侠]',
+    'full_name' => '腾讯7服(官网)[]',
   ),
   977 => 
   array (
@@ -12634,7 +12634,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 's38.app24599.qqopenapp.com/xxadm/(官网)[寻侠]',
+    'full_name' => 's38.app24599.qqopenapp.com/xxadm/(官网)[]',
   ),
   978 => 
   array (
@@ -12652,7 +12652,7 @@ return array (
     'ext' => 'a:2:{s:7:"db_user";s:5:"zlsky";s:6:"db_pwd";s:6:"123456";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '腾讯6服(官网)[寻侠]',
+    'full_name' => '腾讯6服(官网)[]',
   ),
   983 => 
   array (
@@ -12670,7 +12670,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S14 富国无双(多玩)[富人国]',
+    'full_name' => 'S14 富国无双(多玩)[]',
   ),
   984 => 
   array (
@@ -12688,7 +12688,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 人王转世(官网)[幻世仙征]',
+    'full_name' => 'S3 人王转世(官网)[]',
   ),
   985 => 
   array (
@@ -12706,7 +12706,7 @@ return array (
     'ext' => 'a:5:{s:7:"db_host";s:17:"183.60.66.86:8006";s:7:"db_name";s:7:"hsxz_s0";s:7:"db_user";s:6:"client";s:6:"db_pwd";s:20:"ji4*H^T7(65(4452)h6=";s:7:"db_port";s:4:"8006";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 腾讯(官网)[幻世仙征]',
+    'full_name' => 'S0 腾讯(官网)[]',
   ),
   986 => 
   array (
@@ -12724,7 +12724,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '手机测试版(官网手机版)[三分天下]',
+    'full_name' => '手机测试版(官网手机版)[]',
   ),
   987 => 
   array (
@@ -12742,7 +12742,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 's1.bto2.uwan.com(官网)[大亨2]',
+    'full_name' => 's1.bto2.uwan.com(官网)[]',
   ),
   988 => 
   array (
@@ -12760,7 +12760,7 @@ return array (
     'ext' => 'a:2:{s:7:"db_user";s:5:"zlsky";s:6:"db_pwd";s:6:"123456";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 's0中心服(官网)[寻侠]',
+    'full_name' => 's0中心服(官网)[]',
   ),
   989 => 
   array (
@@ -12778,7 +12778,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'B2 TEst(官网)[大亨2]',
+    'full_name' => 'B2 TEst(官网)[]',
   ),
   991 => 
   array (
@@ -12796,7 +12796,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0手机版(官网手机版)[三分天下]',
+    'full_name' => 'S0手机版(官网手机版)[]',
   ),
   993 => 
   array (
@@ -12814,7 +12814,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '袁伟道机器(官网)[海岛]',
+    'full_name' => '袁伟道机器(官网)[]',
   ),
   996 => 
   array (
@@ -12832,7 +12832,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '浩彬测试服(官网)[幻世仙征]',
+    'full_name' => '浩彬测试服(官网)[]',
   ),
   1001 => 
   array (
@@ -12850,7 +12850,7 @@ return array (
     'ext' => 'a:2:{s:7:"db_user";s:10:"liuhaiming";s:6:"db_pwd";s:10:"liuhaiming";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '内网tw(官网)[三分天下]',
+    'full_name' => '内网tw(官网)[]',
   ),
   1002 => 
   array (
@@ -12886,7 +12886,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 云起(云起)[海岛]',
+    'full_name' => 'S0 云起(云起)[]',
   ),
   1060 => 
   array (
@@ -12904,7 +12904,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '龙团192.168.12.173(官网)[双龙诀]',
+    'full_name' => '龙团192.168.12.173(官网)[]',
   ),
   1067 => 
   array (
@@ -12922,7 +12922,7 @@ return array (
     'ext' => NULL,
     'data_url' => '',
     'isCenter' => '0',
-    'full_name' => '11(腾讯)[武道破天]',
+    'full_name' => '11(腾讯)[]',
   ),
   1072 => 
   array (
@@ -12958,7 +12958,7 @@ return array (
     'ext' => 'a:2:{s:7:"db_user";s:5:"zlsky";s:6:"db_pwd";s:3:"ysr";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '端午树测试(官网)[海岛]',
+    'full_name' => '端午树测试(官网)[]',
   ),
   1089 => 
   array (
@@ -12976,7 +12976,7 @@ return array (
     'ext' => 'a:2:{s:7:"db_user";s:5:"zlsky";s:6:"db_pwd";s:3:"ysr";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0测试(官网)[幻将录]',
+    'full_name' => 'S0测试(官网)[]',
   ),
   1093 => 
   array (
@@ -12994,7 +12994,7 @@ return array (
     'ext' => 'a:2:{s:7:"db_user";s:5:"zlsky";s:6:"db_pwd";s:3:"ysr";}',
     'data_url' => '',
     'isCenter' => '0',
-    'full_name' => '阮家铭测试服(官网)[寻侠]',
+    'full_name' => '阮家铭测试服(官网)[]',
   ),
   1094 => 
   array (
@@ -13012,7 +13012,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '阮家铭中心服(官网)[寻侠]',
+    'full_name' => '阮家铭中心服(官网)[]',
   ),
   1095 => 
   array (
@@ -13030,7 +13030,7 @@ return array (
     'ext' => 'a:2:{s:7:"db_user";s:8:"zhaoming";s:6:"db_pwd";s:6:"123456";}',
     'data_url' => '',
     'isCenter' => '0',
-    'full_name' => '卢明华-192.168.23.207(官网)[双龙诀]',
+    'full_name' => '卢明华-192.168.23.207(官网)[]',
   ),
   1096 => 
   array (
@@ -13048,7 +13048,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '0(官网)[寻侠]',
+    'full_name' => '0(官网)[]',
   ),
   1100 => 
   array (
@@ -13066,7 +13066,7 @@ return array (
     'ext' => 'a:2:{s:7:"db_user";s:5:"zlsky";s:6:"db_pwd";s:3:"ysr";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'kongregate s0(空门)[富人国]',
+    'full_name' => 'kongregate s0(空门)[]',
   ),
   1103 => 
   array (
@@ -13084,7 +13084,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '外网0(官网)[盛世九州]',
+    'full_name' => '外网0(官网)[]',
   ),
   1105 => 
   array (
@@ -13102,7 +13102,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'ng(官网)[乱世春秋]',
+    'full_name' => 'ng(官网)[]',
   ),
   1106 => 
   array (
@@ -13120,7 +13120,7 @@ return array (
     'ext' => NULL,
     'data_url' => '10.181.158.125:3488#xsf#sfI2KyBoQrj1',
     'isCenter' => '0',
-    'full_name' => '测试(官网)[横版三分]',
+    'full_name' => '测试(官网)[]',
   ),
   1112 => 
   array (
@@ -13138,7 +13138,7 @@ return array (
     'ext' => NULL,
     'data_url' => '',
     'isCenter' => '0',
-    'full_name' => 'S1-王者雄心(91wan)[盛世九州]',
+    'full_name' => 'S1-王者雄心(91wan)[]',
   ),
   1115 => 
   array (
@@ -13156,7 +13156,7 @@ return array (
     'ext' => NULL,
     'data_url' => '',
     'isCenter' => '0',
-    'full_name' => '彭小桂(官网)[盛世九州]',
+    'full_name' => '彭小桂(官网)[]',
   ),
   1118 => 
   array (
@@ -13174,7 +13174,7 @@ return array (
     'ext' => NULL,
     'data_url' => '',
     'isCenter' => '0',
-    'full_name' => '谢作杰测试中心服(官网)[寻侠]',
+    'full_name' => '谢作杰测试中心服(官网)[]',
   ),
   1126 => 
   array (
@@ -13192,7 +13192,7 @@ return array (
     'ext' => NULL,
     'data_url' => '',
     'isCenter' => '0',
-    'full_name' => '测试(官网)[烽火九州]',
+    'full_name' => '测试(官网)[]',
   ),
   1127 => 
   array (
@@ -13210,7 +13210,7 @@ return array (
     'ext' => NULL,
     'data_url' => '',
     'isCenter' => '0',
-    'full_name' => '测试1(官网)[烽火九州]',
+    'full_name' => '测试1(官网)[]',
   ),
   11 => 
   array (
@@ -13228,7 +13228,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1富可敌国(官网)[富人国]',
+    'full_name' => 'S1富可敌国(官网)[]',
   ),
   982 => 
   array (
@@ -13246,25 +13246,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '内网测试(官网)[海岛]',
-  ),
-  992 => 
-  array (
-    'Id' => '992',
-    'room_id' => '0',
-    'game_type_id' => '10',
-    'operator_id' => '9',
-    'ordinal' => '1',
-    'marking' => 'S1',
-    'time_zone' => '0',
-    'timezone' => 'PRC',
-    'server_name' => '192.168.20.127:S1',
-    'server_url' => 'http://192.168.20.127:8080/gfhome/',
-    'timer' => '0',
-    'ext' => 'a:2:{s:7:"db_user";s:12:"wanghongzhou";s:6:"db_pwd";s:6:"987654";}',
-    'data_url' => NULL,
-    'isCenter' => NULL,
-    'full_name' => '192.168.20.127:S1(官网)[功夫]',
+    'full_name' => '内网测试(官网)[]',
   ),
   994 => 
   array (
@@ -13282,7 +13264,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 腾讯(腾讯)[海岛]',
+    'full_name' => 'S1 腾讯(腾讯)[]',
   ),
   1019 => 
   array (
@@ -13300,7 +13282,7 @@ return array (
     'ext' => 'a:2:{s:7:"db_user";s:5:"zlsky";s:6:"db_pwd";s:3:"ysr";}',
     'data_url' => '',
     'isCenter' => NULL,
-    'full_name' => 'S0 iphone版(官网手机版)[三分天下]',
+    'full_name' => 'S0 iphone版(官网手机版)[]',
   ),
   1022 => 
   array (
@@ -13318,25 +13300,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 's1(开心001)[海岛]',
-  ),
-  1023 => 
-  array (
-    'Id' => '1023',
-    'room_id' => '0',
-    'game_type_id' => '10',
-    'operator_id' => '9',
-    'ordinal' => '1',
-    'marking' => '192.168.22.2',
-    'time_zone' => '0',
-    'timezone' => 'PRC',
-    'server_name' => '192.168.22.2:S1',
-    'server_url' => 'http://192.168.22.2/gfhome/',
-    'timer' => '0',
-    'ext' => NULL,
-    'data_url' => NULL,
-    'isCenter' => NULL,
-    'full_name' => '192.168.22.2:S1(官网)[功夫]',
+    'full_name' => 's1(开心001)[]',
   ),
   1026 => 
   array (
@@ -13354,25 +13318,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '双线1区（花朝月夕）(91wan)[双龙诀]',
-  ),
-  1051 => 
-  array (
-    'Id' => '1051',
-    'room_id' => '0',
-    'game_type_id' => '10',
-    'operator_id' => '9',
-    'ordinal' => '1',
-    'marking' => 'localhost|S1',
-    'time_zone' => '0',
-    'timezone' => 'PRC',
-    'server_name' => '22.2开发机',
-    'server_url' => 'http://192.168.22.2/gfhome/',
-    'timer' => '0',
-    'ext' => NULL,
-    'data_url' => NULL,
-    'isCenter' => NULL,
-    'full_name' => '22.2开发机(官网)[功夫]',
+    'full_name' => '双线1区（花朝月夕）(91wan)[]',
   ),
   1052 => 
   array (
@@ -13390,25 +13336,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 云起(云起)[海岛]',
-  ),
-  1054 => 
-  array (
-    'Id' => '1054',
-    'room_id' => '0',
-    'game_type_id' => '10',
-    'operator_id' => '86',
-    'ordinal' => '1',
-    'marking' => '9377|S1',
-    'time_zone' => '0',
-    'timezone' => 'PRC',
-    'server_name' => '9377-封测体验服',
-    'server_url' => 'http://api.gf.9377.com/',
-    'timer' => '0',
-    'ext' => NULL,
-    'data_url' => NULL,
-    'isCenter' => NULL,
-    'full_name' => '9377-封测体验服(9377)[功夫]',
+    'full_name' => 'S1 云起(云起)[]',
   ),
   1055 => 
   array (
@@ -13426,7 +13354,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '移动三分(官网)[三分天下]',
+    'full_name' => '移动三分(官网)[]',
   ),
   1066 => 
   array (
@@ -13444,7 +13372,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'pc.s.qq.com(腾讯)[明星]',
+    'full_name' => 'pc.s.qq.com(腾讯)[]',
   ),
   1069 => 
   array (
@@ -13480,7 +13408,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '192.168.20.127:S1(官网)[武道破天]',
+    'full_name' => '192.168.20.127:S1(官网)[]',
   ),
   1078 => 
   array (
@@ -13498,7 +13426,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'test 2(官网)[武道破天]',
+    'full_name' => 'test 2(官网)[]',
   ),
   1082 => 
   array (
@@ -13534,7 +13462,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'localhost|S1(官网)[武道破天]',
+    'full_name' => 'localhost|S1(官网)[]',
   ),
   1101 => 
   array (
@@ -13552,7 +13480,7 @@ return array (
     'ext' => 'a:2:{s:7:"db_user";s:5:"zlsky";s:6:"db_pwd";s:3:"ysr";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '李烁-测试服(官网)[盛世九州]',
+    'full_name' => '李烁-测试服(官网)[]',
   ),
   1113 => 
   array (
@@ -13570,7 +13498,7 @@ return array (
     'ext' => NULL,
     'data_url' => '',
     'isCenter' => '0',
-    'full_name' => '卢明华(官网)[西游降魔]',
+    'full_name' => '卢明华(官网)[]',
   ),
   1122 => 
   array (
@@ -13588,7 +13516,7 @@ return array (
     'ext' => NULL,
     'data_url' => '',
     'isCenter' => '0',
-    'full_name' => 'uwan_s1(官网)[西游降魔]',
+    'full_name' => 'uwan_s1(官网)[]',
   ),
   1123 => 
   array (
@@ -13606,7 +13534,7 @@ return array (
     'ext' => NULL,
     'data_url' => '',
     'isCenter' => '0',
-    'full_name' => 'S1-盛世九州(封测)(腾讯)[盛世九州]',
+    'full_name' => 'S1-盛世九州(封测)(腾讯)[]',
   ),
   1124 => 
   array (
@@ -13624,7 +13552,7 @@ return array (
     'ext' => NULL,
     'data_url' => '',
     'isCenter' => '0',
-    'full_name' => '测试-张健(官网)[怒风战锤]',
+    'full_name' => '测试-张健(官网)[]',
   ),
   203 => 
   array (
@@ -13642,7 +13570,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2梦想之巅(官网)[富人国]',
+    'full_name' => 'S2梦想之巅(官网)[]',
   ),
   972 => 
   array (
@@ -13660,7 +13588,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '腾讯测试服(腾讯)[双龙诀]',
+    'full_name' => '腾讯测试服(腾讯)[]',
   ),
   997 => 
   array (
@@ -13678,25 +13606,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S0 腾讯测试(腾讯)[大亨2]',
-  ),
-  1050 => 
-  array (
-    'Id' => '1050',
-    'room_id' => '0',
-    'game_type_id' => '10',
-    'operator_id' => '31',
-    'ordinal' => '2',
-    'marking' => '91wan|S2',
-    'time_zone' => '0',
-    'timezone' => 'PRC',
-    'server_name' => '91wan-S2厚积薄发',
-    'server_url' => 'http://api.gf.91wan.com/',
-    'timer' => '0',
-    'ext' => NULL,
-    'data_url' => NULL,
-    'isCenter' => NULL,
-    'full_name' => '91wan-S2厚积薄发(91wan)[功夫]',
+    'full_name' => 'S0 腾讯测试(腾讯)[]',
   ),
   1059 => 
   array (
@@ -13714,7 +13624,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 's2 白虎(日本)[三分天下]',
+    'full_name' => 's2 白虎(日本)[]',
   ),
   1083 => 
   array (
@@ -13732,7 +13642,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '电信体验服(腾讯)[明星]',
+    'full_name' => '电信体验服(腾讯)[]',
   ),
   1091 => 
   array (
@@ -13750,7 +13660,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S20(腾讯)[武道破天]',
+    'full_name' => 'S20(腾讯)[]',
   ),
   1092 => 
   array (
@@ -13768,7 +13678,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '动网-杨双林(官网)[武道破天]',
+    'full_name' => '动网-杨双林(官网)[]',
   ),
   1097 => 
   array (
@@ -13786,25 +13696,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '兴源(官网)[乱世春秋]',
-  ),
-  1102 => 
-  array (
-    'Id' => '1102',
-    'room_id' => '0',
-    'game_type_id' => '23',
-    'operator_id' => '9',
-    'ordinal' => '2',
-    'marking' => '0',
-    'time_zone' => '0',
-    'timezone' => 'PRC',
-    'server_name' => '兴源',
-    'server_url' => 'http://www.ls.com/',
-    'timer' => '0',
-    'ext' => NULL,
-    'data_url' => NULL,
-    'isCenter' => NULL,
-    'full_name' => '兴源(官网)[侠义江湖]',
+    'full_name' => '兴源(官网)[]',
   ),
   1104 => 
   array (
@@ -13822,7 +13714,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '外网2(官网)[乱世春秋]',
+    'full_name' => '外网2(官网)[]',
   ),
   1114 => 
   array (
@@ -13840,7 +13732,7 @@ return array (
     'ext' => NULL,
     'data_url' => '',
     'isCenter' => '0',
-    'full_name' => 's2(91wan)[盛世九州]',
+    'full_name' => 's2(91wan)[]',
   ),
   1116 => 
   array (
@@ -13858,25 +13750,25 @@ return array (
     'ext' => NULL,
     'data_url' => '',
     'isCenter' => '0',
-    'full_name' => '移动-谢作杰(官网)[寻侠]',
+    'full_name' => '移动-谢作杰(官网)[]',
   ),
   1117 => 
   array (
     'Id' => '1117',
     'room_id' => '25',
-    'game_type_id' => '29',
+    'game_type_id' => '10',
     'operator_id' => '9',
     'ordinal' => '2',
-    'marking' => '192.168.21.94',
+    'marking' => '192.168.1.11:6660',
     'time_zone' => '0',
     'timezone' => 'PRC',
-    'server_name' => '21.94开发服',
-    'server_url' => 'http://192.168.21.94:6002/',
+    'server_name' => '11开放服',
+    'server_url' => 'http://192.168.1.11:6660/',
     'timer' => '0',
     'ext' => NULL,
     'data_url' => '',
     'isCenter' => '0',
-    'full_name' => '21.94开发服(官网)[西游降魔]',
+    'full_name' => '11开放服(官网)[冰与火]',
   ),
   204 => 
   array (
@@ -13894,25 +13786,25 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3黄金海岸(官网)[富人国]',
+    'full_name' => 'S3黄金海岸(官网)[]',
   ),
   1121 => 
   array (
     'Id' => '1121',
     'room_id' => '25',
-    'game_type_id' => '29',
+    'game_type_id' => '10',
     'operator_id' => '9',
     'ordinal' => '3',
-    'marking' => 's3.app100678011.qqopenapp.com',
+    'marking' => '192.168.1.80:6660',
     'time_zone' => '0',
     'timezone' => 'PRC',
-    'server_name' => '腾讯封测',
-    'server_url' => 'http://s3.app100678011.qqopenapp.com/gm/',
+    'server_name' => '本地测试',
+    'server_url' => 'http://192.168.1.80:6660/',
     'timer' => '0',
     'ext' => NULL,
     'data_url' => '',
     'isCenter' => '0',
-    'full_name' => '腾讯封测(官网)[西游降魔]',
+    'full_name' => '本地测试(官网)[冰与火]',
   ),
   205 => 
   array (
@@ -13930,7 +13822,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4蓝色港湾(官网)[富人国]',
+    'full_name' => 'S4蓝色港湾(官网)[]',
   ),
   990 => 
   array (
@@ -13948,79 +13840,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4 三界奇缘(官网)[幻世仙征]',
-  ),
-  1003 => 
-  array (
-    'Id' => '1003',
-    'room_id' => '0',
-    'game_type_id' => '10',
-    'operator_id' => '9',
-    'ordinal' => '4',
-    'marking' => '192.168.12.165',
-    'time_zone' => '0',
-    'timezone' => 'PRC',
-    'server_name' => '192.168.20.127:S4',
-    'server_url' => 'http://192.168.20.127:8080/gfhome/',
-    'timer' => '0',
-    'ext' => 'a:2:{s:7:"db_user";s:12:"wanghongzhou";s:6:"db_pwd";s:6:"987654";}',
-    'data_url' => NULL,
-    'isCenter' => NULL,
-    'full_name' => '192.168.20.127:S4(官网)[功夫]',
-  ),
-  1020 => 
-  array (
-    'Id' => '1020',
-    'room_id' => '0',
-    'game_type_id' => '10',
-    'operator_id' => '9',
-    'ordinal' => '4',
-    'marking' => 'api.g.uwan.com|S1',
-    'time_zone' => '0',
-    'timezone' => 'PRC',
-    'server_name' => 'S1测试服',
-    'server_url' => 'http://api.g.uwan.com/',
-    'timer' => '0',
-    'ext' => 'a:2:{s:7:"db_user";s:12:"wanghongzhou";s:6:"db_pwd";s:6:"987654";}',
-    'data_url' => NULL,
-    'isCenter' => NULL,
-    'full_name' => 'S1测试服(官网)[功夫]',
-  ),
-  1021 => 
-  array (
-    'Id' => '1021',
-    'room_id' => '0',
-    'game_type_id' => '10',
-    'operator_id' => '14',
-    'ordinal' => '4',
-    'marking' => 'api.g.uwan.com|S4',
-    'time_zone' => '0',
-    'timezone' => 'PRC',
-    'server_name' => 'S4测试服',
-    'server_url' => 'http://api.g.uwan.com/',
-    'timer' => '0',
-    'ext' => NULL,
-    'data_url' => NULL,
-    'isCenter' => NULL,
-    'full_name' => 'S4测试服(多玩)[功夫]',
-  ),
-  1062 => 
-  array (
-    'Id' => '1062',
-    'room_id' => '0',
-    'game_type_id' => '10',
-    'operator_id' => '9',
-    'ordinal' => '4',
-    'marking' => '192.168.22.2',
-    'time_zone' => '0',
-    'timezone' => 'PRC',
-    'server_name' => '192.168.22.2:S4',
-    'server_url' => 'http://192.168.22.2/gfhome/',
-    'timer' => '0',
-    'ext' => NULL,
-    'data_url' => NULL,
-    'isCenter' => NULL,
-    'full_name' => '192.168.22.2:S4(官网)[功夫]',
+    'full_name' => 'S4 三界奇缘(官网)[]',
   ),
   1125 => 
   array (
@@ -14038,7 +13858,7 @@ return array (
     'ext' => NULL,
     'data_url' => '10.181.158.125:3488#dataviewer#qq@7%ssAjk3D#xsf_s1',
     'isCenter' => '0',
-    'full_name' => 'S1一统天下(官网)[横版三分]',
+    'full_name' => 'S1一统天下(官网)[]',
   ),
   330 => 
   array (
@@ -14056,7 +13876,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5风云际会(官网)[富人国]',
+    'full_name' => 'S5风云际会(官网)[]',
   ),
   1079 => 
   array (
@@ -14092,7 +13912,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '手机_S2(官网手机版)[三分天下]',
+    'full_name' => '手机_S2(官网手机版)[]',
   ),
   332 => 
   array (
@@ -14110,7 +13930,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6王者之心(官网)[富人国]',
+    'full_name' => 'S6王者之心(官网)[]',
   ),
   1008 => 
   array (
@@ -14128,7 +13948,7 @@ return array (
     'ext' => 'a:5:{s:7:"db_host";s:18:"183.60.66.176:8007";s:7:"db_name";s:7:"hsxz_s2";s:7:"db_user";s:10:"dataviewer";s:6:"db_pwd";s:12:"qq@7%ssAjk3D";s:7:"db_port";s:4:"8007";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 腾讯(腾讯)[幻世仙征]',
+    'full_name' => 'S2 腾讯(腾讯)[]',
   ),
   334 => 
   array (
@@ -14146,7 +13966,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7商海豪情(官网)[富人国]',
+    'full_name' => 'S7商海豪情(官网)[]',
   ),
   1025 => 
   array (
@@ -14164,7 +13984,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 富甲天下(腾讯)[大亨2]',
+    'full_name' => 'S1 富甲天下(腾讯)[]',
   ),
   343 => 
   array (
@@ -14182,7 +14002,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S8盛世天下(官网)[富人国]',
+    'full_name' => 'S8盛世天下(官网)[]',
   ),
   525 => 
   array (
@@ -14200,7 +14020,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S9造梦空间(官网)[富人国]',
+    'full_name' => 'S9造梦空间(官网)[]',
   ),
   1005 => 
   array (
@@ -14218,7 +14038,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S6 傅君婥(腾讯)[双龙诀]',
+    'full_name' => 'S6 傅君婥(腾讯)[]',
   ),
   526 => 
   array (
@@ -14236,7 +14056,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S10大展宏图(官网)[富人国]',
+    'full_name' => 'S10大展宏图(官网)[]',
   ),
   1006 => 
   array (
@@ -14254,7 +14074,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S7 李靖(腾讯)[双龙诀]',
+    'full_name' => 'S7 李靖(腾讯)[]',
   ),
   605 => 
   array (
@@ -14272,7 +14092,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S11 创想未来(官网)[富人国]',
+    'full_name' => 'S11 创想未来(官网)[]',
   ),
   1007 => 
   array (
@@ -14290,7 +14110,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S8 宋玉致(腾讯)[双龙诀]',
+    'full_name' => 'S8 宋玉致(腾讯)[]',
   ),
   1080 => 
   array (
@@ -14326,7 +14146,7 @@ return array (
     'ext' => NULL,
     'data_url' => '11111',
     'isCenter' => '0',
-    'full_name' => '双线一区(官网)[论剑天下]',
+    'full_name' => '双线一区(官网)[]',
   ),
   606 => 
   array (
@@ -14344,7 +14164,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S12 飙风新城(官网)[富人国]',
+    'full_name' => 'S12 飙风新城(官网)[]',
   ),
   1024 => 
   array (
@@ -14362,7 +14182,7 @@ return array (
     'ext' => 'a:4:{s:7:"db_host";s:13:"192.168.14.90";s:7:"db_name";s:8:"hsxz_s12";s:7:"db_user";s:4:"root";s:7:"db_port";s:4:"3306";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '刘国斌hsxz_s12(官网)[幻世仙征]',
+    'full_name' => '刘国斌hsxz_s12(官网)[]',
   ),
   1068 => 
   array (
@@ -14416,7 +14236,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S13 让梦想飞(官网)[富人国]',
+    'full_name' => 'S13 让梦想飞(官网)[]',
   ),
   1107 => 
   array (
@@ -14434,7 +14254,7 @@ return array (
     'ext' => NULL,
     'data_url' => '',
     'isCenter' => '0',
-    'full_name' => '测试(官网)[论剑天下]',
+    'full_name' => '测试(官网)[]',
   ),
   608 => 
   array (
@@ -14452,7 +14272,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S14 富势磅礴(官网)[富人国]',
+    'full_name' => 'S14 富势磅礴(官网)[]',
   ),
   609 => 
   array (
@@ -14470,7 +14290,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S15 车行天下(官网)[富人国]',
+    'full_name' => 'S15 车行天下(官网)[]',
   ),
   610 => 
   array (
@@ -14488,7 +14308,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S16 急速超越(官网)[富人国]',
+    'full_name' => 'S16 急速超越(官网)[]',
   ),
   611 => 
   array (
@@ -14506,7 +14326,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S17 风起云涌(官网)[富人国]',
+    'full_name' => 'S17 风起云涌(官网)[]',
   ),
   1058 => 
   array (
@@ -14524,7 +14344,7 @@ return array (
     'ext' => 'a:4:{s:7:"db_host";s:13:"192.168.14.90";s:7:"db_name";s:8:"hsxz_s17";s:7:"db_user";s:4:"root";s:7:"db_port";s:4:"3306";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '刘国斌hsxz_s17(官网)[幻世仙征]',
+    'full_name' => '刘国斌hsxz_s17(官网)[]',
   ),
   712 => 
   array (
@@ -14542,7 +14362,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S18 淘金之路(官网)[富人国]',
+    'full_name' => 'S18 淘金之路(官网)[]',
   ),
   1009 => 
   array (
@@ -14560,7 +14380,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S9 宋缺(腾讯)[双龙诀]',
+    'full_name' => 'S9 宋缺(腾讯)[]',
   ),
   714 => 
   array (
@@ -14578,7 +14398,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S19 富国无双(官网)[富人国]',
+    'full_name' => 'S19 富国无双(官网)[]',
   ),
   1010 => 
   array (
@@ -14596,7 +14416,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S10 宁道奇(腾讯)[双龙诀]',
+    'full_name' => 'S10 宁道奇(腾讯)[]',
   ),
   719 => 
   array (
@@ -14614,7 +14434,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S20 名满天下(官网)[富人国]',
+    'full_name' => 'S20 名满天下(官网)[]',
   ),
   1011 => 
   array (
@@ -14632,7 +14452,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S11 独孤凤(腾讯)[双龙诀]',
+    'full_name' => 'S11 独孤凤(腾讯)[]',
   ),
   728 => 
   array (
@@ -14650,7 +14470,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S21 功成名就(官网)[富人国]',
+    'full_name' => 'S21 功成名就(官网)[]',
   ),
   1012 => 
   array (
@@ -14668,7 +14488,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S12 云帅(腾讯)[双龙诀]',
+    'full_name' => 'S12 云帅(腾讯)[]',
   ),
   733 => 
   array (
@@ -14686,7 +14506,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S22 胜者为王(官网)[富人国]',
+    'full_name' => 'S22 胜者为王(官网)[]',
   ),
   1014 => 
   array (
@@ -14704,7 +14524,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S13 秦叔宝(腾讯)[双龙诀]',
+    'full_name' => 'S13 秦叔宝(腾讯)[]',
   ),
   740 => 
   array (
@@ -14722,7 +14542,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S23 气贯长虹(官网)[富人国]',
+    'full_name' => 'S23 气贯长虹(官网)[]',
   ),
   1013 => 
   array (
@@ -14740,7 +14560,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S14 毕玄(腾讯)[双龙诀]',
+    'full_name' => 'S14 毕玄(腾讯)[]',
   ),
   753 => 
   array (
@@ -14758,7 +14578,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S24平步青云(官网)[富人国]',
+    'full_name' => 'S24平步青云(官网)[]',
   ),
   1015 => 
   array (
@@ -14776,7 +14596,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S15 红拂女(腾讯)[双龙诀]',
+    'full_name' => 'S15 红拂女(腾讯)[]',
   ),
   760 => 
   array (
@@ -14794,7 +14614,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S25谁与争锋(官网)[富人国]',
+    'full_name' => 'S25谁与争锋(官网)[]',
   ),
   1016 => 
   array (
@@ -14812,7 +14632,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S16 跋锋寒(腾讯)[双龙诀]',
+    'full_name' => 'S16 跋锋寒(腾讯)[]',
   ),
   775 => 
   array (
@@ -14830,7 +14650,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S26驰骋天下(官网)[富人国]',
+    'full_name' => 'S26驰骋天下(官网)[]',
   ),
   1017 => 
   array (
@@ -14848,7 +14668,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S17 侯希白(腾讯)[双龙诀]',
+    'full_name' => 'S17 侯希白(腾讯)[]',
   ),
   784 => 
   array (
@@ -14866,7 +14686,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S27传奇人生(官网)[富人国]',
+    'full_name' => 'S27传奇人生(官网)[]',
   ),
   1018 => 
   array (
@@ -14884,7 +14704,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S18 李世民(腾讯)[双龙诀]',
+    'full_name' => 'S18 李世民(腾讯)[]',
   ),
   793 => 
   array (
@@ -14902,7 +14722,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S28唯我独尊(官网)[富人国]',
+    'full_name' => 'S28唯我独尊(官网)[]',
   ),
   809 => 
   array (
@@ -14920,7 +14740,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S29前程似锦(官网)[富人国]',
+    'full_name' => 'S29前程似锦(官网)[]',
   ),
   823 => 
   array (
@@ -14938,7 +14758,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S30天下无双(官网)[富人国]',
+    'full_name' => 'S30天下无双(官网)[]',
   ),
   979 => 
   array (
@@ -14956,7 +14776,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S1 师妃暄(腾讯)[双龙诀]',
+    'full_name' => 'S1 师妃暄(腾讯)[]',
   ),
   843 => 
   array (
@@ -14974,7 +14794,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S31势如破竹(官网)[富人国]',
+    'full_name' => 'S31势如破竹(官网)[]',
   ),
   948 => 
   array (
@@ -14992,7 +14812,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S2 徐子陵(腾讯)[双龙诀]',
+    'full_name' => 'S2 徐子陵(腾讯)[]',
   ),
   857 => 
   array (
@@ -15010,7 +14830,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S32名动四方(官网)[富人国]',
+    'full_name' => 'S32名动四方(官网)[]',
   ),
   980 => 
   array (
@@ -15028,7 +14848,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S3 寇仲(腾讯)[双龙诀]',
+    'full_name' => 'S3 寇仲(腾讯)[]',
   ),
   864 => 
   array (
@@ -15046,7 +14866,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S33美仑美奂(官网)[富人国]',
+    'full_name' => 'S33美仑美奂(官网)[]',
   ),
   998 => 
   array (
@@ -15064,7 +14884,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S4 石青璇(腾讯)[双龙诀]',
+    'full_name' => 'S4 石青璇(腾讯)[]',
   ),
   1088 => 
   array (
@@ -15082,7 +14902,7 @@ return array (
     'ext' => 'a:2:{s:7:"db_user";s:4:"kefu";s:6:"db_pwd";s:4:"kefu";}',
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => '扣扣(官网)[功夫]',
+    'full_name' => '扣扣(官网)[冰与火]',
   ),
   873 => 
   array (
@@ -15100,7 +14920,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S34马到成功(官网)[富人国]',
+    'full_name' => 'S34马到成功(官网)[]',
   ),
   1004 => 
   array (
@@ -15118,7 +14938,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S5 石之轩(腾讯)[双龙诀]',
+    'full_name' => 'S5 石之轩(腾讯)[]',
   ),
   878 => 
   array (
@@ -15136,7 +14956,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S35飞黄腾达(官网)[富人国]',
+    'full_name' => 'S35飞黄腾达(官网)[]',
   ),
   886 => 
   array (
@@ -15154,7 +14974,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S36志在必得(官网)[富人国]',
+    'full_name' => 'S36志在必得(官网)[]',
   ),
   995 => 
   array (
@@ -15172,7 +14992,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'W1 婠婠(网通)(腾讯)[双龙诀]',
+    'full_name' => 'W1 婠婠(网通)(腾讯)[]',
   ),
   897 => 
   array (
@@ -15190,7 +15010,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S37奔腾年代(官网)[富人国]',
+    'full_name' => 'S37奔腾年代(官网)[]',
   ),
   906 => 
   array (
@@ -15208,7 +15028,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S38富甲天下(官网)[富人国]',
+    'full_name' => 'S38富甲天下(官网)[]',
   ),
   924 => 
   array (
@@ -15226,7 +15046,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S39气势如虹(官网)[富人国]',
+    'full_name' => 'S39气势如虹(官网)[]',
   ),
   947 => 
   array (
@@ -15244,7 +15064,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S40龙啸九天(官网)[富人国]',
+    'full_name' => 'S40龙啸九天(官网)[]',
   ),
   1075 => 
   array (
@@ -15262,7 +15082,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S30沈落雁(腾讯)[双龙诀]',
+    'full_name' => 'S30沈落雁(腾讯)[]',
   ),
   1064 => 
   array (
@@ -15280,7 +15100,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S50曲傲(腾讯)[双龙诀]',
+    'full_name' => 'S50曲傲(腾讯)[]',
   ),
   999 => 
   array (
@@ -15298,7 +15118,7 @@ return array (
     'ext' => 'a:5:{s:7:"db_host";s:18:"183.60.66.176:8006";s:7:"db_name";s:7:"hsxz_s1";s:7:"db_user";s:6:"client";s:6:"db_pwd";s:20:"ji4*H^T7(65(4452)h6=";s:7:"db_port";s:4:"8006";}',
     'data_url' => '',
     'isCenter' => '0',
-    'full_name' => '腾讯77服(腾讯)[幻世仙征]',
+    'full_name' => '腾讯77服(腾讯)[]',
   ),
   1061 => 
   array (
@@ -15316,25 +15136,7 @@ return array (
     'ext' => NULL,
     'data_url' => NULL,
     'isCenter' => NULL,
-    'full_name' => 'S61尤鸟倦(腾讯)[双龙诀]',
-  ),
-  1056 => 
-  array (
-    'Id' => '1056',
-    'room_id' => '0',
-    'game_type_id' => '10',
-    'operator_id' => '9',
-    'ordinal' => '444',
-    'marking' => 'uwan|S0',
-    'time_zone' => '0',
-    'timezone' => 'PRC',
-    'server_name' => '官网S0服',
-    'server_url' => 'http://api.g.uwan.com/',
-    'timer' => '0',
-    'ext' => NULL,
-    'data_url' => NULL,
-    'isCenter' => NULL,
-    'full_name' => '官网S0服(官网)[功夫]',
+    'full_name' => 'S61尤鸟倦(腾讯)[]',
   ),
 )
 ?>

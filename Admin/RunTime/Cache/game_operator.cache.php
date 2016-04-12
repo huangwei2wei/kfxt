@@ -3856,25 +3856,6 @@ return array (
     ),
     'ext' => NULL,
   ),
-  152 => 
-  array (
-    'Id' => '152',
-    'game_type_id' => '20',
-    'operator_id' => '84',
-    'url' => '',
-    'vip_setup' => 
-    array (
-      'vip_timeout' => 
-      array (
-        0 => '',
-      ),
-      'vip_pay' => 
-      array (
-        0 => '',
-      ),
-    ),
-    'ext' => NULL,
-  ),
   153 => 
   array (
     'Id' => '153',
@@ -3951,49 +3932,11 @@ return array (
     ),
     'ext' => NULL,
   ),
-  157 => 
-  array (
-    'Id' => '157',
-    'game_type_id' => '24',
-    'operator_id' => '31',
-    'url' => '',
-    'vip_setup' => 
-    array (
-      'vip_timeout' => 
-      array (
-        0 => '',
-      ),
-      'vip_pay' => 
-      array (
-        0 => '',
-      ),
-    ),
-    'ext' => NULL,
-  ),
   158 => 
   array (
     'Id' => '158',
     'game_type_id' => '29',
     'operator_id' => '9',
-    'url' => '',
-    'vip_setup' => 
-    array (
-      'vip_timeout' => 
-      array (
-        0 => '',
-      ),
-      'vip_pay' => 
-      array (
-        0 => '',
-      ),
-    ),
-    'ext' => NULL,
-  ),
-  159 => 
-  array (
-    'Id' => '159',
-    'game_type_id' => '24',
-    'operator_id' => '84',
     'url' => '',
     'vip_setup' => 
     array (
@@ -4050,6 +3993,25 @@ return array (
   array (
     'Id' => '162',
     'game_type_id' => '34',
+    'operator_id' => '9',
+    'url' => '',
+    'vip_setup' => 
+    array (
+      'vip_timeout' => 
+      array (
+        0 => '',
+      ),
+      'vip_pay' => 
+      array (
+        0 => '',
+      ),
+    ),
+    'ext' => NULL,
+  ),
+  163 => 
+  array (
+    'Id' => '163',
+    'game_type_id' => '23',
     'operator_id' => '9',
     'url' => '',
     'vip_setup' => 

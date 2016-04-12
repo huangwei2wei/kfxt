@@ -1,7 +1,9 @@
 <!--{if $tplServerSelect}-->
 <!--{include file=$tplServerSelect}-->
 <!--{/if}-->
-
+<style>
+	.itemInput{width:35px;height:16px;border: 1px solid red;}
+</style>
 <link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
 <script language="javascript" type="text/javascript" src="<!--{$__JS__}-->/Libs/kindeditor/kindeditor.js"></script>
@@ -68,6 +70,43 @@ function linkAdd(){
 function view(){
 	$('#view').html($('#content').val());
 }
+
+
+//创建道具数量填写表单
+function makeInput(obj){
+	var itemId = obj.attr('item_Id');
+	var itemName = obj.attr('itemName');
+	var str = '';
+	if(obj.attr('checked')){
+		str = '<input type="text" value="" class="itemInput" name="itemNum['+itemId+']" onblur="itemCollectAdd(\''+itemId+'\',\''+itemName+'\',$(this).val())" >';
+		str +='<input type="hidden" name="itemName['+itemId+']" value="'+itemName+'">'; 
+		$('#input_'+itemId).html(str);
+		$('#input_'+itemId).children().focus();
+	}else{
+		$('#input_'+itemId).html('');
+	}
+}
+//道具收集
+function itemCollectAdd(itemId,itemName,num){
+	if(itemId =='' || $.trim(num)=='')return false;
+	var itemsCollectId = 'itemsCollect'+itemId;
+	$('#'+itemsCollectId).remove();
+	num = parseInt(num);
+	if(num && num>0){
+		var str = '<div id="'+itemsCollectId+'" >'+itemName+'('+num+') <a href="javascript:itemCollectDel('+"'"+itemId+"'"+')">删除</a></div>';
+		$('#itemsCollect').append(str);
+	}else{
+		$('input[name=itemNum['+itemId+']]').val('');
+	}
+}
+//在收集的道具中删除道具
+function itemCollectDel(itemId){
+	if(itemId =='')return false;		
+	$('#checkboxItem'+itemId).attr('checked',false);
+	$('#input_'+itemId).html('');
+	$('#itemsCollect'+itemId).remove();
+}
+
 </script>
 <fieldset>
 <legend>编辑公告</legend>
@@ -79,14 +118,14 @@ function view(){
         <th scope="row">账号都 类型：</th>
         <td>
             <select name="userType">
-            	<!--{html_options options=$userType selected=$_POST.userType}-->
+            	<!--{html_options options=$userType selected=$_GET.playerType}-->
             </select>
 		</td>
       </tr>
       <tr>
         <th scope="row">发送给以下用户<br/>(用户之间用&quot;,&quot;号隔开)：</th>
         <td>
-        <textarea name="user" id="user" style="width:400px; height:100px;"><!--{$players|default:''}--></textarea>
+        <textarea name="user" id="user" style="width:400px; height:100px;"><!--{$playerIds|default:''}--></textarea>
         <div id="userTip"></div>
         </td>
       </tr>
@@ -121,6 +160,43 @@ function view(){
             </div>
          </td>
       </tr>
+  <tr>
+    <th scope="row">道具</th>
+    <td>
+        <table width="100%" border="0" cellpadding="3">
+          <tr>
+          <!--{foreach from=$items item=list key=typeId name=foo}-->              
+            <td><!--{$list.typeName}-->
+                <div style="background:white;margin:6px;font-size:14px;border:1px dashed silver;padding:5px;width:250px;">
+                    <div style="overflow:auto;height:200px; width:250px;text-align:left;">
+                        <!--{foreach from=$list.subList item=itemName key=itemId}--> 
+                            <div style="font-size:13px; margin-top:4px;">
+                                <!--{$itemName}-->
+                                <input type="checkbox" onclick="makeInput($(this));" id="checkboxItem<!--{$itemId}-->" item_Id="<!--{$typeId}-->_<!--{$itemId}-->" itemName="<!--{$itemName}-->">
+                                <span id="input_<!--{$typeId}-->_<!--{$itemId}-->"></span>
+                            </div>
+                        <!--{/foreach}-->
+                    </div>
+                </div>
+            </td>
+            <!--{if $smarty.foreach.foo.index%3==2}--> 
+                </tr><tr>
+            <!--{/if}-->
+          <!--{/foreach}--> 
+
+          </tr>
+        </table>
+    
+    </td>
+  </tr>
+  
+  <tr>
+      <th>道具汇总</th>
+      <td  valign="top">
+        <div id="itemsCollect"></div>
+      </td>
+  </tr>
+  
       <tr>
         <th colspan="2" scope="row"><input type="submit" class="btn-blue" name='subbutton' value="提交" /></th>
       </tr>

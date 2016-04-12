@@ -2,7 +2,7 @@
 define('MAGIC_QUOTES',get_magic_quotes_gpc());					//是否开始魔术引号
 define('URL_MODE',1);											//URL模式, 1普通模式, 2 PATH_INFO模式
 define('DEFAULT_CONTROL','Index');								//默认调用的控制器
-define('DEFAULT_ACTION','Index');								//默认执行的方法
+define('DEFAULT_ACTION','Login');								//默认执行的方法
 define('DEFAULT_PACKAGE','Default');							//默认模块包
 define('APP_PATH',ROOT_PATH . '/App');							//应用程序目录
 define('LANG_PATH',APP_PATH.'/Lang/'.$_COOKIE['kefu_lang']);	//语言包文件夹,默认简体

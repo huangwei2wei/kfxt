@@ -143,7 +143,6 @@ return array (
   'lekoolqa08' => '乐酷客服08',
   'lekoolqa09' => '乐酷客服09',
   'lekoolqa10' => '乐酷客服10',
-  'kx001admin' => '开心网运营001',
   'kaixinkf001' => '开心客服001',
   'kaixinkf002' => '开心客服002',
   'kaixinkf003' => '开心客服003',

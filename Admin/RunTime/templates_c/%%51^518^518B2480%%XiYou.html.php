@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.26, created on 2013-04-07 10:21:45
+<?php /* Smarty version 2.6.26, created on 2015-12-22 16:40:47
          compiled from ActionGame_MasterTools/PlayerLookup/XiYou.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'ActionGame_MasterTools/PlayerLookup/XiYou.html', 43, false),array('modifier', 'default', 'ActionGame_MasterTools/PlayerLookup/XiYou.html', 88, false),array('modifier', 'date_format', 'ActionGame_MasterTools/PlayerLookup/XiYou.html', 107, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'ActionGame_MasterTools/PlayerLookup/XiYou.html', 46, false),array('modifier', 'default', 'ActionGame_MasterTools/PlayerLookup/XiYou.html', 84, false),)), $this); ?>
 <?php if ($this->_tpl_vars['tplServerSelect']): ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => $this->_tpl_vars['tplServerSelect'], 'smarty_include_vars' => array()));
@@ -11,8 +11,11 @@ unset($_smarty_tpl_vars);
 <?php endif; ?>
 
 <?php if ($this->_tpl_vars['display']): ?>
-<link href="<?php echo $this->_tpl_vars['__JS__']; ?>
-/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<link href="
+<?php echo $this->_tpl_vars['__JS__']; ?>
+
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
 <script language="javascript" src="<?php echo $this->_tpl_vars['__JS__']; ?>
 /Libs/My97DatePicker/WdatePicker.js"></script>
 <script language="javascript" >
@@ -85,72 +88,51 @@ unset($_smarty_tpl_vars);
           <th>用户Id</th>
           <th>账号</th>
           <th>昵称</th>
-          <th>玩家职业</th>
           <th>玩家等级</th>
-          <th>绑定银币</th>
-          <th>绑定元宝</th>
-          <th>银币</th>
-          <th>元宝</th>
-          <th>元灵</th>
-          <th>魅力</th>
-          <th>善恶</th>
-          <th>帮派名</th>
-          <th>帮派等级</th>
-          <th>势力</th>
-          <th>势力职位</th>
-          <th>势力军阶</th>
-          <th>势力威望</th>
-          <th>角色创建时间</th>
-          <th>最后登录时间</th>
-          <th>最后离线时间</th>
+          <th>玩家等级经验</th>
+          <th>vip等级</th>
+          <th>vip等级等级</th>
+          <th>体力</th>
+          <th>金币</th>
+          <th>注册时间</th>
+          <th>登录时间</th>
+          <th>战斗力</th>
+          <th>在线时长</th>
+          <th>公会名</th>
         </tr>
 		<?php $_from = $this->_tpl_vars['dataList']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['list']):
 ?>
         <tr>
-          <td align="center"><input type="checkbox" name="playerIds[]" value="<?php echo ((is_array($_tmp=@$this->_tpl_vars['list']['userId'])) ? $this->_run_mod_handler('default', true, $_tmp, '0') : smarty_modifier_default($_tmp, '0')); ?>
+          <td align="center"><input type="checkbox" name="playerIds[]" value="<?php echo ((is_array($_tmp=@$this->_tpl_vars['list']['id'])) ? $this->_run_mod_handler('default', true, $_tmp, '0') : smarty_modifier_default($_tmp, '0')); ?>
 "/></td>
-       	  <td align="center"><?php echo ((is_array($_tmp=@$this->_tpl_vars['list']['userId'])) ? $this->_run_mod_handler('default', true, $_tmp, '0') : smarty_modifier_default($_tmp, '0')); ?>
+       	  <td align="center"><?php echo $this->_tpl_vars['list']['id']; ?>
 </td>
-          <td align="center"><?php echo $this->_tpl_vars['list']['userName']; ?>
+          <td align="center"><?php echo $this->_tpl_vars['list']['accountName']; ?>
 </td>
-          <td align="center"><?php echo $this->_tpl_vars['list']['nickName']; ?>
+          <td align="center"><?php echo $this->_tpl_vars['list']['nickname']; ?>
 </td>
-          <td align="center"><?php echo $this->_tpl_vars['list']['career']; ?>
+          <td align="center"><?php echo $this->_tpl_vars['list']['lv']; ?>
 </td>
-          <td align="center"><?php echo $this->_tpl_vars['list']['level']; ?>
+          <td align="center"><?php echo $this->_tpl_vars['list']['lvExp']; ?>
 </td>
-          <td align="center"><?php echo $this->_tpl_vars['list']['bindCoin']; ?>
+          <td align="center"><?php echo $this->_tpl_vars['list']['vipLv']; ?>
 </td>
-          <td align="center"><?php echo $this->_tpl_vars['list']['bindInfo']; ?>
+          <td align="center"><?php echo $this->_tpl_vars['list']['vipExp']; ?>
 </td>
-          <td align="center"><?php echo $this->_tpl_vars['list']['coin']; ?>
+          <td align="center"><?php echo $this->_tpl_vars['list']['power']; ?>
 </td>
-          <td align="center"><?php echo $this->_tpl_vars['list']['ingot']; ?>
+          <td align="center"><?php echo $this->_tpl_vars['list']['gold']; ?>
 </td>
-          <td align="center"><?php echo $this->_tpl_vars['list']['yuanling']; ?>
+          <td align="center"><?php echo $this->_tpl_vars['list']['createTime']; ?>
 </td>
-          <td align="center"><?php echo $this->_tpl_vars['list']['charm']; ?>
+          <td align="center"><?php echo $this->_tpl_vars['list']['loginTime']; ?>
 </td>
-          <td align="center"><?php echo $this->_tpl_vars['list']['goodAndEvil']; ?>
+          <td align="center"><?php echo $this->_tpl_vars['list']['fight']; ?>
 </td>
-          <td align="center"><?php echo $this->_tpl_vars['list']['faction']; ?>
+          <td align="center"><?php echo $this->_tpl_vars['list']['onLineTime']; ?>
 </td>
-          <td align="center"><?php echo $this->_tpl_vars['list']['factionLevel']; ?>
-</td>
-          <td align="center"><?php echo $this->_tpl_vars['list']['fightForce']; ?>
-</td>
-          <td align="center"><?php echo $this->_tpl_vars['list']['forcePosistion']; ?>
-</td>
-          <td align="center"><?php echo $this->_tpl_vars['list']['forceGrade']; ?>
-</td>
-          <td align="center"><?php echo $this->_tpl_vars['list']['forcePerstige']; ?>
-</td>
-          <td align="center"><?php echo ((is_array($_tmp=$this->_tpl_vars['list']['createTime'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%Y-%m-%d %H:%M:%S") : smarty_modifier_date_format($_tmp, "%Y-%m-%d %H:%M:%S")); ?>
-</td>
-          <td align="center"><?php echo ((is_array($_tmp=$this->_tpl_vars['list']['loginTime'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%Y-%m-%d %H:%M:%S") : smarty_modifier_date_format($_tmp, "%Y-%m-%d %H:%M:%S")); ?>
-</td>
-          <td align="center"><?php echo ((is_array($_tmp=$this->_tpl_vars['list']['logoutTime'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%Y-%m-%d %H:%M:%S") : smarty_modifier_date_format($_tmp, "%Y-%m-%d %H:%M:%S")); ?>
+          <td align="center"><?php echo $this->_tpl_vars['list']['guildName']; ?>
 </td>
         </tr>
         <?php endforeach; else: ?>

@@ -81,7 +81,7 @@ class Util_HttpInterface extends Base {
 	 * @return array
 	 */
 	public function callInterface($isAjax=false){
-		if(!$isAjax)echo $this->_sendUrl;
+//		if(!$isAjax)echo $this->_sendUrl;
 		$this->_httpDown->OpenUrl($this->_sendUrl);
 		if ($this->_httpDown->IsGetOK()){
 			$data=$this->_httpDown->GetRaw();
@@ -89,6 +89,7 @@ class Util_HttpInterface extends Base {
 // 			var_dump($data);
 			return $data;
 		}else {
+			if(!$isAjax)echo $this->_sendUrl;
 			return false;
 		}
 	}

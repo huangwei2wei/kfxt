@@ -1,11 +1,11 @@
-<?php /* Smarty version 2.6.26, created on 2013-04-07 10:18:11
+<?php /* Smarty version 2.6.26, created on 2015-10-28 14:21:31
          compiled from Index/Login.html */ ?>
 <center>
     <form style="margin-top:200px;;" action="<?php echo $this->_tpl_vars['url']['Index_Login']; ?>
 " method="post">
     <table width="60%" border="0" cellspacing="0" cellpadding="3">
       <tr>
-        <th colspan="2" scope="row">动网先锋客服管理系统</th>
+        <th colspan="2" scope="row">雷霆网络客服运营系统</th>
         </tr>
       <tr>
         <th scope="row">用户名</th>

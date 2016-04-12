@@ -3,7 +3,10 @@
 <!--{/if}-->
 
 <!--{if $display}-->
-<link href="<!--{$__JS__}-->/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<link href="
+<!--{$__JS__}-->
+/Libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet"
+type="text/css">
 <script language="javascript" src="<!--{$__JS__}-->/Libs/My97DatePicker/WdatePicker.js"></script>
 <script language="javascript" >
 	function jumpUrl(url){
@@ -64,49 +67,37 @@
           <th>用户Id</th>
           <th>账号</th>
           <th>昵称</th>
-          <th>玩家职业</th>
           <th>玩家等级</th>
-          <th>绑定银币</th>
-          <th>绑定元宝</th>
-          <th>银币</th>
-          <th>元宝</th>
-          <th>元灵</th>
-          <th>魅力</th>
-          <th>善恶</th>
-          <th>帮派名</th>
-          <th>帮派等级</th>
-          <th>势力</th>
-          <th>势力职位</th>
-          <th>势力军阶</th>
-          <th>势力威望</th>
-          <th>角色创建时间</th>
-          <th>最后登录时间</th>
-          <th>最后离线时间</th>
+          <th>玩家等级经验</th>
+          <th>vip等级</th>
+          <th>vip等级等级</th>
+          <th>体力</th>
+          <th>金币</th>
+          <th>钻石</th>
+          <th>注册时间</th>
+          <th>登录时间</th>
+          <th>战斗力</th>
+          <th>在线时长</th>
+          <th>公会名</th>
         </tr>
 		<!--{foreach from=$dataList item=list}-->
         <tr>
-          <td align="center"><input type="checkbox" name="playerIds[]" value="<!--{$list.userId|default:'0'}-->"/></td>
-       	  <td align="center"><!--{$list.userId|default:'0'}--></td>
-          <td align="center"><!--{$list.userName}--></td>
-          <td align="center"><!--{$list.nickName}--></td>
-          <td align="center"><!--{$list.career}--></td>
-          <td align="center"><!--{$list.level}--></td>
-          <td align="center"><!--{$list.bindCoin}--></td>
-          <td align="center"><!--{$list.bindInfo}--></td>
-          <td align="center"><!--{$list.coin}--></td>
-          <td align="center"><!--{$list.ingot}--></td>
-          <td align="center"><!--{$list.yuanling}--></td>
-          <td align="center"><!--{$list.charm}--></td>
-          <td align="center"><!--{$list.goodAndEvil}--></td>
-          <td align="center"><!--{$list.faction}--></td>
-          <td align="center"><!--{$list.factionLevel}--></td>
-          <td align="center"><!--{$list.fightForce}--></td>
-          <td align="center"><!--{$list.forcePosistion}--></td>
-          <td align="center"><!--{$list.forceGrade}--></td>
-          <td align="center"><!--{$list.forcePerstige}--></td>
-          <td align="center"><!--{$list.createTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
-          <td align="center"><!--{$list.loginTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
-          <td align="center"><!--{$list.logoutTime|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
+          <td align="center"><input type="checkbox" name="playerIds[]" value="<!--{$list.id|default:'0'}-->"/></td>
+       	  <td align="center"><!--{$list.id}--></td>
+          <td align="center"><!--{$list.accountName}--></td>
+          <td align="center"><!--{$list.nickname}--></td>
+          <td align="center"><!--{$list.lv}--></td>
+          <td align="center"><!--{$list.lvExp}--></td>
+          <td align="center"><!--{$list.vipLv}--></td>
+          <td align="center"><!--{$list.vipExp}--></td>
+          <td align="center"><!--{$list.power}--></td>
+          <td align="center"><!--{$list.gold}--></td>
+          <td align="center"><!--{$list.diamond}--></td>
+          <td align="center"><!--{$list.createTime}--></td>
+          <td align="center"><!--{$list.loginTime}--></td>
+          <td align="center"><!--{$list.fight}--></td>
+          <td align="center"><!--{$list.onLineTime}--></td>
+          <td align="center"><!--{$list.guildName}--></td>
         </tr>
         <!--{foreachelse}-->
           <tr>
